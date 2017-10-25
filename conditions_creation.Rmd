@@ -20,50 +20,74 @@ p_load(tidyverse)
 # Items + pregunta
 
 ## Items
+
+### Text item
 ```{r}
-# read text file with item
-  # file name
-  item_file_name <- "materials/Items/item.txt"
-  # read item
-  text_item <- readChar(con = item_file_name, nchars = file.info(item_file_name)$size)
+# path to responses folder
+items_dir <- "materials/Items/"
+
+# responses files
+item_files <- dir(items_dir, pattern = ".txt")
+
+# paths to each response file
+item_files_path <- paste0(items_dir, item_files)
+
+# list with responses as char strings
+items <- lapply(item_files_path, 
+                    function(x) readChar(con = x, nchars = file.info(x)$size))
+
+# assing name to each response type
+names(items) <- gsub(".txt", "", item_files)
 
 # visualize item with line breaks
-cat(text_item)
+items
 ```
+
+### Fact-box item
+
+```{r}
+
+
+```
+
 
 ## Pregunta
 
 ```{r}
-# read text file with PPV question
-  # file name
-  ppv_question_file_name <- "materials/Question/ppv_question.txt"
-  # read question
-  ppv_question <- readChar(con = ppv_question_file_name, nchars = file.info(ppv_question_file_name)$size)
+# path to responses folder
+question_dir <- "materials/Question/"
 
-# visualize item with line breaks
-cat(ppv_question)
+# responses files
+question_files <- dir(question_dir)
 
+# paths to each response file
+question_files_path <- paste0(question_dir, question_files)
+
+# list with responses as char strings
+questions <- lapply(question_files_path, 
+                    function(x) readChar(con = x, nchars = file.info(x)$size))
+
+# assing name to each response type
+names(questions) <- gsub(".txt", "", question_files)
+
+# visualize question with line breaks
+cat(questions[[1]])
 ```
 
 ## Items + pregunta
 ```{r}
-# combine item and question
-problems <- paste0(text_item, "\n", ppv_question)
 
-problems %>% cat
+# for (i in length(items)) {paste0(items[[i]], "\n", questions[[i]])}
+
+problems <- lapply(items, function(x) paste0(x, lapply(questions, function(x) x)))
+
 ```
 
 # Numbers sets
 ```{r}
 # read csv with number
-numbers_item <- read_csv("materials/Numbers/numbers_bayes.csv", col_types = cols(), skip = 1,
-                         # col names
-                         col_names = c("context", "ppv","multiplicator","prevalence_1", "prevalence_2", 
-                                       "hit_rate_1","hit_rate_2", "false_positive_1","false_positive_2",
-                                       "correct_ppv","prevalence_percentage","hit_rate_percentage",
-                                       "false_positive_percentage","algorithm_hitrate_falsepositive",
-                                       "algorithm_hitrate_prevalence_1", "algorithm_hitrate_prevalence_2"))
-numbers_item
+numbers_item <-
+  read_csv("materials/Numbers/numbers_bayes.csv", col_types = cols())
 
 ```
 
@@ -75,13 +99,16 @@ numbers_item
 # text fields to be replaced
 field_to_replace <- c("prev_1", "prev_2", "hit_rate_1", "hit_rate_2", "false_positive_1", "false_positive_2")
 
-# replacements for text fields
-field_replaces <- c(paste0(numbers_item$prevalence_1[1]), paste0(numbers_item$prevalence_2[1])
-                    , paste0(numbers_item$hit_rate_1[1]), paste0(numbers_item$hit_rate_2[1])
-                    , paste0(numbers_item$false_positive_1[1]), paste0(numbers_item$false_positive_2[1]))
+# # replacements for text fields
+field_replaces <- 
+  c(paste0(
+    numbers_item$prev_01[1]), paste0(numbers_item$prev_02[1])
+    , paste0(numbers_item$hit_rate_01[1]), paste0(numbers_item$hit_rate_02[1])
+    , paste0(numbers_item$false_positive_01[1]), paste0(numbers_item$false_positive_01[1]))
 
-# create frame with field to be replaced and replacements
-numbers_to_text <- tibble("field_to_replace" = field_to_replace, "field_replaces" = field_replaces)
+# # create frame with field to be replaced and replacements
+numbers_to_text <- 
+  tibble("field_to_replace" = field_to_replace, "field_replaces" = field_replaces)
 
 
 ```
@@ -89,62 +116,72 @@ numbers_to_text <- tibble("field_to_replace" = field_to_replace, "field_replaces
 ## Create items (combine items with numbers)
 ```{r}
 
-item_xxx <- problems
-
-# create item
-for (i in 1:nrow(numbers_to_text)){
+for (i in 1:length(problems)) {
+  # i=1
   
-  # i=2
+  # item to loop
+  item_to_number <- problems[[i]]
   
-  item_xxx =
-    gsub(numbers_to_text$field_to_replace[i], numbers_to_text$field_replaces[i], item_xxx)
-
+  # loop to number
+  for (j in 1:nrow(numbers_to_text)) {
+  # j=6
+    
+  item_to_number = 
+    gsub(numbers_to_text$field_to_replace[j], numbers_to_text$field_replaces[j], item_to_number)
+  
+}
+  # store numbered item
+  problems[[i]] <- item_to_number
+  
 }
 
 # final item
-cat(item_xxx)
+problems
 ```
 
 # Respuesta
-
 ```{r}
-# global-systematic
-  # ____%
 
-glob_systematic <- "____%"
+# path to responses folder
+response_types_dir <- "materials/Response_type/"
 
-# global-intuitive
-  # muy baja, baja, intermedia, alta, muy alta
+# responses files
+response_type_files <- dir(response_types_dir)
 
-glob_intuitive <- "Muy baja     Baja      Intermedia      Alta      Muy alta"
+# paths to each response file
+response_type_files_path <- paste0(response_types_dir, response_type_files)
 
-# sequential-simple
-  # ____ de cada ____
+# list with responses as char strings
+responses <- lapply(response_type_files_path, 
+                    function(x) readChar(con = x, nchars = file.info(x)$size))
 
-seq_simple <- "_____ de cada _____"
-
-# sequential-guided
-  # ____ tendrán mamografía positive y cancer. ____ tendrán mamografía positive y no cancer.
-  # Por lo tanto, ____ de cada ____ tendrán cancer.
-
-seq_guided <- "____ tendrán mamografía positiva y cáncer. ____ tendrán mamografía positive y no cancer.\nPor lo tanto, ____ de cada ____ tendrán cancer."
-
-# dataframe with response types
-
-response_types <- tibble("Response_type" = c("global_systematic", "global_intuitive", "sequential_simple", "sequential_guided"),
-       "Response"= c(glob_systematic, glob_intuitive, seq_simple, seq_guided))
+# assing name to each response type
+names(responses) <- gsub(".txt", "", response_type_files)
 ```
 
 # Combine problem with questions
 ```{r}
-for (i in 1:nrow(response_types)){
-  
-  cat(paste0(item_xxx,  "\n", response_types[i,2],  "\n\n\n"))
+problem_questions <- lapply(problems, 
+                            function(x) paste0(x, lapply(responses, function(x) x)))
 
-  }
+
+
+cat_print <- function(x) {
+  cat(paste0("\n\n\n", x))
+}
+
+cat(unlist(problem_questions))
+
+
+```
+
+# Follow-up 
+```{r}
+
 ```
 
 
+# Follow-up risk
 
 
 

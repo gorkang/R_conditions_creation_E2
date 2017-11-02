@@ -1,0 +1,300 @@
+--- 
+title: "Conditions creation"
+author: "Nico"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: "Conditions creation"
+---
+
+```{r}
+# Clean enviroment
+rm(list = ls(all=TRUE))
+```
+
+```{r}
+# Packages
+if (!require('pacman')) install.packages('pacman'); library('pacman')
+p_load(tidyverse, png, grid)
+```
+
+```{r}
+# Functions
+# to put numbers into problems
+source("function_numbers2problems.R")
+# to bind responses types with problems
+source("function_problems2responses.R")
+```
+
+# Items + pregunta
+
+## Items
+
+### Text-only items
+```{r, read_txt_items_into_a_list}
+# path to responses folder
+tx_items_dir <- "materials/Presentation format/Text-items/"
+
+# responses files
+tx_item_files <- dir(tx_items_dir, pattern = ".txt")
+
+# paths to each response file
+tx_item_files_path <- paste0(tx_items_dir, tx_item_files)
+
+# list with responses as char strings
+tx_items <- lapply(tx_item_files_path, 
+                    function(x) readChar(con = x, nchars = file.info(x)$size))
+
+# assing name to each response type
+names(tx_items) <- gsub(".txt", "", tx_item_files)
+
+
+```
+
+### Positive framework items
+
+```{r, read_pofr_items_into_a_list}
+# path to responses folder
+pf_items_dir <- "materials/Presentation format/Positive-framework/"
+
+# responses files
+pf_item_files <- dir(pf_items_dir, pattern = ".txt")
+
+# paths to each response file
+pf_item_files_path <- paste0(pf_items_dir, pf_item_files)
+
+# list with responses as char strings
+pf_items <- lapply(pf_item_files_path, 
+                    function(x) readChar(con = x, nchars = file.info(x)$size))
+
+# assing name to each response type
+names(pf_items) <- gsub(".txt", "", pf_item_files)
+
+# items to problems
+problems <- c(tx_items, pf_items)
+
+```
+
+
+### Textual items
+
+```{r, results='asis', echo=FALSE, print_items}
+# items to problems
+for (i in 1:length(problems)) {
+  print(names(problems[i]))
+  cat(paste0(problems[i]))
+}
+
+```
+
+# Numbers sets
+```{r}
+# read csv with number
+numbers_item <-
+  read_csv("materials/Numbers/numbers_bayes.csv", col_types = cols())
+
+```
+
+
+```{r}
+numbers_item
+```
+
+
+# Create items
+
+## Fields to be replaced in items
+```{r}
+# text fields to be replaced
+field_to_replace <- c("prev_01", "prev_02", "hit_rate_01", "hit_rate_02", "false_positive_01", "false_positive_02", "all_positive")
+
+```
+
+## Create items (combine items with numbers)
+```{r}
+
+# Put numbers on problems
+# NATURAL FREQUENCIES ABS
+# LOW
+numbers2problems(problems, "nfab", "low")
+# HIGH
+numbers2problems(problems, "nfab", "high")
+
+# PROBABILITIES ABS
+# LOW
+numbers2problems(problems, "prab", "low")
+# HIGH
+numbers2problems(problems, "prab", "high")
+
+# POSITIVE FRAMEWORK
+numbers2problems(problems, "pofr", "low")
+
+```
+
+## Items to use: 
+
+```{r, echo=FALSE}
+
+# Final items
+items_to_use <- 
+c(
+# nf abs
+problems_nfab_high[1],
+problems_nfab_low[2],
+# prob abs
+problems_prab_low[1],
+# problems_prab_low[2],
+# positive framework
+problems_pofr_low
+)
+```
+
+```{r, results='asis'}
+# cat items
+for (i in 1:length(items_to_use)) {
+  print(names(items_to_use[i]))
+  cat(paste0(items_to_use[i]))
+}
+```
+
+# Respuesta
+```{r}
+
+# path to responses folder
+response_types_dir <- "materials/Response_type/"
+
+# responses files
+response_type_files <- dir(response_types_dir)
+
+# paths to each response file
+response_type_files_path <- paste0(response_types_dir, response_type_files)
+
+# list with responses as char strings
+responses <- lapply(response_type_files_path, 
+                    function(x) readChar(con = x, nchars = file.info(x)$size))
+
+# assing name to each response type
+names(responses) <- gsub(".txt", "", response_type_files)
+
+# Response types
+responses
+
+```
+
+# Combine problem with questions
+```{r}
+problems2responses(items_to_use, "items_to_use")
+```
+
+
+## Text-only NATURAL FREQUENCIES ABSOLUTE (high)
+
+```{r, results='asis', echo=FALSE, text_only_nfab}
+x=1
+
+for (x in 1:length(responses)) {
+  
+  cat(
+    paste0(
+      names(
+        items_to_use_responses[[1]][[x]]
+        ), " ***********************************\n\n"))
+  cat(
+    paste0(
+      items_to_use_responses[[1]][[x]]
+      )
+    )
+
+}
+
+```
+
+## Text-only NATURAL FREQUENCIES ABSOLUTE (low)
+
+```{r, results='asis', echo=FALSE}
+
+for (x in 1:length(responses)) {
+  
+  cat(paste0(names(items_to_use_responses[[2]][[x]]),  " ***********************************\n\n"))
+  cat(paste0(items_to_use_responses[[2]][[x]]))
+
+}
+
+```
+
+## Text-only PROBABILITIES ABSOLUTE
+
+```{r, results='asis', echo=FALSE}
+
+for (x in 1:length(responses)) {
+  
+  cat(paste0(names(items_to_use_responses[[3]][[x]]), " ***********************************\n\n"))
+  cat(paste0(items_to_use_responses[[3]][[x]]))
+
+}
+
+```
+
+## Positive-framework
+
+```{r, results='asis', echo=FALSE}
+
+for (x in 1:length(responses)) {
+  
+  cat(paste0(names(items_to_use_responses[[4]][[x]]), " ***********************************\n\n"))
+  cat(paste0(items_to_use_responses[[4]][[x]]))
+
+}
+
+```
+
+## Pictorial presentation formats
+
+**What questions to use with this conditions.**
+**Reliability & What it is more probable given a positive result, having or not having the disease. If this two questions are asked to every condition we can compare them**
+**Reliability: how gringos understand this question**
+
+### Fact-box item
+
+```{r, echo=FALSE} 
+img_fact <- readPNG("materials/Presentation format/Fact-boxs/fact_box_mammography_en_03-2014.png")
+ grid.raster(img_fact)
+
+```
+
+```{r, echo=FALSE} 
+#, results='asis'
+for (z in 1:length(responses)) {
+  cat(paste0(responses[z]))
+}
+```
+
+
+### New-paradigm
+
+```{r, echo=FALSE} 
+img_new <- readPNG("materials/Presentation format/New-paradigm/brochure_new_young.png")
+ grid.raster(img_new)
+
+```
+
+```{r, echo=FALSE} 
+for (z in 1:length(responses)) {
+  cat(paste0(responses[z]))
+}
+```
+
+
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+.packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```

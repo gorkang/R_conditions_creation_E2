@@ -154,74 +154,81 @@ responses <- lapply(response_type_files_path,
 names(responses) <- gsub(".txt", "", response_type_files)
 
 # Response types
-responses
+invisible(lapply(responses, cat))
 
 ```
 
 # Combine problem with questions
+
 ```{r}
-problems2responses(items_to_use, "items_to_use")
-```
+# WORKING (LOOPS)
 
+items_to_use_responses <- 
+lapply(items_to_use, function(x) 
+  paste0(x, lapply(responses, paste0)))
 
-## Text-only NATURAL FREQUENCIES ABSOLUTE (high)
+responses_names <- names(responses)
 
-```{r, results='asis', echo=FALSE, text_only_nfab}
-x=1
-
-for (x in 1:length(responses)) {
+for (problem_loop in 1:length(items_to_use_responses)) {
+# problem_loop=1  
+  for (item_loop in 1:length(items_to_use_responses[[problem_loop]])) {
+    # item_loop=1
+    
+    items_to_use_responses[[problem_loop]][[item_loop]] <- 
+      gsub("([w|h]_)\n", paste0("\\1",responses_names[item_loop], "\n"), items_to_use_responses[[problem_loop]][[item_loop]])
   
-  cat(
-    paste0(
-      names(
-        items_to_use_responses[[1]][[x]]
-        ), " ***********************************\n\n"))
-  cat(
-    paste0(
-      items_to_use_responses[[1]][[x]]
-      )
-    )
-
+    }
+  
 }
 
 ```
+
+```{r}
+invisible(
+  lapply(
+    items_to_use_responses, function(x) {cat(x, sep = "")}
+  )
+)
+
+```
+
+# FINAL ITEMS
+
+**Original sequential-guided question:**  
+Therefore, there are ______ chance(s) that her positive test result correctly indicates the presence of the anomaly, and there are ____ chance(s) that her positive test result incorrectly indicates the presence of the anomaly. (Pighin, 2017)  
+**Ours:**  
+______ people receive a positive test result that correctly indicates the presence of the anomaly, and ____ people receive a positive test result that incorrectly indicates the presence of the anomaly.
+
 
 ## Text-only NATURAL FREQUENCIES ABSOLUTE (low)
 
-```{r, results='asis', echo=FALSE}
+```{r, results='markup', echo=FALSE, text_only_nfab_high}
 
-for (x in 1:length(responses)) {
-  
-  cat(paste0(names(items_to_use_responses[[2]][[x]]),  " ***********************************\n\n"))
-  cat(paste0(items_to_use_responses[[2]][[x]]))
-
-}
+invisible(lapply(items_to_use_responses[1], function(x) cat(x, sep = "\n****************************\n")))
 
 ```
 
-## Text-only PROBABILITIES ABSOLUTE
+## Text-only PROBABILITIES ABSOLUTE (low)
 
-```{r, results='asis', echo=FALSE}
+```{r, results='markup', echo=FALSE, text_only_prab_low}
 
-for (x in 1:length(responses)) {
-  
-  cat(paste0(names(items_to_use_responses[[3]][[x]]), " ***********************************\n\n"))
-  cat(paste0(items_to_use_responses[[3]][[x]]))
-
-}
+invisible(lapply(items_to_use_responses[2], function(x) cat(x, sep = "\n****************************\n")))
 
 ```
 
-## Positive-framework
+## Text-only PROBABILITIES RELATIVE (low)
 
-```{r, results='asis', echo=FALSE}
+```{r, results='markup', echo=FALSE, text_only_prrl_low}
 
-for (x in 1:length(responses)) {
-  
-  cat(paste0(names(items_to_use_responses[[4]][[x]]), " ***********************************\n\n"))
-  cat(paste0(items_to_use_responses[[4]][[x]]))
+invisible(lapply(items_to_use_responses[3], function(x) cat(x, sep = "\n****************************\n")))
 
-}
+```
+
+## POSITIVE FRAMEWORK (high)
+
+```{r, results='markup', echo=FALSE, text_only_pf_high}
+
+invisible(lapply(items_to_use_responses[4], function(x) cat(x, sep = "\n****************************\n")))
 
 ```
 

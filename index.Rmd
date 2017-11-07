@@ -107,31 +107,10 @@ numbers_item
 
 # Create items
 
-## Fields to be replaced in items
-```{r}
-# text fields to be replaced
-field_to_replace <- c("prev_01", "prev_02", "hit_rate_01", "hit_rate_02", "false_positive_01", "false_positive_02", "all_positive")
-
-```
-
 ## Create items (combine items with numbers)
 ```{r}
-
-# Put numbers on problems
-# NATURAL FREQUENCIES ABS
-# LOW
-numbers2problems(problems, "nfab", "low")
-# HIGH
-numbers2problems(problems, "nfab", "high")
-
-# PROBABILITIES ABS
-# LOW
-numbers2problems(problems, "prab", "low")
-# HIGH
-numbers2problems(problems, "prab", "high")
-
-# POSITIVE FRAMEWORK
-numbers2problems(problems, "pofr", "low")
+numbers2problems(problems)
+# problems_numbered %>% str
 
 ```
 
@@ -140,25 +119,19 @@ numbers2problems(problems, "pofr", "low")
 ```{r, echo=FALSE}
 
 # Final items
-items_to_use <- 
+items_to_use <-
 c(
-# nf abs
-problems_nfab_high[1],
-problems_nfab_low[2],
-# prob abs
-problems_prab_low[1],
-# problems_prab_low[2],
-# positive framework
-problems_pofr_low
+problems_numbered[[1]][[1]],
+problems_numbered[[2]][[3]],
+problems_numbered[[2]][[5]],
+problems_numbered[[3]][[1]],
+problems_numbered[[4]][[2]]
 )
 ```
 
-```{r, results='asis'}
-# cat items
-for (i in 1:length(items_to_use)) {
-  print(names(items_to_use[i]))
-  cat(paste0(items_to_use[i]))
-}
+```{r}
+# PRINT ITEMS
+invisible(sapply(items_to_use, cat))
 ```
 
 # Respuesta

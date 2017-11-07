@@ -12,6 +12,7 @@ github-repo: rstudio/bookdown-demo
 description: "Conditions creation"
 ---
 
+
 ```{r}
 # Clean enviroment
 rm(list = ls(all=TRUE))
@@ -47,7 +48,7 @@ tx_item_files_path <- paste0(tx_items_dir, tx_item_files)
 
 # list with responses as char strings
 tx_items <- lapply(tx_item_files_path, 
-                    function(x) readChar(con = x, nchars = file.info(x)$size))
+                    function(x) readChar(con = x, nchars = file.info(x)$size)) 
 
 # assing name to each response type
 names(tx_items) <- gsub(".txt", "", tx_item_files)
@@ -92,6 +93,9 @@ for (i in 1:length(problems)) {
 ```
 
 # Numbers sets
++ Combine every context with every set?
++ Two number sets (NF, PR). If we convert NF to PR we only get one set of numbers per normative PPV.
+
 ```{r}
 # read csv with number
 numbers_item <-
@@ -240,13 +244,13 @@ invisible(lapply(items_to_use_responses[4], function(x) cat(x, sep = "\n********
 
 ### Fact-box item
 
-```{r, echo=FALSE} 
+```{r, echo=FALSE, results='asis'} 
 img_fact <- readPNG("materials/Presentation format/Fact-boxs/fact_box_mammography_en_03-2014.png")
  grid.raster(img_fact)
 
 ```
 
-```{r, echo=FALSE} 
+```{r, echo=FALSE, results='asis'} 
 #, results='asis'
 for (z in 1:length(responses)) {
   cat(paste0(responses[z]))
@@ -256,19 +260,21 @@ for (z in 1:length(responses)) {
 
 ### New-paradigm
 
-```{r, echo=FALSE} 
+```{r, echo=FALSE, results='asis'} 
 img_new <- readPNG("materials/Presentation format/New-paradigm/brochure_new_young.png")
  grid.raster(img_new)
 
 ```
 
-```{r, echo=FALSE} 
+```{r, echo=FALSE, results='asis'} 
 for (z in 1:length(responses)) {
   cat(paste0(responses[z]))
 }
 ```
 
+# TODO:
 
++ fix number sets
 
 
 ```{r include=FALSE}

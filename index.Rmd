@@ -27,8 +27,7 @@ p_load(tidyverse, png, grid)
 # Functions
 # to put numbers into problems
 source("function_numbers2problems.R")
-# to bind responses types with problems
-source("function_problems2responses.R")
+
 ```
 
 # Items + pregunta

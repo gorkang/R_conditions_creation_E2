@@ -27,254 +27,64 @@ p_load(tidyverse, png, grid)
 ```{r}
 # Functions
 # to put numbers into problems
-source("function_numbers2problems.R")
+source("functions/numbers2problems.R")
 
 ```
 
-# Items + pregunta
+# Experiment design 
 
-## Items
+TODO: Brief description about the experiment design (as it should be in a paper)
 
-### Text-only items
-```{r, read_txt_items_into_a_list}
-# path to responses folder
-tx_items_dir <- "materials/Presentation format/Text-items/"
+Independent Variables
 
-# responses files
-tx_item_files <- dir(tx_items_dir, pattern = ".txt")
+* Presentación de información:
+    + FN absolutas
+    + Probabilidades absolutas
+    + Probabilidades relativas
+    + Positive framework
+    + Nuevo paradigma
+    + Fact-box
 
-# paths to each response file
-tx_item_files_path <- paste0(tx_items_dir, tx_item_files)
+* Response type
+    + [global-sistemática]    x %  
+    + [global-intuitiva] muy baja, baja, intermedia, alta, muy alta
+    + [secuencial-simple]   x   de cada   y  
+    + [secuencial-guiada]  y   tendrán mamografía + y cáncer.   y   tendrán mamografía + y no cáncer. Por lo tanto,   x   de cada   y   tendrán cáncer
 
-# list with responses as char strings
-tx_items <- lapply(tx_item_files_path, 
-                    function(x) readChar(con = x, nchars = file.info(x)$size)) 
-
-# assing name to each response type
-names(tx_items) <- gsub(".txt", "", tx_item_files)
-
-
-```
-
-### Positive framework items
-
-```{r, read_pofr_items_into_a_list}
-# path to responses folder
-pf_items_dir <- "materials/Presentation format/Positive-framework/"
-
-# responses files
-pf_item_files <- dir(pf_items_dir, pattern = ".txt")
-
-# paths to each response file
-pf_item_files_path <- paste0(pf_items_dir, pf_item_files)
-
-# list with responses as char strings
-pf_items <- lapply(pf_item_files_path, 
-                    function(x) readChar(con = x, nchars = file.info(x)$size))
-
-# assing name to each response type
-names(pf_items) <- gsub(".txt", "", pf_item_files)
-
-# items to problems
-problems <- c(tx_items, pf_items)
-
-```
-
-
-### Textual items
-
-```{r, results='asis', echo=FALSE, print_items}
-# items to problems
-for (i in 1:length(problems)) {
-  print(names(problems[i]))
-  cat(paste0(problems[i]))
-}
-
-```
-
-# Numbers sets
-+ Combine every context with every set?
-+ Two number sets (NF, PR). If we convert NF to PR we only get one set of numbers per normative PPV.
-
-```{r}
-# read csv with number
-numbers_item <-
-  read_csv("materials/Numbers/numbers_bayes.csv", col_types = cols())
-
-```
-
-
-```{r}
-numbers_item
-```
-
-
-# Create items
-
-## Create items (combine items with numbers)
-```{r}
-numbers2problems(problems)
-# problems_numbered %>% str
-
-```
-
-## Items to use: 
-
-```{r, echo=FALSE}
-
-# Final items
-items_to_use <-
-c(
-problems_numbered[[1]][[1]],
-problems_numbered[[2]][[3]],
-problems_numbered[[2]][[5]],
-problems_numbered[[3]][[1]],
-problems_numbered[[4]][[2]]
-)
-```
-
-```{r}
-# PRINT ITEMS
-invisible(sapply(items_to_use, cat))
-```
-
-# Respuesta
-```{r}
-
-# path to responses folder
-response_types_dir <- "materials/Response_type/"
-
-# responses files
-response_type_files <- dir(response_types_dir)
-
-# paths to each response file
-response_type_files_path <- paste0(response_types_dir, response_type_files)
-
-# list with responses as char strings
-responses <- lapply(response_type_files_path, 
-                    function(x) readChar(con = x, nchars = file.info(x)$size))
-
-# assing name to each response type
-names(responses) <- gsub(".txt", "", response_type_files)
-
-# Response types
-invisible(lapply(responses, cat))
-
-```
-
-# Combine problem with questions
-
-```{r}
-# WORKING (LOOPS)
-
-items_to_use_responses <- 
-lapply(items_to_use, function(x) 
-  paste0(x, lapply(responses, paste0)))
-
-responses_names <- names(responses)
-
-for (problem_loop in 1:length(items_to_use_responses)) {
-# problem_loop=1  
-  for (item_loop in 1:length(items_to_use_responses[[problem_loop]])) {
-    # item_loop=1
+* Riesgo de la prueba diagnóstica
+    + Grave (consecuencias negativas irreversibles)
+    + Leve (cierto riesgo de consecuencias negativas negligibles)
+    + TODO: USE TWO DIFFERENT PROBABILITIES: relatively high/low probs (e.g. 1% vs 5/10% ???)
     
-    items_to_use_responses[[problem_loop]][[item_loop]] <- 
-      gsub("([w|h]_)\n", paste0("\\1",responses_names[item_loop], "\n"), items_to_use_responses[[problem_loop]][[item_loop]])
-  
-    }
-  
-}
+    
 
-```
+## TODO:
 
-```{r}
-invisible(
-  lapply(
-    items_to_use_responses, function(x) {cat(x, sep = "")}
-  )
-)
+* Fix number sets
+    + (PROB) The difference between high/low is now only FP
+    + (FREQ) Numbers change but proportions are the same
 
-```
+* prepare/improve New paradigm 
 
-# FINAL ITEMS
+* Positive Framework es en chances y SINGLE-EVENTS!
+    + Esto causa problemas con las preguntas
+    + Transformar PF a non-single event, o al reves?
+    
+* PF
+    + La pregunta en PF es entre irrelevante y molesta
+    + Of those that receive a positive result, how many would you expect to have breast cancer?
+    + La dejamos?
 
-**Original sequential-guided question:**  
-Therefore, there are ______ chance(s) that her positive test result correctly indicates the presence of the anomaly, and there are ____ chance(s) that her positive test result incorrectly indicates the presence of the anomaly. (Pighin, 2017)  
-**Ours:**  
-______ people receive a positive test result that correctly indicates the presence of the anomaly, and ____ people receive a positive test result that incorrectly indicates the presence of the anomaly.
+* Prob absolute
+    + In the problem each piece of information, except the prevalence, is phrased relatively to another piece of information, and not to the sample. e.g. x% of those pregnant with a fetus… should be:
+x% (of those) are women pregnant with a fetus with Trisomy 21 (will) that receive a positive test result.
 
+* All presentation formats
+    + To make textual and pictorial items comparable we have to introduce questions like this (aren't this questions the same thing?):
+        + How reliable is the test?
+        + If a women receive a positive test result, how probable is that she actually has breast cancer/is pregnant with a fetus with Trisomy 21?
+      
 
-## Text-only NATURAL FREQUENCIES ABSOLUTE (low)
-
-```{r, results='markup', echo=FALSE, text_only_nfab_high}
-
-invisible(lapply(items_to_use_responses[1], function(x) cat(x, sep = "\n****************************\n")))
-
-```
-
-## Text-only PROBABILITIES ABSOLUTE (low)
-
-```{r, results='markup', echo=FALSE, text_only_prab_low}
-
-invisible(lapply(items_to_use_responses[2], function(x) cat(x, sep = "\n****************************\n")))
-
-```
-
-## Text-only PROBABILITIES RELATIVE (low)
-
-```{r, results='markup', echo=FALSE, text_only_prrl_low}
-
-invisible(lapply(items_to_use_responses[3], function(x) cat(x, sep = "\n****************************\n")))
-
-```
-
-## POSITIVE FRAMEWORK (high)
-
-```{r, results='markup', echo=FALSE, text_only_pf_high}
-
-invisible(lapply(items_to_use_responses[4], function(x) cat(x, sep = "\n****************************\n")))
-
-```
-
-## Pictorial presentation formats
-
-**What questions to use with this conditions.**
-**Reliability & What it is more probable given a positive result, having or not having the disease. If this two questions are asked to every condition we can compare them**
-**Reliability: how gringos understand this question**
-
-### Fact-box item
-
-```{r, echo=FALSE, results='asis'} 
-img_fact <- readPNG("materials/Presentation format/Fact-boxs/fact_box_mammography_en_03-2014.png")
- grid.raster(img_fact)
-
-```
-
-```{r, echo=FALSE, results='asis'} 
-#, results='asis'
-for (z in 1:length(responses)) {
-  cat(paste0(responses[z]))
-}
-```
-
-
-### New-paradigm
-
-```{r, echo=FALSE, results='asis'} 
-img_new <- readPNG("materials/Presentation format/New-paradigm/brochure_new_young.png")
- grid.raster(img_new)
-
-```
-
-```{r, echo=FALSE, results='asis'} 
-for (z in 1:length(responses)) {
-  cat(paste0(responses[z]))
-}
-```
-
-# TODO:
-
-+ fix number sets
 
 
 ```{r include=FALSE}

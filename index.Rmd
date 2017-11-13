@@ -1,6 +1,6 @@
 --- 
-title: "Conditions creation"
-author: "Nico"
+title: "Experiment 1 - Conditions creation "
+author: ""
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook

@@ -1,0 +1,145 @@
+# FINAL ITEMS
+
+## Breast Cancer
+
+### Low normative PPV
+
+#### NF ABSOLUTE
+
+```{r, results='markup', echo=FALSE, ca_nfab_low}
+invisible(lapply(items_to_use_responses[grep("ca_nfab_low", items_to_use_responses)], function(x) cat(x, sep = "\n****************************\n")))
+```
+
+#### PR ABSOLUTE
+
+```{r, results='markup', echo=FALSE, ca_prab_low}
+invisible(lapply(items_to_use_responses[grep("ca_prab_low", items_to_use_responses)], function(x) cat(x, sep = "\n****************************\n")))
+```
+
+#### PR RELATIVE
+
+```{r, results='markup', echo=FALSE, ca_prre_low}
+invisible(lapply(items_to_use_responses[grep("ca_prre_low", items_to_use_responses)], function(x) cat(x, sep = "\n****************************\n")))
+```
+
+#### PF
+
+```{r, results='markup', echo=FALSE, ca_pf_low}
+invisible(lapply(items_to_use_responses[grep("ca_pf_low", items_to_use_responses)], function(x) cat(x, sep = "\n****************************\n")))
+```
+
+### High normative PPV
+
+#### NF ABSOLUTE
+
+```{r, results='markup', echo=FALSE, ca_nfab_high}
+invisible(lapply(items_to_use_responses[grep("ca_nfab_high", items_to_use_responses)], function(x) cat(x, sep = "\n****************************\n")))
+```
+
+#### PR ABSOLUTE
+
+```{r, results='markup', echo=FALSE, ca_prab_high}
+invisible(lapply(items_to_use_responses[grep("ca_prab_high", items_to_use_responses)], function(x) cat(x, sep = "\n****************************\n")))
+```
+
+#### PR RELATIVE
+
+```{r, results='markup', echo=FALSE, ca_prre_high}
+invisible(lapply(items_to_use_responses[grep("ca_prre_high", items_to_use_responses)], function(x) cat(x, sep = "\n****************************\n")))
+```
+
+#### PF
+
+```{r, results='markup', echo=FALSE, ca_pf_high}
+invisible(lapply(items_to_use_responses[grep("ca_pf_high", items_to_use_responses)], function(x) cat(x, sep = "\n****************************\n")))
+
+```
+
+
+***********************
+## Trisomy 21
+
+### Low normative PPV
+
+#### NF ABSOLUTE
+
+```{r, results='markup', echo=FALSE, pr_nfab_low}
+invisible(lapply(items_to_use_responses[grep("pr_nfab_low", items_to_use_responses)], function(x) cat(x, sep = "\n****************************\n")))
+```
+
+#### PR ABSOLUTE
+
+```{r, results='markup', echo=FALSE, pr_prab_low}
+invisible(lapply(items_to_use_responses[grep("pr_prab_low", items_to_use_responses)], function(x) cat(x, sep = "\n****************************\n")))
+```
+
+#### PR RELATIVE
+
+```{r, results='markup', echo=FALSE, pr_prre_low}
+invisible(lapply(items_to_use_responses[grep("pr_prre_low", items_to_use_responses)], function(x) cat(x, sep = "\n****************************\n")))
+```
+
+#### PF
+
+```{r, results='markup', echo=FALSE, pr_pf_low}
+invisible(lapply(items_to_use_responses[grep("pr_pf_low", items_to_use_responses)], function(x) cat(x, sep = "\n****************************\n")))
+```
+
+### High normative PPV
+
+#### NF ABSOLUTE
+
+```{r, results='markup', echo=FALSE, pr_nfab_high}
+invisible(lapply(items_to_use_responses[grep("pr_nfab_high", items_to_use_responses)], function(x) cat(x, sep = "\n****************************\n")))
+```
+
+#### PR ABSOLUTE
+
+```{r, results='markup', echo=FALSE, pr_prab_high}
+invisible(lapply(items_to_use_responses[grep("pr_prab_high", items_to_use_responses)], function(x) cat(x, sep = "\n****************************\n")))
+```
+
+#### PR RELATIVE
+
+```{r, results='markup', echo=FALSE, pr_prre_high}
+invisible(lapply(items_to_use_responses[grep("pr_prre_high", items_to_use_responses)], function(x) cat(x, sep = "\n****************************\n")))
+```
+
+#### PF
+
+```{r, results='markup', echo=FALSE, pr_pf_high}
+invisible(lapply(items_to_use_responses[grep("pr_pf_high", items_to_use_responses)], function(x) cat(x, sep = "\n****************************\n")))
+```
+
+*************************
+## Pictorial presentation formats
+
+### Fact-box item
+
+```{r, echo=FALSE, results='asis'} 
+img_fact <- readPNG("materials/Presentation format/Fact-boxs/fact_box_mammography_en_03-2014.png")
+ grid.raster(img_fact)
+
+```
+
+```{r, echo=FALSE, results='asis'} 
+#, results='asis'
+for (z in 1:length(responses)) {
+  cat(paste0(responses[z]))
+}
+```
+
+
+### New-paradigm
+
+```{r, echo=FALSE, results='asis'} 
+img_new <- readPNG("materials/Presentation format/New-paradigm/brochure_new_young.png")
+ grid.raster(img_new)
+
+```
+
+```{r, echo=FALSE, results='asis'} 
+for (z in 1:length(responses)) {
+  cat(paste0(responses[z]))
+}
+```

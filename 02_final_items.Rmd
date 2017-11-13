@@ -1,5 +1,24 @@
 # FINAL ITEMS
 
+## Dictionary
+
+* Problems context:
+    + ca: breast cancer
+    + pr: pregnant trisomy 21
+* Presentation format:
+    + nfab: Natural Frequency absolute
+    + prab: Probability absolute
+    + prre: Probability relative
+    + pf: Positive framework
+* Normative PPV:
+    + low: low ppv (33%)
+    + high: high ppv (66%)
+* Response type:
+    + gi: global intuitive
+    + gs: global systematic
+    + sg: sequential guided
+    + ss: sequential simple
+    
 ## Breast Cancer
 
 ### Low normative PPV

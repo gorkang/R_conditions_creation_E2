@@ -1,0 +1,203 @@
+# Items preparation
+
+## Presentation formats
+
+### Natural Frequency
+
+```{r}
+# path to responses folder
+nfab_items_dir <- "materials/Presentation format/FN absolute/"
+
+# responses files
+nfab_item_files <- dir(nfab_items_dir, pattern = ".txt")
+
+# paths to each response file
+nfab_item_files_path <- paste0(nfab_items_dir, nfab_item_files)
+
+# list with responses as char strings
+nfab_items <- lapply(nfab_item_files_path, 
+                    function(x) readChar(con = x, nchars = file.info(x)$size)) 
+
+# assing name to each response type
+names(nfab_items) <- gsub(".txt", "", nfab_item_files)
+```
+
+### Positive framework
+
+```{r, read_pofr_items_into_a_list}
+# path to responses folder
+pf_items_dir <- "materials/Presentation format/Positive-framework/"
+
+# responses files
+pf_item_files <- dir(pf_items_dir, pattern = ".txt")
+
+# paths to each response file
+pf_item_files_path <- paste0(pf_items_dir, pf_item_files)
+
+# list with responses as char strings
+pf_items <- lapply(pf_item_files_path, 
+                    function(x) readChar(con = x, nchars = file.info(x)$size))
+
+# assing name to each response type
+names(pf_items) <- gsub(".txt", "", pf_item_files)
+
+```
+
+### Probability Absolute
+
+```{r}
+# path to responses folder
+prab_items_dir <- "materials/Presentation format/PR absolute/"
+
+# responses files
+prab_item_files <- dir(prab_items_dir, pattern = ".txt")
+
+# paths to each response file
+prab_item_files_path <- paste0(prab_items_dir, prab_item_files)
+
+# list with responses as char strings
+prab_items <- lapply(prab_item_files_path, 
+                    function(x) readChar(con = x, nchars = file.info(x)$size))
+
+# assing name to each response type
+names(prab_items) <- gsub(".txt", "", prab_item_files)
+```
+
+### Probability Relative
+
+```{r}
+# path to responses folder
+prrl_items_dir <- "materials/Presentation format/PR relative/"
+
+# responses files
+prrl_item_files <- dir(prrl_items_dir, pattern = ".txt")
+
+# paths to each response file
+prrl_item_files_path <- paste0(prrl_items_dir, prrl_item_files)
+
+# list with responses as char strings
+prrl_items <- lapply(prrl_item_files_path, 
+                    function(x) readChar(con = x, nchars = file.info(x)$size))
+
+# assing name to each response type
+names(prrl_items) <- gsub(".txt", "", prrl_item_files)
+```
+
+## Bind all presentation formats
+
+```{r}
+problems <- c(nfab_items, pf_items, prab_items, prrl_items)
+```
+
+
+## Numbers sets
++ Combine every context with every set?
++ Two number sets (NF, PR). If we convert NF to PR we only get one set of numbers per normative PPV.
+
+```{r}
+# read csv with number
+numbers_item <-
+  read_csv("materials/Numbers/numbers_bayes.csv", col_types = cols())
+
+```
+
+
+```{r}
+# knitr::kable(numbers_item)
+```
+
+
+## Create items
+
+### Create items (combine items with numbers)
+```{r}
+numbers2problems(problems)
+problems_numbered %>% str
+
+```
+
+## Reorder items
+
+```{r}
+
+items_to_use <- 
+c(
+  
+# LOW PPV PROBLEMS
+c(
+problems_numbered[[1]][[1]]
+,problems_numbered[[2]][[1]]
+,problems_numbered[[3]][[1]]
+,problems_numbered[[4]][[1]]
+,problems_numbered[[5]][[1]]
+,problems_numbered[[6]][[1]]
+,problems_numbered[[7]][[1]]
+,problems_numbered[[8]][[1]]
+),
+
+# HIGH PPV PROBLEMS
+c(
+problems_numbered[[1]][[2]]
+,problems_numbered[[2]][[2]]
+,problems_numbered[[3]][[2]]
+,problems_numbered[[4]][[2]]
+,problems_numbered[[5]][[2]]
+,problems_numbered[[6]][[2]]
+,problems_numbered[[7]][[2]]
+,problems_numbered[[8]][[2]]
+)
+
+)
+```
+
+
+
+## Response types
+```{r}
+# path to responses folder
+response_types_dir <- "materials/Response_type/"
+
+# responses files
+response_type_files <- dir(response_types_dir)
+
+# paths to each response file
+response_type_files_path <- paste0(response_types_dir, response_type_files)
+
+# list with responses as char strings
+responses <- lapply(response_type_files_path, 
+                    function(x) readChar(con = x, nchars = file.info(x)$size))
+
+# assing name to each response type
+names(responses) <- gsub(".txt", "", response_type_files)
+
+# Response types
+invisible(lapply(responses, cat))
+
+```
+
+## Combine problem with questions
+
+```{r}
+items_to_use_responses <-
+lapply(items_to_use, function(x) 
+  paste0(x, lapply(responses, paste0)))
+
+responses_names <- names(responses)
+
+for (problem_loop in 1:length(items_to_use_responses)) {
+# problem_loop=1  
+  for (item_loop in 1:length(items_to_use_responses[[problem_loop]])) {
+    # item_loop=1
+    
+    items_to_use_responses[[problem_loop]][[item_loop]] <- 
+      gsub("([w|h]_)\n", paste0("\\1", responses_names[item_loop], "\n"), items_to_use_responses[[problem_loop]][[item_loop]])
+  
+    }
+  
+}
+
+```
+
+```{r}
+items_to_use_responses %>% str
+```

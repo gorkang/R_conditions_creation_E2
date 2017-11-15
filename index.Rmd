@@ -60,6 +60,9 @@ Independent Variables
 
 ## TODO:
 
+* Generate images programatically???
+    + Fact box & new paradigm
+
 * Fix number sets
     + (PROB) The difference between high/low is now only FP
     + (FREQ) Numbers change but proportions are the same

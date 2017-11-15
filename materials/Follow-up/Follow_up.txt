@@ -1,0 +1,5 @@
+﻿Imagine you receive a positive test result for breast cancer. 
+
+The doctor offers you a follow up test needed to confirm the diagnosis before being able to begin the treatment. The follow up test has a procedure-related risk of complications leading to a significant reduction in your quality of life.
+
+Would you take the follow up test?

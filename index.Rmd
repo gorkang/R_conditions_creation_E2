@@ -21,7 +21,7 @@ rm(list = ls(all=TRUE))
 ```{r}
 # Packages
 if (!require('pacman')) install.packages('pacman'); library('pacman')
-p_load(tidyverse, png, grid)
+p_load(tidyverse, magick, png, grid)
 ```
 
 ```{r}
@@ -60,14 +60,11 @@ Independent Variables
 
 ## TODO:
 
-* Generate images programatically???
-    + Fact box & new paradigm
-
 * Fix number sets
     + (PROB) The difference between high/low is now only FP
     + (FREQ) Numbers change but proportions are the same
 
-* prepare/improve New paradigm 
+* Prepare/improve New paradigm (CHECK NEW SHORT BROCHURE)
 
 * Positive Framework es en chances y SINGLE-EVENTS!
     + Esto causa problemas con las preguntas

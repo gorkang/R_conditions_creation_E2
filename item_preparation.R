@@ -92,7 +92,7 @@ newparadigm_dir <- output_dir
 newparadigm_files <- dir(newparadigm_dir, pattern = ".png")
 
 # read factbox imgs to a list
-nppi_items <- lapply(newparadigm_files, function(x) {image_read(paste0(newparadigm_dir, x))})
+nppi_items <- lapply(newparadigm_files, function(x) {magick::image_read(paste0(newparadigm_dir, x))})
 
 # name imgs
 names(nppi_items) <- 
@@ -229,7 +229,7 @@ for (fact_box_loop in seq(length(fbpi_items))) { # LOOP: number of images (one w
       
       # put pieces of information into template
       fbpi_img_to_fill <-
-        image_annotate(fbpi_img_to_fill, as.character(num_looped[[1, num_pos[numbers_pos_loop]]]), size = 21, color = "black", boxcolor = "", # ROW 1
+        magick::image_annotate(fbpi_img_to_fill, as.character(num_looped[[1, num_pos[numbers_pos_loop]]]), size = 21, color = "black", boxcolor = "", # ROW 1
                        degrees = 0, location = pieces_pos[numbers_pos_loop])
       
     }
@@ -250,7 +250,7 @@ for (fact_box_loop in seq(length(fbpi_items))) { # LOOP: number of images (one w
 # Write images
 for (q in seq(length(fbpi_items))) {
   for (x in seq(length(fbpi_items[[q]]))) {
-    image_write(fbpi_items[[q]][[x]], paste0("materials/Presentation_format/fbpi/output/", names(fbpi_items[[q]][x]), ".png"))
+    magick::image_write(fbpi_items[[q]][[x]], paste0("materials/Presentation_format/fbpi/output/", names(fbpi_items[[q]][x]), ".png"))
   }
 }
 
@@ -305,7 +305,7 @@ y_axis_label <- "Test reliability"
 
 width <- 10
 height <- 6
-dpi <- (image_info(nppi_items[[1]])$width-40)/10
+dpi <- (magick::image_info(nppi_items[[1]])$width-40)/10
 
 for (x in 1:nrow(numbers_item_nppi_graphs)) {
   #x=1
@@ -359,13 +359,13 @@ graph_dir <- "materials/Presentation_format/nppi/input/graphs/png/"
 nppi_graphs_files_names <- grep("ppv.*png", dir(graph_dir), value = TRUE)
 
 # Read graphs into list
-nppi_graphs <- lapply(nppi_graphs_files_names, function(x) image_read(paste0(graph_dir, x)))
+nppi_graphs <- lapply(nppi_graphs_files_names, function(x) magick::image_read(paste0(graph_dir, x)))
 
 names(nppi_graphs) <- paste0(numbers_item_nppi_graphs$prev_02, " births.")
 
 # Template dimensions
-img_width <- image_info(nppi_items[[1]])$width
-img_height <- image_info(nppi_items[[1]])$height
+img_width <- magick::image_info(nppi_items[[1]])$width
+img_height <- magick::image_info(nppi_items[[1]])$height
 
 # Prevalence position in template (%)
 # relateive
@@ -399,7 +399,7 @@ for (i in seq(length(nppi_items))){
     # j=1
     
     # assemble_graph use this object
-    nppi_img_list[[j]] <- image_annotate(image_composite(nppi_img_list[[i]], nppi_graphs[[j]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)), names(nppi_graphs[j]), font = "arial", size = 19, color = "black", boxcolor = "",
+    nppi_img_list[[j]] <- magick::image_annotate(magick::image_composite(nppi_img_list[[i]], nppi_graphs[[j]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)), names(nppi_graphs[j]), font = "arial", size = 19, color = "black", boxcolor = "",
                                        degrees = 0, location = paste0("+", prev_x_pos, "+", prev_y_pos))
     
   }
@@ -415,7 +415,7 @@ for (i in seq(length(nppi_items))){
 # Write images
 for (q in seq(length(nppi_items))) {
   for (x in seq(length(nppi_items[[q]]))) {
-    image_write(nppi_items[[q]][[x]], paste0("materials/Presentation_format/nppi/output/", names(nppi_items[[q]][x]), ".png"))
+    magick::image_write(nppi_items[[q]][[x]], paste0("materials/Presentation_format/nppi/output/", names(nppi_items[[q]][x]), ".png"))
   }
 }
 

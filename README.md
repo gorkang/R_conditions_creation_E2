@@ -39,3 +39,22 @@ Para recuperar los cambios
 
 Si queremos destruir el stash  
 `git stash drop`  
+
+
+---  
+
+## ERRORES COMUNES
+
+### Merging
+
+Si se da este error:  
+`fatal: You are in the middle of a merge -- cannot amend.`
+
+O también:  
+`error: You have not concluded your merge (MERGE_HEAD exists).`
+`hint: Please, commit your changes before merging.`
+`fatal: Exiting because of unfinished merge.`
+
+* SOLUTION:  
+    + Do a `git commit -a` once you have resolved the conflicts. This is the last step when you are merging conflicts. (https://stackoverflow.com/questions/22135465/cant-commit-after-starting-a-merge-in-sourcetree)
+

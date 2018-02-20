@@ -1,0 +1,7 @@
+Women with breast cancer who undergo the test have all_positive chances out of prev_02 of having a positive result.
+
+In hit_rate_01 of these all_positive chances, the test result is correctly positive.
+
+In the remaining false_positive_01, the test result is incorrectly positive.
+
+

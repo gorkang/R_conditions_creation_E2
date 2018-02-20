@@ -1,0 +1,12 @@
+
+# Prepare Follow-up questions
+```{r}
+source("follow_up_preparing.R")
+```
+
+# Follow-up questions
+
+```{r, results='asis'}
+invisible(lapply(fu_questions, lapply, cat))
+```
+

@@ -107,8 +107,8 @@ problems <- c(nfab_items, pfab_items, prab_items, prrl_items)
 
 # read csv with number
 numbers_item <-
-  readr::read_csv("materials/Numbers/numbers_bayes.csv")#, col_types = cols())
-
+  # readr::read_csv("materials/Numbers/numbers_bayes.csv")#, col_types = cols())
+  readxl::read_xls("materials/Numbers/numbers_bayes.xls")#, col_types = cols())
 
 ## Create items ----------------------------------------------------------------
 
@@ -269,7 +269,8 @@ age_prevalence <-
 
 # Test parameters (Two different tests)
 numbers_item_nppi_graphs <-
-  read_csv("materials/Numbers/numbers_bayes.csv", col_types = cols()) %>% 
+  # read_csv("materials/Numbers/numbers_bayes.csv", col_types = cols()) %>% 
+  readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>% #, col_types = cols())
   filter(format == "nppi")
 
 # function: create cols with ppv using different test parameters

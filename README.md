@@ -1,5 +1,3 @@
-# R_conditions_creation
-
 ## Workflow
 
 ### Feature branch
@@ -22,3 +20,24 @@ Queremos implementar un nuevo feature o arreglar algun problema:
 `git pull origin development`  
 `git merge feature_x`  
 `git push origin development`   
+
+4. Si todo ha ido bien, borramos la rama `feature_x`  
+`git branch -d feature_x`
+
+
+
+### Stash
+
+Hemos hecho algunos cambios pero no queremos hacer commit:  
+
+`git stash`  
+
+Recuperamos los cambios  
+
+`git checkout rama_en_la_que_recuperar_cambios`  
+`git stash apply`  
+
+
+Queremos destruir el stash  
+
+`git stash drop`  

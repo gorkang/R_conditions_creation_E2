@@ -33,8 +33,6 @@ source("functions/numbers2problems.R")
 
 # Experiment design 
 
-TODO: Brief description about the experiment design (as it should be in a paper)
-
 Independent Variables
 
 * Presentation format:
@@ -56,46 +54,6 @@ Independent Variables
         + Alta (10%)
         + Baja (1%)
     + NO vamos a manipular el tipo de problemas (Grave (consecuencias negativas irreversibles), Leve (cierto riesgo de consecuencias negativas reversibles / negligibles))
-
-
-## TODO:
-
-* Check follow-up test text: See point 7 in the book.
-
-* Sequential guided (sg) question: The original question (pighin not pighin) says "anomaly". Now we use anomaly for both, breast cancer and trisomy 21. Adapt question to each context?
-
-* Scales for (Check /Experimento 1/R_conditions_creation/scales/potential_questions.odt):
-    + Actitud hacia aborto
-    + Actitud hacia trisomia 21
-    + Mastectomia
-    + Cancer
-
-* Fix number sets
-    + PPVs ~.2 & ~.8
-    + Numbers should be the "same" in PRabs, FNabs, PF abs??? (this will solve the following point?) 
-    + (PROB) The difference between high/low is now only FP
-    + OK? - (FREQ) Numbers change but proportions are the same  
-
-* All presentation formats
-    + To make textual and pictorial items comparable we have to introduce questions like this (aren't this questions the same thing?):
-        + Preguntas razonables para Fact-box: p(SALVARSE|screening) & p(DAÑO|screening)
-        + Para nuevo paradigma???
-        + How reliable is the test?
-        + If a woman receives a positive test result, how probable is that she actually has breast cancer/is pregnant with a fetus with Trisomy 21?
-
-* Fact-box and New paradigm
-    + (GORKA & NICO): Check content of cancer new-paradigm (Experimento 1/R_conditions_creation/materials/Presentation_format/nppi) and pregnant factbox (Experimento 1/R_conditions_creation/materials/Presentation_format/fbpi)
-      
-* (NICO) Better way to reorder items (Reorder items)?
-
-* (DONE) Fix sequential guided (sg) question, add "Therefore...".
-
-* (DONE) Include contexts for the problems (finally we used McNair's (2014) formulation, no women mentioned in the information pieces. Only in the instructions.)
-    + Should we include "women" in each problem sentence? (e.g. 5 in every 100 women have breast cancer at the time of the screening. 4 in every 5 of those women with breast cancer will receive a positive mammogram.)
-        + Also, include "women" in the questions? (e.g. Of those women that receive positive mamographies...)
-
-* (DONE) Transformamos Positive Framework a non-single-events (A woman -> Women)
-
 
 
 ```{r include=FALSE}

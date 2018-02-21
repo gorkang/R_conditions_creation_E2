@@ -18,18 +18,9 @@ description: "Conditions creation"
 rm(list = ls(all=TRUE))
 ```
 
-```{r}
 # Packages
 if (!require('pacman')) install.packages('pacman'); library('pacman')
 p_load(tidyverse, magick, png, grid)
-```
-
-```{r}
-# Functions
-# to put numbers into problems
-source("functions/numbers2problems.R")
-
-```
 
 # Experiment design 
 

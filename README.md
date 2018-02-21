@@ -16,7 +16,7 @@ A) Queremos implementar un nuevo feature o arreglar algun problema:
 2. Hacemos cambios  
 - Commiteamos los cambios
 
-3. Si no esperamos conflictos - mergeamos rama a development 
+3. Si no esperamos conflictos - mergeamos rama a development  
 `git checkout development`  
 `git pull origin development`  
 `git merge feature_x`  

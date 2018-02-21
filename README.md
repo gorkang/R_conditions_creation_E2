@@ -11,6 +11,7 @@ Deberiamos tener solo las siguientes ramas en Github:
 A) Queremos implementar un nuevo feature o arreglar algun problema:
 
 1. Creamos nueva rama (feature_x)  
+`git pull origin development`  
 `git checkout -b feature_x`
 
 2. Hacemos cambios  

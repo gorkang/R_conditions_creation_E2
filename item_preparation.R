@@ -267,7 +267,8 @@ for (q in seq(length(fbpi_items))) {
 
 # Read csv with prevalences by age
 age_prevalence <- 
-  read_csv("materials/Presentation_format/nppi/input/graphs/age_prevalence.csv", col_types = "iii")
+  # readr::read_csv("materials/Presentation_format/nppi/input/graphs/age_prevalence_OLD.csv", col_types = "iii")
+  readxl::read_xls("materials/Numbers/numbers_bayes.xls", sheet = 2)
 
 # Create column with prevalence percentage
 age_prevalence <- 

@@ -1,6 +1,24 @@
-Imagine you are participating in a routine prenatal test to detect Down's syndrome and you receive a positive result.
+Remember that:
+* [prevalence of the disease; depends on the condition they saw]
+* In your response to the previous problem you said that, of those with positive results, [PREVIOUS_RESPONSE] actually have breast cancer.
 
-The doctor offers you a follow-up test called amniocentesis, necessary to confirm the diagnosis. The follow-up test has a risk_percentage procedure-related risk of complications that can result in a miscarriage.
+Imagine a woman you care about is participating in a routine prenatal screening test to detect Down's syndrome and she receives a positive result.  
 
-Would you take the follow-up test?
+The doctor offers her a follow-up test called amniocentesis, necessary to confirm the diagnosis. During the procedure, a needle is inserted to sample fluid from the amniotic sac.  
 
+Amniocentesis has a risk_percentage procedure-related risk of complications (for example, infections) that can result in a miscarriage.  
+
+1. Should she take the follow-up test? [Yes / No]  
+
+2. How strongly would you recommend her to take the follow-up test. [0-100]
+
+3. Which factors influenced your decision?
+	3.1. How informative the screening test is [slider 0-100]
+	3.2. How serious Trisomy 21 is [slider 0-100]
+	3.3. How big the risk of procedure-related complications of the follow-up test is [slider 0-100]
+	3.4. How serious the complications of the follow-up test are [slider 0-100]
+
+4 Could you briefly explain why do you think she should/shouldn't take the follow up test? ________________
+
+5. [IF 1. == "Yes"] How big the follow-up procedure-related risk of complications should be for you NOT to take it [slider 0-100]
+   [IF 1. == "No"] How small the follow-up procedure-related risk of complications should be for you to take it [slider 0-100]

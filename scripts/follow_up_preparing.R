@@ -1,7 +1,7 @@
 
 
 # Follow up dir
-follow_up_dir <- "materials/Follow_up/input/"
+follow_up_dir <- "materials/Question/Follow_up/input/"
 
 # Files
 follow_up_files <- dir(follow_up_dir, pattern = ".txt")

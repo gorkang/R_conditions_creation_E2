@@ -40,7 +40,7 @@ numbers2problems(problems)
 
 # path to responses folder
 questions_dir <- 
-  paste0("materials/Question/input/")
+  paste0("materials/Question/Calculation/input/")
 
 # responses files
 question_files <-

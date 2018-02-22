@@ -1,5 +1,0 @@
-# Items preparation
-
-```{r}
-source("item_preparation.R")
-```

@@ -151,7 +151,11 @@ nppi_graphs_files_names <- grep("ppv.*png", dir(graph_dir), value = TRUE)
 # Read graphs into list
 nppi_graphs <- lapply(nppi_graphs_files_names, function(x) magick::image_read(paste0(graph_dir, x)))
 
-names(nppi_graphs) <- paste0(numbers_item_nppi_graphs$prev_02, " births.")
+# To name graphs it's necessary to know how many contexts we are working with.
+context_number <- length(dir("materials/Problem_context/input/", "*.txt"))
+
+# names(nppi_graphs) <- paste0(numbers_item_nppi_graphs$prev_02, " births.")
+names(nppi_graphs) <- rep(paste0(numbers_item_nppi_graphs$prev_02), context_number)
 
 # Template dimensions
 img_width <- magick::image_info(nppi_items[[1]])$width
@@ -188,10 +192,19 @@ for (i in seq(length(nppi_items))){
   for (j in seq(length(nppi_graphs))) {
     # j=1
     
-    # assemble_graph use this object
-    nppi_img_list[[j]] <- magick::image_annotate(magick::image_composite(nppi_img_list[[i]], nppi_graphs[[j]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)), names(nppi_graphs[j]), font = "arial", size = 19, color = "black", boxcolor = "",
-                                                 degrees = 0, location = paste0("+", prev_x_pos, "+", prev_y_pos))
-    
+    # IF cancer
+    if (grepl("_ca", names(nppi_items[i]))) {
+      # assemble_graph use this object
+      nppi_img_list[[j]] <- magick::image_annotate(magick::image_composite(nppi_img_list[[i]], nppi_graphs[[j]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)), paste0(names(nppi_graphs[j]), " women."), font = "arial", size = 19, color = "black", boxcolor = "",
+                                                   degrees = 0, location = paste0("+", prev_x_pos, "+", prev_y_pos))
+      
+      # IF pregnant
+    } else if (grepl("_pr", names(nppi_items[i]))) {
+      # assemble_graph use this object
+      nppi_img_list[[j]] <- magick::image_annotate(magick::image_composite(nppi_img_list[[i]], nppi_graphs[[j]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)), paste0(names(nppi_graphs[j]), " births."), font = "arial", size = 19, color = "black", boxcolor = "",
+                                                   degrees = 0, location = paste0("+", prev_x_pos, "+", prev_y_pos))
+      
+    }
   }
   
   graph_name <- as.character(numbers_nppi[["prob"]])

@@ -120,7 +120,7 @@ problems_numbered_ordered <-
 response_types_dir <- "materials/Response_type/"
 
 # responses files
-response_type_files <- dir(response_types_dir)
+response_type_files <- dir(response_types_dir, pattern = "*.txt")
 
 # paths to each response file
 response_type_files_path <- paste0(response_types_dir, response_type_files)
@@ -157,7 +157,10 @@ for (problem_loop in 1:length(problems_numbered_ordered_responses)) {
   }
 }
 
-## Eliminate PPV question in positive framework (pfab) problems. ----------------------------------------------------------------
+
+# Special modifications (not apllied to every item, question, resp --------
+
+## Eliminate PPV question in positive framework (pfab) problems.
 
 # Loop to go through list of questions 
 for (q in seq(length(questions))) {
@@ -185,6 +188,53 @@ for (q in seq(length(questions))) {
       }
     }
   }
+}
+
+## Personalize sequential guided response type to accomodate to medical condition
+
+item_cond <- c("pregnant", "cancer")
+test <- c("test result", "mammogram")
+condition <- c("Trisomy 21", "breast cancer")
+who <- c("a woman's fetus" , "a woman")
+
+sg_fillers <- tibble(item_cond, test, condition, who)
+
+# walk through 16 items
+for (cB in seq(problems_numbered_ordered_responses)) {
+  # cB <- 16
+  
+  # walk through 5 response types within an item
+  for (cS in seq(problems_numbered_ordered_responses[[cB]])) {
+    # cS <- 3
+    
+    current_item <- problems_numbered_ordered_responses[[cB]][[cS]]
+    
+    if (grepl("_sg", current_item) & grepl("ca_", current_item)) {
+     
+      fillers <- filter(sg_fillers, item_cond == "cancer")
+      
+      # Replace things with CANCER related stuff
+      current_item <- gsub("__CONDITION__", fillers[["condition"]],
+                           gsub("__TEST__", fillers[["test"]], 
+                                gsub("__WHO__", fillers[["who"]], current_item)))
+     
+    } else if (grepl("_sg", current_item) & grepl("pr_", current_item)) {
+      
+      fillers <- filter(sg_fillers, item_cond == "pregnant")
+      
+      # Replace things with trisomy 21 related stuff
+      current_item <- gsub("__CONDITION__", fillers[["condition"]],
+                           gsub("__TEST__", fillers[["test"]], 
+                                gsub("__WHO__", fillers[["who"]], current_item)))
+      
+    } else if (!grepl("_sg", current_item) & !grepl("pr_", current_item)) {
+      print("nothing to see here.")
+    }
+    
+    # save filled item
+    problems_numbered_ordered_responses[[cB]][[cS]] <- current_item
+  }
+  
 }
 
 ## Problem contexts ----------------------------------------------------------------

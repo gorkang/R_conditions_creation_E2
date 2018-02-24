@@ -6,3 +6,5 @@
 *.jpeg
 *.png
 *.gif
+*.svg
+_book/

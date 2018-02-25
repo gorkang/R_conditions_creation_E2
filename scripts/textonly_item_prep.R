@@ -7,6 +7,8 @@ numbers_item <-
   # readr::read_csv("materials/Numbers/numbers_bayes.csv")#, col_types = cols())
   readxl::read_xls("materials/Numbers/numbers_bayes.xls")#, col_types = cols())
 
+numbers_prevalence <- 
+  readxl::read_xls("materials/Numbers/numbers_bayes.xls", sheet = 2)#, col_types = cols())
 
 # Read problems from text-files
 
@@ -254,4 +256,52 @@ contexts <- lapply(context_files_path,
 
 # assing name to each response type
 names(contexts) <- gsub(".txt", "", context_files)
+
+
+# Paste problem contexts at the beginning of each problem, 
+# and customize according to condition (trisomy 21 & breast cancer) and probability (high & low)
+
+# Walk through 16 items
+for (cB in seq(problems_numbered_ordered_responses)) {
+  # cB <- 1
+  # Walk through 4 response types within an item
+  for (cS in seq(problems_numbered_ordered_responses[[cB]])) {
+    # cS <- 1
+    
+    # Get item of current loop
+    current_item <- problems_numbered_ordered_responses[[cB]][[cS]]
+  
+  # get current problem context using current item
+  current_context <- paste0(substr(current_item, 3,4), "_context")
+  
+  # get problem prob (this erase everything that is not a "low" or "high" word)
+  current_prob <- gsub(".*_(low)_.*|.*_(high)_.*", "\\1\\2", current_item)
+  
+  
+  # paste problem context to current item
+  current_item <- gsub("(\\*\\*\n\n)", paste0("\\1", contexts[[current_context]]), current_item)
+  
+  # get age of current item using item label (at the beginnign of each item)
+  prob_age <- filter(numbers_item,
+                     format == substr(current_item, 6,9) & 
+                       prob == current_prob) %>% select(age) %>% as.numeric
+  
+  # get prevalence of current item (using prob_age)
+  prob_prevalence <- filter(numbers_prevalence,
+                            age == prob_age) %>% select(prevalence_02) %>% as.numeric
+  
+  # fill problem context with age and prevalence info.
+  current_item <- 
+    gsub("prevalence_02_variable", prob_prevalence,
+         gsub("age_variable", prob_age, current_item))
+  
+  # save item with filled problem context
+  problems_numbered_ordered_responses[[cB]][[cS]] <- current_item
+  
+  }
+  
+}
+
+
+
 

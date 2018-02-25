@@ -55,7 +55,7 @@ age_prevalence <-
 # Create column with prevalence percentage
 age_prevalence <- 
   age_prevalence %>% 
-  mutate(prevalence_percentage = 1/prevalence)
+  mutate(prevalence_percentage = prevalence_01/prevalence_02)
 
 # Test parameters (Two different tests)
 numbers_item_nppi_graphs <-
@@ -152,10 +152,10 @@ nppi_graphs_files_names <- grep("ppv.*png", dir(graph_dir), value = TRUE)
 nppi_graphs <- lapply(nppi_graphs_files_names, function(x) magick::image_read(paste0(graph_dir, x)))
 
 # To name graphs it's necessary to know how many contexts we are working with.
-context_number <- length(dir("materials/Problem_context/input/", "*.txt"))
+# context_number <- length(dir("materials/Problem_context/input/", "*context.txt"))
 
 # names(nppi_graphs) <- paste0(numbers_item_nppi_graphs$prev_02, " births.")
-names(nppi_graphs) <- rep(paste0(numbers_item_nppi_graphs$prev_02), context_number)
+names(nppi_graphs) <- paste0(numbers_item_nppi_graphs$prev_02)
 
 # Template dimensions
 img_width <- magick::image_info(nppi_items[[1]])$width

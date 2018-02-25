@@ -288,7 +288,7 @@ for (cB in seq(problems_numbered_ordered_responses)) {
   
   # get prevalence of current item (using prob_age)
   prob_prevalence <- filter(numbers_prevalence,
-                            age == prob_age) %>% select(prevalence) %>% as.numeric
+                            age == prob_age) %>% select(prevalence_02) %>% as.numeric
   
   # fill problem context with age and prevalence info.
   current_item <- 

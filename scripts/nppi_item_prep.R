@@ -55,7 +55,7 @@ age_prevalence <-
 # Create column with prevalence percentage
 age_prevalence <- 
   age_prevalence %>% 
-  mutate(prevalence_percentage = 1/prevalence_02)
+  mutate(prevalence_percentage = prevalence_01/prevalence_02)
 
 # Test parameters (Two different tests)
 numbers_item_nppi_graphs <-

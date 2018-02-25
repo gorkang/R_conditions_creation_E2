@@ -74,6 +74,7 @@ third_row_pos <- third_row_y*img_height
 fourth_row_pos <- fourth_row_y*img_height
 
 # Position to put numbers
+# TODO: get position of the two "1000 women" text to replace it with parametrized prevalence.
 pieces_pos <- c(paste0("+", first_col_pos, "+", first_row_pos), # R1C1
                 paste0("+", first_col_pos, "+", second_row_pos), # R2C1
                 paste0("+",second_col_pos, "+", first_row_pos), # R1C2

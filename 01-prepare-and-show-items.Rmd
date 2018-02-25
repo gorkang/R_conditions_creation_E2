@@ -24,19 +24,11 @@
 
 ### NF ABSOLUTE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("ca", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, ca_nfab_low}
 invisible(lapply(problems_numbered_ordered_responses[grep("ca_nfab_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
 ```
 
 ### PR ABSOLUTE
-
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("ca", names(contexts))]])
-```
 
 ```{r, results='asis', echo=FALSE, ca_prab_low}
 invisible(lapply(problems_numbered_ordered_responses[grep("ca_prab_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
@@ -44,19 +36,11 @@ invisible(lapply(problems_numbered_ordered_responses[grep("ca_prab_low", problem
 
 ### PR RELATIVE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("ca", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, ca_prre_low}
 invisible(lapply(problems_numbered_ordered_responses[grep("ca_prre_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
 ```
 
 ### PF ABSOLUTE
-
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("ca", names(contexts))]])
-```
 
 ```{r, results='asis', echo=FALSE, ca_pfab_low}
 invisible(lapply(problems_numbered_ordered_responses[grep("ca_pfab_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
@@ -168,19 +152,11 @@ cat(responses[[4]])
 
 ### NF ABSOLUTE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("ca", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, ca_nfab_high}
 invisible(lapply(problems_numbered_ordered_responses[grep("ca_nfab_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
 ```
 
 ### PR ABSOLUTE
-
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("ca", names(contexts))]])
-```
 
 ```{r, results='asis', echo=FALSE, ca_prab_high}
 invisible(lapply(problems_numbered_ordered_responses[grep("ca_prab_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
@@ -188,19 +164,11 @@ invisible(lapply(problems_numbered_ordered_responses[grep("ca_prab_high", proble
 
 ### PR RELATIVE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("ca", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, ca_prre_high}
 invisible(lapply(problems_numbered_ordered_responses[grep("ca_prre_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
 ```
 
 ### PF ABSOLUTE
-
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("ca", names(contexts))]])
-```
 
 ```{r, results='asis', echo=FALSE, ca_pfab_high}
 invisible(lapply(problems_numbered_ordered_responses[grep("ca_pfab_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
@@ -315,19 +283,11 @@ cat(responses[[4]])
 
 ### NF ABSOLUTE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("pr", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, pr_nfab_low}
 invisible(lapply(problems_numbered_ordered_responses[grep("pr_nfab_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
 ```
 
 ### PR ABSOLUTE
-
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("pr", names(contexts))]])
-```
 
 ```{r, results='asis', echo=FALSE, pr_prab_low}
 invisible(lapply(problems_numbered_ordered_responses[grep("pr_prab_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
@@ -335,19 +295,11 @@ invisible(lapply(problems_numbered_ordered_responses[grep("pr_prab_low", problem
 
 ### PR RELATIVE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("pr", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, pr_prre_low}
 invisible(lapply(problems_numbered_ordered_responses[grep("pr_prre_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
 ```
 
 ### PF ABSOLUTE
-
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("pr", names(contexts))]])
-```
 
 ```{r, results='asis', echo=FALSE, pr_pfab_low}
 invisible(lapply(problems_numbered_ordered_responses[grep("pr_pfab_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
@@ -458,19 +410,11 @@ cat(responses[[4]])
 
 ### NF ABSOLUTE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("pr", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, pr_nfab_high}
 invisible(lapply(problems_numbered_ordered_responses[grep("pr_nfab_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
 ```
 
 ### PR ABSOLUTE
-
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("pr", names(contexts))]])
-```
 
 ```{r, results='asis', echo=FALSE, pr_prab_high}
 invisible(lapply(problems_numbered_ordered_responses[grep("pr_prab_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
@@ -478,19 +422,11 @@ invisible(lapply(problems_numbered_ordered_responses[grep("pr_prab_high", proble
 
 ### PR RELATIVE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("pr", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, pr_prre_high}
 invisible(lapply(problems_numbered_ordered_responses[grep("pr_prre_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
 ```
 
 ### PF ABSOLUTE
-
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("pr", names(contexts))]])
-```
 
 ```{r, results='asis', echo=FALSE, pr_pfab_high}
 invisible(lapply(problems_numbered_ordered_responses[grep("pr_pfab_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))

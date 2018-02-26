@@ -83,7 +83,9 @@ both_prev_row_pos <- both_prev_y*img_height
 
 # Position to put numbers
 # TODO: get position of the two "1000 women" text to replace it with parametrized prevalence.
-pieces_pos <- c(paste0("+", first_col_pos, "+", first_row_pos), # R1C1
+pieces_pos <- c(paste0("+", first_prev_col_pos, "+", both_prev_row_pos), # first prevalence (left to right),
+                paste0("+", second_prev_col_pos, "+", both_prev_row_pos), # first prevalence (left to right),
+                paste0("+", first_col_pos, "+", first_row_pos), # R1C1
                 paste0("+", first_col_pos, "+", second_row_pos), # R2C1
                 paste0("+",second_col_pos, "+", first_row_pos), # R1C2
                 paste0("+",second_col_pos, "+", second_row_pos), # R2C2
@@ -92,10 +94,12 @@ pieces_pos <- c(paste0("+", first_col_pos, "+", first_row_pos), # R1C1
 )
 
 # position of columnes in numbers
-fbpi_field_replacements <- c("die_bre_without","die_all_without","die_bre_with","die_all_with","add_treat","breast_remove")
+fbpi_field_replacements <- c("prev_02", "prev_02", "die_bre_without","die_all_without","die_bre_with","die_all_with","add_treat","breast_remove")
 
 # get index of field replacements within numbers_fact
-num_pos <- which(names(numbers_item) %in% fbpi_field_replacements)
+num_pos <- vector(mode = "numeric", length = length(fbpi_field_replacements))
+
+num_pos <- mapply(FUN = function(x,y) {x = which(names(numbers_item) %in% y)}, x = num_pos, y = fbpi_field_replacements)
 
 # Assemble factboxs
 for (fact_box_loop in seq(length(fbpi_items))) { # LOOP: number of images (one with cancer, one with trisomy)
@@ -117,12 +121,24 @@ for (fact_box_loop in seq(length(fbpi_items))) { # LOOP: number of images (one w
     
     # LOOp to walk fields to replace
     for (numbers_pos_loop in seq(length(pieces_pos))) { # LOOP: number of numbers to put into the image
-      # numbers_pos_loop=6
+      # numbers_pos_loop=1
       
       # put pieces of information into template
-      fbpi_img_to_fill <-
-        magick::image_annotate(fbpi_img_to_fill, as.character(num_looped[[1, num_pos[numbers_pos_loop]]]), size = 21, color = "black", boxcolor = "", # ROW 1
-                               degrees = 0, location = pieces_pos[numbers_pos_loop])
+      if (num_pos[numbers_pos_loop] == which(names(numbers_item) %in% "prev_02")) {
+        
+        fbpi_img_to_fill <-
+          magick::image_annotate(fbpi_img_to_fill, paste0(format(num_looped[[1, num_pos[numbers_pos_loop]]], big.mark=",",scientific=FALSE), " women"), 
+                                 size = 22, color = "black", boxcolor = "", # ROW 1
+                                 strokecolor = "black", font = "mono",
+                                 degrees = 0, location = pieces_pos[numbers_pos_loop])
+      } else if (num_pos[numbers_pos_loop] != which(names(numbers_item) %in% "prev_02")) {
+        
+        bpi_img_to_fill <-
+          magick::image_annotate(fbpi_img_to_fill, as.character(num_looped[[1, num_pos[numbers_pos_loop]]]), 
+                                 size = 21, color = "black", boxcolor = "", # ROW 1
+                                 degrees = 0, location = pieces_pos[numbers_pos_loop])
+      }
+      
       
     }
     # insert img with numbers to list

@@ -65,6 +65,10 @@ second_row_y <- 0.5539568
 third_row_y <- 0.68999 # 0.6894484-0.6865
 fourth_row_y <- 0.7680348 # 0.7709832-0.0029484
 
+first_prev_x <- .6375
+second_prev_x <- .8375
+both_prev_y <- .353717
+
 # convert percentage position to absolute positions relative to the img dimensions
 first_col_pos <- first_col_x*img_width
 second_col_pos <- second_col_x*img_width
@@ -72,6 +76,10 @@ first_row_pos <- first_row_y*img_height
 second_row_pos <- second_row_y*img_height
 third_row_pos <- third_row_y*img_height
 fourth_row_pos <- fourth_row_y*img_height
+
+first_prev_col_pos <- first_prev_x*img_width
+second_prev_col_pos <- second_prev_x*img_width
+both_prev_row_pos <- both_prev_y*img_height
 
 # Position to put numbers
 # TODO: get position of the two "1000 women" text to replace it with parametrized prevalence.

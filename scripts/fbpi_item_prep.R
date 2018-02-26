@@ -133,7 +133,7 @@ for (fact_box_loop in seq(length(fbpi_items))) { # LOOP: number of images (one w
                                  degrees = 0, location = pieces_pos[numbers_pos_loop])
       } else if (num_pos[numbers_pos_loop] != which(names(numbers_item) %in% "prev_02")) {
         
-        bpi_img_to_fill <-
+        fbpi_img_to_fill <-
           magick::image_annotate(fbpi_img_to_fill, as.character(num_looped[[1, num_pos[numbers_pos_loop]]]), 
                                  size = 21, color = "black", boxcolor = "", # ROW 1
                                  degrees = 0, location = pieces_pos[numbers_pos_loop])

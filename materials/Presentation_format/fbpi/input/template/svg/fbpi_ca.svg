@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="fb_ca.svg">
+   sodipodi:docname="fbpi_ca.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -26,8 +26,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4142136"
-     inkscape:cx="354.83076"
-     inkscape:cy="198.54291"
+     inkscape:cx="534.34336"
+     inkscape:cy="337.15136"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -37,8 +37,8 @@
      fit-margin-bottom="3"
      inkscape:snap-text-baseline="false"
      inkscape:window-width="1280"
-     inkscape:window-height="1388"
-     inkscape:window-x="3840"
+     inkscape:window-height="716"
+     inkscape:window-x="86"
      inkscape:window-y="24"
      inkscape:window-maximized="0" />
   <metadata
@@ -369,7 +369,9 @@
            x="6.0609155"
            y="4.1972017" /></flowRegion><flowPara
          style="font-weight:bold;font-size:13.75px;text-align:center;text-anchor:middle"
-         id="flowPara3479-2-5">1,000 women without screening</flowPara></flowRoot>    <flowRoot
+         id="flowPara3479-2-5"></flowPara><flowPara
+         style="font-weight:bold;font-size:13.75px;text-align:center;text-anchor:middle"
+         id="flowPara3463"> without screening</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3347-3-9-0-1-2-9"
        style="font-style:normal;font-weight:normal;font-size:62.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -381,7 +383,9 @@
            x="6.0609155"
            y="4.1972017" /></flowRegion><flowPara
          style="font-weight:bold;font-size:13.75px;text-align:center;text-anchor:middle"
-         id="flowPara3479-2-5-8">1,000 women with screening</flowPara></flowRoot>    <flowRoot
+         id="flowPara3479-2-5-8"></flowPara><flowPara
+         style="font-weight:bold;font-size:13.75px;text-align:center;text-anchor:middle"
+         id="flowPara3465">with screening</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3347-3-9-0-1-9"
        style="font-style:normal;font-weight:normal;font-size:62.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"

@@ -2,6 +2,7 @@
 
 # Pictoric presentation formats -------------------------------------------
 
+
 ## Numbers sets ----------------------------------------------------------------
 
 # read csv with number
@@ -25,6 +26,9 @@ fbpi_height <- 834 # pixels
 # input/output dir
 input_dir <- factbox_template_dir
 output_dir <- "materials/Presentation_format/fbpi/input/template/png/"
+
+  # If Folder does not exist, create it
+  dir.create(file.path(output_dir), showWarnings = FALSE, recursive = TRUE)
 
 # convert svg to png
 # paremeters
@@ -156,9 +160,14 @@ for (fact_box_loop in seq(length(fbpi_items))) { # LOOP: number of images (one w
 }
 
 # Write images
+fbpi_output_folder <- "materials/Presentation_format/fbpi/output/"
+
+  # If Folder does not exist, create it
+  dir.create(file.path(fbpi_output_folder), showWarnings = FALSE, recursive = TRUE)
+
 for (q in seq(length(fbpi_items))) {
   for (x in seq(length(fbpi_items[[q]]))) {
-    magick::image_write(fbpi_items[[q]][[x]], paste0("materials/Presentation_format/fbpi/output/", names(fbpi_items[[q]][x]), ".png"))
+    magick::image_write(fbpi_items[[q]][[x]], paste0(fbpi_output_folder, names(fbpi_items[[q]][x]), ".png"))
   }
 }
 

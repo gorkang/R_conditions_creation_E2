@@ -23,6 +23,9 @@ nppi_height <- 1169 # pixels
 input_dir <- newparadigm_template_dir
 output_dir <- "materials/Presentation_format/nppi/input/template/png/"
 
+  # If Folder does not exist, create it
+  dir.create(file.path(output_dir), showWarnings = FALSE, recursive = TRUE)
+
 # convert svg to png
 # parameters
 width <- nppi_width
@@ -97,6 +100,12 @@ width <- 10
 height <- 6
 dpi <- (magick::image_info(nppi_items[[1]])$width-40)/10
 
+graph_output_folder <- "materials/Presentation_format/nppi/input/graphs/png/"
+
+  # If Folder does not exist, create it
+  dir.create(file.path(graph_output_folder), showWarnings = FALSE, recursive = TRUE)
+
+
 for (x in 1:nrow(numbers_item_nppi_graphs)) {
   #x=1
   
@@ -113,7 +122,7 @@ for (x in 1:nrow(numbers_item_nppi_graphs)) {
   graph_png_file_name <- paste0("graph_", graph_numerator, "_", curr_col_name)
   
   png_file_pathname <- 
-    paste0("materials/Presentation_format/nppi/input/graphs/png/", graph_png_file_name, "_graph.png") # path and name to new png file
+    paste0(graph_output_folder, graph_png_file_name, "_graph.png") # path and name to new png file
   
   # Create a ppv-value col
   age_prevalence_plot <- age_prevalence %>% 
@@ -216,8 +225,13 @@ for (i in seq(length(nppi_items))){
 }
 
 # Write images
+nppi_output_folder <- "materials/Presentation_format/nppi/output/"
+
+  # If Folder does not exist, create it
+  dir.create(file.path(nppi_output_folder), showWarnings = FALSE, recursive = TRUE)
+
 for (q in seq(length(nppi_items))) {
   for (x in seq(length(nppi_items[[q]]))) {
-    magick::image_write(nppi_items[[q]][[x]], paste0("materials/Presentation_format/nppi/output/", names(nppi_items[[q]][x]), ".png"))
+    magick::image_write(nppi_items[[q]][[x]], paste0(nppi_output_folder, names(nppi_items[[q]][x]), ".png"))
   }
 }

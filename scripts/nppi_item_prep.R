@@ -204,13 +204,15 @@ for (i in seq(length(nppi_items))){
     # IF cancer
     if (grepl("_ca", names(nppi_items[i]))) {
       # assemble_graph use this object
-      nppi_img_list[[j]] <- magick::image_annotate(magick::image_composite(nppi_img_list[[i]], nppi_graphs[[j]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)), paste0(names(nppi_graphs[j]), " women."), font = "arial", size = 19, color = "black", boxcolor = "",
+      nppi_img_list[[j]] <- magick::image_annotate(magick::image_composite(nppi_img_list[[i]], nppi_graphs[[j]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)), paste0(names(nppi_graphs[j]), " women."), 
+                                                   font = "arial", size = 19, color = "black", boxcolor = "",
                                                    degrees = 0, location = paste0("+", prev_x_pos, "+", prev_y_pos))
       
       # IF pregnant
     } else if (grepl("_pr", names(nppi_items[i]))) {
       # assemble_graph use this object
-      nppi_img_list[[j]] <- magick::image_annotate(magick::image_composite(nppi_img_list[[i]], nppi_graphs[[j]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)), paste0(names(nppi_graphs[j]), " births."), font = "arial", size = 19, color = "black", boxcolor = "",
+      nppi_img_list[[j]] <- magick::image_annotate(magick::image_composite(nppi_img_list[[i]], nppi_graphs[[j]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)), paste0(names(nppi_graphs[j]), " births."), 
+                                                   font = "arial", size = 19, color = "black", boxcolor = "",
                                                    degrees = 0, location = paste0("+", prev_x_pos, "+", prev_y_pos))
       
     }

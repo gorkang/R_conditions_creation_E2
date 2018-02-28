@@ -128,6 +128,7 @@ for (fact_box_loop in seq(length(fbpi_items))) { # LOOP: number of images (one w
       # numbers_pos_loop=1
       
       # put pieces of information into template
+        # if piece of information to put is the prevalence
       if (num_pos[numbers_pos_loop] == which(names(numbers_item) %in% "prev_02")) {
         
         fbpi_img_to_fill <-
@@ -135,7 +136,8 @@ for (fact_box_loop in seq(length(fbpi_items))) { # LOOP: number of images (one w
                                  size = 22, color = "black", boxcolor = "", # ROW 1
                                  strokecolor = "black", font = "mono",
                                  degrees = 0, location = pieces_pos[numbers_pos_loop])
-      } else if (num_pos[numbers_pos_loop] != which(names(numbers_item) %in% "prev_02")) {
+      # if piece of information is any other than prevalence
+        } else if (num_pos[numbers_pos_loop] != which(names(numbers_item) %in% "prev_02")) {
         
         fbpi_img_to_fill <-
           magick::image_annotate(fbpi_img_to_fill, as.character(num_looped[[1, num_pos[numbers_pos_loop]]]), 

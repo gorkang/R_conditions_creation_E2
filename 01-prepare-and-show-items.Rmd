@@ -48,8 +48,11 @@ invisible(lapply(problems_numbered_ordered_responses[grep("ca_pfab_low", problem
 
 ### FB PICTORIAL
 
-
 **ca_fbpi_low_gi**  
+```{r, echo=FALSE, results='asis'}
+cat(fbpi_context[[grep("low", names(fbpi_context), value = TRUE)]])
+```
+
 ```{r, echo=FALSE, results='asis'}
 fb_ca_low <- readPNG(paste0(fact_box_dir, grep(".*ca_low.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_ca_low)
@@ -58,10 +61,15 @@ grid.raster(fb_ca_low)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["ca_question"]])
 cat(responses[[1]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **ca_fbpi_low_gs**  
+```{r, echo=FALSE, results='asis'}
+cat(fbpi_context[[grep("low", names(fbpi_context), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 fb_ca_low <- readPNG(paste0(fact_box_dir, grep(".*ca_low.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_ca_low)
@@ -70,10 +78,15 @@ grid.raster(fb_ca_low)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["ca_question"]])
 cat(responses[[2]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **ca_fbpi_low_sg**  
+```{r, echo=FALSE, results='asis'}
+cat(fbpi_context[[grep("low", names(fbpi_context), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 fb_ca_low <- readPNG(paste0(fact_box_dir, grep(".*ca_low.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_ca_low)
@@ -82,10 +95,15 @@ grid.raster(fb_ca_low)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["ca_question"]])
 cat(responses[[3]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **ca_fbpi_low_ss**  
+```{r, echo=FALSE, results='asis'}
+cat(fbpi_context[[grep("low", names(fbpi_context), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 fb_ca_low <- readPNG(paste0(fact_box_dir, grep(".*ca_low.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_ca_low)
@@ -94,6 +112,8 @@ grid.raster(fb_ca_low)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["ca_question"]])
 cat(responses[[4]])
+
+cat("\n****************************\n")
 ```
 
 
@@ -177,8 +197,11 @@ invisible(lapply(problems_numbered_ordered_responses[grep("ca_pfab_high", proble
 
 ### FB PICTORIAL
 
-
 **ca_fbpi_high_gi**  
+```{r, echo=FALSE, results='asis'}
+cat(fbpi_context[[grep("high", names(fbpi_context), value = TRUE)]])
+```
+
 ```{r, echo=FALSE, results='asis'}
 fb_ca_high <- readPNG(paste0(fact_box_dir, grep(".*ca_high.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_ca_high)
@@ -187,10 +210,15 @@ grid.raster(fb_ca_high)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["ca_question"]])
 cat(responses[[1]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **ca_fbpi_high_gs**  
+```{r, echo=FALSE, results='asis'}
+cat(fbpi_context[[grep("high", names(fbpi_context), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 fb_ca_high <- readPNG(paste0(fact_box_dir, grep(".*ca_high.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_ca_high)
@@ -199,10 +227,15 @@ grid.raster(fb_ca_high)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["ca_question"]])
 cat(responses[[2]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **ca_fbpi_high_sg**  
+```{r, echo=FALSE, results='asis'}
+cat(fbpi_context[[grep("high", names(fbpi_context), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 fb_ca_high <- readPNG(paste0(fact_box_dir, grep(".*ca_high.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_ca_high)
@@ -211,10 +244,15 @@ grid.raster(fb_ca_high)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["ca_question"]])
 cat(responses[[3]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **ca_fbpi_high_ss**  
+```{r, echo=FALSE, results='asis'}
+cat(fbpi_context[[grep("high", names(fbpi_context), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 fb_ca_high <- readPNG(paste0(fact_box_dir, grep(".*ca_high.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_ca_high)
@@ -223,10 +261,11 @@ grid.raster(fb_ca_high)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["ca_question"]])
 cat(responses[[4]])
+
+cat("\n****************************\n")
 ```
 
 ### NP PICTORIAL
-
 
 **ca_nppi_high_gi**  
 ```{r, echo=FALSE, results='asis'}
@@ -237,9 +276,10 @@ grid.raster(np_ca_high)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["ca_question"]])
 cat(responses[[1]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **ca_nppi_high_gs**  
 ```{r, echo=FALSE}
 np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_high.*", new_paradigm_imgs, value = TRUE)))
@@ -249,9 +289,10 @@ grid.raster(np_ca_high)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["ca_question"]])
 cat(responses[[2]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **ca_nppi_high_sg**  
 ```{r, echo=FALSE}
 np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_high.*", new_paradigm_imgs, value = TRUE)))
@@ -261,9 +302,10 @@ grid.raster(np_ca_high)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["ca_question"]])
 cat(responses[[3]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **ca_nppi_high_ss**  
 ```{r, echo=FALSE}
 np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_high.*", new_paradigm_imgs, value = TRUE)))
@@ -307,8 +349,11 @@ invisible(lapply(problems_numbered_ordered_responses[grep("pr_pfab_low", problem
 
 ### FB PICTORIAL
 
-
 **pr_fbpi_low_gi**  
+```{r, echo=FALSE, results='asis'}
+cat(fbpi_context[[grep("low", names(fbpi_context), value = TRUE)]])
+```
+
 ```{r, echo=FALSE, results='asis'}
 fb_pr_low <- readPNG(paste0(fact_box_dir, grep(".*pr_low.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_pr_low)
@@ -317,10 +362,15 @@ grid.raster(fb_pr_low)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
 cat(responses[[1]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **pr_fbpi_low_gs**  
+```{r, echo=FALSE, results='asis'}
+cat(fbpi_context[[grep("low", names(fbpi_context), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 fb_pr_low <- readPNG(paste0(fact_box_dir, grep(".*pr_low.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_pr_low)
@@ -329,10 +379,15 @@ grid.raster(fb_pr_low)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
 cat(responses[[2]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **pr_fbpi_low_sg**  
+```{r, echo=FALSE, results='asis'}
+cat(fbpi_context[[grep("low", names(fbpi_context), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 fb_pr_low <- readPNG(paste0(fact_box_dir, grep(".*pr_low.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_pr_low)
@@ -341,10 +396,15 @@ grid.raster(fb_pr_low)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
 cat(responses[[3]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **pr_fbpi_low_ss**  
+```{r, echo=FALSE, results='asis'}
+cat(fbpi_context[[grep("low", names(fbpi_context), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 fb_pr_low <- readPNG(paste0(fact_box_dir, grep(".*pr_low.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_pr_low)
@@ -353,10 +413,11 @@ grid.raster(fb_pr_low)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
 cat(responses[[4]])
+
+cat("\n****************************\n")
 ```
 
 ### NP PICTORIAL
-
 
 **pr_nppi_low_gi**  
 ```{r, echo=FALSE, results='asis'}
@@ -367,9 +428,10 @@ grid.raster(np_pr_low)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
 cat(responses[[1]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **pr_nppi_low_gs**  
 ```{r, echo=FALSE}
 np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_low.*", new_paradigm_imgs, value = TRUE)))
@@ -379,9 +441,10 @@ grid.raster(np_pr_low)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
 cat(responses[[2]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **pr_nppi_low_sg**  
 ```{r, echo=FALSE}
 np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_low.*", new_paradigm_imgs, value = TRUE)))
@@ -391,9 +454,10 @@ grid.raster(np_pr_low)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
 cat(responses[[3]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **pr_nppi_low_ss**  
 ```{r, echo=FALSE}
 np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_low.*", new_paradigm_imgs, value = TRUE)))
@@ -403,6 +467,8 @@ grid.raster(np_pr_low)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
 cat(responses[[4]])
+
+cat("\n****************************\n")
 ```
 
 
@@ -436,6 +502,10 @@ invisible(lapply(problems_numbered_ordered_responses[grep("pr_pfab_high", proble
 
 **pr_fbpi_high_gi**  
 ```{r, echo=FALSE, results='asis'}
+cat(fbpi_context[[grep("high", names(fbpi_context), value = TRUE)]])
+```
+
+```{r, echo=FALSE, results='asis'}
 fb_pr_high <- readPNG(paste0(fact_box_dir, grep(".*pr_high.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_pr_high)
 ```
@@ -443,10 +513,15 @@ grid.raster(fb_pr_high)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
 cat(responses[[1]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **pr_fbpi_high_gs**  
+```{r, echo=FALSE, results='asis'}
+cat(fbpi_context[[grep("high", names(fbpi_context), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 fb_pr_high <- readPNG(paste0(fact_box_dir, grep(".*pr_high.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_pr_high)
@@ -455,10 +530,15 @@ grid.raster(fb_pr_high)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
 cat(responses[[2]])
+
+cat("\n****************************\n")
 ```
-  
-_******************************************_  
+
 **pr_fbpi_high_sg**  
+```{r, echo=FALSE, results='asis'}
+cat(fbpi_context[[grep("high", names(fbpi_context), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 fb_pr_high <- readPNG(paste0(fact_box_dir, grep(".*pr_high.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_pr_high)
@@ -467,10 +547,15 @@ grid.raster(fb_pr_high)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
 cat(responses[[3]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **pr_fbpi_high_ss**  
+```{r, echo=FALSE, results='asis'}
+cat(fbpi_context[[grep("high", names(fbpi_context), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 fb_pr_high <- readPNG(paste0(fact_box_dir, grep(".*pr_high.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_pr_high)
@@ -479,8 +564,9 @@ grid.raster(fb_pr_high)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
 cat(responses[[4]])
-```
 
+cat("\n****************************\n")
+```
 
 ### NP PICTORIAL
 
@@ -493,9 +579,10 @@ grid.raster(np_pr_high)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
 cat(responses[[1]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **pr_nppi_high_gs**  
 ```{r, echo=FALSE}
 np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_high.*", new_paradigm_imgs, value = TRUE)))
@@ -505,9 +592,10 @@ grid.raster(np_pr_high)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
 cat(responses[[2]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **pr_nppi_high_sg**  
 ```{r, echo=FALSE}
 np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_high.*", new_paradigm_imgs, value = TRUE)))
@@ -517,9 +605,10 @@ grid.raster(np_pr_high)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
 cat(responses[[3]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **pr_nppi_high_ss**  
 ```{r, echo=FALSE}
 np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_high.*", new_paradigm_imgs, value = TRUE)))
@@ -529,6 +618,8 @@ grid.raster(np_pr_high)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
 cat(responses[[4]])
+
+cat("\n****************************\n")
 ```
 
 

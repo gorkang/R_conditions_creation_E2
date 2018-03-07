@@ -301,7 +301,3 @@ for (cB in seq(problems_numbered_ordered_responses)) {
   }
   
 }
-
-
-
-

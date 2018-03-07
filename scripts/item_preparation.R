@@ -13,8 +13,6 @@
   source("functions/read_txt_items_to_list.R")
   source("functions/ppv_calculator.R")
 
-
-
 # Prepare items -----------------------------------------------------------
 
   # text-only
@@ -25,23 +23,3 @@
   
   # new-paradigm
   source("scripts/nppi_item_prep.R")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

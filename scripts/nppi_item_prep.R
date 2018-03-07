@@ -277,6 +277,4 @@ for (q in seq(length(nppi_items))) {
         nppi_context[[c_context]] <- current_context
       }
       
-      # To call contexts
-      nppi_context[[grep("ca", names(nppi_context), value = TRUE)]][[grep("low", names(nppi_context[[grep("ca", names(nppi_context), value = TRUE)]]), value = TRUE)]]
     

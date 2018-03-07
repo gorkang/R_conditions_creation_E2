@@ -122,18 +122,13 @@ for (fact_box_loop in seq(length(fbpi_items))) { # LOOP: number of images (one w
     
     num_looped <- numbers_fact[number_set_loop,]
     
-    # LOOp to walk fields to replace
+    # Loop to walk fields to replace
     for (numbers_pos_loop in seq(length(pieces_pos))) { # LOOP: number of numbers to put into the image
       # numbers_pos_loop=1
       
       # put pieces of information into template
         # if piece of information to put is the prevalence
       if (num_pos[numbers_pos_loop] == which(names(numbers_item) %in% "prev_02")) {
-        
-        # ABOUT FONTS AND MAGICK PACKAGE (RIGHT NOW IT ONLY TAKES Helvetica)
-        # Fonts that are supported on most platforms include: 
-        # "sans", "mono", "serif", "Times", "Helvetica", "Trebuchet",  "Georgia", "Palatino"or "Comic Sans".
-        
         
         fbpi_img_to_fill <-
           magick::image_annotate(fbpi_img_to_fill, paste0(format(num_looped[[1, num_pos[numbers_pos_loop]]], big.mark=",",scientific=FALSE), " women"), 
@@ -180,22 +175,28 @@ for (q in seq(length(fbpi_items))) {
 
 # Problem context ---------------------------------------------------------
   
-  # path to responses folder
-  context_dir <- "materials/Problem_context/input/"
-  
-  # responses files
-  context_files <- dir(context_dir, pattern = "fbpi.txt")
-  
-  # paths to each response file
-  context_files_path <- paste0(context_dir, context_files)
-  
-  # list with responses as char strings
-  fbpi_context <- lapply(context_files_path, 
-                         function(x) readChar(con = x, nchars = file.info(x)$size)) 
+  # Read problem contexts ####
+    # path to responses folder
+    context_dir <- "materials/Problem_context/input/"
+    
+    # responses files
+    context_files <- dir(context_dir, pattern = "fbpi.txt")
+    
+    # paths to each response file
+    context_files_path <- paste0(context_dir, context_files)
+    
+    # list with responses as char strings
+    fbpi_context <- lapply(context_files_path, 
+                           function(x) readChar(con = x, nchars = file.info(x)$size)) 
   
   # assing name to each response type
   names(fbpi_context) <- gsub(".txt", "", context_files)
   
+  # high/low prob filling ####
+    
+    # put prevalences on contexts using number bayes
+    fbpi_context <- lapply(numbers_fact[["prev_02"]], function(x) {gsub("prevalence_02_variable", x, fbpi_context)})
   
-  
+    # name contexts 
+    names(fbpi_context) <- paste0("fbpi_context_", numbers_fact[["prob"]], "_ppv")
   

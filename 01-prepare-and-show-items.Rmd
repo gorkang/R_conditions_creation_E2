@@ -112,15 +112,16 @@ grid.raster(fb_ca_low)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["ca_question"]])
 cat(responses[[4]])
-
-cat("\n****************************\n")
 ```
 
 
 ### NP PICTORIAL
 
-
 **ca_nppi_low_gi**  
+```{r, echo=FALSE, results='asis'}
+cat(nppi_context[[grep("ca", names(nppi_context), value = TRUE)]][[grep("low", names(nppi_context[[grep("ca", names(nppi_context), value = TRUE)]]), value = TRUE)]])
+```
+
 ```{r, echo=FALSE, results='asis'}
 np_ca_low <- readPNG(paste0(new_paradigm_dir, grep(".*ca_low.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_ca_low)
@@ -129,10 +130,15 @@ grid.raster(np_ca_low)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["ca_question"]])
 cat(responses[[1]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **ca_nppi_low_gs**  
+```{r, echo=FALSE, results='asis'}
+cat(nppi_context[[grep("ca", names(nppi_context), value = TRUE)]][[grep("low", names(nppi_context[[grep("ca", names(nppi_context), value = TRUE)]]), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 np_ca_low <- readPNG(paste0(new_paradigm_dir, grep(".*ca_low.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_ca_low)
@@ -141,10 +147,15 @@ grid.raster(np_ca_low)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["ca_question"]])
 cat(responses[[2]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **ca_nppi_low_sg**  
+```{r, echo=FALSE, results='asis'}
+cat(nppi_context[[grep("ca", names(nppi_context), value = TRUE)]][[grep("low", names(nppi_context[[grep("ca", names(nppi_context), value = TRUE)]]), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 np_ca_low <- readPNG(paste0(new_paradigm_dir, grep(".*ca_low.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_ca_low)
@@ -153,10 +164,15 @@ grid.raster(np_ca_low)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["ca_question"]])
 cat(responses[[3]])
+
+cat("\n****************************\n")
 ```
   
-_******************************************_  
 **ca_nppi_low_ss**  
+```{r, echo=FALSE, results='asis'}
+cat(nppi_context[[grep("ca", names(nppi_context), value = TRUE)]][[grep("low", names(nppi_context[[grep("ca", names(nppi_context), value = TRUE)]]), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 np_ca_low <- readPNG(paste0(new_paradigm_dir, grep(".*ca_low.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_ca_low)
@@ -269,6 +285,10 @@ cat("\n****************************\n")
 
 **ca_nppi_high_gi**  
 ```{r, echo=FALSE, results='asis'}
+cat(nppi_context[[grep("ca", names(nppi_context), value = TRUE)]][[grep("high", names(nppi_context[[grep("ca", names(nppi_context), value = TRUE)]]), value = TRUE)]])
+```
+
+```{r, echo=FALSE, results='asis'}
 np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_high.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_ca_high)
 ```
@@ -281,6 +301,10 @@ cat("\n****************************\n")
 ```
   
 **ca_nppi_high_gs**  
+```{r, echo=FALSE, results='asis'}
+cat(nppi_context[[grep("ca", names(nppi_context), value = TRUE)]][[grep("high", names(nppi_context[[grep("ca", names(nppi_context), value = TRUE)]]), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_high.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_ca_high)
@@ -294,6 +318,10 @@ cat("\n****************************\n")
 ```
   
 **ca_nppi_high_sg**  
+```{r, echo=FALSE, results='asis'}
+cat(nppi_context[[grep("ca", names(nppi_context), value = TRUE)]][[grep("high", names(nppi_context[[grep("ca", names(nppi_context), value = TRUE)]]), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_high.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_ca_high)
@@ -307,6 +335,10 @@ cat("\n****************************\n")
 ```
   
 **ca_nppi_high_ss**  
+```{r, echo=FALSE, results='asis'}
+cat(nppi_context[[grep("ca", names(nppi_context), value = TRUE)]][[grep("high", names(nppi_context[[grep("ca", names(nppi_context), value = TRUE)]]), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_high.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_ca_high)
@@ -317,8 +349,6 @@ cat(questions[["ca_question"]])
 cat(responses[[4]])
 ```
 
-
-***********************
 # Trisomy 21 Items
 
 ## Low normative PPV
@@ -413,13 +443,15 @@ grid.raster(fb_pr_low)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
 cat(responses[[4]])
-
-cat("\n****************************\n")
 ```
 
 ### NP PICTORIAL
 
 **pr_nppi_low_gi**  
+```{r, echo=FALSE, results='asis'}
+cat(nppi_context[[grep("pr", names(nppi_context), value = TRUE)]][[grep("low", names(nppi_context[[grep("pr", names(nppi_context), value = TRUE)]]), value = TRUE)]])
+```
+
 ```{r, echo=FALSE, results='asis'}
 np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_low.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_pr_low)
@@ -433,6 +465,10 @@ cat("\n****************************\n")
 ```
   
 **pr_nppi_low_gs**  
+```{r, echo=FALSE, results='asis'}
+cat(nppi_context[[grep("pr", names(nppi_context), value = TRUE)]][[grep("low", names(nppi_context[[grep("pr", names(nppi_context), value = TRUE)]]), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_low.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_pr_low)
@@ -446,6 +482,10 @@ cat("\n****************************\n")
 ```
   
 **pr_nppi_low_sg**  
+```{r, echo=FALSE, results='asis'}
+cat(nppi_context[[grep("pr", names(nppi_context), value = TRUE)]][[grep("low", names(nppi_context[[grep("pr", names(nppi_context), value = TRUE)]]), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_low.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_pr_low)
@@ -459,6 +499,10 @@ cat("\n****************************\n")
 ```
   
 **pr_nppi_low_ss**  
+```{r, echo=FALSE, results='asis'}
+cat(nppi_context[[grep("pr", names(nppi_context), value = TRUE)]][[grep("low", names(nppi_context[[grep("pr", names(nppi_context), value = TRUE)]]), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_low.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_pr_low)
@@ -467,8 +511,6 @@ grid.raster(np_pr_low)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
 cat(responses[[4]])
-
-cat("\n****************************\n")
 ```
 
 
@@ -564,13 +606,15 @@ grid.raster(fb_pr_high)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
 cat(responses[[4]])
-
-cat("\n****************************\n")
 ```
 
 ### NP PICTORIAL
 
 **pr_nppi_high_gi**  
+```{r, echo=FALSE, results='asis'}
+cat(nppi_context[[grep("pr", names(nppi_context), value = TRUE)]][[grep("high", names(nppi_context[[grep("pr", names(nppi_context), value = TRUE)]]), value = TRUE)]])
+```
+
 ```{r, echo=FALSE, results='asis'}
 np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_high.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_pr_high)
@@ -584,6 +628,10 @@ cat("\n****************************\n")
 ```
   
 **pr_nppi_high_gs**  
+```{r, echo=FALSE, results='asis'}
+cat(nppi_context[[grep("pr", names(nppi_context), value = TRUE)]][[grep("high", names(nppi_context[[grep("pr", names(nppi_context), value = TRUE)]]), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_high.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_pr_high)
@@ -597,6 +645,10 @@ cat("\n****************************\n")
 ```
   
 **pr_nppi_high_sg**  
+```{r, echo=FALSE, results='asis'}
+cat(nppi_context[[grep("pr", names(nppi_context), value = TRUE)]][[grep("high", names(nppi_context[[grep("pr", names(nppi_context), value = TRUE)]]), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_high.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_pr_high)
@@ -610,6 +662,10 @@ cat("\n****************************\n")
 ```
   
 **pr_nppi_high_ss**  
+```{r, echo=FALSE, results='asis'}
+cat(nppi_context[[grep("pr", names(nppi_context), value = TRUE)]][[grep("high", names(nppi_context[[grep("pr", names(nppi_context), value = TRUE)]]), value = TRUE)]])
+```
+
 ```{r, echo=FALSE}
 np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_high.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_pr_high)
@@ -618,12 +674,7 @@ grid.raster(np_pr_high)
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
 cat(responses[[4]])
-
-cat("\n****************************\n")
 ```
-
-
-
 
 # Comprehension questions
 

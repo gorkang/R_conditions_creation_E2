@@ -205,14 +205,14 @@ for (i in seq(length(nppi_items))){
     if (grepl("_ca", names(nppi_items[i]))) {
       # assemble_graph use this object
       nppi_img_list[[j]] <- magick::image_annotate(magick::image_composite(nppi_img_list[[i]], nppi_graphs[[j]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)), paste0(names(nppi_graphs[j]), " women."), 
-                                                   font = "arial", size = 19, color = "black", boxcolor = "",
+                                                   font = "Helvetica", size = 19, color = "black", boxcolor = "",
                                                    degrees = 0, location = paste0("+", prev_x_pos, "+", prev_y_pos))
       
       # IF pregnant
     } else if (grepl("_pr", names(nppi_items[i]))) {
       # assemble_graph use this object
       nppi_img_list[[j]] <- magick::image_annotate(magick::image_composite(nppi_img_list[[i]], nppi_graphs[[j]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)), paste0(names(nppi_graphs[j]), " births."), 
-                                                   font = "arial", size = 19, color = "black", boxcolor = "",
+                                                   font = "Helvetica", size = 19, color = "black", boxcolor = "",
                                                    degrees = 0, location = paste0("+", prev_x_pos, "+", prev_y_pos))
       
     }
@@ -237,3 +237,46 @@ for (q in seq(length(nppi_items))) {
     magick::image_write(nppi_items[[q]][[x]], paste0(nppi_output_folder, names(nppi_items[[q]][x]), ".png"))
   }
 }
+  
+# Problem contexts --------------------------------------------------------
+  
+  # Read problem contexts ####
+      # path to responses folder
+      context_dir <- "materials/Problem_context/input/"
+      
+      # responses files
+      context_files <- dir(context_dir, pattern = "text.txt")
+      
+      # paths to each response file
+      context_files_path <- paste0(context_dir, context_files)
+      
+      # list with responses as char strings
+      nppi_context <- lapply(context_files_path, 
+                             function(x) readChar(con = x, nchars = file.info(x)$size)) 
+      
+      # assing name to each response type
+      names(nppi_context) <- gsub(".txt", "", context_files)
+  
+  # high/low prob filling ####
+  
+      # put prevalences on contexts using number bayes
+      # nppi_context <- 
+      
+      for (c_context in seq(nppi_context)) {
+        # c_context <- 1
+        current_context <- as.list(rep(nppi_context[[c_context]], nrow(numbers_nppi)))
+        
+        for (c_prob in seq(nrow(numbers_nppi))) {
+          # c_prob <- 1
+          
+          current_context[[c_prob]] <- 
+            gsub("age_variable", numbers_nppi[["age"]][c_prob], gsub("prevalence_02_variable", numbers_nppi[["prev_02"]][c_prob], current_context[[c_prob]]))
+        }
+        names(current_context) <- paste0("nppi_context_", numbers_nppi[["prob"]], "_ppv")
+        
+        nppi_context[[c_context]] <- current_context
+      }
+      
+      # To call contexts
+      nppi_context[[grep("ca", names(nppi_context), value = TRUE)]][[grep("low", names(nppi_context[[grep("ca", names(nppi_context), value = TRUE)]]), value = TRUE)]]
+    

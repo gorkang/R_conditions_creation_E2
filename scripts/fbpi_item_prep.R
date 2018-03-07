@@ -7,7 +7,6 @@
 
 # read csv with number
 numbers_item <-
-  # readr::read_csv("materials/Numbers/numbers_bayes.csv")#, col_types = cols())
   readxl::read_xls("materials/Numbers/numbers_bayes.xls")#, col_types = cols())
 
 ### Fact-box ###########
@@ -131,10 +130,15 @@ for (fact_box_loop in seq(length(fbpi_items))) { # LOOP: number of images (one w
         # if piece of information to put is the prevalence
       if (num_pos[numbers_pos_loop] == which(names(numbers_item) %in% "prev_02")) {
         
+        # ABOUT FONTS AND MAGICK PACKAGE (RIGHT NOW IT ONLY TAKES Helvetica)
+        # Fonts that are supported on most platforms include: 
+        # "sans", "mono", "serif", "Times", "Helvetica", "Trebuchet",  "Georgia", "Palatino"or "Comic Sans".
+        
+        
         fbpi_img_to_fill <-
           magick::image_annotate(fbpi_img_to_fill, paste0(format(num_looped[[1, num_pos[numbers_pos_loop]]], big.mark=",",scientific=FALSE), " women"), 
                                  size = 22, color = "black", boxcolor = "", # ROW 1
-                                 strokecolor = "black", font = "mono",
+                                 strokecolor = "black", font = "Helvetica",
                                  degrees = 0, location = pieces_pos[numbers_pos_loop])
       # if piece of information is any other than prevalence
         } else if (num_pos[numbers_pos_loop] != which(names(numbers_item) %in% "prev_02")) {
@@ -173,3 +177,25 @@ for (q in seq(length(fbpi_items))) {
   }
 }
 
+
+# Problem context ---------------------------------------------------------
+  
+  # path to responses folder
+  context_dir <- "materials/Problem_context/input/"
+  
+  # responses files
+  context_files <- dir(context_dir, pattern = "fbpi.txt")
+  
+  # paths to each response file
+  context_files_path <- paste0(context_dir, context_files)
+  
+  # list with responses as char strings
+  fbpi_context <- lapply(context_files_path, 
+                         function(x) readChar(con = x, nchars = file.info(x)$size)) 
+  
+  # assing name to each response type
+  names(fbpi_context) <- gsub(".txt", "", context_files)
+  
+  
+  
+  

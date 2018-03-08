@@ -68,9 +68,9 @@ second_row_y <- 0.5539568
 third_row_y <- 0.68999 # 0.6894484-0.6865
 fourth_row_y <- 0.7680348 # 0.7709832-0.0029484
 
-first_prev_x <- .6375
-second_prev_x <- .8375
-both_prev_y <- .353717
+first_prev_x <- .628
+second_prev_x <- .828
+both_prev_y <- .350717
 
 # convert percentage position to absolute positions relative to the img dimensions
 first_col_pos <- first_col_x*img_width
@@ -132,8 +132,9 @@ for (fact_box_loop in seq(length(fbpi_items))) { # LOOP: number of images (one w
         
         fbpi_img_to_fill <-
           magick::image_annotate(fbpi_img_to_fill, paste0(format(num_looped[[1, num_pos[numbers_pos_loop]]], big.mark=",",scientific=FALSE), " women"), 
-                                 size = 22, color = "black", boxcolor = "", # ROW 1
-                                 strokecolor = "black", font = "Helvetica",
+                                 size = 21.5, color = "black", boxcolor = "", # ROW 1
+                                 # , strokecolor = "black"
+                                 font = "arial-black",
                                  degrees = 0, location = pieces_pos[numbers_pos_loop])
       # if piece of information is any other than prevalence
         } else if (num_pos[numbers_pos_loop] != which(names(numbers_item) %in% "prev_02")) {

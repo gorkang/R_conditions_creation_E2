@@ -199,4 +199,32 @@ for (q in seq(length(fbpi_items))) {
   
     # name contexts 
     names(fbpi_context) <- paste0("fbpi_context_", numbers_fact[["prob"]], "_ppv")
+    
+    
   
+# Responses type pictorial ------------------------------------------------
+    
+    # path to responses folder
+    response_types_dir <- "materials/Response_type/"
+    
+    # responses files
+    response_type_files <- dir(response_types_dir, pattern = "*.txt")
+    
+    # paths to each response file
+    response_type_files_path <- paste0(response_types_dir, response_type_files)
+    
+    # list with responses as char strings
+    responses_pic <- lapply(response_type_files_path, 
+                            function(x) readChar(con = x, nchars = file.info(x)$size))
+    
+    # assing name to each response type
+    names(responses_pic) <- gsub(".txt", "", response_type_files)
+    
+    # Customize sequential guided response type
+    responses_pic$sg <- apply(sg_fillers, 1, function(x) { 
+      
+      gsub("__CONDITION__", x[["condition"]],
+           gsub("__TEST__", x[["test"]], 
+                gsub("__WHO__", x[["who"]], responses_pic$sg)))
+      
+    })

@@ -193,13 +193,7 @@ for (q in seq(length(questions))) {
 }
 
 ## Personalize sequential guided response type to accomodate to medical condition
-
-item_cond <- c("pregnant", "cancer")
-test <- c("test result", "mammogram")
-condition <- c("Trisomy 21", "breast cancer")
-who <- c("a woman's fetus" , "a woman")
-
-sg_fillers <- tibble(item_cond, test, condition, who)
+sg_fillers <- read_csv("materials/Response_type/sg_fillers/sg_fillers.csv", col_types = "cccc")
 
 # walk through 16 items
 for (cB in seq(problems_numbered_ordered_responses)) {

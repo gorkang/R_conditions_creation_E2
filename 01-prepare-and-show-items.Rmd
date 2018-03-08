@@ -94,7 +94,7 @@ grid.raster(fb_ca_low)
 
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["ca_question"]])
-cat(responses[[3]])
+cat(cat(responses_pic$sg[[grep("cancer", responses_pic$sg)]]))
 
 cat("\n****************************\n")
 ```
@@ -163,7 +163,7 @@ grid.raster(np_ca_low)
 
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["ca_question"]])
-cat(responses[[3]])
+cat(cat(responses_pic$sg[[grep("cancer", responses_pic$sg)]]))
 
 cat("\n****************************\n")
 ```
@@ -259,7 +259,7 @@ grid.raster(fb_ca_high)
 
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["ca_question"]])
-cat(responses[[3]])
+cat(cat(responses_pic$sg[[grep("cancer", responses_pic$sg)]]))
 
 cat("\n****************************\n")
 ```
@@ -329,7 +329,7 @@ grid.raster(np_ca_high)
 
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["ca_question"]])
-cat(responses[[3]])
+cat(cat(responses_pic$sg[[grep("cancer", responses_pic$sg)]]))
 
 cat("\n****************************\n")
 ```
@@ -425,7 +425,7 @@ grid.raster(fb_pr_low)
 
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
-cat(responses[[3]])
+cat(responses_pic$sg[[grep("Trisomy", responses_pic$sg)]])
 
 cat("\n****************************\n")
 ```
@@ -493,7 +493,7 @@ grid.raster(np_pr_low)
 
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
-cat(responses[[3]])
+cat(responses_pic$sg[[grep("Trisomy", responses_pic$sg)]])
 
 cat("\n****************************\n")
 ```
@@ -588,7 +588,7 @@ grid.raster(fb_pr_high)
 
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
-cat(responses[[3]])
+cat(responses_pic$sg[[grep("Trisomy", responses_pic$sg)]])
 
 cat("\n****************************\n")
 ```
@@ -656,7 +656,7 @@ grid.raster(np_pr_high)
 
 ```{r, echo=FALSE, results='asis'}
 cat(questions[["pr_question"]])
-cat(responses[[3]])
+cat(responses_pic$sg[[grep("Trisomy", responses_pic$sg)]])
 
 cat("\n****************************\n")
 ```

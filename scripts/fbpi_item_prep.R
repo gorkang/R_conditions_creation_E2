@@ -49,6 +49,7 @@ fbpi_items <- lapply(factbox_files, function(x) {magick::image_read(paste0(factb
 names(fbpi_items) <- 
   gsub(".png", "", factbox_files)
 
+rm(factbox_dir,factbox_files,factbox_template_dir,fbpi_height,fbpi_width,height,width, input_dir, output_dir, factbox_templates)
 ### Create pictoric items ----------------------------------------------------------------
 
 #### Fact-box ############################################
@@ -85,7 +86,6 @@ second_prev_col_pos <- second_prev_x*img_width
 both_prev_row_pos <- both_prev_y*img_height
 
 # Position to put numbers
-# TODO: get position of the two "1000 women" text to replace it with parametrized prevalence.
 pieces_pos <- c(paste0("+", first_prev_col_pos, "+", both_prev_row_pos), # first prevalence (left to right),
                 paste0("+", second_prev_col_pos, "+", both_prev_row_pos), # first prevalence (left to right),
                 paste0("+", first_col_pos, "+", first_row_pos), # R1C1
@@ -159,6 +159,13 @@ for (fact_box_loop in seq(length(fbpi_items))) { # LOOP: number of images (one w
   }
   # insert imgs with numbers of one context to master list
   fbpi_items[[fact_box_loop]] <- fbpi_img_list
+  
+  if (fact_box_loop == length(fbpi_items)) {
+    rm(fbpi_img, fbpi_img_list, fbpi_img_to_fill, 
+       fact_box_loop, number_set_loop, numbers_pos_loop, 
+       num_pos, pieces_pos, fbpi_field_replacements,
+       img_height, img_width, num_looped)
+  }
 }
 
 # Write images
@@ -171,9 +178,14 @@ for (q in seq(length(fbpi_items))) {
   for (x in seq(length(fbpi_items[[q]]))) {
     magick::image_write(fbpi_items[[q]][[x]], paste0(fbpi_output_folder, names(fbpi_items[[q]][x]), ".png"))
   }
+  if (q == length(fbpi_items)) {
+    rm(q,x)
+  }
 }
 
-
+rm(list = c(grep("first_|second_|third_|fourth_", ls(), value = TRUE),
+            grep("both_", ls(), value = TRUE),
+            "fbpi_output_folder"))
 # Problem context ---------------------------------------------------------
   
   # Read problem contexts ####
@@ -201,8 +213,7 @@ for (q in seq(length(fbpi_items))) {
     # name contexts 
     names(fbpi_context) <- paste0("fbpi_context_", numbers_fact[["prob"]], "_ppv")
     
-    
-  
+    rm(context_dir,context_files,context_files_path)
 # Responses type pictorial ------------------------------------------------
     
     # path to responses folder
@@ -232,3 +243,6 @@ for (q in seq(length(fbpi_items))) {
                 gsub("__WHO__", x[["who"]], responses_pic$sg)))
       
     })
+
+rm(response_type_files,response_type_files_path,response_types_dir, sg_fillers, fbpi_context, numbers_fact, numbers_item)    
+    

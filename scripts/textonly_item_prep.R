@@ -312,3 +312,5 @@ for (cB in seq(problems_numbered_ordered_responses)) {
     rm(cB,cS,current_context,current_item,current_prob,prob_age,prob_prevalence)
   }
 }
+
+rm(numbers_item, numbers_prevalence,contexts)

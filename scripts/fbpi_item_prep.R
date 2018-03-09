@@ -221,6 +221,9 @@ for (q in seq(length(fbpi_items))) {
     # assing name to each response type
     names(responses_pic) <- gsub(".txt", "", response_type_files)
     
+    ## sequential guided question fillers
+    sg_fillers <- read_csv("materials/Response_type/sg_fillers/sg_fillers.csv", col_types = "cccc")
+    
     # Customize sequential guided response type
     responses_pic$sg <- apply(sg_fillers, 1, function(x) { 
       

@@ -46,6 +46,7 @@ nppi_items <- lapply(newparadigm_files, function(x) {magick::image_read(paste0(n
 names(nppi_items) <- 
   gsub(".png", "", newparadigm_files)
 
+rm(height,width,input_dir,newparadigm_dir,newparadigm_files,newparadigm_template_dir,newparadigm_templates,nppi_height,nppi_width,output_dir)
 #### New-paradigm ###################################################
 
 ##### Create ppv graphs
@@ -61,7 +62,7 @@ age_prevalence <-
   mutate(prevalence_percentage = prevalence_01/prevalence_02)
 
 # Test parameters (Two different tests)
-numbers_item_nppi_graphs <-
+numbers_nppi <-
   # read_csv("materials/Numbers/numbers_bayes.csv", col_types = cols()) %>% 
   readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>% #, col_types = cols())
   filter(format == "nppi")
@@ -89,7 +90,7 @@ create_ppv_by_test <- function(x) {
 }
 
 # create cols 
-invisible(apply(numbers_item_nppi_graphs, 1, create_ppv_by_test))
+invisible(apply(numbers_nppi, 1, create_ppv_by_test))
 
 # Graph parameters
 age_ppv_to_plot <- c(20,25,30,35,40)
@@ -106,14 +107,14 @@ graph_output_folder <- "materials/Presentation_format/nppi/input/graphs/png/"
   dir.create(file.path(graph_output_folder), showWarnings = FALSE, recursive = TRUE)
 
 
-for (x in 1:nrow(numbers_item_nppi_graphs)) {
+for (x in 1:nrow(numbers_nppi)) {
   #x=1
   
   # col name with ppv values
-  graph_prob <- numbers_item_nppi_graphs$prob[x]
+  graph_prob <- numbers_nppi$prob[x]
   
   # create numerator to organize graphs
-  graph_numerator <- numbers_item_nppi_graphs$graph_numerator[x]
+  graph_numerator <- numbers_nppi$graph_numerator[x]
   graph_numerator <- if (graph_numerator < 10 & !grepl("0", graph_numerator)) {paste0("0", graph_numerator)} else {paste0(graph_numerator)}
   
   # col with ppv according to graph_prob
@@ -147,8 +148,13 @@ for (x in 1:nrow(numbers_item_nppi_graphs)) {
   # Save plot to png file
   ggsave(filename = png_file_pathname, plot = graph_within_loop, width = width, height = height, dpi = dpi, units = "in")
   
+  if (x == nrow(numbers_nppi)) {
+    rm(x,graph_prob,graph_numerator,curr_col_name,graph_png_file_name,png_file_pathname,age_prevalence_plot,graph_within_loop)
+  }
+  
 }
 
+rm(age_ppv_to_plot,dpi,graph_output_folder,height,width,x_axis_label,y_axis_label)
 ##### Compose new-paradigm brochure ###################################################
 
 # graphs dir
@@ -163,8 +169,8 @@ nppi_graphs <- lapply(nppi_graphs_files_names, function(x) magick::image_read(pa
 # To name graphs it's necessary to know how many contexts we are working with.
 # context_number <- length(dir("materials/Problem_context/input/", "*context.txt"))
 
-# names(nppi_graphs) <- paste0(numbers_item_nppi_graphs$prev_02, " births.")
-names(nppi_graphs) <- paste0(numbers_item_nppi_graphs$prev_02)
+# names(nppi_graphs) <- paste0(numbers_nppi$prev_02, " births.")
+names(nppi_graphs) <- paste0(numbers_nppi$prev_02)
 
 # Template dimensions
 img_width <- magick::image_info(nppi_items[[1]])$width
@@ -185,9 +191,6 @@ graph_y <- 0.5731394
 # absolute
 graph_x_pos <- graph_x*img_width
 graph_y_pos <- graph_y*img_height
-
-# numbers for new paradigm
-numbers_nppi <- numbers_item %>% filter(format == "nppi")
 
 for (i in seq(length(nppi_items))){
   # i=1
@@ -224,6 +227,9 @@ for (i in seq(length(nppi_items))){
   
   nppi_items[[i]] <- nppi_img_list
   
+  if (i == length(nppi_items)) {
+    rm(i,j,nppi_img, nppi_img_list)
+  }
 }
 
 # Write images
@@ -236,8 +242,16 @@ for (q in seq(length(nppi_items))) {
   for (x in seq(length(nppi_items[[q]]))) {
     magick::image_write(nppi_items[[q]][[x]], paste0(nppi_output_folder, names(nppi_items[[q]][x]), ".png"))
   }
+  if (q == length(nppi_items)) {
+    rm(q,x)
+  }
 }
-  
+
+  rm(list = c(grep("graph_", ls(), value = TRUE),
+              grep("prev_", ls(), value = TRUE)))
+     rm(img_height, img_width,
+        nppi_graphs_files_names, nppi_output_folder,
+        nppi_graphs, age_prevalence)
 # Problem contexts --------------------------------------------------------
   
   # Read problem contexts ####
@@ -256,6 +270,8 @@ for (q in seq(length(nppi_items))) {
       
       # assing name to each response type
       names(nppi_context) <- gsub(".txt", "", context_files)
+      
+      rm(context_dir,context_files,context_files_path)
   
   # high/low prob filling ####
   
@@ -275,10 +291,13 @@ for (q in seq(length(nppi_items))) {
         names(current_context) <- paste0("nppi_context_", numbers_nppi[["prob"]], "_ppv")
         
         nppi_context[[c_context]] <- current_context
+        
+        if (c_context == length(nppi_context)) {
+          rm(c_context,c_prob, current_context)
+        }
       }
       
       
-
 # Responses type pictorial ------------------------------------------------
 
       # path to responses folder
@@ -297,6 +316,9 @@ for (q in seq(length(nppi_items))) {
       # assing name to each response type
       names(responses_pic) <- gsub(".txt", "", response_type_files)
       
+      ## sequential guided question fillers
+      sg_fillers <- read_csv("materials/Response_type/sg_fillers/sg_fillers.csv", col_types = "cccc")
+      
       # Customize sequential guided response type
       responses_pic$sg <- apply(sg_fillers, 1, function(x) { 
         
@@ -305,3 +327,5 @@ for (q in seq(length(nppi_items))) {
                   gsub("__WHO__", x[["who"]], responses_pic$sg)))
         
       })
+      
+      rm(response_type_files,response_type_files_path,response_types_dir, numbers_item, numbers_nppi, sg_fillers)

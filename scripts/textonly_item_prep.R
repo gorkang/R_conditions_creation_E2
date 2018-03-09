@@ -165,7 +165,7 @@ for (problem_loop in 1:length(problems_numbered_ordered_responses)) {
   }
   
   if (problem_loop == length(problems_numbered_ordered_responses)) {
-    rm(problem_loop, item_loop, responses_names, responses)
+    rm(problem_loop, item_loop, responses_names)
   }
 }
 
@@ -200,7 +200,7 @@ for (q in seq(length(questions))) {
     }
   }
   if (q == length(questions)) {
-    rm(q,p,i,current_question,current_question_prefix,questions)
+    rm(q,p,i,current_question,current_question_prefix)
   }
 }
 

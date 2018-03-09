@@ -244,5 +244,5 @@ rm(list = c(grep("first_|second_|third_|fourth_", ls(), value = TRUE),
       
     })
 
-rm(response_type_files,response_type_files_path,response_types_dir, sg_fillers, fbpi_context, numbers_fact, numbers_item)    
+rm(response_type_files,response_type_files_path,response_types_dir, sg_fillers, numbers_fact, numbers_item)    
     

@@ -1,4 +1,6 @@
-
+# read csv with number
+numbers_item <-
+  readxl::read_xls("materials/Numbers/numbers_bayes.xls")
 
 # Follow up dir
 follow_up_dir <- "materials/Question/Follow_up/input/"

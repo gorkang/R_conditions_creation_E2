@@ -30,12 +30,14 @@ read_txt_items_to_list("prre", "prrl_items")
 ## Bind textual presentation formats -------------------------------------------
 
 problems <- c(nfab_items, pfab_items, prab_items, prrl_items)
+rm(nfab_items, pfab_items, prab_items, prrl_items)
 
 ## Create items ----------------------------------------------------------------
 
 ### Create textual items (combine items with numbers)
 
 numbers2problems(problems)
+rm(problems)
 # problems_numbered
 
 ### Add question to textual items #########################
@@ -58,8 +60,9 @@ questions <- lapply(question_files_path,
 # assing name to each response type
 names(questions) <- gsub(".txt", "", question_files)
 
+rm(questions_dir, question_files, question_files_path)
 
-# paste questions into problems
+# paste questions into problems  #########################
 for (i in seq(length(problems_numbered))) {
   # i=1
   
@@ -80,6 +83,10 @@ for (i in seq(length(problems_numbered))) {
       
     }
     
+  }
+  
+  if (i == length(problems_numbered)) {
+    rm(i, j, current_question, current_question_name)
   }
   
 }
@@ -116,6 +123,7 @@ problems_numbered_ordered <-
     
   )
 
+rm(problems_numbered)
 ## Response types ----------------------------------------------------------------
 
 # path to responses folder
@@ -134,9 +142,7 @@ responses <- lapply(response_type_files_path,
 # assing name to each response type
 names(responses) <- gsub(".txt", "", response_type_files)
 
-# Response types
-invisible(lapply(responses, cat))
-
+rm(response_types_dir, response_type_files, response_type_files_path)
 ### Combine textual problems with response types ############################
 
 # Bind response types to problems
@@ -157,8 +163,11 @@ for (problem_loop in 1:length(problems_numbered_ordered_responses)) {
     problems_numbered_ordered_responses[[problem_loop]][[item_loop]] <- 
       gsub("([w|h])\\*\\*\n", paste0("\\1_", responses_names[item_loop], "**\n"), problems_numbered_ordered_responses[[problem_loop]][[item_loop]])
   }
+  
+  if (problem_loop == length(problems_numbered_ordered_responses)) {
+    rm(problem_loop, item_loop, responses_names, responses)
+  }
 }
-
 
 # Special modifications (not apllied to every item, question, resp --------
 
@@ -190,7 +199,11 @@ for (q in seq(length(questions))) {
       }
     }
   }
+  if (q == length(questions)) {
+    rm(q,p,i,current_question,current_question_prefix,questions)
+  }
 }
+
 
 ## Personalize sequential guided response type to accomodate to medical condition
 sg_fillers <- read_csv("materials/Response_type/sg_fillers/sg_fillers.csv", col_types = "cccc")
@@ -224,13 +237,15 @@ for (cB in seq(problems_numbered_ordered_responses)) {
                                 gsub("__WHO__", fillers[["who"]], current_item)))
       
     } else if (!grepl("_sg", current_item) & !grepl("pr_", current_item)) {
-      print("nothing to see here.")
+      
     }
     
     # save filled item
     problems_numbered_ordered_responses[[cB]][[cS]] <- current_item
   }
-  
+  if (cB == length(problems_numbered_ordered_responses)) {
+    rm(cB,cS,current_item,sg_fillers,fillers,problems_numbered_ordered)
+  }
 }
 
 ## Problem contexts ----------------------------------------------------------------
@@ -251,7 +266,7 @@ contexts <- lapply(context_files_path,
 # assing name to each response type
 names(contexts) <- gsub(".txt", "", context_files)
 
-
+rm(context_dir,context_files,context_files_path)
 # Paste problem contexts at the beginning of each problem, 
 # and customize according to condition (trisomy 21 & breast cancer) and probability (high & low)
 
@@ -293,5 +308,7 @@ for (cB in seq(problems_numbered_ordered_responses)) {
   problems_numbered_ordered_responses[[cB]][[cS]] <- current_item
   
   }
-  
+  if (cB == length(problems_numbered_ordered_responses)) {
+    rm(cB,cS,current_context,current_item,current_prob,prob_age,prob_prevalence)
+  }
 }

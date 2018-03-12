@@ -55,8 +55,6 @@
 
 # Item formating ----------------------------------------------------------
 
-
-
 items2qualtrics <- function(list_of_items) {
     
 # item to format to qualtrics
@@ -119,11 +117,6 @@ cat(item_to_export, file = paste0("materials/qualtrics/output/", item_name, ".tx
 
 }
 
-    
-    lapply(problems_numbered_ordered_responses, function(x) {lapply(x, items2qualtrics)})
-
-
-
-
+invisible(lapply(problems_numbered_ordered_responses, function(x) {lapply(x, items2qualtrics)}))
 
 

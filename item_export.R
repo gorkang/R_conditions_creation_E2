@@ -13,21 +13,56 @@
 # Therefore, their txt files should be as similar as they can so only the javascript snippet is manually adeded.
 
 # TODO: reduce linebreaks between pieces of information to one (continue in the next line)
-
+# TODO: wrap-up everything in a loop? A block with n items has to be created for each condition. Loop through conditions?
 
 # For exporting items each item should be writte in a plain txt file including the format html(?)-code and the qualtrics-format code.
 
+# [[QUALTRICS]]
 # Problem context   html
 # Actual item       html
 # Question          html
-# Response type     html/qualtrics
+# Response type     html
+# [[QUALTRICS]]
 
 
-problems_numbered_ordered_responses[[1]][[1]] %>% cat
-cat(problems_numbered_ordered_responses[[1]][[1]])
+# Format parameters -------------------------------------------------------
+
+# HTML codes ******************************
+    # font
+    hmtl_linebreak <- "<br>"
+    hmtl_italic <- "<i>ITALIZE_THIS</i>"
+    
+    # font size
+    q_choice_size <- 16
+    q_question_size <- 22
+    
+    # font size templates
+    html_question_font_size <- 
+      paste0('<span style="font-size:', q_question_size, 'px;">QUESTION_TEXT_TO_FORMAT</span>')
+    
+    html_choices_font_size <- 
+      paste0('<span style="font-size:', q_choice_size, 'px;">CHOICES_TEXT_TO_FORMAT</span>')
+
+# Qualtrics codes *************************
+    # General
+    qualtrics_advanced_format <- "[[AdvancedFormat]]"
+    qualtrics_block_start <- "[[Block:block_name]]"
+    qualtrics_pagebreak <- "[[PageBreak]]"
+    # Questions
+    qualtrics_question_text <- "[[Question:Text]]"
+    qualtrics_question_singlechoice_vertical <- "[[Question:MC:SingleAnswer:Vertical]]"
+    qualtrics_question_singlechoice_horizontal <- "[[Question:MC:SingleAnswer:Horizontal]]"
+    # q_question_dropdown <- "[[Question:MC:DropDown]]"
+    qualtrics_question_textentry <- "[[Question:TE]]"
+    # Answers
+    qualtrics_question_choices <- "[[Choices]]"
+
+
+
+# Item formating ----------------------------------------------------------
+
+# item to format to qualtrics
 item <- problems_numbered_ordered_responses[[1]][[1]]
-item2 <- problems_numbered_ordered_responses[[1]][[3]]
-
 
 # 00. get item name (this should be the actual file-name) ####
 item_name <- gsub("\\*\\*(.*)\\*\\*.*", "\\1", item)
@@ -94,8 +129,8 @@ html_item_responseless_breaks <- gsub("\n", hmtl_linebreak, html_item_responsele
 hmtl_response_type <- readChar(con = "materials/qualtrics/input/qual_question_gb.txt", nchars = file.info("materials/qualtrics/input/qual_question_gb.txt")$size)
 
 # 05. Combine item elements
-
 item_to_export <- paste(
+  qualtrics_advanced_format, "\n",
   qualtrics_question_singlechoice_horizontal, "\n",
   html_item_responseless_breaks, "\n",
   qualtrics_question_choices, "\n",
@@ -103,8 +138,9 @@ item_to_export <- paste(
   
   , sep = "")
 
-
-cat(item_to_export)
+# 06. Write item to txt file
+item_name
+cat(item_to_export, file = paste0("materials/qualtrics/output/", item_name, ".txt"))
 
 
 

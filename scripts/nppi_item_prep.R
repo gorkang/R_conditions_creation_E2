@@ -195,6 +195,7 @@ graph_y_pos <- graph_y*img_height
 for (i in seq(length(nppi_items))){
   # i=1
   
+  # TODO: loop through number_bayes (nppi) and call (read) graphs using that file. In that way I can access the age and prevalence information.
   # np template (cancer or pregnant) as list
   nppi_img <- nppi_items[i]
   

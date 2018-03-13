@@ -215,73 +215,45 @@ for (i in seq(length(nppi_items))){
   for (j in seq(nrow(numbers_nppi))) {
     # j=1
     
-    # numbers_nppi[[j, "age"]]
-    # numbers_nppi[[j, "prev_01"]]
-    # numbers_nppi[[j, "prev_02"]]
-    # 
-    # numbers_nppi[[j, "graph_numerator"]]
-    # if (numbers_nppi[[j, "graph_numerator"]] < 10 & !grepl("0", numbers_nppi[[j, "graph_numerator"]])) {paste0("0", numbers_nppi[[j, "graph_numerator"]])} else {paste0(numbers_nppi[[j, "graph_numerator"]])}
-    
     if (grepl("_ca", names(nppi_items[i]))) {
       # IF cancer
       # CANCER ####################################################
-      
-      # nppi_graphs[[grep(paste0("0", numbers_nppi[[j, "graph_numerator"]]), names(nppi_graphs), value = TRUE)]]
-      
       nppi_img_list[[j]] <-
-      magick::image_annotate(
-        
         magick::image_annotate(
           
-          magick::image_composite(nppi_img_list[[i]], nppi_graphs[[grep(paste0("0", numbers_nppi[[j, "graph_numerator"]]), names(nppi_graphs), value = TRUE)]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)),
+          magick::image_annotate(
+            
+            magick::image_composite(nppi_img_list[[i]], nppi_graphs[[grep(paste0("0", numbers_nppi[[j, "graph_numerator"]]), names(nppi_graphs), value = TRUE)]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)),
+            
+            paste0("At age ", numbers_nppi[[j, "age"]], ", it is estimated that breast cancer is present in ", numbers_nppi[[j, "prev_01"]], " out " ),
+            font = "arial", size = 20, color = "black", boxcolor = "",
+            degrees = 0, location = paste0("+", prev_xca_pos, "+", prev_y1_pos)),
           
-          paste0("At age ", numbers_nppi[[j, "age"]], ", it is estimated that breast cancer is present in ", numbers_nppi[[j, "prev_01"]], " out " ),
+          text = paste0("of every ", numbers_nppi[[j, "prev_02"]], " women."),
           font = "arial", size = 20, color = "black", boxcolor = "",
-          degrees = 0, location = paste0("+", prev_xca_pos, "+", prev_y1_pos)),
-        
-        text = paste0("of every ", numbers_nppi[[j, "prev_02"]], " women."),
-        font = "arial", size = 20, color = "black", boxcolor = "",
-        degrees = 0, location = paste0("+", prev_xca_pos, "+", prev_y2_pos))
+          degrees = 0, location = paste0("+", prev_xca_pos, "+", prev_y2_pos))
       
       
     } else if (grepl("_pr", names(nppi_items[i]))) {
       # TRISOMY ####################################################
       
       nppi_img_list[[j]] <-
-      magick::image_annotate(
-        
         magick::image_annotate(
           
-          magick::image_composite(nppi_img_list[[i]], nppi_graphs[[grep(paste0("0", numbers_nppi[[j, "graph_numerator"]]), names(nppi_graphs), value = TRUE)]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)),
+          magick::image_annotate(
+            
+            magick::image_composite(nppi_img_list[[i]], nppi_graphs[[grep(paste0("0", numbers_nppi[[j, "graph_numerator"]]), names(nppi_graphs), value = TRUE)]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)),
+            
+            paste0("At age ", numbers_nppi[[j, "age"]], ", it is estimated that trisomy 21 is present in ", numbers_nppi[[j, "prev_01"]]),
+            font = "arial", size = 20, color = "black", boxcolor = "",
+            degrees = 0, location = paste0("+", prev_xpr1_pos, "+", prev_y1_pos)),
           
-          paste0("At age ", numbers_nppi[[j, "age"]], ", it is estimated that trisomy 21 is present in ", numbers_nppi[[j, "prev_01"]]),
+          text = paste0("out of every ", numbers_nppi[[j, "prev_02"]], " births."),
           font = "arial", size = 20, color = "black", boxcolor = "",
-          degrees = 0, location = paste0("+", prev_xpr1_pos, "+", prev_y1_pos)),
-        
-        text = paste0("out of every ", numbers_nppi[[j, "prev_02"]], " births."),
-        font = "arial", size = 20, color = "black", boxcolor = "",
-        degrees = 0, location = paste0("+", prev_xpr2_pos, "+", prev_y2_pos))
+          degrees = 0, location = paste0("+", prev_xpr2_pos, "+", prev_y2_pos))
       
     }
   }
-    
-    
-  #   if (grepl("_ca", names(nppi_items[i]))) {
-  #     # assemble_graph use this object
-  #     nppi_img_list[[j]] <- magick::image_annotate(magick::image_composite(nppi_img_list[[i]], nppi_graphs[[j]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)), 
-  #                                                  paste0(names(nppi_graphs[j]), " women."), 
-  #                                                  font = "arial", size = 19, color = "black", boxcolor = "",
-  #                                                  degrees = 0, location = paste0("+", prev_x_pos, "+", prev_y_pos))
-  #     
-  #     # IF pregnant
-  #   } else if (grepl("_pr", names(nppi_items[i]))) {
-  #     # assemble_graph use this object
-  #     nppi_img_list[[j]] <- magick::image_annotate(magick::image_composite(nppi_img_list[[i]], nppi_graphs[[j]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)), paste0(names(nppi_graphs[j]), " births."), 
-  #                                                  font = "arial", size = 19, color = "black", boxcolor = "",
-  #                                                  degrees = 0, location = paste0("+", prev_x_pos, "+", prev_y_pos))
-  #     
-  #   }
-  # }
   
   graph_name <- as.character(numbers_nppi[["prob"]])
   

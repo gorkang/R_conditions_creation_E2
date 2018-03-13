@@ -178,11 +178,17 @@ img_height <- magick::image_info(nppi_items[[1]])$height
 
 # Prevalence position in template (%)
 # relateive
-prev_x <- 0.05652174
-prev_y <- 0.2822926
+prev_ca_x <- 0.05852174
+prev_pr_x_1 <- 0.13352174
+prev_pr_x_2 <- 0.05852174
+prev_y_1 <- 0.2562926
+prev_y_2 <- 0.2792926
 # absolute
-prev_x_pos <- prev_x*img_width
-prev_y_pos <- prev_y*img_height
+prev_xca_pos <- prev_ca_x*img_width
+prev_xpr1_pos <- prev_pr_x_1*img_width
+prev_xpr2_pos <- prev_pr_x_2*img_width
+prev_y1_pos <- prev_y_1*img_height
+prev_y2_pos <- prev_y_2*img_height
 
 # Graph position in template
 # relateive

@@ -203,30 +203,92 @@ for (i in seq(length(nppi_items))){
   
   # TODO: loop through number_bayes (nppi) and call (read) graphs using that file. In that way I can access the age and prevalence information.
   # np template (cancer or pregnant) as list
+  
+  # Get nnpi template
   nppi_img <- nppi_items[i]
   
-  # repeat template as many times as rows of set numbers csv
+  # error if number of graphs do not match rows in number bayes
+  if (!nrow(numbers_nppi) == length(nppi_graphs)) {
+    stop("The number of graphs in materials/Presentation_format/nppi/input/graphs/png do not match the number of rows in number_bayes.xls for nppi.")
+  }
+  
+  # repeat template as many times as the number of graphs
   nppi_img_list <- rep(as.list(nppi_img), length(nppi_graphs))
   
-  for (j in seq(length(nppi_graphs))) {
+  for (j in seq(nrow(numbers_nppi))) {
     # j=1
     
-    # IF cancer
+    numbers_nppi[[j, "age"]]
+    numbers_nppi[[j, "prev_01"]]
+    numbers_nppi[[j, "prev_02"]]
+    
+    numbers_nppi[[j, "graph_numerator"]]
+    if (numbers_nppi[[j, "graph_numerator"]] < 10 & !grepl("0", numbers_nppi[[j, "graph_numerator"]])) {paste0("0", numbers_nppi[[j, "graph_numerator"]])} else {paste0(numbers_nppi[[j, "graph_numerator"]])}
+    
+    
+    
+    
     if (grepl("_ca", names(nppi_items[i]))) {
-      # assemble_graph use this object
-      nppi_img_list[[j]] <- magick::image_annotate(magick::image_composite(nppi_img_list[[i]], nppi_graphs[[j]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)), paste0(names(nppi_graphs[j]), " women."), 
-                                                   font = "arial", size = 19, color = "black", boxcolor = "",
-                                                   degrees = 0, location = paste0("+", prev_x_pos, "+", prev_y_pos))
+      # IF cancer
+      # CANCER ####################################################
+      # nppi_img_list[[j]] <-
       
-      # IF pregnant
+      magick::image_annotate(
+        
+        magick::image_annotate(
+          
+          magick::image_composite(nppi_img_list[[i]], nppi_graphs[[j]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)),
+          
+          paste0("At age ", numbers_nppi[[j, "age"]], ", it is estimated that breast cancer is present in ", numbers_nppi[[j, "prev_01"]], " out " ),
+          font = "arial", size = 20, color = "black", boxcolor = "",
+          degrees = 0, location = paste0("+", prev_xca_pos, "+", prev_y1_pos)),
+        
+        text = paste0("of every ", names(nppi_graphs[j]), " women."),
+        font = "arial", size = 20, color = "black", boxcolor = "",
+        degrees = 0, location = paste0("+", prev_xca_pos, "+", prev_y2_pos))
+      
+      
     } else if (grepl("_pr", names(nppi_items[i]))) {
-      # assemble_graph use this object
-      nppi_img_list[[j]] <- magick::image_annotate(magick::image_composite(nppi_img_list[[i]], nppi_graphs[[j]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)), paste0(names(nppi_graphs[j]), " births."), 
-                                                   font = "arial", size = 19, color = "black", boxcolor = "",
-                                                   degrees = 0, location = paste0("+", prev_x_pos, "+", prev_y_pos))
+      # TRISOMY ####################################################
+      
+      magick::image_annotate(
+        
+        magick::image_annotate(
+          
+          magick::image_composite(nppi_img_list[[i]], nppi_graphs[[j]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)),
+          
+          paste0("At age ", numbers_nppi[[j, "age"]], ", it is estimated that trisomy 21 is present in ", numbers_nppi[[j, "prev_01"]]),
+          font = "arial", size = 20, color = "black", boxcolor = "",
+          degrees = 0, location = paste0("+", prev_xpr1_pos, "+", prev_y1_pos)),
+        
+        text = paste0("out of every ", names(nppi_graphs[j]), " births."),
+        font = "arial", size = 20, color = "black", boxcolor = "",
+        degrees = 0, location = paste0("+", prev_xpr2_pos, "+", prev_y2_pos))
       
     }
   }
+    
+    
+    
+    
+    
+    
+  #   if (grepl("_ca", names(nppi_items[i]))) {
+  #     # assemble_graph use this object
+  #     nppi_img_list[[j]] <- magick::image_annotate(magick::image_composite(nppi_img_list[[i]], nppi_graphs[[j]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)), 
+  #                                                  paste0(names(nppi_graphs[j]), " women."), 
+  #                                                  font = "arial", size = 19, color = "black", boxcolor = "",
+  #                                                  degrees = 0, location = paste0("+", prev_x_pos, "+", prev_y_pos))
+  #     
+  #     # IF pregnant
+  #   } else if (grepl("_pr", names(nppi_items[i]))) {
+  #     # assemble_graph use this object
+  #     nppi_img_list[[j]] <- magick::image_annotate(magick::image_composite(nppi_img_list[[i]], nppi_graphs[[j]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)), paste0(names(nppi_graphs[j]), " births."), 
+  #                                                  font = "arial", size = 19, color = "black", boxcolor = "",
+  #                                                  degrees = 0, location = paste0("+", prev_x_pos, "+", prev_y_pos))
+  #     
+  #   }
+  # }
   
   graph_name <- as.character(numbers_nppi[["prob"]])
   

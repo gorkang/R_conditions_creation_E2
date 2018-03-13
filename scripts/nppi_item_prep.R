@@ -166,11 +166,8 @@ nppi_graphs_files_names <- grep("ppv.*png", dir(graph_dir), value = TRUE)
 # Read graphs into list
 nppi_graphs <- lapply(nppi_graphs_files_names, function(x) magick::image_read(paste0(graph_dir, x)))
 
-# To name graphs it's necessary to know how many contexts we are working with.
-# context_number <- length(dir("materials/Problem_context/input/", "*context.txt"))
-
-# names(nppi_graphs) <- paste0(numbers_nppi$prev_02, " births.")
-names(nppi_graphs) <- paste0(numbers_nppi$prev_02)
+# Name graphs
+names(nppi_graphs) <- gsub(".png", "", nppi_graphs_files_names)
 
 # Template dimensions
 img_width <- magick::image_info(nppi_items[[1]])$width
@@ -218,15 +215,12 @@ for (i in seq(length(nppi_items))){
   for (j in seq(nrow(numbers_nppi))) {
     # j=1
     
-    numbers_nppi[[j, "age"]]
-    numbers_nppi[[j, "prev_01"]]
-    numbers_nppi[[j, "prev_02"]]
-    
-    numbers_nppi[[j, "graph_numerator"]]
-    if (numbers_nppi[[j, "graph_numerator"]] < 10 & !grepl("0", numbers_nppi[[j, "graph_numerator"]])) {paste0("0", numbers_nppi[[j, "graph_numerator"]])} else {paste0(numbers_nppi[[j, "graph_numerator"]])}
-    
-    
-    
+    # numbers_nppi[[j, "age"]]
+    # numbers_nppi[[j, "prev_01"]]
+    # numbers_nppi[[j, "prev_02"]]
+    # 
+    # numbers_nppi[[j, "graph_numerator"]]
+    # if (numbers_nppi[[j, "graph_numerator"]] < 10 & !grepl("0", numbers_nppi[[j, "graph_numerator"]])) {paste0("0", numbers_nppi[[j, "graph_numerator"]])} else {paste0(numbers_nppi[[j, "graph_numerator"]])}
     
     if (grepl("_ca", names(nppi_items[i]))) {
       # IF cancer
@@ -267,10 +261,6 @@ for (i in seq(length(nppi_items))){
       
     }
   }
-    
-    
-    
-    
     
     
   #   if (grepl("_ca", names(nppi_items[i]))) {

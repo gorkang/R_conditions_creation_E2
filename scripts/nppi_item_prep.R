@@ -204,7 +204,7 @@ for (i in seq(length(nppi_items))){
           
           magick::image_annotate(
             
-            magick::image_composite(nppi_img_list[[i]], nppi_graphs[[gsub(".png", "", nppi_graphs_files_names)]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)),
+            magick::image_composite(nppi_img_list[[i]], nppi_graphs[[gsub(".png", "", grep("_ca_", nppi_graphs_files_names, value = TRUE))]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)),
             
             paste0("At age ", numbers_nppi[[j, "age"]], ", it is estimated that breast cancer is present in ", numbers_nppi[[j, "prev_01"]], " out " ),
             font = "arial", size = 20, color = "black", boxcolor = "",
@@ -223,7 +223,7 @@ for (i in seq(length(nppi_items))){
           
           magick::image_annotate(
             
-            magick::image_composite(nppi_img_list[[i]], nppi_graphs[[gsub(".png", "", nppi_graphs_files_names)]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)),
+            magick::image_composite(nppi_img_list[[i]], nppi_graphs[[gsub(".png", "", grep("_pr_", nppi_graphs_files_names, value = TRUE))]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)),
             
             paste0("At age ", numbers_nppi[[j, "age"]], ", it is estimated that trisomy 21 is present in ", numbers_nppi[[j, "prev_01"]]),
             font = "arial", size = 20, color = "black", boxcolor = "",

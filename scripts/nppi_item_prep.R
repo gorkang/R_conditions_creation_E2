@@ -56,10 +56,10 @@ age_prevalence <-
   # readr::read_csv("materials/Presentation_format/nppi/input/graphs/age_prevalence_OLD.csv", col_types = "iii")
   readxl::read_xls("materials/Numbers/numbers_bayes.xls", sheet = 2)
 
-# Create column with prevalence percentage
-age_prevalence <- 
-  age_prevalence %>% 
-  mutate(prevalence_percentage = prevalence_01/prevalence_02)
+# # Create column with prevalence percentage
+# age_prevalence <- 
+#   age_prevalence %>% 
+#   mutate(prevalence_percentage = prevalence_01/prevalence_02)
 
 # Test parameters (Two different tests)
 numbers_nppi <-
@@ -68,29 +68,29 @@ numbers_nppi <-
   filter(format == "nppi")
 
 # function: create cols with ppv using different test parameters
-create_ppv_by_test <- function(x) {
-  # i=1
-  
-  # TEST parameters
-  test_prob <- x[["prob"]]
-  hit_rate <- x[["hit_rate_02"]]
-  false_positive_rate <- x[["false_positive_02"]]
-  
-  # label: high/low
-  ppv_prob <- paste0("ppv_", test_prob)
-  
-  # create col with ppv 
-  age_prevalence <-
-    age_prevalence %>%
-    mutate(!!ppv_prob := 
-             round(100*(ppv_calculator(as.numeric(prevalence_percentage), as.numeric(hit_rate), as.numeric(false_positive_rate))), 2))
-  
-  assign("age_prevalence", age_prevalence, envir = .GlobalEnv)
-  
-}
+# create_ppv_by_test <- function(x) {
+#   # i=1
+#   
+#   # TEST parameters
+#   test_prob <- x[["prob"]]
+#   hit_rate <- x[["hit_rate_02"]]
+#   false_positive_rate <- x[["false_positive_02"]]
+#   
+#   # label: high/low
+#   ppv_prob <- paste0("ppv_", test_prob)
+#   
+#   # create col with ppv 
+#   age_prevalence <-
+#     age_prevalence %>%
+#     mutate(!!ppv_prob := 
+#              round(100*(ppv_calculator(as.numeric(prevalence_percentage), as.numeric(hit_rate), as.numeric(false_positive_rate))), 2))
+#   
+#   assign("age_prevalence", age_prevalence, envir = .GlobalEnv)
+#   
+# }
 
 # create cols 
-invisible(apply(numbers_nppi, 1, create_ppv_by_test))
+# invisible(apply(numbers_nppi, 1, create_ppv_by_test))
 
 # Graph parameters
 age_ppv_to_plot <- c(20,25,30,35,40)
@@ -107,53 +107,43 @@ graph_output_folder <- "materials/Presentation_format/nppi/input/graphs/png/"
   dir.create(file.path(graph_output_folder), showWarnings = FALSE, recursive = TRUE)
 
 
-for (x in 1:nrow(numbers_nppi)) {
-  #x=1
+  # TODO implement using only one PPV column 
   
-  # col name with ppv values
-  graph_prob <- numbers_nppi$prob[x]
+  graph_png_file_name <- "nppi_ppv_graph"
   
-  # create numerator to organize graphs
-  graph_numerator <- numbers_nppi$graph_numerator[x]
-  graph_numerator <- if (graph_numerator < 10 & !grepl("0", graph_numerator)) {paste0("0", graph_numerator)} else {paste0(graph_numerator)}
+  png_file_pathname <-
+    paste0(graph_output_folder, graph_png_file_name, ".png") # path and name to new png file
   
-  # col with ppv according to graph_prob
-  curr_col_name <- grep(graph_prob, names(age_prevalence), value = TRUE) 
+  age_prevalence <- mutate(age_prevalence, PPV_100 = PPV*100)
+
+    
+  # age_prevalence_plot <-
+  #   age_prevalence %>% 
+  #   filter(age %in% age_ppv_to_plot)
   
-  graph_png_file_name <- paste0("graph_", graph_numerator, "_", curr_col_name)
-  
-  png_file_pathname <- 
-    paste0(graph_output_folder, graph_png_file_name, "_graph.png") # path and name to new png file
-  
-  # Create a ppv-value col
-  age_prevalence_plot <- age_prevalence %>% 
-    mutate_("ppv" = curr_col_name) %>% 
-    filter(age %in% age_ppv_to_plot)
   
   # Plot ppv by Age
-  graph_within_loop <- ggplot(age_prevalence_plot, aes(x=age, y=ppv)) + # plot canvas
+  ppv_graph <-
+    ggplot(age_prevalence, aes(x=age, y=PPV_100)) + # plot canvas
     scale_y_continuous(labels=function(x) paste0(x,"%"), # append % to y-axis value
                        limits = c(0,100)
                        # , breaks = seq(0,100,10)
     ) + # set y-axis limits
-    geom_point(size = 6, color = "#009999", shape = 19) + # insert points with ppv value
-    geom_line(aes(x=age, y=ppv), color = "#009999", size = 2.5) +  # insert line bridging ppv-value points
+    geom_point(size = 5.5, color = "#009999", shape = 19) + # insert points with ppv value
+    geom_line(aes(x=age, y=PPV_100), color = "#009999", size = 2) +  # insert line bridging PPV-value points
     xlab(x_axis_label) + ylab(y_axis_label) + # set axis labels
     theme(axis.text = element_text(size = 25), # axis-numerbs size
           axis.title = element_text(size = 25)) + # axis-labels size
     geom_text(aes(label = 
-                    case_when(age %in% age_ppv_to_plot ~ paste0(round(ppv, 0), "%"), TRUE ~ paste0("")), # keep only ages previously set to be ploted
+                    case_when(age %in% age_ppv_to_plot ~ paste0(round(PPV_100, 0), "%"), TRUE ~ paste0("")), # keep only ages previously set to be ploted
                   hjust = 1, vjust = -1), size = 6) # (position) plot ppv-values above points set in "age_ppv_to_plot"
   
+  
   # Save plot to png file
-  ggsave(filename = png_file_pathname, plot = graph_within_loop, width = width, height = height, dpi = dpi, units = "in")
+  ggsave(filename = png_file_pathname, plot = ppv_graph, width = width, height = height, dpi = dpi, units = "in")
   
-  if (x == nrow(numbers_nppi)) {
-    rm(x,graph_prob,graph_numerator,curr_col_name,graph_png_file_name,png_file_pathname,age_prevalence_plot,graph_within_loop)
-  }
   
-}
-
+rm(graph_png_file_name,png_file_pathname,age_prevalence_plot)
 rm(age_ppv_to_plot,dpi,graph_output_folder,height,width,x_axis_label,y_axis_label)
 ##### Compose new-paradigm brochure ###################################################
 
@@ -198,19 +188,16 @@ graph_y_pos <- graph_y*img_height
 for (i in seq(length(nppi_items))){
   # i=1
   
-  # TODO: loop through number_bayes (nppi) and call (read) graphs using that file. In that way I can access the age and prevalence information.
-  # np template (cancer or pregnant) as list
-  
   # Get nnpi template
   nppi_img <- nppi_items[i]
   
-  # error if number of graphs do not match rows in number bayes
-  if (!nrow(numbers_nppi) == length(nppi_graphs)) {
-    stop("The number of graphs in materials/Presentation_format/nppi/input/graphs/png do not match the number of rows in number_bayes.xls for nppi.")
-  }
+  # # error if number of graphs do not match rows in number bayes
+  # if (!nrow(numbers_nppi) == length(nppi_graphs)) {
+  #   stop("The number of graphs in materials/Presentation_format/nppi/input/graphs/png do not match the number of rows in number_bayes.xls for nppi.")
+  # }
   
   # repeat template as many times as the number of graphs
-  nppi_img_list <- rep(as.list(nppi_img), length(nppi_graphs))
+  nppi_img_list <- rep(as.list(nppi_img), nrow(numbers_nppi))
   
   for (j in seq(nrow(numbers_nppi))) {
     # j=1
@@ -223,7 +210,7 @@ for (i in seq(length(nppi_items))){
           
           magick::image_annotate(
             
-            magick::image_composite(nppi_img_list[[i]], nppi_graphs[[grep(paste0("0", numbers_nppi[[j, "graph_numerator"]]), names(nppi_graphs), value = TRUE)]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)),
+            magick::image_composite(nppi_img_list[[i]], nppi_graphs[[gsub(".png", "", nppi_graphs_files_names)]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)),
             
             paste0("At age ", numbers_nppi[[j, "age"]], ", it is estimated that breast cancer is present in ", numbers_nppi[[j, "prev_01"]], " out " ),
             font = "arial", size = 20, color = "black", boxcolor = "",
@@ -242,7 +229,7 @@ for (i in seq(length(nppi_items))){
           
           magick::image_annotate(
             
-            magick::image_composite(nppi_img_list[[i]], nppi_graphs[[grep(paste0("0", numbers_nppi[[j, "graph_numerator"]]), names(nppi_graphs), value = TRUE)]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)),
+            magick::image_composite(nppi_img_list[[i]], nppi_graphs[[gsub(".png", "", nppi_graphs_files_names)]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)),
             
             paste0("At age ", numbers_nppi[[j, "age"]], ", it is estimated that trisomy 21 is present in ", numbers_nppi[[j, "prev_01"]]),
             font = "arial", size = 20, color = "black", boxcolor = "",
@@ -255,9 +242,9 @@ for (i in seq(length(nppi_items))){
     }
   }
   
-  graph_name <- as.character(numbers_nppi[["prob"]])
+  pvv_prob <- as.character(numbers_nppi[["prob"]])
   
-  names(nppi_img_list) <- paste0(names(nppi_img_list), "_", graph_name)
+  names(nppi_img_list) <- paste0(names(nppi_img_list), "_", pvv_prob)
   
   nppi_items[[i]] <- nppi_img_list
   

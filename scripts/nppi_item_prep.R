@@ -266,7 +266,7 @@ for (q in seq(length(nppi_items))) {
               grep("prev_", ls(), value = TRUE)))
      rm(img_height, img_width,
         nppi_graphs_files_names, nppi_output_folder,
-        nppi_graphs, age_prevalence, ppv_prob)
+        nppi_graphs, age_prevalence, ppv_prob, cCntxt, problem_contexts)
 # Problem contexts --------------------------------------------------------
   
   # Read problem contexts ####

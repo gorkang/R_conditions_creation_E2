@@ -3,7 +3,6 @@
 
 # read csv with number
 numbers_item <-
-  # readr::read_csv("materials/Numbers/numbers_bayes.csv")#, col_types = cols())
   readxl::read_xls("materials/Numbers/numbers_bayes.xls")#, col_types = cols())
 
 ### New paradigm ###################################
@@ -17,7 +16,6 @@ newparadigm_templates <- dir(newparadigm_template_dir, pattern = ".svg")
 # svg to png parameters (to feed svg2png)
 nppi_width <- 690 # pixels
 nppi_height <- 1169 # pixels
-# dpi <- 45.71
 
 # input/output dir
 input_dir <- newparadigm_template_dir
@@ -47,6 +45,7 @@ names(nppi_items) <-
   gsub(".png", "", newparadigm_files)
 
 rm(height,width,input_dir,newparadigm_dir,newparadigm_files,newparadigm_template_dir,newparadigm_templates,nppi_height,nppi_width,output_dir)
+
 #### New-paradigm ###################################################
 
 ##### Create ppv graphs
@@ -56,41 +55,10 @@ age_prevalence <-
   # readr::read_csv("materials/Presentation_format/nppi/input/graphs/age_prevalence_OLD.csv", col_types = "iii")
   readxl::read_xls("materials/Numbers/numbers_bayes.xls", sheet = 2)
 
-# # Create column with prevalence percentage
-# age_prevalence <- 
-#   age_prevalence %>% 
-#   mutate(prevalence_percentage = prevalence_01/prevalence_02)
-
 # Test parameters (Two different tests)
 numbers_nppi <-
-  # read_csv("materials/Numbers/numbers_bayes.csv", col_types = cols()) %>% 
   readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>% #, col_types = cols())
   filter(format == "nppi")
-
-# function: create cols with ppv using different test parameters
-# create_ppv_by_test <- function(x) {
-#   # i=1
-#   
-#   # TEST parameters
-#   test_prob <- x[["prob"]]
-#   hit_rate <- x[["hit_rate_02"]]
-#   false_positive_rate <- x[["false_positive_02"]]
-#   
-#   # label: high/low
-#   ppv_prob <- paste0("ppv_", test_prob)
-#   
-#   # create col with ppv 
-#   age_prevalence <-
-#     age_prevalence %>%
-#     mutate(!!ppv_prob := 
-#              round(100*(ppv_calculator(as.numeric(prevalence_percentage), as.numeric(hit_rate), as.numeric(false_positive_rate))), 2))
-#   
-#   assign("age_prevalence", age_prevalence, envir = .GlobalEnv)
-#   
-# }
-
-# create cols 
-# invisible(apply(numbers_nppi, 1, create_ppv_by_test))
 
 # Graph parameters
 age_ppv_to_plot <- c(20,25,30,35,40)
@@ -106,17 +74,17 @@ graph_output_folder <- "materials/Presentation_format/nppi/input/graphs/png/"
   # If Folder does not exist, create it
   dir.create(file.path(graph_output_folder), showWarnings = FALSE, recursive = TRUE)
 
-
-  # TODO implement using only one PPV column 
-  
+  # PPV graph name
   graph_png_file_name <- "nppi_ppv_graph"
   
+  # Path to folder to save graph
   png_file_pathname <-
     paste0(graph_output_folder, graph_png_file_name, ".png") # path and name to new png file
   
+  # Get ppv in a scale between 0 and 100
   age_prevalence <- mutate(age_prevalence, PPV_100 = PPV*100)
 
-    
+  # UNCOMMENT TO select ages to plot on ppv graph
   # age_prevalence_plot <-
   #   age_prevalence %>% 
   #   filter(age %in% age_ppv_to_plot)
@@ -191,11 +159,6 @@ for (i in seq(length(nppi_items))){
   # Get nnpi template
   nppi_img <- nppi_items[i]
   
-  # # error if number of graphs do not match rows in number bayes
-  # if (!nrow(numbers_nppi) == length(nppi_graphs)) {
-  #   stop("The number of graphs in materials/Presentation_format/nppi/input/graphs/png do not match the number of rows in number_bayes.xls for nppi.")
-  # }
-  
   # repeat template as many times as the number of graphs
   nppi_img_list <- rep(as.list(nppi_img), nrow(numbers_nppi))
   
@@ -242,9 +205,9 @@ for (i in seq(length(nppi_items))){
     }
   }
   
-  pvv_prob <- as.character(numbers_nppi[["prob"]])
+  ppv_prob <- as.character(numbers_nppi[["prob"]])
   
-  names(nppi_img_list) <- paste0(names(nppi_img_list), "_", pvv_prob)
+  names(nppi_img_list) <- paste0(names(nppi_img_list), "_", ppv_prob)
   
   nppi_items[[i]] <- nppi_img_list
   
@@ -272,7 +235,7 @@ for (q in seq(length(nppi_items))) {
               grep("prev_", ls(), value = TRUE)))
      rm(img_height, img_width,
         nppi_graphs_files_names, nppi_output_folder,
-        nppi_graphs, age_prevalence)
+        nppi_graphs, age_prevalence, ppv_prob)
 # Problem contexts --------------------------------------------------------
   
   # Read problem contexts ####
@@ -350,3 +313,5 @@ for (q in seq(length(nppi_items))) {
       })
       
       rm(response_type_files,response_type_files_path,response_types_dir, numbers_item, numbers_nppi, sg_fillers)
+      
+      

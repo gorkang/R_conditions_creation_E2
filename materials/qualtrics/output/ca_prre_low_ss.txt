@@ -1,3 +1,0 @@
-[[AdvancedFormat]]
-[[Question:Text]]
-<span style="font-size:22px;">Suppose the following statistics are known about women at age 20 who participate in a routine mammogram screening, an X-ray of the breast tissue that detects tumors.<br><br>Imagine a group of 1000 women that go through a massive screening:<br><br><br>2% have breast cancer at the time of the screening.<br><br>90% of those with breast cancer will receive a positive mammogram.<br><br>5.5% of the remaining cases without breast cancer will still receive a positive mammogram.<br><br><br>Of those with positive mammograms, how many would you expect to actually have breast cancer?</span>

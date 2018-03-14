@@ -1,9 +1,0 @@
-[[AdvancedFormat]]
-[[Question:MC:SingleAnswer:Horizontal]]
-<span style="font-size:22px;">Suppose the following statistics are known about women at age 20 who participate in a routine prenatal screening test to detect Trisomy 21, a blood test that detects the presence of an extra chromosome 21.<br><br>Imagine a group of 1000 women that go through a massive screening:<br><br><br>2% are pregnant with a fetus with Trisomy 21 at the time of the screening.<br><br>1.8% are pregnant with a fetus with Trisomy 21 and will receive a positive test result.<br><br>5.5% aren't pregnant with a fetus with Trisomy 21 and will still receive a positive mammogram.<br><br><br>Of those with a positive prenatal test result, how many would you expect to actually have trisomy 21?</span>
-[[Choices]]
-<span style="font-size: 16px;">Very few<br>(0-20%)</span>
-<span style="font-size: 16px;">Few<br>(21-40%)</span>
-<span style="font-size: 16px;">Half<br>(41-60%)</span>
-<span style="font-size: 16px;">Quite<br>(61-80%)</span>
-<span style="font-size: 16px;">Many<br>(81-100%)</span>

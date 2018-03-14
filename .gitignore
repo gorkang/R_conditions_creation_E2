@@ -8,3 +8,4 @@
 *.gif
 _book/
 packages.bib
+materials/qualtrics/output/*.txt

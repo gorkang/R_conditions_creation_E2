@@ -77,6 +77,11 @@ item_nameless <- gsub("\\*\\*.*\\*\\*\n\n(.*)", "\\1", item)
 # 02. item without response type
 item_responseless <- gsub("(.*)\n\n\n\n\n.*", "\\1", item_nameless)
 
+# remove extra linebreaks
+regex_pattern_breaklines <- "(^.*\\n\\n.*\\n\\n.*\\n)\\n(.*\\n)\\n(.*\\n\\n)\\n(.*$)"
+
+item_responseless <- gsub(regex_pattern_breaklines, "\\1\\2\\3\\4", item_responseless)
+
 # 03. Item (without response type)
 html_item_responseless <- gsub("QUESTION_TEXT_TO_FORMAT", item_responseless, html_question_font_size)
 html_item_responseless_breaks <- gsub("\n", hmtl_linebreak, html_item_responseless)

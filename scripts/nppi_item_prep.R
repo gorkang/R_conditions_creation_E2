@@ -104,7 +104,8 @@ graph_output_folder <- "materials/Presentation_format/nppi/input/graphs/png/"
                            # , breaks = seq(0,100,10)
         ) + # set y-axis limits
         geom_point(size = 5.5, color = "#009999", shape = 19) + # insert points with ppv value
-        geom_line(aes(x=age, y=PPV_100), color = "#009999", size = 2) +  # insert line bridging PPV-value points
+        geom_line(aes(x=age, y=PPV_100), color = "#009999", size = 2) +  
+        theme_minimal() + # insert line bridging PPV-value points
         xlab(grep("woman", x_axis_label, value = TRUE)) + ylab(y_axis_label) + # set axis labels
         theme(axis.text = element_text(size = 25), # axis-numerbs size
               axis.title = element_text(size = 25)) + # axis-labels size
@@ -127,6 +128,7 @@ graph_output_folder <- "materials/Presentation_format/nppi/input/graphs/png/"
         ) + # set y-axis limits
         geom_point(size = 5.5, color = "#009999", shape = 19) + # insert points with ppv value
         geom_line(aes(x=age, y=PPV_100), color = "#009999", size = 2) +  # insert line bridging PPV-value points
+        theme_minimal() + 
         xlab(grep("mother", x_axis_label, value = TRUE)) + ylab(y_axis_label) + # set axis labels
         theme(axis.text = element_text(size = 25), # axis-numerbs size
               axis.title = element_text(size = 25)) + # axis-labels size

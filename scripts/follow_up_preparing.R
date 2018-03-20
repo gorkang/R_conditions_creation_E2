@@ -1,3 +1,6 @@
+# TODO: get the first sentence of each condition on 
+# problems_numbered... (the one with the final problems) and paste it in each follow up (ca,pr;riskhigh,risklow)
+
 # THINGS TO FILL:
 # ppv response in previous question. this is a qualtrics question id code. to know the 
     # actual code we need to have already uploaded the ppv question and see what their codes are.
@@ -120,6 +123,8 @@ path2save <- paste0(output_dir, gsub("\\*\\*\\*(.*)\\*\\*\\*.*", "\\1", list_fu)
 cat(item2save, sep = "", file = path2save)
 
 }
+
+gsub("problem context")
 
 # export items to text iterating through the list of follow up items
 invisible(lapply(fu_questions, save_fu))

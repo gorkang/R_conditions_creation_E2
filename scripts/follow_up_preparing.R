@@ -1,9 +1,8 @@
 # THINGS TO FILL:
-# condition prevalence (from number_bayes.xls)
 # ppv response in previous question. this is a qualtrics question id code. to know the 
     # actual code we need to have already uploaded the ppv question and see what their codes are.
 
-# file generation outline:
+# FILE GENERATION OUTLINE:
 # 2 contexts (ca, pr)
 # 2 disease_prevalence (low, high).
 # 2 risk_percentage (1%, 10%).
@@ -70,17 +69,18 @@ for (i in seq(length(follow_up_items))) { # Follow up items LOOP
   fu_questions[[i]] = fu_to_num
 }
 
+# unlist and list again to get a one level list
 fu_questions <- as.list(unlist(fu_questions, recursive = FALSE))
 
 # Combine follow up items with prevalences
 numbers_nfab <- 
   filter(numbers_item, format == "nfab")
 
-prevalences_txt <- as.vector(apply(numbers_nfab, 1, function(y) {paste0("__", y[["prob"]], "__", y[["prev_01"]], " out of ", y[["prev_02"]])}))
+# get prevalences from numbers_bayes filtered
+prevalences_txt <- 
+  as.vector(apply(numbers_nfab, 1, function(y) {paste0("__", y[["prob"]], "__", y[["prev_01"]], " out of ", y[["prev_02"]])}))
 
-fu_questions_original <- fu_questions
-
-
+# Put prevalences on follow up items
 for (i in seq(length(fu_questions))) {
   
   current_fu <-
@@ -103,14 +103,16 @@ for (i in seq(length(fu_questions))) {
   
 }
 
-
+# unlist and list again to get a one level list
 fu_questions <-
   as.list(unlist(fu_questions, recursive = TRUE))
 
-
+# Export items to txt
+# directory (setting and creation)
 output_dir <- "materials/Question/Follow_up/output/"
 dir.create(output_dir, showWarnings = FALSE, recursive = TRUE)
 
+# function to export items to text
 save_fu <- function(list_fu) {
   
 item2save <- gsub("\\*\\*\\*.*\\*\\*\\*\\n\\n(.*)", "\\1", list_fu)
@@ -119,5 +121,6 @@ cat(item2save, sep = "", file = path2save)
 
 }
 
+# export items to text iterating through the list of follow up items
 invisible(lapply(fu_questions, save_fu))
 

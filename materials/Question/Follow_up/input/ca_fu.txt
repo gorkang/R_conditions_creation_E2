@@ -1,6 +1,6 @@
 Remember that:
-* [prevalence of the disease; depends on the condition they saw]
-* In your response to the previous problem you said that, of those with positive mammograms, [PREVIOUS_RESPONSE] actually have breast cancer.
+* disease_prevalence
+* In your response to the previous problem you said that, of those with positive mammograms, qualtrics_ppv_answer actually have breast cancer.
 
 Imagine a woman you care about is participating in a routine mammogram screening as the one you saw before to detect breast cancer and receives a positive mammogram.  
 

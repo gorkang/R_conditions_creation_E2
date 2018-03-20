@@ -1,6 +1,6 @@
 Remember that:
-* [prevalence of the disease; depends on the condition they saw]
-* In your response to the previous problem you said that, of those with positive results, [PREVIOUS_RESPONSE] actually have breast cancer.
+* disease_prevalence
+* In your response to the previous problem you said that, of those with positive results, qualtrics_ppv_answer actually have breast cancer.
 
 Imagine a woman you care about is participating in a routine prenatal screening test to detect Down's syndrome as the one you saw before, and she receives a positive result.  
 

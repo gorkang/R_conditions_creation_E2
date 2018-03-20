@@ -1,3 +1,25 @@
+# THINGS TO FILL:
+# condition prevalence (from number_bayes.xls)
+# ppv response in previous question. this is a qualtrics question id code. to know the 
+    # actual code we need to have already uploaded the ppv question and see what their codes are.
+
+# file generation outline:
+# 2 contexts (ca, pr)
+# 2 disease_prevalence (low, high).
+# 2 risk_percentage (1%, 10%).
+# result: 8 txt files
+
+# THIS HAS TO BE DONE ON item_export branch
+# QUESTIONS  (create them in txt files and bind them to the follow up txt)
+# 1. yes/no alternative single choice question.
+# 2. 0-100% horizontal slider
+# 3. five 0-100% horizontal sliders + "other:..." open text.
+# 4. open text question
+# 5. (regarding #1) if yes/no (different text) 0-100% horizontal slider.
+
+# Generate qualtrics + html questions
+# create an external file, or R object, with html and qualtrics code to be used on item export and here
+
 # read csv with number
 numbers_item <-
   readxl::read_xls("materials/Numbers/numbers_bayes.xls")

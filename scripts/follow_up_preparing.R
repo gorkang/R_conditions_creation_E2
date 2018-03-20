@@ -3,7 +3,7 @@ numbers_item <-
   readxl::read_xls("materials/Numbers/numbers_bayes.xls")
 
 # Follow up dir
-follow_up_dir <- "materials/Question/Follow_up/input/"
+follow_up_dir <- "materials/Question/Follow_up/input/items/"
 
 # Files
 follow_up_files <- dir(follow_up_dir, pattern = ".txt")

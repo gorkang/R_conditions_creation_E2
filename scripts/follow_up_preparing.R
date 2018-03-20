@@ -61,8 +61,8 @@ for (i in seq(length(follow_up_items))) { # Follow up items LOOP
     # put risk number and name into follow up items
     fu_to_num[[j]] =
       gsub("risk_percentage", 
-           paste0(numbers_fu[[j, "prev_01"]], "%"), 
-           paste0("***", names(follow_up_items[i]), "_",
+           paste0(numbers_fu[[j, "fu_risk"]], "%"), 
+           paste0("***", names(follow_up_items[i]), "_risk",
                   numbers_fu[[j, "prob"]], "***\n\n", fu_to_num[[j]]))  
   }
 
@@ -70,5 +70,54 @@ for (i in seq(length(follow_up_items))) { # Follow up items LOOP
   fu_questions[[i]] = fu_to_num
 }
 
+fu_questions <- as.list(unlist(fu_questions, recursive = FALSE))
 
+# Combine follow up items with prevalences
+numbers_nfab <- 
+  filter(numbers_item, format == "nfab")
+
+prevalences_txt <- as.vector(apply(numbers_nfab, 1, function(y) {paste0("__", y[["prob"]], "__", y[["prev_01"]], " out of ", y[["prev_02"]])}))
+
+fu_questions_original <- fu_questions
+
+
+for (i in seq(length(fu_questions))) {
+  
+  current_fu <-
+    rep(fu_questions[[i]], length(prevalences_txt))
+  
+  for (j in seq(length(current_fu))) {
+    # j = 1
+    
+    current_fu[j] <-
+      gsub("disease_prevalence", # prevalence field to be fill
+                            gsub("__.*__(.*)", "\\1", prevalences_txt[[j]]), # replace with the actual prevalence of prevalences_txt (rmv que ppv prob: low/high)
+                            # the substitution above takes place in what results of the following
+                            gsub("(\\*\\*\\*.*)(\\*\\*\\*.*)", # get the follow up name and separates it in two parts to put the ppv prob in it 
+                                 paste0("\\1", "_ppv", gsub("__(.*)__.*", "\\1", prevalences_txt)[[j]],"\\2"), # replace with "ppv_ + ppv_prob" (taken from prevalence txt)
+                                 current_fu[j])) # actual followup item to make all the above substitutions.
+  }
+  
+  fu_questions[[i]] <- current_fu
+  
+  
+}
+
+
+fu_questions <-
+  as.list(unlist(fu_questions, recursive = TRUE))
+
+
+output_dir <- "materials/Question/Follow_up/output/"
+dir.create(output_dir, showWarnings = FALSE, recursive = TRUE)
+
+save_fu <- function(list_fu) {
+  
+item2save <- gsub("\\*\\*\\*.*\\*\\*\\*\\n\\n(.*)", "\\1", list_fu)
+path2save <- paste0(output_dir, gsub("\\*\\*\\*(.*)\\*\\*\\*.*", "\\1", list_fu), ".txt")
+cat(item2save, sep = "", file = path2save)
+
+}
+
+invisible(lapply(fu_questions, save_fu))
 

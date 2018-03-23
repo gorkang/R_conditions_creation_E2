@@ -55,7 +55,7 @@ qualtrics_codes <- list(
 source("functions/items2qualtrics.R")
 
 # convert txt files to qualtric text format
-output_dir <- "materials/qualtrics/output/"
+output_dir <- "materials/qualtrics/output/separated_items/"
 input_dir <- "materials/qualtrics/input/reponse_type/qualtrics_question_gi.txt"
 
 # This used to be a lapply, now it's a for. 
@@ -71,3 +71,13 @@ for (a in seq(length(problems_numbered_ordered_responses))) {
 }
 
 # pair items: different context, same presentation format, different ppv prob, same response type
+# function to pair items
+source("functions/pair_items.R")
+# items_txt <- dir(output_dir, pattern = ".txt")
+txt_files <- dir("materials/qualtrics/output/separated_items/", pattern = ".txt")
+twins <- character(length(items_txt)/2)
+output_dir <- "materials/qualtrics/output/paired_items/"
+
+invisible(lapply(txt_files, function(x) {pair_items(x, twins, outputdir = output_dir)}))
+
+

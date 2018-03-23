@@ -48,6 +48,6 @@ pair_items <- function(txt_files, twins, outputdir) {
   file_out_name <- paste(first_twin_info[2], first_twin_info[3], second_twin_info[3], first_twin_info[4], sep = "_")
   # print binded items to txt
   dir.create(outputdir, showWarnings = FALSE, recursive = TRUE)
-  cat(a, b, sep = paste0(qualtrics_code$pagebreak, "\n"), file = paste0(outputdir, file_out_name))
+  cat(a, b, sep = paste0(qualtrics_codes$pagebreak, "\n"), file = paste0(outputdir, file_out_name))
   
 }

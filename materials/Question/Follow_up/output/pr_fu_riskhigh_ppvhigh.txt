@@ -1,0 +1,27 @@
+Remember that:
+* 40 out of 2000 problem_context
+* In your response to the previous problem you said that, of those with positive results, qualtrics_ppv_answer actually have breast cancer.
+
+Imagine a woman you care about is participating in a routine prenatal screening test to detect Down's syndrome as the one you saw before, and she receives a positive result.  
+
+The doctor offers her a follow-up test called amniocentesis, necessary to confirm the diagnosis. During the procedure, a needle is inserted to sample fluid from the amniotic sac.  
+
+Amniocentesis has a 10% procedure-related risk of complications (for example, infections) that can result in a miscarriage.  
+
+1. Should she take the follow-up test? [Yes / No]  
+
+2. How strongly would you recommend her to take the follow-up test. [0-100]
+
+3. Which factors influenced your recommendation?
+	3.1. How informative the screening test is [slider 0-100]
+	3.2. The need to confirm the positive result in the screening test [slider 0-100]
+	3.3. How serious Trisomy 21 is [slider 0-100]
+	3.4. The magnitude of the risk of procedure-related complications of the follow-up test [slider 0-100]
+	3.5. How serious the complications of the follow-up test are [slider 0-100]
+	3.6. Other: _______________
+
+4 Could you briefly explain why do you think she should/shouldn't take the follow up test? ________________
+
+Remember Amniocentesis has a 10% procedure-related risk of complications:
+5. [IF 1. == "Yes"] How big this risk should be for you NOT to recommend it [slider 0-100]
+   [IF 1. == "No"] How small this risk should be for you to recommend it [slider 0-100]

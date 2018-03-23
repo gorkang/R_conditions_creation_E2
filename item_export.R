@@ -51,27 +51,26 @@ qualtrics_codes <- list(
 
 # Item formating ----------------------------------------------------------
 
+# separated item folder
+separated_item_dir <- "materials/qualtrics/output/separated_items/"
+response_types_dir <- "materials/qualtrics/input/reponse_type/qualtrics_question_gi.txt"
+paired_items_dir <- "materials/qualtrics/output/paired_items/"
+
 # function to convert txt files to qualtrics txt format
 source("functions/items2qualtrics.R")
-
-# convert txt files to qualtric text format
-output_dir <- "materials/qualtrics/output/separated_items/"
-input_dir <- "materials/qualtrics/input/reponse_type/qualtrics_question_gi.txt"
-
 
 # does it worth it to add this to the end of textual item preparation?
 problems_numbered_ordered_responses_flat <- as.list(unlist(problems_numbered_ordered_responses, recursive = TRUE))
 
-invisible(lapply(problems_numbered_ordered_responses_flat, function(x) {items2qualtrics(list_of_items = x, inputdir = input_dir, outputdir = output_dir)}))
+invisible(lapply(problems_numbered_ordered_responses_flat, function(x) {items2qualtrics(list_of_items = x, inputdir = response_types_dir, outputdir = separated_item_dir)}))
 
 # pair items: different context, same presentation format, different ppv prob, same response type
 # function to pair items
 source("functions/pair_items.R")
 # items_txt <- dir(output_dir, pattern = ".txt")
-txt_files <- dir("materials/qualtrics/output/separated_items/", pattern = ".txt")
+txt_files <- dir(separated_item_dir, pattern = ".txt")
 twins <- character(length(items_txt)/2)
-output_dir <- "materials/qualtrics/output/paired_items/"
 
 # debug(pair_items)
-invisible(lapply(txt_files, function(x) {pair_items(x, twins, outputdir = output_dir)}))
+invisible(lapply(txt_files, function(x) {pair_items(x, twins, outputdir = paired_items_dir)}))
 

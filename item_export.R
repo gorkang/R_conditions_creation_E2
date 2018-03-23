@@ -74,3 +74,7 @@ twins <- character(length(items_txt)/2)
 # debug(pair_items)
 invisible(lapply(txt_files, function(x) {pair_items(x, twins, outputdir = paired_items_dir)}))
 
+
+# Follow-up format and exporting ------------------------------------------
+
+

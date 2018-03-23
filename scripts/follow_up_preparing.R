@@ -57,6 +57,8 @@ for (i in seq(length(follow_up_items))) { # Follow up items LOOP
   fu_to_num =
     rep(follow_up_items[[i]], nrow(numbers_fu))
   
+  # for to iterate through first line of every problem (some of them are the same?)
+  
   for (j in seq(nrow(numbers_fu))) { # set of numbers LOOP
     # j=1
     

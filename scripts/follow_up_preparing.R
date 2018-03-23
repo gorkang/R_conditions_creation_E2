@@ -73,7 +73,8 @@ for (i in seq(length(follow_up_items))) { # Follow up items LOOP
 }
 
 # unlist and list again to get a one level list
-fu_questions <- as.list(unlist(fu_questions, recursive = FALSE))
+fu_questions <- 
+  as.list(unlist(fu_questions, recursive = FALSE))
 
 # Combine follow up items with prevalences
 numbers_nfab <- 
@@ -123,8 +124,6 @@ path2save <- paste0(output_dir, gsub("\\*\\*\\*(.*)\\*\\*\\*.*", "\\1", list_fu)
 cat(item2save, sep = "", file = path2save)
 
 }
-
-gsub("problem context")
 
 # export items to text iterating through the list of follow up items
 invisible(lapply(fu_questions, save_fu))

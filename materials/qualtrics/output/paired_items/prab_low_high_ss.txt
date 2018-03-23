@@ -1,6 +1,0 @@
-[[AdvancedFormat]]
-[[Question:Text]]
-<span style="font-size:22px;">Suppose the following statistics are known about women at age 20 who participate in a routine prenatal screening test to detect Trisomy 21, a blood test that detects the presence of an extra chromosome 21.<br><br>Imagine a group of 2000 women that go through a massive screening:<br><br><br>1% are pregnant with a fetus with Trisomy 21 at the time of the screening.<br>0.9% are pregnant with a fetus with Trisomy 21 and will receive a positive test result.<br>2.8% aren't pregnant with a fetus with Trisomy 21 and will still receive a positive mammogram.<br><br>Of those with a positive prenatal test result, how many would you expect to actually have trisomy 21?</span>[[PageBreak]]
-[[AdvancedFormat]]
-[[Question:Text]]
-<span style="font-size:22px;">Suppose the following statistics are known about women at age 40 who participate in a routine mammogram screening, an X-ray of the breast tissue that detects tumors.<br><br>Imagine a group of 2000 women that go through a massive screening:<br><br><br>2% have breast cancer at the time of the screening.<br>1.9% have breast cancer and and will receive a positive mammogram.<br>0.4% don't have breast cancer and will still receive a positive mammogram.<br><br>Of those with positive mammograms, how many would you expect to actually have breast cancer?</span>

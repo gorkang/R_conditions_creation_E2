@@ -1,9 +1,0 @@
-[[AdvancedFormat]]
-
-<span style="font-size:22px;">Suppose the following statistics are known about women at age 20 who participate in a routine mammogram screening, an X-ray of the breast tissue that detects tumors.<br><br>Imagine a group of 2000 women that go through a massive screening:<br><br><br>Women with breast cancer who undergo the test have 73 chances out of 2000 of having a positive result.<br>In 18 of these 73 chances, the test result is correctly positive.<br>In the remaining 55, the test result is incorrectly positive.<br><br>Of those with positive mammograms, how many would you expect to actually have breast cancer?</span>
-[[Choices]]
-<span style="font-size: 16px;">Very few<br>(0-20%)</span>
-<span style="font-size: 16px;">Few<br>(21-40%)</span>
-<span style="font-size: 16px;">Half<br>(41-60%)</span>
-<span style="font-size: 16px;">Quite<br>(61-80%)</span>
-<span style="font-size: 16px;">Many<br>(81-100%)</span>

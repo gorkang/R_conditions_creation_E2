@@ -1,6 +1,0 @@
-[[AdvancedFormat]]
-[[Question:Text]]
-<span style="font-size:22px;">Suppose the following statistics are known about women at age 40 who participate in a routine prenatal screening test to detect Trisomy 21, a blood test that detects the presence of an extra chromosome 21.<br><br>Imagine a group of 2000 women that go through a massive screening:<br><br><br>Women pregnant with a fetus with Trisomy 21 who undergo the test has 46 chances out of 2000 of having a positive result.<br><br>In 38 of these 46 chances, the test result is correctly positive.<br><br>In the remaining 8, the test result is incorrectly positive.</span>[[PageBreak]]
-[[AdvancedFormat]]
-[[Question:Text]]
-<span style="font-size:22px;">Suppose the following statistics are known about women at age 20 who participate in a routine mammogram screening, an X-ray of the breast tissue that detects tumors.<br><br>Imagine a group of 2000 women that go through a massive screening:<br><br><br>Women with breast cancer who undergo the test have 73 chances out of 2000 of having a positive result.<br><br>In 18 of these 73 chances, the test result is correctly positive.<br><br>In the remaining 55, the test result is incorrectly positive.</span>

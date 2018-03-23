@@ -45,9 +45,9 @@ pair_items <- function(txt_files, twins, outputdir) {
   b <- readChar(con = b_to_read, nchars = file.info(b_to_read)$size)
   
   # output file name
-  file_out_name <- paste(first_twin_info[2], first_twin_info[3], second_twin_info[3], first_twin_info[4], sep = "_")
+  file_out_name <- paste(first_twin_info[2], paste0(first_twin_info[1], first_twin_info[3]), paste0(second_twin_info[1], second_twin_info[3]), first_twin_info[4], sep = "_")
   # print binded items to txt
   dir.create(outputdir, showWarnings = FALSE, recursive = TRUE)
-  cat(a, b, sep = paste0(qualtrics_codes$pagebreak, "\n"), file = paste0(outputdir, file_out_name))
+  cat(a, b, sep = paste0("\n", qualtrics_codes$pagebreak, "\n"), file = paste0(outputdir, file_out_name))
   
 }

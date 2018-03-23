@@ -72,6 +72,6 @@ txt_files <- dir("materials/qualtrics/output/separated_items/", pattern = ".txt"
 twins <- character(length(items_txt)/2)
 output_dir <- "materials/qualtrics/output/paired_items/"
 
+# debug(pair_items)
 invisible(lapply(txt_files, function(x) {pair_items(x, twins, outputdir = output_dir)}))
-
 

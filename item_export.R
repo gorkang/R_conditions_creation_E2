@@ -58,17 +58,11 @@ source("functions/items2qualtrics.R")
 output_dir <- "materials/qualtrics/output/separated_items/"
 input_dir <- "materials/qualtrics/input/reponse_type/qualtrics_question_gi.txt"
 
-# This used to be a lapply, now it's a for. 
-# lapply(problems_numbered_ordered_responses, function(x) {items2qualtrics(list_of_items = x, inputdir = input_dir, outputdir = output_dir)})
 
-for (a in seq(length(problems_numbered_ordered_responses))) {
-  # a=1
-  for (b in seq(length(problems_numbered_ordered_responses[[a]]))) {
-    # b=1
-    items2qualtrics(problems_numbered_ordered_responses[[a]][[b]], inputdir = input_dir, outputdir = output_dir)
-    
-  }
-}
+# does it worth it to add this to the end of textual item preparation?
+problems_numbered_ordered_responses_flat <- as.list(unlist(problems_numbered_ordered_responses, recursive = TRUE))
+
+invisible(lapply(problems_numbered_ordered_responses_flat, function(x) {items2qualtrics(list_of_items = x, inputdir = input_dir, outputdir = output_dir)}))
 
 # pair items: different context, same presentation format, different ppv prob, same response type
 # function to pair items

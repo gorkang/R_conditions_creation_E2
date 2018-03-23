@@ -1,10 +1,8 @@
 # TODO: create a qualtrics-compatible response type text
-# the only response type that is customized (to disease context) is the sequential guided question.
-# all the others should be generics.
-
-# Possible option. Create a txt file with each response type in qualtrics-comp format (sg response type will have two files)?
-# Keep in mind that all questions, but global intuitive, require a javascript snippet that has to be manually added in the qualtrics website.
-# Therefore, their txt files should be as similar as they can so only the javascript snippet is manually adeded.
+# [X] global intuituive
+# [ ] global systematic
+# [ ] sequential guided
+# [ ] sequential simple
 
 # TODO: decide how many items per block and how to contruc blocks.
 
@@ -49,8 +47,6 @@
     qualtrics_question_textentry <- "[[Question:TE]]"
     # Answers
     qualtrics_question_choices <- "[[Choices]]"
-
-
 
 # Item formating ----------------------------------------------------------
   

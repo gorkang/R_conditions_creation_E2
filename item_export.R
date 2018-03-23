@@ -17,24 +17,24 @@
 
 
 # Format parameters -------------------------------------------------------
+# font size
+choice_size <- 16
+question_size <- 22
 
 # HTML codes ******************************
 html_codes <- list(
   # font
   linebreak = "<br>",
   italic = "<i>ITALIZE_THIS</i>",
-  # font size
-  choice_size = 16,
-  question_size = 22,
   # font size templates
   question_font_size =
-    paste0('<span style="font-size:', q_question_size, 'px;">QUESTION_TEXT_TO_FORMAT</span>'),
+    paste0('<span style="font-size:', question_size, 'px;">QUESTION_TEXT_TO_FORMAT</span>'),
   choices_font_size =
-    paste0('<span style="font-size:', q_choice_size, 'px;">CHOICES_TEXT_TO_FORMAT</span>')
+    paste0('<span style="font-size:', choice_size, 'px;">CHOICES_TEXT_TO_FORMAT</span>')
 )    
 
 # Qualtrics codes *************************
-qualtric_codes <- list(
+qualtrics_codes <- list(
   # General
   advanced_format = "[[AdvancedFormat]]",
   block_start = "[[Block:block_name]]",
@@ -55,6 +55,19 @@ qualtric_codes <- list(
 source("functions/items2qualtrics.R")
 
 # convert txt files to qualtric text format
-invisible(lapply(problems_numbered_ordered_responses, function(x) {lapply(x, items2qualtrics)}))
+output_dir <- "materials/qualtrics/output/"
+input_dir <- "materials/qualtrics/input/reponse_type/qualtrics_question_gi.txt"
 
+# This used to be a lapply, now it's a for. 
+# lapply(problems_numbered_ordered_responses, function(x) {items2qualtrics(list_of_items = x, inputdir = input_dir, outputdir = output_dir)})
 
+for (a in seq(length(problems_numbered_ordered_responses))) {
+  # a=1
+  for (b in seq(length(problems_numbered_ordered_responses[[a]]))) {
+    # b=1
+    items2qualtrics(problems_numbered_ordered_responses[[a]][[b]], inputdir = input_dir, outputdir = output_dir)
+    
+  }
+}
+
+# pair items: different context, same presentation format, different ppv prob, same response type

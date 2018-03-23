@@ -1,7 +1,9 @@
-items2qualtrics <- function(list_of_items) {
+items2qualtrics <- function(list_of_items, inputdir, outputdir) {
   
   # item to format to qualtrics
   # item <- problems_numbered_ordered_responses[[1]][[1]]
+  # inputdir <- input_dir
+  # outputdir <- output_dir
   item <- list_of_items
   
   # 00. get item name (this should be the actual file-name) ####
@@ -27,22 +29,22 @@ items2qualtrics <- function(list_of_items) {
   item_responseless <- gsub(regex_pattern_breaklines, "\\1\\2\\3\\4", item_responseless)
   
   # 03. Item (without response type)
-  html_item_responseless <- gsub("QUESTION_TEXT_TO_FORMAT", item_responseless, html_question_font_size)
-  html_item_responseless_breaks <- gsub("\n", hmtl_linebreak, html_item_responseless)
+  html_item_responseless <- gsub("QUESTION_TEXT_TO_FORMAT", item_responseless, html_codes$question_font_size)
+  html_item_responseless_breaks <- gsub("\n", html_codes$linebreak, html_item_responseless)
   
   # 04. response type
   # Global intuitive response type
-  hmtl_response_type <- readChar(con = "materials/qualtrics/input/qual_question_gb.txt", nchars = file.info("materials/qualtrics/input/qual_question_gb.txt")$size)
+  hmtl_response_type <- readChar(con = inputdir, nchars = file.info(inputdir)$size)
   
   # 05. Combine item elements
   
   if (grepl("_gi", item_name)) {
     
     item_to_export <- paste(
-      qualtrics_advanced_format, "\n",
-      qualtrics_question_singlechoice_horizontal, "\n",
+      qualtrics_codes$advanced_format, "\n",
+      qualtrics_codes$singlechoice_horizontal, "\n",
       html_item_responseless_breaks, "\n",
-      qualtrics_question_choices, "\n",
+      qualtrics_codes$question_choices, "\n",
       hmtl_response_type
       
       , sep = "")
@@ -51,8 +53,8 @@ items2qualtrics <- function(list_of_items) {
   } else if (!grepl("_gi", item_name)) {
     
     item_to_export <- paste(
-      qualtrics_advanced_format, "\n",
-      qualtrics_question_text, "\n",
+      qualtrics_codes$advanced_format, "\n",
+      qualtrics_codes$question_text, "\n",
       html_item_responseless_breaks
       
       , sep = "")
@@ -60,6 +62,7 @@ items2qualtrics <- function(list_of_items) {
   }
   
   # 06. Write item to txt file
-  cat(item_to_export, file = paste0("materials/qualtrics/output/", item_name, ".txt"))
+  dir.create(outputdir, showWarnings = FALSE, recursive = TRUE)
+  cat(item_to_export, file = paste0(outputdir, item_name, ".txt"))
   
 }

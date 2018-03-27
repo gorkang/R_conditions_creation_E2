@@ -144,7 +144,7 @@ graph_output_folder <- "materials/Presentation_format/nppi/input/graphs/png/"
       }
   }
  
-rm(graph_png_file_name,png_file_pathname,age_prevalence_plot)
+rm(graph_png_file_name,png_file_pathname)
 rm(age_ppv_to_plot,dpi,graph_output_folder,height,width,x_axis_label,y_axis_label)
 ##### Compose new-paradigm brochure ###################################################
 

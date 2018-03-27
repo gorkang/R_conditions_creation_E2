@@ -79,7 +79,7 @@ for (i in seq(length(problems_numbered))) {
       
       # paste question with problem and save it to the list
       problems_numbered[[i]][[j]] <-
-        paste0(problems_numbered[[i]][[j]], current_question, "\n\n")
+        paste0(problems_numbered[[i]][[j]], current_question, "\n")
       
     }
     
@@ -143,6 +143,7 @@ responses <- lapply(response_type_files_path,
 names(responses) <- gsub(".txt", "", response_type_files)
 
 rm(response_types_dir, response_type_files, response_type_files_path)
+
 ### Combine textual problems with response types ############################
 
 # Bind response types to problems
@@ -171,7 +172,7 @@ for (problem_loop in 1:length(problems_numbered_ordered_responses)) {
 
 # Special modifications (not apllied to every item, question, resp --------
 
-## Eliminate PPV question in positive framework (pfab) problems.
+## Eliminate PPV question in positive framework (pfab) problems. Only for sequential guided questions.
 
 # Loop to go through list of questions 
 for (q in seq(length(questions))) {
@@ -188,7 +189,7 @@ for (q in seq(length(questions))) {
     
     # Loop to go through items of each context x presentation format
     for (i in seq(length(problems_numbered_ordered_responses[[p]]))) {
-      # i=1
+      # i=3
       
       # If a positive framework problem with the current question is on the loop, then the ppv question is eliminated
       if (grepl(paste0(current_question_prefix, "_pfab.*_sg"), problems_numbered_ordered_responses[[p]][i])) {
@@ -206,7 +207,8 @@ for (q in seq(length(questions))) {
 
 
 ## Personalize sequential guided response type to accomodate to medical condition
-sg_fillers <- read_csv("materials/Response_type/sg_fillers/sg_fillers.csv", col_types = "cccc")
+sg_fillers <- 
+  read_csv("materials/Response_type/sg_fillers/sg_fillers.csv", col_types = "cccc")
 
 # walk through 16 items
 for (cB in seq(problems_numbered_ordered_responses)) {
@@ -267,6 +269,7 @@ contexts <- lapply(context_files_path,
 names(contexts) <- gsub(".txt", "", context_files)
 
 rm(context_dir,context_files,context_files_path)
+
 # Paste problem contexts at the beginning of each problem, 
 # and customize according to condition (trisomy 21 & breast cancer) and probability (high & low)
 
@@ -314,3 +317,9 @@ for (cB in seq(problems_numbered_ordered_responses)) {
 }
 
 rm(numbers_item, numbers_prevalence,contexts)
+
+# change 5 breaklines for 3 breaklines
+# lapply(problems_numbered_ordered_responses, function(x) {grepl("\n\n\n\n\n", x)})
+problems_numbered_ordered_responses <- lapply(problems_numbered_ordered_responses, function(x) {gsub("\n\n\n\n\n", "\n\n\n", x)})
+
+

@@ -69,10 +69,10 @@ invisible(lapply(problems_numbered_ordered_responses_flat, function(x) {items2qu
 source("functions/pair_items.R")
 # items_txt <- dir(output_dir, pattern = ".txt")
 txt_files <- dir(separated_item_dir, pattern = ".txt")
-twins <- character(length(items_txt)/2)
+twins <- character(length(txt_files)/2)
 
 # debug(pair_items)
-invisible(lapply(txt_files, function(x) {pair_items(x, twins, outputdir = paired_items_dir)}))
+invisible(lapply(txt_files, function(x) {pair_items(txt_files = x, separated_item_dir = separated_item_dir, twins = twins, outputdir = paired_items_dir)}))
 
 
 # Follow-up format and exporting ------------------------------------------

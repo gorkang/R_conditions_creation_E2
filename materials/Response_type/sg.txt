@@ -1,5 +1,3 @@
-[response_start]
 ____ women receive a positive __TEST__ that correctly indicates the presence of __CONDITION__,
 and ____ women receive a positive __TEST__ that incorrectly indicates the presence of __CONDITION__.
-Therefore, given that the __TEST__ indicates the signs of __CONDITION__, the probability that __WHO__ actually has __CONDITION__ is ____ out of ____
-[response_end]
+Therefore, given that the __TEST__ indicates the signs of __CONDITION__, the probability that __WHO__ actually has __CONDITION__ is ____ out of ____.

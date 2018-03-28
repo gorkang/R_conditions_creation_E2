@@ -1,6 +1,3 @@
-# TODO: add placeholders to context, question, response types, ect.
-# TODO: add placeholders to the procesing of textual items
-
 # Text-only presentation formats ------------------------------------------
 
 ## Numbers sets ----------------------------------------------------------------
@@ -14,22 +11,21 @@ numbers_prevalence <-
   readxl::read_xls("materials/Numbers/numbers_bayes.xls", sheet = 2)#, col_types = cols())
 
 # Read problems from text-files
-textual_formats <- c("nfab", "pfab", "prab", "prre")
 
 ### Natural Frequency
-read_txt_items_to_list(textual_formats[1], "nfab_items")
+read_txt_items_to_list("fnab", "nfab_items")
 
 
 ### Positive framework
-read_txt_items_to_list(textual_formats[2], "pfab_items")
+read_txt_items_to_list("pfab", "pfab_items")
 
 
 ### Probability Absolute
-read_txt_items_to_list(textual_formats[3], "prab_items")
+read_txt_items_to_list("prab", "prab_items")
 
 
 ### Probability Relative
-read_txt_items_to_list(textual_formats[4], "prrl_items")
+read_txt_items_to_list("prre", "prrl_items")
 
 ## Bind textual presentation formats -------------------------------------------
 
@@ -70,9 +66,8 @@ rm(questions_dir, question_files, question_files_path)
 for (i in seq(length(problems_numbered))) {
   # i=1
   
-  if (grepl("ca|pr", names(problems_numbered[i]))) {
+  if (grepl("ca|pf|pr", names(problems_numbered[i]))) {
     
-    # get question name from problems numbered name
     current_question_name <- 
       paste0(gsub("(ca|pr).*", "\\1", names(problems_numbered[i])), "_question")
     
@@ -84,7 +79,7 @@ for (i in seq(length(problems_numbered))) {
       
       # paste question with problem and save it to the list
       problems_numbered[[i]][[j]] <-
-        paste0(problems_numbered[[i]][[j]], current_question)
+        paste0(problems_numbered[[i]][[j]], current_question, "\n")
       
     }
     
@@ -99,7 +94,7 @@ for (i in seq(length(problems_numbered))) {
 
 ## Reorder items ----------------------------------------------------------------
 
-problems_numbered_ordered <-
+problems_numbered_ordered <- 
   c(
     
     # LOW PPV PROBLEMS
@@ -167,7 +162,7 @@ for (problem_loop in 1:length(problems_numbered_ordered_responses)) {
     
     # Add response bit to condition string
     problems_numbered_ordered_responses[[problem_loop]][[item_loop]] <- 
-      gsub("(\\*\\*.*[a-zA-Z])(*\\*\\*.*)", paste0("\\1_", responses_names[item_loop], "\\2"), problems_numbered_ordered_responses[[problem_loop]][[item_loop]])
+      gsub("([w|h])\\*\\*\n", paste0("\\1_", responses_names[item_loop], "**\n"), problems_numbered_ordered_responses[[problem_loop]][[item_loop]])
   }
   
   if (problem_loop == length(problems_numbered_ordered_responses)) {
@@ -176,6 +171,7 @@ for (problem_loop in 1:length(problems_numbered_ordered_responses)) {
 }
 
 # Special modifications (not apllied to every item, question, resp --------
+
 ## Eliminate PPV question in positive framework (pfab) problems. Only for sequential guided questions.
 
 # Loop to go through list of questions 
@@ -183,9 +179,9 @@ for (q in seq(length(questions))) {
   # q=1
   
   # get current question prefix (ca, pr)
-  current_question_prefix <- gsub("(ca|pr).*", "\\1", names(questions[q]))
+  current_question_prefix <- substring(names(questions[q]), 0, 2)
   # get current question
-  # current_question  <- gsub("\\[question_start\\]","",questions[[q]])
+  current_question  <- gsub("\\?\\n\\n\\n","",questions[[q]])
   
   # Loop to go through set of items (context x presentation format)
   for (p in seq(length(problems_numbered_ordered_responses))) {
@@ -199,13 +195,13 @@ for (q in seq(length(questions))) {
       if (grepl(paste0(current_question_prefix, "_pfab.*_sg"), problems_numbered_ordered_responses[[p]][i])) {
         
         problems_numbered_ordered_responses[[p]][i] <-
-          gsub("\\[question_start\\].*\\[question_end\\]\\n", "", problems_numbered_ordered_responses[[p]][i])
+          gsub(paste0(current_question, "\\?\\n\\n\\n"), "", problems_numbered_ordered_responses[[p]][i])
         
       }
     }
   }
   if (q == length(questions)) {
-    rm(q,p,i,current_question_prefix)
+    rm(q,p,i,current_question,current_question_prefix)
   }
 }
 
@@ -225,14 +221,14 @@ for (cB in seq(problems_numbered_ordered_responses)) {
     current_item <- problems_numbered_ordered_responses[[cB]][[cS]]
     
     if (grepl("_sg", current_item) & grepl("ca_", current_item)) {
-      
+     
       fillers <- filter(sg_fillers, item_cond == "cancer")
       
       # Replace things with CANCER related stuff
       current_item <- gsub("__CONDITION__", fillers[["condition"]],
                            gsub("__TEST__", fillers[["test"]], 
                                 gsub("__WHO__", fillers[["who"]], current_item)))
-      
+     
     } else if (grepl("_sg", current_item) & grepl("pr_", current_item)) {
       
       fillers <- filter(sg_fillers, item_cond == "pregnant")
@@ -286,41 +282,34 @@ for (cB in seq(problems_numbered_ordered_responses)) {
     
     # Get item of current loop
     current_item <- problems_numbered_ordered_responses[[cB]][[cS]]
-    
-    # get current problem context using current item
-    current_context <- paste0(gsub(".*(ca|pr).*", "\\1", current_item), "_context")
-    
-    # get problem prob (this erase everything that is not a "low" or "high" word)
-    current_prob <- gsub(".*_(low)_.*|.*_(high)_.*", "\\1\\2", current_item)
-    
-    current_format <-
-      gsub(paste0('.*(', paste(textual_formats, collapse = "|"), ').*'), 
-           "\\1", current_item)
-    
-    # paste problem context to current item
-    current_item <- 
-      gsub("(.*)(\\[first_piece\\].*)", paste0("\\1", contexts[[current_context]], "\\2"), current_item)
-    # current_item <- gsub("(\\*\\*\n\n)", paste0("\\1", contexts[[current_context]]), current_item)
-    
-    # get age of current item using item label (at the beginnign of each item)
-    prob_age <- 
-      filter(numbers_item,
-             format == current_format & 
-               prob == current_prob) %>% select(age) %>% as.numeric
-    
-    # get prevalence of current item (using prob_age)
-    prob_prevalence <- 
-      filter(numbers_prevalence,
-             age == prob_age) %>% select(prevalence_02) %>% as.numeric
-    
-    # fill problem context with age and prevalence info.
-    current_item <- 
-      gsub("prevalence_02_variable", prob_prevalence,
-           gsub("age_variable", prob_age, current_item))
-    
-    # save item with filled problem context
-    problems_numbered_ordered_responses[[cB]][[cS]] <- current_item
-    
+  
+  # get current problem context using current item
+  current_context <- paste0(substr(current_item, 3,4), "_context")
+  
+  # get problem prob (this erase everything that is not a "low" or "high" word)
+  current_prob <- gsub(".*_(low)_.*|.*_(high)_.*", "\\1\\2", current_item)
+  
+  
+  # paste problem context to current item
+  current_item <- gsub("(\\*\\*\n\n)", paste0("\\1", contexts[[current_context]]), current_item)
+  
+  # get age of current item using item label (at the beginnign of each item)
+  prob_age <- filter(numbers_item,
+                     format == substr(current_item, 6,9) & 
+                       prob == current_prob) %>% select(age) %>% as.numeric
+  
+  # get prevalence of current item (using prob_age)
+  prob_prevalence <- filter(numbers_prevalence,
+                            age == prob_age) %>% select(prevalence_02) %>% as.numeric
+  
+  # fill problem context with age and prevalence info.
+  current_item <- 
+    gsub("prevalence_02_variable", prob_prevalence,
+         gsub("age_variable", prob_age, current_item))
+  
+  # save item with filled problem context
+  problems_numbered_ordered_responses[[cB]][[cS]] <- current_item
+  
   }
   if (cB == length(problems_numbered_ordered_responses)) {
     rm(cB,cS,current_context,current_item,current_prob,prob_age,prob_prevalence)
@@ -329,9 +318,8 @@ for (cB in seq(problems_numbered_ordered_responses)) {
 
 rm(numbers_item, numbers_prevalence,contexts)
 
-# # change 5 breaklines for 3 breaklines
-# # lapply(problems_numbered_ordered_responses, function(x) {grepl("\n\n\n\n\n", x)})
-# problems_numbered_ordered_responses <-
-#   lapply(problems_numbered_ordered_responses, function(x) {gsub("\n\n\n\n\n", "\n\n\n", x)})
+# change 5 breaklines for 3 breaklines
+# lapply(problems_numbered_ordered_responses, function(x) {grepl("\n\n\n\n\n", x)})
+problems_numbered_ordered_responses <- lapply(problems_numbered_ordered_responses, function(x) {gsub("\n\n\n\n\n", "\n\n\n", x)})
 
 

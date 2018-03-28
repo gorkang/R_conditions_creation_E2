@@ -1,36 +1,38 @@
-problems_numbered_ordered_responses_flat <- unlist(problems_numbered_ordered_responses, recursive = TRUE)
 
-item_test <- problems_numbered_ordered_responses_flat[[8]]
+# There are 16 unique(ish) prevalences (2 contexts x 4 formats x 2 ppv prob)
+# There are 2 follow-up risk (1%, 10%)
+# Therefore, there are 32 possible follow-up items (e.g. ca_nfab_low_high; ppvLow_riskHigh)
+
+# TODO: iterate through 16 prevalences and paste them into the follow-up template (1%, 10%). Use the same string where the prevalence is to get the name
+
+
+item_test <- problems_numbered_ordered_responses[[10]]
 
 item_test %>% cat
 
-item_test
 
-# very horrible regex to grab the prevalence of each problem. the regex is anchored to breaklines and "Suppose" and "Imagine"
-regex_first_line <- ".*([0-9]{2}.*[0-9]{4}.*at the time of the screening).*"
-regex_first_line_a <-   ".*\\n\\n.*\\n\\n.*\\n\\n\\n(.*)\\n\\n.*\\n\\n.*\\n\\n\\n.*\\n\\n\\n\\n\\n.*\\n"
-regex_first_line_a <-   ".*\\n\\n.*\\n\\n.*\\n\\n\\n(.*)\\n\\n.*\\n\\n.*\\n\\n\\n.*\\n.*"
+uniqchars <- function(x) unique(strsplit(x, "")[[1]]) 
 
-# entre la pregunta y el response type dejar sólo 2 saltos de linea.
-
-gsub(regex_first_line, "\\1", item_test)
-gsub(regex_first_line_a, "\\1", item_test)
+response_type_regex <-
+  dir("materials/Response_type/", pattern = ".txt") %>% 
+  gsub("\\.txt", "", .) %>% paste(., collapse = "") %>% 
+  uniqchars() %>% paste(., collapse = "")
 
 
-
-lapply(problems_numbered_ordered_responses_flat, function(x) {gsub(regex_first_line_a, "\\1", x)})
-
+gsub(paste0("\\*\\*(.*)_[", response_type_regex, "]{2}\\*\\*.*"), "\\1", problems_numbered_ordered_responses)
 
 
-item <- item_test
+# This snippet get only names
+# unique_prevalences_names <-
+#   problems_numbered_ordered_responses[seq(1, length(problems_numbered_ordered_responses), 4)] %>% 
+#   map(~gsub(paste0("\\*\\*(.*)_[", response_type_regex, "]{2}\\*\\*(.*)"), "\\1\\2", .x)) %>% unlist
 
-# 00. get item name (this should be the actual file-name) ####
-# item_name <- gsub("\\*\\*(.*)\\*\\*.*", "\\1", item)
-
-# 01. get item w/o name
-item_nameless <- gsub("\\*\\*.*\\*\\*\n\n(.*)", "\\1", item)
-
-item_responseless <- gsub("(.*)\n\n\n\n\n.*", "\\1", item_nameless)
+# names and prevalences
+unique_prevalences <- 
+  problems_numbered_ordered_responses[seq(1, length(problems_numbered_ordered_responses), 4)] %>% 
+    map(~gsub(paste0("(\\*\\*.*)_[", response_type_regex, "]{2}(\\*\\*).*\\[first_piece\\]\\n(.*)\\n\\[second_piece\\].*"), "\\1\\2\\3", .x)) %>% unlist
+  
 
 
-gsub(, "\\1", item_responseless)
+
+

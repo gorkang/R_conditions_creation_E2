@@ -14,21 +14,22 @@ numbers_prevalence <-
   readxl::read_xls("materials/Numbers/numbers_bayes.xls", sheet = 2)#, col_types = cols())
 
 # Read problems from text-files
+textual_formats <- c("nfab", "pfab", "prab", "prre")
 
 ### Natural Frequency
-read_txt_items_to_list("fnab", "nfab_items")
+read_txt_items_to_list(textual_formats[1], "nfab_items")
 
 
 ### Positive framework
-read_txt_items_to_list("pfab", "pfab_items")
+read_txt_items_to_list(textual_formats[2], "pfab_items")
 
 
 ### Probability Absolute
-read_txt_items_to_list("prab", "prab_items")
+read_txt_items_to_list(textual_formats[3], "prab_items")
 
 
 ### Probability Relative
-read_txt_items_to_list("prre", "prrl_items")
+read_txt_items_to_list(textual_formats[4], "prrl_items")
 
 ## Bind textual presentation formats -------------------------------------------
 

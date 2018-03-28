@@ -1,10 +1,9 @@
 ```{r item_preparation, include=FALSE}
+
 # Item preparation
   source("scripts/item_preparation.R")
 
-
 # Read images
-
 # Fact-box
   # Directory
   fact_box_dir <- "materials/Presentation_format/fbpi/output/"
@@ -16,6 +15,10 @@
   new_paradigm_dir <- "materials/Presentation_format/nppi/output/"
   # Fact-box img files
   new_paradigm_imgs <- dir(new_paradigm_dir)
+  
+  # Function for displaying items
+  source("functions/funcs_item_displaying.R")
+  
 ```
     
 # Breast Cancer Items
@@ -25,25 +28,28 @@
 ### NF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, ca_nfab_low}
-invisible(lapply(problems_numbered_ordered_responses[grep("ca_nfab_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+
+print_cat_items("ca_nfab_low")
+
 ```
 
 ### PR ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, ca_prab_low}
-invisible(lapply(problems_numbered_ordered_responses[grep("ca_prab_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+
+print_cat_items("ca_prab_low")
 ```
 
 ### PR RELATIVE
 
 ```{r, results='asis', echo=FALSE, ca_prre_low}
-invisible(lapply(problems_numbered_ordered_responses[grep("ca_prre_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+print_cat_items("ca_prre_low")
 ```
 
 ### PF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, ca_pfab_low}
-invisible(lapply(problems_numbered_ordered_responses[grep("ca_pfab_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+print_cat_items("ca_pfab_low")
 ```
 
 ### FB PICTORIAL
@@ -189,25 +195,25 @@ cat(responses[[4]])
 ### NF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, ca_nfab_high}
-invisible(lapply(problems_numbered_ordered_responses[grep("ca_nfab_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+print_cat_items("ca_nfab_high")
 ```
 
 ### PR ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, ca_prab_high}
-invisible(lapply(problems_numbered_ordered_responses[grep("ca_prab_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+print_cat_items("ca_prab_high")
 ```
 
 ### PR RELATIVE
 
 ```{r, results='asis', echo=FALSE, ca_prre_high}
-invisible(lapply(problems_numbered_ordered_responses[grep("ca_prre_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+print_cat_items("ca_prre_high")
 ```
 
 ### PF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, ca_pfab_high}
-invisible(lapply(problems_numbered_ordered_responses[grep("ca_pfab_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+print_cat_items("ca_pfab_high")
 
 ```
 
@@ -356,25 +362,25 @@ cat(responses[[4]])
 ### NF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, pr_nfab_low}
-invisible(lapply(problems_numbered_ordered_responses[grep("pr_nfab_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+print_cat_items("pr_nfab_low")
 ```
 
 ### PR ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, pr_prab_low}
-invisible(lapply(problems_numbered_ordered_responses[grep("pr_prab_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+print_cat_items("pr_prab_low")
 ```
 
 ### PR RELATIVE
 
 ```{r, results='asis', echo=FALSE, pr_prre_low}
-invisible(lapply(problems_numbered_ordered_responses[grep("pr_prre_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+print_cat_items("pr_prre_low")
 ```
 
 ### PF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, pr_pfab_low}
-invisible(lapply(problems_numbered_ordered_responses[grep("pr_pfab_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+print_cat_items("pr_pfab_low")
 ```
 
 ### FB PICTORIAL
@@ -519,25 +525,25 @@ cat(responses[[4]])
 ### NF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, pr_nfab_high}
-invisible(lapply(problems_numbered_ordered_responses[grep("pr_nfab_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+print_cat_items("pr_nfab_high")
 ```
 
 ### PR ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, pr_prab_high}
-invisible(lapply(problems_numbered_ordered_responses[grep("pr_prab_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+print_cat_items("pr_prab_high")
 ```
 
 ### PR RELATIVE
 
 ```{r, results='asis', echo=FALSE, pr_prre_high}
-invisible(lapply(problems_numbered_ordered_responses[grep("pr_prre_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+print_cat_items("pr_prre_high")
 ```
 
 ### PF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, pr_pfab_high}
-invisible(lapply(problems_numbered_ordered_responses[grep("pr_pfab_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+print_cat_items("pr_pfab_high")
 ```
 
 ### FB PICTORIAL

@@ -5,4 +5,3 @@ hit_rate_01% have breast cancer and and will receive a positive mammogram.
 [third_piece]
 false_positive_01% don't have breast cancer and will still receive a positive mammogram.
 [item_end]
-

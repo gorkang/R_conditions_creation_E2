@@ -5,4 +5,3 @@ hit_rate_01% of those with breast cancer will receive a positive mammogram.
 [third_piece]
 false_positive_01% of the remaining cases without breast cancer will still receive a positive mammogram.
 [item_piece]
-

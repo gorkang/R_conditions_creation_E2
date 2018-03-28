@@ -5,4 +5,3 @@ hit_rate_01% of those pregnant with a fetus with Trisomy 21 will receive a posit
 [third_piece]
 false_positive_01% of the remaining cases not pregnant with a fetus with Trisomy 21 will still receive a positive mammogram.
 [item_end]
-

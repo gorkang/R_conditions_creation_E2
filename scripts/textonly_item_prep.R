@@ -329,9 +329,7 @@ for (cB in seq(problems_numbered_ordered_responses)) {
 
 rm(numbers_item, numbers_prevalence,contexts)
 
-# # change 5 breaklines for 3 breaklines
-# # lapply(problems_numbered_ordered_responses, function(x) {grepl("\n\n\n\n\n", x)})
-# problems_numbered_ordered_responses <-
-#   lapply(problems_numbered_ordered_responses, function(x) {gsub("\n\n\n\n\n", "\n\n\n", x)})
-
+# convert list with problems to a 1 level list with as many elements as problems
+problems_numbered_ordered_responses <-
+  as.list(unlist(problems_numbered_ordered_responses, recursive = TRUE, use.names = FALSE))
 

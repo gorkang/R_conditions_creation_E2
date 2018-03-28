@@ -6,7 +6,13 @@ pair_items <-
     outputdir # dir to save paired items
     ) { 
   
+  # # for debugging:
+  #   txt_files <- txt_files[1]
+  #   separated_item_dir <- separated_item_dir
+  #   twins <- twins
+  #   outputdir <- paired_items_dir
     
+      
 # ############################################################################################
 # This script receives an item name and looks for the opposite context and ppv prob item.
 # The cat the two items with a qualtrics page break between them, and save them to a txt file.

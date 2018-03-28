@@ -1,0 +1,31 @@
+# This function takes strings and remove all strings defined on placeholders vector, and
+# outputs the new string
+
+remove_placeholders <- function(items) {
+  
+  # all placeholders within items, contexts, questions and responses must be in this vector
+  placeholders <- 
+    c("first_piece","second_piece","third_piece","item_end",
+      "context_start","context_mid","context_end",
+      "question_start","question_end",
+      "response_start","response_mid","response_end")  
+  
+  # create regex to detect all placeholders
+  placeholders_regex <-
+    paste(paste0("\\[",placeholders, "\\]"), collapse = "|")
+  
+  # remove placeholders
+  gsub(placeholders_regex, "", items)
+  
+}
+
+
+# This function takes a string indicating a condition [problemContext_presentationFormat_ppvProb].
+# Each info must be separated by a "_".
+# Also, this function relys on remove_placeholders, that's the reason why they are on the same script.
+
+print_cat_items <- function(condition) {
+  
+  remove_placeholders(grep(condition, problems_numbered_ordered_responses, value = TRUE)) %>% cat(sep = "\n****************************\n")
+  
+}

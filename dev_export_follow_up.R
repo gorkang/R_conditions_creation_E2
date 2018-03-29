@@ -33,7 +33,7 @@ unique_prevalences <-
 
 
 
-prev2followUp <- function(prevalence_string, follow_up_dir, outputdir) {
+prev2followUp <- function(prevalence_string, follow_up_dir, outputdir, rmv_placeholders) {
   
   # this_prev <- unique_prevalences[[2]]
   this_prev <- prevalence_string
@@ -62,13 +62,22 @@ prev2followUp <- function(prevalence_string, follow_up_dir, outputdir) {
   # export follow-up items
   dir.create(outputdir, showWarnings = FALSE, recursive = TRUE)
   
-  followUps_items_prev %>% 
-    map(~cat(
-      gsub("\\*\\*\\*.*\\*\\*\\*\\n(.*)", "\\1", .x), # follow-up item without name
-      file = paste0(outputdir, # path to output dir (probably qualtrics folder)
-                    gsub("\\*\\*\\*(.*)\\*\\*\\*.*", "\\1", .x), ".txt"))) %>% # follow-up item name
-    invisible()
-  
+  if (rmv_placeholders == TRUE) {
+    followUps_items_prev %>% 
+      remove_placeholders(., "followup") %>% 
+      map(~cat(
+        gsub("\\*\\*\\*.*\\*\\*\\*\\n(.*)", "\\1", .x), # follow-up item without name
+        file = paste0(outputdir, # path to output dir (probably qualtrics folder)
+                      gsub("\\*\\*\\*(.*)\\*\\*\\*.*", "\\1", .x), ".txt"))) %>% # follow-up item name
+      invisible()
+  } else if (rmv_placeholders == FALSE) {
+    followUps_items_prev %>% 
+      map(~cat(
+        gsub("\\*\\*\\*.*\\*\\*\\*\\n(.*)", "\\1", .x), # follow-up item without name
+        file = paste0(outputdir, # path to output dir (probably qualtrics folder)
+                      gsub("\\*\\*\\*(.*)\\*\\*\\*.*", "\\1", .x), ".txt"))) %>% # follow-up item name
+      invisible()
+  }
 }
 
 
@@ -77,7 +86,7 @@ prev2followUp <- function(prevalence_string, follow_up_dir, outputdir) {
 unique_prevalences %>% 
   map(~prev2followUp(prevalence_string = .x, 
                      follow_up_dir = "materials/Question/Follow_up/output/", 
-                     outputdir = "materials/qualtrics/output/followUp/")) %>% 
+                     outputdir = "materials/qualtrics/output/followUp/", rmv_placeholders = TRUE) ) %>% 
   invisible()
 
 

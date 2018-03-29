@@ -33,7 +33,7 @@ unique_prevalences <-
 
 
 
-prev2followUp <- function(prevalence_string, follow_up_dir) {
+prev2followUp <- function(prevalence_string, follow_up_dir, outputdir) {
   
   # this_prev <- unique_prevalences[[2]]
   this_prev <- prevalence_string
@@ -51,19 +51,33 @@ prev2followUp <- function(prevalence_string, follow_up_dir) {
   followUps_items <- followUps_paths %>% map(~readChar(.x, nchars = file.info(.x)$size))
   
   # replace prevalence placeholder with this prevalence
-  followUps_items %>% 
-    gsub("prevalence_and_context", this_prev_nameless, .) %>%
-    gsub("(\\*\\*\\*.*)(\\*\\*\\*)(.*)", paste0("\\1_ppv", this_prev_ppvProb, "_", this_prev_format, "\\2\\3"), .)
+  followUps_items_prev <- 
+    followUps_items %>% 
+    gsub("prevalence_and_context", this_prev_nameless, .) %>% # insert prevalence within follow-up item
+    gsub("(\\*\\*\\*.*)(\\*\\*\\*)(.*)", # update name
+         paste0("\\1_ppv", 
+                this_prev_ppvProb, "_", # ppv low or high
+                this_prev_format, "\\2\\3"), .) # presentation format
+  
+  # export follow-up items
+  dir.create(outputdir, showWarnings = FALSE, recursive = TRUE)
+  
+  followUps_items_prev %>% 
+    map(~cat(
+      gsub("\\*\\*\\*.*\\*\\*\\*\\n(.*)", "\\1", .x), # follow-up item without name
+      file = paste0(outputdir, # path to output dir (probably qualtrics folder)
+                    gsub("\\*\\*\\*(.*)\\*\\*\\*.*", "\\1", .x), ".txt"))) %>% # follow-up item name
+    invisible()
   
 }
 
 
-prev2followUp(unique_prevalences[[2]], "materials/Question/Follow_up/output/")
+# prev2followUp(unique_prevalences[[2]], "materials/Question/Follow_up/output/")
 
 unique_prevalences %>% 
-  map(~prev2followUp(prevalence_string = .x, follow_up_dir = "materials/Question/Follow_up/output/")) %>% 
-  unlist() %>% as.list() 
+  map(~prev2followUp(prevalence_string = .x, 
+                     follow_up_dir = "materials/Question/Follow_up/output/", 
+                     outputdir = "materials/qualtrics/output/followUp/")) %>% 
+  invisible()
 
-
-# %>% gsub("\\*\\*\\*(.*)\\*\\*\\*.*", "\\1", .) %>% invisible(cat(paste(., collapse = "\n")))
 

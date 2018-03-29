@@ -1,17 +1,18 @@
+[followUp_start]
 Remember that:
-* disease_prevalence problem_context
+* prevalence_and_context
 * In your response to the previous problem you said that, of those with positive mammograms, qualtrics_ppv_answer actually have breast cancer.
-
+[followUp_first_piece]
 Imagine a woman you care about is participating in a routine mammogram screening as the one you saw before to detect breast cancer and receives a positive mammogram.  
-
+[followUp_second_piece]
 The doctor offers her a follow-up test that consists of a biopsy, necessary to confirm the diagnosis. During the procedure, a needle is inserted to sample fluid from a breast cyst.  
-
+[followUp_third_piece]
 The biopsy has a risk_percentage procedure-related risk of complications (for example, infections) that can result in a partial mastectomy.  
-
+[questions_start]
 1. Should she take the follow-up test? [Yes / No]  
-
+[second_question]
 2. How strongly would you recommend her to take the follow-up test. [0-100]
-
+[third_question]
 3. Which factors influenced your recommendation?
 	3.1. How informative the screening test is [slider 0-100]
 	3.2. The need to confirm the diagnosis [slider 0-100]
@@ -19,11 +20,10 @@ The biopsy has a risk_percentage procedure-related risk of complications (for ex
 	3.4. The magnitude of the risk of procedure-related complications of the follow-up test [slider 0-100]
 	3.5. How serious the complications of the follow-up test are [slider 0-100]
 	3.6. Other: _______________
-
-
+[fourth_question]
 4 Could you briefly explain why do you think she should/shouldn't take the follow up test? ________________
-
-
+[fifth_question]
 Remember the biopsy has a risk_percentage procedure-related risk of complications:
 5. [IF 1. == "Yes"] How big this risk should be for you NOT to recommend it [slider 0-100]
    [IF 1. == "No"] How small this risk should be for you to recommend it [slider 0-100]
+[followUp_end]

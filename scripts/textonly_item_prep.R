@@ -287,13 +287,16 @@ for (cB in seq(problems_numbered_ordered_responses)) {
     # cS <- 1
     
     # Get item of current loop
-    current_item <- problems_numbered_ordered_responses[[cB]][[cS]]
+    current_item <- 
+      problems_numbered_ordered_responses[[cB]][[cS]]
     
     # get current problem context using current item
-    current_context <- paste0(gsub(".*(ca|pr).*", "\\1", current_item), "_context")
+    current_context <- 
+      paste0(gsub(".*(ca|pr).*", "txt_\\1", current_item), "_context")
     
     # get problem prob (this erase everything that is not a "low" or "high" word)
-    current_prob <- gsub(".*_(low)_.*|.*_(high)_.*", "\\1\\2", current_item)
+    current_prob <-
+      gsub(".*_(low)_.*|.*_(high)_.*", "\\1\\2", current_item)
     
     current_format <-
       gsub(paste0('.*(', paste(textual_formats, collapse = "|"), ').*'), 

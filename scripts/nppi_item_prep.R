@@ -61,7 +61,7 @@ numbers_nppi <-
   filter(format == "nppi")
 
 # Check number of contexts. It must be the same number of graphs
-problem_contexts <- dir("materials/Problem_context/input/", pattern = "ext.txt")
+problem_contexts <- dir("materials/Problem_context/input/", pattern = ".txt") %>% grep("txt_", ., value = TRUE)
 
 # Graph parameters
 age_ppv_to_plot <- c(20,25,30,35,40)
@@ -115,7 +115,7 @@ graph_output_folder <- "materials/Presentation_format/nppi/input/graphs/png/"
       
       
       # Save plot to png file
-      ggsave(filename = grep(substr(problem_contexts[cCntxt], 0, 2), png_file_pathname, value = TRUE), 
+      ggsave(filename = grep(gsub(".*(ca).*|.*(pr).*", "\\1\\2", problem_contexts[cCntxt]), png_file_pathname, value = TRUE), 
              plot = ppv_graph, width = width, height = height, dpi = dpi, units = "in")
       
     } else if (grepl("pr", problem_contexts[[cCntxt]])) {
@@ -138,7 +138,7 @@ graph_output_folder <- "materials/Presentation_format/nppi/input/graphs/png/"
       
       
       # Save plot to png file
-      ggsave(filename = grep(substr(problem_contexts[cCntxt], 0, 2), png_file_pathname, value = TRUE), 
+      ggsave(filename = grep(gsub(".*(ca).*|.*(pr).*", "\\1\\2", problem_contexts[cCntxt]), png_file_pathname, value = TRUE), 
              plot = ppv_graph, width = width, height = height, dpi = dpi, units = "in")
       
       }
@@ -276,7 +276,7 @@ for (q in seq(length(nppi_items))) {
       context_dir <- "materials/Problem_context/input/"
       
       # responses files
-      context_files <- dir(context_dir, pattern = "text.txt")
+      context_files <- dir(context_dir, pattern = ".txt") %>% grep("txt_", ., value = TRUE)
       
       # paths to each response file
       context_files_path <- paste0(context_dir, context_files)

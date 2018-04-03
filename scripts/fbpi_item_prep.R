@@ -26,8 +26,8 @@ fbpi_height <- 834 # pixels
 input_dir <- factbox_template_dir
 output_dir <- "materials/Presentation_format/fbpi/input/template/png/"
 
-  # If Folder does not exist, create it
-  dir.create(file.path(output_dir), showWarnings = FALSE, recursive = TRUE)
+# If Folder does not exist, create it
+dir.create(file.path(output_dir), showWarnings = FALSE, recursive = TRUE)
 
 # convert svg to png
 # paremeters
@@ -127,7 +127,7 @@ for (fact_box_loop in seq(length(fbpi_items))) { # LOOP: number of images (one w
       # numbers_pos_loop=1
       
       # put pieces of information into template
-        # if piece of information to put is the prevalence
+      # if piece of information to put is the prevalence
       if (num_pos[numbers_pos_loop] == which(names(numbers_item) %in% "prev_02")) {
         
         fbpi_img_to_fill <-
@@ -136,8 +136,8 @@ for (fact_box_loop in seq(length(fbpi_items))) { # LOOP: number of images (one w
                                  # , strokecolor = "black"
                                  font = "arial-black",
                                  degrees = 0, location = pieces_pos[numbers_pos_loop])
-      # if piece of information is any other than prevalence
-        } else if (num_pos[numbers_pos_loop] != which(names(numbers_item) %in% "prev_02")) {
+        # if piece of information is any other than prevalence
+      } else if (num_pos[numbers_pos_loop] != which(names(numbers_item) %in% "prev_02")) {
         
         fbpi_img_to_fill <-
           magick::image_annotate(fbpi_img_to_fill, as.character(num_looped[[1, num_pos[numbers_pos_loop]]]), 
@@ -171,8 +171,8 @@ for (fact_box_loop in seq(length(fbpi_items))) { # LOOP: number of images (one w
 # Write images
 fbpi_output_folder <- "materials/Presentation_format/fbpi/output/"
 
-  # If Folder does not exist, create it
-  dir.create(file.path(fbpi_output_folder), showWarnings = FALSE, recursive = TRUE)
+# If Folder does not exist, create it
+dir.create(file.path(fbpi_output_folder), showWarnings = FALSE, recursive = TRUE)
 
 for (q in seq(length(fbpi_items))) {
   for (x in seq(length(fbpi_items[[q]]))) {
@@ -187,62 +187,61 @@ rm(list = c(grep("first_|second_|third_|fourth_", ls(), value = TRUE),
             grep("both_", ls(), value = TRUE),
             "fbpi_output_folder"))
 # Problem context ---------------------------------------------------------
-  
-  # Read problem contexts ####
-    # path to responses folder
-    context_dir <- "materials/Problem_context/input/"
-    
-    # responses files
-    context_files <- dir(context_dir, pattern = "fbpi.txt")
-    
-    # paths to each response file
-    context_files_path <- paste0(context_dir, context_files)
-    
-    # list with responses as char strings
-    fbpi_context <- lapply(context_files_path, 
-                           function(x) readChar(con = x, nchars = file.info(x)$size)) 
-  
-  # assing name to each response type
-  names(fbpi_context) <- gsub(".txt", "", context_files)
-  
-  # high/low prob filling ####
-    
-    # put prevalences on contexts using number bayes
-    fbpi_context <- lapply(numbers_fact[["prev_02"]], function(x) {gsub("prevalence_02_variable", x, fbpi_context)})
-  
-    # name contexts 
-    names(fbpi_context) <- paste0("fbpi_context_", numbers_fact[["prob"]], "_ppv")
-    
-    rm(context_dir,context_files,context_files_path)
+
+# Read problem contexts ####
+# path to responses folder
+context_dir <- "materials/Problem_context/input/"
+
+# responses files
+context_files <- dir(context_dir, pattern = ".txt") %>% grep("pict_", ., value = TRUE)
+
+# paths to each response file
+context_files_path <- paste0(context_dir, context_files)
+
+# list with responses as char strings
+fbpi_context <- lapply(context_files_path, 
+                       function(x) readChar(con = x, nchars = file.info(x)$size)) 
+
+# assing name to each response type
+names(fbpi_context) <- gsub(".txt", "", context_files)
+
+# high/low prob filling ####
+
+# put prevalences on contexts using number bayes
+fbpi_context <- lapply(numbers_fact[["prev_02"]], function(x) {gsub("prevalence_02_variable", x, fbpi_context)})
+
+# name contexts 
+fbpi_context <- map2(paste0("**fbpi_context_", numbers_fact[["prob"]], "_ppv**"), unlist(fbpi_context), .f = `paste0`)
+
+rm(context_dir,context_files,context_files_path)
 # Responses type pictorial ------------------------------------------------
-    
-    # path to responses folder
-    response_types_dir <- "materials/Response_type/"
-    
-    # responses files
-    response_type_files <- dir(response_types_dir, pattern = "*.txt")
-    
-    # paths to each response file
-    response_type_files_path <- paste0(response_types_dir, response_type_files)
-    
-    # list with responses as char strings
-    responses_pic <- lapply(response_type_files_path, 
-                            function(x) readChar(con = x, nchars = file.info(x)$size))
-    
-    # assing name to each response type
-    names(responses_pic) <- gsub(".txt", "", response_type_files)
-    
-    ## sequential guided question fillers
-    sg_fillers <- read_csv("materials/Response_type/sg_fillers/sg_fillers.csv", col_types = "cccc")
-    
-    # Customize sequential guided response type
-    responses_pic$sg <- apply(sg_fillers, 1, function(x) { 
-      
-      gsub("__CONDITION__", x[["condition"]],
-           gsub("__TEST__", x[["test"]], 
-                gsub("__WHO__", x[["who"]], responses_pic$sg)))
-      
-    })
+
+# path to responses folder
+response_types_dir <- "materials/Response_type/"
+
+# responses files
+response_type_files <- dir(response_types_dir, pattern = "*.txt")
+
+# paths to each response file
+response_type_files_path <- paste0(response_types_dir, response_type_files)
+
+# list with responses as char strings
+responses_pic <- lapply(response_type_files_path, 
+                        function(x) readChar(con = x, nchars = file.info(x)$size))
+
+# assing name to each response type
+names(responses_pic) <- gsub(".txt", "", response_type_files)
+
+## sequential guided question fillers
+sg_fillers <- read_csv("materials/Response_type/sg_fillers/sg_fillers.csv", col_types = "cccc")
+
+# Customize sequential guided response type
+responses_pic$sg <- apply(sg_fillers, 1, function(x) { 
+  
+  gsub("__CONDITION__", x[["condition"]],
+       gsub("__TEST__", x[["test"]], 
+            gsub("__WHO__", x[["who"]], responses_pic$sg)))
+  
+})
 
 rm(response_type_files,response_type_files_path,response_types_dir, sg_fillers, numbers_fact, numbers_item)    
-    

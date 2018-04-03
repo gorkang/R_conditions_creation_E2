@@ -9,7 +9,7 @@ prev2followUp <- function(prevalence_string, follow_up_dir, outputdir, rmv_place
   this_prev_nameless <- gsub("\\*\\*.*\\*\\*(.*)", "\\1", this_prev)
   this_prev_name <- gsub("\\*\\*(.*)\\*\\*.*", "\\1", this_prev)
   this_prev_context <- gsub("\\*\\*(ca).*|\\*\\*(pr).*", "\\1\\2", this_prev)
-  this_prev_ppvProb <- gsub(".*(high).*|.*(low).*", "\\1\\2", this_prev)
+  this_prev_ppvProb <- gsub(".*(ppvhigh).*|.*(ppvlow).*", "\\1\\2", this_prev)
   this_prev_format <- gsub(".*(nfab|pfab|prab|prre).*", "\\1", this_prev)
   
   # sumsample follow-up items by context
@@ -24,7 +24,7 @@ prev2followUp <- function(prevalence_string, follow_up_dir, outputdir, rmv_place
     followUps_items %>% 
     gsub("prevalence_and_context", this_prev_nameless, .) %>% # insert prevalence within follow-up item
     gsub("(\\*\\*\\*.*)(\\*\\*\\*)(.*)", # update name
-         paste0("\\1_ppv", 
+         paste0("\\1_", 
                 this_prev_ppvProb, "_", # ppv low or high
                 this_prev_format, "\\2\\3"), .) # presentation format
   

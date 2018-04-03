@@ -35,3 +35,7 @@ unique_prevalences %>%
                      follow_up_dir = "materials/Question/Follow_up/output/", 
                      outputdir = "materials/qualtrics/output/followUp/", rmv_placeholders = TRUE) ) %>% 
   invisible()
+
+
+prev2followUp(prevalence_string = unique_prevalences[[2]], follow_up_dir = "materials/Question/Follow_up/output/", 
+              outputdir = "materials/qualtrics/output/followUp/", rmv_placeholders = TRUE)

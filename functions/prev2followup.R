@@ -35,7 +35,7 @@ prev2followUp <- function(prevalence_string, follow_up_dir, outputdir, rmv_place
     followUps_items_prev %>% 
       remove_placeholders(., "followup") %>% 
       map(~cat(
-        gsub("\\*\\*\\*.*\\*\\*\\*\\n(.*)", "\\1", .x), # follow-up item without name
+        gsub("\\*\\*\\*.*\\*\\*\\*\\n\\n(.*)", "\\1", .x), # follow-up item without name
         file = paste0(outputdir, # path to output dir (probably qualtrics folder)
                       gsub("\\*\\*\\*(.*)\\*\\*\\*.*", "\\1", .x), ".txt"))) %>% # follow-up item name
       invisible()

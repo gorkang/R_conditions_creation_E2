@@ -28,11 +28,10 @@ unique_prevalences <-
   map(~gsub(paste0("(\\*\\*.*)_[", response_type_regex, "]{2}(\\*\\*).*\\[first_piece\\]\\n(.*)\\n\\[second_piece\\].*"), "\\1\\2\\3", .x)) %>% unlist
 
 # prev2followUp(unique_prevalences[[2]], "materials/Question/Follow_up/output/")
+source("functions/prev2followup.R")
 
 unique_prevalences %>% 
   map(~prev2followUp(prevalence_string = .x, 
                      follow_up_dir = "materials/Question/Follow_up/output/", 
                      outputdir = "materials/qualtrics/output/followUp/", rmv_placeholders = TRUE) ) %>% 
   invisible()
-
-

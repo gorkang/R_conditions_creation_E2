@@ -21,8 +21,8 @@ nppi_height <- 1169 # pixels
 input_dir <- newparadigm_template_dir
 output_dir <- "materials/Presentation_format/nppi/input/template/png/"
 
-  # If Folder does not exist, create it
-  dir.create(file.path(output_dir), showWarnings = FALSE, recursive = TRUE)
+# If Folder does not exist, create it
+dir.create(file.path(output_dir), showWarnings = FALSE, recursive = TRUE)
 
 # convert svg to png
 # parameters
@@ -74,76 +74,76 @@ dpi <- (magick::image_info(nppi_items[[1]])$width-40)/10
 
 graph_output_folder <- "materials/Presentation_format/nppi/input/graphs/png/"
 
-  # If Folder does not exist, create it
-  dir.create(file.path(graph_output_folder), showWarnings = FALSE, recursive = TRUE)
+# If Folder does not exist, create it
+dir.create(file.path(graph_output_folder), showWarnings = FALSE, recursive = TRUE)
 
-  # PPV graph name
-  graph_png_file_name <- c("nppi_ppv_pr_graph", "nppi_ppv_ca_graph")
-  
-  # Path to folder to save graph
-  png_file_pathname <-
-    paste0(graph_output_folder, graph_png_file_name, ".png") # path and name to new png file
-  
-  # Get ppv in a scale between 0 and 100
-  age_prevalence <- mutate(age_prevalence, PPV_100 = PPV*100)
+# PPV graph name
+graph_png_file_name <- c("nppi_ppv_pr_graph", "nppi_ppv_ca_graph")
 
-  # UNCOMMENT TO select ages to plot on ppv graph
-  # age_prevalence_plot <-
-  #   age_prevalence %>% 
-  #   filter(age %in% age_ppv_to_plot)
+# Path to folder to save graph
+png_file_pathname <-
+  paste0(graph_output_folder, graph_png_file_name, ".png") # path and name to new png file
+
+# Get ppv in a scale between 0 and 100
+age_prevalence <- mutate(age_prevalence, PPV_100 = PPV*100)
+
+# UNCOMMENT TO select ages to plot on ppv graph
+# age_prevalence_plot <-
+#   age_prevalence %>% 
+#   filter(age %in% age_ppv_to_plot)
+
+for (cCntxt in seq(length(problem_contexts))) {
+  # cCntxt <- 1
   
-  for (cCntxt in seq(length(problem_contexts))) {
-    # cCntxt <- 1
+  if (grepl("ca", problem_contexts[[cCntxt]])) {
     
-    if (grepl("ca", problem_contexts[[cCntxt]])) {
-      
-      ppv_graph <-
-        ggplot(age_prevalence, aes(x=age, y=PPV_100)) + # plot canvas
-        scale_y_continuous(labels=function(x) paste0(x,"%"), # append % to y-axis value
-                           limits = c(0,100)
-                           # , breaks = seq(0,100,10)
-        ) + # set y-axis limits
-        geom_point(size = 5.5, color = "#009999", shape = 19) + # insert points with ppv value
-        geom_line(aes(x=age, y=PPV_100), color = "#009999", size = 2) +  
-        theme_minimal() + # insert line bridging PPV-value points
-        xlab(grep("woman", x_axis_label, value = TRUE)) + ylab(y_axis_label) + # set axis labels
-        theme(axis.text = element_text(size = 25), # axis-numerbs size
-              axis.title = element_text(size = 25)) + # axis-labels size
-        geom_text(aes(label = 
-                        case_when(age %in% age_ppv_to_plot ~ paste0(round(PPV_100, 0), "%"), TRUE ~ paste0("")), # keep only ages previously set to be ploted
-                      hjust = 1, vjust = -1), size = 6) # (position) plot ppv-values above points set in "age_ppv_to_plot"
-      
-      
-      # Save plot to png file
-      ggsave(filename = grep(gsub(".*(ca).*|.*(pr).*", "\\1\\2", problem_contexts[cCntxt]), png_file_pathname, value = TRUE), 
-             plot = ppv_graph, width = width, height = height, dpi = dpi, units = "in")
-      
-    } else if (grepl("pr", problem_contexts[[cCntxt]])) {
-      
-      ppv_graph <-
-        ggplot(age_prevalence, aes(x=age, y=PPV_100)) + # plot canvas
-        scale_y_continuous(labels=function(x) paste0(x,"%"), # append % to y-axis value
-                           limits = c(0,100)
-                           # , breaks = seq(0,100,10)
-        ) + # set y-axis limits
-        geom_point(size = 5.5, color = "#009999", shape = 19) + # insert points with ppv value
-        geom_line(aes(x=age, y=PPV_100), color = "#009999", size = 2) +  # insert line bridging PPV-value points
-        theme_minimal() + 
-        xlab(grep("mother", x_axis_label, value = TRUE)) + ylab(y_axis_label) + # set axis labels
-        theme(axis.text = element_text(size = 25), # axis-numerbs size
-              axis.title = element_text(size = 25)) + # axis-labels size
-        geom_text(aes(label = 
-                        case_when(age %in% age_ppv_to_plot ~ paste0(round(PPV_100, 0), "%"), TRUE ~ paste0("")), # keep only ages previously set to be ploted
-                      hjust = 1, vjust = -1), size = 6) # (position) plot ppv-values above points set in "age_ppv_to_plot"
-      
-      
-      # Save plot to png file
-      ggsave(filename = grep(gsub(".*(ca).*|.*(pr).*", "\\1\\2", problem_contexts[cCntxt]), png_file_pathname, value = TRUE), 
-             plot = ppv_graph, width = width, height = height, dpi = dpi, units = "in")
-      
-      }
+    ppv_graph <-
+      ggplot(age_prevalence, aes(x=age, y=PPV_100)) + # plot canvas
+      scale_y_continuous(labels=function(x) paste0(x,"%"), # append % to y-axis value
+                         limits = c(0,100)
+                         # , breaks = seq(0,100,10)
+      ) + # set y-axis limits
+      geom_point(size = 5.5, color = "#009999", shape = 19) + # insert points with ppv value
+      geom_line(aes(x=age, y=PPV_100), color = "#009999", size = 2) +  
+      theme_minimal() + # insert line bridging PPV-value points
+      xlab(grep("woman", x_axis_label, value = TRUE)) + ylab(y_axis_label) + # set axis labels
+      theme(axis.text = element_text(size = 25), # axis-numerbs size
+            axis.title = element_text(size = 25)) + # axis-labels size
+      geom_text(aes(label = 
+                      case_when(age %in% age_ppv_to_plot ~ paste0(round(PPV_100, 0), "%"), TRUE ~ paste0("")), # keep only ages previously set to be ploted
+                    hjust = 1, vjust = -1), size = 6) # (position) plot ppv-values above points set in "age_ppv_to_plot"
+    
+    
+    # Save plot to png file
+    ggsave(filename = grep(gsub(".*(ca).*|.*(pr).*", "\\1\\2", problem_contexts[cCntxt]), png_file_pathname, value = TRUE), 
+           plot = ppv_graph, width = width, height = height, dpi = dpi, units = "in")
+    
+  } else if (grepl("pr", problem_contexts[[cCntxt]])) {
+    
+    ppv_graph <-
+      ggplot(age_prevalence, aes(x=age, y=PPV_100)) + # plot canvas
+      scale_y_continuous(labels=function(x) paste0(x,"%"), # append % to y-axis value
+                         limits = c(0,100)
+                         # , breaks = seq(0,100,10)
+      ) + # set y-axis limits
+      geom_point(size = 5.5, color = "#009999", shape = 19) + # insert points with ppv value
+      geom_line(aes(x=age, y=PPV_100), color = "#009999", size = 2) +  # insert line bridging PPV-value points
+      theme_minimal() + 
+      xlab(grep("mother", x_axis_label, value = TRUE)) + ylab(y_axis_label) + # set axis labels
+      theme(axis.text = element_text(size = 25), # axis-numerbs size
+            axis.title = element_text(size = 25)) + # axis-labels size
+      geom_text(aes(label = 
+                      case_when(age %in% age_ppv_to_plot ~ paste0(round(PPV_100, 0), "%"), TRUE ~ paste0("")), # keep only ages previously set to be ploted
+                    hjust = 1, vjust = -1), size = 6) # (position) plot ppv-values above points set in "age_ppv_to_plot"
+    
+    
+    # Save plot to png file
+    ggsave(filename = grep(gsub(".*(ca).*|.*(pr).*", "\\1\\2", problem_contexts[cCntxt]), png_file_pathname, value = TRUE), 
+           plot = ppv_graph, width = width, height = height, dpi = dpi, units = "in")
+    
   }
- 
+}
+
 rm(graph_png_file_name,png_file_pathname)
 rm(age_ppv_to_plot,dpi,graph_output_folder,height,width,x_axis_label,y_axis_label)
 ##### Compose new-paradigm brochure ###################################################
@@ -252,8 +252,8 @@ for (i in seq(length(nppi_items))){
 # Write images
 nppi_output_folder <- "materials/Presentation_format/nppi/output/"
 
-  # If Folder does not exist, create it
-  dir.create(file.path(nppi_output_folder), showWarnings = FALSE, recursive = TRUE)
+# If Folder does not exist, create it
+dir.create(file.path(nppi_output_folder), showWarnings = FALSE, recursive = TRUE)
 
 for (q in seq(length(nppi_items))) {
   for (x in seq(length(nppi_items[[q]]))) {
@@ -264,87 +264,99 @@ for (q in seq(length(nppi_items))) {
   }
 }
 
-  rm(list = c(grep("graph_", ls(), value = TRUE),
-              grep("prev_", ls(), value = TRUE)))
-     rm(img_height, img_width,
-        nppi_graphs_files_names, nppi_output_folder,
-        nppi_graphs, age_prevalence, ppv_prob, cCntxt, problem_contexts)
+rm(list = c(grep("graph_", ls(), value = TRUE),
+            grep("prev_", ls(), value = TRUE)))
+rm(img_height, img_width,
+   nppi_graphs_files_names, nppi_output_folder,
+   nppi_graphs, age_prevalence, ppv_prob, cCntxt, problem_contexts)
 # Problem contexts --------------------------------------------------------
+
+# Read problem contexts ####
+# path to responses folder
+context_dir <- "materials/Problem_context/input/"
+
+# responses files
+context_files <- dir(context_dir, pattern = ".txt") %>% grep("txt_", ., value = TRUE)
+
+# paths to each response file
+context_files_path <- paste0(context_dir, context_files)
+
+# list with responses as char strings
+nppi_context <- lapply(context_files_path, 
+                       function(x) readChar(con = x, nchars = file.info(x)$size)) 
+
+# assing name to each response type
+# names(nppi_context) <- gsub(".txt", "", context_files)
+
+nppi_context <-
+  map2(gsub("txt_(.*).txt", "***\\1***", context_files), nppi_context, paste0)
+
+
+rm(context_dir,context_files,context_files_path)
+
+# high/low prob filling ####
+
+# put prevalences on contexts using number bayes
+# nppi_context <- 
+
+for (c_context in seq(nppi_context)) {
+  # c_context <- 1
+  current_context <- 
+    as.list(rep(nppi_context[[c_context]], nrow(numbers_nppi)))
   
-  # Read problem contexts ####
-      # path to responses folder
-      context_dir <- "materials/Problem_context/input/"
-      
-      # responses files
-      context_files <- dir(context_dir, pattern = ".txt") %>% grep("txt_", ., value = TRUE)
-      
-      # paths to each response file
-      context_files_path <- paste0(context_dir, context_files)
-      
-      # list with responses as char strings
-      nppi_context <- lapply(context_files_path, 
-                             function(x) readChar(con = x, nchars = file.info(x)$size)) 
-      
-      # assing name to each response type
-      names(nppi_context) <- gsub(".txt", "", context_files)
-      
-      rm(context_dir,context_files,context_files_path)
+  for (c_prob in seq(nrow(numbers_nppi))) {
+    # c_prob <- 1
+    
+    current_context[[c_prob]] <- 
+      gsub("age_variable", numbers_nppi[["age"]][c_prob], 
+           gsub("prevalence_02_variable", numbers_nppi[["prev_02"]][c_prob], 
+                current_context[[c_prob]]))
+  }
   
-  # high/low prob filling ####
+  # names(current_context) <- paste0("nppi_context_", numbers_nppi[["prob"]], "_ppv")
+  current_context <- map2(numbers_nppi[["prob"]], current_context, function(x,y) {
+    gsub("(\\*\\*\\*.*_)(.*\\*\\*\\*.*)", paste0("\\1", x, "_\\2"), y)  
+  })
   
-      # put prevalences on contexts using number bayes
-      # nppi_context <- 
-      
-      for (c_context in seq(nppi_context)) {
-        # c_context <- 1
-        current_context <- as.list(rep(nppi_context[[c_context]], nrow(numbers_nppi)))
-        
-        for (c_prob in seq(nrow(numbers_nppi))) {
-          # c_prob <- 1
-          
-          current_context[[c_prob]] <- 
-            gsub("age_variable", numbers_nppi[["age"]][c_prob], gsub("prevalence_02_variable", numbers_nppi[["prev_02"]][c_prob], current_context[[c_prob]]))
-        }
-        names(current_context) <- paste0("nppi_context_", numbers_nppi[["prob"]], "_ppv")
-        
-        nppi_context[[c_context]] <- current_context
-        
-        if (c_context == length(nppi_context)) {
-          rm(c_context,c_prob, current_context)
-        }
-      }
-      
-      
+  nppi_context[[c_context]] <- current_context
+  
+  if (c_context == length(nppi_context)) {
+    rm(c_context,c_prob, current_context)
+  }
+}
+
+nppi_context <-
+  as.list(unlist(nppi_context))
+
 # Responses type pictorial ------------------------------------------------
 
-      # path to responses folder
-      response_types_dir <- "materials/Response_type/"
-      
-      # responses files
-      response_type_files <- dir(response_types_dir, pattern = "*.txt")
-      
-      # paths to each response file
-      response_type_files_path <- paste0(response_types_dir, response_type_files)
-      
-      # list with responses as char strings
-      responses_pic <- lapply(response_type_files_path, 
-                          function(x) readChar(con = x, nchars = file.info(x)$size))
-      
-      # assing name to each response type
-      names(responses_pic) <- gsub(".txt", "", response_type_files)
-      
-      ## sequential guided question fillers
-      sg_fillers <- read_csv("materials/Response_type/sg_fillers/sg_fillers.csv", col_types = "cccc")
-      
-      # Customize sequential guided response type
-      responses_pic$sg <- apply(sg_fillers, 1, function(x) { 
-        
-        gsub("__CONDITION__", x[["condition"]],
-             gsub("__TEST__", x[["test"]], 
-                  gsub("__WHO__", x[["who"]], responses_pic$sg)))
-        
-      })
-      
-      rm(response_type_files,response_type_files_path,response_types_dir, numbers_item, numbers_nppi, sg_fillers)
-      
-      
+# path to responses folder
+response_types_dir <- "materials/Response_type/"
+
+# responses files
+response_type_files <- dir(response_types_dir, pattern = "*.txt")
+
+# paths to each response file
+response_type_files_path <- paste0(response_types_dir, response_type_files)
+
+# list with responses as char strings
+responses_pic <- lapply(response_type_files_path, 
+                        function(x) readChar(con = x, nchars = file.info(x)$size))
+
+# assing name to each response type
+names(responses_pic) <- gsub(".txt", "", response_type_files)
+
+## sequential guided question fillers
+sg_fillers <- read_csv("materials/Response_type/sg_fillers/sg_fillers.csv", col_types = "cccc")
+
+# Customize sequential guided response type
+responses_pic$sg <- apply(sg_fillers, 1, function(x) { 
+  
+  gsub("__CONDITION__", x[["condition"]],
+       gsub("__TEST__", x[["test"]], 
+            gsub("__WHO__", x[["who"]], responses_pic$sg)))
+  
+})
+
+rm(response_type_files,response_type_files_path,response_types_dir, numbers_item, numbers_nppi, sg_fillers)
+

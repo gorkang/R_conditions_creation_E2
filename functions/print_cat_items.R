@@ -6,9 +6,9 @@
 source("functions/remove_placeholders.R")
 
 # actual function
-print_cat_items <- function(condition, item) {
+print_cat_items <- function(actual_item, condition, item) {
   
-  remove_placeholders(grep(condition, problems_numbered_ordered_responses, value = TRUE), item) %>% 
+  remove_placeholders(grep(condition, actual_item, value = TRUE), item) %>% 
     cat(sep = "\n****************************\n")
   
 }

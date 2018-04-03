@@ -62,7 +62,9 @@ questions <- lapply(question_files_path,
                     function(x) readChar(con = x, nchars = file.info(x)$size)) 
 
 # assing name to each response type
-names(questions) <- gsub(".txt", "", question_files)
+# names(questions) <- gsub(".txt", "", question_files)
+
+questions <- map2(gsub("(.*)\\.txt", "**\\1**", question_files), questions, `paste0`)
 
 rm(questions_dir, question_files, question_files_path)
 
@@ -77,7 +79,7 @@ for (i in seq(length(problems_numbered))) {
       paste0(gsub("(ca|pr).*", "\\1", names(problems_numbered[i])), "_question")
     
     current_question <- 
-      questions[current_question_name]
+      gsub("\\*\\*.*\\*\\*(.*)", "\\1", grep(current_question_name, questions, value = TRUE))
     
     for (j in seq(length(problems_numbered[[i]]))) {
       # j=1
@@ -260,7 +262,7 @@ for (cB in seq(problems_numbered_ordered_responses)) {
 context_dir <- "materials/Problem_context/input/"
 
 # responses files
-context_files <- dir(context_dir, pattern = ".txt")
+context_files <- dir(context_dir, pattern = ".txt") %>% grep("txt_", ., value = TRUE)
 
 # paths to each response file
 context_files_path <- paste0(context_dir, context_files)

@@ -28,13 +28,3 @@ remove_placeholders <- function(items, item_followup) {
   gsub(placeholders_regex, "", items)
   
 }
-
-# This function takes a string indicating a condition [problemContext_presentationFormat_ppvProb].
-# Each info must be separated by a "_".
-# Also, this function relys on remove_placeholders, that's the reason why they are on the same script.
-
-print_cat_items <- function(condition) {
-  
-  remove_placeholders(grep(condition, problems_numbered_ordered_responses, value = TRUE)) %>% cat(sep = "\n****************************\n")
-  
-}

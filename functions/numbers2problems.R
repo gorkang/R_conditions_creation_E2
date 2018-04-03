@@ -60,7 +60,7 @@ numbers2problems <- function(problems) {
         item2number_list[[x]] <-
           paste0("**",
             paste(names(problems_x[i]), # item name and format
-                  numbers_item_x_filt[x,]["prob"], # normative ppv
+                  paste0("ppv",numbers_item_x_filt[x,]["prob"]), # normative ppv
                   # "\n", # line break
                   sep = "_"), "**\n\n",
             item2number_list[[x]]
@@ -103,7 +103,7 @@ numbers2problems <- function(problems) {
           item2number_list[[x]] <-
             paste0("**",
               paste(names(problems_x[i]), # item name and format
-                    numbers_item_x_filt[x,]["prob"], # normative ppv
+                    paste0("ppv",numbers_item_x_filt[x,]["prob"]), # normative ppv
                     # "\n", # line break
                     sep = "_"), "**\n\n",
               item2number_list[[x]]
@@ -147,7 +147,7 @@ numbers2problems <- function(problems) {
           item2number_list[[x]] <-
             paste0("**",
               paste(names(problems_x[i]), # item name and format
-                    numbers_item_x_filt[x,]["prob"], # normative ppv
+                    paste0("ppv", numbers_item_x_filt[x,]["prob"]), # normative ppv
                     # "\n", # line break
                     sep = "_"), "**\n\n",
               item2number_list[[x]]

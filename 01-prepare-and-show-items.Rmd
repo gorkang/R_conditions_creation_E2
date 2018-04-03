@@ -30,25 +30,25 @@
 ### NF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, ca_nfab_low}
-print_cat_items(problems_numbered_ordered_responses, "ca_nfab_low", "item")
+print_cat_items(problems_numbered_ordered_responses, "ca_nfab_ppvlow", "item")
 ```
 
 ### PR ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, ca_prab_low}
-print_cat_items(problems_numbered_ordered_responses,"ca_prab_low", "item")
+print_cat_items(problems_numbered_ordered_responses,"ca_prab_ppvlow", "item")
 ```
 
 ### PR RELATIVE
 
 ```{r, results='asis', echo=FALSE, ca_prre_low}
-print_cat_items(problems_numbered_ordered_responses,"ca_prre_low", "item")
+print_cat_items(problems_numbered_ordered_responses,"ca_prre_ppvlow", "item")
 ```
 
 ### PF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, ca_pfab_low}
-print_cat_items(problems_numbered_ordered_responses,"ca_pfab_low", "item")
+print_cat_items(problems_numbered_ordered_responses,"ca_pfab_ppvlow", "item")
 ```
 
 ### FB PICTORIAL
@@ -193,25 +193,25 @@ cat(remove_placeholders(responses[[4]], "item"))
 ### NF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, ca_nfab_high}
-print_cat_items(problems_numbered_ordered_responses,"ca_nfab_high", "item")
+print_cat_items(problems_numbered_ordered_responses,"ca_nfab_ppvhigh", "item")
 ```
 
 ### PR ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, ca_prab_high}
-print_cat_items(problems_numbered_ordered_responses,"ca_prab_high", "item")
+print_cat_items(problems_numbered_ordered_responses,"ca_prab_ppvhigh", "item")
 ```
 
 ### PR RELATIVE
 
 ```{r, results='asis', echo=FALSE, ca_prre_high}
-print_cat_items(problems_numbered_ordered_responses,"ca_prre_high", "item")
+print_cat_items(problems_numbered_ordered_responses,"ca_prre_ppvhigh", "item")
 ```
 
 ### PF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, ca_pfab_high}
-print_cat_items(problems_numbered_ordered_responses,"ca_pfab_high", "item")
+print_cat_items(problems_numbered_ordered_responses,"ca_pfab_ppvhigh", "item")
 
 ```
 
@@ -348,25 +348,25 @@ cat(remove_placeholders(responses[[4]], "item"))
 ### NF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, pr_nfab_low}
-print_cat_items(problems_numbered_ordered_responses,"pr_nfab_low", "item")
+print_cat_items(problems_numbered_ordered_responses,"pr_nfab_ppvlow", "item")
 ```
 
 ### PR ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, pr_prab_low}
-print_cat_items(problems_numbered_ordered_responses,"pr_prab_low", "item")
+print_cat_items(problems_numbered_ordered_responses,"pr_prab_ppvlow", "item")
 ```
 
 ### PR RELATIVE
 
 ```{r, results='asis', echo=FALSE, pr_prre_low}
-print_cat_items(problems_numbered_ordered_responses,"pr_prre_low", "item")
+print_cat_items(problems_numbered_ordered_responses,"pr_prre_ppvlow", "item")
 ```
 
 ### PF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, pr_pfab_low}
-print_cat_items(problems_numbered_ordered_responses,"pr_pfab_low", "item")
+print_cat_items(problems_numbered_ordered_responses,"pr_pfab_ppvlow", "item")
 ```
 
 ### FB PICTORIAL
@@ -495,25 +495,25 @@ cat(remove_placeholders(responses[[4]], "item"))
 ### NF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, pr_nfab_high}
-print_cat_items(problems_numbered_ordered_responses,"pr_nfab_high", "item")
+print_cat_items(problems_numbered_ordered_responses,"pr_nfab_ppvhigh", "item")
 ```
 
 ### PR ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, pr_prab_high}
-print_cat_items(problems_numbered_ordered_responses,"pr_prab_high", "item")
+print_cat_items(problems_numbered_ordered_responses,"pr_prab_ppvhigh", "item")
 ```
 
 ### PR RELATIVE
 
 ```{r, results='asis', echo=FALSE, pr_prre_high}
-print_cat_items(problems_numbered_ordered_responses,"pr_prre_high", "item")
+print_cat_items(problems_numbered_ordered_responses,"pr_prre_ppvhigh", "item")
 ```
 
 ### PF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, pr_pfab_high}
-print_cat_items(problems_numbered_ordered_responses,"pr_pfab_high", "item")
+print_cat_items(problems_numbered_ordered_responses,"pr_pfab_ppvhigh", "item")
 ```
 
 ### FB PICTORIAL

@@ -296,7 +296,7 @@ for (cB in seq(problems_numbered_ordered_responses)) {
     
     # get problem prob (this erase everything that is not a "low" or "high" word)
     current_prob <-
-      gsub(".*_(low)_.*|.*_(high)_.*", "\\1\\2", current_item)
+      gsub(".*(low)_.*|.*(high)_.*", "\\1\\2", current_item)
     
     current_format <-
       gsub(paste0('.*(', paste(textual_formats, collapse = "|"), ').*'), 

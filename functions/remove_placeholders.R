@@ -1,7 +1,7 @@
 # This function takes strings and remove all strings defined on placeholders vector, and
 # outputs the new string
 
-remove_placeholders <- function(items, item_followup) {
+remove_placeholders <- function(items, item_followup = "item") {
   
   # all placeholders within items, contexts, questions and responses must be in this vector
   if (item_followup == "item") {

@@ -33,16 +33,16 @@ pair_items <-
     
     # look for oposite ppv prob and context.
     if (first_twin_info[1] == "ca") {
-      if (first_twin_info[3] == "high") {
-        second_twin <- paste0("pr_", first_twin_info[2], "_low_", first_twin_info[4])
-      } else if (first_twin_info[3] == "low") {
-        second_twin <- paste0("pr_", first_twin_info[2], "_high_", first_twin_info[4])
+      if (first_twin_info[3] == "ppvhigh") {
+        second_twin <- paste0("pr_", first_twin_info[2], "_ppvlow_", first_twin_info[4])
+      } else if (first_twin_info[3] == "ppvlow") {
+        second_twin <- paste0("pr_", first_twin_info[2], "_ppvhigh_", first_twin_info[4])
       }
     } else if (first_twin_info[1] == "pr") {
-      if (first_twin_info[3] == "high") {
-        second_twin <- paste0("ca_", first_twin_info[2], "_low_", first_twin_info[4])
-      } else if (first_twin_info[3] == "low") {
-        second_twin <- paste0("ca_", first_twin_info[2], "_high_", first_twin_info[4])
+      if (first_twin_info[3] == "ppvhigh") {
+        second_twin <- paste0("ca_", first_twin_info[2], "_ppvlow_", first_twin_info[4])
+      } else if (first_twin_info[3] == "ppvlow") {
+        second_twin <- paste0("ca_", first_twin_info[2], "_ppvhigh_", first_twin_info[4])
       }
     }
   

@@ -1,0 +1,7 @@
+[question_start]
+Should she take the follow-up test?
+[choiches_start]
+Yes
+[second_choice]
+No
+[choices_end]

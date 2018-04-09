@@ -8,7 +8,27 @@
 
 source("scripts/html_qualtrics_codes.R")
 source("functions/extract_between_placeholders.R")
+
+# load response.
+response_path <- 
+  "materials/Question/Follow_up/input/questions_raw/followup_question_03.txt"
+response_text <- 
+  readChar(response_path, file.info(response_path)$size)
+
+
+
+
 source("functions/choice_builder.R")
+
+# ##################################
+# Continue dev of choice builder
+# ##################################
+
+
+
+
+
+
 
 # Follow-up Questions building
 # Follow-up Question 1
@@ -16,6 +36,23 @@ response_path <-
   "materials/Question/Follow_up/input/questions_raw/followup_question_01.txt"
 response_text <- 
   readChar(response_path, file.info(response_path)$size)
+
+choices_number <- 
+  (sum(str_detect(pattern = paste0(ordinal_numbers, "_choice"), string = response_text)) + 1)
+
+choices <- 
+  c("first", ordinal_numbers[seq(choices_number-1)])
+
+# actual choice building
+# choices_x <- 
+  xxx <- 
+    choices %>% 
+  map(~choice_builder(choices_ordinal = .x, response_string = response_text)) %>% 
+    invisible() 
+  
+
+
+
 
 cat(
   # # ADVANCED FORMAT ********************
@@ -29,17 +66,22 @@ cat(
   # CHOICES FORMAT ********************
   qualtrics_codes$question_choices, "\n",
   # CHOICES ********************
-  gsub("CHOICES_TEXT_TO_FORMAT", 
-       extract_between_placeholders("choiches_start", "second_choice", response_text), 
-       html_codes$choices_font_size), "\n",
+  choices %>% 
+    map(~choice_builder(choices_ordinal = .x, response_string = response_text)) %>% 
+    invisible() %>% unlist,
   
-  gsub("CHOICES_TEXT_TO_FORMAT", 
-       extract_between_placeholders("second_choice", "choices_end", response_text), 
-       html_codes$choices_font_size), "\n",
+  # gsub("CHOICES_TEXT_TO_FORMAT", 
+  #      extract_between_placeholders("choiches_start", "second_choice", response_text), 
+  #      html_codes$choices_font_size), "\n",
+  # 
+  # gsub("CHOICES_TEXT_TO_FORMAT", 
+  #      extract_between_placeholders("second_choice", "choices_end", response_text), 
+  #      html_codes$choices_font_size), "\n",
   
-  sep = "",
+  sep = ""
   # FILE TO EXPORT
-  file = "materials/Question/Follow_up/input/questions_qualtrics/followup_question_01.txt")
+  # file = "materials/Question/Follow_up/input/questions_qualtrics/followup_question_01.txt"
+  )
 
 # Follow-up Question 2
 response_path <- 
@@ -99,9 +141,12 @@ cat(
 # ######################
 # ######################
 # ######################
+
+
+
 # This has to be put on the choices part within each question building
-ordinal_numbers <- 
-  c("second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth")
+# ordinal_numbers <- 
+#   c("second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth")
 
 choices_number <- 
   (sum(str_detect(pattern = paste0(ordinal_numbers, "_choice"), string = response_text)) + 1)

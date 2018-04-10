@@ -1,6 +1,6 @@
 [question_start]
 Which factors influenced your recommendation?
-[choiches_start]
+[choices_start]
 How informative the screening test is [slider 0-100]
 [second_choice]
 The need to confirm the diagnosis [slider 0-100]

@@ -196,6 +196,11 @@ rm("response_path", "response_text", "current_choices")
 # #############################################################3
 # #############################################################3
 
+# TODO: 
+# 0. add followup items with qualtrics and html codes.
+# 1. paste questions (without placeholders) to followup items to be displayed.
+# 2. paste questions with codes with followup with codes.
+
 # item_test <- 
 #   problems_numbered_ordered_responses[[10]]
 

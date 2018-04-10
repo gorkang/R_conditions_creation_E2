@@ -8,165 +8,199 @@
 
 source("scripts/html_qualtrics_codes.R")
 source("functions/extract_between_placeholders.R")
-
-# load response.
-response_path <- 
-  "materials/Question/Follow_up/input/questions_raw/followup_question_03.txt"
-response_text <- 
-  readChar(response_path, file.info(response_path)$size)
-
-
-
-
 source("functions/choice_builder.R")
 
 # ##################################
 # Continue dev of choice builder
 # ##################################
 
+# ##################################
+# Follow-up question 1
+# ##################################
 
-
-
-
-
-
-# Follow-up Questions building
-# Follow-up Question 1
 response_path <- 
   "materials/Question/Follow_up/input/questions_raw/followup_question_01.txt"
 response_text <- 
   readChar(response_path, file.info(response_path)$size)
 
-choices_number <- 
-  (sum(str_detect(pattern = paste0(ordinal_numbers, "_choice"), string = response_text)) + 1)
-
-choices <- 
-  c("first", ordinal_numbers[seq(choices_number-1)])
-
-# actual choice building
-# choices_x <- 
-  xxx <- 
-    choices %>% 
-  map(~choice_builder(choices_ordinal = .x, response_string = response_text)) %>% 
-    invisible() 
-  
-
-
-
+current_choices <- choice_builder(response_string = response_text) %>% 
+  unlist
 
 cat(
   # # ADVANCED FORMAT ********************
   # qualtrics_codes$advanced_format, "\n",
+  
   # QUESTION TYPE ********************
-  qualtrics_codes$question_singlechoice_vertical, "\n",
+  gsub("(\\[\\[.*\\]\\]).*", "\\1", response_text), "\n",
+  
   # QUESTION ********************
   gsub("QUESTION_TEXT_TO_FORMAT", 
-       extract_between_placeholders("question_start", "choiches_start", response_text), 
+       extract_between_placeholders("question_start", "choices_start", response_text), 
        html_codes$question_font_size), "\n",
+  
   # CHOICES FORMAT ********************
   qualtrics_codes$question_choices, "\n",
-  # CHOICES ********************
-  choices %>% 
-    map(~choice_builder(choices_ordinal = .x, response_string = response_text)) %>% 
-    invisible() %>% unlist,
+  # CHOICES ***************************
+  paste(current_choices, collapse = "\n"), "\n",
   
-  # gsub("CHOICES_TEXT_TO_FORMAT", 
-  #      extract_between_placeholders("choiches_start", "second_choice", response_text), 
-  #      html_codes$choices_font_size), "\n",
-  # 
-  # gsub("CHOICES_TEXT_TO_FORMAT", 
-  #      extract_between_placeholders("second_choice", "choices_end", response_text), 
-  #      html_codes$choices_font_size), "\n",
-  
+  # SEP *******************************
   sep = ""
   # FILE TO EXPORT
-  # file = "materials/Question/Follow_up/input/questions_qualtrics/followup_question_01.txt"
-  )
+  , file = "materials/Question/Follow_up/input/questions_qualtrics/followup_question_01.txt"
+)
 
-# Follow-up Question 2
+# ##################################
+# Follow-up question 2
+# ##################################
+
 response_path <- 
   "materials/Question/Follow_up/input/questions_raw/followup_question_02.txt"
 response_text <- 
   readChar(response_path, file.info(response_path)$size)
 
+current_choices <- choice_builder(response_string = response_text) %>% 
+  unlist
+
 cat(
   # # ADVANCED FORMAT ********************
   # qualtrics_codes$advanced_format, "\n",
+  
   # QUESTION TYPE ********************
-  qualtrics_codes$question_text, "\n",
+  gsub("(\\[\\[.*\\]\\]).*", "\\1", response_text), "\n",
+  
   # QUESTION ********************
   gsub("QUESTION_TEXT_TO_FORMAT", 
-       extract_between_placeholders("question_start", "choiches_start", response_text), 
+       extract_between_placeholders("question_start", "choices_start", response_text), 
        html_codes$question_font_size), "\n",
-  # # CHOICES FORMAT ********************
-  # qualtrics_codes$question_choices, "\n",
-  # # CHOICES ********************
-  # gsub("CHOICES_TEXT_TO_FORMAT", 
-  #      extract_between_placeholders("choiches_start", "choices_end", response_text), 
-  #      html_codes$choices_font_size), "\n",
   
-  sep = "",
+  # CHOICES FORMAT ********************
+  qualtrics_codes$question_choices, "\n",
+  # CHOICES ***************************
+  paste(current_choices, collapse = "\n"), "\n",
+  
+  # SEP *******************************
+  sep = ""
   # FILE TO EXPORT
-  file = "materials/Question/Follow_up/input/questions_qualtrics/followup_question_02.txt")
+  , file = "materials/Question/Follow_up/input/questions_qualtrics/followup_question_02.txt"
+)
 
-# Follow-up Question 3
+# ##################################
+# Follow-up question 3
+# ##################################
+
 response_path <- 
   "materials/Question/Follow_up/input/questions_raw/followup_question_03.txt"
 response_text <- 
   readChar(response_path, file.info(response_path)$size)
 
+current_choices <- choice_builder(response_string = response_text) %>% 
+  unlist
+
 cat(
   # # ADVANCED FORMAT ********************
   # qualtrics_codes$advanced_format, "\n",
+  
   # QUESTION TYPE ********************
-  qualtrics_codes$question_singlechoice_vertical, "\n",
+  gsub("(\\[\\[.*\\]\\]).*", "\\1", response_text), "\n",
+  
   # QUESTION ********************
   gsub("QUESTION_TEXT_TO_FORMAT", 
-       extract_between_placeholders("question_start", "choiches_start", response_text), 
+       extract_between_placeholders("question_start", "choices_start", response_text), 
        html_codes$question_font_size), "\n",
+  
   # CHOICES FORMAT ********************
   qualtrics_codes$question_choices, "\n",
-  # CHOICES ********************
-  gsub("CHOICES_TEXT_TO_FORMAT",
-       extract_between_placeholders("choiches_start", "choices_end", response_text),
-       html_codes$choices_font_size), "\n",
+  # CHOICES ***************************
+  paste(current_choices, collapse = "\n"), "\n",
   
-  sep = "",
+  # SEP *******************************
+  sep = ""
   # FILE TO EXPORT
-  file = "materials/Question/Follow_up/input/questions_qualtrics/followup_question_02.txt")
+  , file = "materials/Question/Follow_up/input/questions_qualtrics/followup_question_03.txt"
+)
 
+# ##################################
+# Follow-up question 4
+# ##################################
 
+response_path <- 
+  "materials/Question/Follow_up/input/questions_raw/followup_question_04.txt"
+response_text <- 
+  readChar(response_path, file.info(response_path)$size)
 
-# ######################
-# ######################
-# ######################
-# ######################
+current_choices <- choice_builder(response_string = response_text) %>% 
+  unlist
 
+cat(
+  # # ADVANCED FORMAT ********************
+  # qualtrics_codes$advanced_format, "\n",
+  
+  # QUESTION TYPE ********************
+  gsub("(\\[\\[.*\\]\\]).*", "\\1", response_text), "\n",
+  
+  # QUESTION ********************
+  gsub("QUESTION_TEXT_TO_FORMAT", 
+       extract_between_placeholders("question_start", "choices_start", response_text), 
+       html_codes$question_font_size), "\n",
+  
+  # CHOICES FORMAT ********************
+  qualtrics_codes$question_choices, "\n",
+  # CHOICES ***************************
+  paste(current_choices, collapse = "\n"), "\n",
+  
+  # SEP *******************************
+  sep = ""
+  # FILE TO EXPORT
+  , file = "materials/Question/Follow_up/input/questions_qualtrics/followup_question_04.txt"
+)
 
+# ##################################
+# Follow-up question 5
+# ##################################
 
-# This has to be put on the choices part within each question building
-# ordinal_numbers <- 
-#   c("second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth")
+response_path <- 
+  "materials/Question/Follow_up/input/questions_raw/followup_question_05.txt"
+response_text <- 
+  readChar(response_path, file.info(response_path)$size)
 
-choices_number <- 
-  (sum(str_detect(pattern = paste0(ordinal_numbers, "_choice"), string = response_text)) + 1)
+current_choices <- choice_builder(response_string = response_text) %>% 
+  unlist
 
-choices <- 
-  c("first", ordinal_numbers[seq(choices_number-1)])
+cat(
+  # # ADVANCED FORMAT ********************
+  # qualtrics_codes$advanced_format, "\n",
+  
+  # QUESTION TYPE ********************
+  gsub("(\\[\\[.*\\]\\]).*", "\\1", response_text), "\n",
+  
+  # QUESTION ********************
+  gsub("QUESTION_TEXT_TO_FORMAT", 
+       extract_between_placeholders("question_start", "choices_start", response_text), 
+       html_codes$question_font_size), "\n",
+  
+  # CHOICES FORMAT ********************
+  qualtrics_codes$question_choices, "\n",
+  # CHOICES ***************************
+  paste(current_choices, collapse = "\n"), "\n",
+  
+  # SEP *******************************
+  sep = ""
+  # FILE TO EXPORT
+  , file = "materials/Question/Follow_up/input/questions_qualtrics/followup_question_05.txt"
+)
 
-# actual choice building
-choices %>% 
-  map(~choice_builder(choices_ordinal = .x, response_string = response_text)) %>% 
-  invisible()
+rm("response_path", "response_text", "current_choices")
 
-# ######################
-# ######################
-# ######################
-# ####################
+# #############################################################3
+# #############################################################3
+# #############################################################3
+# #############################################################3
 
-item_test <- problems_numbered_ordered_responses[[10]]
+item_test <- 
+  problems_numbered_ordered_responses[[10]]
 
-item_test %>% cat
+item_test %>% 
+  cat
 
 uniqchars <- 
   function(x) unique(strsplit(x, "")[[1]]) 

@@ -1,3 +1,4 @@
+[[Question:MC:SingleAnswer:Vertical]]
 [question_start]
 Should she take the follow-up test?
 [choices_start]

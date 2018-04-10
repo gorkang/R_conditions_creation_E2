@@ -1,3 +1,4 @@
+[[Text]]
 [question_start]
 Which factors influenced your recommendation?
 [choices_start]
@@ -5,7 +6,7 @@ How informative the screening test is [slider 0-100]
 [second_choice]
 The need to confirm the diagnosis [slider 0-100]
 [third_choice]
-How serious Trisomy 21 is [slider 0-100]
+How serious medical_condition is [slider 0-100]
 [fourth_choice]
 The magnitude of the risk of procedure-related complications of the follow-up test [slider 0-100]
 [fifth_choice]

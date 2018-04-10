@@ -196,15 +196,16 @@ rm("response_path", "response_text", "current_choices")
 # #############################################################3
 # #############################################################3
 
-item_test <- 
-  problems_numbered_ordered_responses[[10]]
+# item_test <- 
+#   problems_numbered_ordered_responses[[10]]
 
-item_test %>% 
-  cat
+# item_test %>% 
+#   cat
 
+# function to get unique character within string?
 uniqchars <- 
   function(x) unique(strsplit(x, "")[[1]]) 
-
+# get unique characters of possible response types
 response_type_regex <-
   dir("materials/Response_type/", pattern = ".txt") %>% 
   gsub("\\.txt", "", .) %>% paste(., collapse = "") %>% 
@@ -215,7 +216,7 @@ response_type_regex <-
 #   problems_numbered_ordered_responses[seq(1, length(problems_numbered_ordered_responses), 4)] %>% 
 #   map(~gsub(paste0("\\*\\*(.*)_[", response_type_regex, "]{2}\\*\\*(.*)"), "\\1\\2", .x)) %>% unlist
 
-# names and prevalences
+# Get unique prevalences with names
 unique_prevalences <- 
   problems_numbered_ordered_responses[seq(1, length(problems_numbered_ordered_responses), 4)] %>% 
   map(~gsub(paste0("(\\*\\*.*)_[", response_type_regex, "]{2}(\\*\\*).*\\[first_piece\\]\\n(.*)\\n\\[second_piece\\].*"), "\\1\\2\\3", .x)) %>% unlist
@@ -229,6 +230,3 @@ unique_prevalences %>%
                      outputdir = "materials/qualtrics/output/followUp/", rmv_placeholders = TRUE) ) %>% 
   invisible()
 
-
-prev2followUp(prevalence_string = unique_prevalences[[2]], follow_up_dir = "materials/Question/Follow_up/output/", 
-              outputdir = "materials/qualtrics/output/followUp/", rmv_placeholders = TRUE)

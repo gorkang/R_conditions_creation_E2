@@ -1,0 +1,4 @@
+[[Question:Text]]
+<span style="font-size:22px;">How strongly would you recommend her to take the follow-up test?</span>
+[[Choices]]
+<span style="font-size:16px;">[slider horizontal 0-100]</span>

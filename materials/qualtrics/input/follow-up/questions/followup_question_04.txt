@@ -1,0 +1,4 @@
+[[Question:TE]]
+<span style="font-size:22px;">Could you briefly explain why do you think she should/shouldn't take the follow up test?</span>
+[[Choices]]
+<span style="font-size:16px;">_______________</span>

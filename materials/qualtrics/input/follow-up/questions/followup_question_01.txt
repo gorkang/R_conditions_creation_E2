@@ -1,0 +1,5 @@
+[[Question:MC:SingleAnswer:Vertical]]
+<span style="font-size:22px;">Should she take the follow-up test?</span>
+[[Choices]]
+<span style="font-size:16px;">Yes
+No</span>

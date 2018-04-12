@@ -85,7 +85,7 @@ fu_questions <-
 
 # Export items to txt
 # directory (setting and creation)
-output_dir <- "materials/Question/Follow_up/output/"
+output_dir <- "materials/Question/Follow_up/output/item_raw/"
 dir.create(output_dir, showWarnings = FALSE, recursive = TRUE)
 
 # function to export items to text

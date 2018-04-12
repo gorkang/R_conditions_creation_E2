@@ -10,8 +10,17 @@ source("scripts/html_qualtrics_codes.R")
 source("functions/extract_between_placeholders.R")
 source("functions/choice_builder.R")
 
+# ALL PATHS ****************************
+path2fu_raw_questions              <- "materials/Question/Follow_up/input/questions_raw/"
+path2fu_w_prev                     <- "materials/Question/Follow_up/output/item_w_prevalence/"
+path2fu_qualtrics_items            <- "materials/qualtrics/input/follow-up/items/"
+path2fu_qualtrics_questions        <- "materials/qualtrics/input/follow-up/questions/"
+path2fu_qualtrics_complete_items   <- "materials/qualtrics/output/followUp/"
+
+# **************************************
+
 # ##################################
-# Continue dev of choice builder
+# Follow-up questions building
 # ##################################
 
 # ##################################
@@ -19,11 +28,12 @@ source("functions/choice_builder.R")
 # ##################################
 
 response_path <- 
-  "materials/Question/Follow_up/input/questions_raw/followup_question_01.txt"
+  paste0(path2fu_raw_questions, "followup_question_01.txt")
 response_text <- 
   readChar(response_path, file.info(response_path)$size)
 
-current_choices <- choice_builder(response_string = response_text) %>% 
+current_choices <- 
+  choice_builder(response_string = response_text) %>% 
   unlist
 
 cat(
@@ -46,7 +56,7 @@ cat(
   # SEP *******************************
   sep = ""
   # FILE TO EXPORT
-  , file = "materials/Question/Follow_up/input/questions_qualtrics/followup_question_01.txt"
+  , file = paste0(path2fu_qualtrics_questions, "followup_question_01.txt")
 )
 
 # ##################################
@@ -54,7 +64,7 @@ cat(
 # ##################################
 
 response_path <- 
-  "materials/Question/Follow_up/input/questions_raw/followup_question_02.txt"
+  paste0(path2fu_raw_questions, "followup_question_02.txt")
 response_text <- 
   readChar(response_path, file.info(response_path)$size)
 
@@ -81,7 +91,7 @@ cat(
   # SEP *******************************
   sep = ""
   # FILE TO EXPORT
-  , file = "materials/Question/Follow_up/input/questions_qualtrics/followup_question_02.txt"
+  , file = paste0(path2fu_qualtrics_questions, "followup_question_02.txt")
 )
 
 # ##################################
@@ -89,7 +99,7 @@ cat(
 # ##################################
 
 response_path <- 
-  "materials/Question/Follow_up/input/questions_raw/followup_question_03.txt"
+  paste0(path2fu_raw_questions, "followup_question_03.txt")
 response_text <- 
   readChar(response_path, file.info(response_path)$size)
 
@@ -116,7 +126,7 @@ cat(
   # SEP *******************************
   sep = ""
   # FILE TO EXPORT
-  , file = "materials/Question/Follow_up/input/questions_qualtrics/followup_question_03.txt"
+  , file = paste0(path2fu_qualtrics_questions, "followup_question_03.txt")
 )
 
 # ##################################
@@ -124,7 +134,7 @@ cat(
 # ##################################
 
 response_path <- 
-  "materials/Question/Follow_up/input/questions_raw/followup_question_04.txt"
+  paste0(path2fu_raw_questions, "followup_question_04.txt")
 response_text <- 
   readChar(response_path, file.info(response_path)$size)
 
@@ -151,7 +161,7 @@ cat(
   # SEP *******************************
   sep = ""
   # FILE TO EXPORT
-  , file = "materials/Question/Follow_up/input/questions_qualtrics/followup_question_04.txt"
+  , file = paste0(path2fu_qualtrics_questions, "followup_question_04.txt")
 )
 
 # ##################################
@@ -159,7 +169,7 @@ cat(
 # ##################################
 
 response_path <- 
-  "materials/Question/Follow_up/input/questions_raw/followup_question_05.txt"
+  paste0(path2fu_raw_questions, "followup_question_05.txt")
 response_text <- 
   readChar(response_path, file.info(response_path)$size)
 
@@ -186,7 +196,7 @@ cat(
   # SEP *******************************
   sep = ""
   # FILE TO EXPORT
-  , file = "materials/Question/Follow_up/input/questions_qualtrics/followup_question_05.txt"
+  , file = paste0(path2fu_qualtrics_questions, "followup_question_05.txt")
 )
 
 rm("response_path", "response_text", "current_choices")
@@ -200,12 +210,6 @@ rm("response_path", "response_text", "current_choices")
 # 0. add followup items with qualtrics and html codes.
 # 1. paste questions (without placeholders) to followup items to be displayed.
 # 2. paste questions with codes with followup with codes.
-
-# item_test <- 
-#   problems_numbered_ordered_responses[[10]]
-
-# item_test %>% 
-#   cat
 
 # function to get unique character within string?
 uniqchars <- 
@@ -229,9 +233,82 @@ unique_prevalences <-
 # prev2followUp(unique_prevalences[[2]], "materials/Question/Follow_up/output/")
 source("functions/prev2followup.R")
 
+# create follow-up item with every unique prevalence
 unique_prevalences %>% 
   map(~prev2followUp(prevalence_string = .x, 
-                     follow_up_dir = "materials/Question/Follow_up/output/", 
-                     outputdir = "materials/qualtrics/output/followUp/", rmv_placeholders = TRUE) ) %>% 
+                     follow_up_dir = "materials/Question/Follow_up/output/item_raw/", 
+                     outputdir = "materials/Question/Follow_up/output/item_w_prevalence/", rmv_placeholders = TRUE) ) %>% 
   invisible()
+
+
+
+# #######################
+# TODO: watch out for extra spaces at the end of the item
+
+files <- 
+  dir(path2fu_w_prev, ".txt")
+
+# custom func to load files, wrapped them with html text code, and export them.
+load_puthtml_export <- 
+  function(x) {
+    # load item
+    item_text <- 
+      readChar(con = paste0(path2fu_w_prev,x), nchars = file.info(paste0(path2fu_w_prev,x))$size)
+    # put html label around item
+    cat(gsub("QUESTION_TEXT_TO_FORMAT", item_text, html_codes$question_font_size), 
+        file = paste0(path2fu_qualtrics_items, x))
+  }
+
+files %>% 
+  map(~load_puthtml_export(.x)) %>% 
+  invisible()
+
+# Bind with questions (by problem context)
+item_files <- 
+  dir(path2fu_qualtrics_items, ".txt")
+question_files <- 
+  dir(path2fu_qualtrics_questions, ".txt")
+
+questions <- question_files %>% 
+  map(~readChar(con = paste0(path2fu_qualtrics_questions,.x), nchars = file.size(paste0(path2fu_qualtrics_questions,.x)))) %>% 
+  unlist
+
+export_qualtrics_followup_items <- function(x) {
+  
+  # x <- item_files[1]
+  x_context <- gsub("-*(ca|pr).*", "\\1", x)
+  x_item <- readChar(con = paste0(path2fu_qualtrics_items,x), nchars = file.info(paste0(path2fu_qualtrics_items,x))$size)
+  
+  dir.create(path2fu_qualtrics_complete_items, showWarnings = FALSE, recursive = TRUE)
+  
+  if (x_context == "ca") {
+    
+    cat(qualtrics_codes$advanced_format, "\n",
+        qualtrics_codes$question_only_text, "\n",
+        x_item, "\n",
+        gsub("risk_percentage", 
+             gsub(".*([0-9]{2}%).*", "\\1", x_item), 
+             gsub("medical_condition", "breast cancer", paste(questions, collapse = "\n"))),
+        sep = ""
+        , file = paste0(path2fu_qualtrics_complete_items, x)
+    )
+  } else if (x_context == "pr") {
+    
+    cat(qualtrics_codes$advanced_format, "\n",
+        qualtrics_codes$question_only_text, "\n",
+        x_item, "\n",
+        gsub("risk_percentage", 
+             gsub(".*([0-9]{2}%).*", "\\1", x_item), 
+             gsub("medical_condition", "Trisomy 21", paste(questions, collapse = "\n"))),
+        sep = ""
+        , file = paste0(path2fu_qualtrics_complete_items, x)
+    )
+  }
+  
+}
+
+item_files %>% 
+  map(~export_qualtrics_followup_items(.x)) %>% 
+  invisible()
+
 

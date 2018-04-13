@@ -13,6 +13,8 @@ followup_question_builder <- function(file_path, file_name, outputdir, export = 
     unlist
   
   if (export == TRUE) {
+    dir.create(outputdir, showWarnings = FALSE, recursive = TRUE)
+    
     # ACTUAL FUNCTION
     cat(
       # QUESTION TYPE ********************

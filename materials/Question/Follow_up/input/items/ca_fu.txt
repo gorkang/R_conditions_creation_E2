@@ -1,7 +1,7 @@
 [followUp_start]
 Remember that:
-* prevalence_and_context
-* In your response to the previous problem you said that, of those with positive mammograms, qualtrics_ppv_answer actually have breast cancer.
+<li>prevalence_and_context</li>
+<li>In your response to the previous problem you said that, of those with positive mammograms, qualtrics_ppv_answer actually have breast cancer.</li>
 
 [followUp_first_piece]
 Imagine a woman you care about is participating in a routine mammogram screening as the one you saw before to detect breast cancer and receives a positive mammogram.

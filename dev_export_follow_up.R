@@ -2,6 +2,8 @@
 # TODO: what to do with the last follow-up question. has to had a logic display regarding the first follow-up question.
 # TODO: export all follow-up items (item+questions) as one text file separating items by blocks
 # TODO: last followup question has to be splitted in two. IF any question suppose the use of a display logic it has to be separated in a question for each condition.
+# TODO: add 0-100 on sliders
+
 
 # There are 16 unique(ish) prevalences (2 contexts x 4 formats x 2 ppv prob)
 # There are 2 follow-up risk (1%, 10%)
@@ -91,5 +93,24 @@ questions <- question_files %>%
 item_files %>% 
   map(~export_qualtrics_followup_items(.x)) %>% 
   invisible()
+
+# Follow-up questions building -------------------------------------
+
+# get all follow-up complete items to a vector
+followup_complete_items <- 
+  dir(path2fu_qualtrics_complete_items, ".txt") %>% 
+  map(~readChar(paste0(path2fu_qualtrics_complete_items, .x), nchars = file.size(paste0(path2fu_qualtrics_complete_items, .x)))) %>% 
+  unlist()
+# get follow-up complete items names
+followup_block_names <- 
+  gsub("\\.txt", "", dir(path2fu_qualtrics_complete_items, ".txt")) %>% 
+  map(~gsub("block_name", .x, qualtrics_codes$block_start)) %>% unlist
+# create quacltrics blocks tags names
+followup_blocks <- 
+  paste(followup_block_names, "\n", followup_complete_items, sep = "")
+# collapse all items in one text file separating by block
+cat(paste(followup_blocks, collapse = "", sep = ""), sep = "", file = "materials/qualtrics/output/followUp/all_blocks/all_blocks.txt")
+
+
 
 

@@ -1,4 +1,4 @@
-[[Question:Text]]
+[[Question:MC:SingleAnswer:Vertical]]
 [question_start]
 Which factors influenced your recommendation?
 [choices_start]

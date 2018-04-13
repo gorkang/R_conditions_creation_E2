@@ -1,4 +1,3 @@
-# TODO: missing linebrekas within items?
 # TODO: consider what to do with sliders text (if sliders has text before, do a single choice vertical. if not, a simple text only question)
 # TODO: what to do with the last follow-up question. has to had a logic display regarding the first follow-up question.
 
@@ -248,9 +247,12 @@ load_puthtml_export <-
     # load item
     item_text <- 
       readChar(con = paste0(path2fu_w_prev,x), nchars = file.info(paste0(path2fu_w_prev,x))$size)
-    # put html label around item
-    cat(gsub("QUESTION_TEXT_TO_FORMAT", item_text, html_codes$question_font_size), 
-        file = paste0(path2fu_qualtrics_items, x))
+    # put html tags
+    cat(
+      gsub("</li>\n<li>", "</li><li>",
+           # replace list placeholders with html list tags
+           gsub("QUESTION_TEXT_TO_FORMAT", item_text, html_codes$question_font_size)), # add font size html tags, 
+      file = paste0(path2fu_qualtrics_items, x))
   }
 
 files %>% 

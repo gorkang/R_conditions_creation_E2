@@ -12,8 +12,8 @@ source("functions/choice_builder.R")
 # ALL PATHS ****************************
 path2fu_raw_questions              <- "materials/Question/Follow_up/input/questions_raw/"
 path2fu_w_prev                     <- "materials/Question/Follow_up/output/item_w_prevalence/"
-path2fu_qualtrics_items            <- "materials/qualtrics/input/follow-up/items/"
-path2fu_qualtrics_questions        <- "materials/qualtrics/input/follow-up/questions/"
+path2fu_qualtrics_items            <- "materials/qualtrics/input/followUp/items/"
+path2fu_qualtrics_questions        <- "materials/qualtrics/input/followUp/questions/"
 path2fu_qualtrics_complete_items   <- "materials/qualtrics/output/followUp/"
 
 # **************************************
@@ -74,6 +74,8 @@ load_puthtml_export <-
     # load item
     item_text <- 
       readChar(con = paste0(path2fu_w_prev,x), nchars = file.info(paste0(path2fu_w_prev,x))$size)
+    
+    dir.create(path2fu_qualtrics_items, showWarnings = FALSE, recursive = TRUE)
     # put html tags
     cat(
       gsub("</li>\n<li>", "</li><li>",

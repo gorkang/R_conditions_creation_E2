@@ -12,5 +12,5 @@ The magnitude of the risk of procedure-related complications of the follow-up te
 [fifth_choice]
 How serious the complications of the follow-up test are [slider_0-100]
 [sixth_choice]
-Other: _______________
+Other:
 [choices_end]

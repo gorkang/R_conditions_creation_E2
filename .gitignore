@@ -10,3 +10,5 @@ _book/
 materials/Question/Follow_up/output/
 packages.bib
 materials/qualtrics/output/*.txt
+materials/qualtrics/output/
+materials/qualtrics/input/followUp/

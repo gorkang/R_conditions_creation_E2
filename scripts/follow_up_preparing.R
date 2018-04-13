@@ -1,6 +1,3 @@
-# TODO: get the first sentence of each condition on 
-# problems_numbered... (the one with the final problems) and paste it in each follow up (ca,pr;riskhigh,risklow)
-
 # THINGS TO FILL:
 # ppv response in previous question. this is a qualtrics question id code. to know the 
     # actual code we need to have already uploaded the ppv question and see what their codes are.

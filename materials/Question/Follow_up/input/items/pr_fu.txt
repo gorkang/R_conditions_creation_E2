@@ -2,10 +2,14 @@
 Remember that:
 * prevalence_and_context
 * In your response to the previous problem you said that, of those with positive results, qualtrics_ppv_answer actually have breast cancer.
+
 [followUp_first_piece]
 Imagine a woman you care about is participating in a routine prenatal screening test to detect Down's syndrome as the one you saw before, and she receives a positive result.
+
 [followUp_second_piece]
 The doctor offers her a follow-up test called amniocentesis, necessary to confirm the diagnosis. During the procedure, a needle is inserted to sample fluid from the amniotic sac.
+
 [followUp_third_piece]
 Amniocentesis has a risk_percentage procedure-related risk of complications (for example, infections) that can result in a miscarriage.
 [followUp_end]
+

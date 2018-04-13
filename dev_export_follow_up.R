@@ -1,9 +1,6 @@
-# TODO: replace "\n" with <br> (only the ones within each string, not between strings)
+# TODO: missing linebrekas within items?
 # TODO: consider what to do with sliders text (if sliders has text before, do a single choice vertical. if not, a simple text only question)
 # TODO: what to do with the last follow-up question. has to had a logic display regarding the first follow-up question.
-
-# TODO: before put html around items remove the last two breaklines
-
 
 # There are 16 unique(ish) prevalences (2 contexts x 4 formats x 2 ppv prob)
 # There are 2 follow-up risk (1%, 10%)

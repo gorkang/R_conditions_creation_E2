@@ -77,12 +77,6 @@ for (i in seq(length(follow_up_items))) { # Follow up items LOOP
 fu_questions <- 
   as.list(unlist(fu_questions, recursive = FALSE))
 
-
-# TODO: adapt remove_placeholders to include follow-up placholders. Also add an argument
-# to indicate if item placeholders or follow-up placeholders
-
-
-
 # Export items to txt
 # directory (setting and creation)
 output_dir <- "materials/Question/Follow_up/output/item_raw/"

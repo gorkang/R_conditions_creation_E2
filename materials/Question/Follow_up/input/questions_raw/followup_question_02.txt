@@ -2,5 +2,5 @@
 [question_start]
 How strongly would you recommend her to take the follow-up test?
 [choices_start]
-[slider horizontal 0-100]
+[slider_0-100]
 [choices_end]

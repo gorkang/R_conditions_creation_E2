@@ -5,9 +5,14 @@
 # There are 2 follow-up risk (1%, 10%)
 # Therefore, there are 32 possible follow-up items (e.g. ca_nfab_low_high; ppvLow_riskHigh)
 
+# Functions
 source("scripts/html_qualtrics_codes.R")
 source("functions/extract_between_placeholders.R")
 source("functions/choice_builder.R")
+source("functions/prev2followup.R")
+source("functions/followup_question_builder.R")
+source("functions/load_puthtml_export.R")
+source("functions/export_qualtrics_followup_items.R")
 
 # ALL PATHS ****************************
 path2fu_raw_questions              <- "materials/Question/Follow_up/input/questions_raw/"
@@ -21,16 +26,14 @@ path2fu_qualtrics_complete_items   <- "materials/qualtrics/output/followUp/"
 # ##################################
 # Follow-up questions building
 # ##################################
-source("functions/followup_question_builder.R")
 
 dir(path2fu_raw_questions, ".txt") %>% 
   map(~followup_question_builder(path2fu_raw_questions, .x, path2fu_qualtrics_questions)) %>% 
   invisible()
 
-# #############################################################3
-# #############################################################3
-# #############################################################3
-# #############################################################3
+# ###################################################
+# Follow-up item building with unique prevalences
+# ###################################################
 
 # function to get unique character within string?
 uniqchars <- 
@@ -51,9 +54,6 @@ unique_prevalences <-
   problems_numbered_ordered_responses[seq(1, length(problems_numbered_ordered_responses), 4)] %>% 
   map(~gsub(paste0("(\\*\\*.*)_[", response_type_regex, "]{2}(\\*\\*).*\\[first_piece\\]\\n(.*)\\n\\[second_piece\\].*"), "\\1\\2\\3", .x)) %>% unlist
 
-# prev2followUp(unique_prevalences[[2]], "materials/Question/Follow_up/output/")
-source("functions/prev2followup.R")
-
 # create follow-up item with every unique prevalence
 unique_prevalences %>% 
   map(~prev2followUp(prevalence_string = .x, 
@@ -61,28 +61,12 @@ unique_prevalences %>%
                      outputdir = "materials/Question/Follow_up/output/item_w_prevalence/", rmv_placeholders = TRUE) ) %>% 
   invisible()
 
+# ###################################################
+# Bind follow-up items with questions (customizing by problem context)
+# ###################################################
 
-
-# #######################
 files <- 
   dir(path2fu_w_prev, ".txt")
-
-# custom func to load files, wrapped them with html text code, and export them.
-load_puthtml_export <- 
-  function(x) {
-    # x <- files[1]
-    # load item
-    item_text <- 
-      readChar(con = paste0(path2fu_w_prev,x), nchars = file.info(paste0(path2fu_w_prev,x))$size)
-    
-    dir.create(path2fu_qualtrics_items, showWarnings = FALSE, recursive = TRUE)
-    # put html tags
-    cat(
-      gsub("</li>\n<li>", "</li><li>",
-           # replace list placeholders with html list tags
-           gsub("QUESTION_TEXT_TO_FORMAT", item_text, html_codes$question_font_size)), # add font size html tags, 
-      file = paste0(path2fu_qualtrics_items, x))
-  }
 
 files %>% 
   map(~load_puthtml_export(.x)) %>% 
@@ -97,41 +81,6 @@ question_files <-
 questions <- question_files %>% 
   map(~readChar(con = paste0(path2fu_qualtrics_questions,.x), nchars = file.size(paste0(path2fu_qualtrics_questions,.x)))) %>% 
   unlist
-
-export_qualtrics_followup_items <- function(x) {
-  
-  # x <- item_files[1]
-  x_context <- gsub("-*(ca|pr).*", "\\1", x) # get context
-  x_item <- readChar(con = paste0(path2fu_qualtrics_items,x), nchars = file.info(paste0(path2fu_qualtrics_items,x))$size) # read item
-  x_item <- gsub("\\*\\*\\*.*\\*\\*\\*","", x_item) # remove name between ***name***
-  
-  dir.create(path2fu_qualtrics_complete_items, showWarnings = FALSE, recursive = TRUE)
-  
-  if (x_context == "ca") {
-    
-    cat(qualtrics_codes$advanced_format, "\n",
-        qualtrics_codes$question_only_text, "\n",
-        gsub("\n", html_codes$linebreak, x_item), "\n",
-        gsub("risk_percentage", 
-             gsub(".*([0-9]{2}%).*", "\\1", x_item), 
-             gsub("medical_condition", "breast cancer", paste(questions, collapse = "\n"))),
-        sep = ""
-        , file = paste0(path2fu_qualtrics_complete_items, x)
-    )
-  } else if (x_context == "pr") {
-    
-    cat(qualtrics_codes$advanced_format, "\n",
-        qualtrics_codes$question_only_text, "\n",
-        gsub("\n", html_codes$linebreak, x_item), "\n",
-        gsub("risk_percentage", 
-             gsub(".*([0-9]{2}%).*", "\\1", x_item), 
-             gsub("medical_condition", "Trisomy 21", paste(questions, collapse = "\n"))),
-        sep = ""
-        , file = paste0(path2fu_qualtrics_complete_items, x)
-    )
-  }
-  
-}
 
 item_files %>% 
   map(~export_qualtrics_followup_items(.x)) %>% 

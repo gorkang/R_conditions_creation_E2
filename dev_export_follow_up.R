@@ -1,6 +1,7 @@
 # TODO: consider what to do with sliders text (if sliders has text before, do a single choice vertical. if not, a simple text only question)
 # TODO: what to do with the last follow-up question. has to had a logic display regarding the first follow-up question.
 # TODO: export all follow-up items (item+questions) as one text file separating items by blocks
+# TODO: last followup question has to be splitted in two. IF any question suppose the use of a display logic it has to be separated in a question for each condition.
 
 # There are 16 unique(ish) prevalences (2 contexts x 4 formats x 2 ppv prob)
 # There are 2 follow-up risk (1%, 10%)

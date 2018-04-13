@@ -1,8 +1,11 @@
 # This function takes strings and remove all strings defined on placeholders vector, and
 # outputs the new string
+#TODO: add to remove linebreaks next to placeholders
 
 remove_placeholders <- function(items, item_followup = "item") {
-  
+
+  # items <- followUps_items_prev
+    
   # all placeholders within items, contexts, questions and responses must be in this vector
   if (item_followup == "item") {
     
@@ -22,9 +25,10 @@ remove_placeholders <- function(items, item_followup = "item") {
   
   # create regex to detect all placeholders
   placeholders_regex <-
-    paste(paste0("\\[",placeholders, "\\]"), collapse = "|")
+    paste(paste0("\\n{0,1}\\[",placeholders, "\\]\\n{0,1}"), collapse = "|")
   
   # remove placeholders
   gsub(placeholders_regex, "", items)
+  
   
 }

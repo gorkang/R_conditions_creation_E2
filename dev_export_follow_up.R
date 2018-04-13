@@ -1,10 +1,13 @@
+# TODO: replace "\n" with <br> (only the ones within each string, not between strings)
+# TODO: consider what to do with sliders text (if sliders has text before, do a single choice vertical. if not, a simple text only question)
+# TODO: what to do with the last follow-up question. has to had a logic display regarding the first follow-up question.
+
+# TODO: before put html around items remove the last two breaklines
 
 
 # There are 16 unique(ish) prevalences (2 contexts x 4 formats x 2 ppv prob)
 # There are 2 follow-up risk (1%, 10%)
 # Therefore, there are 32 possible follow-up items (e.g. ca_nfab_low_high; ppvLow_riskHigh)
-
-# TODO: add qualtric/html format to export
 
 source("scripts/html_qualtrics_codes.R")
 source("functions/extract_between_placeholders.R")
@@ -206,11 +209,6 @@ rm("response_path", "response_text", "current_choices")
 # #############################################################3
 # #############################################################3
 
-# TODO: 
-# 0. add followup items with qualtrics and html codes.
-# 1. paste questions (without placeholders) to followup items to be displayed.
-# 2. paste questions with codes with followup with codes.
-
 # function to get unique character within string?
 uniqchars <- 
   function(x) unique(strsplit(x, "")[[1]]) 
@@ -243,14 +241,13 @@ unique_prevalences %>%
 
 
 # #######################
-# TODO: watch out for extra spaces at the end of the item
-
 files <- 
   dir(path2fu_w_prev, ".txt")
 
 # custom func to load files, wrapped them with html text code, and export them.
 load_puthtml_export <- 
   function(x) {
+    # x <- files[1]
     # load item
     item_text <- 
       readChar(con = paste0(path2fu_w_prev,x), nchars = file.info(paste0(path2fu_w_prev,x))$size)

@@ -1,5 +1,0 @@
-[[Question:MC:SingleAnswer:Vertical]]
-<span style="font-size:22px;">Remember the biopsy has a risk_percentage procedure-related risk of complications:</span>
-[[Choices]]
-<span style="font-size:16px;">[IF 1. == "Yes"] How big this risk should be for you NOT to recommend it [slider 0-100]</span>
-<span style="font-size:16px;">[IF 1. == "No"] How small this risk should be for you to recommend it [slider 0-100]</span>

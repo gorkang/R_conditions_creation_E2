@@ -1,9 +1,0 @@
-[[Question:Text]]
-<span style="font-size:22px;">Which factors influenced your recommendation?</span>
-[[Choices]]
-<span style="font-size:16px;">How informative the screening test is [slider 0-100]</span>
-<span style="font-size:16px;">The need to confirm the diagnosis [slider 0-100]</span>
-<span style="font-size:16px;">How serious medical_condition is [slider 0-100]</span>
-<span style="font-size:16px;">The magnitude of the risk of procedure-related complications of the follow-up test [slider 0-100]</span>
-<span style="font-size:16px;">How serious the complications of the follow-up test are [slider 0-100]</span>
-<span style="font-size:16px;">Other: _______________</span>

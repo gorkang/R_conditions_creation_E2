@@ -4,8 +4,6 @@
 # [ ] sequential guided
 # [ ] sequential simple
 
-# TODO: decide how many items per block and how to contruc blocks.
-
 # For exporting items each item should be writte in a plain txt file including the format html(?)-code and the qualtrics-format code.
 
 # [[QUALTRICS]]

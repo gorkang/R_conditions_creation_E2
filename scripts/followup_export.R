@@ -1,4 +1,3 @@
-# TODO: consider what to do with sliders text (if sliders has text before, do a single choice vertical. if not, a simple text only question)
 # TODO: what to do with the last follow-up question. has to had a logic display regarding the first follow-up question.
 # TODO: last followup question has to be splitted in two. IF any question suppose the use of a display logic it has to be separated in a question for each condition.
 # TODO: blank space at the beginning of exported text blocks? 

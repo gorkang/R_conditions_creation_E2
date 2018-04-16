@@ -1,9 +1,8 @@
 # TODO: consider what to do with sliders text (if sliders has text before, do a single choice vertical. if not, a simple text only question)
 # TODO: what to do with the last follow-up question. has to had a logic display regarding the first follow-up question.
-# TODO: export all follow-up items (item+questions) as one text file separating items by blocks
 # TODO: last followup question has to be splitted in two. IF any question suppose the use of a display logic it has to be separated in a question for each condition.
-# TODO: add 0-100 on sliders
-
+# TODO: blank space at the beginning of exported text blocks? 
+# TODO: how to indicate the questions that require manual setting within qualtrics (e.g. display logic questions)
 
 # There are 16 unique(ish) prevalences (2 contexts x 4 formats x 2 ppv prob)
 # There are 2 follow-up risk (1%, 10%)
@@ -96,6 +95,8 @@ item_files %>%
 
 # Follow-up questions building -------------------------------------
 
+allblocks_dir <- "materials/qualtrics/output/followUp/all_blocks/all_blocks.txt"
+dir.create(allblocks_dir, showWarnings = FALSE, recursive = TRUE)
 # get all follow-up complete items to a vector
 followup_complete_items <- 
   dir(path2fu_qualtrics_complete_items, ".txt") %>% 
@@ -109,8 +110,5 @@ followup_block_names <-
 followup_blocks <- 
   paste(followup_block_names, "\n", followup_complete_items, sep = "")
 # collapse all items in one text file separating by block
-cat(paste(followup_blocks, collapse = "", sep = ""), sep = "", file = "materials/qualtrics/output/followUp/all_blocks/all_blocks.txt")
-
-
-
+cat(paste(followup_blocks, collapse = "", sep = ""), sep = "", file = paste0(allblocks_dir, "all_blocks.txt"))
 

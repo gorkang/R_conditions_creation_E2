@@ -1,22 +1,3 @@
-# TODO: create a qualtrics-compatible response type text
-# [X] global intuituive
-# [ ] global systematic
-# [ ] sequential guided
-# [ ] sequential simple
-
-# TODO: decide how many items per block and how to contruc blocks.
-
-# For exporting items each item should be writte in a plain txt file including the format html(?)-code and the qualtrics-format code.
-
-# [[QUALTRICS]]
-# Problem context   html
-# Actual item       html
-# Question          html
-# Response type     html
-# [[QUALTRICS]]
-
-# Item formating ----------------------------------------------------------
-
 source("scripts/html_qualtrics_codes.R")
 
 # separated item folder
@@ -45,7 +26,3 @@ twins <- character(length(txt_files)/2)
 txt_files %>% 
   map(~pair_items(txt_files = .x, separated_item_dir = separated_item_dir, twins = twins, outputdir = paired_items_dir)) %>% 
   invisible()
-
-# Follow-up format and exporting ------------------------------------------
-
-

@@ -663,3 +663,9 @@ source("scripts/scales_preparing.R")
 invisible(lapply(scales_questions, lapply, cat))
 ```
 
+# Item export
+
+```{r}
+source("scripts/export2qualtrics.R")
+```
+

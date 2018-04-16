@@ -63,6 +63,27 @@ unique_prevalences %>%
                      follow_up_dir = "materials/Question/Follow_up/output/item_raw/", 
                      outputdir = "materials/Question/Follow_up/output/item_w_prevalence/", rmv_placeholders = TRUE) ) %>% 
   invisible()
+# DEVELOPING *********************************************************************
+# ********************************************************************************
+# Build factbox prevalences using numbers_bayes
+numbers_fbpi <- 
+  readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>% 
+  filter(format == "fbpi")
+
+numbers_nppi <- 
+  readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>% 
+  filter(format == "nppi")
+
+
+paste0(numbers_fbpi[1, "die_all_with"], " out of ", numbers_fbpi[1, "prev_02"], " women with screening and ", numbers_fbpi[1, "die_all_without"], " out of ", numbers_fbpi[1, "prev_02"], " women without screening die from all types of cancer.")
+paste0(numbers_fbpi[1, "die_all_with"], " out of ", numbers_fbpi[1, "prev_02"], " women with screening and ", numbers_fbpi[1, "die_all_without"], " out of ", numbers_fbpi[1, "prev_02"], " women's fetuses with any Trisomy 21 detected.")
+
+paste0("It is estimated that breast cancer is present in ", numbers_nppi[1, "prev_01"], " out of ", numbers_nppi[1, "prev_02"], " women.")
+paste0("It is estimated that trisomy 21 is present in ", numbers_nppi[1, "prev_01"], " out of ", numbers_nppi[1, "prev_02"], " births.")
+
+# ********************************************************************************
+# ********************************************************************************
+# ********************************************************************************
 
 # Bind follow-up items with questions (customizing by problem context) ------------------
 

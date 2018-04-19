@@ -76,7 +76,7 @@ fbpi_fu_prev_temp <- fbpi_fu_prev_files %>%
 fbpi_prev_creator <- 
   function(text, numbers) {
 text %>% 
-  gsub("(\\*\\*\\*.*)(\\*\\*\\*.*)", paste0("\\1_ppv",numbers["prob"] , "\\2"), .) %>% 
+  gsub("(\\*\\*.*)(\\*\\*.*)", paste0("\\1_ppv",numbers["prob"] , "\\2"), .) %>% 
   gsub("die_all_with\\b", numbers["die_all_with"],.) %>% 
   gsub("die_all_without\\b", numbers["die_all_without"],.) %>% 
   gsub("prev_02", numbers["prev_02"],.) %>% paste0
@@ -101,7 +101,7 @@ nppi_fu_prev_temp <- nppi_fu_prev_files %>%
 # function to put numbers on prevalences.
 nppi_prev_creator <- function(text, numbers) {
   text %>% 
-    gsub("(\\*\\*\\*.*)(\\*\\*\\*.*)", paste0("\\1_ppv",numbers["prob"] , "\\2"), .) %>% 
+    gsub("(\\*\\*.*)(\\*\\*.*)", paste0("\\1_ppv",numbers["prob"] , "\\2"), .) %>% 
     gsub("prev_01\\b", numbers["prev_01"],.) %>% 
     gsub("prev_02\\b", numbers["prev_02"],.) %>% paste0
 }

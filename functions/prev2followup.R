@@ -10,7 +10,7 @@ prev2followUp <- function(prevalence_string, follow_up_dir, outputdir, rmv_place
   this_prev_name <- gsub("\\*\\*(.*)\\*\\*.*", "\\1", this_prev)
   this_prev_context <- gsub("\\*\\*(ca).*|\\*\\*(pr).*", "\\1\\2", this_prev)
   this_prev_ppvProb <- gsub(".*(ppvhigh).*|.*(ppvlow).*", "\\1\\2", this_prev)
-  this_prev_format <- gsub(".*(nfab|pfab|prab|prre).*", "\\1", this_prev)
+  this_prev_format <- gsub(".*(nfab|pfab|prab|prre|fbpi|nppi).*", "\\1", this_prev)
   
   # sumsample follow-up items by context
   # followUp_dir <- "materials/Question/Follow_up/output/"

@@ -74,12 +74,34 @@ numbers_nppi <-
   readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>% 
   filter(format == "nppi")
 
+# factbox
+fbpi_fu_context_dir <- "materials/Question/Follow_up/input/pictorial_contexts/"
+fbpi_fu_context_files <- paste0(fbpi_fu_context_dir, dir(fbpi_fu_context_dir))
 
-paste0(numbers_fbpi[1, "die_all_with"], " out of ", numbers_fbpi[1, "prev_02"], " women with screening and ", numbers_fbpi[1, "die_all_without"], " out of ", numbers_fbpi[1, "prev_02"], " women without screening die from all types of cancer.")
-paste0(numbers_fbpi[1, "die_all_with"], " out of ", numbers_fbpi[1, "prev_02"], " women with screening and ", numbers_fbpi[1, "die_all_without"], " out of ", numbers_fbpi[1, "prev_02"], " women's fetuses with any Trisomy 21 detected.")
+fbpi_fu_contexts_temp <- fbpi_fu_context_files %>% 
+  map(~readChar(., file.size(.))) %>% 
+  unlist()
 
-paste0("It is estimated that breast cancer is present in ", numbers_nppi[1, "prev_01"], " out of ", numbers_nppi[1, "prev_02"], " women.")
-paste0("It is estimated that trisomy 21 is present in ", numbers_nppi[1, "prev_01"], " out of ", numbers_nppi[1, "prev_02"], " births.")
+fbpi_prev_creator <- function(text, numbers) {
+text %>% 
+  gsub("die_all_with\\b", numbers["die_all_with"],.) %>% 
+  gsub("die_all_without\\b", numbers["die_all_without"],.) %>% 
+  gsub("prev_02", numbers["prev_02"],.) %>% paste0
+}
+
+fbpi_fu_contexts_temp <- 
+  apply(numbers_fbpi, 1, function(x) {fbpi_prev_creator(numbers = x, text = fbpi_fu_contexts_temp)}) %>% 
+  as.vector()
+
+# new paradigm
+# cancer
+paste0("It is estimated that breast cancer is present in ", 
+       numbers_nppi[1, "prev_01"], " out of ", 
+       numbers_nppi[1, "prev_02"], " women.")
+# trisomy
+paste0("It is estimated that trisomy 21 is present in ", 
+       numbers_nppi[1, "prev_01"], " out of ", 
+       numbers_nppi[1, "prev_02"], " births.")
 
 # ********************************************************************************
 # ********************************************************************************

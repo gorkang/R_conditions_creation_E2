@@ -52,60 +52,73 @@ response_type_regex <-
 #   problems_numbered_ordered_responses[seq(1, length(problems_numbered_ordered_responses), 4)] %>% 
 #   map(~gsub(paste0("\\*\\*(.*)_[", response_type_regex, "]{2}\\*\\*(.*)"), "\\1\\2", .x)) %>% unlist
 
-# Get unique prevalences with names
+# Get unique textual-items prevalences with names
 unique_prevalences <- 
   problems_numbered_ordered_responses[seq(1, length(problems_numbered_ordered_responses), 4)] %>% 
   map(~gsub(paste0("(\\*\\*.*)_[", response_type_regex, "]{2}(\\*\\*).*\\[first_piece\\]\\n(.*)\\n\\[second_piece\\].*"), "\\1\\2\\3", .x)) %>% unlist
 
-# create follow-up item with every unique prevalence
+
+# Build factbox prevalences using numbers_bayes -------------------------------------
+# numbers
+numbers_fbpi <- 
+  readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>% 
+  filter(format == "fbpi")
+
+# factbox prevalences for follow-up
+fbpi_fu_prev_dir <- "materials/Question/Follow_up/input/pictorial_contexts/fbpi/"
+fbpi_fu_prev_files <- paste0(fbpi_fu_prev_dir, dir(fbpi_fu_prev_dir))
+# read prevalences
+fbpi_fu_prev_temp <- fbpi_fu_prev_files %>% 
+  map(~readChar(., file.size(.))) %>% 
+  unlist()
+
+# function to put numbers on prevalences.
+fbpi_prev_creator <- 
+  function(text, numbers) {
+text %>% 
+  gsub("(\\*\\*\\*.*)(\\*\\*\\*.*)", paste0("\\1_ppv",numbers["prob"] , "\\2"), .) %>% 
+  gsub("die_all_with\\b", numbers["die_all_with"],.) %>% 
+  gsub("die_all_without\\b", numbers["die_all_without"],.) %>% 
+  gsub("prev_02", numbers["prev_02"],.) %>% paste0
+}
+# actually put numbers on prevalences
+fbpi_fu_prev <- 
+  apply(numbers_fbpi, 1, function(x) {fbpi_prev_creator(numbers = x, text = fbpi_fu_prev_temp)}) %>% 
+  as.vector()
+
+# Build new-paradigm prevalences using numbers_bayes -------------------------------------
+# numbers
+numbers_nppi <- 
+  readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>% 
+  filter(format == "nppi")
+# factbox prevalences for follow-up
+nppi_fu_prev_dir <- "materials/Question/Follow_up/input/pictorial_contexts/nppi/"
+nppi_fu_prev_files <- paste0(nppi_fu_prev_dir, dir(nppi_fu_prev_dir))
+# read prevalences
+nppi_fu_prev_temp <- nppi_fu_prev_files %>% 
+  map(~readChar(., file.size(.))) %>% 
+  unlist()
+# function to put numbers on prevalences.
+nppi_prev_creator <- function(text, numbers) {
+  text %>% 
+    gsub("(\\*\\*\\*.*)(\\*\\*\\*.*)", paste0("\\1_ppv",numbers["prob"] , "\\2"), .) %>% 
+    gsub("prev_01\\b", numbers["prev_01"],.) %>% 
+    gsub("prev_02\\b", numbers["prev_02"],.) %>% paste0
+}
+# actually put numbers on prevalences
+nppi_fu_prev <- 
+  apply(numbers_nppi, 1, function(x) {nppi_prev_creator(numbers = x, text = nppi_fu_prev_temp)}) %>% 
+  as.vector()
+
+unique_prevalences <- 
+  c(unique_prevalences, fbpi_fu_prev, nppi_fu_prev)
+
+# create follow-up item with every unique prevalence -------------------------------------
 unique_prevalences %>% 
   map(~prev2followUp(prevalence_string = .x, 
                      follow_up_dir = "materials/Question/Follow_up/output/item_raw/", 
                      outputdir = "materials/Question/Follow_up/output/item_w_prevalence/", rmv_placeholders = TRUE) ) %>% 
   invisible()
-# DEVELOPING *********************************************************************
-# ********************************************************************************
-# Build factbox prevalences using numbers_bayes
-numbers_fbpi <- 
-  readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>% 
-  filter(format == "fbpi")
-
-numbers_nppi <- 
-  readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>% 
-  filter(format == "nppi")
-
-# factbox
-fbpi_fu_context_dir <- "materials/Question/Follow_up/input/pictorial_contexts/"
-fbpi_fu_context_files <- paste0(fbpi_fu_context_dir, dir(fbpi_fu_context_dir))
-
-fbpi_fu_contexts_temp <- fbpi_fu_context_files %>% 
-  map(~readChar(., file.size(.))) %>% 
-  unlist()
-
-fbpi_prev_creator <- function(text, numbers) {
-text %>% 
-  gsub("die_all_with\\b", numbers["die_all_with"],.) %>% 
-  gsub("die_all_without\\b", numbers["die_all_without"],.) %>% 
-  gsub("prev_02", numbers["prev_02"],.) %>% paste0
-}
-
-fbpi_fu_contexts_temp <- 
-  apply(numbers_fbpi, 1, function(x) {fbpi_prev_creator(numbers = x, text = fbpi_fu_contexts_temp)}) %>% 
-  as.vector()
-
-# new paradigm
-# cancer
-paste0("It is estimated that breast cancer is present in ", 
-       numbers_nppi[1, "prev_01"], " out of ", 
-       numbers_nppi[1, "prev_02"], " women.")
-# trisomy
-paste0("It is estimated that trisomy 21 is present in ", 
-       numbers_nppi[1, "prev_01"], " out of ", 
-       numbers_nppi[1, "prev_02"], " births.")
-
-# ********************************************************************************
-# ********************************************************************************
-# ********************************************************************************
 
 # Bind follow-up items with questions (customizing by problem context) ------------------
 

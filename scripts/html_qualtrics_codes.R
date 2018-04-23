@@ -27,7 +27,6 @@ qualtrics_codes <- list(
   block_start = "[[Block:block_name]]",
   pagebreak = "[[PageBreak]]",
   # Questions
-  question_text = "[[Question:Text]]",
   question_singlechoice_vertical = "[[Question:MC:SingleAnswer:Vertical]]",
   question_singlechoice_horizontal = "[[Question:MC:SingleAnswer:Horizontal]]",
   question_dropdown = "[[Question:MC:DropDown]]",

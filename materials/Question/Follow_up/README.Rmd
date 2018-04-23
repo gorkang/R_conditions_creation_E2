@@ -1,0 +1,131 @@
+---
+title: "About Follow-up"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## General description
+
+This folder contains the materials to build follow-up items.
+
+## Inputs
+
+The folder /Follow_up/input/ contains three folders:  
+
+- items: contains items templates as text files, without questions.  
+- pictorial_prevalences: contains pictorial items prevalences templates  
+- questions_raw: contains follow-up questions  
+  
+### items
+
+This folder contains follow-up items templates files. Files must be named as the following:  
+`[context]_fu.txt`  
+The context should be no longer than 2 letters. For example:  
+`ca_fu.txt`  
+`pr_fu.txt`  
+  
+The text within each follow-up item template must be parsed using the following placeholders:  
+`[followUp_start]`  
+`[followUp_first_piece]`  
+`[followUp_second_piece]`  
+`[followUp_third_piece]`  
+`[followUp_fourth_piece]`  
+...  
+`[followUp_end]`  
+
+The placeholders should be used to separate unities as paragraphs. As many numbered placeholders (`[followUp_first_piece]`) as wanted be used as long the first and the last placeholders are `[followUp_start]` and `[followUp_end]`.  
+Additionally, html code tags can be use to give format to items exported to QUaltrics
+
+
+#### Follow-up item template example  
+
+```
+[followUp_start]
+Remember that:
+<li>prevalence_and_context</li>
+<li>In your response to the previous problem you said that, of those with positive mammograms, qualtrics_ppv_answer actually have breast cancer.</li>
+
+[followUp_first_piece]
+Imagine a woman you care about is participating in a routine mammogram screening as the one you saw before to detect breast cancer and receives a positive mammogram.
+
+[followUp_second_piece]
+The doctor offers her a follow-up test that consists of a biopsy, necessary to confirm the diagnosis. During the procedure, a needle is inserted to sample fluid from a breast cyst.
+
+[followUp_third_piece]
+The biopsy has a risk_percentage procedure-related risk of complications (for example, infections) that can result in a partial mastectomy.
+[followUp_end]
+```
+
+### pictorial_prevalences
+
+This folder contains unique prevalences for pictorial items as text files. Files must be named as follow: 
+`[context]_[pictorial presentation format]_followup_context.text`  
+The context should be no longer than 2 letters, and presentation format no longer than 4 letters. For example:  
+`ca_fbpi_followup_context.txt`  
+`pr_nppi_followup_context.txt`  
+
+The text within each text file must start with a name, indicating context and presentation format between asterisk:  
+`**ca_fbpi**`
+
+Following the name the actual text of the prevalence must be in the same line and can contain simple text and/or column names of number_bayes.xls to be replace with numbers.
+
+#### pictorial_prevalence example
+
+```
+**ca_fbpi**die_all_with out of prev_02 women with screening and die_all_without out of prev_02 women without screening die from all types of cancer.
+```
+
+### questions_raw
+
+This folder contains the questions to be append at the end of follow-up items. Each question must be a text file. The files must be named using correlative numbers, the correlative number order will be the order used to display questions after the follow-up item. For example:
+`followup_question_01.txt`  
+`followup_question_02.txt`  
+`followup_question_03.txt`  
+`followup_question_04.txt`  
+...  
+`followup_question_n.txt`  
+
+At the beginning of each file it has to be indicated the kind of question using Qualtrics advanced text format tags.
+`[[Question:MC:SingleAnswer:Vertical]]`   -> Multiple choice, single answer, choices laid vertically.  
+`[[Question:MC:SingleAnswer:Horizontal]]` -> Multiple choice, single answer, choices laid horizontally.  
+`[[Question:MC:DropDown]]`                -> Multiple choice, dropdown choices.  
+`[[Question:TE]]`                         -> Text entry   
+`[[Question:Text]]`                       -> Only descriptive text. This question allows to insert a text without choices.
+
+It is not possible to create slider questions using Qualtrics advanced text format. To create a slider question with an unnamed slider, the best option is to creat a descriptive text question (`[[Question:Text]]`) and manually convert it to slider on the Qualtrics website. For named sliders use the vertical single choice question (`[[Question:MC:SingleAnswer:Vertical]]`) and then convert it to slider. Here the choices text will be used as slider names.
+
+After the Qualtrics advanced text format the following placeholders must be used to parsed the question and choices text:  
+`[question_start]`  
+`[choices_start]`  
+`[second_choice]`  
+`[third_choice]`  
+...  
+`[choices_end]`  
+
+Right now the script allows up to ten choices, therefore, the last placeholder before `[choices_end]` must be `[tenth_choice]`.
+
+#### questions_raw example
+
+```
+[[Question:MC:SingleAnswer:Vertical]]
+[question_start]
+Should she take the follow-up test?
+[choices_start]
+Yes
+[second_choice]
+No
+[choices_end]
+```
+
+## Output
+
+This files contained in these folders are script-generated, no manual modification is needed. The folder /Follow_up/output/ contains two folders:  
+
+- items_raw: contains follow-up items filled with procedure-related risk information.  
+- item_w_prevalence: contains `items_raw` follow-up items filled with prevalence information.  
+  
+  
+  

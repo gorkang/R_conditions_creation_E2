@@ -5,34 +5,38 @@
 
 # read csv with number
 numbers_item <-
-  # readr::read_csv("materials/Numbers/numbers_bayes.csv")#, col_types = cols())
-  readxl::read_xls("materials/Numbers/numbers_bayes.xls")#, col_types = cols())
+  readxl::read_xls("materials/Numbers/numbers_bayes.xls")
 
 numbers_prevalence <- 
-  readxl::read_xls("materials/Numbers/numbers_bayes.xls", sheet = 2)#, col_types = cols())
+  readxl::read_xls("materials/Numbers/numbers_bayes.xls", sheet = 2)
 
 # Read problems from text-files
-textual_formats <- c("nfab", "pfab", "prab", "prre")
+# Possible presentation formats
+presentation_format_dir <- "materials/Presentation_format/"
 
-### Natural Frequency
-read_txt_items_to_list(textual_formats[1], "nfab_items")
+# grep everything without "pi" and two letter before (pictorial presentation formats)
+textual_formats <- 
+  dir(presentation_format_dir) %>% grep("[a-z]{2}pi", ., invert = TRUE, value = TRUE)
 
-
-### Positive framework
-read_txt_items_to_list(textual_formats[2], "pfab_items")
-
-
-### Probability Absolute
-read_txt_items_to_list(textual_formats[3], "prab_items")
-
-
-### Probability Relative
-read_txt_items_to_list(textual_formats[4], "prrl_items")
+# read text files into lists
+textual_formats %>% 
+  map(~read_txt_items_to_list(presentation_format = .x, name =  paste0(.x, "_items"))) %>% 
+  invisible()
 
 ## Bind textual presentation formats -------------------------------------------
 
-problems <- c(nfab_items, pfab_items, prab_items, prrl_items)
-rm(nfab_items, pfab_items, prab_items, prrl_items)
+# create vars names. to call them and then to remove them.
+problems_names <- 
+  paste0(textual_formats, "_items")
+# bind all list in one list containing all textual problems
+problems <- 
+  problems_names %>% 
+  map(~get(.x)) %>% # eval objects using strings
+  unlist %>% # output list has to levels. unlist.
+  as.list # list again to get a one-level list
+
+# remove separete list containing textual items
+rm(list = problems_names)
 
 ## Create items ----------------------------------------------------------------
 

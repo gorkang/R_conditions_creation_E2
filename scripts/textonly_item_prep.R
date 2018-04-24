@@ -23,6 +23,15 @@ textual_formats %>%
   map(~read_txt_items_to_list(presentation_format = .x, name =  paste0(.x, "_items"))) %>% 
   invisible()
 
+## Get possible problem context
+problem_contexts <-
+  textual_formats %>% 
+  map(~dir(paste0(presentation_format_dir, .x, "/input")) %>% 
+        gsub("([a-z]{2}).*", "\\1", .)) %>% 
+  unlist %>% 
+  unique %>% 
+  paste(., collapse = "|") %>% 
+  paste0("(", ., ")")
 ## Bind textual presentation formats -------------------------------------------
 
 # create vars names. to call them and then to remove them.
@@ -41,7 +50,6 @@ rm(list = problems_names)
 ## Create items ----------------------------------------------------------------
 
 ### Create textual items (combine items with numbers)
-
 numbers2problems(problems)
 rm(problems)
 # problems_numbered
@@ -60,13 +68,13 @@ question_files <-
 question_files_path <- paste0(questions_dir, question_files)
 
 # list with responses as char strings
-questions <- lapply(question_files_path, 
-                    function(x) readChar(con = x, nchars = file.info(x)$size)) 
+questions <- 
+  lapply(question_files_path, 
+         function(x) readChar(con = x, nchars = file.info(x)$size)) 
 
 # assing name to each response type
-# names(questions) <- gsub(".txt", "", question_files)
-
-questions <- map2(gsub("(.*)\\.txt", "**\\1**", question_files), questions, `paste0`)
+questions <- 
+  map2(gsub("(.*)\\.txt", "**\\1**", question_files), questions, `paste0`)
 
 rm(questions_dir, question_files, question_files_path)
 

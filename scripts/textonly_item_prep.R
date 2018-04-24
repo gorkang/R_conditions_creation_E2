@@ -1,5 +1,3 @@
-# TODO: add placeholders to context, question, response types, ect.
-# TODO: add placeholders to the procesing of textual items
 
 # Text-only presentation formats ------------------------------------------
 

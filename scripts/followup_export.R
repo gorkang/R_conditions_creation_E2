@@ -65,8 +65,10 @@ numbers_fbpi <-
   filter(format == "fbpi")
 
 # factbox prevalences for follow-up
-fbpi_fu_prev_dir <- "materials/Question/Follow_up/input/pictorial_contexts/fbpi/"
-fbpi_fu_prev_files <- paste0(fbpi_fu_prev_dir, dir(fbpi_fu_prev_dir))
+fbpi_fu_prev_dir <- 
+  "materials/Question/Follow_up/input/pictorial_prevalences/"
+fbpi_fu_prev_files <- 
+  paste0(fbpi_fu_prev_dir, dir(fbpi_fu_prev_dir, pattern = ".*fbpi.*.txt"))
 # read prevalences
 fbpi_fu_prev_temp <- fbpi_fu_prev_files %>% 
   map(~readChar(., file.size(.))) %>% 
@@ -92,8 +94,10 @@ numbers_nppi <-
   readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>% 
   filter(format == "nppi")
 # factbox prevalences for follow-up
-nppi_fu_prev_dir <- "materials/Question/Follow_up/input/pictorial_contexts/nppi/"
-nppi_fu_prev_files <- paste0(nppi_fu_prev_dir, dir(nppi_fu_prev_dir))
+nppi_fu_prev_dir <- 
+  "materials/Question/Follow_up/input/pictorial_prevalences/"
+nppi_fu_prev_files <- 
+  paste0(nppi_fu_prev_dir, dir(nppi_fu_prev_dir, pattern = ".*nppi.*.txt"))
 # read prevalences
 nppi_fu_prev_temp <- nppi_fu_prev_files %>% 
   map(~readChar(., file.size(.))) %>% 

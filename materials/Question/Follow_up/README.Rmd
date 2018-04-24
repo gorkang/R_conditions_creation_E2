@@ -13,17 +13,19 @@ This folder contains the materials to build follow-up items.
 
 ## Inputs
 
-The folder /Follow_up/input/ contains three folders:  
+The folder `/Follow_up/input/` contains three folders:  
 
-- items: contains items templates as text files, without questions.  
-- pictorial_prevalences: contains pictorial items prevalences templates  
-- questions_raw: contains follow-up questions  
+- `items`: contains follow-up items templates as text files, without questions.  
+- `pictorial_prevalences`: contains pictorial items prevalences templates  
+- `questions_raw`: contains follow-up questions  
+
+The content of `items` will be filled with information about the risk of the follow-up test and about the prevalence of the possible medical conditions. These filled items will be paired with the content of `questions_raw` to form the final follow-up items (follow-up text and questions).
   
 ### items
 
-This folder contains follow-up items templates files. Files must be named as the following:  
+This folder contains follow-up items templates files. Files must be named as following:  
 `[context]_fu.txt`  
-The context should be no longer than 2 letters. For example:  
+The context name should be no longer than 2 letters. For example:  
 `ca_fu.txt`  
 `pr_fu.txt`  
   

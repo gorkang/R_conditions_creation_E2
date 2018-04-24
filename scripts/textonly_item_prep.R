@@ -30,8 +30,9 @@ problem_contexts <-
         gsub("([a-z]{2}).*", "\\1", .)) %>% 
   unlist %>% 
   unique %>% 
-  paste(., collapse = "|") %>% 
-  paste0("(", ., ")")
+  paste(., collapse = "|")
+  # paste0("(", problem_contexts, ")")
+
 ## Bind textual presentation formats -------------------------------------------
 
 # create vars names. to call them and then to remove them.
@@ -82,11 +83,11 @@ rm(questions_dir, question_files, question_files_path)
 for (i in seq(length(problems_numbered))) {
   # i=1
   
-  if (grepl("ca|pr", names(problems_numbered[i]))) {
+  if (grepl(problem_contexts, names(problems_numbered[i]))) {
     
     # get question name from problems numbered name
     current_question_name <- 
-      paste0(gsub("(ca|pr).*", "\\1", names(problems_numbered[i])), "_question")
+      paste0(gsub(paste0("(", problem_contexts, ").*"), "\\1", names(problems_numbered[i])), "_question")
     
     current_question <- 
       gsub("\\*\\*.*\\*\\*(.*)", "\\1", grep(current_question_name, questions, value = TRUE))
@@ -195,7 +196,7 @@ for (q in seq(length(questions))) {
   # q=1
   
   # get current question prefix (ca, pr)
-  current_question_prefix <- gsub("(ca|pr).*", "\\1", names(questions[q]))
+  current_question_prefix <- gsub(paste0("(", problem_contexts, ").*"), "\\1", names(questions[q]))
   # get current question
   # current_question  <- gsub("\\[question_start\\]","",questions[[q]])
   

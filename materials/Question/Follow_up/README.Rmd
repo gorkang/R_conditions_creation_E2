@@ -34,12 +34,10 @@ The text within each follow-up item template must be parsed using the following 
 `[followUp_first_piece]`  
 `[followUp_second_piece]`  
 `[followUp_third_piece]`  
-`[followUp_fourth_piece]`  
-...  
 `[followUp_end]`  
 
-The placeholders should be used to separate unities as paragraphs. As many numbered placeholders (`[followUp_first_piece]`) as wanted be used as long the first and the last placeholders are `[followUp_start]` and `[followUp_end]`.  
-Additionally, html code tags can be use to give format to items exported to QUaltrics
+The placeholders should be used to separate unities as paragraphs. Right now it is possible to use up to three numbered placeholders between `[followUp_start]` and `[followUp_end]`.
+Additionally, html code tags can be use to give format to items exported to Qualtrics. Currently, the only treatement that manually-add html code tags receive is the removing of linebreks between html list codes (e.g. `<li>\n<li>`). 
 
 
 #### Follow-up item template example  
@@ -63,16 +61,16 @@ The biopsy has a risk_percentage procedure-related risk of complications (for ex
 
 ### pictorial_prevalences
 
-This folder contains unique prevalences for pictorial items as text files. Files must be named as follow: 
+This folder contains unique prevalences of pictorial items as text files. Files must be named as follow:  
 `[context]_[pictorial presentation format]_followup_context.text`  
 The context should be no longer than 2 letters, and presentation format no longer than 4 letters. For example:  
 `ca_fbpi_followup_context.txt`  
 `pr_nppi_followup_context.txt`  
 
-The text within each text file must start with a name, indicating context and presentation format between asterisk:  
+The text within each text file must start with a name, indicating context and presentation format between asterisk (two at each side):  
 `**ca_fbpi**`
 
-Following the name the actual text of the prevalence must be in the same line and can contain simple text and/or column names of number_bayes.xls to be replace with numbers.
+Following the name, the actual prevalence text must be in the same line and can contain simple text and/or column names of number_bayes.xls to be replace with numbers.
 
 #### pictorial_prevalence example
 
@@ -82,7 +80,7 @@ Following the name the actual text of the prevalence must be in the same line an
 
 ### questions_raw
 
-This folder contains the questions to be append at the end of follow-up items. Each question must be a text file. The files must be named using correlative numbers, the correlative number order will be the order used to display questions after the follow-up item. For example:
+This folder contains the questions to be append at the end of follow-up items. Each question must be a text file. The files must be named using correlative numbers, the correlative number order will be the order used to display questions after the follow-up item. For example:  
 `followup_question_01.txt`  
 `followup_question_02.txt`  
 `followup_question_03.txt`  
@@ -90,14 +88,14 @@ This folder contains the questions to be append at the end of follow-up items. E
 ...  
 `followup_question_n.txt`  
 
-At the beginning of each file it has to be indicated the kind of question using Qualtrics advanced text format tags.
+At the beginning of each file it has to be indicated the kind of question using Qualtrics advanced text format tags.  
 `[[Question:MC:SingleAnswer:Vertical]]`   -> Multiple choice, single answer, choices laid vertically.  
 `[[Question:MC:SingleAnswer:Horizontal]]` -> Multiple choice, single answer, choices laid horizontally.  
 `[[Question:MC:DropDown]]`                -> Multiple choice, dropdown choices.  
 `[[Question:TE]]`                         -> Text entry   
 `[[Question:Text]]`                       -> Only descriptive text. This question allows to insert a text without choices.
 
-It is not possible to create slider questions using Qualtrics advanced text format. To create a slider question with an unnamed slider, the best option is to creat a descriptive text question (`[[Question:Text]]`) and manually convert it to slider on the Qualtrics website. For named sliders use the vertical single choice question (`[[Question:MC:SingleAnswer:Vertical]]`) and then convert it to slider. Here the choices text will be used as slider names.
+It is not possible to create slider questions using Qualtrics advanced text format. To create a slider question with an unnamed slider, the best option is to create a descriptive text question (`[[Question:Text]]`) and manually convert it to slider on Qualtrics' website. For named sliders use the vertical single choice question (`[[Question:MC:SingleAnswer:Vertical]]`) and then convert it to slider. The choices text will be used as slider names.
 
 After the Qualtrics advanced text format the following placeholders must be used to parsed the question and choices text:  
 `[question_start]`  

@@ -20,8 +20,7 @@ textual_formats <-
 
 # read text files into lists
 textual_formats %>% 
-  map(~read_txt_items_to_list(presentation_format = .x, name =  paste0(.x, "_items"))) %>% 
-  invisible()
+  walk(~read_txt_items_to_list(presentation_format = .x, name =  paste0(.x, "_items")))
 
 ## Get possible problem context
 problem_contexts <-
@@ -31,7 +30,12 @@ problem_contexts <-
   unlist %>% 
   unique %>% 
   paste(., collapse = "|")
-  # paste0("(", problem_contexts, ")")
+# paste0("(", problem_contexts, ")")
+
+problem_probs <-
+  numbers_item$prob[!is.na(numbers_item$prob)] %>% 
+  unique() %>% 
+  paste0(., collapse = "|")
 
 ## Bind textual presentation formats -------------------------------------------
 
@@ -261,14 +265,7 @@ for (cB in seq(problems_numbered_ordered_responses)) {
       current_item <- gsub(tobefilled[cF], fillers[[tofill[cF]]], current_item)
       
     }
-    
-    
-    # # Replace things with CANCER related stuff
-    # current_item <- gsub("__CONDITION__", fillers[["condition"]],
-    #                      gsub("__TEST__", fillers[["test"]], 
-    #                           gsub("__WHO__", fillers[["who"]], current_item)))
-    
-    # save filled item
+
     problems_numbered_ordered_responses[[cB]][[cS]] <- current_item
   }
   
@@ -300,7 +297,7 @@ rm(context_dir,context_files,context_files_path)
 
 # Paste problem contexts at the beginning of each problem, 
 # and customize according to condition (trisomy 21 & breast cancer) and probability (high & low)
-
+paste0(".*(", problem_contexts, ").*")
 # Walk through 16 items
 for (cB in seq(problems_numbered_ordered_responses)) {
   # cB <- 1
@@ -314,11 +311,13 @@ for (cB in seq(problems_numbered_ordered_responses)) {
     
     # get current problem context using current item
     current_context <- 
-      paste0(gsub(".*(ca|pr).*", "txt_\\1", current_item), "_context")
+      paste0(gsub(paste0(".*(", problem_contexts, ").*"), "txt_\\1", current_item), "_context")
     
     # get problem prob (this erase everything that is not a "low" or "high" word)
+    
     current_prob <-
-      gsub(".*(low)_.*|.*(high)_.*", "\\1\\2", current_item)
+      gsub(paste0(".*(", problem_probs, ").*"), "\\1", current_item)
+    
     
     current_format <-
       gsub(paste0('.*(', paste(textual_formats, collapse = "|"), ').*'), 

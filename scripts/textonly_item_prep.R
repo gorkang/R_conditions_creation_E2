@@ -222,6 +222,10 @@ for (q in seq(length(questions))) {
   }
 }
 
+# ################################# DEV
+# ################################# DEV
+# ################################# DEV
+# ################################# DEV
 
 ## Personalize sequential guided response type to accomodate to medical condition
 sg_fillers <- 
@@ -235,37 +239,63 @@ for (cB in seq(problems_numbered_ordered_responses)) {
   for (cS in seq(problems_numbered_ordered_responses[[cB]])) {
     # cS <- 3
     
-    current_item <- problems_numbered_ordered_responses[[cB]][[cS]]
+    # Get stuff from current loop.
+    current_item    <- problems_numbered_ordered_responses[[cB]][[cS]]
+    current_context <- gsub(paste0(".*(", problem_contexts, ").*"), "\\1", current_item)
     
-    if (grepl("_sg", current_item) & grepl("ca_", current_item)) {
-      
-      fillers <- filter(sg_fillers, item_cond == "cancer")
-      
-      # Replace things with CANCER related stuff
-      current_item <- gsub("__CONDITION__", fillers[["condition"]],
-                           gsub("__TEST__", fillers[["test"]], 
-                                gsub("__WHO__", fillers[["who"]], current_item)))
-      
-    } else if (grepl("_sg", current_item) & grepl("pr_", current_item)) {
-      
-      fillers <- filter(sg_fillers, item_cond == "pregnant")
-      
-      # Replace things with trisomy 21 related stuff
-      current_item <- gsub("__CONDITION__", fillers[["condition"]],
-                           gsub("__TEST__", fillers[["test"]], 
-                                gsub("__WHO__", fillers[["who"]], current_item)))
-      
-    } else if (!grepl("_sg", current_item) & !grepl("pr_", current_item)) {
-      
+    # check for current context, if there is no matching context show a warning.
+    if (sum(grepl(current_context, sg_fillers$item_cond)) == 0) {
+      stop("No matching context on sg_fillers.csv. Check problem contexts on materials/Presentation_format and materials/Response_type/sg_fillers/sg_fillers.csv")
+    } else if (sum(grepl(current_context, sg_fillers$item_cond)) == 1) {
+      current_row <- grep(current_context, sg_fillers$item_cond)
+    } else if (sum(grepl(current_context, sg_fillers$item_cond)) > 1) { 
+      stop("No matching context on sg_fillers.csv. Check problem contexts on materials/Presentation_format and materials/Response_type/sg_fillers/sg_fillers.csv")
     }
+    
+    # fillers according to current row
+    fillers     <- filter(sg_fillers, row_number() == current_row)
+    
+    # Replace things with CANCER related stuff
+    current_item <- gsub("__CONDITION__", fillers[["condition"]],
+                         gsub("__TEST__", fillers[["test"]], 
+                              gsub("__WHO__", fillers[["who"]], current_item)))
+    
+    
+    # if (grepl("_sg", current_item) & grepl("ca_", current_item)) {
+    # 
+    #   fillers <- filter(sg_fillers, item_cond == "cancer")
+    # 
+    #   # Replace things with CANCER related stuff
+    #   current_item <- gsub("__CONDITION__", fillers[["condition"]],
+    #                        gsub("__TEST__", fillers[["test"]],
+    #                             gsub("__WHO__", fillers[["who"]], current_item)))
+    # 
+    # } else if (grepl("_sg", current_item) & grepl("pr_", current_item)) {
+    # 
+    #   fillers <- filter(sg_fillers, item_cond == "pregnant")
+    # 
+    #   # Replace things with trisomy 21 related stuff
+    #   current_item <- gsub("__CONDITION__", fillers[["condition"]],
+    #                        gsub("__TEST__", fillers[["test"]],
+    #                             gsub("__WHO__", fillers[["who"]], current_item)))
+    # 
+    # } else if (!grepl("_sg", current_item) & !grepl("pr_", current_item)) {
+    # 
+    # }
     
     # save filled item
     problems_numbered_ordered_responses[[cB]][[cS]] <- current_item
   }
+  
   if (cB == length(problems_numbered_ordered_responses)) {
     rm(cB,cS,current_item,sg_fillers,fillers,problems_numbered_ordered)
   }
+  
 }
+# ################################# DEV
+# ################################# DEV
+# ################################# DEV
+# ################################# DEV
 
 ## Problem contexts ----------------------------------------------------------------
 

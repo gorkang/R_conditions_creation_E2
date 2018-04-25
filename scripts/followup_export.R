@@ -1,6 +1,5 @@
 # TODO: what to do with the last follow-up question. has to had a logic display regarding the first follow-up question.
 # TODO: last followup question has to be splitted in two. IF any question suppose the use of a display logic it has to be separated in a question for each condition.
-# TODO: blank space at the beginning of exported text blocks? 
 # TODO: how to indicate the questions that require manual setting within qualtrics (e.g. display logic questions)
 
 # There are 16 unique(ish) prevalences (2 contexts x 4 formats x 2 ppv prob)
@@ -10,7 +9,6 @@
 
 # Functions ----------------------
 # All the following functions are exclusively for dealing with follow-up qualtrics-html building and export
-
 source("scripts/html_qualtrics_codes.R")
 source("functions/extract_between_placeholders.R")
 source("functions/choice_builder.R")
@@ -30,10 +28,8 @@ path2fu_qualtrics_complete_items   <- "materials/qualtrics/output/followUp/"
 
 # Follow-up questions building ----
 # iterates through files in file_path, identifies how choices the question has, build choices and question and export them (default) or paste them
-
 dir(path2fu_raw_questions, ".txt") %>% 
-  map(~followup_question_builder(file_path = path2fu_raw_questions, file_name = .x, outputdir = path2fu_qualtrics_questions)) %>% 
-  invisible()
+  walk(~followup_question_builder(file_path = path2fu_raw_questions, file_name = .x, outputdir = path2fu_qualtrics_questions))
 
 # Follow-up item building with unique prevalences --------
 # Get unique response types to get all unique prevalences. These are used to create unique follow-up items.
@@ -170,4 +166,5 @@ followup_blocks <-
   paste(followup_block_names, "\n", followup_complete_items, sep = "")
 # collapse all items in one text file separating by block
 cat(paste(followup_blocks, collapse = "", sep = ""), sep = "", file = paste0(allblocks_dir, "all_blocks.txt"))
+
 

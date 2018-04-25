@@ -16,21 +16,24 @@
 # 4. open text question
 # 5. (regarding #1) if yes/no (different text) 0-100% horizontal slider.
 
-# Generate qualtrics + html questions
-# create an external file, or R object, with html and qualtrics code to be used on item export and here
+
+# Generate qualtrics + html questions ------------------------------------
 
 # read csv with number
 numbers_item <-
   readxl::read_xls("materials/Numbers/numbers_bayes.xls")
 
 # Follow up dir
-follow_up_dir <- "materials/Question/Follow_up/input/items/"
+follow_up_dir <- 
+  "materials/Question/Follow_up/input/items/"
 
 # Files
-follow_up_files <- dir(follow_up_dir, pattern = ".txt")
+follow_up_files <-
+  dir(follow_up_dir, pattern = ".txt")
 
 # Path to files
-follow_up_path <- paste0(follow_up_dir, follow_up_files)
+follow_up_path <- 
+  paste0(follow_up_dir, follow_up_files)
 
 # Read follow ups into a list
 follow_up_items <-
@@ -38,13 +41,16 @@ follow_up_items <-
                 function(x) readChar(con = x, nchars = file.info(x)$size)) 
 
 # assing name to each follow up
-names(follow_up_items) <- gsub(".txt", "", follow_up_files)  
+names(follow_up_items) <- 
+  gsub(".txt", "", follow_up_files)  
 
 # get followup numbers
-numbers_fu <- filter(numbers_item, format == "fu")
+numbers_fu <- 
+  filter(numbers_item, format == "fu")
 
 # follow up items
-fu_questions <- list(NULL)
+fu_questions <- 
+  list(NULL)
 
 # put risk percentage into follow up text
 for (i in seq(length(follow_up_items))) { # Follow up items LOOP

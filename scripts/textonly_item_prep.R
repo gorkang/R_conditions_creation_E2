@@ -251,10 +251,22 @@ for (cB in seq(problems_numbered_ordered_responses)) {
     # fillers according to current row
     fillers     <- filter(sg_fillers, row_number() == current_row)
     
-    # Replace things with CANCER related stuff
-    current_item <- gsub("__CONDITION__", fillers[["condition"]],
-                         gsub("__TEST__", fillers[["test"]], 
-                              gsub("__WHO__", fillers[["who"]], current_item)))
+    # use a for loop to fill, this allow to increase the number of fields to replace without change the code
+    # fields to loop through
+    tobefilled <- paste0("__", grep("[A-Z]", names(fillers), value = TRUE), "__")
+    tofill     <- grep("[A-Z]", names(fillers), value = TRUE)
+    
+    for (cF in seq(length(tobefilled))) {
+      
+      current_item <- gsub(tobefilled[cF], fillers[[tofill[cF]]], current_item)
+      
+    }
+    
+    
+    # # Replace things with CANCER related stuff
+    # current_item <- gsub("__CONDITION__", fillers[["condition"]],
+    #                      gsub("__TEST__", fillers[["test"]], 
+    #                           gsub("__WHO__", fillers[["who"]], current_item)))
     
     # save filled item
     problems_numbered_ordered_responses[[cB]][[cS]] <- current_item

@@ -235,13 +235,24 @@ names(responses_pic) <- gsub(".txt", "", response_type_files)
 ## sequential guided question fillers
 sg_fillers <- read_csv("materials/Response_type/sg_fillers/sg_fillers.csv", col_types = "cccc")
 
-# Customize sequential guided response type
-responses_pic$sg <- apply(sg_fillers, 1, function(x) { 
+# fields to loop through
+tobefilled <- paste0("__", grep("[A-Z]", names(sg_fillers), value = TRUE), "__")
+tofill     <- grep("[A-Z]", names(sg_fillers), value = TRUE)
+
+temp_sg <- responses_pic$sg
+responses_pic$sg <- rep(responses_pic$sg, nrow(sg_fillers))
+
+# filled sg accodring to each problem context
+for (cC in seq(nrow(sg_fillers))) {
+  # cC = 2
+  temp_sg <- responses_pic$sg[cC]
   
-  gsub("__CONDITION__", x[["condition"]],
-       gsub("__TEST__", x[["test"]], 
-            gsub("__WHO__", x[["who"]], responses_pic$sg)))
-  
-})
+  for (fC in seq(length(tobefilled))) {
+    # fC = 1
+    temp_sg <- gsub(tobefilled[fC], sg_fillers[cC, tofill[fC]], temp_sg)
+  }
+  responses_pic$sg[cC] <- temp_sg
+}
 
 rm(response_type_files,response_type_files_path,response_types_dir, sg_fillers, numbers_fact, numbers_item)    
+

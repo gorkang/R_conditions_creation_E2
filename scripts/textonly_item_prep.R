@@ -37,6 +37,31 @@ problem_probs <-
   unique() %>% 
   paste0(., collapse = "|")
 
+# CHECK IF CONTEXTS ARE PRESENT ON SG_FILLERS #############################
+
+contexts2check <- 
+  strsplit(problem_contexts, split = "|", fixed = TRUE) %>% 
+  unlist()
+
+path2fillers <- "materials/Response_type/sg_fillers/sg_fillers.csv"
+fillers <- read_csv(path2fillers, col_types = cols())
+
+check <- 
+  contexts2check %>% 
+  map(~any(grepl(.x, fillers$item_cond))) %>% 
+  unlist() 
+
+if (all(check) == TRUE) {
+  
+} else if (all(check) == FALSE) {
+  stop("No problem context has fillers")
+} else if (any(check) == TRUE) {
+  stop(paste0("The following context(s) do not have fillers: ", contexts2check[which(!check)]))
+}
+
+# ##########################################################################
+
+
 ## Bind textual presentation formats -------------------------------------------
 
 # create vars names. to call them and then to remove them.
@@ -265,7 +290,7 @@ for (cB in seq(problems_numbered_ordered_responses)) {
       current_item <- gsub(tobefilled[cF], fillers[[tofill[cF]]], current_item)
       
     }
-
+    
     problems_numbered_ordered_responses[[cB]][[cS]] <- current_item
   }
   

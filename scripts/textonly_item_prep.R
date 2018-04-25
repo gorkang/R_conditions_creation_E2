@@ -222,10 +222,6 @@ for (q in seq(length(questions))) {
   }
 }
 
-# ################################# DEV
-# ################################# DEV
-# ################################# DEV
-# ################################# DEV
 
 ## Personalize sequential guided response type to accomodate to medical condition
 sg_fillers <- 
@@ -260,29 +256,6 @@ for (cB in seq(problems_numbered_ordered_responses)) {
                          gsub("__TEST__", fillers[["test"]], 
                               gsub("__WHO__", fillers[["who"]], current_item)))
     
-    
-    # if (grepl("_sg", current_item) & grepl("ca_", current_item)) {
-    # 
-    #   fillers <- filter(sg_fillers, item_cond == "cancer")
-    # 
-    #   # Replace things with CANCER related stuff
-    #   current_item <- gsub("__CONDITION__", fillers[["condition"]],
-    #                        gsub("__TEST__", fillers[["test"]],
-    #                             gsub("__WHO__", fillers[["who"]], current_item)))
-    # 
-    # } else if (grepl("_sg", current_item) & grepl("pr_", current_item)) {
-    # 
-    #   fillers <- filter(sg_fillers, item_cond == "pregnant")
-    # 
-    #   # Replace things with trisomy 21 related stuff
-    #   current_item <- gsub("__CONDITION__", fillers[["condition"]],
-    #                        gsub("__TEST__", fillers[["test"]],
-    #                             gsub("__WHO__", fillers[["who"]], current_item)))
-    # 
-    # } else if (!grepl("_sg", current_item) & !grepl("pr_", current_item)) {
-    # 
-    # }
-    
     # save filled item
     problems_numbered_ordered_responses[[cB]][[cS]] <- current_item
   }
@@ -292,10 +265,6 @@ for (cB in seq(problems_numbered_ordered_responses)) {
   }
   
 }
-# ################################# DEV
-# ################################# DEV
-# ################################# DEV
-# ################################# DEV
 
 ## Problem contexts ----------------------------------------------------------------
 

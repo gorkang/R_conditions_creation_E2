@@ -1,7 +1,7 @@
-nfab,pr,pf
-prev_01,prev_01,all_positive
-prev_02,hit_rate_01,prev_02
-hit_rate_01,,hit_rate_01
-hit_rate_02,,
-false_positive_01,false_positive_01,false_positive_01
-false_positive_02,,
+nfab,pr,pf,fbpi,nppi
+prev_01,prev_01,all_positive,die_all_with,prev_01
+prev_02,hit_rate_01,prev_02,die_all_without,prev_02
+hit_rate_01,false_positive_01,hit_rate_01,prev_02,
+hit_rate_02,,false_positive_01,,
+false_positive_01,,,,
+false_positive_02,,,,

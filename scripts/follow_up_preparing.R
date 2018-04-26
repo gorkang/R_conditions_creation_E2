@@ -91,7 +91,7 @@ save_fu <- function(list_fu) {
   
 item2save <- 
   list_fu
-  # gsub("\\*\\*\\*.*\\*\\*\\*\\n\\n(.*)", "\\1", list_fu)
+  
 path2save <- 
   paste0(output_dir, gsub("\\*\\*\\*(.*)\\*\\*\\*.*", "\\1", list_fu), ".txt")
 cat(item2save, sep = "", file = path2save)

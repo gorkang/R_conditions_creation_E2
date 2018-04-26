@@ -3,7 +3,7 @@
 
 # read csv with number
 numbers_item <-
-  readxl::read_xls("materials/Numbers/numbers_bayes.xls")#, col_types = cols())
+  readxl::read_xls("materials/Numbers/numbers_bayes.xls")
 
 ### New paradigm ###################################
 
@@ -52,12 +52,11 @@ rm(height,width,input_dir,newparadigm_dir,newparadigm_files,newparadigm_template
 
 # Read csv with prevalences by age
 age_prevalence <- 
-  # readr::read_csv("materials/Presentation_format/nppi/input/graphs/age_prevalence_OLD.csv", col_types = "iii")
   readxl::read_xls("materials/Numbers/numbers_bayes.xls", sheet = 2)
 
 # Test parameters (Two different tests)
 numbers_nppi <-
-  readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>% #, col_types = cols())
+  readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>%
   filter(format == "nppi")
 
 # Check number of contexts. It must be the same number of graphs
@@ -285,9 +284,6 @@ context_files_path <- paste0(context_dir, context_files)
 nppi_context <- lapply(context_files_path, 
                        function(x) readChar(con = x, nchars = file.info(x)$size)) 
 
-# assing name to each response type
-# names(nppi_context) <- gsub(".txt", "", context_files)
-
 nppi_context <-
   map2(gsub("txt_(.*).txt", "***\\1***", context_files), nppi_context, paste0)
 
@@ -297,7 +293,6 @@ rm(context_dir,context_files,context_files_path)
 # high/low prob filling ####
 
 # put prevalences on contexts using number bayes
-# nppi_context <- 
 
 for (c_context in seq(nppi_context)) {
   # c_context <- 1
@@ -313,7 +308,6 @@ for (c_context in seq(nppi_context)) {
                 current_context[[c_prob]]))
   }
   
-  # names(current_context) <- paste0("nppi_context_", numbers_nppi[["prob"]], "_ppv")
   current_context <- map2(numbers_nppi[["prob"]], current_context, function(x,y) {
     gsub("(\\*\\*\\*.*_)(.*\\*\\*\\*.*)", paste0("\\1", x, "_\\2"), y)  
   })

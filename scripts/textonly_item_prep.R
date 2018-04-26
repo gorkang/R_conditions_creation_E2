@@ -38,19 +38,20 @@ problem_probs <-
   paste0(., collapse = "|")
 
 # CHECK IF CONTEXTS ARE PRESENT ON SG_FILLERS #############################
-
+# get contexts
 contexts2check <- 
   strsplit(problem_contexts, split = "|", fixed = TRUE) %>% 
   unlist()
-
+# search and read csv with fillers
 path2fillers <- "materials/Response_type/sg_fillers/sg_fillers.csv"
 fillers <- read_csv(path2fillers, col_types = cols())
-
+# check if contexts retrieve from presentation format folder match contexts on fillers csv
 check <- 
   contexts2check %>% 
   map(~any(grepl(.x, fillers$item_cond))) %>% 
   unlist() 
 
+# message. if everything is ok, no message.
 if (all(check) == TRUE) {
   
 } else if (all(check) == FALSE) {
@@ -218,7 +219,8 @@ for (problem_loop in 1:length(problems_numbered_ordered_responses)) {
 }
 
 # Special modifications (not apllied to every item, question, resp --------
-## Eliminate PPV question in positive framework (pfab) problems. Only for sequential guided questions.
+
+## 01 Eliminate PPV question in positive framework (pfab) problems. Only for sequential guided questions.
 
 # Loop to go through list of questions 
 for (q in seq(length(questions))) {
@@ -252,7 +254,7 @@ for (q in seq(length(questions))) {
 }
 
 
-## Personalize sequential guided response type to accomodate to medical condition
+## 02 Personalize sequential guided response type to accomodate to medical condition
 sg_fillers <- 
   read_csv("materials/Response_type/sg_fillers/sg_fillers.csv", col_types = "cccc")
 

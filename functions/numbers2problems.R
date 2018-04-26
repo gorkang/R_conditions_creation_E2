@@ -17,16 +17,14 @@ numbers2problems <- function(problems) {
   numbers_item_x <- 
     numbers_item
    
-  
-  # Fields to be replaced by presentation format
+  # All fields to replace come from a csv file.
   fields2fill <- read_csv("materials/Numbers/fields2fill.csv", col_types = cols())
   fields_nfab <- fields2fill$nfab[!is.na(fields2fill$nfab)]
   fields_pr <- fields2fill$pr[!is.na(fields2fill$pr)]
   fields_pf <- fields2fill$pf[!is.na(fields2fill$pf)]
-    # fields_tx <- c("prev_01", "prev_02", "hit_rate_01", "hit_rate_02", "false_positive_01", "false_positive_02")
   
   # MASTER LIST (this is going to global enviroment after 1. LOOP finish)
-    # Create empty list with lenght of problems
+    # Create empty list with length of problems
     list_of_lists <- rep(list(NULL), length(problems_x)) 
     # name empty list
     names(list_of_lists) <- names(problems_x)

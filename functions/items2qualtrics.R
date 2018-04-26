@@ -24,11 +24,6 @@ items2qualtrics <- function(list_of_items, responsesdir, outputdir, removePlaceh
   item_responseless <- 
     gsub("(.*)\\n\\[response_start\\].*", "\\1", item_nameless)
   
-  # remove extra linebreaks
-  # regex to select everything but extra breaklines
-  # regex_pattern_breaklines <- "(^.*\\n\\n.*\\n\\n.*\\n)\\n(.*\\n)\\n(.*\\n\\n)\\n(.*$)"
-  # remove extra breaklines
-  # item_responseless <- gsub(regex_pattern_breaklines, "\\1\\2\\3\\4", item_responseless)
   
   # 03. html format (item responseless)
   html_item <- 
@@ -38,12 +33,10 @@ items2qualtrics <- function(list_of_items, responsesdir, outputdir, removePlaceh
   
   
   # 04. response type
-  # Global intuitive response type
-  hmtl_response_type <- 
+    hmtl_response_type <- 
     readChar(con = responsesdir, nchars = file.info(responsesdir)$size)
   
   # 05. Combine item elements
-  
   if (grepl("_gi", item_name)) {
     
     item_to_export <- 

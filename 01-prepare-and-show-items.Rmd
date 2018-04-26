@@ -651,7 +651,7 @@ invisible(lapply(comprehension_questions, lapply, cat))
 source("scripts/follow_up_preparing.R")
 
 # invisible(lapply(fu_questions, lapply, cat))
-invisible(lapply(fu_questions, function(x) {cat(x); cat("\n****************************\n")}))
+invisible(lapply(fu_questions, function(x) {cat(remove_placeholders(x, item_followup = "followup")); cat("\n****************************\n")}))
 ```
 
 

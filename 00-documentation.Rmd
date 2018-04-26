@@ -1,17 +1,20 @@
----
-title: "About Follow-up"
-output: html_document
----
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+# Documentation
 
-## General description
+Description about the code and its particularities.
 
-This folder contains the materials to build follow-up items.
+## Non-dinamic code
 
-## Inputs
+The following scripts contain parts that require to call by name some presentation formats, problem contexts, or other elements. If a new element of any of this is added, a manual modification is needed in these scripts.
+
+- `numbers2problems.R`: Each presentation format (natural frequencies, probabilities, and positive framework are deal with using control flow that calls each format by name (nfab, pr, pf). If a new presentation format is added the function won't be able to fill it with numbers.
+- `textonly_item_prep.R`: "Special modifications" section. 01. Eliminates PPV question in positive framework (pfab) problems with sequential guided response type (sg). 02. Personalize sequential guided response type by medical condition. This last one is able to accommodate new problem contexts.
+- `items2qualtrics.R`: global intuitive response type is treated differently. When combining items elements there is a control flow that separates all items by global intuitive response type or all the other responses types.
+- `pair_items.R`: items are paired with other context items (e.g. cancer with trisomy). If a new problem context is added this would have to be modified. 
+
+## Follow-up
+
+### Inputs
 
 The folder `/Follow_up/input/` contains three folders:  
 
@@ -21,7 +24,7 @@ The folder `/Follow_up/input/` contains three folders:
 
 The content of `items` will be filled with information about the risk of the follow-up test and about the prevalence of the possible medical conditions. These filled items will be paired with the content of `questions_raw` to form the final follow-up items (follow-up text and questions).
   
-### items
+#### items
 
 This folder contains follow-up items templates files. Files must be named as following:  
 `[context]_fu.txt`  
@@ -40,7 +43,7 @@ The placeholders should be used to separate unities as paragraphs. Right now it 
 Additionally, html code tags can be use to give format to items exported to Qualtrics. Currently, the only treatement that manually-add html code tags receive is the removing of linebreks between html list codes (e.g. `<li>\n<li>`). 
 
 
-#### Follow-up item template example  
+###### Follow-up item template example  
 
 ```
 [followUp_start]
@@ -59,7 +62,7 @@ The biopsy has a risk_percentage procedure-related risk of complications (for ex
 [followUp_end]
 ```
 
-### pictorial_prevalences
+#### pictorial_prevalences
 
 This folder contains unique prevalences of pictorial items as text files. Files must be named as follow:  
 `[context]_[pictorial presentation format]_followup_context.text`  
@@ -72,13 +75,13 @@ The text within each text file must start with a name, indicating context and pr
 
 Following the name, the actual prevalence text must be in the same line and can contain simple text and/or column names of number_bayes.xls to be replace with numbers.
 
-#### pictorial_prevalence example
+##### pictorial_prevalence example
 
 ```
 **ca_fbpi**die_all_with out of prev_02 women with screening and die_all_without out of prev_02 women without screening die from all types of cancer.
 ```
 
-### questions_raw
+#### questions_raw
 
 This folder contains the questions to be append at the end of follow-up items. Each question must be a text file. The files must be named using correlative numbers, the correlative number order will be the order used to display questions after the follow-up item. For example:  
 `followup_question_01.txt`  
@@ -107,7 +110,7 @@ After the Qualtrics advanced text format the following placeholders must be used
 
 Right now the script allows up to ten choices, therefore, the last placeholder before `[choices_end]` must be `[tenth_choice]`.
 
-#### questions_raw example
+##### questions_raw example
 
 ```
 [[Question:MC:SingleAnswer:Vertical]]
@@ -120,12 +123,21 @@ No
 [choices_end]
 ```
 
-## Output
+### Output
 
 This files contained in these folders are script-generated, no manual modification is needed. The folder /Follow_up/output/ contains two folders:  
 
 - items_raw: contains follow-up items filled with procedure-related risk information.  
 - item_w_prevalence: contains `items_raw` follow-up items filled with prevalence information.  
   
+## Others
+
+It is necessary to install ttf-mscorefonts-installer to be able to run the script.  
+On Ubunut:  
+```
+sudo apt install ttf-mscorefonts-installer
+```
   
-  
+
+
+

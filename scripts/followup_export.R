@@ -73,12 +73,25 @@ fbpi_fu_prev_temp <- fbpi_fu_prev_files %>%
 # function to put numbers on prevalences.
 fbpi_prev_creator <- 
   function(text, numbers) {
-text %>% 
-  gsub("(\\*\\*.*)(\\*\\*.*)", paste0("\\1_ppv",numbers["prob"] , "\\2"), .) %>% 
-  gsub("die_all_with\\b", numbers["die_all_with"],.) %>% 
-  gsub("die_all_without\\b", numbers["die_all_without"],.) %>% 
-  gsub("prev_02", numbers["prev_02"],.) %>% paste0
-}
+    # text <- fbpi_fu_prev_temp[1]
+    # numbers <- numbers_fbpi[1,]
+    
+    # fields to fill and fields to be fill
+    fields2fill <- 
+      read_csv("materials/Numbers/fields2fill.csv", col_types = cols())
+    fields <- fields2fill$fbpi[!is.na(fields2fill$fbpi)]
+    # put ppv probabilitie
+    text <- 
+      text %>% 
+      gsub("(\\*\\*.*)(\\*\\*.*)", paste0("\\1_ppv", numbers["prob"] , "\\2"), .) 
+    # iterative gsub
+    for (i in seq(length(fields))) {
+      text <- gsub(paste0(fields[i], "\\b"), numbers[fields[i]], text)
+    }
+    # output
+    paste0(text)
+  }
+
 # actually put numbers on prevalences
 fbpi_fu_prev <- 
   apply(numbers_fbpi, 1, function(x) {fbpi_prev_creator(numbers = x, text = fbpi_fu_prev_temp)}) %>% 
@@ -98,13 +111,25 @@ nppi_fu_prev_files <-
 nppi_fu_prev_temp <- nppi_fu_prev_files %>% 
   map(~readChar(., file.size(.))) %>% 
   unlist()
+
 # function to put numbers on prevalences.
 nppi_prev_creator <- function(text, numbers) {
-  text %>% 
-    gsub("(\\*\\*.*)(\\*\\*.*)", paste0("\\1_ppv",numbers["prob"] , "\\2"), .) %>% 
-    gsub("prev_01\\b", numbers["prev_01"],.) %>% 
-    gsub("prev_02\\b", numbers["prev_02"],.) %>% paste0
+  # fields to fill and fields to be fill
+  fields2fill <- 
+    read_csv("materials/Numbers/fields2fill.csv", col_types = cols())
+  fields <- fields2fill$fbpi[!is.na(fields2fill$nppi)]
+  # put ppv probabilitie
+  text <- 
+    text %>% 
+    gsub("(\\*\\*.*)(\\*\\*.*)", paste0("\\1_ppv", numbers["prob"] , "\\2"), .) 
+  # iterative gsub
+  for (i in seq(length(fields))) {
+    text <- gsub(paste0(fields[i], "\\b"), numbers[fields[i]], text)
+  }
+  # output
+  paste0(text)
 }
+
 # actually put numbers on prevalences
 nppi_fu_prev <- 
   apply(numbers_nppi, 1, function(x) {nppi_prev_creator(numbers = x, text = nppi_fu_prev_temp)}) %>% 

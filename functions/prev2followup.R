@@ -4,13 +4,27 @@
 
 prev2followUp <- function(prevalence_string, follow_up_dir, outputdir, rmv_placeholders) {
   
+  # BUILD POSSIBLE CONTEXTS, PRESENTATION FORMATS, AND PPV PROBS
+  # presentation formats
+  possible_presentation_formats <- paste0(dir("materials/Presentation_format/"), collapse = "|")
+  fillers <- read_csv("materials/Response_type/sg_fillers/sg_fillers.csv", col_types = cols())
+  # problem contexts
+  possible_contexts <- gsub("([a-z]{2}).*", "\\1", fillers$item_cond)
+  possible_probs <- unique(readxl::read_xls("materials/Numbers/numbers_bayes.xls")$prob)[!is.na(unique(readxl::read_xls("materials/Numbers/numbers_bayes.xls")$prob))]
+  # ppv probabilities
+  possible_probs <- 
+    readxl::read_xls("materials/Numbers/numbers_bayes.xls")$prob %>% 
+    unique()
+  possible_probs <- 
+    possible_probs[!is.na(possible_probs)]
+  
   # this_prev <- unique_prevalences[[2]]
   this_prev <- prevalence_string
   this_prev_nameless <- gsub("\\*\\*.*\\*\\*(.*)", "\\1", this_prev)
   this_prev_name <- gsub("\\*\\*(.*)\\*\\*.*", "\\1", this_prev)
-  this_prev_context <- gsub("\\*\\*(ca).*|\\*\\*(pr).*", "\\1\\2", this_prev)
-  this_prev_ppvProb <- gsub(".*(ppvhigh).*|.*(ppvlow).*", "\\1\\2", this_prev)
-  this_prev_format <- gsub(".*(nfab|pfab|prab|prre|fbpi|nppi).*", "\\1", this_prev)
+  this_prev_context <- gsub(paste0("\\*\\*(", possible_contexts,").*", collapse = "|"), "\\1\\2", this_prev)
+  this_prev_ppvProb <- gsub(paste0(".*(ppv", possible_probs, ").*", collapse = "|"), "\\1\\2", this_prev)
+  this_prev_format <- gsub(paste0(".*(", possible_presentation_formats, ").*"), "\\1", this_prev)
   
   # sumsample follow-up items by context
   # followUp_dir <- "materials/Question/Follow_up/output/"

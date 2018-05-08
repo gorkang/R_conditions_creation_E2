@@ -143,34 +143,7 @@ for (i in seq(length(problems_numbered))) {
 
 ## Reorder items ----------------------------------------------------------------
 
-problems_numbered_ordered <-
-  c(
-    
-    # LOW PPV PROBLEMS
-    c(
-      problems_numbered[[1]][[1]]
-      ,problems_numbered[[2]][[1]]
-      ,problems_numbered[[3]][[1]]
-      ,problems_numbered[[4]][[1]]
-      ,problems_numbered[[5]][[1]]
-      ,problems_numbered[[6]][[1]]
-      ,problems_numbered[[7]][[1]]
-      ,problems_numbered[[8]][[1]]
-    ),
-    
-    # HIGH PPV PROBLEMS
-    c(
-      problems_numbered[[1]][[2]]
-      ,problems_numbered[[2]][[2]]
-      ,problems_numbered[[3]][[2]]
-      ,problems_numbered[[4]][[2]]
-      ,problems_numbered[[5]][[2]]
-      ,problems_numbered[[6]][[2]]
-      ,problems_numbered[[7]][[2]]
-      ,problems_numbered[[8]][[2]]
-    )
-    
-  )
+problems_numbered_ordered <- unlist(problems_numbered, recursive = TRUE, use.names = FALSE)
 
 rm(problems_numbered)
 ## Response types ----------------------------------------------------------------

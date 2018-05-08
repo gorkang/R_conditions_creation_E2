@@ -80,9 +80,10 @@ rm(list = problems_names)
 
 ## Create items ----------------------------------------------------------------
 
+path2fields <- "materials/Numbers/fields2fill.csv"
 ### Create textual items (combine items with numbers)
-numbers2problems(problems)
-rm(problems)
+numbers2problems(problems, numbers_item, path2fields)
+rm(problems, path2fields)
 # problems_numbered
 
 ### Add question to textual items #########################

@@ -41,7 +41,7 @@ numbers2problems <- function(problems) {
     # # Natural frequency
     if (grepl("nfab", names(problems_x[i]))) {
       # current item format
-      item_format = substr(names(problems_x[i]), 4, nchar(names(problems_x[i])))
+      item_format <- substr(names(problems_x[i]), 4, nchar(names(problems_x[i])))
       # filtered number table
       numbers_item_x_filt <- filter(numbers_item_x, format == item_format)
       
@@ -66,8 +66,7 @@ numbers2problems <- function(problems) {
                        paste0("ppv",numbers_item_x_filt[x,]["prob"]), # normative ppv
                        # "\n", # line break
                        sep = "_"), "**\n\n",
-            item2number_list[[x]]
-            )
+                 item2number_list[[x]])
         
         # 01.1.1 Loop through fields to replace
         for (j in 1:length(field_to_replace)) {

@@ -81,6 +81,7 @@ rm(list = problems_names)
 ## Create items ----------------------------------------------------------------
 
 path2fields <- "materials/Numbers/fields2fill.csv"
+
 ### Create textual items (combine items with numbers)
 numbers2problems(problems, numbers_item, path2fields)
 rm(problems, path2fields)
@@ -141,7 +142,7 @@ for (i in seq(length(problems_numbered))) {
 }
 
 
-## Reorder items ----------------------------------------------------------------
+## Convert item list to flat list ----------------------------------------------------------------
 
 problems_numbered_ordered <- unlist(problems_numbered, recursive = TRUE, use.names = FALSE)
 

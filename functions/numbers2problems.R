@@ -45,15 +45,12 @@ numbers2problems <- function(problems) {
       # filtered number table
       numbers_item_x_filt <- filter(numbers_item_x, format == item_format)
       
-      # empty list
-      item2number_list <- rep(list(NULL),nrow(numbers_item_x_filt))
       
       # fields to replace of classic text items
       field_to_replace <- fields_nfab
       
       # list with repeated canvas item
-      for (list_loop in 1:nrow(numbers_item_x_filt)) 
-        {item2number_list[[list_loop]] <- item2number}  #short loop to repeat current PROBLEM from LOOP 1
+      item2number_list <- rep(list(item2number), nrow(numbers_item_x_filt))
       
       # 01.1 Loop through number sets
       for (x in 1:nrow(numbers_item_x_filt)) {
@@ -90,15 +87,12 @@ numbers2problems <- function(problems) {
       # filtered number table
       numbers_item_x_filt <- filter(numbers_item_x, format == item_format)
       
-        # empty list
-        item2number_list <- rep(list(NULL),nrow(numbers_item_x_filt))
         
       # fields to replace of classic text items
       field_to_replace <- fields_pr
       
       # list with repeated canvas item
-        for (list_loop in 1:nrow(numbers_item_x_filt)) 
-        {item2number_list[[list_loop]] <- item2number}  #short loop to repeat current PROBLEM from LOOP 1
+      item2number_list <- rep(list(item2number), nrow(numbers_item_x_filt))
       
       # 01.1 Loop through number sets
       for (x in 1:nrow(numbers_item_x_filt)) {
@@ -137,15 +131,12 @@ numbers2problems <- function(problems) {
       # filtered number table
       numbers_item_x_filt <- filter(numbers_item_x, format == item_format)
       
-        # empty list
-        item2number_list <- rep(list(NULL),nrow(numbers_item_x_filt))
         
       # fields to replace of classic text items
       field_to_replace <- fields_pf
       
-        # list with repeated canvas item
-        for (list_loop in 1:nrow(numbers_item_x_filt)) 
-        {item2number_list[[list_loop]] <- item2number}  #short loop to repeat current PROBLEM from LOOP 1
+      # empty list
+      item2number_list <- rep(list(item2number),nrow(numbers_item_x_filt))
       
       # 01.1 Loop through number sets
       for (x in 1:nrow(numbers_item_x_filt)) {

@@ -2,7 +2,6 @@
 
 # Pictoric presentation formats -------------------------------------------
 
-
 ## Numbers sets 
 
 # read csv with number
@@ -11,6 +10,7 @@ numbers_item <-
 
 
 # Convert svg templates to png templates ----------------------------------
+
 # path to factboxs templates
 factbox_template_dir <- "materials/Presentation_format/fbpi/input/template/svg/"
 
@@ -54,6 +54,7 @@ rm(factbox_dir,factbox_files,factbox_template_dir,fbpi_height,fbpi_width,height,
 
 
 # Assemble Fact-box images ------------------------------------------------
+
 # filter numbers to keep factbox numbers
 numbers_fact <- filter(numbers_item, format == "fbpi")
 
@@ -62,28 +63,28 @@ img_width <- magick::image_info(fbpi_items[[1]])$width
 img_height <- magick::image_info(fbpi_items[[1]])$height
 
 # position of each piece using percentages
-first_col_x <- 0.6916667
+first_col_x  <- 0.6916667
 second_col_x <- 0.8916667
-first_row_y <- 0.4760192
+first_row_y  <- 0.4760192
 second_row_y <- 0.5539568
-third_row_y <- 0.68999 # 0.6894484-0.6865
+third_row_y  <- 0.68999 # 0.6894484-0.6865
 fourth_row_y <- 0.7680348 # 0.7709832-0.0029484
 
-first_prev_x <- .628
+first_prev_x  <- .628
 second_prev_x <- .828
-both_prev_y <- .350717
+both_prev_y   <- .350717
 
 # convert percentage position to absolute positions relative to the img dimensions
-first_col_pos <- first_col_x*img_width
+first_col_pos  <- first_col_x*img_width
 second_col_pos <- second_col_x*img_width
-first_row_pos <- first_row_y*img_height
+first_row_pos  <- first_row_y*img_height
 second_row_pos <- second_row_y*img_height
-third_row_pos <- third_row_y*img_height
+third_row_pos  <- third_row_y*img_height
 fourth_row_pos <- fourth_row_y*img_height
 
-first_prev_col_pos <- first_prev_x*img_width
+first_prev_col_pos  <- first_prev_x*img_width
 second_prev_col_pos <- second_prev_x*img_width
-both_prev_row_pos <- both_prev_y*img_height
+both_prev_row_pos   <- both_prev_y*img_height
 
 # Position to put numbers
 pieces_pos <- c(paste0("+", first_prev_col_pos, "+", both_prev_row_pos), # first prevalence (left to right),
@@ -103,10 +104,11 @@ fbpi_field_replacements <- c("prev_02", "prev_02", "die_bre_without","die_all_wi
 # get index of field replacements within numbers_fact
 # # empty vector to store positions
 num_pos <- vector(mode = "numeric", length = length(fbpi_field_replacements))
-
 num_pos <- mapply(FUN = function(x,y) {x = which(names(numbers_item) %in% y)}, x = num_pos, y = fbpi_field_replacements)
 
 # Assemble factboxs
+
+
 # 01. Goes through number of images (in this case, two, one with cancer, one with trisomy)
 for (fact_box_loop in seq(length(fbpi_items))) {
   # fact_box_loop=1
@@ -123,7 +125,6 @@ for (fact_box_loop in seq(length(fbpi_items))) {
     
     # grabs the current img to fill
     fbpi_img_to_fill <- fbpi_img_list[[number_set_loop]]
-    
     # grabs the current row with numbers to use as fillers
     num_looped <- numbers_fact[number_set_loop,]
     
@@ -133,6 +134,7 @@ for (fact_box_loop in seq(length(fbpi_items))) {
       
       # puts numbers into template.
       ## prevalence numbers are treated different because they have different font on the template
+      
       # # if piece of information to put is the prevalence
       if (num_pos[numbers_pos_loop] == which(names(numbers_item) %in% "prev_02")) {
         
@@ -142,6 +144,7 @@ for (fact_box_loop in seq(length(fbpi_items))) {
                                  # , strokecolor = "black"
                                  font = "arial-black",
                                  degrees = 0, location = pieces_pos[numbers_pos_loop])
+        
         # # if piece of information is any other than prevalence
       } else if (num_pos[numbers_pos_loop] != which(names(numbers_item) %in% "prev_02")) {
         
@@ -150,9 +153,8 @@ for (fact_box_loop in seq(length(fbpi_items))) {
                                  size = 21, color = "black", boxcolor = "", # ROW 1
                                  degrees = 0, location = pieces_pos[numbers_pos_loop])
       }
-      
-      
     }
+    
     # Insert img with numbers into list with same-context templates
     fbpi_img_list[[number_set_loop]] <- fbpi_img_to_fill
     
@@ -163,6 +165,7 @@ for (fact_box_loop in seq(length(fbpi_items))) {
     }
     
   }
+  
   # Insert imgs with numbers of one context to master list
   fbpi_items[[fact_box_loop]] <- fbpi_img_list
   
@@ -173,13 +176,17 @@ for (fact_box_loop in seq(length(fbpi_items))) {
        num_pos, pieces_pos, fbpi_field_replacements,
        img_height, img_width, num_looped)
   }
+  
 }
 
+
 # Write images ------------------------------------------------------------
+
 fbpi_output_folder <- "materials/Presentation_format/fbpi/output/"
 
 # If Folder does not exist, create it. If it does, do nothing-
 dir.create(file.path(fbpi_output_folder), showWarnings = FALSE, recursive = TRUE)
+
 
 for (q in seq(length(fbpi_items))) {
   for (x in seq(length(fbpi_items[[q]]))) {
@@ -193,6 +200,7 @@ for (q in seq(length(fbpi_items))) {
 rm(list = c(grep("first_|second_|third_|fourth_", ls(), value = TRUE),
             grep("both_", ls(), value = TRUE),
             "fbpi_output_folder"))
+
 # Problem context ---------------------------------------------------------
 
 # Read problem contexts ####
@@ -200,7 +208,9 @@ rm(list = c(grep("first_|second_|third_|fourth_", ls(), value = TRUE),
 context_dir <- "materials/Problem_context/input/"
 
 # responses files
-context_files <- dir(context_dir, pattern = ".txt") %>% grep("pict_", ., value = TRUE)
+context_files <- 
+  dir(context_dir, pattern = ".txt") %>% 
+  grep("pict_", ., value = TRUE)
 
 # paths to each response file
 context_files_path <- paste0(context_dir, context_files)
@@ -215,10 +225,12 @@ names(fbpi_context) <- gsub(".txt", "", context_files)
 # high/low prob filling ####
 
 # put prevalences on contexts using number bayes
-fbpi_context <- lapply(numbers_fact[["prev_02"]], function(x) {gsub("prevalence_02_variable", x, fbpi_context)})
+fbpi_context <- 
+  lapply(numbers_fact[["prev_02"]], function(x) {gsub("prevalence_02_variable", x, fbpi_context)})
 
 # name contexts 
-fbpi_context <- map2(paste0("**fbpi_context_", numbers_fact[["prob"]], "_ppv**"), unlist(fbpi_context), .f = `paste0`)
+fbpi_context <- 
+  map2(paste0("**fbpi_context_", numbers_fact[["prob"]], "_ppv**"), unlist(fbpi_context), .f = `paste0`)
 
 rm(context_dir,context_files,context_files_path)
 # Responses type pictorial ------------------------------------------------
@@ -240,7 +252,8 @@ responses_pic <- lapply(response_type_files_path,
 names(responses_pic) <- gsub(".txt", "", response_type_files)
 
 ## sequential guided question fillers
-sg_fillers <- read_csv("materials/Response_type/sg_fillers/sg_fillers.csv", col_types = "cccc")
+sg_fillers <- 
+  read_csv("materials/Response_type/sg_fillers/sg_fillers.csv", col_types = "cccc")
 
 # fields to loop through (obtained from sg_fillers column names)
 tobefilled <- paste0("__", grep("[A-Z]", names(sg_fillers), value = TRUE), "__")

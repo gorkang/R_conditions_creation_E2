@@ -1,6 +1,9 @@
 # This function takes a list of strings, a data frame with numbers 
 # (add this to arguments, now is defined within the function), and 
-# a string indicating "low" or "high" normative PPV (where does the string come from?)
+# a string indicating "low" or "high" normative PPV (where does the 
+# string come from?)
+
+# TODO: add numbers and fields to replace as arguments.
 
 numbers2problems <- function(problems) {
   
@@ -14,10 +17,10 @@ numbers2problems <- function(problems) {
   # FILTER NUMBER SET *************************
   # filter numbers to keep format
   numbers_item_x <- 
-    numbers_item
+    numbers_item  # this to ARGUMENT
   
   # All fields to replace come from a csv file.
-  fields2fill <- read_csv("materials/Numbers/fields2fill.csv", col_types = cols())
+  fields2fill <- read_csv("materials/Numbers/fields2fill.csv", col_types = cols()) # this to ARGUMENT
   fields_nfab <- fields2fill$nfab[!is.na(fields2fill$nfab)]
   fields_pr   <- fields2fill$pr[!is.na(fields2fill$pr)]
   fields_pf   <- fields2fill$pf[!is.na(fields2fill$pf)]
@@ -40,11 +43,11 @@ numbers2problems <- function(problems) {
     
     # # Natural frequency
     if (grepl("nfab", names(problems_x[i]))) {
+      
       # current item format
       item_format <- substr(names(problems_x[i]), 4, nchar(names(problems_x[i])))
       # filtered number table
       numbers_item_x_filt <- filter(numbers_item_x, format == item_format)
-      
       
       # fields to replace of classic text items
       field_to_replace <- fields_nfab
@@ -83,11 +86,10 @@ numbers2problems <- function(problems) {
       
       # current item format
       item_format = substr(names(problems_x[i]), 4, nchar(names(problems_x[i])))
-        
+      
       # filtered number table
       numbers_item_x_filt <- filter(numbers_item_x, format == item_format)
       
-        
       # fields to replace of classic text items
       field_to_replace <- fields_pr
       
@@ -102,9 +104,9 @@ numbers2problems <- function(problems) {
         item2number_list[[x]] <-
           paste0("**",
                  paste(names(problems_x[i]), # item name and format
-                    paste0("ppv",numbers_item_x_filt[x,]["prob"]), # normative ppv
-                    # "\n", # line break
-                    sep = "_"), "**\n\n",
+                       paste0("ppv",numbers_item_x_filt[x,]["prob"]), # normative ppv
+                       # "\n", # line break
+                       sep = "_"), "**\n\n",
                  item2number_list[[x]]
           )
         
@@ -113,14 +115,12 @@ numbers2problems <- function(problems) {
           # j=1
           
           item2number_list[[x]] <-
-              gsub(field_to_replace[j], # to be replaced
+            gsub(field_to_replace[j], # to be replaced
                  paste0(as.numeric(numbers_item_x_filt[x,][[field_to_replace[j]]])*100), #replacement
                  item2number_list[[x]]) # current problem (LOOP 1)
           
         } # END: 01.1.1 Loop through fields to replace
       } # END: 01.1 Loop through number sets
-      
-        
       
       # # Positive Framework
     } else if (grepl("_pf", names(problems_x[i]))) {
@@ -131,7 +131,6 @@ numbers2problems <- function(problems) {
       # filtered number table
       numbers_item_x_filt <- filter(numbers_item_x, format == item_format)
       
-        
       # fields to replace of classic text items
       field_to_replace <- fields_pf
       
@@ -145,9 +144,9 @@ numbers2problems <- function(problems) {
         item2number_list[[x]] <-
           paste0("**",
                  paste(names(problems_x[i]), # item name and format
-                    paste0("ppv", numbers_item_x_filt[x,]["prob"]), # normative ppv
-                    # "\n", # line break
-                    sep = "_"), "**\n\n",
+                       paste0("ppv", numbers_item_x_filt[x,]["prob"]), # normative ppv
+                       # "\n", # line break
+                       sep = "_"), "**\n\n",
                  item2number_list[[x]]
           )
         
@@ -155,14 +154,13 @@ numbers2problems <- function(problems) {
         for (j in 1:length(field_to_replace)) { # 1.1.1. LOOP FIELDS TO REPLACE
           # j=1
           
-            item2number_list[[x]] <-
-              gsub(field_to_replace[j], # to be replaced
+          item2number_list[[x]] <-
+            gsub(field_to_replace[j], # to be replaced
                  paste0(numbers_item_x[x,][[field_to_replace[j]]]), #replacement
                  item2number_list[[x]]) # current problem (LOOP 1)
           
         } # END: 01.1.1 Loop through fields to replace
       } # END: 01.1 Loop through number sets
-      
       
     } # END: Presentation format customization
     
@@ -176,4 +174,3 @@ numbers2problems <- function(problems) {
   assign("problems_numbered" , list_of_lists, envir = .GlobalEnv)
   
 } # FUNCTION END
-    

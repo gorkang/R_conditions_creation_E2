@@ -1,5 +1,6 @@
-# THIS FUNCTION TAKES A LIST WITH PROBLEMS, A DATA FRAME WITH NUMBERS
-# SETS, AND A STRING INDICATING "low" or "high" normative PPV
+# This function takes a list of strings, a data frame with numbers 
+# (add this to arguments, now is defined within the function), and 
+# a string indicating "low" or "high" normative PPV (where does the string come from?)
 
 numbers2problems <- function(problems) {
   

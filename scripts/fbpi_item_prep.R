@@ -3,14 +3,14 @@
 # Pictoric presentation formats -------------------------------------------
 
 
-## Numbers sets ----------------------------------------------------------------
+## Numbers sets 
 
 # read csv with number
 numbers_item <-
   readxl::read_xls("materials/Numbers/numbers_bayes.xls")#, col_types = cols())
 
-### Fact-box ###########
 
+# Convert svg templates to png templates ----------------------------------
 # path to factboxs templates
 factbox_template_dir <- "materials/Presentation_format/fbpi/input/template/svg/"
 
@@ -23,18 +23,18 @@ fbpi_height <- 834 # pixels
 # dpi <- 145.35
 
 # input/output dir
-input_dir <- factbox_template_dir
+input_dir  <- factbox_template_dir
 output_dir <- "materials/Presentation_format/fbpi/input/template/png/"
 
-# If Folder does not exist, create it
+# If Folder does not exist, create it. If does exist, does nothing.
 dir.create(file.path(output_dir), showWarnings = FALSE, recursive = TRUE)
 
-# convert svg to png
-# paremeters
+# Convert svg to png
+# # paremeters
 width <- fbpi_width
 height <- fbpi_height
-# convert
 invisible(sapply(factbox_templates, svg2png))
+# # convert
 
 # factbox png dir
 factbox_dir <- output_dir
@@ -50,14 +50,13 @@ names(fbpi_items) <-
   gsub(".png", "", factbox_files)
 
 rm(factbox_dir,factbox_files,factbox_template_dir,fbpi_height,fbpi_width,height,width, input_dir, output_dir, factbox_templates)
-### Create pictoric items ----------------------------------------------------------------
 
-#### Fact-box ############################################
 
+# Assemble Fact-box images ------------------------------------------------
 # filter numbers to keep factbox numbers
 numbers_fact <- filter(numbers_item, format == "fbpi")
 
-# Use this to calculate position using percentages.
+# Use this to calculate position using percentages (number 1 to use the first img. It shouldn't make a difference to use the second)
 img_width <- magick::image_info(fbpi_items[[1]])$width
 img_height <- magick::image_info(fbpi_items[[1]])$height
 
@@ -96,16 +95,19 @@ pieces_pos <- c(paste0("+", first_prev_col_pos, "+", both_prev_row_pos), # first
                 paste0("+",second_col_pos, "+", fourth_row_pos) # R4C2
 )
 
+# TODO: read this fields from a file (sg_fillers, fields2fill?). 
 # position of columnes in numbers
 fbpi_field_replacements <- c("prev_02", "prev_02", "die_bre_without","die_all_without","die_bre_with","die_all_with","add_treat","breast_remove")
 
 # get index of field replacements within numbers_fact
+# # empty vector to store positions
 num_pos <- vector(mode = "numeric", length = length(fbpi_field_replacements))
 
 num_pos <- mapply(FUN = function(x,y) {x = which(names(numbers_item) %in% y)}, x = num_pos, y = fbpi_field_replacements)
 
 # Assemble factboxs
-for (fact_box_loop in seq(length(fbpi_items))) { # LOOP: number of images (one with cancer, one with trisomy)
+# 01. Goes through number of images (in this case, two, one with cancer, one with trisomy)
+for (fact_box_loop in seq(length(fbpi_items))) {
   # fact_box_loop=1
   
   # fb template (cancer or pregnant) as list
@@ -114,20 +116,23 @@ for (fact_box_loop in seq(length(fbpi_items))) { # LOOP: number of images (one w
   # repeat template as many times as rows of set numbers csv
   fbpi_img_list <- rep(as.list(fbpi_img), nrow(numbers_fact))
   
-  # LOOP to walk set of numbers
+  # 01.1 Goes through set of numbers
   for (number_set_loop in seq(nrow(numbers_fact))) {
     # number_set_loop=1
     
+    # grabs the current img to fill
     fbpi_img_to_fill <- fbpi_img_list[[number_set_loop]]
     
+    # grabs the current row with numbers to use as fillers
     num_looped <- numbers_fact[number_set_loop,]
     
     # Loop to walk fields to replace
     for (numbers_pos_loop in seq(length(pieces_pos))) { # LOOP: number of numbers to put into the image
       # numbers_pos_loop=1
       
-      # put pieces of information into template
-      # if piece of information to put is the prevalence
+      # puts numbers into template.
+      ## prevalence numbers are treated different because they have different font on the template
+      # # if piece of information to put is the prevalence
       if (num_pos[numbers_pos_loop] == which(names(numbers_item) %in% "prev_02")) {
         
         fbpi_img_to_fill <-
@@ -136,7 +141,7 @@ for (fact_box_loop in seq(length(fbpi_items))) { # LOOP: number of images (one w
                                  # , strokecolor = "black"
                                  font = "arial-black",
                                  degrees = 0, location = pieces_pos[numbers_pos_loop])
-        # if piece of information is any other than prevalence
+        # # if piece of information is any other than prevalence
       } else if (num_pos[numbers_pos_loop] != which(names(numbers_item) %in% "prev_02")) {
         
         fbpi_img_to_fill <-
@@ -147,19 +152,20 @@ for (fact_box_loop in seq(length(fbpi_items))) { # LOOP: number of images (one w
       
       
     }
-    # insert img with numbers to list
+    # Insert img with numbers into list with same-context templates
     fbpi_img_list[[number_set_loop]] <- fbpi_img_to_fill
     
-    # IF last iteration around number sets, put names on imgs
+    # IF it's last iteration through number sets, put names on imgs
     if (number_set_loop == nrow(numbers_fact)) {
       # To name each img.
       names(fbpi_img_list) <- apply(numbers_fact, 1, function(x) {gsub("(.*)", paste0("\\1_", x[["prob"]]), names(fbpi_img_list[number_set_loop]))})
     }
     
   }
-  # insert imgs with numbers of one context to master list
+  # Insert imgs with numbers of one context to master list
   fbpi_items[[fact_box_loop]] <- fbpi_img_list
   
+  # If last iteration, remove all this.
   if (fact_box_loop == length(fbpi_items)) {
     rm(fbpi_img, fbpi_img_list, fbpi_img_to_fill, 
        fact_box_loop, number_set_loop, numbers_pos_loop, 
@@ -168,10 +174,10 @@ for (fact_box_loop in seq(length(fbpi_items))) { # LOOP: number of images (one w
   }
 }
 
-# Write images
+# Write images ------------------------------------------------------------
 fbpi_output_folder <- "materials/Presentation_format/fbpi/output/"
 
-# If Folder does not exist, create it
+# If Folder does not exist, create it. If it does, do nothing-
 dir.create(file.path(fbpi_output_folder), showWarnings = FALSE, recursive = TRUE)
 
 for (q in seq(length(fbpi_items))) {
@@ -235,14 +241,15 @@ names(responses_pic) <- gsub(".txt", "", response_type_files)
 ## sequential guided question fillers
 sg_fillers <- read_csv("materials/Response_type/sg_fillers/sg_fillers.csv", col_types = "cccc")
 
-# fields to loop through
+# fields to loop through (obtained from sg_fillers column names)
 tobefilled <- paste0("__", grep("[A-Z]", names(sg_fillers), value = TRUE), "__")
 tofill     <- grep("[A-Z]", names(sg_fillers), value = TRUE)
 
+# sg template to fill (as many as contexts)
 temp_sg <- responses_pic$sg
 responses_pic$sg <- rep(responses_pic$sg, nrow(sg_fillers))
 
-# filled sg accodring to each problem context
+# filled sg according to each problem context
 for (cC in seq(nrow(sg_fillers))) {
   # cC = 2
   temp_sg <- responses_pic$sg[cC]

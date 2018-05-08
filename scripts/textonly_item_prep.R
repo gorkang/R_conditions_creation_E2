@@ -53,7 +53,7 @@ check <-
 
 # message. if everything is ok, no message.
 if (all(check) == TRUE) {
-  
+  message("Contexts number matches fillers numbers")
 } else if (all(check) == FALSE) {
   stop("No problem context has fillers")
 } else if (any(check) == TRUE) {

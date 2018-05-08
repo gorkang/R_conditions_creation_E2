@@ -33,8 +33,9 @@ dir.create(file.path(output_dir), showWarnings = FALSE, recursive = TRUE)
 # # paremeters
 width <- fbpi_width
 height <- fbpi_height
-invisible(sapply(factbox_templates, svg2png))
+
 # # convert
+walk(factbox_templates, svg2png)
 
 # factbox png dir
 factbox_dir <- output_dir
@@ -43,7 +44,7 @@ factbox_dir <- output_dir
 factbox_files <- dir(factbox_dir, pattern = ".png")
 
 # read factbox imgs to a list
-fbpi_items <- lapply(factbox_files, function(x) {magick::image_read(paste0(factbox_dir, x))})
+fbpi_items <- map(factbox_files, ~magick::image_read(paste0(factbox_dir, .x)))
 
 # name imgs
 names(fbpi_items) <- 

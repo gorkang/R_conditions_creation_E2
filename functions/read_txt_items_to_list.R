@@ -1,9 +1,12 @@
-# Function to read txt files of a presentation format. It receives the presentation format folder name, and the name for the new object (list) with items readed
+# Function to read txt files of a given presentation format.
+# It receives a string indicating presentation format (e.g. "nfab"), and
+# and string indicating a name for the new object with presentation formats 
+# (e.g. "nfab_items").
 
 read_txt_items_to_list <- function(presentation_format, name) {
   
   # Parameters to feed
-  # presentation_format <- "FN absolute"
+  # presentation_format <- "nfab"
   # name <- "nfab_items"
   
   # path to responses folder

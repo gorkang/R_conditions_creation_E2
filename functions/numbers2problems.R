@@ -15,28 +15,31 @@ numbers2problems <- function(problems) {
   # filter numbers to keep format
   numbers_item_x <- 
     numbers_item
-   
+  
   # All fields to replace come from a csv file.
   fields2fill <- read_csv("materials/Numbers/fields2fill.csv", col_types = cols())
   fields_nfab <- fields2fill$nfab[!is.na(fields2fill$nfab)]
-  fields_pr <- fields2fill$pr[!is.na(fields2fill$pr)]
-  fields_pf <- fields2fill$pf[!is.na(fields2fill$pf)]
+  fields_pr   <- fields2fill$pr[!is.na(fields2fill$pr)]
+  fields_pf   <- fields2fill$pf[!is.na(fields2fill$pf)]
   
-  # MASTER LIST (this is going to global enviroment after 1. LOOP finish)
-    # Create empty list with length of problems
-    list_of_lists <- rep(list(NULL), length(problems_x)) 
-    # name empty list
-    names(list_of_lists) <- names(problems_x)
+  # MASTER LIST (this is going to global enviroment after 1. LOOP is finished)
+  # Create empty list with length of problems
+  list_of_lists <- rep(list(NULL), length(problems_x)) 
+  # name empty list
+  names(list_of_lists) <- names(problems_x)
   
-  for (i in 1:length(problems_x)) { # 1. LOOP PROBLEMS
-    # i=4
+  
+  # 01. This loop goes through the list of problems
+  for (i in 1:length(problems_x)) {
+    # i=1
     
-    # create a vector with current loop item to feed loop that replace fields for numbers
+    # current element of the list: item to fill with numbers
     item2number <- problems_x[[i]]
     
-    # IF NFAB
-    if (grepl("nfab", names(problems_x[i]))) { # IF ITEM IS NATURAL FREQ.
-      
+    # Presentation format customization:
+    
+    # # Natural frequency
+    if (grepl("nfab", names(problems_x[i]))) {
       # current item format
       item_format = substr(names(problems_x[i]), 4, nchar(names(problems_x[i])))
       # filtered number table
@@ -52,20 +55,22 @@ numbers2problems <- function(problems) {
       for (list_loop in 1:nrow(numbers_item_x_filt)) 
         {item2number_list[[list_loop]] <- item2number}  #short loop to repeat current PROBLEM from LOOP 1
       
-      for (x in 1:nrow(numbers_item_x_filt)) { # 1.1. LOOP NUMBER SET TABLE
+      # 01.1 Loop through number sets
+      for (x in 1:nrow(numbers_item_x_filt)) {
         # x=1
         
-        # NAME CURRENT PROBLEM (LOOP 1)
+        # 01.1 Name current problem (Loop 01)
         item2number_list[[x]] <-
           paste0("**",
-            paste(names(problems_x[i]), # item name and format
-                  paste0("ppv",numbers_item_x_filt[x,]["prob"]), # normative ppv
-                  # "\n", # line break
-                  sep = "_"), "**\n\n",
+                 paste(names(problems_x[i]), # item name and format
+                       paste0("ppv",numbers_item_x_filt[x,]["prob"]), # normative ppv
+                       # "\n", # line break
+                       sep = "_"), "**\n\n",
             item2number_list[[x]]
             )
         
-        for (j in 1:length(field_to_replace)) { # 1.1.1. LOOP FIELDS TO REPLACE
+        # 01.1.1 Loop through fields to replace
+        for (j in 1:length(field_to_replace)) {
           # j=1
           
           item2number_list[[x]] <-
@@ -73,107 +78,112 @@ numbers2problems <- function(problems) {
                  paste0(numbers_item_x[x,][[field_to_replace[j]]]), #replacement
                  item2number_list[[x]]) # current problem (LOOP 1)
           
-                                              } # END: 1.1.1. LOOP FIELDS TO REPLACE
+        } # END: 01.1.1 Loop through fields to replace
+      } # END: 01.1 Loop through number sets
+      
+      
+      # # Probabilities (absolute and relative)
+    } else if (grepl("_pr", names(problems_x[i]))) {
+      
+      # current item format
+      item_format = substr(names(problems_x[i]), 4, nchar(names(problems_x[i])))
         
-                                        } # END: 1.1. LOOP NUMBER SET TABLE
-
-      } else if (grepl("_pr", names(problems_x[i]))) { # END: IF ITEM IS NATURAL FREQ.
-        
-        # current item format
-        item_format = substr(names(problems_x[i]), 4, nchar(names(problems_x[i])))
-        
-        # filtered number table
-        numbers_item_x_filt <- filter(numbers_item_x, format == item_format)
-        
+      # filtered number table
+      numbers_item_x_filt <- filter(numbers_item_x, format == item_format)
+      
         # empty list
         item2number_list <- rep(list(NULL),nrow(numbers_item_x_filt))
         
-        # fields to replace of classic text items
-        field_to_replace <- fields_pr
-        
-        # list with repeated canvas item
+      # fields to replace of classic text items
+      field_to_replace <- fields_pr
+      
+      # list with repeated canvas item
         for (list_loop in 1:nrow(numbers_item_x_filt)) 
         {item2number_list[[list_loop]] <- item2number}  #short loop to repeat current PROBLEM from LOOP 1
+      
+      # 01.1 Loop through number sets
+      for (x in 1:nrow(numbers_item_x_filt)) {
+        # x=1
         
-        for (x in 1:nrow(numbers_item_x_filt)) { # 1.1. LOOP NUMBER SET TABLE
-          # x=1
-          
-          # NAME CURRENT PROBLEM (LOOP 1)
-          item2number_list[[x]] <-
-            paste0("**",
-              paste(names(problems_x[i]), # item name and format
+        # 01.1 Name current problem (Loop 01)
+        item2number_list[[x]] <-
+          paste0("**",
+                 paste(names(problems_x[i]), # item name and format
                     paste0("ppv",numbers_item_x_filt[x,]["prob"]), # normative ppv
                     # "\n", # line break
                     sep = "_"), "**\n\n",
-              item2number_list[[x]]
-            )
+                 item2number_list[[x]]
+          )
+        
+        # 01.1.1 Loop through fields to replace
+        for (j in 1:length(field_to_replace)) {
+          # j=1
           
-          for (j in 1:length(field_to_replace)) { # 1.1.1. LOOP FIELDS TO REPLACE
-            # j=1
-            
-            item2number_list[[x]] <-
+          item2number_list[[x]] <-
               gsub(field_to_replace[j], # to be replaced
-                   paste0(as.numeric(numbers_item_x_filt[x,][[field_to_replace[j]]])*100), #replacement
-                   item2number_list[[x]]) # current problem (LOOP 1)
-            
-          } # END: 1.1.1. LOOP FIELDS TO REPLACE
+                 paste0(as.numeric(numbers_item_x_filt[x,][[field_to_replace[j]]])*100), #replacement
+                 item2number_list[[x]]) # current problem (LOOP 1)
           
-          } # END: 1.1. LOOP NUMBER SET TABLE
+        } # END: 01.1.1 Loop through fields to replace
+      } # END: 01.1 Loop through number sets
+      
         
-        
-      } else if (grepl("_pf", names(problems_x[i]))) { # END: IF ITEM IS PROBABILITY
-       
-        # current item format
+      
+      # # Positive Framework
+    } else if (grepl("_pf", names(problems_x[i]))) {
+      
+      # current item format
         item_format = substr(names(problems_x[i]), 4, nchar(names(problems_x[i])))
-        
-        # filtered number table
-        numbers_item_x_filt <- filter(numbers_item_x, format == item_format)
-        
+      
+      # filtered number table
+      numbers_item_x_filt <- filter(numbers_item_x, format == item_format)
+      
         # empty list
         item2number_list <- rep(list(NULL),nrow(numbers_item_x_filt))
         
-        # fields to replace of classic text items
-        field_to_replace <- fields_pf
-        
+      # fields to replace of classic text items
+      field_to_replace <- fields_pf
+      
         # list with repeated canvas item
         for (list_loop in 1:nrow(numbers_item_x_filt)) 
         {item2number_list[[list_loop]] <- item2number}  #short loop to repeat current PROBLEM from LOOP 1
+      
+      # 01.1 Loop through number sets
+      for (x in 1:nrow(numbers_item_x_filt)) {
+        # x=1
         
-        for (x in 1:nrow(numbers_item_x_filt)) { # 1.1. LOOP NUMBER SET TABLE
-          # x=1
-          
-          # NAME CURRENT PROBLEM (LOOP 1)
-          item2number_list[[x]] <-
-            paste0("**",
-              paste(names(problems_x[i]), # item name and format
+        item2number_list[[x]] <-
+          paste0("**",
+                 paste(names(problems_x[i]), # item name and format
                     paste0("ppv", numbers_item_x_filt[x,]["prob"]), # normative ppv
                     # "\n", # line break
                     sep = "_"), "**\n\n",
-              item2number_list[[x]]
-            )
+                 item2number_list[[x]]
+          )
+        
+        # 01.1.1 Loop through fields to replace
+        for (j in 1:length(field_to_replace)) { # 1.1.1. LOOP FIELDS TO REPLACE
+          # j=1
           
-          for (j in 1:length(field_to_replace)) { # 1.1.1. LOOP FIELDS TO REPLACE
-            # j=1
-            
             item2number_list[[x]] <-
               gsub(field_to_replace[j], # to be replaced
-                   paste0(numbers_item_x[x,][[field_to_replace[j]]]), #replacement
-                   item2number_list[[x]]) # current problem (LOOP 1)
-            
-          } # END: 1.1.1. LOOP FIELDS TO REPLACE
+                 paste0(numbers_item_x[x,][[field_to_replace[j]]]), #replacement
+                 item2number_list[[x]]) # current problem (LOOP 1)
           
-        } # END: 1.1. LOOP NUMBER SET TABLE
-        
-        } # END: IF ITEM IS POSITIVE FRAMEWORK
-        
+        } # END: 01.1.1 Loop through fields to replace
+      } # END: 01.1 Loop through number sets
+      
+      
+    } # END: Presentation format customization
+    
     # insert current item numbered into the master list
     list_of_lists[[i]] <- item2number_list
     
     
-  } # END: 1. LOOP PROBLEMS
+  } # END: 01. This loop goes through the list of problems
   
-    # ASSIGN FINAL LIST TO ENVIROMENT
-    assign("problems_numbered" , list_of_lists, envir = .GlobalEnv)
-    
+  # ASSIGN FINAL LIST TO ENVIROMENT
+  assign("problems_numbered" , list_of_lists, envir = .GlobalEnv)
+  
 } # FUNCTION END
     

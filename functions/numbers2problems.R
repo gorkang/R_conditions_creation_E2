@@ -4,10 +4,8 @@
 
 numbers2problems <- function(problems) {
   
-  # PACKS ************************************
-  if (!require('pacman')) install.packages('pacman'); library('pacman')
-  p_load(stringi)
-  # ******************************************
+  # Packages ************************************
+  if (!require('stringi')) install.packages('stringi'); library('stringi')
   
   # ARGUMENTS *********************************
   # list with problems (from function argument)

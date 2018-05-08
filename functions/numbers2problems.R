@@ -126,7 +126,7 @@ numbers2problems <- function(problems) {
     } else if (grepl("_pf", names(problems_x[i]))) {
       
       # current item format
-        item_format = substr(names(problems_x[i]), 4, nchar(names(problems_x[i])))
+      item_format <- substr(names(problems_x[i]), 4, nchar(names(problems_x[i])))
       
       # filtered number table
       numbers_item_x_filt <- filter(numbers_item_x, format == item_format)

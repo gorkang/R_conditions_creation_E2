@@ -11,7 +11,7 @@ numbers_prevalence <-
   readxl::read_xls("materials/Numbers/numbers_bayes.xls", sheet = 2)
 
 # Read problems from text-files
-# Possible presentation formats
+# Get possible presentation formats
 presentation_format_dir <- "materials/Presentation_format/"
 
 # grep everything without "pi" and two letter before (pictorial presentation formats)

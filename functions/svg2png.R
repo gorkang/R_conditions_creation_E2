@@ -2,7 +2,6 @@
 
 svg2png <- function(svg_file) {
   
-  
   # This parameters have to be defined outside the function!!!
         # svg_file <- "ca_factbox.svg" # svg file name
         # width <- 375 # pixels
@@ -24,8 +23,5 @@ svg2png <- function(svg_file) {
   
   # run command line through terminal
   system(svg_to_png_system_command)
-  
-  
-  
   
 }

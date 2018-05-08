@@ -5,7 +5,7 @@
 
 # TODO: add numbers and fields to replace as arguments.
 
-numbers2problems <- function(problems) {
+numbers2problems <- function(problems, numbers_item, path2fields) {
   
   # Packages ************************************
   if (!require('stringi')) install.packages('stringi'); library('stringi')
@@ -20,7 +20,7 @@ numbers2problems <- function(problems) {
     numbers_item  # this to ARGUMENT
   
   # All fields to replace come from a csv file.
-  fields2fill <- read_csv("materials/Numbers/fields2fill.csv", col_types = cols()) # this to ARGUMENT
+  fields2fill <- read_csv(path2fields, col_types = cols()) # this to ARGUMENT
   fields_nfab <- fields2fill$nfab[!is.na(fields2fill$nfab)]
   fields_pr   <- fields2fill$pr[!is.na(fields2fill$pr)]
   fields_pf   <- fields2fill$pf[!is.na(fields2fill$pf)]

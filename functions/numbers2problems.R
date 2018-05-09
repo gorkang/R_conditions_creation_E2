@@ -8,7 +8,8 @@ numbers2problems <- function(problems, numbers_item, path2fields) {
   
   # ARGUMENTS *********************************
   # list with problems (from function argument)
-  problems_x <- problems
+  problems_x <- 
+    problems
   
   # FILTER NUMBER SET *************************
   # filter numbers to keep format
@@ -16,26 +17,33 @@ numbers2problems <- function(problems, numbers_item, path2fields) {
     numbers_item  # this to ARGUMENT
   
   # All fields to replace come from a csv file.
-  fields2fill <- read_csv(path2fields, col_types = cols()) # this to ARGUMENT
+  fields2fill <- 
+    read_csv(path2fields, col_types = cols()) # this to ARGUMENT
   
   # MASTER LIST (this is going to global enviroment after 1. LOOP is finished)
   # # Create empty list with length of problems
-  list_of_lists <- rep(list(NULL), length(problems_x)) 
+  list_of_lists <- 
+    rep(list(NULL), length(problems_x)) 
+  
   # # name empty list
-  names(list_of_lists) <- names(problems_x)
+  names(list_of_lists) <- 
+    names(problems_x)
   
   # 01. This loop goes through the list of problems
   for (i in 1:length(problems_x)) {
-    # i=4
+    # i=1
     
     # current element of the list: item to fill with numbers
-    item2number <- problems_x[[i]]
+    item2number <- 
+      problems_x[[i]]
     
       # current item format
-      item_format <- substr(names(problems_x[i]), 4, nchar(names(problems_x[i])))
+      item_format <- 
+        substr(names(problems_x[i]), 4, nchar(names(problems_x[i])))
       
       # filtered number table # ACCORDING TO FORMAT
-      numbers_item_x_filt <- filter(numbers_item_x, format == item_format)
+      numbers_item_x_filt <- 
+        filter(numbers_item_x, format == item_format)
       
       # fields to replace of classic text items # ACCORDING TO FORMAT
       field_to_replace <- fields2fill[[item_format]]

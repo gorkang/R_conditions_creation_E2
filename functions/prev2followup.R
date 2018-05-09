@@ -7,7 +7,7 @@ prev2followUp <- function(prevalence_string, follow_up_dir, outputdir, rmv_place
   # BUILD POSSIBLE CONTEXTS, PRESENTATION FORMATS, AND PPV PROBS
   # presentation formats
   possible_presentation_formats <- paste0(dir("materials/Presentation_format/"), collapse = "|")
-  fillers <- read_csv("materials/Response_type/sg_fillers/sg_fillers.csv", col_types = cols())
+  fillers <- read_csv("materials/Response_type/fillers/sg_fillers.csv", col_types = cols())
   # problem contexts
   possible_contexts <- gsub("([a-z]{2}).*", "\\1", fillers$item_cond)
   possible_probs <- unique(readxl::read_xls("materials/Numbers/numbers_bayes.xls")$prob)[!is.na(unique(readxl::read_xls("materials/Numbers/numbers_bayes.xls")$prob))]

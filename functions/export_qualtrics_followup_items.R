@@ -30,7 +30,7 @@ export_qualtrics_followup_items <- function(x) {
   # MANUAL MODIFICATION #####################
   # csv with fillers for medical condition
   fillers <- 
-    read_csv("materials/Response_type/sg_fillers/sg_fillers.csv", col_types = cols())
+    read_csv("materials/Response_type/fillers/sg_fillers.csv", col_types = cols())
   
   current_context_index <- 
     grep(x_context, fillers$item_cond)

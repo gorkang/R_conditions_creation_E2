@@ -245,7 +245,7 @@ names(responses_pic) <- gsub(".txt", "", response_type_files)
 
 ## sequential guided question fillers
 sg_fillers <- 
-  read_csv("materials/Response_type/sg_fillers/sg_fillers.csv", col_types = "cccc")
+  read_csv("materials/Response_type/fillers/sg_fillers.csv", col_types = "cccc")
 
 # fields to loop through (obtained from sg_fillers column names)
 tobefilled <- paste0("__", grep("[A-Z]", names(sg_fillers), value = TRUE), "__")

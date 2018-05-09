@@ -43,7 +43,7 @@ contexts2check <-
   strsplit(problem_contexts, split = "|", fixed = TRUE) %>% 
   unlist()
 # search and read csv with fillers
-path2fillers <- "materials/Response_type/sg_fillers/sg_fillers.csv"
+path2fillers <- "materials/Response_type/fillers/sg_fillers.csv"
 fillers <- read_csv(path2fillers, col_types = cols())
 # check if contexts retrieve from presentation format folder match contexts on fillers csv
 check <- 
@@ -229,7 +229,7 @@ for (q in seq(length(questions))) {
 ## 02. Personalize sequential guided response type to accomodate to medical condition
 
 sg_fillers <- 
-  read_csv("materials/Response_type/sg_fillers/sg_fillers.csv", col_types = "cccc")
+  read_csv("materials/Response_type/fillers/sg_fillers.csv", col_types = "cccc")
 
 # walk through 16 items
 for (cB in seq(problems_numbered_ordered_responses)) {
@@ -245,11 +245,11 @@ for (cB in seq(problems_numbered_ordered_responses)) {
     
     # check for current context, if there is no matching context show a warning.
     if (sum(grepl(current_context, sg_fillers$item_cond)) == 0) {
-      stop("No matching context on sg_fillers.csv. Check problem contexts on materials/Presentation_format and materials/Response_type/sg_fillers/sg_fillers.csv")
+      stop("No matching context on sg_fillers.csv. Check problem contexts on materials/Presentation_format and materials/Response_type/fillers/sg_fillers.csv")
     } else if (sum(grepl(current_context, sg_fillers$item_cond)) == 1) {
       current_row <- grep(current_context, sg_fillers$item_cond)
     } else if (sum(grepl(current_context, sg_fillers$item_cond)) > 1) { 
-      stop("No matching context on sg_fillers.csv. Check problem contexts on materials/Presentation_format and materials/Response_type/sg_fillers/sg_fillers.csv")
+      stop("No matching context on sg_fillers.csv. Check problem contexts on materials/Presentation_format and materials/Response_type/fillers/sg_fillers.csv")
     }
     
     # fillers according to current row

@@ -28,7 +28,7 @@ dir.create(file.path(output_dir), showWarnings = FALSE, recursive = TRUE)
 width <- nppi_width
 height <- nppi_height
 # convert
-invisible(sapply(newparadigm_templates, svg2png))
+walk(newparadigm_templates, svg2png)
 
 # newparadigm png dir
 newparadigm_dir <- output_dir
@@ -37,7 +37,7 @@ newparadigm_dir <- output_dir
 newparadigm_files <- dir(newparadigm_dir, pattern = ".png")
 
 # read factbox imgs to a list
-nppi_items <- lapply(newparadigm_files, function(x) {magick::image_read(paste0(newparadigm_dir, x))})
+nppi_items <- map(newparadigm_files, ~magick::image_read(paste0(newparadigm_dir, .x)))
 
 # name imgs
 names(nppi_items) <- 
@@ -154,7 +154,7 @@ graph_dir <- "materials/Presentation_format/nppi/input/graphs/png/"
 nppi_graphs_files_names <- grep("ppv.*png", dir(graph_dir), value = TRUE)
 
 # Read graphs into list
-nppi_graphs <- lapply(nppi_graphs_files_names, function(x) magick::image_read(paste0(graph_dir, x)))
+nppi_graphs <- map(nppi_graphs_files_names, ~magick::image_read(paste0(graph_dir, .x)))
 
 # Name graphs
 names(nppi_graphs) <- gsub(".png", "", nppi_graphs_files_names)
@@ -338,9 +338,8 @@ response_type_files <- dir(response_types_dir, pattern = "*.txt")
 response_type_files_path <- paste0(response_types_dir, response_type_files)
 
 # list with responses as char strings
-responses_pic <- lapply(response_type_files_path, 
-                        function(x) readChar(con = x, nchars = file.info(x)$size))
-
+responses_pic <- 
+  map(response_type_files_path, ~readChar(con = .x, nchars = file.info(.x)$size))
 # assing name to each response type
 names(responses_pic) <- gsub(".txt", "", response_type_files)
 

@@ -11,9 +11,10 @@ svg2png <- function(svg_file) {
         # output_dir <- "materials/Presentation format/Fact-boxs/input/template/png/" # path to png output folder
   
   svg_file_name <- svg_file
+  # path to png 
   png_file <- paste0(gsub(".svg", "", svg_file), ".png")
   
-  # command
+  # ubuntu terminal command
   svg_to_png_system_command <-
     paste0("inkscape -z -e '", output_dir, 
            png_file, 

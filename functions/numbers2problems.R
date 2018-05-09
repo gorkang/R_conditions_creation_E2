@@ -1,7 +1,5 @@
 # This function takes a list of strings, a data frame with numbers 
-# (add this to arguments, now is defined within the function), and 
-# a string indicating "low" or "high" normative PPV (where does the 
-# string come from?)
+# (add this to arguments, now is defined within the function).
 
 numbers2problems <- function(problems, numbers_item, path2fields) {
   

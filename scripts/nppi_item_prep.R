@@ -90,9 +90,8 @@ graph_output_folder <- "materials/Presentation_format/nppi/input/graphs/png/"
 # If Folder does not exist, create it
 dir.create(file.path(graph_output_folder), showWarnings = FALSE, recursive = TRUE)
 
-#TODO: dinamically build this names
 # PPV graph name
-graph_png_file_name <- c("nppi_ppv_pr_graph", "nppi_ppv_ca_graph")
+graph_png_file_name <- paste0("nppi_ppv_", substr(problem_contexts, 5, 6), "_graph")
 
 # Path to folder to save graph
 png_file_pathname <-
@@ -114,29 +113,29 @@ for (cCntxt in seq(length(problem_contexts))) {
   # labels corresponding to current problem context
   current_axis_label <- grep(current_context, x_axis_label, value = TRUE)
   current_axis_label <- gsub(paste0("\\*\\*", current_context, "\\*\\*(.*)"), "\\1", current_axis_label) # get rid of name
-    
+  
   # create graph
-    ppv_graph <-
-      ggplot(age_prevalence, aes(x=age, y=PPV_100)) + # plot canvas
-      scale_y_continuous(labels=function(x) paste0(x,"%"), # append % to y-axis value
-                         limits = c(0,100)
-                         # , breaks = seq(0,100,10)
-      ) + # set y-axis limits
-      geom_point(size = 5.5, color = "#009999", shape = 19) + # insert points with ppv value
-      geom_line(aes(x=age, y=PPV_100), color = "#009999", size = 2) +  
-      theme_minimal() + # insert line bridging PPV-value points
+  ppv_graph <-
+    ggplot(age_prevalence, aes(x=age, y=PPV_100)) + # plot canvas
+    scale_y_continuous(labels=function(x) paste0(x,"%"), # append % to y-axis value
+                       limits = c(0,100)
+                       # , breaks = seq(0,100,10)
+    ) + # set y-axis limits
+    geom_point(size = 5.5, color = "#009999", shape = 19) + # insert points with ppv value
+    geom_line(aes(x=age, y=PPV_100), color = "#009999", size = 2) +  
+    theme_minimal() + # insert line bridging PPV-value points
     xlab(paste0("Age of the ", current_axis_label)) + ylab(y_axis_label) + # set axis labels
-      theme(axis.text = element_text(size = 25), # axis-numerbs size
-            axis.title = element_text(size = 25)) + # axis-labels size
-      geom_text(aes(label = 
-                      case_when(age %in% age_ppv_to_plot ~ paste0(round(PPV_100, 0), "%"), TRUE ~ paste0("")), # keep only ages previously set to be ploted
-                    hjust = 1, vjust = -1), size = 6) # (position) plot ppv-values above points set in "age_ppv_to_plot"
-    
-    # Save plot to png file
+    theme(axis.text = element_text(size = 25), # axis-numerbs size
+          axis.title = element_text(size = 25)) + # axis-labels size
+    geom_text(aes(label = 
+                    case_when(age %in% age_ppv_to_plot ~ paste0(round(PPV_100, 0), "%"), TRUE ~ paste0("")), # keep only ages previously set to be ploted
+                  hjust = 1, vjust = -1), size = 6) # (position) plot ppv-values above points set in "age_ppv_to_plot"
+  
+  # Save plot to png file
   ggsave(filename = grep(current_context, png_file_pathname, value = TRUE), 
-           plot = ppv_graph, width = width, height = height, dpi = dpi, units = "in")
-    
-  }
+         plot = ppv_graph, width = width, height = height, dpi = dpi, units = "in")
+  
+}
 
 rm(graph_png_file_name,png_file_pathname)
 rm(age_ppv_to_plot,dpi,graph_output_folder,height,width,x_axis_label,y_axis_label)
@@ -183,7 +182,18 @@ graph_y <- 0.5731394
 graph_x_pos <- graph_x*img_width
 graph_y_pos <- graph_y*img_height
 
-# TODO: possible to create graphs dinamically? Why is there one for each context?
+# medical conditions to fill graph
+medical_conditions <- 
+  read_csv("materials/Numbers/fields2fill.csv", col_types = cols()) %>% 
+  select(nppi_brochure) %>% 
+  filter(!is.na(.)) %>% pull()
+
+# person to undergo test to fill graph
+who_undergo_test <- 
+  read_csv("materials/Numbers/fields2fill.csv", col_types = cols()) %>% 
+  select(with_disease) %>% 
+  filter(!is.na(.)) %>% pull()
+
 for (i in seq(length(nppi_items))){
   # i=1
   
@@ -193,44 +203,39 @@ for (i in seq(length(nppi_items))){
   for (j in seq(nrow(numbers_nppi))) {
     # j=1
     
-    if (grepl("_ca", names(nppi_items[i]))) {
-      
-      # CANCER ####################################################
-      nppi_img_list[[j]] <-
+    # problem context of current template 
+    current_context <-
+      substr(names(nppi_items[i]), 6, 7)
+    
+    # ppv graph of current template
+    current_graph <- 
+      nppi_graphs[[gsub(".png", "", grep(paste0("_", current_context,"_"), nppi_graphs_files_names, value = TRUE))]]
+    
+    # medical condition of current template
+    current_medical_condition <- 
+      grep(current_context, medical_conditions, value = TRUE) %>% 
+      gsub(paste0("\\*\\*", current_context, "\\*\\*(.*)"), "\\1", .)
+    
+    # who's got a disease in current template
+    current_who_undergo_test <- 
+      grep(current_context, who_undergo_test, value = TRUE) %>% 
+      gsub(paste0("\\*\\*", current_context, "\\*\\*(.*)"), "\\1", .)
+    
+    
+    nppi_img_list[[j]] <- 
+      magick::image_annotate(
+        
         magick::image_annotate(
           
-          magick::image_annotate(
-            
-            magick::image_composite(nppi_img_list[[i]], nppi_graphs[[gsub(".png", "", grep("_ca_", nppi_graphs_files_names, value = TRUE))]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)),
-            
-            paste0("At age ", numbers_nppi[[j, "age"]], ", it is estimated that breast cancer is present in ", numbers_nppi[[j, "prev_01"]], " out " ),
-            font = "arial", size = 20, color = "black", boxcolor = "",
-            degrees = 0, location = paste0("+", prev_xca_pos, "+", prev_y1_pos)),
+          magick::image_composite(nppi_img_list[[i]], current_graph, offset = paste0("+", graph_x_pos, "+", graph_y_pos)),
           
-          text = paste0("of every ", numbers_nppi[[j, "prev_02"]], " women."),
+          paste0("At age ", numbers_nppi[[j, "age"]], ", it is estimated that ", current_medical_condition," is present in ", numbers_nppi[[j, "prev_01"]], " out " ),
           font = "arial", size = 20, color = "black", boxcolor = "",
-          degrees = 0, location = paste0("+", prev_xca_pos, "+", prev_y2_pos))
-      
-      
-    } else if (grepl("_pr", names(nppi_items[i]))) {
-      # TRISOMY ####################################################
-      
-      nppi_img_list[[j]] <-
-        magick::image_annotate(
-          
-          magick::image_annotate(
-            
-            magick::image_composite(nppi_img_list[[i]], nppi_graphs[[gsub(".png", "", grep("_pr_", nppi_graphs_files_names, value = TRUE))]], offset = paste0("+", graph_x_pos, "+", graph_y_pos)),
-            
-            paste0("At age ", numbers_nppi[[j, "age"]], ", it is estimated that trisomy 21 is present in ", numbers_nppi[[j, "prev_01"]]),
-            font = "arial", size = 20, color = "black", boxcolor = "",
-            degrees = 0, location = paste0("+", prev_xpr1_pos, "+", prev_y1_pos)),
-          
-          text = paste0("out of every ", numbers_nppi[[j, "prev_02"]], " births."),
-          font = "arial", size = 20, color = "black", boxcolor = "",
-          degrees = 0, location = paste0("+", prev_xpr2_pos, "+", prev_y2_pos))
-      
-    }
+          degrees = 0, location = paste0("+", prev_xca_pos, "+", prev_y1_pos)),
+        
+        text = paste0("of every ", numbers_nppi[[j, "prev_02"]], " ", current_who_undergo_test, "."),
+        font = "arial", size = 20, color = "black", boxcolor = "",
+        degrees = 0, location = paste0("+", prev_xca_pos, "+", prev_y2_pos))
   }
   
   ppv_prob <- as.character(numbers_nppi[["prob"]])

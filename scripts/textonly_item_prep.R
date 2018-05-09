@@ -193,18 +193,15 @@ for (problem_loop in 1:length(problems_numbered_ordered_responses)) {
   }
 }
 
-# Special modifications (not apllied to every item, question, resp --------
+# Special modifications (not apllied to every item, question, resp) --------
 
-## 01 Eliminate PPV question in positive framework (pfab) problems. Only for sequential guided questions.
+## 01. Eliminate PPV question in positive framework (pfab) problems. Only for sequential guided questions.
 
 # Loop to go through list of questions 
 for (q in seq(length(questions))) {
   # q=1
-  
   # get current question prefix (ca, pr)
   current_question_prefix <- gsub(paste0("(", problem_contexts, ").*"), "\\1", names(questions[q]))
-  # get current question
-  # current_question  <- gsub("\\[question_start\\]","",questions[[q]])
   
   # Loop to go through set of items (context x presentation format)
   for (p in seq(length(problems_numbered_ordered_responses))) {
@@ -229,7 +226,8 @@ for (q in seq(length(questions))) {
 }
 
 
-## 02 Personalize sequential guided response type to accomodate to medical condition
+## 02. Personalize sequential guided response type to accomodate to medical condition
+
 sg_fillers <- 
   read_csv("materials/Response_type/sg_fillers/sg_fillers.csv", col_types = "cccc")
 
@@ -297,12 +295,16 @@ names(contexts) <- gsub(".txt", "", context_files)
 
 rm(context_dir,context_files,context_files_path)
 
+
+
 # Paste problem contexts at the beginning of each problem, 
-# and customize according to condition (trisomy 21 & breast cancer) and probability (high & low)
-paste0(".*(", problem_contexts, ").*")
+# and customize according to condition (trisomy 21 & breast 
+# cancer) and probability (high & low).
+
 # Walk through 16 items
 for (cB in seq(problems_numbered_ordered_responses)) {
   # cB <- 1
+  
   # Walk through 4 response types within an item
   for (cS in seq(problems_numbered_ordered_responses[[cB]])) {
     # cS <- 1
@@ -316,11 +318,10 @@ for (cB in seq(problems_numbered_ordered_responses)) {
       paste0(gsub(paste0(".*(", problem_contexts, ").*"), "txt_\\1", current_item), "_context")
     
     # get problem prob (this erase everything that is not a "low" or "high" word)
-    
     current_prob <-
       gsub(paste0(".*(", problem_probs, ").*"), "\\1", current_item)
     
-    
+    # get problem presentation format
     current_format <-
       gsub(paste0('.*(', paste(textual_formats, collapse = "|"), ').*'), 
            "\\1", current_item)
@@ -328,7 +329,6 @@ for (cB in seq(problems_numbered_ordered_responses)) {
     # paste problem context to current item
     current_item <- 
       gsub("(.*)(\\[first_piece\\].*)", paste0("\\1", contexts[[current_context]], "\\2"), current_item)
-    # current_item <- gsub("(\\*\\*\n\n)", paste0("\\1", contexts[[current_context]]), current_item)
     
     # get age of current item using item label (at the beginnign of each item)
     prob_age <- 

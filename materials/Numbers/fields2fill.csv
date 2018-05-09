@@ -1,9 +1,9 @@
-nfab,prab,prre,pfab,fbpi_followup_export,nppi,fbpi_item_prep,age_ppv_to_plot,x_axis_label,y_axis_label
-prev_01,prev_01,prev_01,all_positive,die_all_with,prev_01,prev_02,20,**pr**mother,Test reliability
-prev_02,hit_rate_01,hit_rate_01,prev_02,die_all_without,prev_02,prev_02,25,**ca**women,
-hit_rate_01,false_positive_01,false_positive_01,hit_rate_01,prev_02,,die_bre_without,30,,
-hit_rate_02,,,false_positive_01,,,die_all_without,35,,
-false_positive_01,,,,,,die_bre_with,40,,
-false_positive_02,,,,,,die_all_with,,,
-,,,,,,add_treat,,,
-,,,,,,breast_remove,,,
+nfab,prab,prre,pfab,fbpi_followup_export,nppi,fbpi_item_prep,age_ppv_to_plot,x_axis_label,y_axis_label,nppi_brochure,with_disease
+prev_01,prev_01,prev_01,all_positive,die_all_with,prev_01,prev_02,20,**pr**mother,Test reliability,**pr**trisomy 21,**pr**births
+prev_02,hit_rate_01,hit_rate_01,prev_02,die_all_without,prev_02,prev_02,25,**ca**women,,**ca**breast cancer,**ca**women
+hit_rate_01,false_positive_01,false_positive_01,hit_rate_01,prev_02,,die_bre_without,30,,,,
+hit_rate_02,,,false_positive_01,,,die_all_without,35,,,,
+false_positive_01,,,,,,die_bre_with,40,,,,
+false_positive_02,,,,,,die_all_with,,,,,
+,,,,,,add_treat,,,,,
+,,,,,,breast_remove,,,,,

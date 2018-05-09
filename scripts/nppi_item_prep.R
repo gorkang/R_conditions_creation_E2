@@ -168,17 +168,20 @@ img_height <- magick::image_info(nppi_items[[1]])$height
 
 # Prevalence position in template (%)
 # relateive
-prev_ca_x <- 0.05852174
-prev_pr_x_1 <- 0.13352174
-prev_pr_x_2 <- 0.05852174
-prev_y_1 <- 0.2562926
-prev_y_2 <- 0.2792926
+prev_ca_x   <- 0.05852174 # cancer prevalence sentence position (relative to brochure size).
+# On the pregnant condition the prevalence is splitted in two senteces. Therefore, there are two x axis positions
+prev_pr_x_1 <- 0.13352174 # pregnant prevalence sentence (01) position (relative to brochure size). 
+prev_pr_x_2 <- 0.05852174 # pregnant prevalence sentence (02) position (relative to brochure size).
+prev_y_1    <- 0.2562926 # both prevalence sentences (01) posiion on y axis (relative to brochure size).
+prev_y_2    <- 0.2792926 # if any, both prevalence sentences (02) posiion on y axis (relative to brochure size).
+
 # absolute
-prev_xca_pos <- prev_ca_x*img_width
-prev_xpr1_pos <- prev_pr_x_1*img_width
-prev_xpr2_pos <- prev_pr_x_2*img_width
-prev_y1_pos <- prev_y_1*img_height
-prev_y2_pos <- prev_y_2*img_height
+prev_xca_pos  <- prev_ca_x*img_width # cancer prevalence sentence position (absolute position).
+# On the pregnant condition the prevalence is splitted in two senteces. Therefore, there are two x axis positions
+prev_xpr1_pos <- prev_pr_x_1*img_width # pregnant prevalence sentence (01) position (absolute position). 
+prev_xpr2_pos <- prev_pr_x_2*img_width # pregnant prevalence sentence (02) position (absolute position).
+prev_y1_pos   <- prev_y_1*img_height # both prevalence sentences (01) posiion on y axis (absolute position). 
+prev_y2_pos   <- prev_y_2*img_height # if any, both prevalence sentences (02) posiion on y axis (absolute position).
 
 # Graph position in template
 # relateive

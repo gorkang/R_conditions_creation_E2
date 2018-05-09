@@ -1,5 +1,3 @@
-
-
 # Pictoric presentation formats -------------------------------------------
 
 ## Numbers sets 
@@ -7,7 +5,6 @@
 # read csv with number
 numbers_item <-
   readxl::read_xls("materials/Numbers/numbers_bayes.xls")#, col_types = cols())
-
 
 # Convert svg templates to png templates ----------------------------------
 
@@ -63,28 +60,28 @@ img_width <- magick::image_info(fbpi_items[[1]])$width
 img_height <- magick::image_info(fbpi_items[[1]])$height
 
 # position of each piece using percentages
-first_col_x  <- 0.6916667
-second_col_x <- 0.8916667
-first_row_y  <- 0.4760192
-second_row_y <- 0.5539568
-third_row_y  <- 0.68999 # 0.6894484-0.6865
-fourth_row_y <- 0.7680348 # 0.7709832-0.0029484
+first_col_x  <- 0.6916667 # first column x axis pos. (percetages pos.)
+second_col_x <- 0.8916667 # second column x axis pos. (percetages pos.)
+first_row_y  <- 0.4760192 # first row y axis pos. (percetages pos.)
+second_row_y <- 0.5539568 # second row y axis pos. (percetages pos.)
+third_row_y  <- 0.68999   # ...
+fourth_row_y <- 0.7680348 # ...
 
-first_prev_x  <- .628
-second_prev_x <- .828
-both_prev_y   <- .350717
+first_prev_x  <- .628    # first prevalence (from left to right) x axis position
+second_prev_x <- .828    # second prevalence (from left to right) x axis position
+both_prev_y   <- .350717 # both prevalences y axis position.
 
 # convert percentage position to absolute positions relative to the img dimensions
-first_col_pos  <- first_col_x*img_width
-second_col_pos <- second_col_x*img_width
-first_row_pos  <- first_row_y*img_height
-second_row_pos <- second_row_y*img_height
-third_row_pos  <- third_row_y*img_height
-fourth_row_pos <- fourth_row_y*img_height
+first_col_pos  <- first_col_x*img_width   # first column x axis pos. (absolute pos.)
+second_col_pos <- second_col_x*img_width  # second column x axis pos (absolute pos.)
+first_row_pos  <- first_row_y*img_height  # first row y axis pos. (absolute pos.)
+second_row_pos <- second_row_y*img_height # second row y axis pos. (absolute pos.)
+third_row_pos  <- third_row_y*img_height  # third row ... (absolute pos.)
+fourth_row_pos <- fourth_row_y*img_height # fourth row ... (absolute pos.)
 
-first_prev_col_pos  <- first_prev_x*img_width
-second_prev_col_pos <- second_prev_x*img_width
-both_prev_row_pos   <- both_prev_y*img_height
+first_prev_col_pos  <- first_prev_x*img_width  # first prevalence (from left to right) x axis position (absolute pos.)
+second_prev_col_pos <- second_prev_x*img_width # second prevalence (from left to right) x axis position (absolute pos.)
+both_prev_row_pos   <- both_prev_y*img_height  # both prevalences y axis position. (absolute pos.)
 
 # Position to put numbers
 pieces_pos <- c(paste0("+", first_prev_col_pos, "+", both_prev_row_pos), # first prevalence (left to right),
@@ -97,7 +94,7 @@ pieces_pos <- c(paste0("+", first_prev_col_pos, "+", both_prev_row_pos), # first
                 paste0("+",second_col_pos, "+", fourth_row_pos) # R4C2
 )
 
-# TODO: read this fields from a file (sg_fillers, fields2fill?). 
+# TODO: read this fields from a file (sg_fillers, fields2fill?). The prev_02 term is repeated because there are two different positions where the prev_02 filler has to be positioned.
 # position of columnes in numbers
 fbpi_field_replacements <- c("prev_02", "prev_02", "die_bre_without","die_all_without","die_bre_with","die_all_with","add_treat","breast_remove")
 
@@ -133,7 +130,9 @@ for (fact_box_loop in seq(length(fbpi_items))) {
       # numbers_pos_loop=1
       
       # puts numbers into template.
-      ## prevalence numbers are treated different because they have different font on the template
+      ## prevalence numbers are treated 
+      ## different because they have 
+      ## different font on the template
       
       # # if piece of information to put is the prevalence
       if (num_pos[numbers_pos_loop] == which(names(numbers_item) %in% "prev_02")) {
@@ -187,7 +186,7 @@ fbpi_output_folder <- "materials/Presentation_format/fbpi/output/"
 # If Folder does not exist, create it. If it does, do nothing-
 dir.create(file.path(fbpi_output_folder), showWarnings = FALSE, recursive = TRUE)
 
-
+# TODO: convert to flat list?
 for (q in seq(length(fbpi_items))) {
   for (x in seq(length(fbpi_items[[q]]))) {
     magick::image_write(fbpi_items[[q]][[x]], paste0(fbpi_output_folder, names(fbpi_items[[q]][x]), ".png"))

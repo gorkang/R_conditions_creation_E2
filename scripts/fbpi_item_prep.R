@@ -105,16 +105,12 @@ num_pos <- mapply(FUN = function(x,y) {x = which(names(numbers_item) %in% y)}, x
 
 # Assemble factboxs
 
-
 # 01. Goes through number of images (in this case, two, one with cancer, one with trisomy)
 for (fact_box_loop in seq(length(fbpi_items))) {
   # fact_box_loop=1
   
-  # fb template (cancer or pregnant) as list
-  fbpi_img <- fbpi_items[fact_box_loop]
-  
   # repeat template as many times as rows of set numbers csv
-  fbpi_img_list <- rep(as.list(fbpi_img), nrow(numbers_fact))
+  fbpi_img_list <- rep(as.list(fbpi_items[fact_box_loop]), nrow(numbers_fact))
   
   # 01.1 Goes through set of numbers
   for (number_set_loop in seq(nrow(numbers_fact))) {
@@ -170,7 +166,7 @@ for (fact_box_loop in seq(length(fbpi_items))) {
   
   # If last iteration, remove all this.
   if (fact_box_loop == length(fbpi_items)) {
-    rm(fbpi_img, fbpi_img_list, fbpi_img_to_fill, 
+    rm(fbpi_img_list, fbpi_img_to_fill, 
        fact_box_loop, number_set_loop, numbers_pos_loop, 
        num_pos, pieces_pos, fbpi_field_replacements,
        img_height, img_width, num_looped)
@@ -224,7 +220,7 @@ names(fbpi_context) <- gsub(".txt", "", context_files)
 # put prevalences on contexts using number bayes
 fbpi_context <- 
   lapply(numbers_fact[["prev_02"]], function(x) {gsub("prevalence_02_variable", x, fbpi_context)})
-
+ 
 # name contexts 
 fbpi_context <- 
   map2(paste0("**fbpi_context_", numbers_fact[["prob"]], "_ppv**"), unlist(fbpi_context), .f = `paste0`)
@@ -256,7 +252,7 @@ tobefilled <- paste0("__", grep("[A-Z]", names(sg_fillers), value = TRUE), "__")
 tofill     <- grep("[A-Z]", names(sg_fillers), value = TRUE)
 
 # sg template to fill (as many as contexts)
-temp_sg <- responses_pic$sg
+temp_sg          <- responses_pic$sg
 responses_pic$sg <- rep(responses_pic$sg, nrow(sg_fillers))
 
 # filled sg according to each problem context

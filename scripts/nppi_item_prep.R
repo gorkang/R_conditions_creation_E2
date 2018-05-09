@@ -106,12 +106,16 @@ age_prevalence <- mutate(age_prevalence, PPV_100 = PPV*100)
 #   age_prevalence %>% 
 #   filter(age %in% age_ppv_to_plot)
 
-# TODO: possible to create graphs dinamically? Why is there one for each context? The only context-dependent part is the xlab (xlab(grep("woman", x_axis_label, value = TRUE))). To fix this it is necessary to fix the TODO (line 64)
 for (cCntxt in seq(length(problem_contexts))) {
   # cCntxt <- 1
   
-  if (grepl("ca", problem_contexts[[cCntxt]])) {
+  # context of current problem context 
+  current_context <- substr(problem_contexts[[cCntxt]], 5, 6)
+  # labels corresponding to current problem context
+  current_axis_label <- grep(current_context, x_axis_label, value = TRUE)
+  current_axis_label <- gsub(paste0("\\*\\*", current_context, "\\*\\*(.*)"), "\\1", current_axis_label) # get rid of name
     
+  # create graph
     ppv_graph <-
       ggplot(age_prevalence, aes(x=age, y=PPV_100)) + # plot canvas
       scale_y_continuous(labels=function(x) paste0(x,"%"), # append % to y-axis value
@@ -121,43 +125,18 @@ for (cCntxt in seq(length(problem_contexts))) {
       geom_point(size = 5.5, color = "#009999", shape = 19) + # insert points with ppv value
       geom_line(aes(x=age, y=PPV_100), color = "#009999", size = 2) +  
       theme_minimal() + # insert line bridging PPV-value points
-      xlab(grep("woman", x_axis_label, value = TRUE)) + ylab(y_axis_label) + # set axis labels
+    xlab(paste0("Age of the ", current_axis_label)) + ylab(y_axis_label) + # set axis labels
       theme(axis.text = element_text(size = 25), # axis-numerbs size
             axis.title = element_text(size = 25)) + # axis-labels size
       geom_text(aes(label = 
                       case_when(age %in% age_ppv_to_plot ~ paste0(round(PPV_100, 0), "%"), TRUE ~ paste0("")), # keep only ages previously set to be ploted
                     hjust = 1, vjust = -1), size = 6) # (position) plot ppv-values above points set in "age_ppv_to_plot"
     
-    
     # Save plot to png file
-    ggsave(filename = grep(gsub(".*(ca).*|.*(pr).*", "\\1\\2", problem_contexts[cCntxt]), png_file_pathname, value = TRUE), 
-           plot = ppv_graph, width = width, height = height, dpi = dpi, units = "in")
-    
-  } else if (grepl("pr", problem_contexts[[cCntxt]])) {
-    
-    ppv_graph <-
-      ggplot(age_prevalence, aes(x=age, y=PPV_100)) + # plot canvas
-      scale_y_continuous(labels=function(x) paste0(x,"%"), # append % to y-axis value
-                         limits = c(0,100)
-                         # , breaks = seq(0,100,10)
-      ) + # set y-axis limits
-      geom_point(size = 5.5, color = "#009999", shape = 19) + # insert points with ppv value
-      geom_line(aes(x=age, y=PPV_100), color = "#009999", size = 2) +  # insert line bridging PPV-value points
-      theme_minimal() + 
-      xlab(grep("mother", x_axis_label, value = TRUE)) + ylab(y_axis_label) + # set axis labels
-      theme(axis.text = element_text(size = 25), # axis-numerbs size
-            axis.title = element_text(size = 25)) + # axis-labels size
-      geom_text(aes(label = 
-                      case_when(age %in% age_ppv_to_plot ~ paste0(round(PPV_100, 0), "%"), TRUE ~ paste0("")), # keep only ages previously set to be ploted
-                    hjust = 1, vjust = -1), size = 6) # (position) plot ppv-values above points set in "age_ppv_to_plot"
-    
-    
-    # Save plot to png file
-    ggsave(filename = grep(gsub(".*(ca).*|.*(pr).*", "\\1\\2", problem_contexts[cCntxt]), png_file_pathname, value = TRUE), 
+  ggsave(filename = grep(current_context, png_file_pathname, value = TRUE), 
            plot = ppv_graph, width = width, height = height, dpi = dpi, units = "in")
     
   }
-}
 
 rm(graph_png_file_name,png_file_pathname)
 rm(age_ppv_to_plot,dpi,graph_output_folder,height,width,x_axis_label,y_axis_label)

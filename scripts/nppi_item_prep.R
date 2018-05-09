@@ -1,11 +1,10 @@
-
 # Pictoric presentation formats -------------------------------------------
 
 # read csv with number
 numbers_item <-
   readxl::read_xls("materials/Numbers/numbers_bayes.xls")
 
-### New paradigm ###################################
+# Convert svg templates to png templates ----------------------------------
 
 # path to factboxs templates
 newparadigm_template_dir <- "materials/Presentation_format/nppi/input/template/svg/"
@@ -46,9 +45,7 @@ names(nppi_items) <-
 
 rm(height,width,input_dir,newparadigm_dir,newparadigm_files,newparadigm_template_dir,newparadigm_templates,nppi_height,nppi_width,output_dir)
 
-#### New-paradigm ###################################################
-
-##### Create ppv graphs
+# Create ppv graphs -------------------------------------------------------
 
 # Read csv with prevalences by age
 age_prevalence <- 
@@ -65,17 +62,19 @@ problem_contexts <- dir("materials/Problem_context/input/", pattern = ".txt") %>
 # Graph parameters
 age_ppv_to_plot <- c(20,25,30,35,40)
 x_axis_label <- c("Age of the mother", "Age of the woman")
-y_axis_label <- "Test reliability"
+y_axis_label    <- "Test reliability"
 
 width <- 10
 height <- 6
 dpi <- (magick::image_info(nppi_items[[1]])$width-40)/10
 
+# output folder
 graph_output_folder <- "materials/Presentation_format/nppi/input/graphs/png/"
 
 # If Folder does not exist, create it
 dir.create(file.path(graph_output_folder), showWarnings = FALSE, recursive = TRUE)
 
+#TODO: dinamically build this names
 # PPV graph name
 graph_png_file_name <- c("nppi_ppv_pr_graph", "nppi_ppv_ca_graph")
 
@@ -91,6 +90,7 @@ age_prevalence <- mutate(age_prevalence, PPV_100 = PPV*100)
 #   age_prevalence %>% 
 #   filter(age %in% age_ppv_to_plot)
 
+# TODO: possible to create graphs dinamically? Why is there one for each context? The only context-dependent part is the xlab (xlab(grep("woman", x_axis_label, value = TRUE))). To fix this it is necessary to fix the TODO (line 64)
 for (cCntxt in seq(length(problem_contexts))) {
   # cCntxt <- 1
   
@@ -185,6 +185,7 @@ graph_y <- 0.5731394
 graph_x_pos <- graph_x*img_width
 graph_y_pos <- graph_y*img_height
 
+# TODO: possible to create graphs dinamically? Why is there one for each context?
 for (i in seq(length(nppi_items))){
   # i=1
   
@@ -198,7 +199,7 @@ for (i in seq(length(nppi_items))){
     # j=1
     
     if (grepl("_ca", names(nppi_items[i]))) {
-      # IF cancer
+      
       # CANCER ####################################################
       nppi_img_list[[j]] <-
         magick::image_annotate(
@@ -302,6 +303,7 @@ for (c_context in seq(nppi_context)) {
   for (c_prob in seq(nrow(numbers_nppi))) {
     # c_prob <- 1
     
+    # put age and prevalence using numbers table
     current_context[[c_prob]] <- 
       gsub("age_variable", numbers_nppi[["age"]][c_prob], 
            gsub("prevalence_02_variable", numbers_nppi[["prev_02"]][c_prob], 
@@ -309,11 +311,13 @@ for (c_context in seq(nppi_context)) {
   }
   
   current_context <- map2(numbers_nppi[["prob"]], current_context, function(x,y) {
-    gsub("(\\*\\*\\*.*_)(.*\\*\\*\\*.*)", paste0("\\1", x, "_\\2"), y)  
-  })
+  # add ppv prob to name
+      gsub("(\\*\\*\\*.*_)(.*\\*\\*\\*.*)", paste0("\\1", x, "_\\2"), y)  
+    })
   
   nppi_context[[c_context]] <- current_context
   
+  # trash remove
   if (c_context == length(nppi_context)) {
     rm(c_context,c_prob, current_context)
   }

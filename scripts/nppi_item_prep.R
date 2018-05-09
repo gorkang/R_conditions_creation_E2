@@ -61,12 +61,25 @@ problem_contexts <-
   dir("materials/Problem_context/input/", pattern = ".txt") %>% 
   grep("txt_", ., value = TRUE)
 
-# TODO: This shoul be taken from a file
 # Graph parameters
-age_ppv_to_plot <- c(20,25,30,35,40) # this points will have a number with a percentage above
-x_axis_label    <- c("Age of the mother", "Age of the woman") # x labels
-y_axis_label    <- "Test reliability"
+# Ages to plot: this points will have a number with a percentage above
+age_ppv_to_plot <-  
+  read_csv("materials/Numbers/fields2fill.csv", col_types = cols()) %>% 
+  select(age_ppv_to_plot) %>% 
+  filter(!is.na(.)) %>% pull()
+# axis labels: indicating age of mother/women
+x_axis_label <- 
+  read_csv("materials/Numbers/fields2fill.csv", col_types = cols()) %>% 
+  select(x_axis_label) %>% 
+  filter(!is.na(.)) %>% pull()
+# y axis label
+y_axis_label <-
+  read_csv("materials/Numbers/fields2fill.csv", col_types = cols()) %>% 
+  select(y_axis_label) %>% 
+  filter(!is.na(.)) %>% pull()
 
+
+# TODO: THESE WERE MANUALLY CALCULATED? PERCENTAGE ACCORDING TO BROCHURE SIZE
 width <- 10
 height <- 6
 dpi <- (magick::image_info(nppi_items[[1]])$width-40)/10

@@ -6,6 +6,7 @@
 *.jpeg
 *.png
 *.gif
+*.svg
 _book/
 materials/Question/Follow_up/output/
 packages.bib

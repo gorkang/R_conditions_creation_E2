@@ -94,9 +94,9 @@ pieces_pos <- c(paste0("+", first_prev_col_pos, "+", both_prev_row_pos), # first
                 paste0("+",second_col_pos, "+", fourth_row_pos) # R4C2
 )
 
-# TODO: read this fields from a file (sg_fillers, fields2fill?). The prev_02 term is repeated because there are two different positions where the prev_02 filler has to be positioned.
 # position of columnes in numbers
-fbpi_field_replacements <- c("prev_02", "prev_02", "die_bre_without","die_all_without","die_bre_with","die_all_with","add_treat","breast_remove")
+fbpi_field_replacements <- read_csv("materials/Numbers/fields2fill.csv", col_types = cols())$fbpi_item_prep
+fbpi_field_replacements <- fbpi_field_replacements[!is.na(fbpi_field_replacements)]
 
 # get index of field replacements within numbers_fact
 # # empty vector to store positions
@@ -181,7 +181,6 @@ fbpi_output_folder <- "materials/Presentation_format/fbpi/output/"
 # If Folder does not exist, create it. If it does, do nothing-
 dir.create(file.path(fbpi_output_folder), showWarnings = FALSE, recursive = TRUE)
 
-# TODO: convert to flat list?
 for (q in seq(length(fbpi_items))) {
   for (x in seq(length(fbpi_items[[q]]))) {
     magick::image_write(fbpi_items[[q]][[x]], paste0(fbpi_output_folder, names(fbpi_items[[q]][x]), ".png"))

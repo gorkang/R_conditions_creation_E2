@@ -79,7 +79,7 @@ fbpi_prev_creator <-
     # fields to fill and fields to be fill
     fields2fill <- 
       read_csv("materials/Numbers/fields2fill.csv", col_types = cols())
-    fields <- fields2fill$fbpi[!is.na(fields2fill$fbpi)]
+    fields <- fields2fill$fbpi_followup_export[!is.na(fields2fill$fbpi_followup_export)]
     # put ppv probabilitie
     text <- 
       text %>% 
@@ -114,10 +114,12 @@ nppi_fu_prev_temp <- nppi_fu_prev_files %>%
 
 # function to put numbers on prevalences.
 nppi_prev_creator <- function(text, numbers) {
+  
   # fields to fill and fields to be fill
   fields2fill <- 
     read_csv("materials/Numbers/fields2fill.csv", col_types = cols())
-  fields <- fields2fill$fbpi[!is.na(fields2fill$nppi)]
+  # get fbpi column
+  fields <- fields2fill$fbpi_followup_export[!is.na(fields2fill$fbpi_followup_export)]
   # put ppv probabilitie
   text <- 
     text %>% 

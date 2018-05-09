@@ -178,7 +178,6 @@ for (fact_box_loop in seq(length(fbpi_items))) {
   
 }
 
-
 # Write images ------------------------------------------------------------
 
 fbpi_output_folder <- "materials/Presentation_format/fbpi/output/"
@@ -215,8 +214,7 @@ context_files <-
 context_files_path <- paste0(context_dir, context_files)
 
 # list with responses as char strings
-fbpi_context <- lapply(context_files_path, 
-                       function(x) readChar(con = x, nchars = file.info(x)$size)) 
+fbpi_context <- map(context_files_path, ~readChar(con = .x, nchars = file.info(.x)$size))
 
 # assing name to each response type
 names(fbpi_context) <- gsub(".txt", "", context_files)
@@ -244,8 +242,7 @@ response_type_files <- dir(response_types_dir, pattern = "*.txt")
 response_type_files_path <- paste0(response_types_dir, response_type_files)
 
 # list with responses as char strings
-responses_pic <- lapply(response_type_files_path, 
-                        function(x) readChar(con = x, nchars = file.info(x)$size))
+responses_pic <- map(response_type_files_path, ~readChar(con = .x, nchars = file.info(.x)$size))
 
 # assing name to each response type
 names(responses_pic) <- gsub(".txt", "", response_type_files)

@@ -163,7 +163,7 @@ nppi_graphs <- map(nppi_graphs_files_names, ~magick::image_read(paste0(graph_dir
 names(nppi_graphs) <- gsub(".png", "", nppi_graphs_files_names)
 
 # Template dimensions
-img_width <- magick::image_info(nppi_items[[1]])$width
+img_width  <- magick::image_info(nppi_items[[1]])$width
 img_height <- magick::image_info(nppi_items[[1]])$height
 
 # Prevalence position in template (%)
@@ -285,12 +285,8 @@ context_files <- dir(context_dir, pattern = ".txt") %>% grep("txt_", ., value = 
 context_files_path <- paste0(context_dir, context_files)
 
 # list with responses as char strings
-nppi_context <- lapply(context_files_path, 
-                       function(x) readChar(con = x, nchars = file.info(x)$size)) 
-
-nppi_context <-
-  map2(gsub("txt_(.*).txt", "***\\1***", context_files), nppi_context, paste0)
-
+nppi_context <- map(context_files_path, ~readChar(con = .x, nchars = file.info(.x)$size)) %>% # read files
+  map2(gsub("txt_(.*).txt", "***\\1***", context_files), ., paste0) # put names
 
 rm(context_dir,context_files,context_files_path)
 
@@ -313,12 +309,14 @@ for (c_context in seq(nppi_context)) {
                 current_context[[c_prob]]))
   }
   
-  current_context <- map2(numbers_nppi[["prob"]], current_context, function(x,y) {
   # add ppv prob to name
+  current_context <- 
+    map2(numbers_nppi[["prob"]], current_context, function(x,y) {
       gsub("(\\*\\*\\*.*_)(.*\\*\\*\\*.*)", paste0("\\1", x, "_\\2"), y)  
     })
   
-  nppi_context[[c_context]] <- current_context
+  nppi_context[[c_context]] <- 
+    current_context
   
   # trash remove
   if (c_context == length(nppi_context)) {

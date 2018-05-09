@@ -189,11 +189,8 @@ graph_y_pos <- graph_y*img_height
 for (i in seq(length(nppi_items))){
   # i=1
   
-  # Get nnpi template
-  nppi_img <- nppi_items[i]
-  
   # repeat template as many times as the number of graphs
-  nppi_img_list <- rep(as.list(nppi_img), nrow(numbers_nppi))
+  nppi_img_list <- rep(as.list(nppi_items[i]), nrow(numbers_nppi))
   
   for (j in seq(nrow(numbers_nppi))) {
     # j=1
@@ -245,7 +242,7 @@ for (i in seq(length(nppi_items))){
   nppi_items[[i]] <- nppi_img_list
   
   if (i == length(nppi_items)) {
-    rm(i,j,nppi_img, nppi_img_list)
+    rm(i,j, nppi_img_list)
   }
 }
 

@@ -57,11 +57,14 @@ numbers_nppi <-
   filter(format == "nppi")
 
 # Check number of contexts. It must be the same number of graphs
-problem_contexts <- dir("materials/Problem_context/input/", pattern = ".txt") %>% grep("txt_", ., value = TRUE)
+problem_contexts <- 
+  dir("materials/Problem_context/input/", pattern = ".txt") %>% 
+  grep("txt_", ., value = TRUE)
 
+# TODO: This shoul be taken from a file
 # Graph parameters
-age_ppv_to_plot <- c(20,25,30,35,40)
-x_axis_label <- c("Age of the mother", "Age of the woman")
+age_ppv_to_plot <- c(20,25,30,35,40) # this points will have a number with a percentage above
+x_axis_label    <- c("Age of the mother", "Age of the woman") # x labels
 y_axis_label    <- "Test reliability"
 
 width <- 10

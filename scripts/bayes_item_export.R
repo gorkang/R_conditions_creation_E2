@@ -12,8 +12,7 @@ source("functions/items2qualtrics.R")
 # problems_numbered_ordered_responses_flat <- as.list(unlist(problems_numbered_ordered_responses, recursive = TRUE))
 
 problems_numbered_ordered_responses %>% 
-  map(~items2qualtrics(list_of_items = .x, responsesdir = response_types_dir, outputdir = separated_item_dir, removePlaceholders = TRUE)) %>% 
-  invisible()
+  walk(~items2qualtrics(list_of_items = .x, responsesdir = response_types_dir, outputdir = separated_item_dir, removePlaceholders = TRUE))
 
 # pair items: different context, same presentation format, different ppv prob, same response type
 # function to pair items
@@ -24,5 +23,5 @@ txt_files <- dir(separated_item_dir, pattern = ".txt")
 twins <- character(length(txt_files)/2)
 
 txt_files %>% 
-  map(~pair_items(txt_files = .x, separated_item_dir = separated_item_dir, twins = twins, outputdir = paired_items_dir)) %>% 
+  walk(~pair_items(txt_files = .x, separated_item_dir = separated_item_dir, twins = twins, outputdir = paired_items_dir)) %>% 
   invisible()

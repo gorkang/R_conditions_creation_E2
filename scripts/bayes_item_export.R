@@ -23,5 +23,4 @@ txt_files <- dir(separated_item_dir, pattern = ".txt")
 twins <- character(length(txt_files)/2)
 
 txt_files %>% 
-  walk(~pair_items(txt_files = .x, separated_item_dir = separated_item_dir, twins = twins, outputdir = paired_items_dir)) %>% 
-  invisible()
+  walk(~pair_items(txt_files = .x, separated_item_dir = separated_item_dir, twins = twins, outputdir = paired_items_dir))

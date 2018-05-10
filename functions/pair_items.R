@@ -1,9 +1,9 @@
 pair_items <- 
   function(
-    txt_files, # vector with names of separated items in text files
+    txt_files,          # vector with names of separated items in text files
     separated_item_dir, # path to directory where "txt_files" are
-    twins,  # empty vector with halve of the lenght of "txt_files" as empty strings
-    outputdir # dir to save paired items
+    twins,              # empty vector with halve of the lenght of "txt_files" as empty strings
+    outputdir           # dir to save paired items
     ) { 
   
   # # for debugging:

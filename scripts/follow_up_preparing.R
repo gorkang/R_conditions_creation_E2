@@ -37,8 +37,7 @@ follow_up_path <-
 
 # Read follow ups into a list
 follow_up_items <-
-  lapply(follow_up_path, 
-                function(x) readChar(con = x, nchars = file.info(x)$size)) 
+  map(follow_up_path, ~readChar(con = .x, nchars = file.info(.x)$size))
 
 # assing name to each follow up
 names(follow_up_items) <- 

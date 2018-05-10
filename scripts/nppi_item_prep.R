@@ -78,11 +78,14 @@ y_axis_label <-
   select(y_axis_label) %>% 
   filter(!is.na(.)) %>% pull()
 
+# These are results of 650/690, 390/1169
+graph_widht_percentage <- .94202
+graph_height_percentage <- .33361
 
-# TODO: THESE WERE MANUALLY CALCULATED? PERCENTAGE ACCORDING TO BROCHURE SIZE
-width <- 10
-height <- 6
-dpi <- (magick::image_info(nppi_items[[1]])$width-40)/10
+graph_width_absolute  <- 
+  template_width * graph_widht_percentage
+graph_height_absolute <- 
+  template_height * graph_height_percentage
 
 # output folder
 graph_output_folder <- "materials/Presentation_format/nppi/input/graphs/png/"

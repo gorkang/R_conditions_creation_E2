@@ -13,8 +13,8 @@ newparadigm_template_dir <- "materials/Presentation_format/nppi/input/template/s
 newparadigm_templates <- dir(newparadigm_template_dir, pattern = ".svg")
 
 # svg to png parameters (to feed svg2png)
-nppi_width <- 690 # pixels
-nppi_height <- 1169 # pixels
+template_width <- 690 # pixels
+template_height <- 1169 # pixels
 
 # input/output dir
 input_dir <- newparadigm_template_dir
@@ -25,8 +25,8 @@ dir.create(file.path(output_dir), showWarnings = FALSE, recursive = TRUE)
 
 # convert svg to png
 # parameters
-width <- nppi_width
-height <- nppi_height
+width <- template_width
+height <- template_height
 # convert
 walk(newparadigm_templates, svg2png)
 
@@ -43,7 +43,7 @@ nppi_items <- map(newparadigm_files, ~magick::image_read(paste0(newparadigm_dir,
 names(nppi_items) <- 
   gsub(".png", "", newparadigm_files)
 
-rm(height,width,input_dir,newparadigm_dir,newparadigm_files,newparadigm_template_dir,newparadigm_templates,nppi_height,nppi_width,output_dir)
+rm(height,width,input_dir,newparadigm_dir,newparadigm_files,newparadigm_template_dir,newparadigm_templates,output_dir)
 
 # Create ppv graphs -------------------------------------------------------
 

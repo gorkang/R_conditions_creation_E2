@@ -109,7 +109,7 @@ age_prevalence <- mutate(age_prevalence, PPV_100 = PPV*100)
 #   filter(age %in% age_ppv_to_plot)
 
 for (cCntxt in seq(length(problem_contexts))) {
-  # cCntxt <- 1
+  # cCntxt <- 2
   
   # context of current problem context 
   current_context <- substr(problem_contexts[[cCntxt]], 5, 6)
@@ -117,33 +117,39 @@ for (cCntxt in seq(length(problem_contexts))) {
   current_axis_label <- grep(current_context, x_axis_label, value = TRUE)
   current_axis_label <- gsub(paste0("\\*\\*", current_context, "\\*\\*(.*)"), "\\1", current_axis_label) # get rid of name
   
-  # create graph
-  ppv_graph <-
-    ggplot(age_prevalence, aes(x=age, y=PPV_100)) + # plot canvas
+  # Begin graph creation
+  
+  ## Create canvas to save image
+  ppv_graph <- 
+    image_graph(width = round(graph_width_absolute, 0), height = round(graph_height_absolute, 0))
+  
+  ## Plot graph
+  print( # to send the plot to the viewer from within a for loop use print
+    
+    ggplot(age_prevalence, aes(x=age, y=PPV_100)) +      # plot canvas
     scale_y_continuous(labels=function(x) paste0(x,"%"), # append % to y-axis value
-                       limits = c(0,100)
-                       # , breaks = seq(0,100,10)
-    ) + # set y-axis limits
+                       limits = c(0,100)) +              # set y-axis limits
     geom_point(size = 5.5, color = "#009999", shape = 19) + # insert points with ppv value
-    geom_line(aes(x=age, y=PPV_100), color = "#009999", size = 2) +  
+    geom_line(aes(x=age, y=PPV_100), color = "#009999", size = 2) +
     theme_minimal() + # insert line bridging PPV-value points
     xlab(paste0("Age of the ", current_axis_label)) + ylab(y_axis_label) + # set axis labels
-    theme(axis.text = element_text(size = 25), # axis-numerbs size
-          axis.title = element_text(size = 25)) + # axis-labels size
-    geom_text(aes(label = 
+    theme(axis.text = element_text(size = 25),                             # axis-numerbs size
+          axis.title = element_text(size = 25)) +                          # axis-labels size
+    geom_text(aes(label =
                     case_when(age %in% age_ppv_to_plot ~ paste0(round(PPV_100, 0), "%"), TRUE ~ paste0("")), # keep only ages previously set to be ploted
                   hjust = 1, vjust = -1), size = 6) # (position) plot ppv-values above points set in "age_ppv_to_plot"
-  
-  # Save plot to png file
-  ggsave(filename = grep(current_context, png_file_pathname, value = TRUE), 
-         plot = ppv_graph, width = width, height = height, dpi = dpi, units = "in")
+    )
+  # Close canvas
+  dev.off()
+  # Write image as png
+  image_write(image = ppv_graph, path = grep(current_context, png_file_pathname, value = TRUE))
   
 }
 
 rm(graph_png_file_name,png_file_pathname)
-rm(age_ppv_to_plot,dpi,graph_output_folder,height,width,x_axis_label,y_axis_label)
-##### Compose new-paradigm brochure ###################################################
+rm(age_ppv_to_plot,graph_output_folder,x_axis_label,y_axis_label)
 
+##### Compose new-paradigm brochure ###################################################
 # graphs dir
 graph_dir <- "materials/Presentation_format/nppi/input/graphs/png/"
 

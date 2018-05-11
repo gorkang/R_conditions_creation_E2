@@ -411,7 +411,7 @@ grid.raster(fb_pr_low)
 # Question
 print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
 # Response
-cat(remove_placeholders(responses_pic$sg[[grep("Trisomy", responses_pic$sg)]], "item"))
+cat(remove_placeholders(responses_pic$sg[[grep("trisomy", responses_pic$sg)]], "item"))
 # Sep
 cat("\n****************************\n")
 ```
@@ -471,7 +471,7 @@ grid.raster(np_pr_low)
 # Question
 print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
 # Response
-cat(remove_placeholders(responses_pic$sg[[grep("Trisomy", responses_pic$sg)]], "item"))
+cat(remove_placeholders(responses_pic$sg[[grep("trisomy", responses_pic$sg)]], "item"))
 # Sep
 cat("\n****************************\n")
 ```
@@ -558,7 +558,7 @@ grid.raster(fb_pr_high)
 # Question
 print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
 # Response
-cat(remove_placeholders(responses_pic$sg[[grep("Trisomy", responses_pic$sg)]], "item"))
+cat(remove_placeholders(responses_pic$sg[[grep("trisomy", responses_pic$sg)]], "item"))
 # Sep
 cat("\n****************************\n")
 ```
@@ -618,7 +618,7 @@ grid.raster(np_pr_high)
 # Question
 print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
 # Response
-cat(remove_placeholders(responses_pic$sg[[grep("Trisomy", responses_pic$sg)]], "item"))
+cat(remove_placeholders(responses_pic$sg[[grep("trisomy", responses_pic$sg)]], "item"))
 # Sep
 cat("\n****************************\n")
 ```

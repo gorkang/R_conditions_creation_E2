@@ -104,13 +104,12 @@ age_prevalence <- mutate(age_prevalence, PPV_100 = PPV*100)
 #   filter(age %in% age_ppv_to_plot)
 
 for (cCntxt in seq(length(problem_contexts))) {
-  # cCntxt <- 2
+  # cCntxt <- 1
   
   # context of current problem context 
   current_context <- substr(problem_contexts[[cCntxt]], 5, 6)
   # labels corresponding to current problem context
-  current_axis_label <- grep(current_context, x_axis_label, value = TRUE)
-  current_axis_label <- gsub(paste0("\\*\\*", current_context, "\\*\\*(.*)"), "\\1", current_axis_label) # get rid of name
+  current_axis_label <- pull(x_axis_label[, current_context])
   
   # Begin graph creation
   
@@ -191,7 +190,7 @@ medical_conditions <-
   read_csv("materials/Problem_context/problem_context_info.csv", col_types = cols()) %>% 
   filter(code_name == "medical_condition")
 
-# person to undergo test to fill graph
+# person to undergo test to fill graph (women/births)
 who_undergo_test <- 
   read_csv("materials/Problem_context/problem_context_info.csv", col_types = cols()) %>% 
   filter(code_name == "prevalence_class")
@@ -215,13 +214,11 @@ for (i in seq(length(nppi_items))){
     
     # medical condition of current template
     current_medical_condition <- 
-      grep(current_context, medical_conditions, value = TRUE) %>% 
-      gsub(paste0("\\*\\*", current_context, "\\*\\*(.*)"), "\\1", .)
+      pull(medical_conditions[, current_context])
     
     # who's got a disease in current template
     current_who_undergo_test <- 
-      grep(current_context, who_undergo_test, value = TRUE) %>% 
-      gsub(paste0("\\*\\*", current_context, "\\*\\*(.*)"), "\\1", .)
+      pull(who_undergo_test[,current_context])
     
     
     nppi_img_list[[j]] <- 

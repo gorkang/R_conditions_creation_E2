@@ -95,8 +95,9 @@ pieces_pos <- c(paste0("+", first_prev_col_pos, "+", both_prev_row_pos), # first
 )
 
 # position of columnes in numbers
-fbpi_field_replacements <- read_csv("materials/Numbers/fields2fill.csv", col_types = cols())$fbpi_item_prep
-fbpi_field_replacements <- fbpi_field_replacements[!is.na(fbpi_field_replacements)]
+fbpi_field_replacements <-
+  read_csv("materials/Numbers/fields2fill.csv", col_types = cols())$fbpi_item_prep %>% 
+  na.omit()
 
 # get index of field replacements within numbers_fact
 # # empty vector to store positions
@@ -219,7 +220,7 @@ names(fbpi_context) <- gsub(".txt", "", context_files)
 # put prevalences on contexts using number bayes
 fbpi_context <- 
   lapply(numbers_fact[["prev_02"]], function(x) {gsub("prevalence_02_variable", x, fbpi_context)})
- 
+
 # name contexts 
 fbpi_context <- 
   map2(paste0("**fbpi_context_", numbers_fact[["prob"]], "_ppv**"), unlist(fbpi_context), .f = `paste0`)

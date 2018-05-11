@@ -77,9 +77,12 @@ fbpi_prev_creator <-
     # numbers <- numbers_fbpi[1,]
     
     # fields to fill and fields to be fill
-    fields2fill <- 
-      read_csv("materials/Numbers/fields2fill.csv", col_types = cols())
-    fields <- fields2fill$fbpi_followup_export[!is.na(fields2fill$fbpi_followup_export)]
+    fields <- 
+      read_csv("materials/Numbers/fields2fill.csv", col_types = cols()) %>% 
+      select(fbpi_followup_export) %>% 
+      na.omit() %>% 
+      pull
+    
     # put ppv probabilitie
     text <- 
       text %>% 

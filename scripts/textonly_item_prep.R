@@ -239,12 +239,18 @@ for (cB in seq(problems_numbered_ordered_responses)) {
     
     # use a for loop to fill, this allow to increase the number of fields to replace without change the code
     # fields to loop through
-    tobefilled <- paste0("__", grep("[A-Z]", names(fillers), value = TRUE), "__")
-    tofill     <- grep("[A-Z]", names(fillers), value = TRUE)
+    tobefilled <-
+      read_csv("materials/Numbers/fields2fill.csv", col_types = cols()) %>% 
+      select(sg_response) %>% drop_na() %>% pull()
+    # tofill     <- grep("[A-Z]", names(fillers), value = TRUE)
     
     for (cF in seq(length(tobefilled))) {
+      # cF <- 1
       
-      current_item <- gsub(tobefilled[cF], fillers[[tofill[cF]]], current_item)
+      current_item <- 
+        gsub(tobefilled[cF], 
+             select(filter(context_info, code_name == tobefilled[cF]), current_context),
+             current_item)
       
     }
     
@@ -252,7 +258,7 @@ for (cB in seq(problems_numbered_ordered_responses)) {
   }
   
   if (cB == length(problems_numbered_ordered_responses)) {
-    rm(cB,cS,current_item,sg_fillers,fillers,problems_numbered_ordered)
+    rm(cB,cS,current_item,context_info,problems_numbered_ordered)
   }
   
 }

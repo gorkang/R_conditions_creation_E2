@@ -2,8 +2,8 @@ source("scripts/html_qualtrics_codes.R")
 
 # separated item folder
 separated_item_dir <- "materials/qualtrics/output/separated_items/"
-response_types_dir <- "materials/qualtrics/input/reponse_type/qualtrics_question_gi.txt"
-paired_items_dir <- "materials/qualtrics/output/paired_items/"
+response_types_dir <- "materials/qualtrics/input/reponse_type/"
+paired_items_dir   <- "materials/qualtrics/output/paired_items/"
 
 # function to convert txt files to qualtrics txt format
 source("functions/items2qualtrics.R")

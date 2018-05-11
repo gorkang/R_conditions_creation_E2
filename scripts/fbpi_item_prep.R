@@ -243,28 +243,44 @@ responses_pic <- map(response_type_files_path, ~readChar(con = .x, nchars = file
 names(responses_pic) <- gsub(".txt", "", response_type_files)
 
 ## sequential guided question fillers
-sg_fillers <- 
-  read_csv("materials/Response_type/fillers/sg_fillers.csv", col_types = "cccc")
+textual_formats <- 
+  dir("materials/Presentation_format/") %>% grep("[a-z]{2}pi", ., invert = TRUE, value = TRUE)
+## Get possible problem context
+problem_contexts <-
+  textual_formats %>% 
+  map(~dir(paste0(presentation_format_dir, .x, "/input")) %>% 
+        gsub("([a-z]{2}).*", "\\1", .)) %>% 
+  unlist %>% 
+  unique
+
+# fillers
+context_info <- 
+  read_csv("materials/Problem_context/problem_context_info.csv", col_types = "ccc")
 
 # fields to loop through (obtained from sg_fillers column names)
-tobefilled <- paste0("__", grep("[A-Z]", names(sg_fillers), value = TRUE), "__")
-tofill     <- grep("[A-Z]", names(sg_fillers), value = TRUE)
+tobefilled <-
+  read_csv("materials/Numbers/fields2fill.csv", col_types = cols()) %>% 
+  select(sg_response) %>% drop_na() %>% pull()
+# tofill     <- grep("[A-Z]", names(sg_fillers), value = TRUE)
 
 # sg template to fill (as many as contexts)
 temp_sg          <- responses_pic$sg
-responses_pic$sg <- rep(responses_pic$sg, nrow(sg_fillers))
+responses_pic$sg <- rep(responses_pic$sg, ncol(context_info)-1)
 
 # filled sg according to each problem context
-for (cC in seq(nrow(sg_fillers))) {
+for (cC in seq(problem_contexts)) {
   # cC = 2
   temp_sg <- responses_pic$sg[cC]
   
   for (fC in seq(length(tobefilled))) {
     # fC = 1
-    temp_sg <- gsub(tobefilled[fC], sg_fillers[cC, tofill[fC]], temp_sg)
+    temp_sg <- 
+      gsub(tobefilled[fC], 
+           filter(context_info, code_name == tobefilled[fC]) %>% select(problem_contexts[cC]), 
+           temp_sg)
   }
   responses_pic$sg[cC] <- temp_sg
 }
 
-rm(response_type_files,response_type_files_path,response_types_dir, sg_fillers, numbers_fact, numbers_item)    
+rm(response_type_files,response_type_files_path,response_types_dir, numbers_fact, numbers_item)    
 

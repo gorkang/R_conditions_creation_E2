@@ -69,9 +69,8 @@ age_ppv_to_plot <-
   filter(!is.na(.)) %>% pull()
 # axis labels: indicating age of mother/women
 x_axis_label <- 
-  read_csv("materials/Numbers/fields2fill.csv", col_types = cols()) %>% 
-  select(x_axis_label) %>% 
-  filter(!is.na(.)) %>% pull()
+  read_csv("materials/Problem_context/problem_context_info.csv", col_types = cols()) %>% 
+  filter(code_name == "person_02")
 # y axis label
 y_axis_label <-
   read_csv("materials/Numbers/fields2fill.csv", col_types = cols()) %>% 
@@ -193,15 +192,13 @@ graph_y_pos <- graph_y*img_height
 
 # medical conditions to fill graph
 medical_conditions <- 
-  read_csv("materials/Numbers/fields2fill.csv", col_types = cols()) %>% 
-  select(nppi_brochure) %>% 
-  filter(!is.na(.)) %>% pull()
+  read_csv("materials/Problem_context/problem_context_info.csv", col_types = cols()) %>% 
+  filter(code_name == "medical_condition")
 
 # person to undergo test to fill graph
 who_undergo_test <- 
-  read_csv("materials/Numbers/fields2fill.csv", col_types = cols()) %>% 
-  select(with_disease) %>% 
-  filter(!is.na(.)) %>% pull()
+  read_csv("materials/Problem_context/problem_context_info.csv", col_types = cols()) %>% 
+  filter(code_name == "prevalence_class")
 
 for (i in seq(length(nppi_items))){
   # i=1

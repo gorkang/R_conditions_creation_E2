@@ -228,8 +228,8 @@ for (q in seq(length(questions))) {
 
 ## 02. Personalize sequential guided response type to accomodate to medical condition
 
-sg_fillers <- 
-  read_csv("materials/Response_type/fillers/sg_fillers.csv", col_types = "cccc")
+context_info <- 
+  read_csv("materials/Problem_context/problem_context_info.csv", col_types = "ccc")
 
 # walk through 16 items
 for (cB in seq(problems_numbered_ordered_responses)) {

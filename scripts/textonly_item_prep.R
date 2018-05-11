@@ -1,6 +1,4 @@
 
-# Text-only presentation formats ------------------------------------------
-
 ## Numbers sets ----------------------------------------------------------------
 
 # read csv with number
@@ -10,11 +8,13 @@ numbers_item <-
 numbers_prevalence <- 
   readxl::read_xls("materials/Numbers/numbers_bayes.xls", sheet = 2)
 
-# Read problems from text-files
+
+# Problems (read them from txt files) -------------------------------------
+
 # Get possible presentation formats
 presentation_format_dir <- "materials/Presentation_format/"
 
-# grep everything without "pi" and two letter before (pictorial presentation formats)
+# grep everything without "pi"
 textual_formats <- 
   dir(presentation_format_dir) %>% grep("[a-z]{2}pi", ., invert = TRUE, value = TRUE)
 
@@ -22,7 +22,9 @@ textual_formats <-
 textual_formats %>% 
   walk(~read_txt_items_to_list(presentation_format = .x, name =  paste0(.x, "_items")))
 
-## Get possible problem context
+# Check: problem contexts, ppv probability ----------------------------------------------
+
+# get possible contexts
 problem_contexts <-
   textual_formats %>% 
   map(~dir(paste0(presentation_format_dir, .x, "/input")) %>% 
@@ -30,22 +32,22 @@ problem_contexts <-
   unlist %>% 
   unique
 
+# get possible ppv probability
 problem_probs <-
   numbers_item$prob[!is.na(numbers_item$prob)] %>% 
-  unique() %>% 
-  paste0(., collapse = "|")
+  unique() 
 
-# CHECK IF CONTEXTS ARE PRESENT ON problem_context_info.csv #############################
-# search and read csv with fillers
+# All contexts must have a column on problem_context_info.csv indicating information
+## that will be used to fill some fields2fill
 context_info <- read_csv("materials/Problem_context/problem_context_info.csv", col_types = cols())
 
-# check if contexts retrieve from presentation format folder match contexts on fillers csv
+# check if problem contexts from presentation format folder are present on problem_context_info.csv
 check <- 
-problem_contexts %>% 
-  map(~grepl(.x, names(context_info))) %>% 
+  problem_contexts %>% 
+  map(~grepl(.x, names(select(context_info, -code_name)))) %>% 
   map(~any(.x)) %>% unlist()
 
-# message. if everything is ok, no message.
+# Actual check
 if (all(check) == TRUE) {
   message("Contexts number matches fillers numbers")
 } else if (all(check) == FALSE) {
@@ -307,7 +309,7 @@ for (cB in seq(problems_numbered_ordered_responses)) {
     
     # get problem prob (this erase everything that is not a "low" or "high" word)
     current_prob <-
-      gsub(paste0(".*(", problem_probs, ").*"), "\\1", current_item)
+      gsub(paste0(".*(", paste0(problem_probs, collapse = "|"), ").*"), "\\1", current_item)
     
     # get problem presentation format
     current_format <-

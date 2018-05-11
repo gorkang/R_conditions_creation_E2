@@ -12,5 +12,6 @@ print_cat_items <- function(actual_item, condition, item, print_or_cat = "print_
     remove_placeholders(grep(condition, actual_item, value = TRUE), item)
   } else if (print_or_cat == "print_cat")
     remove_placeholders(grep(condition, actual_item, value = TRUE), item) %>% 
+    gsub("\\n", "\n\n", .) %>% # add extra linebreaks because markdown considers that one is not enough
     cat(sep = "\n****************************\n")
 }

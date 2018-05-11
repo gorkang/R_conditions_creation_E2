@@ -31,10 +31,12 @@ items2qualtrics <- function(list_of_items, responsesdir, outputdir, removePlaceh
          gsub("QUESTION_TEXT_TO_FORMAT", item_responseless, html_codes$question_font_size)
     )
   
-  
   # 04. response type
-    hmtl_response_type <- 
-    readChar(con = responsesdir, nchars = file.info(responsesdir)$size)
+  # hmtl_response_type <- 
+  #   readChar(con = responsesdir, nchars = file.info(responsesdir)$size)
+  hmtl_response_type <- 
+    dir(responsesdir) %>% 
+    map(~readChar(con = paste0(responsesdir, .x), nchars = file.info(paste0(responsesdir, .x))$size))
   
   # 05. Combine item elements
   if (grepl("_gi", item_name)) {
@@ -48,7 +50,6 @@ items2qualtrics <- function(list_of_items, responsesdir, outputdir, removePlaceh
         hmtl_response_type
         
         , sep = "")
-    
     
   } else if (!grepl("_gi", item_name)) {
     

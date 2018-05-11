@@ -237,18 +237,6 @@ for (cB in seq(problems_numbered_ordered_responses)) {
     current_item    <- problems_numbered_ordered_responses[[cB]][[cS]]
     current_context <- gsub(paste0(".*(", paste(problem_contexts, collapse = "|"), ").*"), "\\1", current_item)
     
-    # check for current context, if there is no matching context show a warning.
-    if (sum(grepl(current_context, sg_fillers$item_cond)) == 0) {
-      stop("No matching context on sg_fillers.csv. Check problem contexts on materials/Presentation_format and materials/Response_type/fillers/sg_fillers.csv")
-    } else if (sum(grepl(current_context, sg_fillers$item_cond)) == 1) {
-      current_row <- grep(current_context, sg_fillers$item_cond)
-    } else if (sum(grepl(current_context, sg_fillers$item_cond)) > 1) { 
-      stop("No matching context on sg_fillers.csv. Check problem contexts on materials/Presentation_format and materials/Response_type/fillers/sg_fillers.csv")
-    }
-    
-    # fillers according to current row
-    fillers     <- filter(sg_fillers, row_number() == current_row)
-    
     # use a for loop to fill, this allow to increase the number of fields to replace without change the code
     # fields to loop through
     tobefilled <- paste0("__", grep("[A-Z]", names(fillers), value = TRUE), "__")

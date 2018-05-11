@@ -28,28 +28,22 @@ problem_contexts <-
   map(~dir(paste0(presentation_format_dir, .x, "/input")) %>% 
         gsub("([a-z]{2}).*", "\\1", .)) %>% 
   unlist %>% 
-  unique %>% 
-  paste(., collapse = "|")
-# paste0("(", problem_contexts, ")")
+  unique
 
 problem_probs <-
   numbers_item$prob[!is.na(numbers_item$prob)] %>% 
   unique() %>% 
   paste0(., collapse = "|")
 
-# CHECK IF CONTEXTS ARE PRESENT ON SG_FILLERS #############################
-# get contexts
-contexts2check <- 
-  strsplit(problem_contexts, split = "|", fixed = TRUE) %>% 
-  unlist()
+# CHECK IF CONTEXTS ARE PRESENT ON problem_context_info.csv #############################
 # search and read csv with fillers
-path2fillers <- "materials/Response_type/fillers/sg_fillers.csv"
-fillers <- read_csv(path2fillers, col_types = cols())
+context_info <- read_csv("materials/Problem_context/problem_context_info.csv", col_types = cols())
+
 # check if contexts retrieve from presentation format folder match contexts on fillers csv
 check <- 
-  contexts2check %>% 
-  map(~any(grepl(.x, fillers$item_cond))) %>% 
-  unlist() 
+problem_contexts %>% 
+  map(~grepl(.x, names(context_info))) %>% 
+  map(~any(.x)) %>% unlist()
 
 # message. if everything is ok, no message.
 if (all(check) == TRUE) {
@@ -57,7 +51,7 @@ if (all(check) == TRUE) {
 } else if (all(check) == FALSE) {
   stop("No problem context has fillers")
 } else if (any(check) == TRUE) {
-  stop(paste0("The following context(s) do not have fillers: ", contexts2check[which(!check)]))
+  stop(paste0("The following context(s) do not have fillers: ", problem_contexts[which(!check)]))
 }
 
 # ##########################################################################

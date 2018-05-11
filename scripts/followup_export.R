@@ -122,7 +122,7 @@ nppi_prev_creator <- function(text, numbers) {
   fields2fill <- 
     read_csv("materials/Numbers/fields2fill.csv", col_types = cols())
   # get fbpi column
-  fields <- fields2fill$fbpi_followup_export[!is.na(fields2fill$fbpi_followup_export)]
+  fields <- fields2fill$nppi[!is.na(fields2fill$nppi)]
   # put ppv probabilitie
   text <- 
     text %>% 

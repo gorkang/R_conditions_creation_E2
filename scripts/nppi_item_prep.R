@@ -64,18 +64,14 @@ problem_contexts <-
 # Graph parameters
 # Ages to plot: this points will have a number with a percentage above
 age_ppv_to_plot <-  
-  read_csv("materials/Numbers/fields2fill.csv", col_types = cols()) %>% 
-  select(age_ppv_to_plot) %>% 
-  filter(!is.na(.)) %>% pull()
+  c(20, 25, 30, 35, 40)
 # axis labels: indicating age of mother/women
 x_axis_label <- 
   read_csv("materials/Problem_context/problem_context_info.csv", col_types = cols()) %>% 
   filter(code_name == "person_02")
 # y axis label
 y_axis_label <-
-  read_csv("materials/Numbers/fields2fill.csv", col_types = cols()) %>% 
-  select(y_axis_label) %>% 
-  filter(!is.na(.)) %>% pull()
+  "Test reliability"
 
 # These are results of 650/690, 390/1169
 graph_widht_percentage <- .94202

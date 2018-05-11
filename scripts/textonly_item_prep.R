@@ -109,11 +109,11 @@ rm(questions_dir, question_files, question_files_path)
 for (i in seq(length(problems_numbered))) {
   # i=1
   
-  if (grepl(problem_contexts, names(problems_numbered[i]))) {
+  if (grepl(paste(problem_contexts, collapse = "|"), names(problems_numbered[i]))) {
     
     # get question name from problems numbered name
     current_question_name <- 
-      paste0(gsub(paste0("(", problem_contexts, ").*"), "\\1", names(problems_numbered[i])), "_question")
+      paste0(gsub(paste0("(", paste(problem_contexts, collapse = "|"), ").*"), "\\1", names(problems_numbered[i])), "_question")
     
     current_question <- 
       gsub("\\*\\*.*\\*\\*(.*)", "\\1", grep(current_question_name, questions, value = TRUE))
@@ -195,7 +195,7 @@ for (problem_loop in 1:length(problems_numbered_ordered_responses)) {
 for (q in seq(length(questions))) {
   # q=1
   # get current question prefix (ca, pr)
-  current_question_prefix <- gsub(paste0("(", problem_contexts, ").*"), "\\1", names(questions[q]))
+  current_question_prefix <- gsub(paste0("(", paste(problem_contexts, collapse = "|"), ").*"), "\\1", names(questions[q]))
   
   # Loop to go through set of items (context x presentation format)
   for (p in seq(length(problems_numbered_ordered_responses))) {
@@ -235,7 +235,7 @@ for (cB in seq(problems_numbered_ordered_responses)) {
     
     # Get stuff from current loop.
     current_item    <- problems_numbered_ordered_responses[[cB]][[cS]]
-    current_context <- gsub(paste0(".*(", problem_contexts, ").*"), "\\1", current_item)
+    current_context <- gsub(paste0(".*(", paste(problem_contexts, collapse = "|"), ").*"), "\\1", current_item)
     
     # check for current context, if there is no matching context show a warning.
     if (sum(grepl(current_context, sg_fillers$item_cond)) == 0) {
@@ -309,7 +309,7 @@ for (cB in seq(problems_numbered_ordered_responses)) {
     
     # get current problem context using current item
     current_context <- 
-      paste0(gsub(paste0(".*(", problem_contexts, ").*"), "txt_\\1", current_item), "_context")
+      paste0(gsub(paste0(".*(", paste(problem_contexts, collapse = "|"), ").*"), "txt_\\1", current_item), "_context")
     
     # get problem prob (this erase everything that is not a "low" or "high" word)
     current_prob <-

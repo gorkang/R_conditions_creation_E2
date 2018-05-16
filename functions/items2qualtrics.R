@@ -13,12 +13,18 @@ items2qualtrics <- function(list_of_items, responsesdir, outputdir, removePlaceh
   item_nameless <- 
     gsub("\\*\\*.*\\*\\*\n\n(.*)", "\\1", item)
   
-  # separate problem context, actual item, and question from response type. ####
-  # if all items end with five breaklines (\n) it can be use to chop-off the response type.
-  # it seems that it is the case.
-  # lapply(problems_numbered_ordered_responses, 
-  #        function(x) {lapply(x, 
-  #                            function(x) {if (grep("\n\n\n\n\n", lapply(x, function(y) {y})) != 1) {print("NOOOOOOOO")}})})
+  
+  # GET PREVALENCE NAME TO CREATE EMBEDDED DATA ########################
+  prevalence_name <- 
+    item_name %>% 
+    gsub("([a-z]{2}_[a-z]{4}_[a-z]{6,7})_[a-z]{2}", "\\1", .)
+  
+  embedded_prevalence <- 
+    gsub("value", 
+         all_prevalences$prevalence[grep(prevalence_name, all_prevalences$name)], 
+         gsub("field", "prevalence", qualtrics_codes$embedded_data))
+  
+  ########################################################################
   
   # 02. item without response type
   item_responseless <- 

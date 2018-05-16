@@ -46,9 +46,10 @@ items2qualtrics <- function(list_of_items, responsesdir, outputdir, removePlaceh
   # 05. Combine item elements
   if (grepl("_gi", item_name)) {
     
-    item_to_export <- 
+    item_to_export <-
       paste(
         qualtrics_codes$advanced_format, "\n",
+        embedded_prevalence, "\n",
         qualtrics_codes$question_singlechoice_horizontal, "\n",
         html_item, "\n",
         qualtrics_codes$question_choices, "\n",
@@ -60,6 +61,7 @@ items2qualtrics <- function(list_of_items, responsesdir, outputdir, removePlaceh
     
     item_to_export <- paste(
       qualtrics_codes$advanced_format, "\n",
+      embedded_prevalence, "\n",
       qualtrics_codes$question_text, "\n",
       html_item
       

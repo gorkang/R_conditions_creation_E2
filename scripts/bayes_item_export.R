@@ -113,7 +113,7 @@ build_pic_prevalences <-
     pic_prevalences_str_filled <- 
       pic_prevalences_str_filled %>% unlist
     # output
-    print(pic_prevalences_str_filled)
+    pic_prevalences_str_filled
   }
 # Function call
 pic_prevalences_str_filled <- 

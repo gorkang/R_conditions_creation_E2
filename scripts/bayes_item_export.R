@@ -40,29 +40,31 @@ named_prevalences <-
   as.tibble(.) %>% 
   rename(name = V1, prevalence = V2)
 
-# Pictorial problems prevalences (These are not captured but build)
-# call nppi/fbpi ppv creator? twice
+# Pictorial problems prevalences #####
+# (These are not captured but build)
 
+# pictorial number bayes 
 pic_numbers <- 
   readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>% 
   filter(grepl("[a-z]{2}pi", .$format))
 
+# path to pictorial prevalences
 pic_prevalences_path <- 
   "materials/Question/Follow_up/input/pictorial_prevalences/"
-
+# files with prevalences
 pic_prevalences_files <- 
   paste0(pic_prevalences_path, dir(pic_prevalences_path, pattern = "*.txt"))
-
+# prevalences
 pic_prevalences_str <- 
   pic_prevalences_files %>% 
   map(~readChar(., file.size(.))) %>% 
   unlist() %>% 
   gsub("\\n", "", .)
-
+# fields to be filled on each prevalence
 fields2fill <-
   read_csv("materials/Numbers/fields2fill.csv", col_types = cols()) %>% 
   select(fbpi_followup_export, nppi)
-
+# duplicated list of prevalences to filled with final filled prevalences
 pic_prevalences_str_filled <- 
   as.list(pic_prevalences_str)
 
@@ -116,7 +118,7 @@ build_pic_prevalences <-
 # Function call
 pic_prevalences_str_filled <- 
   build_pic_prevalences(pic_prevalences_str)
-
+# Convert vector of prevalences to a table
 pic_prevalences_str_filled <- 
   pic_prevalences_str_filled %>% 
   as.tibble() %>% 

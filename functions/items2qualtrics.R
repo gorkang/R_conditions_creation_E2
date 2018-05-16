@@ -2,6 +2,7 @@ items2qualtrics <- function(list_of_items, responsesdir, outputdir, removePlaceh
   
   # item to format to qualtrics
   # item <- problems_numbered_ordered_responses[[1]][[1]]
+  # responsesdir <- response_types_dir
   item <- 
     list_of_items
   
@@ -38,8 +39,6 @@ items2qualtrics <- function(list_of_items, responsesdir, outputdir, removePlaceh
     )
   
   # 04. response type
-  # hmtl_response_type <- 
-  #   readChar(con = responsesdir, nchars = file.info(responsesdir)$size)
   hmtl_response_type <- 
     dir(responsesdir) %>% 
     map(~readChar(con = paste0(responsesdir, .x), nchars = file.info(paste0(responsesdir, .x))$size))

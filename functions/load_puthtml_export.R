@@ -4,7 +4,7 @@ load_puthtml_export <-
     # x <- files[1]
     # load item
     item_text <- 
-      readChar(con = paste0(path2fu_w_prev,x), nchars = file.info(paste0(path2fu_w_prev,x))$size)
+      readChar(con = paste0(path2fu_raw_items,x), nchars = file.info(paste0(path2fu_raw_items,x))$size)
     
     dir.create(path2fu_qualtrics_items, showWarnings = FALSE, recursive = TRUE)
     # put html tags

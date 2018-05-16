@@ -58,7 +58,7 @@ prevalences <-
 # convert list with names and prevalences to a nice table
 named_prevalences <- 
   unlist(prevalences) %>% 
-  matrix(., nrow = 16, byrow = T) %>% 
+  matrix(., nrow = length(.)/2, byrow = T) %>% 
   as.tibble(.) %>% 
   rename(name = V1, prevalence = V2)
 

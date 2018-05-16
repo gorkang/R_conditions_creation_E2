@@ -34,5 +34,7 @@ qualtrics_codes <- list(
   # Answers
   question_choices = "[[Choices]]",
   # Only text
-  question_only_text = "[[Question:Text]]"
+  question_only_text = "[[Question:Text]]",
+  # Others
+  embedded_data = "[[ED:field:value]]"
 )

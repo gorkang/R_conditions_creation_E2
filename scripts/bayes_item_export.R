@@ -145,3 +145,8 @@ pic_prevalences_str_filled <-
   mutate(name = gsub("\\*\\*(.*)\\*\\*.*", "\\1", value),
          prevalence = gsub("\\*\\*.*\\*\\*(.*)", "\\1", value)) %>% 
   select(-value)
+
+# JOIN TEXT & PICTORIAL PREVALENCES
+all_prevalences <- 
+  named_prevalences %>% 
+  bind_rows(pic_prevalences_str_filled)

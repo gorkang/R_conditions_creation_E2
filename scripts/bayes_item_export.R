@@ -25,12 +25,7 @@ problems_numbered_ordered_responses %>%
 # txt_files %>%
 #   walk(~pair_items(txt_files = .x, separated_item_dir = separated_item_dir, twins = twins, outputdir = paired_items_dir))
 
-# items_txt <- dir(output_dir, pattern = ".txt")
-txt_files <- dir(separated_item_dir, pattern = ".txt")
-twins <- character(length(txt_files)/2)
 
-txt_files %>% 
-  walk(~pair_items(txt_files = .x, separated_item_dir = separated_item_dir, twins = twins, outputdir = paired_items_dir))# Pair each item with its correspondent follow-up -------------------------------------------------------------------------
 # Pair each item with its correspondent follow-up -------------------------------------------------------------------------
 
 # If each item prevalence can be captured on the fly only two follow-up templates are needed. 

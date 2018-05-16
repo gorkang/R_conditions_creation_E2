@@ -1,12 +1,12 @@
+# Resources
 source("scripts/html_qualtrics_codes.R")
+source("functions/items2qualtrics.R") # function to convert txt files to qualtrics txt format
 
 # separated item folder
 separated_item_dir <- "materials/qualtrics/output/separated_items/"
 response_types_dir <- "materials/qualtrics/input/reponse_type/"
 paired_items_dir   <- "materials/qualtrics/output/paired_items/"
 
-# function to convert txt files to qualtrics txt format
-source("functions/items2qualtrics.R")
 
 # does it worth it to add this to the end of textual item preparation?
 # problems_numbered_ordered_responses_flat <- as.list(unlist(problems_numbered_ordered_responses, recursive = TRUE))

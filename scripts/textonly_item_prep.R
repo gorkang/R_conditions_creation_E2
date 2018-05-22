@@ -133,6 +133,15 @@ questions <-
 
 rm(questions_dir, question_files, question_files_path)
 
+# Export questions to text
+# dir
+dir.create("materials/qualtrics/output/plain_text/ppv_question/", showWarnings = FALSE, recursive = TRUE)
+# export
+questions %>% 
+  walk(~cat(.x, sep = "", 
+            file = paste0("materials/qualtrics/output/plain_text/ppv_question/", 
+                          gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x))))
+
 # paste questions into problems  #########################
 for (i in seq(length(problems_numbered))) {
   # i=1

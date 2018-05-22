@@ -39,7 +39,8 @@ problem_probs <-
 
 # All contexts must have a column on problem_context_info.csv indicating information
 ## that will be used to fill some fields2fill
-context_info <- read_csv("materials/Problem_context/problem_context_info.csv", col_types = cols())
+context_info <- 
+  read_csv("materials/Problem_context/problem_context_info.csv", col_types = cols())
 
 # check if problem contexts from presentation format folder are present on problem_context_info.csv
 check <- 
@@ -76,7 +77,8 @@ rm(list = problems_names)
 
 ## Create items ----------------------------------------------------------------
 
-path2fields <- "materials/Numbers/fields2fill.csv"
+path2fields <- 
+  "materials/Numbers/fields2fill.csv"
 
 ### Create textual items (combine items with numbers)
 numbers2problems(problems, numbers_item, path2fields)
@@ -94,7 +96,8 @@ question_files <-
   dir(questions_dir, pattern = ".txt")
 
 # paths to each response file
-question_files_path <- paste0(questions_dir, question_files)
+question_files_path <- 
+  paste0(questions_dir, question_files)
 
 # list with responses as char strings
 questions <- 
@@ -137,10 +140,10 @@ for (i in seq(length(problems_numbered))) {
   
 }
 
-
 ## Convert item list to flat list ----------------------------------------------------------------
+problems_numbered_ordered <- 
+  unlist(problems_numbered, recursive = TRUE, use.names = FALSE)
 
-problems_numbered_ordered <- unlist(problems_numbered, recursive = TRUE, use.names = FALSE)
 
 rm(problems_numbered)
 ## Response types ----------------------------------------------------------------

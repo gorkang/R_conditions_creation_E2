@@ -321,6 +321,42 @@ names(contexts) <- gsub(".txt", "", context_files)
 
 rm(context_dir,context_files,context_files_path)
 
+# Export problems introductions
+contexts_qualtrics <- 
+  map2(.x = paste0("**", gsub("txt_", "", names(contexts)), "**"),
+       .y = contexts,
+       .f = `paste0`)
+
+tmp_prevalence <- 
+  filter(numbers_item, format == "nfab") %>% 
+  select(prob, prev_02, age)
+
+for (z in seq(contexts_qualtrics)) {
+  # z <- 1
+  
+  tmp_context <- 
+    as.list(rep(contexts_qualtrics[z], nrow(tmp_prevalence)))
+  
+  for (a in 1:nrow(tmp_prevalence)) {
+    # a <- 1
+    tmp_context[a] <- 
+      tmp_context[a] %>% 
+      gsub("prevalence_02_variable", tmp_prevalence[a, "prev_02"], .) %>% 
+      gsub("(\\*\\*[a-z]{2}_context)(\\*\\*.*)", paste0("\\1_ppv", tmp_prevalence[[a, "prob"]], "\\2"), .) %>% 
+      gsub("age_variable", tmp_prevalence[a, "age"], .)
+      
+    
+  }
+    contexts_qualtrics[z] <- list(tmp_context)
+}
+
+
+dir.create("materials/qualtrics/output/plain_text/prob_intro/", showWarnings = FALSE, recursive = TRUE)
+contexts_qualtrics %>% 
+  unlist() %>% 
+  walk(~cat(.x, sep = "", 
+            file = paste0("materials/qualtrics/output/plain_text/prob_intro/", # path
+                          gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x)))) # name
 
 
 # Paste problem contexts at the beginning of each problem, 

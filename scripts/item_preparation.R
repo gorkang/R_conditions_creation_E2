@@ -5,7 +5,7 @@
 
   # Packages
   if (!require('pacman')) install.packages('pacman'); library('pacman')
-  p_load(tidyverse, magick, png, grid)
+  p_load(tidyverse, magick, png, grid, magrittr)
   
   # Functions
   source("functions/numbers2problems.R")

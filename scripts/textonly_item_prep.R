@@ -98,6 +98,16 @@ unlist(problems_numbered,
                            gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x,
                                 ".txt")))
   )
+
+# Export prevalences as text
+dir.create("materials/qualtrics/output/plain_text/prevalences/", showWarnings = FALSE, recursive = TRUE)
+
+unlist(problems_numbered, 
+       recursive = TRUE, use.names = FALSE) %>% 
+  gsub("(\\*\\*.*\\*\\*).*\\[first_piece\\]\\n{1,2}(.*)\\n{1,2}\\[second_piece\\].*", "\\1\\2", .) %>% 
+  walk(~cat(.x, sep = "", file = paste0("materials/qualtrics/output/plain_text/prevalences/", gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x))))
+
+
 ### Add question to textual items #########################
 
 # path to responses folder

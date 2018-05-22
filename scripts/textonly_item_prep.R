@@ -101,8 +101,8 @@ question_files_path <-
 
 # list with responses as char strings
 questions <- 
-  lapply(question_files_path, 
-         function(x) readChar(con = x, nchars = file.info(x)$size)) 
+  question_files_path %>% 
+  map(~readChar(con = .x, nchars = file.info(.x)$size))
 
 # assing name to each response type
 questions <- 
@@ -280,8 +280,9 @@ context_files <- dir(context_dir, pattern = ".txt") %>% grep("txt_", ., value = 
 context_files_path <- paste0(context_dir, context_files)
 
 # list with responses as char strings
-contexts <- lapply(context_files_path, 
-                   function(x) readChar(con = x, nchars = file.info(x)$size)) 
+contexts <- 
+  context_files_path %>% 
+  map(~readChar(con = .x, nchars = file.info(.x)$size)) 
 
 # assing name to each response type
 names(contexts) <- gsub(".txt", "", context_files)

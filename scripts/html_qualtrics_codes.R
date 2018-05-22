@@ -13,9 +13,9 @@ html_codes <- list(
   italic = "<i>ITALIZE_THIS</i>",
   # font size templates
   question_font_size =
-    paste0('<span style="font-size:', question_size, 'px;">QUESTION_TEXT_TO_FORMAT</span>'),
+    paste0('<span style="font-size&#58;', question_size, 'px;">QUESTION_TEXT_TO_FORMAT</span>'),
   choices_font_size =
-    paste0('<span style="font-size:', choice_size, 'px;">CHOICES_TEXT_TO_FORMAT</span>'),
+    paste0('<span style="font-size&#58;', choice_size, 'px;">CHOICES_TEXT_TO_FORMAT</span>'),
   list_start = "<li>",
   list_end = "</li>"
 )    

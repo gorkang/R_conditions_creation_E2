@@ -85,6 +85,19 @@ numbers2problems(problems, numbers_item, path2fields)
 rm(problems, path2fields)
 # problems_numbered
 
+### Export items as text
+# dir
+dir.create("materials/qualtrics/output/plain_text/items/", showWarnings = FALSE, recursive = TRUE)
+# export
+unlist(problems_numbered, 
+       recursive = TRUE, use.names = FALSE) %>% 
+  walk(~
+         cat(.x, 
+             sep = "", 
+             file = paste0("materials/qualtrics/output/plain_text/items/", 
+                           gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x,
+                                ".txt")))
+  )
 ### Add question to textual items #########################
 
 # path to responses folder

@@ -120,6 +120,30 @@ create_ED_blocks <- function() {
       gsub("field", "resp_type", .) %>% 
       gsub("value", current_condition$resp_type, .)
     
+    # PPV question -----------------------------------------------------------
+    # IF positive framwork and sequential guided, no ppv question.
+    if (current_condition$press_format == "pfab" & current_condition$resp_type == "sg") {
+      embedded_data$ppv_question <-
+        qualtrics_codes$embedded_data %>% 
+        gsub("field", "ppv_quest", .) %>% 
+        gsub("value", "", .)
+      # IF any other than positive framework and sequential guided, normal ppv question
+    } else if (!(current_condition$press_format == "pfab" & current_condition$resp_type == "sg")) {
+      # Read generic question and repalce linebreaks with html equivalent
+      curr_ppv_question <- 
+        "materials/Question/Calculation/input/unified_question.txt" %>% 
+        readChar(., file.size(.)) %>% 
+        remove_placeholders() %>% 
+        gsub("(.*)\\n\\b", "\\1", .) %>% 
+        gsub("\\n", "<br>", .) %>% 
+        gsub("^<br>", "", .)
+      # Store as embedded data
+      embedded_data$ppv_question <-
+        qualtrics_codes$embedded_data %>% 
+        gsub("field", "ppv_quest", .) %>% 
+        gsub("value", curr_ppv_question, .) 
+    }
+    
     # Problem context ---------------------------------------------------------
     
     # Problem context 01

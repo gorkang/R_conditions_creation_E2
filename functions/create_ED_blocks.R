@@ -232,7 +232,9 @@ create_ED_blocks <- function() {
       readChar(., file.size(.)) %>% 
       gsub("\\*\\*.*\\*\\*\\n{1,2}(.*)", "\\1", .) %>% 
       remove_placeholders() %>% 
-      gsub("(.*)\\n\\b", "\\1", .)
+      gsub("(.*)\\n\\b", "\\1", .) %>%
+      gsub("\\n", "<br>", .) %>% 
+      gsub("^<br>", "", .)
     
     
     embedded_data$screening_item_01 <- 
@@ -247,7 +249,9 @@ create_ED_blocks <- function() {
       readChar(., file.size(.)) %>% 
       gsub("\\*\\*.*\\*\\*\\n{1,2}(.*)", "\\1", .) %>% 
       remove_placeholders() %>% 
-      gsub("(.*)\\n\\b", "\\1", .)
+      gsub("(.*)\\n\\b", "\\1", .) %>%
+      gsub("\\n", "<br>", .) %>% 
+      gsub("^<br>", "", .)
     
     embedded_data$screening_item_02 <- 
       qualtrics_codes$embedded_data %>% 

@@ -302,9 +302,11 @@ create_ED_blocks <- function() {
       gsub("\\*\\*.*\\*\\*(.*)", "\\1", .) %>% 
       remove_placeholders() %>% 
       # remove linebreaks at the end
-      gsub("(.*)\\n\\n\\b", "\\1", .) %>% 
+      gsub("(.*)\\n\\b", "\\1", .) %>% 
       # change : with asci code
-      gsub(":", "&#58;", .)
+      gsub(":", "&#58;", .) %>% 
+      gsub("\\n", "<br>", .) %>% 
+      gsub("^<br>", "", .)
     
     embedded_data$screening_item_01_intro <- 
       qualtrics_codes$embedded_data %>% 
@@ -322,9 +324,11 @@ create_ED_blocks <- function() {
       gsub("\\*\\*.*\\*\\*(.*)", "\\1", .) %>% 
       remove_placeholders() %>% 
       # remove linebreaks at the end
-      gsub("(.*)\\n\\n\\b", "\\1", .) %>% 
+      gsub("(.*)\\n\\b", "\\1", .) %>% 
       # change : with asci code
-      gsub(":", "&#58;", .)
+      gsub(":", "&#58;", .) %>% 
+      gsub("\\n", "<br>", .) %>% 
+      gsub("^<br>", "", .)
     
     embedded_data$screening_item_02_intro <- 
       qualtrics_codes$embedded_data %>% 

@@ -1,48 +1,111 @@
 create_ED_blocks <- function() {
   
+  # # THIS GOES ON ED BLOCK CREATOR
+  # fu_fields_replaces <- 
+  #   list(positive_test_result = c( "mammograms", "results"),
+  #        medical_condition    = c( "breast cancer", "Trisomy 21"),
+  #        medical_screening    = c( "mammogram screening", "prenatal screening"),
+  #        medical_test         = c( "mammogram", "amniocentesis"),
+  #        doctor_offers        = c( "that consists of a biopsy", "called amniocentesis"),
+  #        fluid_test           = c( "a breast cyst", "the amniotic sac"),
+  #        test_name            = c( "The biopsy", "Amniocentesis"),
+  #        medical_consequence  = c( "partial mastectomy", "miscarriage"),
+  #        sg_person            = c( "a woman", "a woman's fetus"),
+  #        sg_test_result       = c( "mammogram", "test result")
+  #   )
+  
+  screening_blocks_ED_fill <- list(ca = list(sg_test_result       = "mammogram" ,
+                                             sg_person            = "a woman",
+                                             medical_condition    = "breast cancer",
+                                             positive_test_result = "mammogram",
+                                             medical_test         = "mammogram",
+                                             doctor_offers        = "that consist of a biopsy",
+                                             fluid_test           = "the breast cyst",
+                                             test_name            = "The biopsy",
+                                             medical_consequence  = "partial mastectomy"),
+                                   
+                                   pr = list(sg_test_result       = "test result" ,
+                                             sg_person            = "a woman's fetus",
+                                             medical_condition    = "trisomy 21",
+                                             positive_test_result = "test result",
+                                             medical_test         = "test result",
+                                             doctor_offers        = "called amniocentesis",
+                                             fluid_test           = "the amniotic sac",
+                                             test_name            = "Amniocentesis",
+                                             medical_consequence  = "miscarriage")
+  ) 
+  
   for (xxx in 1:nrow(conditions)) {
     # xxx <- 1
-    print(paste0(xxx, "/", nrow(conditions)))
+    message(paste0(xxx, "/", nrow(conditions)))
     
     # ######################################################################################################
     # This function creates the following fields as embedded data variables ------------------------------
     
     embedded_data <- 
-      list(press_format = NULL,               # Presentation format
+      list(advanced_format = qualtrics_codes$advanced_format,
+           press_format = NULL,               # Presentation format
+           resp_type = NULL,
+           ppv_question = NULL,
            prob_context_01 = NULL,            # Problem context item 01
            prob_context_02 = NULL,            # Problem context item 02
            med_cond_01 = NULL,                # Medical condition item 01
            med_cond_02 = NULL,                # Medical condition item 02
-           ppv_prob_01_text = NULL,           # PPV probability as text item 01
-           ppv_prob_02_text = NULL,           # PPV probability as text item 02
-           ppv_prob_01_num = NULL,            # PPV probability as num item 01
-           ppv_prob_02_num = NULL,            # PPV probability as num item 02
-           fu_risk_01_text = NULL,            # Follow-up riks as text item 01
-           fu_risk_02_text = NULL,            # Follow-up riks as text item 02
-           fu_risk_01_num = NULL,             # Follow-up riks as num item 01
-           fu_risk_02_num = NULL,             # Follow-up riks as num item 02
+           ppv_prob_text_01 = NULL,           # PPV probability as text item 01
+           ppv_prob_text_02 = NULL,           # PPV probability as text item 02
+           ppv_prob_num_01 = NULL,            # PPV probability as num item 01
+           ppv_prob_num_02 = NULL,            # PPV probability as num item 02
+           fu_risk_text_01 = NULL,            # Follow-up riks as text item 01
+           fu_risk_text_02 = NULL,            # Follow-up riks as text item 02
+           fu_risk_num_01 = NULL,             # Follow-up riks as num item 01
+           fu_risk_num_02 = NULL,             # Follow-up riks as num item 02
            screening_item_01_intro = NULL,    # Screening item introduction item 01
            prevalence_01 = NULL,              # Screening item prevalence item 01
            screening_item_01 = NULL,          # Screening item 01
            screening_item_02_intro = NULL,    # Screening item introduction item 02
            prevalence_02 = NULL,              # Screening item prevalence item 02  
-           screening_item_02 = NULL)          # Screening item 02
+           screening_item_02 = NULL,          # Screening item 02
+           dumb_question = paste(qualtrics_codes$question_only_text, "DELETE THIS", sep = "\n")
+      )
     # ######################################################################################################
     
-    current_condition <- conditions[xxx,]
+    # iterate through rows. each row is a condition.
+    current_condition <- 
+      conditions[xxx,]
+    
+    
+    # ######################################################################################################
+    # Dinamycally created fields -------------------------------------------------------------------------
+    # This fields are used to fill each screening block (screening item + follow-up)
+    
+    for (a in c(1:2)) {
+      # a <- 1
+      trial <- a
+      curr_context <- current_condition[[paste0("prob_context_0", trial)]]
+      filt_list <- screening_blocks_ED_fill[[curr_context]]
+      
+      for (b in seq(filt_list)) {
+        # b <- 1
+        embedded_data[[paste0(names(filt_list[b]), "_0", trial)]] <- 
+          qualtrics_codes$embedded_data %>% 
+          gsub("field", paste0(names(filt_list[b]), "_0", trial), .) %>% 
+          gsub("value", filt_list[[b]], .)
+        
+      }
+    }
+    # ######################################################################################################
     
     # Follow up risk as text
-    fu_risk_01_text <- tolower(gsub("risk", "", current_condition$followUp_01))
-    fu_risk_02_text <- tolower(gsub("risk", "", current_condition$followUp_02))
+    fu_risk_text_01 <- tolower(gsub("risk", "", current_condition$followUp_01))
+    fu_risk_text_02 <- tolower(gsub("risk", "", current_condition$followUp_02))
     # Follow up risk as num
-    fu_risk_01_num <- followUp_num %>% filter(prob == fu_risk_01_text) %>% select(fu_risk) %>% pull()
-    fu_risk_02_num <- followUp_num %>% filter(prob == fu_risk_02_text) %>% select(fu_risk) %>% pull()
+    fu_risk_num_01 <- followUp_num %>% filter(prob == fu_risk_text_01) %>% select(fu_risk) %>% pull()
+    fu_risk_num_02 <- followUp_num %>% filter(prob == fu_risk_text_02) %>% select(fu_risk) %>% pull()
     
     # Positive Predictive Value
     # PPV as number (actual correct response)
-    ppv_prob_01_num <- ppv_num %>% filter(prob == current_condition$ppv_prob_01) %>% select(PPV) %>% pull()
-    ppv_prob_02_num <- ppv_num %>% filter(prob == current_condition$ppv_prob_02) %>% select(PPV) %>% pull()
-    
+    ppv_prob_num_01 <- ppv_num %>% filter(prob == current_condition$ppv_prob_01) %>% select(PPV) %>% pull()
+    ppv_prob_num_02 <- ppv_num %>% filter(prob == current_condition$ppv_prob_02) %>% select(PPV) %>% pull()
     
     # Presentation format -----------------------------------------------------
     embedded_data$press_format <- 

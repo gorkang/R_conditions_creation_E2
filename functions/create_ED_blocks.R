@@ -113,6 +113,13 @@ create_ED_blocks <- function() {
       gsub("field", "press_format", .) %>% 
       gsub("value", current_condition$press_format, .)
     
+    
+    # Response type -----------------------------------------------------------
+    embedded_data$resp_type <-
+      qualtrics_codes$embedded_data %>% 
+      gsub("field", "resp_type", .) %>% 
+      gsub("value", current_condition$resp_type, .)
+    
     # Problem context ---------------------------------------------------------
     
     # Problem context 01

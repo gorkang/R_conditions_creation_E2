@@ -173,50 +173,50 @@ create_ED_blocks <- function() {
     # PPV ---------------------------------------------------------------------
     
     # PPV probability 01 text
-    embedded_data$ppv_prob_01_text <- 
+    embedded_data$ppv_prob_text_01 <- 
       qualtrics_codes$embedded_data %>% 
-      gsub("field", "ppv_prob_01_text", .) %>% 
+      gsub("field", "ppv_prob_text_01", .) %>% 
       gsub("value", current_condition$ppv_prob_01, .)
     # PPV probability 01 text
-    embedded_data$ppv_prob_02_text <- 
+    embedded_data$ppv_prob_text_02 <- 
       qualtrics_codes$embedded_data %>% 
-      gsub("field", "ppv_prob_02_text", .) %>% 
+      gsub("field", "ppv_prob_text_02", .) %>% 
       gsub("value", current_condition$ppv_prob_02, .)
     
     # PPV probability 01 text
-    embedded_data$ppv_prob_01_num <- 
+    embedded_data$ppv_prob_num_01 <- 
       qualtrics_codes$embedded_data %>% 
-      gsub("field", "ppv_prob_01_num", .) %>% 
-      gsub("value", ppv_prob_01_num, .)
+      gsub("field", "ppv_prob_num_01", .) %>% 
+      gsub("value", ppv_prob_num_01, .)
     
     # PPV probability 02 text
-    embedded_data$ppv_prob_02_num <- 
+    embedded_data$ppv_prob_num_02 <- 
       qualtrics_codes$embedded_data %>% 
-      gsub("field", "ppv_prob_02_num", .) %>% 
-      gsub("value", ppv_prob_02_num, .)
+      gsub("field", "ppv_prob_num_02", .) %>% 
+      gsub("value", ppv_prob_num_02, .)
     
     # Follow-up risk ----------------------------------------------------------
     
     # Follow-up risk 01 text
-    embedded_data$fu_risk_01_text <- 
+    embedded_data$fu_risk_text_01 <- 
       qualtrics_codes$embedded_data %>% 
-      gsub("field", "fu_risk_01_text", .) %>% 
-      gsub("value", fu_risk_01_text, .)
+      gsub("field", "fu_risk_text_01", .) %>% 
+      gsub("value", fu_risk_text_01, .)
     # Follow-up risk 02 text
-    embedded_data$fu_risk_02_text <- 
+    embedded_data$fu_risk_text_02 <- 
       qualtrics_codes$embedded_data %>% 
-      gsub("field", "fu_risk_02_text", .) %>% 
-      gsub("value", fu_risk_02_text, .)
+      gsub("field", "fu_risk_text_02", .) %>% 
+      gsub("value", fu_risk_text_02, .)
     # Follow-up risk 01 num
-    embedded_data$fu_risk_01_num <- 
+    embedded_data$fu_risk_num_01 <- 
       qualtrics_codes$embedded_data %>% 
-      gsub("field", "fu_risk_01_num", .) %>% 
-      gsub("value", fu_risk_01_num, .)
+      gsub("field", "fu_risk_num_01", .) %>% 
+      gsub("value", fu_risk_num_01, .)
     # Follow-up risk 02 num
-    embedded_data$fu_risk_02_num <- 
+    embedded_data$fu_risk_num_02 <- 
       qualtrics_codes$embedded_data %>% 
-      gsub("field", "fu_risk_02_num", .) %>% 
-      gsub("value", fu_risk_02_num, .)
+      gsub("field", "fu_risk_num_02", .) %>% 
+      gsub("value", fu_risk_num_02, .)
     
     
     # READ FROM FILE ----------------------------------------------------------

@@ -252,7 +252,7 @@ create_ED_blocks <- function() {
       gsub("(.*)\\n\\b", "\\1", .) %>%
       gsub("\\n", "<br>", .) %>% 
       gsub("^<br>", "", .)
-    
+     
     embedded_data$screening_item_02 <- 
       qualtrics_codes$embedded_data %>% 
       gsub("field", "screening_item_02", .) %>% 
@@ -329,7 +329,7 @@ create_ED_blocks <- function() {
       gsub(":", "&#58;", .) %>% 
       gsub("\\n", "<br>", .) %>% 
       gsub("^<br>", "", .)
-    
+     
     embedded_data$screening_item_02_intro <- 
       qualtrics_codes$embedded_data %>% 
       gsub("field", "screening_intro_02", .) %>% 
@@ -342,7 +342,7 @@ create_ED_blocks <- function() {
     dir.create(ED_blocks_path, showWarnings = FALSE, recursive = TRUE)
     
     # paste(embedded_data, collapse = "\n") %>% cat
-    paste(embedded_data, collapse = "\n") %>% cat(., sep = "", file = paste0(ED_blocks_path, current_condition$complete_name))
+    paste(embedded_data, collapse = "\n") %>% cat(., sep = "", file = paste0(ED_blocks_path, current_condition$complete_name, ".txt"))
   }
   
 }

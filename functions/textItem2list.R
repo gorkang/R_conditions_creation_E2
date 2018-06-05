@@ -3,7 +3,7 @@
 # and string indicating a name for the new object with presentation formats 
 # (e.g. "nfab_items").
 
-read_txt_items_to_list <- function(presentation_format, name) {
+textItem2list <- function(presentation_format, name) {
   
   # Parameters to feed
   # presentation_format <- "nfab"

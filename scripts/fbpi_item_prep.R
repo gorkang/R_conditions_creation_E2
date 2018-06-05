@@ -137,8 +137,8 @@ for (fact_box_loop in seq(length(fbpi_items))) {
         fbpi_img_to_fill <-
           magick::image_annotate(fbpi_img_to_fill, paste0(format(num_looped[[1, num_pos[numbers_pos_loop]]], big.mark=",",scientific=FALSE), " women"), 
                                  size = 21.5, color = "black", boxcolor = "", # ROW 1
-                                 # , strokecolor = "black"
-                                 font = "arial-black",
+                                 # , strokecolor = "black",
+                                 font = "Arial Black",
                                  degrees = 0, location = pieces_pos[numbers_pos_loop])
         
         # # if piece of information is any other than prevalence

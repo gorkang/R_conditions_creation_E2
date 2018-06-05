@@ -666,6 +666,6 @@ invisible(lapply(scales_questions, lapply, cat))
 # Item export
 
 ```{r}
-source("scripts/export2qualtrics.R")
+source("scripts/complete_export_qualtrics.R")
 ```
 

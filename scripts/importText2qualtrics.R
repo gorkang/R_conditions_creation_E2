@@ -7,8 +7,8 @@ if (!require('pacman')) install.packages('pacman'); library('pacman')
 p_load(RSelenium, tidyverse, naptime)
 
 # Re-sources --------------------------------------------------------------
-source("functions/sign2qualtrics.R")
 source("functions/get2survey.R")
+source("functions/UBER_IMPORT2QUALTRICS.R")
 
 # Get to survey -------------------------------------------------------------------
 
@@ -26,7 +26,6 @@ get2survey(survey_link)
 get2survey(survey_link)
 
 # Start importing things --------------------------------------------------
-source("functions/UBER_IMPORT2QUALTRICS.R")
 
 # Dir with ED blocks
 full_path <- 

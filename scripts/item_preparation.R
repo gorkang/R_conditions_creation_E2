@@ -10,7 +10,7 @@
   # Functions
   source("functions/numbers2problems.R")
   source("functions/svg2png.R")
-  source("functions/read_txt_items_to_list.R")
+  source("functions/textItem2list.R")
   source("functions/ppv_calculator.R")
 
 # Prepare items -----------------------------------------------------------

@@ -20,7 +20,7 @@ textual_formats <-
 
 # read text files into lists
 textual_formats %>% 
-  walk(~read_txt_items_to_list(presentation_format = .x, name =  paste0(.x, "_items")))
+  walk(~textItem2list(presentation_format = .x, name =  paste0(.x, "_items")))
 
 # Check: problem contexts, ppv probability ----------------------------------------------
 

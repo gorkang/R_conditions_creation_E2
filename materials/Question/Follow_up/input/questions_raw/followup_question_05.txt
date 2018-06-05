@@ -1,6 +1,8 @@
 [[Question:MC:SingleAnswer:Vertical]]
 [question_start]
-Remember the biopsy has a risk_percentage procedure-related risk of complications:
+Remember the biopsy has a ${e://Field/fu_risk_num} procedure-related risk of complications:
 [choices_start]
 [IF 1. == "No"] How small this risk should be for you to recommend it (0-100)
+[second_choice]
+[IF 1. == "Yes"] How big this risk should be for you NOT to recommend it (0-100)
 [choices_end]

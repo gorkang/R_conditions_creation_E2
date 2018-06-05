@@ -1,6 +1,6 @@
 [followUp_start]
-Remember that:
-<li>prevalence_and_context</li>
+Remember that&#58;
+<li>${e://Field/prevalence}</li>
 <li>In your response to the previous problem you said that, of those with positive mammograms, qualtrics_ppv_answer actually have breast cancer.</li>
 
 [followUp_first_piece]

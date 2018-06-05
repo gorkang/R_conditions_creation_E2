@@ -36,7 +36,7 @@ followup_question_builder <- function(file_path, file_name, outputdir, export = 
       , file = paste0(outputdir, file_name)
     )
   } else if (export == FALSE) {
-    paste0(
+    paste(
       # QUESTION TYPE ********************
       gsub("(\\[\\[.*\\]\\]).*", "\\1", question_text),
       

@@ -380,5 +380,5 @@ for (cC in seq(problem_contexts)) {
   responses_pic$sg[cC] <- temp_sg
 }
 
-rm(response_type_files,response_type_files_path,response_types_dir, numbers_fact, numbers_item)    
+rm(response_type_files,response_type_files_path,response_types_dir, numbers_item)    
 

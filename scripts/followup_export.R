@@ -20,147 +20,153 @@ source("functions/export_qualtrics_followup_items.R")
 # ALL PATHS ----------------------
 
 path2fu_raw_questions              <- "materials/Question/Follow_up/input/questions_raw/"
-path2fu_w_prev                     <- "materials/Question/Follow_up/output/item_w_prevalence/"
+# path2fu_w_prev                     <- "materials/Question/Follow_up/output/item_w_prevalence/"
+path2fu_raw_items                  <- "materials/Question/Follow_up/output/item_raw/"
 path2fu_qualtrics_items            <- "materials/qualtrics/input/followUp/items/"
 path2fu_qualtrics_questions        <- "materials/qualtrics/input/followUp/questions/"
 path2fu_qualtrics_complete_items   <- "materials/qualtrics/output/followUp/"
 
 
+# CREATE PIC PREVALENCES
+source("scripts/create_pictorial_prevalences.R")
+
 # Follow-up questions building ----
 # iterates through files in file_path, identifies how choices the question has, build choices and question and export them (default) or paste them
 dir(path2fu_raw_questions, ".txt") %>% 
-  walk(~followup_question_builder(file_path = path2fu_raw_questions, file_name = .x, outputdir = path2fu_qualtrics_questions))
+  walk(~followup_question_builder(file_path = path2fu_raw_questions, 
+                                  file_name = .x, 
+                                  outputdir = path2fu_qualtrics_questions))
+
+
+
+
+
+
 
 # Follow-up item building with unique prevalences --------
 # Get unique response types to get all unique prevalences. These are used to create unique follow-up items.
 
-# function to get unique character within string?
-uniqchars <- 
-  function(x) unique(strsplit(x, "")[[1]]) 
-# get unique characters of possible response types
-response_type_regex <-
-  dir("materials/Response_type/", pattern = ".txt") %>% 
-  gsub("\\.txt", "", .) %>% paste(., collapse = "") %>% 
-  uniqchars() %>% paste(., collapse = "")
+# # function to get unique character within string?
+# uniqchars <- 
+#   function(x) unique(strsplit(x, "")[[1]]) 
+# # get unique characters of possible response types
+# response_type_regex <-
+#   dir("materials/Response_type/", pattern = ".txt") %>% 
+#   gsub("\\.txt", "", .) %>% paste(., collapse = "") %>% 
+#   uniqchars() %>% paste(., collapse = "")
 
-# This snippet get only names
-# unique_prevalences_names <-
+# # Get unique textual-items prevalences with names
+# unique_prevalences <- 
 #   problems_numbered_ordered_responses[seq(1, length(problems_numbered_ordered_responses), 4)] %>% 
-#   map(~gsub(paste0("\\*\\*(.*)_[", response_type_regex, "]{2}\\*\\*(.*)"), "\\1\\2", .x)) %>% unlist
-
-# Get unique textual-items prevalences with names
-unique_prevalences <- 
-  problems_numbered_ordered_responses[seq(1, length(problems_numbered_ordered_responses), 4)] %>% 
-  map(~gsub(paste0("(\\*\\*.*)_[", response_type_regex, "]{2}(\\*\\*).*\\[first_piece\\]\\n(.*)\\n\\[second_piece\\].*"), "\\1\\2\\3", .x)) %>% unlist
+#   map(~gsub(paste0("(\\*\\*.*)_[", response_type_regex, "]{2}(\\*\\*).*\\[first_piece\\]\\n(.*)\\n\\[second_piece\\].*"), "\\1\\2\\3", .x)) %>% unlist
 
 
-# Build factbox prevalences using numbers_bayes -------------------------------------
-# numbers
-numbers_fbpi <- 
-  readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>% 
-  filter(format == "fbpi")
+# # Build factbox prevalences using numbers_bayes -------------------------------------
+# # numbers
+# numbers_fbpi <- 
+#   readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>% 
+#   filter(format == "fbpi")
+# 
+# # factbox prevalences for follow-up
+# fbpi_fu_prev_dir <- 
+#   "materials/Question/Follow_up/input/pictorial_prevalences/"
+# fbpi_fu_prev_files <- 
+#   paste0(fbpi_fu_prev_dir, dir(fbpi_fu_prev_dir, pattern = ".*fbpi.*.txt"))
+# # read prevalences
+# fbpi_fu_prev_temp <- fbpi_fu_prev_files %>% 
+#   map(~readChar(., file.size(.))) %>% 
+#   unlist()
+# 
+# # function to put numbers on prevalences.
+# fbpi_prev_creator <- 
+#   function(text, numbers) {
+#     # text <- fbpi_fu_prev_temp[1]
+#     # numbers <- numbers_fbpi[1,]
+#     
+#     # fields to fill and fields to be fill
+#     fields <- 
+#       read_csv("materials/Numbers/fields2fill.csv", col_types = cols()) %>% 
+#       select(fbpi_followup_export) %>% 
+#       na.omit() %>% 
+#       pull
+#     
+#     # put ppv probabilitie
+#     text <- 
+#       text %>% 
+#       gsub("(\\*\\*.*)(\\*\\*.*)", paste0("\\1_ppv", numbers["prob"] , "\\2"), .) 
+#     # iterative gsub
+#     for (i in seq(length(fields))) {
+#       text <- gsub(paste0(fields[i], "\\b"), numbers[fields[i]], text)
+#     }
+#     # output
+#     paste0(text)
+#   }
+# 
+# # actually put numbers on prevalences
+# fbpi_fu_prev <- 
+#   apply(numbers_fbpi, 1, function(x) {fbpi_prev_creator(numbers = x, text = fbpi_fu_prev_temp)}) %>% 
+#   as.vector()
+# 
+# # Build new-paradigm prevalences using numbers_bayes -------------------------------------
+# # numbers
+# numbers_nppi <- 
+#   readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>% 
+#   filter(format == "nppi")
+# # factbox prevalences for follow-up
+# nppi_fu_prev_dir <- 
+#   "materials/Question/Follow_up/input/pictorial_prevalences/"
+# nppi_fu_prev_files <- 
+#   paste0(nppi_fu_prev_dir, dir(nppi_fu_prev_dir, pattern = ".*nppi.*.txt"))
+# # read prevalences
+# nppi_fu_prev_temp <- nppi_fu_prev_files %>% 
+#   map(~readChar(., file.size(.))) %>% 
+#   unlist()
+# 
+# # function to put numbers on prevalences.
+# nppi_prev_creator <- function(text, numbers) {
+#   
+#   # fields to fill and fields to be fill
+#   fields2fill <- 
+#     read_csv("materials/Numbers/fields2fill.csv", col_types = cols())
+#   # get fbpi column
+#   fields <- fields2fill$nppi[!is.na(fields2fill$nppi)]
+#   # put ppv probabilitie
+#   text <- 
+#     text %>% 
+#     gsub("(\\*\\*.*)(\\*\\*.*)", paste0("\\1_ppv", numbers["prob"] , "\\2"), .) 
+#   # iterative gsub
+#   for (i in seq(length(fields))) {
+#     text <- gsub(paste0(fields[i], "\\b"), numbers[fields[i]], text)
+#   }
+#   # output
+#   paste0(text)
+# }
 
-# factbox prevalences for follow-up
-fbpi_fu_prev_dir <- 
-  "materials/Question/Follow_up/input/pictorial_prevalences/"
-fbpi_fu_prev_files <- 
-  paste0(fbpi_fu_prev_dir, dir(fbpi_fu_prev_dir, pattern = ".*fbpi.*.txt"))
-# read prevalences
-fbpi_fu_prev_temp <- fbpi_fu_prev_files %>% 
-  map(~readChar(., file.size(.))) %>% 
-  unlist()
+# # actually put numbers on prevalences
+# nppi_fu_prev <- 
+#   apply(numbers_nppi, 1, function(x) {nppi_prev_creator(numbers = x, text = nppi_fu_prev_temp)}) %>% 
+#   as.vector()
+# 
+# unique_prevalences <- 
+#   c(unique_prevalences, fbpi_fu_prev, nppi_fu_prev)
 
-# function to put numbers on prevalences.
-fbpi_prev_creator <- 
-  function(text, numbers) {
-    # text <- fbpi_fu_prev_temp[1]
-    # numbers <- numbers_fbpi[1,]
-    
-    # fields to fill and fields to be fill
-    fields <- 
-      read_csv("materials/Numbers/fields2fill.csv", col_types = cols()) %>% 
-      select(fbpi_followup_export) %>% 
-      na.omit() %>% 
-      pull
-    
-    # put ppv probabilitie
-    text <- 
-      text %>% 
-      gsub("(\\*\\*.*)(\\*\\*.*)", paste0("\\1_ppv", numbers["prob"] , "\\2"), .) 
-    # iterative gsub
-    for (i in seq(length(fields))) {
-      text <- gsub(paste0(fields[i], "\\b"), numbers[fields[i]], text)
-    }
-    # output
-    paste0(text)
-  }
-
-# actually put numbers on prevalences
-fbpi_fu_prev <- 
-  apply(numbers_fbpi, 1, function(x) {fbpi_prev_creator(numbers = x, text = fbpi_fu_prev_temp)}) %>% 
-  as.vector()
-
-# Build new-paradigm prevalences using numbers_bayes -------------------------------------
-# numbers
-numbers_nppi <- 
-  readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>% 
-  filter(format == "nppi")
-# factbox prevalences for follow-up
-nppi_fu_prev_dir <- 
-  "materials/Question/Follow_up/input/pictorial_prevalences/"
-nppi_fu_prev_files <- 
-  paste0(nppi_fu_prev_dir, dir(nppi_fu_prev_dir, pattern = ".*nppi.*.txt"))
-# read prevalences
-nppi_fu_prev_temp <- nppi_fu_prev_files %>% 
-  map(~readChar(., file.size(.))) %>% 
-  unlist()
-
-# function to put numbers on prevalences.
-nppi_prev_creator <- function(text, numbers) {
-  
-  # fields to fill and fields to be fill
-  fields2fill <- 
-    read_csv("materials/Numbers/fields2fill.csv", col_types = cols())
-  # get fbpi column
-  fields <- fields2fill$nppi[!is.na(fields2fill$nppi)]
-  # put ppv probabilitie
-  text <- 
-    text %>% 
-    gsub("(\\*\\*.*)(\\*\\*.*)", paste0("\\1_ppv", numbers["prob"] , "\\2"), .) 
-  # iterative gsub
-  for (i in seq(length(fields))) {
-    text <- gsub(paste0(fields[i], "\\b"), numbers[fields[i]], text)
-  }
-  # output
-  paste0(text)
-}
-
-# actually put numbers on prevalences
-nppi_fu_prev <- 
-  apply(numbers_nppi, 1, function(x) {nppi_prev_creator(numbers = x, text = nppi_fu_prev_temp)}) %>% 
-  as.vector()
-
-unique_prevalences <- 
-  c(unique_prevalences, fbpi_fu_prev, nppi_fu_prev)
-
-# create follow-up item with every unique prevalence -------------------------------------
-unique_prevalences %>% 
-  map(~prev2followUp(prevalence_string = .x, 
-                     follow_up_dir = "materials/Question/Follow_up/output/item_raw/", 
-                     outputdir = "materials/Question/Follow_up/output/item_w_prevalence/", rmv_placeholders = TRUE) ) %>% 
-  invisible()
+# # create follow-up item with every unique prevalence -------------------------------------
+# unique_prevalences %>% 
+#   map(~prev2followUp(prevalence_string = .x, 
+#                      follow_up_dir = "materials/Question/Follow_up/output/item_raw/", 
+#                      outputdir = "materials/Question/Follow_up/output/item_w_prevalence/", rmv_placeholders = TRUE) ) %>% 
+#   invisible()
 
 # Bind follow-up items with questions (customizing by problem context) ------------------
 
 # put html tags around follow-up items (already with prevalences)
 # path to follow-up items with prevalence 
 files <- 
-  dir(path2fu_w_prev, ".txt")
+  dir("materials/Question/Follow_up/input/items/", ".txt")
 # paste html tags
 files %>% 
-  map(~load_puthtml_export(.x)) %>% 
-  invisible()
-
+  walk(~load_puthtml_export(.x))
+  
 # Bind items with questions (by problem context)
 # follow-up items (already with html tags and prevalences) files
 item_files <- 
@@ -169,32 +175,32 @@ item_files <-
 question_files <- 
   dir(path2fu_qualtrics_questions, ".txt")
 # vector with questions to paste to items
-questions <- question_files %>% 
+questions <- 
+  question_files %>% 
   map(~readChar(con = paste0(path2fu_qualtrics_questions,.x), nchars = file.size(paste0(path2fu_qualtrics_questions,.x)))) %>% 
   unlist
 
+
 # paste and export all together 
 item_files %>% 
-  map(~export_qualtrics_followup_items(.x)) %>% 
-  invisible()
+  walk(~export_qualtrics_followup_items(.x))
 
-# Follow-up questions building -------------------------------------
-
-allblocks_dir <- "materials/qualtrics/output/followUp/all_blocks/all_blocks.txt"
-dir.create(allblocks_dir, showWarnings = FALSE, recursive = TRUE)
-# get all follow-up complete items to a vector
-followup_complete_items <- 
-  dir(path2fu_qualtrics_complete_items, ".txt") %>% 
-  map(~readChar(paste0(path2fu_qualtrics_complete_items, .x), nchars = file.size(paste0(path2fu_qualtrics_complete_items, .x)))) %>% 
-  unlist()
-# get follow-up complete items names
-followup_block_names <- 
-  gsub("\\.txt", "", dir(path2fu_qualtrics_complete_items, ".txt")) %>% 
-  map(~gsub("block_name", .x, qualtrics_codes$block_start)) %>% unlist
-# create quacltrics blocks tags names
-followup_blocks <- 
-  paste(followup_block_names, "\n", followup_complete_items, sep = "")
-# collapse all items in one text file separating by block
-cat(paste(followup_blocks, collapse = "", sep = ""), sep = "", file = paste0(allblocks_dir, "all_blocks.txt"))
+# # Follow-up BLOCK questions building -------------------------------------
+# allblocks_dir <- "materials/qualtrics/output/followUp/all_blocks/all_blocks.txt"
+# dir.create(allblocks_dir, showWarnings = FALSE, recursive = TRUE)
+# # get all follow-up complete items to a vector
+# followup_complete_items <- 
+#   dir(path2fu_qualtrics_complete_items, ".txt") %>% 
+#   map(~readChar(paste0(path2fu_qualtrics_complete_items, .x), nchars = file.size(paste0(path2fu_qualtrics_complete_items, .x)))) %>% 
+#   unlist()
+# # get follow-up complete items names
+# followup_block_names <- 
+#   gsub("\\.txt", "", dir(path2fu_qualtrics_complete_items, ".txt")) %>% 
+#   map(~gsub("block_name", .x, qualtrics_codes$block_start)) %>% unlist
+# # create quacltrics blocks tags names
+# followup_blocks <- 
+#   paste(followup_block_names, "\n", followup_complete_items, sep = "")
+# # collapse all items in one text file separating by block
+# cat(paste(followup_blocks, collapse = "", sep = ""), sep = "", file = paste0(allblocks_dir, "all_blocks.txt"))
 
 

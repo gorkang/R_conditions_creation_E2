@@ -1,0 +1,3 @@
+[question_start]
+Of those with positive ${e&#58;//Field/positive_test_result}, how many would you expect to actually have ${e&#58;//Field/medical_condition}?
+[question_end]

@@ -64,7 +64,7 @@ first_col_x  <- 0.6916667 # first column x axis pos. (percetages pos.)
 second_col_x <- 0.8916667 # second column x axis pos. (percetages pos.)
 first_row_y  <- 0.4760192 # first row y axis pos. (percetages pos.)
 second_row_y <- 0.5539568 # second row y axis pos. (percetages pos.)
-third_row_y  <- 0.68999   # ...
+third_row_y  <- 0.6856   # ...
 fourth_row_y <- 0.7680348 # ...
 
 first_prev_x  <- .628    # first prevalence (from left to right) x axis position
@@ -137,8 +137,8 @@ for (fact_box_loop in seq(length(fbpi_items))) {
         fbpi_img_to_fill <-
           magick::image_annotate(fbpi_img_to_fill, paste0(format(num_looped[[1, num_pos[numbers_pos_loop]]], big.mark=",",scientific=FALSE), " women"), 
                                  size = 21.5, color = "black", boxcolor = "", # ROW 1
-                                 # , strokecolor = "black"
-                                 font = "arial-black",
+                                 # , strokecolor = "black",
+                                 font = "Arial Black",
                                  degrees = 0, location = pieces_pos[numbers_pos_loop])
         
         # # if piece of information is any other than prevalence

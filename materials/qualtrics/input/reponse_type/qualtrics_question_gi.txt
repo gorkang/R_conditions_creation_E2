@@ -1,5 +1,0 @@
-<span style="font-size: 16px;">Very few<br>(0-20%)</span>
-<span style="font-size: 16px;">Few<br>(21-40%)</span>
-<span style="font-size: 16px;">Half<br>(41-60%)</span>
-<span style="font-size: 16px;">Quite<br>(61-80%)</span>
-<span style="font-size: 16px;">Many<br>(81-100%)</span>

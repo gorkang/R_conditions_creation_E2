@@ -648,10 +648,10 @@ invisible(lapply(comprehension_questions, lapply, cat))
 # Follow-up questions
 
 ```{r follow-up, echo=FALSE, results='asis'}
-source("scripts/follow_up_preparing.R")
+# source("scripts/follow_up_preparing.R")
 
 # invisible(lapply(fu_questions, lapply, cat))
-invisible(lapply(fu_questions, function(x) {cat(remove_placeholders(x, item_followup = "followup")); cat("\n****************************\n")}))
+# invisible(lapply(fu_questions, function(x) {cat(remove_placeholders(x, item_followup = "followup")); cat("\n****************************\n")}))
 ```
 
 

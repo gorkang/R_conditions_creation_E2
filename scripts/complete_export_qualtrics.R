@@ -20,7 +20,7 @@ pic_links <-
 walk2(.x = pic_links$cond, 
      .y = pic_links$url, 
      .f = function(x, y) {cat(gsub("LINK2IMG", y, html_codes$insert_img), 
-              file = paste0("materials/qualtrics/output/plain_text/items/", x, ".txt"))})
+              file = paste0("materials/qualtrics/output/plain_text/items/", x))})
 
 # Create Embedded data Blocks ---------------------------------------------
 
@@ -36,7 +36,7 @@ ppv_num <-
 conditions <- 
   read_csv("materials/conditions.csv", col_types = cols())
 # %>% 
-  # COMMENT THIS WHEN LINKS TO IMGS ARE READY
+# COMMENT THIS WHEN LINKS TO IMGS ARE READY
 # filter(!press_format %in% c("fbpi", "nppi"))
 
 # Create and export txt files

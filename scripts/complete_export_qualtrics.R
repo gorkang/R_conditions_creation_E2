@@ -7,6 +7,21 @@ source("scripts/html_qualtrics_codes.R")
 source("functions/remove_placeholders.R")
 source("functions/create_ED_blocks.R")
 
+
+# Create pictorial items (links to imgs) ----------------------------------
+
+# read urls
+pic_links <- 
+  read_csv("materials/img_url.csv", 
+           col_types = "cc", 
+           col_names = c("cond", "url"))
+
+# create items
+walk2(.x = pic_links$cond, 
+     .y = pic_links$url, 
+     .f = function(x, y) {cat(gsub("LINK2IMG", y, html_codes$insert_img), 
+              file = paste0("materials/qualtrics/output/plain_text/items/", x, ".txt"))})
+
 # Create Embedded data Blocks ---------------------------------------------
 
 # numbers

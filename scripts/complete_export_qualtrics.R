@@ -34,9 +34,10 @@ ppv_num <-
 
 # Conditions
 conditions <- 
-  read_csv("materials/conditions.csv", col_types = cols()) %>% 
+  read_csv("materials/conditions.csv", col_types = cols())
+# %>% 
   # COMMENT THIS WHEN LINKS TO IMGS ARE READY
-  filter(!press_format %in% c("fbpi", "nppi"))
+# filter(!press_format %in% c("fbpi", "nppi"))
 
 # Create and export txt files
 create_ED_blocks()

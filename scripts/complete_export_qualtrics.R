@@ -28,7 +28,6 @@ create_ED_blocks()
 
 
 # Create and export trial canvas ------------------------------------------
-# TODO: en followup delete space between list element, add one after list. this could solve the everything is a list problem of followups ????
 
 source("scripts/html_qualtrics_codes.R")
 

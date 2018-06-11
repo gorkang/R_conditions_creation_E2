@@ -206,7 +206,7 @@ for (i in seq(length(nppi_items))){
     
     # problem context of current template 
     current_context <-
-      substr(names(nppi_items[i]), 6, 7)
+      substr(names(nppi_items[i]), 1, 2)
     
     # ppv graph of current template
     current_graph <- 

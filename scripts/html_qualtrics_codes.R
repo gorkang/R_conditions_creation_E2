@@ -17,7 +17,8 @@ html_codes <- list(
   choices_font_size =
     paste0('<span style="font-size:', choice_size, 'px;">CHOICES_TEXT_TO_FORMAT</span>'),
   list_start = "<li>",
-  list_end = "</li>"
+  list_end = "</li>",
+  insert_img = '<img height="834" src="LINK2IMG" style="width&#58; 1200px; height&#58; 834px;" width="1200" />'
 )    
 
 # Qualtrics codes *************************

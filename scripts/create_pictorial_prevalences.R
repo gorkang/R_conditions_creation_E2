@@ -33,6 +33,7 @@ pic_prevalences_str_filled <-
 build_pic_prevalences <- 
   
   function(pic_prevalences_str) {
+    # pic_prevalences_str <- pic_prevalences_str[[1]]
     
     for (a in seq(pic_prevalences_str)) {
       # a <- 2

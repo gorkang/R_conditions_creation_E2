@@ -46,24 +46,31 @@ create_ED_blocks()
 
 # Create and export trial canvas ------------------------------------------
 
-source("scripts/html_qualtrics_codes.R")
+# INTRO TO ITEM
+ED_screening_intro        <- 
+  "${e://Field/screening_intro_0}" %>% 
+  gsub("QUESTION_TEXT_TO_FORMAT", ., html_codes$question_font_size) 
+# ITEM
+ED_screening_item         <- 
+  "${e://Field/screening_item_0}" %>% 
+  gsub("QUESTION_TEXT_TO_FORMAT", ., html_codes$question_font_size) 
+# PPV QUESTION
+ED_screening_ppv_question <-
+  "materials/Question/Calculation/input/unified_question.txt" %>% 
+    readChar(., file.size(.)) %>% remove_placeholders(.) %>% 
+    gsub("\\n", "", .) %>% 
+    gsub("QUESTION_TEXT_TO_FORMAT", ., html_codes$question_font_size) 
 
-# ${e://Field/screening_intro_0}
-# ${e://Field/screening_item_0}
-# ${e://Field/ppv_question}
-
-# RESPONSE TYPES
-ED_screening_intro        <- "${e://Field/screening_intro_0}" %>% gsub("QUESTION_TEXT_TO_FORMAT", ., html_codes$question_font_size) 
-ED_screening_item         <- "${e://Field/screening_item_0}" %>% gsub("QUESTION_TEXT_TO_FORMAT", ., html_codes$question_font_size) 
-ED_screening_ppv_question <- "${e://Field/ppv_quest}" %>% gsub("QUESTION_TEXT_TO_FORMAT", ., html_codes$question_font_size) 
-
-screening_item <- 
+# Assemble item (ppv question is a question by itself to be able to hide it on pfab & sg condition)
+screening_item <-
   paste(qualtrics_codes$advanced_format,
         qualtrics_codes$question_only_text,
         paste(ED_screening_intro, 
-              ED_screening_item, 
-              ED_screening_ppv_question, sep = "<br><br>"), sep = "\n")
+              ED_screening_item, sep = "<br><br>"),
+        qualtrics_codes$question_only_text,
+              ED_screening_ppv_question, sep = "\n")
 
+# Response types ####
 resp_type_01 <- 
   paste(qualtrics_codes$question_singlechoice_horizontal,
         " ",
@@ -96,6 +103,7 @@ resp_type_04 <-
         paste("___ in every ___"), 
         sep = "\n")
 
+# Assemble item with response types
 screening_item_questions <- 
   paste(  screening_item,
           resp_type_01,
@@ -107,6 +115,7 @@ screening_item_questions <-
 # Create trial customized
 trials_no <- 2
 screening_trials <- as.list(rep(screening_item_questions, trials_no))
+
 # Customize to trials (2 trials)
 for (a in seq(trials_no)) {
   # a <- 1
@@ -147,19 +156,23 @@ screening_items <-
 followup_path <- 
   "materials/qualtrics/output/plain_text/followup/"
 
+# read follow-up items
 followup_items <- 
   followup_path %>%
   dir(., pattern = ".txt") %>% 
   map(~readChar(paste0(followup_path, .x), file.size(paste0(followup_path, .x))))
 
+# annon func to paste item with follow-up with a pagebreak inbetween
 f <- function(x,y) {paste(x, qualtrics_codes$pagebreak, y, sep = "\n")}
-
+# call annon func
 screening_blocks <- 
   map2(.x = screening_items, .y = followup_items, .f = `f`)
 
+# dir to output screening blocks 
 dir.create("materials/qualtrics/output/plain_text/screening_blocks/", FALSE, TRUE)
-
+# annon func to export screening blocks
 f <- function(x,y) {cat(x, sep = "", 
                         file = paste0("materials/qualtrics/output/plain_text/screening_blocks/screening_block_0", y, ".txt"))}
+# call annon func
 walk2(.x = screening_blocks, .y = 1:2, .f = f)
 

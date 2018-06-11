@@ -14,10 +14,12 @@ source("scripts/create_pictorial_prevalences.R")
 # Create pictorial items (links to imgs) ----------------------------------
 
 # read urls
-pic_links <- 
+pic_links <-
   read_csv("materials/img_url.csv", 
            col_types = "cc", 
-           col_names = c("cond", "url"))
+           col_names = c("cond", "url")) %>%
+  mutate(url = gsub("\\:", "&#58;", url))
+
 
 # create items
 walk2(.x = pic_links$cond, 

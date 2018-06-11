@@ -59,7 +59,7 @@ print_cat_items(problems_numbered_ordered_responses,"ca_pfab_ppvlow", "item")
 print_cat_items(fbpi_context, "low", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
 # TODO: add a print/cat (default), print, cat option?
-fb_ca_low <- readPNG(paste0(fact_box_dir, grep(".*ca_low.*", fact_box_imgs, value = TRUE)))
+fb_ca_low <- readPNG(paste0(fact_box_dir, grep(".*ca_.*_low.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_ca_low)
 # Question
 print_cat_items(questions, "ca", "item", "print") %>% 
@@ -77,7 +77,7 @@ cat("\n****************************\n")
 # Context
 print_cat_items(fbpi_context, "low", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-fb_ca_low <- readPNG(paste0(fact_box_dir, grep(".*ca_low.*", fact_box_imgs, value = TRUE)))
+fb_ca_low <- readPNG(paste0(fact_box_dir, grep(".*ca_.*_low.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_ca_low)
 # Question
 print_cat_items(questions, "ca", "item", "print") %>% 
@@ -93,7 +93,7 @@ cat("\n****************************\n")
 # Context
 print_cat_items(fbpi_context, "low", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-fb_ca_low <- readPNG(paste0(fact_box_dir, grep(".*ca_low.*", fact_box_imgs, value = TRUE)))
+fb_ca_low <- readPNG(paste0(fact_box_dir, grep(".*ca_.*_low.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_ca_low)
 # Question
 print_cat_items(questions, "ca", "item", "print") %>% 
@@ -109,7 +109,7 @@ cat("\n****************************\n")
 # Context
 print_cat_items(fbpi_context, "low", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-fb_ca_low <- readPNG(paste0(fact_box_dir, grep(".*ca_low.*", fact_box_imgs, value = TRUE)))
+fb_ca_low <- readPNG(paste0(fact_box_dir, grep(".*ca_.*_low.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_ca_low)
 # Question
 print_cat_items(questions, "ca", "item", "print") %>% 
@@ -127,7 +127,7 @@ cat(remove_placeholders(responses_pic[["ss"]], "item"))
 print_cat_items(nppi_context, "ca_low", "item", "print") %>% 
   asterik_name_remover() %>% cat()
 # Image
-np_ca_low <- readPNG(paste0(new_paradigm_dir, grep(".*ca_low.*", new_paradigm_imgs, value = TRUE)))
+np_ca_low <- readPNG(paste0(new_paradigm_dir, grep(".*ca_.*_low.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_ca_low)
 # Question
 print_cat_items(questions, "ca", "item", "print") %>% 
@@ -144,7 +144,7 @@ cat("\n****************************\n")
 print_cat_items(nppi_context, "ca_low", "item", "print") %>% 
   asterik_name_remover() %>% cat()
 # Image
-np_ca_low <- readPNG(paste0(new_paradigm_dir, grep(".*ca_low.*", new_paradigm_imgs, value = TRUE)))
+np_ca_low <- readPNG(paste0(new_paradigm_dir, grep(".*ca_.*_low.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_ca_low)
 # Question
 print_cat_items(questions, "ca", "item", "print") %>% 
@@ -161,7 +161,7 @@ cat("\n****************************\n")
 print_cat_items(nppi_context, "ca_low", "item", "print") %>% 
   asterik_name_remover() %>% cat()
 # Image
-np_ca_low <- readPNG(paste0(new_paradigm_dir, grep(".*ca_low.*", new_paradigm_imgs, value = TRUE)))
+np_ca_low <- readPNG(paste0(new_paradigm_dir, grep(".*ca_.*_low.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_ca_low)
 # Question
 print_cat_items(questions, "ca", "item", "print") %>% 
@@ -178,7 +178,7 @@ cat("\n****************************\n")
 print_cat_items(nppi_context, "ca_low", "item", "print") %>% 
   asterik_name_remover() %>% cat()
 # Image
-np_ca_low <- readPNG(paste0(new_paradigm_dir, grep(".*ca_low.*", new_paradigm_imgs, value = TRUE)))
+np_ca_low <- readPNG(paste0(new_paradigm_dir, grep(".*ca_.*_low.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_ca_low)
 # Question
 print_cat_items(questions, "ca", "item", "print") %>% 
@@ -223,7 +223,7 @@ print_cat_items(problems_numbered_ordered_responses,"ca_pfab_ppvhigh", "item")
 print_cat_items(fbpi_context, "high", "item", "print") %>% 
   asterik_name_remover() %>% cat()
 # Image
-fb_ca_high <- readPNG(paste0(fact_box_dir, grep(".*ca_high.*", fact_box_imgs, value = TRUE)))
+fb_ca_high <- readPNG(paste0(fact_box_dir, grep(".*ca_.*_high.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_ca_high)
 # Question
 print_cat_items(questions, "ca", "item", "print") %>% 
@@ -240,7 +240,7 @@ cat("\n****************************\n")
 print_cat_items(fbpi_context, "high", "item", "print") %>% 
   asterik_name_remover() %>% cat()
 # Image
-fb_ca_high <- readPNG(paste0(fact_box_dir, grep(".*ca_high.*", fact_box_imgs, value = TRUE)))
+fb_ca_high <- readPNG(paste0(fact_box_dir, grep(".*ca_.*_high.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_ca_high)
 # Question
 print_cat_items(questions, "ca", "item", "print") %>% 
@@ -256,7 +256,7 @@ cat("\n****************************\n")
 # Context
 print_cat_items(fbpi_context, "high", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-fb_ca_high <- readPNG(paste0(fact_box_dir, grep(".*ca_high.*", fact_box_imgs, value = TRUE)))
+fb_ca_high <- readPNG(paste0(fact_box_dir, grep(".*ca_.*_high.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_ca_high)
 # Question
 print_cat_items(questions, "ca", "item", "print") %>% asterik_name_remover() %>% cat()
@@ -271,7 +271,7 @@ cat("\n****************************\n")
 # Context
 print_cat_items(fbpi_context, "high", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-fb_ca_high <- readPNG(paste0(fact_box_dir, grep(".*ca_high.*", fact_box_imgs, value = TRUE)))
+fb_ca_high <- readPNG(paste0(fact_box_dir, grep(".*ca_.*_high.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_ca_high)
 # Question
 print_cat_items(questions, "ca", "item", "print") %>% asterik_name_remover() %>% cat()
@@ -288,7 +288,7 @@ cat("\n****************************\n")
 # Context
 print_cat_items(nppi_context, "ca_high", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_high.*", new_paradigm_imgs, value = TRUE)))
+np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_.*_high.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_ca_high)
 # Question
 print_cat_items(questions, "ca", "item", "print") %>% asterik_name_remover() %>% cat()
@@ -303,7 +303,7 @@ cat("\n****************************\n")
 # Context
 print_cat_items(nppi_context, "ca_high", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_high.*", new_paradigm_imgs, value = TRUE)))
+np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_.*_high.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_ca_high)
 # Question
 print_cat_items(questions, "ca", "item", "print") %>% asterik_name_remover() %>% cat()
@@ -318,7 +318,7 @@ cat("\n****************************\n")
 # Context
 print_cat_items(nppi_context, "ca_high", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_high.*", new_paradigm_imgs, value = TRUE)))
+np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_.*_high.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_ca_high)
 # Question
 print_cat_items(questions, "ca", "item", "print") %>% asterik_name_remover() %>% cat()
@@ -333,7 +333,7 @@ cat("\n****************************\n")
 # Context
 print_cat_items(nppi_context, "ca_high", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_high.*", new_paradigm_imgs, value = TRUE)))
+np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_.*_high.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_ca_high)
 # Question
 print_cat_items(questions, "ca", "item", "print") %>% asterik_name_remover() %>% cat()
@@ -376,7 +376,7 @@ print_cat_items(problems_numbered_ordered_responses,"pr_pfab_ppvlow", "item")
 # Context
 print_cat_items(fbpi_context, "low", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-fb_pr_low <- readPNG(paste0(fact_box_dir, grep(".*pr_low.*", fact_box_imgs, value = TRUE)))
+fb_pr_low <- readPNG(paste0(fact_box_dir, grep(".*pr_.*_low.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_pr_low)
 # Question
 print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
@@ -391,7 +391,7 @@ cat("\n****************************\n")
 # Context
 print_cat_items(fbpi_context, "low", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-fb_pr_low <- readPNG(paste0(fact_box_dir, grep(".*pr_low.*", fact_box_imgs, value = TRUE)))
+fb_pr_low <- readPNG(paste0(fact_box_dir, grep(".*pr_.*_low.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_pr_low)
 # Question
 print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
@@ -406,7 +406,7 @@ cat("\n****************************\n")
 # Context
 print_cat_items(fbpi_context, "low", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-fb_pr_low <- readPNG(paste0(fact_box_dir, grep(".*pr_low.*", fact_box_imgs, value = TRUE)))
+fb_pr_low <- readPNG(paste0(fact_box_dir, grep(".*pr_.*_low.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_pr_low)
 # Question
 print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
@@ -421,7 +421,7 @@ cat("\n****************************\n")
 # Context
 print_cat_items(fbpi_context, "low", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-fb_pr_low <- readPNG(paste0(fact_box_dir, grep(".*pr_low.*", fact_box_imgs, value = TRUE)))
+fb_pr_low <- readPNG(paste0(fact_box_dir, grep(".*pr_.*_low.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_pr_low)
 # Question
 print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
@@ -436,7 +436,7 @@ cat(remove_placeholders(responses[[4]], "item"))
 # Context
 print_cat_items(nppi_context, "pr_low", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_low.*", new_paradigm_imgs, value = TRUE)))
+np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_.*_low.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_pr_low)
 # Question
 print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
@@ -451,7 +451,7 @@ cat("\n****************************\n")
 # Context
 print_cat_items(nppi_context, "pr_low", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_low.*", new_paradigm_imgs, value = TRUE)))
+np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_.*_low.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_pr_low)
 # Question
 print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
@@ -466,7 +466,7 @@ cat("\n****************************\n")
 # Context
 print_cat_items(nppi_context, "pr_low", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_low.*", new_paradigm_imgs, value = TRUE)))
+np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_.*_low.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_pr_low)
 # Question
 print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
@@ -481,7 +481,7 @@ cat("\n****************************\n")
 # Context
 print_cat_items(nppi_context, "pr_low", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_low.*", new_paradigm_imgs, value = TRUE)))
+np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_.*_low.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_pr_low)
 # Question
 print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
@@ -523,7 +523,7 @@ print_cat_items(problems_numbered_ordered_responses,"pr_pfab_ppvhigh", "item")
 # Context
 print_cat_items(fbpi_context, "high", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-fb_pr_high <- readPNG(paste0(fact_box_dir, grep(".*pr_high.*", fact_box_imgs, value = TRUE)))
+fb_pr_high <- readPNG(paste0(fact_box_dir, grep(".*pr_.*_high.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_pr_high)
 # Question
 print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
@@ -538,7 +538,7 @@ cat("\n****************************\n")
 # Context
 print_cat_items(fbpi_context, "high", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-fb_pr_high <- readPNG(paste0(fact_box_dir, grep(".*pr_high.*", fact_box_imgs, value = TRUE)))
+fb_pr_high <- readPNG(paste0(fact_box_dir, grep(".*pr_.*_high.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_pr_high)
 # Question
 print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
@@ -553,7 +553,7 @@ cat("\n****************************\n")
 # Context
 print_cat_items(fbpi_context, "high", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-fb_pr_high <- readPNG(paste0(fact_box_dir, grep(".*pr_high.*", fact_box_imgs, value = TRUE)))
+fb_pr_high <- readPNG(paste0(fact_box_dir, grep(".*pr_.*_high.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_pr_high)
 # Question
 print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
@@ -568,7 +568,7 @@ cat("\n****************************\n")
 # Context
 print_cat_items(fbpi_context, "high", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-fb_pr_high <- readPNG(paste0(fact_box_dir, grep(".*pr_high.*", fact_box_imgs, value = TRUE)))
+fb_pr_high <- readPNG(paste0(fact_box_dir, grep(".*pr_.*_high.*", fact_box_imgs, value = TRUE)))
 grid.raster(fb_pr_high)
 # Question
 print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
@@ -583,7 +583,7 @@ cat(remove_placeholders(responses[[4]], "item"))
 # Context
 print_cat_items(nppi_context, "pr_high", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_high.*", new_paradigm_imgs, value = TRUE)))
+np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_.*_high.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_pr_high)
 # Question
 print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
@@ -598,7 +598,7 @@ cat("\n****************************\n")
 # Context
 print_cat_items(nppi_context, "pr_high", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_high.*", new_paradigm_imgs, value = TRUE)))
+np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_.*_high.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_pr_high)
 # Question
 print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
@@ -613,7 +613,7 @@ cat("\n****************************\n")
 # Context
 print_cat_items(nppi_context, "pr_high", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_high.*", new_paradigm_imgs, value = TRUE)))
+np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_.*_high.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_pr_high)
 # Question
 print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
@@ -628,7 +628,7 @@ cat("\n****************************\n")
 # Context
 print_cat_items(nppi_context, "pr_high", "item", "print") %>% asterik_name_remover() %>% cat()
 # Image
-np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_high.*", new_paradigm_imgs, value = TRUE)))
+np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_.*_high.*", new_paradigm_imgs, value = TRUE)))
 grid.raster(np_pr_high)
 # Question
 print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()

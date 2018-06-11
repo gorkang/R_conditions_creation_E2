@@ -141,8 +141,6 @@ source("scripts/followUp_create_export.R")
 
 # Create and export complete trial blocks (PPV + Follow-up) ---------------
 
-source("scripts/html_qualtrics_codes.R")
-
 # screening item
 screening_item_path <- 
   "materials/qualtrics/output/plain_text/screening_items/" 

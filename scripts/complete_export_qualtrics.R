@@ -71,6 +71,10 @@ screening_item <-
               ED_screening_ppv_question, sep = "\n")
 
 # Response types ####
+# TODO: ticket sent to qualtrics. apparently the number of fields is not customizable via txt
+# gs: text entry
+# sg: form (4 fields)
+# ss: form (2 fields)
 resp_type_01 <- 
   paste(qualtrics_codes$question_singlechoice_horizontal,
         " ",

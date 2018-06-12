@@ -82,26 +82,49 @@ resp_type_01 <-
               '<span style="font-size: 16px;">Many<br>(81-100%)</span>', sep = "\n"), sep = "\n")
 
 resp_type_02 <- 
-  paste(qualtrics_codes$question_singlechoice_horizontal,
+  paste(qualtrics_codes$question_textentry,
         " ",
-        qualtrics_codes$question_choices,
-        paste("___%"), sep = "\n")
+        sep = "\n")
+
+# resp_type_02 <- 
+#   paste(qualtrics_codes$question_singlechoice_horizontal,
+#         " ",
+#         qualtrics_codes$question_choices,
+#         paste("___%"), sep = "\n")
 
 resp_type_03 <- 
-  paste(qualtrics_codes$question_singlechoice_horizontal,
+  paste(qualtrics_codes$question_form,
         " ",
-        qualtrics_codes$question_choices,
-        paste("____ women receive a positive ${e://Field/sg_test_result_0} that correctly indicates the presence of ${e://Field/medical_condition_0},",
-              "and ____ women receive a positive ${e://Field/sg_test_result_0} that incorrectly indicates the presence of ${e://Field/medical_condition_0}.",
-              "Therefore, given that the ${e://Field/sg_test_result_0} indicates the signs of ${e://Field/medical_condition_0}, the probability that ${e://Field/sg_person_0} actually has ${e://Field/medical_condition_0} is ____ out of ____", sep = ""),
+        # qualtrics_codes$question_choices,
+        # " ",
+        # " ",
+        # " ",
+        # " ",
         sep = "\n")
 
+# resp_type_03 <- 
+#   paste(qualtrics_codes$question_singlechoice_horizontal,
+#         " ",
+#         qualtrics_codes$question_choices,
+#         paste("____ women receive a positive ${e://Field/sg_test_result_0} that correctly indicates the presence of ${e://Field/medical_condition_0},",
+#               "and ____ women receive a positive ${e://Field/sg_test_result_0} that incorrectly indicates the presence of ${e://Field/medical_condition_0}.",
+#               "Therefore, given that the ${e://Field/sg_test_result_0} indicates the signs of ${e://Field/medical_condition_0}, the probability that ${e://Field/sg_person_0} actually has ${e://Field/medical_condition_0} is ____ out of ____", sep = ""),
+#         sep = "\n")
+
 resp_type_04 <- 
-  paste(qualtrics_codes$question_singlechoice_horizontal,
+  paste(qualtrics_codes$question_form,
         " ",
-        qualtrics_codes$question_choices,
-        paste("___ in every ___"), 
+        # qualtrics_codes$question_choices,
+        # " ",
+        # " ",
         sep = "\n")
+
+# resp_type_04 <- 
+#   paste(qualtrics_codes$question_singlechoice_horizontal,
+#         " ",
+#         qualtrics_codes$question_choices,
+#         paste("___ in every ___"), 
+#         sep = "\n")
 
 # Assemble item with response types
 screening_item_questions <- 

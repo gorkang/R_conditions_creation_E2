@@ -39,6 +39,9 @@ unified_fu_questions <-
         ., 
         paste(unlist(fu_questions), collapse = "\n"), sep = "\n")
 
+# remove linebreak between list elements
+unified_fu_questions %<>% 
+  gsub("(li>)<br>(<li)", "\\1\\2", .)
 
 # Create trial customized follow-up
 trials_no <- 2

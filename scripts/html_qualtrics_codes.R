@@ -32,6 +32,7 @@ qualtrics_codes <- list(
   question_singlechoice_horizontal = "[[Question:MC:SingleAnswer:Horizontal]]",
   question_dropdown = "[[Question:MC:DropDown]]",
   question_textentry = "[[Question:TE]]",
+  question_form = "[[Question:TE:Form]]",
   # Answers
   question_choices = "[[Choices]]",
   # Only text

@@ -174,3 +174,5 @@ f <- function(x,y) {cat(x, sep = "",
 # call annon func
 walk2(.x = screening_blocks, .y = 1:2, .f = f)
 
+# JS codes to give format to response type questions ----------------------
+source("scripts/create_js.R")

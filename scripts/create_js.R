@@ -8,6 +8,22 @@ dir.create("materials/qualtrics/output/plain_text/js_codes", FALSE, TRUE)
 # Get current question ID. for every code. 
 var_qid <- "\n/* Get ID of current question */\nvar qid_01_str = this.questionId;"
 
+
+# GI ----------------------------------------------------------------------
+
+gi                     <- list(reptype_name = "/* GI RESPONSE TYPE */")
+gi$general_description <- "/* Only to remove separator */"
+gi$indication          <- "/* This code has to be pasted on addOnReady section */"
+
+gi$qid                 <- var_qid
+gi$qid_num             <- "\n/* keep ID number */\nvar qid_01_num = Number(qid_01_str.replace(/^\\D+/g, ''));" # extra "\" before "\D" because "\" is a metacharacter.
+gi$rmv_sep             <- "\n/* remove separator (if any) */\ndocument.getElementById('QID' + qid_01_num + 'Separator').style.height='0px';"
+
+# export to txt file
+gi %>% 
+  paste(., collapse = "\n") %>% 
+  cat(., file = "materials/qualtrics/output/plain_text/js_codes/gi_js.txt")
+
 # GS response type --------------------------------------------------------
 gs                     <- list(reptype_name = "/* GS RESPONSE TYPE */")
 gs$general_description <- "/* Use with a text entry question */"

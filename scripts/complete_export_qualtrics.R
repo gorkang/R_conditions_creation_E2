@@ -85,7 +85,7 @@ resp_type_01 <-
               '<span style="font-size: 16px;">Quite<br>(61-80%)</span>',
               '<span style="font-size: 16px;">Many<br>(81-100%)</span>', sep = "\n"), sep = "\n")
 
-resp_type_02 <- 
+resp_type_02 <-
   paste(qualtrics_codes$question_textentry,
         " ",
         sep = "\n")
@@ -97,13 +97,14 @@ resp_type_02 <-
 #         paste("___%"), sep = "\n")
 
 resp_type_03 <- 
-  paste(qualtrics_codes$question_form,
+  paste(qualtrics_codes$question_textentry,
         " ",
-        # qualtrics_codes$question_choices,
-        # " ",
-        # " ",
-        # " ",
-        # " ",
+        qualtrics_codes$question_textentry,
+        " ",
+        qualtrics_codes$question_textentry,
+        " ",
+        qualtrics_codes$question_textentry,
+        " ",
         sep = "\n")
 
 # resp_type_03 <- 
@@ -116,11 +117,10 @@ resp_type_03 <-
 #         sep = "\n")
 
 resp_type_04 <- 
-  paste(qualtrics_codes$question_form,
+  paste(qualtrics_codes$question_textentry,
         " ",
-        # qualtrics_codes$question_choices,
-        # " ",
-        # " ",
+        qualtrics_codes$question_textentry,
+        " ",
         sep = "\n")
 
 # resp_type_04 <- 

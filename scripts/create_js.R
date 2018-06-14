@@ -8,7 +8,7 @@ p_load(tidyverse)
 dir.create("materials/qualtrics/output/plain_text/js_codes", FALSE, TRUE)
 
 # Get current question ID. for every code.  
-var_qid <- "var qid = this.questionId;" 
+var_qid <- "var qid_01_str = this.questionId;" 
 
 # GI ----------------------------------------------------------------------
 

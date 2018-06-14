@@ -7,6 +7,9 @@ p_load(tidyverse)
 # create dir to output codes
 dir.create("materials/qualtrics/output/plain_text/js_codes", FALSE, TRUE)
 
+# Get current question ID. for every code.  
+var_qid <- "var qid = this.questionId;" 
+
 # GI ----------------------------------------------------------------------
 
 gi                     <- list(reptype_name = "/* GI RESPONSE TYPE */")

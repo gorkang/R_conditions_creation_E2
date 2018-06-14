@@ -8,7 +8,6 @@ source("functions/remove_placeholders.R")
 source("functions/create_ED_blocks.R")
 
 # Create pictorial prevalences --------------------------------------------
-
 source("scripts/create_pictorial_prevalences.R")
 
 # Create pictorial items (links to imgs) ----------------------------------
@@ -71,10 +70,11 @@ screening_item <-
               ED_screening_ppv_question, sep = "\n")
 
 # Response types ####
-# TODO: ticket sent to qualtrics. apparently the number of fields is not customizable via txt
 # gs: text entry
-# sg: form (4 fields)
-# ss: form (2 fields)
+# sg: 4 text entry
+# ss: 2 text entry
+
+# Global intuitive (single choice)
 resp_type_01 <- 
   paste(qualtrics_codes$question_singlechoice_horizontal,
         " ",
@@ -84,18 +84,12 @@ resp_type_01 <-
               '<span style="font-size: 16px;">Half<br>(41-60%)</span>',
               '<span style="font-size: 16px;">Quite<br>(61-80%)</span>',
               '<span style="font-size: 16px;">Many<br>(81-100%)</span>', sep = "\n"), sep = "\n")
-
+# Sistemic global (__%)
 resp_type_02 <-
   paste(qualtrics_codes$question_textentry,
         " ",
         sep = "\n")
-
-# resp_type_02 <- 
-#   paste(qualtrics_codes$question_singlechoice_horizontal,
-#         " ",
-#         qualtrics_codes$question_choices,
-#         paste("___%"), sep = "\n")
-
+# sequential guided (__ will have out of __. __ will ...)
 resp_type_03 <- 
   paste(qualtrics_codes$question_textentry,
         " ",
@@ -106,29 +100,13 @@ resp_type_03 <-
         qualtrics_codes$question_textentry,
         " ",
         sep = "\n")
-
-# resp_type_03 <- 
-#   paste(qualtrics_codes$question_singlechoice_horizontal,
-#         " ",
-#         qualtrics_codes$question_choices,
-#         paste("____ women receive a positive ${e://Field/sg_test_result_0} that correctly indicates the presence of ${e://Field/medical_condition_0},",
-#               "and ____ women receive a positive ${e://Field/sg_test_result_0} that incorrectly indicates the presence of ${e://Field/medical_condition_0}.",
-#               "Therefore, given that the ${e://Field/sg_test_result_0} indicates the signs of ${e://Field/medical_condition_0}, the probability that ${e://Field/sg_person_0} actually has ${e://Field/medical_condition_0} is ____ out of ____", sep = ""),
-#         sep = "\n")
-
+# sequential simple (__ out of __)
 resp_type_04 <- 
   paste(qualtrics_codes$question_textentry,
         " ",
         qualtrics_codes$question_textentry,
         " ",
         sep = "\n")
-
-# resp_type_04 <- 
-#   paste(qualtrics_codes$question_singlechoice_horizontal,
-#         " ",
-#         qualtrics_codes$question_choices,
-#         paste("___ in every ___"), 
-#         sep = "\n")
 
 # Assemble item with response types
 screening_item_questions <- 

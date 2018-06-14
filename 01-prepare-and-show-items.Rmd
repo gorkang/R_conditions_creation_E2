@@ -666,8 +666,6 @@ invisible(lapply(scales_questions, lapply, cat))
 # Item export
 
 ```{r}
-# TODO: html codes to insert images are not allowed on ED. if an asci tag is used it will be interpreted after ED fields calls. Can it be used with images? YASS
-# TODO: remove ppv question from ED blocks and put it on trial block (with display logic). remember to put text between "" when if ED is equal to. 
 source("scripts/complete_export_qualtrics.R")
 ```
 

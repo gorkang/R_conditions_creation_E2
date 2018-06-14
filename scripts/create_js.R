@@ -35,8 +35,8 @@ gs$qid_num             <- "\n/* keep ID number */\nvar qid_01_num = Number(qid_0
 gs$rmv_sep             <- "\n/* remove separator (if any) */\ndocument.getElementById('QID' + qid_01_num + 'Separator').style.height='0px';"
 
 
-set01 <- html_codes$question_font_size %>% gsub("QUESTION_TEXT_TO_FORMAT", " % ", .) # add html format
-gs$set01               <- paste0("\n/* modify text entry field */\n$('QR~' + qid_01_str).insert({after: '", set01, "'});")
+set01_text <- html_codes$question_font_size %>% gsub("QUESTION_TEXT_TO_FORMAT", " % ", .) # add html format
+gs$set01               <- paste0("\n/* modify text entry field */\n$('QR~' + qid_01_str).insert({after: '", set01_text, "'});")
 
 # export to txt file
 gs %>% 
@@ -70,59 +70,53 @@ sg$set_description_01 <- "\n/* arrange text entry 1 and 2. add text between them
 sg$set_01 <- "$('QR~QID' + qid_01_num).insert({after: $('QR~QID' + qid_02_num)});"
 
 
-# add html font size
-sg_txt_html <- 
-  c('  women receive a ',
-    ' that correctly indicates the presence of ',
-    ', and ',
-    ' that incorrectly indicates the presence of ',
-    '. Therefore, given that the ',
-    ' indicates the signs of ',
-    ', the probability that ',
-    ' actually has ',
-    ' is ',
-    ' out of ',
-    '.') %>% 
-  map(~gsub("QUESTION_TEXT_TO_FORMAT", .x, html_codes$question_font_size)) %>% 
-  unlist()
+# # # add html font size
+# # sg_txt_html <- 
+# #   c('  women receive a ',
+# #     ' that correctly indicates the presence of ',
+# #     ', and ',
+# #     ' that incorrectly indicates the presence of ',
+# #     '. Therefore, given that the ',
+# #     ' indicates the signs of ',
+# #     ', the probability that ',
+# #     ' actually has ',
+# #     ' is ',
+# #     ' out of ',
+# #     '.') %>% 
+# #   map(~gsub("QUESTION_TEXT_TO_FORMAT", .x, html_codes$question_font_size)) %>% 
+#   unlist()
 
+
+set02_text <- 
+  "'<span style=\"font-size:22px;\"> women receive a ' + positive_test_result_01 + ' that correctly indicates the presence of ' + medical_condition_01 + ', and </span>'"
 sg$set_02 <- 
-  paste0("$('QR~QID' + qid_02_num).insert({before: '",
-         sg_txt_html[1], #'  women receive a '
-         " + positive_test_result_01 + ",
-         sg_txt_html[2], #' that correctly indicates the presence of ',
-         " + medical_condition_01 + ",
-         sg_txt_html[3], #', and ',
+  paste0("$('QR~QID' + qid_02_num).insert({before: ",
+         set02_text, #', and ',
          "});")
 
 sg$set_description_02 <- "\n/* arrange text entry 2 and 3. add text between them */"
 sg$set_03 <- "$('QR~QID' + qid_02_num).insert({after: $('QR~QID' + qid_03_num)});"
+
+set_04_text <- 
+  "'<span style=\"font-size:22px;\">  women receive a ' + positive_test_result_01 + ' that incorrectly indicates the presence of ' + medical_condition_01 +'. Therefore, given that the ' + positive_test_result_01 + ' indicates the signs of ' + medical_condition_01 + ', the probability that ' + sg_person_01 + ' actually has ' + medical_condition_01 + ' is </span>'"
 sg$set_04 <- 
-  paste0("$('QR~QID' + qid_03_num).insert({before: '",
-         sg_txt_html[1], #'  women receive a ',
-         "+ positive_test_result_01 + ",
-         sg_txt_html[4], #' that incorrectly indicates the presence of ',
-         "+ medical_condition_01 +",
-         sg_txt_html[5], #"'. Therefore, given that the ',"
-         "+ positive_test_result_01 + ",
-         sg_txt_html[6], #' indicates the signs of ',
-         "+ medical_condition_01 + ",
-         sg_txt_html[7], #', the probability that ',
-         "+ sg_person_01 + ",
-         sg_txt_html[8], #' actually has ',
-         "+ medical_condition_01 + ",
-         sg_txt_html[9], #' is ' 
-         "'};")
+  paste0("$('QR~QID' + qid_03_num).insert({before: ",
+         set_04_text,
+         "});")
 
 sg$set_description_03 <- "\n/* arrange text entry 3 and 4. add text between them and at the end */"
 sg$set_05 <- "$('QR~QID' + qid_03_num).insert({after: $('QR~QID' + qid_04_num)});"
 
+set_06_text <- 
+  "'<span style=\"font-size:22px;\"> out of </span>'"
 sg$set_06 <- 
-  paste0("$('QR~QID' + qid_04_num).insert({before: '", 
-         sg_txt_html[10], "'});")
+  paste0("$('QR~QID' + qid_04_num).insert({before: ", 
+         set_06_text, "});")
+set_07_text <- 
+  "'<span style=\"font-size:22px;\">.</span>'"
 sg$set_07 <- 
-  paste0("$('QR~QID' + qid_04_num).insert({after: '", 
-         sg_txt_html[11], "'});")
+  paste0("$('QR~QID' + qid_04_num).insert({after: ", 
+         set_07_text, "});")
 
 # export to txt file
 sg %>% 

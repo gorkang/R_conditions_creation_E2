@@ -6,6 +6,7 @@ Remember that:
 [followUp_first_piece]
 Imagine a woman you care about is participating in a routine screening as the one you saw before to detect ${e://Field/medical_condition}, and receives a positive ${e://Field/medical_test}.
 
+
 [followUp_second_piece]
 The doctor offers her a follow-up test ${e://Field/doctor_offers}, necessary to confirm the diagnosis. During the procedure, a needle is inserted to sample ${e://Field/fluid_test}.
 

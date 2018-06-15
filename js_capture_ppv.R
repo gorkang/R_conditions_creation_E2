@@ -3,8 +3,8 @@
 get_other_questions_ID_num <- function(other_questions) {
   # Receives a number indicating how many questions (other than the first) have to be created.
   # Outputs a chr vector
-  seq(other_questions) %>% 
-    map_chr(~paste0("var qid_0", .x+1, "_num = qid_0", .x, "_num + ", .x, ";")) %>% 
+  other_questions %>% 
+    map_chr(~paste0("var qid_0", .x+1, "_num = qid_01_num + ", .x, ";")) %>% 
     paste(., collapse = "\n")
 }
 # 

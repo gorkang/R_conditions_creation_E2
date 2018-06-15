@@ -59,7 +59,10 @@ gi_create_ppv_response <-
     var ppv_response_01 = 'many (81-100%)';
 }"
 
-# block
+gs_create_ppv_response <- 
+  "\n/* Create PPV response */\nvar ppv_response_01 = currentResponse_01 + '%';\n/* console.log('ppv response is: ' + ppv_response_01); */"
+
+# ss
 other_questions <- 1
 
 paste(gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),

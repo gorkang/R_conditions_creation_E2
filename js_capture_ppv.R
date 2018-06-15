@@ -77,5 +77,5 @@ paste(gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
       sep = "\n") %>% 
   gsub("\n", "\n   ", .) %>% 
   gsub("REPLACE_THIS", ., page_submit) %>%
-  cat(., file = "materials/qualtrics/output (2)/plain_text/js_codes/ss_capture_ppv.txt")
+  cat(., file = "materials/qualtrics/output/plain_text/js_codes/ss_capture_ppv.txt")
 

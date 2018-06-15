@@ -117,3 +117,19 @@ paste(gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
   gsub("\n", "\n   ", .) %>% 
   gsub("REPLACE_THIS", ., page_submit) %>%
   cat(., file = "materials/qualtrics/output/plain_text/js_codes/sg_capture_ppv.txt")
+
+# gs
+paste(gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
+      get_id,
+      gsub("REPLACE_THIS", "Get questions IDs (e.g. 10, 11, 12, etc.)", commented),
+      get_id_num,
+      gsub("REPLACE_THIS", "'Question is: QR~' + qid_01_str", consolelog),
+      gsub("REPLACE_THIS", "Save current question input response", commented),
+      get_response,
+      get_captured_resp_consolelog(other_questions),
+      gs_create_ppv_response,
+      assign_ppv_to_ED,
+      sep = "\n") %>% 
+  gsub("\n", "\n   ", .) %>% 
+  gsub("REPLACE_THIS", ., page_submit) %>%
+  cat(., file = "materials/qualtrics/output/plain_text/js_codes/gs_capture_ppv.txt")

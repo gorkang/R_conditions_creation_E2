@@ -44,6 +44,20 @@ ss_create_ppv_response <-
   "\n/* Create PPV response */\nvar ppv_response_01 = currentResponse_01 + ' out of ' + currentResponse_02;\n/* console.log('ppv response is: ' + ppv_response_01); */"
 assign_ppv_to_ED <- 
   "\n/* If ED exists, assign value to it. If does not exists, create it with indicated value */\nQualtrics.SurveyEngine.setEmbeddedData('ppv_response_01', ppv_response_01)"
+get_selected_choice <- 
+  "var selectedChoice = this.getSelectedChoices()"
+gi_create_ppv_response <- 
+  "if (selectedChoice == 1) {
+    var ppv_response_01 = 'very few (0-20%)';
+  } else if (selectedChoice == 2) {
+    var ppv_response_01 = 'few (21-40%)';
+  } else if (selectedChoice == 3) {
+    var ppv_response_01 = 'half (41-60%)';
+  } else if (selectedChoice == 4) {
+    var ppv_response_01 = 'quite (61-80%)';
+  } else if (selectedChoice == 5) {
+    var ppv_response_01 = 'many (81-100%)';
+}"
 
 # block
 other_questions <- 1

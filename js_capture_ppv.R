@@ -79,3 +79,18 @@ paste(gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
   gsub("REPLACE_THIS", ., page_submit) %>%
   cat(., file = "materials/qualtrics/output/plain_text/js_codes/ss_capture_ppv.txt")
 
+# gi
+paste(
+  gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
+  get_id,
+  gsub("REPLACE_THIS", "Get selected choice index (e.g. 1, 2, 3, etc.)", commented),
+  get_selected_choice,
+  gsub("REPLACE_THIS", "Convert selected choice index to text to pipe into follow-up item", commented),
+  gi_create_ppv_response,
+  paste0(gsub("REPLACE_THIS", "Check PPV response created", commented),
+         gsub("REPLACE_THIS", "'Captured answer is: ' + ppv_response_01", consolelog)),
+  assign_ppv_to_ED
+  , sep = "\n") %>% 
+  gsub("\n", "\n   ", .) %>% 
+  gsub("REPLACE_THIS", ., page_submit) %>% 
+  cat(., file = "materials/qualtrics/output/plain_text/js_codes/gi_capture_ppv.txt")

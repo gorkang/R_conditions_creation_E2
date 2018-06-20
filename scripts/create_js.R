@@ -188,7 +188,8 @@ paste(gsub("REPLACE_THIS", "SS RESPONSE TYPE", commented),
 # SS capture PPV response -------------------------------------------------
 other_questions <- 1
 
-paste(gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
+paste(gsub("REPLACE_THIS", "SS RESPONSE TYPE", commented),
+      gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
       get_id,
       gsub("REPLACE_THIS", "Get questions IDs (e.g. 10, 11, 12, etc.)", commented),
       get_id_num,
@@ -207,6 +208,7 @@ paste(gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
 
 # GI capture PPV response -------------------------------------------------
 paste(
+  gsub("REPLACE_THIS", "GI RESPONSE TYPE", commented),
   gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
   get_id,
   gsub("REPLACE_THIS", "Get selected choice index (e.g. 1, 2, 3, etc.)", commented),
@@ -223,7 +225,8 @@ paste(
 # SG capture PPV response -------------------------------------------------
 other_questions <- 2:3
 
-paste(gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
+paste(gsub("REPLACE_THIS", "SG RESPONSE TYPE", commented),
+      gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
       get_id,
       gsub("REPLACE_THIS", "Get questions IDs (e.g. 10, 11, 12, etc.)", commented),
       get_id_num,
@@ -241,7 +244,8 @@ paste(gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
   cat(., file = file.path(js_output_dir, "sg_capture_ppv.txt"))
 
 # GS capture PPV response -------------------------------------------------
-paste(gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
+paste(gsub("REPLACE_THIS", "GS RESPONSE TYPE", commented),
+      gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
       get_id,
       gsub("REPLACE_THIS", "Get questions IDs (e.g. 10, 11, 12, etc.)", commented),
       get_id_num,

@@ -4,7 +4,7 @@ p_load(tidyverse, magrittr)
 
 # create dir to output codes
 js_output_dir <- 
-  "materials/qualtrics/output/plain_text/js_codes" %T>% 
+  "materials/qualtrics/output/plain_text/js_codes/partial" %T>% 
   dir.create(., FALSE, TRUE)
 
 # Functions ---------------------------------------------------------------
@@ -105,7 +105,7 @@ paste(gsub("REPLACE_THIS", "GI RESPONSE TYPE", commented),
       remove_separators(1), sep = "\n") %>% 
   gsub("\n", "\n   ", .) %>% 
   gsub("REPLACE_THIS", ., addOn_ready_default_js) %>% 
-  cat(., file = "materials/qualtrics/output/plain_text/js_codes/gi_resp_type.txt")
+  cat(., file = file.path(js_output_dir, "gi_resp_type.txt"))
 
 # GS response type --------------------------------------------------------
 
@@ -124,7 +124,7 @@ paste(gsub("REPLACE_THIS", "GS RESPONSE TYPE", commented),
       sep = "\n") %>% 
   gsub("\n", "\n   ", .) %>% 
   gsub("REPLACE_THIS", ., addOn_ready_default_js) %>% 
-  cat(., file = "materials/qualtrics/output/plain_text/js_codes/gs_resp_type.txt")
+  cat(., file = file.path(js_output_dir, "gs_resp_type.txt"))
 
 # SG response type --------------------------------------------------------
 other_questions <- 1:3
@@ -160,7 +160,7 @@ paste(gsub("REPLACE_THIS", "SG RESPONSE TYPE", commented),
       sep = "\n") %>% 
   gsub("\n", "\n   ", .) %>%
   gsub("REPLACE_THIS", ., addOn_ready_default_js) %>% 
-  cat(., file = "materials/qualtrics/output/plain_text/js_codes/sg_resp_type.txt")
+  cat(., file = file.path(js_output_dir, "sg_resp_type.txt"))
 
 # SS response type -------------------------------------------------------
 
@@ -180,7 +180,7 @@ paste(gsub("REPLACE_THIS", "SS RESPONSE TYPE", commented),
       sep = "\n") %>% 
   gsub("\n", "\n   ", .) %>% 
   gsub("REPLACE_THIS", ., addOn_ready_default_js) %>% 
-  cat(.,file = "materials/qualtrics/output/plain_text/js_codes/ss_resp_type.txt")
+  cat(., file = file.path(js_output_dir, "ss_resp_type.txt"))
 
 
 # Capture PPV responses ---------------------------------------------------
@@ -203,7 +203,7 @@ paste(gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
       sep = "\n") %>% 
   gsub("\n", "\n   ", .) %>% 
   gsub("REPLACE_THIS", ., page_submit) %>%
-  cat(., file = "materials/qualtrics/output/plain_text/js_codes/ss_capture_ppv.txt")
+  cat(., file = file.path(js_output_dir, "ss_capture_ppv.txt"))
 
 # GI capture PPV response -------------------------------------------------
 paste(
@@ -219,8 +219,7 @@ paste(
   , sep = "\n") %>% 
   gsub("\n", "\n   ", .) %>% 
   gsub("REPLACE_THIS", ., page_submit) %>% 
-  cat(., file = "materials/qualtrics/output/plain_text/js_codes/gi_capture_ppv.txt")
-
+  cat(., file = file.path(js_output_dir, "gi_capture_ppv.txt"))
 # SG capture PPV response -------------------------------------------------
 other_questions <- 2:3
 
@@ -239,7 +238,7 @@ paste(gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
       sep = "\n") %>%
   gsub("\n", "\n   ", .) %>% 
   gsub("REPLACE_THIS", ., page_submit) %>%
-  cat(., file = "materials/qualtrics/output/plain_text/js_codes/sg_capture_ppv.txt")
+  cat(., file = file.path(js_output_dir, "sg_capture_ppv.txt"))
 
 # GS capture PPV response -------------------------------------------------
 paste(gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
@@ -255,6 +254,6 @@ paste(gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
       sep = "\n") %>% 
   gsub("\n", "\n   ", .) %>% 
   gsub("REPLACE_THIS", ., page_submit) %>%
-  cat(., file = "materials/qualtrics/output/plain_text/js_codes/gs_capture_ppv.txt")
+  cat(., file = file.path(js_output_dir, "gs_capture_ppv.txt"))
 
 

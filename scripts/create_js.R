@@ -1,135 +1,290 @@
 # Packages
 if (!require('pacman')) install.packages('pacman'); library('pacman')
-p_load(tidyverse)
+p_load(tidyverse, magrittr)
 
 # create dir to output codes
-dir.create("materials/qualtrics/output/plain_text/js_codes", FALSE, TRUE)
+js_output_dir <- 
+  "materials/qualtrics/output/plain_text/js_codes/partial" %T>% 
+  dir.create(., FALSE, TRUE)
 
+# Functions ---------------------------------------------------------------
+
+# GET OTHER QUESTIONS ID: feed a number to create other questions numeric ID. the lines of code generated work only if the first numeric ID was generated previously.
+get_other_questions_ID_num <- function(other_questions) {
+  # Receives a number indicating how many questions (other than the first) have to be created.
+  # Outputs a chr vector
+  other_questions %>% 
+    map_chr(~paste0("var qid_0", .x+1, "_num = qid_01_num + ", .x, ";")) %>% 
+    paste(., collapse = "\n")
+}
+# GET OTHER QUESTIONS RESPONSES: feed a number to capture responses (text-entry) of other questions. It is not necessary to capture the first question response previously.
+get_other_questions_responses <- function(other_questions) {
+  # Receives a number indicating how many responses (other than the first) have to be captured
+  # Outputs a chr vector
+  seq(other_questions) %>% 
+    map_chr(~paste0(
+      "var responseTextField_0", 
+      .x+1, " = document.getElementById('QR~QID' + qid_0", 
+      .x+1, "_num);\nvar currentResponse_0", 
+      .x+1, " = responseTextField_0", .x+1, ".value;")) %>% 
+    paste(., collapse = "\n")
+}
+# GET CAPTURED RESPONSES CONSOLE LOG: create console log calls to display captured responses.
+get_captured_resp_consolelog <- function(all_questions) {
+  # Receives a number indicating how many console logs have to be created to display captured responses (including the first).
+  # Outputs a chr vector
+  seq(all_questions) %>% 
+    map_chr(~paste0("/* console.log('Captured text entry response ", .x, " is: ' + currentResponse_0", .x, ") */")) %>% 
+    paste(., collapse = "\n")
+}
+# REMOVE SEPARATORS: create lines to remove the number of separators feeded. It is necessary to previously create the numeric ID of the questions to remove their separators.
+remove_separators <- function(all_questions) {
+  # Receives a number indicating how many console logs have to be created to display captured responses (including the first).
+  # Outputs a chr vector
+  seq(all_questions) %>% 
+    map_chr(~paste0("document.getElementById('QID' + qid_0", .x, "_num + 'Separator').style.height='0px';")) %>% 
+    paste(., collapse = "\n")
+}
+
+# Templates ---------------------------------------------------------------
 # Get current question ID. for every code.  
 var_qid <- "var qid_01_str = this.questionId;" 
+# General
+page_submit <- 
+  "Qualtrics.SurveyEngine.addOnPageSubmit(function()\n{\n\nREPLACE_THIS\n\n});"
+commented <- 
+  "\n/* REPLACE_THIS */"
+get_id <- 
+  "var qid_01_str = this.questionId;"
+get_id_num <- 
+  "var qid_01_num = Number(qid_01_str.replace(/^\\\\D+/g, ''));" # extra / because it's a metacharacter
+consolelog <- # by default console logs are commented
+  "\n/* console.log(REPLACE_THIS) */"
+get_response <- 
+  "var responseTextField_01 = document.getElementById('QR~QID' + qid_01_num);\nvar currentResponse_01 = responseTextField_01.value;"
+assign_ppv_to_ED <- 
+  "\n/* If ED exists, assign value to it. If does not exists, create it with indicated value */\nQualtrics.SurveyEngine.setEmbeddedData('ppv_response_01', ppv_response_01)"
+# Get responses
+get_selected_choice <- 
+  "var selectedChoice = this.getSelectedChoices()"
+ss_create_ppv_response <- 
+  "\n/* Create PPV response */\nvar ppv_response_01 = currentResponse_01 + ' out of ' + currentResponse_02;\n/* console.log('ppv response is: ' + ppv_response_01); */"
+gi_create_ppv_response <- 
+  "if (selectedChoice == 1) {
+    var ppv_response_01 = 'very few (0-20%)';
+  } else if (selectedChoice == 2) {
+    var ppv_response_01 = 'few (21-40%)';
+  } else if (selectedChoice == 3) {
+    var ppv_response_01 = 'half (41-60%)';
+  } else if (selectedChoice == 4) {
+    var ppv_response_01 = 'quite (61-80%)';
+  } else if (selectedChoice == 5) {
+    var ppv_response_01 = 'many (81-100%)';
+}"
+gs_create_ppv_response <- 
+  "\n/* Create PPV response */\nvar ppv_response_01 = currentResponse_01 + '%';\n/* console.log('ppv response is: ' + ppv_response_01); */"
 
-# GI ----------------------------------------------------------------------
-# COMMENTS
-gi                     <- list(reptype_name = "/* GI RESPONSE TYPE */")
-gi$general_description <- "/* Only to remove separator */"
-gi$indication          <- "/* This code has to be pasted on addOnReady section */"
-# CURRENT ID
-gi$qid                 <- var_qid
-gi$qid_num             <- "\n/* keep ID number */\nvar qid_01_num = Number(qid_01_str.replace(/^\\D+/g, ''));" # extra "\" before "\D" because "\" is a metacharacter.
-# REMOVE SEPARATORS
-gi$rmv_sep             <- "\n/* remove separator (if any) */\ndocument.getElementById('QID' + qid_01_num + 'Separator').style.height='0px';"
+# Qualtrics JS templates
+addOn_ready <- 
+  "Qualtrics.SurveyEngine.addOnReady(function()\n{\n\nREPLACE_THIS\n\n});"
+addOn_ready_default_js <- 
+  "Qualtrics.SurveyEngine.addOnload(function()\n{\n	/*Place your JavaScript here to run when the page loads*/\n\n});\n\nQualtrics.SurveyEngine.addOnReady(function()\n{\n	/*Place your JavaScript here to run when the page is fully displayed*/\n\nREPLACE_THIS\n\n});\n\nQualtrics.SurveyEngine.addOnUnload(function()\n{\n	/*Place your JavaScript here to run when the page is unloaded*/\n\n});\n"
 
-# export to txt file
-gi %>% 
-  paste(., collapse = "\n") %>% 
-  cat(., file = "materials/qualtrics/output/plain_text/js_codes/gi_js.txt")
+
+# Give format according to response type ----------------------------------
+
+# GI response type ----------------------------------------------------------------------
+
+paste(gsub("REPLACE_THIS", "GI RESPONSE TYPE", commented),
+      gsub("REPLACE_THIS", "this script chunk only removes a question separator", commented),
+      gsub("REPLACE_THIS", "get question ID", commented),
+      var_qid,
+      gsub("REPLACE_THIS", "Get questions IDs (e.g. 10, 11, 12, etc.)", commented),
+      get_id_num,
+      gsub("REPLACE_THIS", "remove separator(s) if any", commented), 
+      remove_separators(1), sep = "\n") %>% 
+  gsub("\n", "\n   ", .) %>% 
+  gsub("REPLACE_THIS", ., addOn_ready_default_js) %>% 
+  cat(., file = file.path(js_output_dir, "gi_resp_type.txt"))
 
 # GS response type --------------------------------------------------------
-# COMMENTS
-gs                     <- list(reptype_name = "/* GS RESPONSE TYPE */")
-gs$general_description <- "/* Use with a text entry question */"
-gs$indication          <- "/* This code has to be pasted on addOnReady section */"
-# CURRENT ID
-gs$qid                 <- var_qid
-gs$qid_num             <- "\n/* keep ID number */\nvar qid_01_num = Number(qid_01_str.replace(/^\\D+/g, ''));" # extra "\" before "\D" because "\" is a metacharacter.
-# REMOVE SEPARATORS
-gs$rmv_sep             <- "\n/* remove separator (if any) */\ndocument.getElementById('QID' + qid_01_num + 'Separator').style.height='0px';"
-# MOVE TEXT ENRIES
-set01_text <- html_codes$question_font_size %>% gsub("QUESTION_TEXT_TO_FORMAT", " % ", .) # add html format
-gs$set01               <- paste0("\n/* modify text entry field */\n$('QR~' + qid_01_str).insert({after: '", set01_text, "'});")
 
-# export to txt file
-gs %>% 
-  paste(., collapse = "\n") %>% 
-  cat(., file = "materials/qualtrics/output/plain_text/js_codes/gs_js.txt")
+paste(gsub("REPLACE_THIS", "GS RESPONSE TYPE", commented),
+      gsub("REPLACE_THIS", "give format to text entries and remove question separators", commented),
+      gsub("REPLACE_THIS", "get question ID", commented),
+      var_qid,
+      gsub("REPLACE_THIS", "Get questions IDs (e.g. 10, 11, 12, etc.)", commented),
+      get_id_num,
+      gsub("REPLACE_THIS", "remove separator(s) if any", commented), 
+      remove_separators(1),
+      gsub("REPLACE_THIS", "add '%' after number", commented), 
+      html_codes$question_font_size %>% 
+        gsub("QUESTION_TEXT_TO_FORMAT", " % ", .) %>% 
+        paste0("\n/* modify text entry field */\n$('QR~' + qid_01_str).insert({after: '", ., "'});"),
+      sep = "\n") %>% 
+  gsub("\n", "\n   ", .) %>% 
+  gsub("REPLACE_THIS", ., addOn_ready_default_js) %>% 
+  cat(., file = file.path(js_output_dir, "gs_resp_type.txt"))
 
 # SG response type --------------------------------------------------------
-# COMMENTS
-sg                     <- list(reptype_name = "/* SG RESPONSE TYPE */")
-sg$general_description <- "/* Use with 4 consecutive text entry questions */"
-sg$indication          <- "/* This code has to be pasted on addOnReady section */"
-# CURRENT ID
-sg$qid                 <- var_qid
-sg$qid_num             <- "\n/* keep ID number */\nvar qid_01_num = Number(qid_01_str.replace(/^\\D+/g, ''));" # extra "\" before "\D" because "\" is a metacharacter.
-# CREATE OTHER QUESTIONS ID
-sg$qid_num_02          <- "var qid_02_num = qid_01_num + 1;"
-sg$qid_num_03          <- "var qid_03_num = qid_01_num + 2;"
-sg$qid_num_04          <- "var qid_04_num = qid_01_num + 3;"
-# REMOVE SEPARATORS
-sg$rmv_sep_description <- "\n/* remove separator of moved questions */"
-sg$rmv_sep_01 <- "document.getElementById('QID' + qid_01_num + 'Separator').style.height='0px';"
-sg$rmv_sep_02 <- "document.getElementById('QID' + qid_02_num + 'Separator').style.height='0px';"
-sg$rmv_sep_03 <- "document.getElementById('QID' + qid_03_num + 'Separator').style.height='0px';"
-sg$rmv_sep_04 <- "document.getElementById('QID' + qid_04_num + 'Separator').style.height='0px';"
-# READ ED VALUES
-sg$ed_read_description <- "\n/* read embedded data fields to fill text */"
-sg$ed_read_01 <- "var positive_test_result_01 = '${e://Field/positive_test_result_01}';"
-sg$ed_read_02 <- "var medical_condition_01 =  '${e://Field/medical_condition_01}';"
-sg$ed_read_03 <- "var sg_person_01 =  '${e://Field/sg_person_01}';"
-# MOVE TEXT ENRIES
-sg$set_description_01 <- "\n/* arrange text entry 1 and 2. add text between them */"
-sg$set_01 <- "$('QR~QID' + qid_01_num).insert({after: $('QR~QID' + qid_02_num)});"
+other_questions <- 1:3
 
-set02_text <- 
-  "'<span style=\"font-size:22px;\"> women receive a ' + positive_test_result_01 + ' that correctly indicates the presence of ' + medical_condition_01 + ', and </span>'"
-sg$set_02 <- 
-  paste0("$('QR~QID' + qid_02_num).insert({before: ",
-         set02_text, #', and ',
-         "});")
-
-sg$set_description_02            <- "\n/* arrange text entry 2 and 3. add text between them */"
-sg$set_03                        <- "$('QR~QID' + qid_02_num).insert({after: $('QR~QID' + qid_03_num)});"
-
-set_04_text <- 
-  "'<span style=\"font-size:22px;\">  women receive a ' + positive_test_result_01 + ' that incorrectly indicates the presence of ' + medical_condition_01 +'. Therefore, given that the ' + positive_test_result_01 + ' indicates the signs of ' + medical_condition_01 + ', the probability that ' + sg_person_01 + ' actually has ' + medical_condition_01 + ' is </span>'"
-sg$set_04 <- 
-  paste0("$('QR~QID' + qid_03_num).insert({before: ",
-         set_04_text,
-         "});")
-
-sg$set_description_03            <- "\n/* arrange text entry 3 and 4. add text between them and at the end */"
-sg$set_05                        <- "$('QR~QID' + qid_03_num).insert({after: $('QR~QID' + qid_04_num)});"
-
-set_06_text <- 
-  "'<span style=\"font-size:22px;\"> out of </span>'"
-sg$set_06 <- 
-  paste0("$('QR~QID' + qid_04_num).insert({before: ", 
-         set_06_text, "});")
-set_07_text <- 
-  "'<span style=\"font-size:22px;\">.</span>'"
-sg$set_07 <- 
-  paste0("$('QR~QID' + qid_04_num).insert({after: ", 
-         set_07_text, "});")
-
-# export to txt file
-sg %>% 
-  paste(., collapse = "\n") %>% 
-  cat(., file = "materials/qualtrics/output/plain_text/js_codes/sg_js.txt")
+paste(gsub("REPLACE_THIS", "SG RESPONSE TYPE", commented),
+      gsub("REPLACE_THIS", "give format to text entries and remove question separators", commented),
+      gsub("REPLACE_THIS", "get question ID", commented),
+      var_qid,
+      gsub("REPLACE_THIS", "Get questions IDs (e.g. 10, 11, 12, etc.)", commented),
+      get_id_num,
+      get_other_questions_ID_num(other_questions),
+      gsub("REPLACE_THIS", "remove separator(s) if any", commented), 
+      remove_separators(4),
+      gsub("REPLACE_THIS", "read embedded data fields to fill text", commented), 
+      ed_read_01 <- "var positive_test_result_01 = '${e://Field/positive_test_result_01}';",
+      ed_read_02 <- "var medical_condition_01 =  '${e://Field/medical_condition_01}';",
+      ed_read_03 <- "var sg_person_01 =  '${e://Field/sg_person_01}';",
+      gsub("REPLACE_THIS", "modify text entry fields", commented), 
+      gsub("REPLACE_THIS", "arrange text entry 1 and 2. add text between them", commented), 
+      "$('QR~QID' + qid_01_num).insert({after: $('QR~QID' + qid_02_num)});",
+      "'<span style=\"font-size:22px;\"> women receive a ' + positive_test_result_01 + ' that correctly indicates the presence of ' + medical_condition_01 + ', and </span>'" %>% 
+        paste0("$('QR~QID' + qid_02_num).insert({before: ", ., "});"),
+      gsub("REPLACE_THIS", "arrange text entry 2 and 3. add text between them", commented), 
+      "$('QR~QID' + qid_02_num).insert({after: $('QR~QID' + qid_03_num)});",
+      "'<span style=\"font-size:22px;\">  women receive a ' + positive_test_result_01 + ' that incorrectly indicates the presence of ' + medical_condition_01 +'. Therefore, given that the ' + positive_test_result_01 + ' indicates the signs of ' + medical_condition_01 + ', the probability that ' + sg_person_01 + ' actually has ' + medical_condition_01 + ' is </span>'" %>% 
+        paste0("$('QR~QID' + qid_03_num).insert({before: ", ., "});"),
+      gsub("REPLACE_THIS", "arrange text entry 3 and 4. add text between them and at the end", commented), 
+      "$('QR~QID' + qid_03_num).insert({after: $('QR~QID' + qid_04_num)});",
+      "'<span style=\"font-size:22px;\"> out of </span>'" %>% 
+        paste0("$('QR~QID' + qid_04_num).insert({before: ", ., "});"),
+      "'<span style=\"font-size:22px;\">.</span>'" %>% 
+        paste0("$('QR~QID' + qid_04_num).insert({after: ", ., "});"),
+      sep = "\n") %>% 
+  gsub("\n", "\n   ", .) %>%
+  gsub("REPLACE_THIS", ., addOn_ready_default_js) %>% 
+  cat(., file = file.path(js_output_dir, "sg_resp_type.txt"))
 
 # SS response type -------------------------------------------------------
-# COMMENTS
-ss                     <- list(reptype_name = "/* SS RESPONSE TYPE */")
-ss$general_description <- "/* Use with 2 consecutive text entry questions */"
-ss$indication          <- "/* This code has to be pasted on addOnReady section */"
-# CURRENT ID
-ss$qid                 <- var_qid
-ss$qid_num             <- "\n/* keep ID number */\nvar qid_01_num = Number(qid_01_str.replace(/^\\D+/g, ''));" # extra "\" before "\D" because "\" is a metacharacter.
-# CREATE OTHER QUESTIONS ID
-ss$qid_num_02          <- "var qid_02_num = qid_01_num + 1;"
-# REMOVE SEPARATORS
-ss$rmv_sep_description <- "\n/* remove separator of moved questions */"
-ss$rmv_sep_01 <- "document.getElementById('QID' + qid_01_num + 'Separator').style.height='0px';"
-ss$rmv_sep_02 <- "document.getElementById('QID' + qid_02_num + 'Separator').style.height='0px';"
-# MOVE TEXT ENRIES
-ss$set_description_01 <- "\n/* arrange text entry 1 and 2. add text between them */"
-ss$set_01 <- "$('QR~QID' + qid_01_num).insert({after: $('QR~QID' + qid_02_num)});"
-set_02 <- 
-  gsub("QUESTION_TEXT_TO_FORMAT", ' out of ', html_codes$question_font_size)
 
-ss$set_02 <- 
-  paste0("$('QR~QID' + qid_02_num).insert({before: '", set_02, "'});")
+paste(gsub("REPLACE_THIS", "SS RESPONSE TYPE", commented),
+      gsub("REPLACE_THIS", "give format to text entries and remove question separators", commented),
+      gsub("REPLACE_THIS", "get question ID", commented),
+      var_qid,
+      gsub("REPLACE_THIS", "Get questions IDs (e.g. 10, 11, 12, etc.)", commented),
+      get_id_num,
+      get_other_questions_ID_num(1),
+      gsub("REPLACE_THIS", "remove separator(s) if any", commented), 
+      remove_separators(2),
+      gsub("REPLACE_THIS", "arrange text entry 1 and 2. add text between them", commented),
+      "$('QR~QID' + qid_01_num).insert({after: $('QR~QID' + qid_02_num)});",
+      gsub("QUESTION_TEXT_TO_FORMAT", ' out of ', html_codes$question_font_size) %>% 
+        paste0("$('QR~QID' + qid_02_num).insert({before: '", ., "'});"),
+      sep = "\n") %>% 
+  gsub("\n", "\n   ", .) %>% 
+  gsub("REPLACE_THIS", ., addOn_ready_default_js) %>% 
+  cat(., file = file.path(js_output_dir, "ss_resp_type.txt"))
 
-# export to txt file
-ss %>% 
-  paste(., collapse = "\n") %>% 
-  cat(.,file = "materials/qualtrics/output/plain_text/js_codes/ss_js.txt")
+
+# Capture PPV responses ---------------------------------------------------
+
+# SS capture PPV response -------------------------------------------------
+other_questions <- 1
+
+paste(gsub("REPLACE_THIS", "SS RESPONSE TYPE", commented),
+      gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
+      get_id,
+      gsub("REPLACE_THIS", "Get questions IDs (e.g. 10, 11, 12, etc.)", commented),
+      get_id_num,
+      get_other_questions_ID_num(other_questions),
+      gsub("REPLACE_THIS", "'Question is: QR~' + qid_01_str", consolelog),
+      gsub("REPLACE_THIS", "Save current question input response", commented),
+      get_response,
+      get_other_questions_responses(other_questions),
+      get_captured_resp_consolelog(other_questions+1),
+      ss_create_ppv_response,
+      assign_ppv_to_ED,
+      sep = "\n") %>% 
+  gsub("\n", "\n   ", .) %>% 
+  gsub("REPLACE_THIS", ., page_submit) %>%
+  cat(., file = file.path(js_output_dir, "ss_capture_ppv.txt"))
+
+# GI capture PPV response -------------------------------------------------
+paste(
+  gsub("REPLACE_THIS", "GI RESPONSE TYPE", commented),
+  gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
+  get_id,
+  gsub("REPLACE_THIS", "Get selected choice index (e.g. 1, 2, 3, etc.)", commented),
+  get_selected_choice,
+  gsub("REPLACE_THIS", "Convert selected choice index to text to pipe into follow-up item", commented),
+  gi_create_ppv_response,
+  paste0(gsub("REPLACE_THIS", "Check PPV response created", commented),
+         gsub("REPLACE_THIS", "'Captured answer is: ' + ppv_response_01", consolelog)),
+  assign_ppv_to_ED
+  , sep = "\n") %>% 
+  gsub("\n", "\n   ", .) %>% 
+  gsub("REPLACE_THIS", ., page_submit) %>% 
+  cat(., file = file.path(js_output_dir, "gi_capture_ppv.txt"))
+# SG capture PPV response -------------------------------------------------
+other_questions <- 2:3
+
+paste(gsub("REPLACE_THIS", "SG RESPONSE TYPE", commented),
+      gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
+      get_id,
+      gsub("REPLACE_THIS", "Get questions IDs (e.g. 10, 11, 12, etc.)", commented),
+      get_id_num,
+      get_other_questions_ID_num(other_questions),
+      gsub("REPLACE_THIS", "'Question is: QR~' + qid_01_str", consolelog),
+      gsub("REPLACE_THIS", "Save current question input response", commented),
+      get_response %>% gsub("_01_", "_03_", .),
+      get_other_questions_responses(1) %>% gsub("_02_", "_04_", .),
+      get_captured_resp_consolelog(2),
+      ss_create_ppv_response,
+      assign_ppv_to_ED,
+      sep = "\n") %>%
+  gsub("\n", "\n   ", .) %>% 
+  gsub("REPLACE_THIS", ., page_submit) %>%
+  cat(., file = file.path(js_output_dir, "sg_capture_ppv.txt"))
+
+# GS capture PPV response -------------------------------------------------
+paste(gsub("REPLACE_THIS", "GS RESPONSE TYPE", commented),
+      gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
+      get_id,
+      gsub("REPLACE_THIS", "Get questions IDs (e.g. 10, 11, 12, etc.)", commented),
+      get_id_num,
+      gsub("REPLACE_THIS", "'Question is: QR~' + qid_01_str", consolelog),
+      gsub("REPLACE_THIS", "Save current question input response", commented),
+      get_response,
+      get_captured_resp_consolelog(other_questions),
+      gs_create_ppv_response,
+      assign_ppv_to_ED,
+      sep = "\n") %>% 
+  gsub("\n", "\n   ", .) %>% 
+  gsub("REPLACE_THIS", ., page_submit) %>%
+  cat(., file = file.path(js_output_dir, "gs_capture_ppv.txt"))
+
+# Append JS codes ---------------------------------------------------------
+
+js_comp_output_dir <- 
+  "materials/qualtrics/output/plain_text/js_codes/complete" %T>% 
+  dir.create(., FALSE, TRUE)
+
+# paste js codes
+all_js_complete <- 
+  dir(js_output_dir, ".txt") %>% 
+  gsub("([a-z]{2}).*", "\\1", .) %>% 
+  unique() %>% 
+  # read js codes files
+  map_chr(~
+            grep(., dir(js_output_dir, ".txt"), value = TRUE) %>% 
+            rev()%>% 
+            file.path(js_output_dir, .) %>% 
+            map_chr(~readChar(.x, file.size(.x))) %>% 
+            paste0(., collapse = "\n\n")
+  )
+
+# function to write codes as txt files
+f <- function(x, y) {
+  cat(x, file = file.path(js_comp_output_dir, paste0(y, "_js_complete.txt")))
+}
+# write codes as txt files
+walk2(.x = all_js_complete, 
+      .y = dir(js_output_dir, ".txt") %>% gsub("([a-z]{2}).*", "\\1", .) %>% unique(), 
+      .f = f)

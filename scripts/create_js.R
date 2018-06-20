@@ -19,8 +19,8 @@ paste(gsub("REPLACE_THIS", "GI RESPONSE TYPE", commented),
       gsub("REPLACE_THIS", "remove separator(s) if any", commented), 
       remove_separators(1), sep = "\n") %>% 
   gsub("\n", "\n   ", .) %>% 
-  gsub("REPLACE_THIS", ., addOn_ready) %>% 
-  cat(., file = "materials/qualtrics/output/plain_text/js_codes/gi_js.txt")
+  gsub("REPLACE_THIS", ., addOn_ready_default_js) %>% 
+  cat(., file = "materials/qualtrics/output/plain_text/js_codes/gi_resp_type.txt")
 
 # GS response type --------------------------------------------------------
 
@@ -38,8 +38,8 @@ paste(gsub("REPLACE_THIS", "GS RESPONSE TYPE", commented),
         paste0("\n/* modify text entry field */\n$('QR~' + qid_01_str).insert({after: '", ., "'});"),
       sep = "\n") %>% 
   gsub("\n", "\n   ", .) %>% 
-  gsub("REPLACE_THIS", ., addOn_ready) %>% 
-  cat(., file = "materials/qualtrics/output/plain_text/js_codes/gs_js.txt")
+  gsub("REPLACE_THIS", ., addOn_ready_default_js) %>% 
+  cat(., file = "materials/qualtrics/output/plain_text/js_codes/gs_resp_type.txt")
 
 # SG response type --------------------------------------------------------
 other_questions <- 1:3
@@ -74,8 +74,8 @@ paste(gsub("REPLACE_THIS", "SG RESPONSE TYPE", commented),
         paste0("$('QR~QID' + qid_04_num).insert({after: ", ., "});"),
       sep = "\n") %>% 
   gsub("\n", "\n   ", .) %>%
-  gsub("REPLACE_THIS", ., addOn_ready) %>% 
-  cat(., file = "materials/qualtrics/output/plain_text/js_codes/sg_js.txt")
+  gsub("REPLACE_THIS", ., addOn_ready_default_js) %>% 
+  cat(., file = "materials/qualtrics/output/plain_text/js_codes/sg_resp_type.txt")
 
 # SS response type -------------------------------------------------------
 
@@ -94,8 +94,10 @@ paste(gsub("REPLACE_THIS", "SS RESPONSE TYPE", commented),
         paste0("$('QR~QID' + qid_02_num).insert({before: '", ., "'});"),
       sep = "\n") %>% 
   gsub("\n", "\n   ", .) %>% 
-  gsub("REPLACE_THIS", ., addOn_ready) %>% 
-  cat(.,file = "materials/qualtrics/output/plain_text/js_codes/ss_js.txt")
+  gsub("REPLACE_THIS", ., addOn_ready_default_js) %>% 
+  cat(.,file = "materials/qualtrics/output/plain_text/js_codes/ss_resp_type.txt")
+
+
 # Capture PPV responses ---------------------------------------------------
 
 # SS capture PPV response -------------------------------------------------

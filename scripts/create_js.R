@@ -45,8 +45,51 @@ remove_separators <- function(all_questions) {
     map_chr(~paste0("document.getElementById('QID' + qid_0", .x, "_num + 'Separator').style.height='0px';")) %>% 
     paste(., collapse = "\n")
 }
+
+# Templates ---------------------------------------------------------------
 # Get current question ID. for every code.  
 var_qid <- "var qid_01_str = this.questionId;" 
+# General
+page_submit <- 
+  "Qualtrics.SurveyEngine.addOnPageSubmit(function()\n{\n\nREPLACE_THIS\n\n});"
+commented <- 
+  "\n/* REPLACE_THIS */"
+get_id <- 
+  "var qid_01_str = this.questionId;"
+get_id_num <- 
+  "var qid_01_num = Number(qid_01_str.replace(/^\\D+/g, ''));" # extra / because it's a metacharacter
+consolelog <- # by default console logs are commented
+  "\n/* console.log(REPLACE_THIS) */"
+get_response <- 
+  "var responseTextField_01 = document.getElementById('QR~QID' + qid_01_num);\nvar currentResponse_01 = responseTextField_01.value;"
+assign_ppv_to_ED <- 
+  "\n/* If ED exists, assign value to it. If does not exists, create it with indicated value */\nQualtrics.SurveyEngine.setEmbeddedData('ppv_response_01', ppv_response_01)"
+# Get responses
+get_selected_choice <- 
+  "var selectedChoice = this.getSelectedChoices()"
+ss_create_ppv_response <- 
+  "\n/* Create PPV response */\nvar ppv_response_01 = currentResponse_01 + ' out of ' + currentResponse_02;\n/* console.log('ppv response is: ' + ppv_response_01); */"
+gi_create_ppv_response <- 
+  "if (selectedChoice == 1) {
+    var ppv_response_01 = 'very few (0-20%)';
+  } else if (selectedChoice == 2) {
+    var ppv_response_01 = 'few (21-40%)';
+  } else if (selectedChoice == 3) {
+    var ppv_response_01 = 'half (41-60%)';
+  } else if (selectedChoice == 4) {
+    var ppv_response_01 = 'quite (61-80%)';
+  } else if (selectedChoice == 5) {
+    var ppv_response_01 = 'many (81-100%)';
+}"
+gs_create_ppv_response <- 
+  "\n/* Create PPV response */\nvar ppv_response_01 = currentResponse_01 + '%';\n/* console.log('ppv response is: ' + ppv_response_01); */"
+
+# Qualtrics JS templates
+addOn_ready <- 
+  "Qualtrics.SurveyEngine.addOnReady(function()\n{\n\nREPLACE_THIS\n\n});"
+addOn_ready_default_js <- 
+  "Qualtrics.SurveyEngine.addOnload(function()\n{\n	/*Place your JavaScript here to run when the page loads*/\n\n});\n\nQualtrics.SurveyEngine.addOnReady(function()\n{\n	/*Place your JavaScript here to run when the page is fully displayed*/\n\nREPLACE_THIS\n\n});\n\nQualtrics.SurveyEngine.addOnUnload(function()\n{\n	/*Place your JavaScript here to run when the page is unloaded*/\n\n});\n"
+
 
 # GI ----------------------------------------------------------------------
 

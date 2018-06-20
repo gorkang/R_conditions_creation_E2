@@ -27,6 +27,15 @@ get_captured_resp_consolelog <- function(all_questions) {
     map_chr(~paste0("/* console.log('Captured text entry response ", .x, " is: ' + currentResponse_0", .x, ") */")) %>% 
     paste(., collapse = "\n")
 }
+# 
+remove_separators <- function(all_questions) {
+  # Receives a number indicating how many console logs have to be created to display captured responses (including the first).
+  # Outputs a chr vector
+  seq(all_questions) %>% 
+    map_chr(~paste0("document.getElementById('QID' + qid_0", .x, "_num + 'Separator').style.height='0px';")) %>% 
+    paste(., collapse = "\n")
+}
+
 
 page_submit <- 
   "Qualtrics.SurveyEngine.addOnPageSubmit(function()\n{\n\nREPLACE_THIS\n\n});"

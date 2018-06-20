@@ -1,9 +1,11 @@
 # Packages
 if (!require('pacman')) install.packages('pacman'); library('pacman')
-p_load(tidyverse)
+p_load(tidyverse, magrittr)
 
 # create dir to output codes
-dir.create("materials/qualtrics/output/plain_text/js_codes", FALSE, TRUE)
+js_output_dir <- 
+  "materials/qualtrics/output/plain_text/js_codes" %T>% 
+  dir.create(., FALSE, TRUE)
 
 # Get current question ID. for every code.  
 var_qid <- "var qid_01_str = this.questionId;" 

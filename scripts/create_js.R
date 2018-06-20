@@ -57,7 +57,7 @@ commented <-
 get_id <- 
   "var qid_01_str = this.questionId;"
 get_id_num <- 
-  "var qid_01_num = Number(qid_01_str.replace(/^\\D+/g, ''));" # extra / because it's a metacharacter
+  "var qid_01_num = Number(qid_01_str.replace(/^\\\\D+/g, ''));" # extra / because it's a metacharacter
 consolelog <- # by default console logs are commented
   "\n/* console.log(REPLACE_THIS) */"
 get_response <- 

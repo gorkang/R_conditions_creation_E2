@@ -96,3 +96,78 @@ paste(gsub("REPLACE_THIS", "SS RESPONSE TYPE", commented),
   gsub("\n", "\n   ", .) %>% 
   gsub("REPLACE_THIS", ., addOn_ready) %>% 
   cat(.,file = "materials/qualtrics/output/plain_text/js_codes/ss_js.txt")
+# Capture PPV responses ---------------------------------------------------
+
+# SS capture PPV response -------------------------------------------------
+other_questions <- 1
+
+paste(gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
+      get_id,
+      gsub("REPLACE_THIS", "Get questions IDs (e.g. 10, 11, 12, etc.)", commented),
+      get_id_num,
+      get_other_questions_ID_num(other_questions),
+      gsub("REPLACE_THIS", "'Question is: QR~' + qid_01_str", consolelog),
+      gsub("REPLACE_THIS", "Save current question input response", commented),
+      get_response,
+      get_other_questions_responses(other_questions),
+      get_captured_resp_consolelog(other_questions+1),
+      ss_create_ppv_response,
+      assign_ppv_to_ED,
+      sep = "\n") %>% 
+  gsub("\n", "\n   ", .) %>% 
+  gsub("REPLACE_THIS", ., page_submit) %>%
+  cat(., file = "materials/qualtrics/output/plain_text/js_codes/ss_capture_ppv.txt")
+
+# GI capture PPV response -------------------------------------------------
+paste(
+  gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
+  get_id,
+  gsub("REPLACE_THIS", "Get selected choice index (e.g. 1, 2, 3, etc.)", commented),
+  get_selected_choice,
+  gsub("REPLACE_THIS", "Convert selected choice index to text to pipe into follow-up item", commented),
+  gi_create_ppv_response,
+  paste0(gsub("REPLACE_THIS", "Check PPV response created", commented),
+         gsub("REPLACE_THIS", "'Captured answer is: ' + ppv_response_01", consolelog)),
+  assign_ppv_to_ED
+  , sep = "\n") %>% 
+  gsub("\n", "\n   ", .) %>% 
+  gsub("REPLACE_THIS", ., page_submit) %>% 
+  cat(., file = "materials/qualtrics/output/plain_text/js_codes/gi_capture_ppv.txt")
+
+# SG capture PPV response -------------------------------------------------
+other_questions <- 2:3
+
+paste(gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
+      get_id,
+      gsub("REPLACE_THIS", "Get questions IDs (e.g. 10, 11, 12, etc.)", commented),
+      get_id_num,
+      get_other_questions_ID_num(other_questions),
+      gsub("REPLACE_THIS", "'Question is: QR~' + qid_01_str", consolelog),
+      gsub("REPLACE_THIS", "Save current question input response", commented),
+      get_response %>% gsub("_01_", "_03_", .),
+      get_other_questions_responses(1) %>% gsub("_02_", "_04_", .),
+      get_captured_resp_consolelog(2),
+      ss_create_ppv_response,
+      assign_ppv_to_ED,
+      sep = "\n") %>%
+  gsub("\n", "\n   ", .) %>% 
+  gsub("REPLACE_THIS", ., page_submit) %>%
+  cat(., file = "materials/qualtrics/output/plain_text/js_codes/sg_capture_ppv.txt")
+
+# GS capture PPV response -------------------------------------------------
+paste(gsub("REPLACE_THIS", "Get current question ID (e.g. QID10)", commented),
+      get_id,
+      gsub("REPLACE_THIS", "Get questions IDs (e.g. 10, 11, 12, etc.)", commented),
+      get_id_num,
+      gsub("REPLACE_THIS", "'Question is: QR~' + qid_01_str", consolelog),
+      gsub("REPLACE_THIS", "Save current question input response", commented),
+      get_response,
+      get_captured_resp_consolelog(other_questions),
+      gs_create_ppv_response,
+      assign_ppv_to_ED,
+      sep = "\n") %>% 
+  gsub("\n", "\n   ", .) %>% 
+  gsub("REPLACE_THIS", ., page_submit) %>%
+  cat(., file = "materials/qualtrics/output/plain_text/js_codes/gs_capture_ppv.txt")
+
+

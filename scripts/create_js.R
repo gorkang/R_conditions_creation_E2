@@ -260,4 +260,31 @@ paste(gsub("REPLACE_THIS", "GS RESPONSE TYPE", commented),
   gsub("REPLACE_THIS", ., page_submit) %>%
   cat(., file = file.path(js_output_dir, "gs_capture_ppv.txt"))
 
+# Append JS codes ---------------------------------------------------------
 
+js_comp_output_dir <- 
+  "materials/qualtrics/output/plain_text/js_codes/complete" %T>% 
+  dir.create(., FALSE, TRUE)
+
+# paste js codes
+all_js_complete <- 
+  dir(js_output_dir, ".txt") %>% 
+  gsub("([a-z]{2}).*", "\\1", .) %>% 
+  unique() %>% 
+  # read js codes files
+  map_chr(~
+            grep(., dir(js_output_dir, ".txt"), value = TRUE) %>% 
+            rev()%>% 
+            file.path(js_output_dir, .) %>% 
+            map_chr(~readChar(.x, file.size(.x))) %>% 
+            paste0(., collapse = "\n\n")
+  )
+
+# function to write codes as txt files
+f <- function(x, y) {
+  cat(x, file = file.path(js_comp_output_dir, paste0(y, "_js_complete.txt")))
+}
+# write codes as txt files
+walk2(.x = all_js_complete, 
+      .y = dir(js_output_dir, ".txt") %>% gsub("([a-z]{2}).*", "\\1", .) %>% unique(), 
+      .f = f)

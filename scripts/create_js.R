@@ -91,7 +91,9 @@ addOn_ready_default_js <-
   "Qualtrics.SurveyEngine.addOnload(function()\n{\n	/*Place your JavaScript here to run when the page loads*/\n\n});\n\nQualtrics.SurveyEngine.addOnReady(function()\n{\n	/*Place your JavaScript here to run when the page is fully displayed*/\n\nREPLACE_THIS\n\n});\n\nQualtrics.SurveyEngine.addOnUnload(function()\n{\n	/*Place your JavaScript here to run when the page is unloaded*/\n\n});\n"
 
 
-# GI ----------------------------------------------------------------------
+# Give format according to response type ----------------------------------
+
+# GI response type ----------------------------------------------------------------------
 
 paste(gsub("REPLACE_THIS", "GI RESPONSE TYPE", commented),
       gsub("REPLACE_THIS", "this script chunk only removes a question separator", commented),

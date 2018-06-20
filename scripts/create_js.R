@@ -7,6 +7,44 @@ js_output_dir <-
   "materials/qualtrics/output/plain_text/js_codes" %T>% 
   dir.create(., FALSE, TRUE)
 
+# Functions ---------------------------------------------------------------
+
+# GET OTHER QUESTIONS ID: feed a number to create other questions numeric ID. the lines of code generated work only if the first numeric ID was generated previously.
+get_other_questions_ID_num <- function(other_questions) {
+  # Receives a number indicating how many questions (other than the first) have to be created.
+  # Outputs a chr vector
+  other_questions %>% 
+    map_chr(~paste0("var qid_0", .x+1, "_num = qid_01_num + ", .x, ";")) %>% 
+    paste(., collapse = "\n")
+}
+# GET OTHER QUESTIONS RESPONSES: feed a number to capture responses (text-entry) of other questions. It is not necessary to capture the first question response previously.
+get_other_questions_responses <- function(other_questions) {
+  # Receives a number indicating how many responses (other than the first) have to be captured
+  # Outputs a chr vector
+  seq(other_questions) %>% 
+    map_chr(~paste0(
+      "var responseTextField_0", 
+      .x+1, " = document.getElementById('QR~QID' + qid_0", 
+      .x+1, "_num);\nvar currentResponse_0", 
+      .x+1, " = responseTextField_0", .x+1, ".value;")) %>% 
+    paste(., collapse = "\n")
+}
+# GET CAPTURED RESPONSES CONSOLE LOG: create console log calls to display captured responses.
+get_captured_resp_consolelog <- function(all_questions) {
+  # Receives a number indicating how many console logs have to be created to display captured responses (including the first).
+  # Outputs a chr vector
+  seq(all_questions) %>% 
+    map_chr(~paste0("/* console.log('Captured text entry response ", .x, " is: ' + currentResponse_0", .x, ") */")) %>% 
+    paste(., collapse = "\n")
+}
+# REMOVE SEPARATORS: create lines to remove the number of separators feeded. It is necessary to previously create the numeric ID of the questions to remove their separators.
+remove_separators <- function(all_questions) {
+  # Receives a number indicating how many console logs have to be created to display captured responses (including the first).
+  # Outputs a chr vector
+  seq(all_questions) %>% 
+    map_chr(~paste0("document.getElementById('QID' + qid_0", .x, "_num + 'Separator').style.height='0px';")) %>% 
+    paste(., collapse = "\n")
+}
 # Get current question ID. for every code.  
 var_qid <- "var qid_01_str = this.questionId;" 
 

@@ -22,9 +22,9 @@ pic_links <-
 
 # create items
 walk2(.x = pic_links$cond, 
-     .y = pic_links$url, 
-     .f = function(x, y) {cat(gsub("LINK2IMG", y, html_codes$insert_img), 
-              file = paste0("materials/qualtrics/output/plain_text/items/", x))})
+      .y = pic_links$url, 
+      .f = function(x, y) {cat(gsub("LINK2IMG", y, html_codes$insert_img), 
+                               file = paste0("materials/qualtrics/output/plain_text/items/", x))})
 
 # Create Embedded data Blocks ---------------------------------------------
 
@@ -56,9 +56,9 @@ ED_screening_item         <-
 # PPV QUESTION
 ED_screening_ppv_question <-
   "materials/Question/Calculation/input/unified_question.txt" %>% 
-    readChar(., file.size(.)) %>% remove_placeholders(.) %>% 
-    gsub("\\n", "", .) %>% 
-    gsub("QUESTION_TEXT_TO_FORMAT", ., html_codes$question_font_size) 
+  readChar(., file.size(.)) %>% remove_placeholders(.) %>% 
+  gsub("\\n", "", .) %>% 
+  gsub("QUESTION_TEXT_TO_FORMAT", ., html_codes$question_font_size) 
 
 # Assemble item (ppv question is a question by itself to be able to hide it on pfab & sg condition)
 screening_item <-
@@ -67,7 +67,7 @@ screening_item <-
         paste(ED_screening_intro, 
               ED_screening_item, sep = "<br><br>"),
         qualtrics_codes$question_only_text,
-              ED_screening_ppv_question, sep = "\n")
+        ED_screening_ppv_question, sep = "\n")
 
 # Response types ####
 # gs: text entry
@@ -117,67 +117,46 @@ screening_item_questions <-
           resp_type_04,
           sep = "\n")
 
-# Create trial customized
-trials_no <- 2
-screening_trials <- as.list(rep(screening_item_questions, trials_no))
+# Create follow-up --------------------------------------------------------
+source("scripts/followUp_create_export.R")
 
-# Customize to trials (2 trials)
-for (a in seq(trials_no)) {
-  # a <- 1
-  screening_trials[[a]] <-
-    screening_trials[[a]] %>% 
-    gsub("([0-9])\\}", paste0("\\1", a, "}"), .) %>% 
-    paste0("**trial_0", a, "**", .)
-}
+# Create and export complete trial blocks (PPV + Follow-up) ---------------
+
+# follow-up
+followup_path <- 
+  "materials/qualtrics/output/plain_text/followup/"
+
+# read follow-up item
+followup_items <- 
+  followup_path %>%
+  dir(., pattern = ".txt") %>% 
+  map(~readChar(paste0(followup_path, .x), file.size(paste0(followup_path, .x))))
+
+# Append screening item with follow-up
+complete_item <- 
+  paste(screening_item_questions, followup_items, sep = "\n")
 
 # Output dir
 screening_output_dir <- 
   "materials/qualtrics/output/plain_text/screening_items/" %T>% 
   dir.create(., showWarnings = FALSE, recursive = TRUE) 
 
-# Export each trial follow-up
-screening_trials %>% 
-  walk(~cat(gsub("\\*\\*.*\\*\\*", "", .x), sep = "", 
-            file = paste0(screening_output_dir, "screening_", gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x), ".txt"))
-  )
-
-# Create follow-up --------------------------------------------------------
-source("scripts/followUp_create_export.R")
-
-# Create and export complete trial blocks (PPV + Follow-up) ---------------
-
-# screening item
-screening_item_path <- 
-  "materials/qualtrics/output/plain_text/screening_items/" 
-
-screening_items <- 
-  screening_item_path %>%
-  dir(., pattern = ".txt") %>% 
-  map(~readChar(paste0(screening_item_path, .x), file.size(paste0(screening_item_path, .x))))
-
-# follow-up
-followup_path <- 
-  "materials/qualtrics/output/plain_text/followup/"
-
-# read follow-up items
-followup_items <- 
-  followup_path %>%
-  dir(., pattern = ".txt") %>% 
-  map(~readChar(paste0(followup_path, .x), file.size(paste0(followup_path, .x))))
-
-# annon func to paste item with follow-up with a pagebreak inbetween
-f <- function(x,y) {paste(x, qualtrics_codes$pagebreak, y, sep = "\n")}
-# call annon func
-screening_blocks <- 
-  map2(.x = screening_items, .y = followup_items, .f = `f`)
+# Customize item to trial
+# func to customize
+f <- function(x) {
+gsub("([0-9])\\}", paste0("\\1", x, "}"), complete_item) %>% 
+  paste0("**trial_0", x, "**", .)
+}
 
 # dir to output screening blocks 
-dir.create("materials/qualtrics/output/plain_text/screening_blocks/", FALSE, TRUE)
-# annon func to export screening blocks
-f <- function(x,y) {cat(x, sep = "", 
-                        file = paste0("materials/qualtrics/output/plain_text/screening_blocks/screening_block_0", y, ".txt"))}
-# call annon func
-walk2(.x = screening_blocks, .y = 1:2, .f = f)
+screening_block_output_dir <- 
+  "materials/qualtrics/output/plain_text/screening_blocks/" %T>% 
+  dir.create(., FALSE, TRUE)
+
+# customize items
+map(1:2, ~f(.x)) %>% 
+  walk(~cat(gsub("\\*\\*.*\\*\\*", "", .x), sep = "",
+           file = paste0(screening_block_output_dir, "screening_block_", gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x), ".txt")))
 
 # JS codes to give format to response type questions ----------------------
 source("scripts/create_js.R")

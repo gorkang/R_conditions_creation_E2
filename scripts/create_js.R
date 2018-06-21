@@ -63,26 +63,26 @@ consolelog <- # by default console logs are commented
 get_response <- 
   "var responseTextField_01 = document.getElementById('QR~QID' + qid_01_num);\nvar currentResponse_01 = responseTextField_01.value;"
 assign_ppv_to_ED <- 
-  "\n/* If ED exists, assign value to it. If does not exists, create it with indicated value */\nQualtrics.SurveyEngine.setEmbeddedData('ppv_response_01', ppv_response_01)"
+  "\n/* If ED exists, assign value to it. If does not exists, create it with indicated value */\nQualtrics.SurveyEngine.setEmbeddedData('ppv_response_0', ppv_response_0)"
 # Get responses
 get_selected_choice <- 
   "var selectedChoice = this.getSelectedChoices()"
 ss_create_ppv_response <- 
-  "\n/* Create PPV response */\nvar ppv_response_01 = currentResponse_01 + ' out of ' + currentResponse_02;\n/* console.log('ppv response is: ' + ppv_response_01); */"
+  "\n/* Create PPV response */\nvar ppv_response_0 = currentResponse_01 + ' out of ' + currentResponse_02;\n/* console.log('ppv response is: ' + ppv_response_0); */"
 gi_create_ppv_response <- 
   "if (selectedChoice == 1) {
-    var ppv_response_01 = 'very few (0-20%)';
+    var ppv_response_0 = 'very few (0-20%)';
   } else if (selectedChoice == 2) {
-    var ppv_response_01 = 'few (21-40%)';
+    var ppv_response_0 = 'few (21-40%)';
   } else if (selectedChoice == 3) {
-    var ppv_response_01 = 'half (41-60%)';
+    var ppv_response_0 = 'half (41-60%)';
   } else if (selectedChoice == 4) {
-    var ppv_response_01 = 'quite (61-80%)';
+    var ppv_response_0 = 'quite (61-80%)';
   } else if (selectedChoice == 5) {
-    var ppv_response_01 = 'many (81-100%)';
+    var ppv_response_0 = 'many (81-100%)';
 }"
 gs_create_ppv_response <- 
-  "\n/* Create PPV response */\nvar ppv_response_01 = currentResponse_01 + '%';\n/* console.log('ppv response is: ' + ppv_response_01); */"
+  "\n/* Create PPV response */\nvar ppv_response_0 = currentResponse_01 + '%';\n/* console.log('ppv response is: ' + ppv_response_0); */"
 
 # Qualtrics JS templates
 addOn_ready <- 
@@ -139,17 +139,17 @@ paste(gsub("REPLACE_THIS", "SG RESPONSE TYPE", commented),
       gsub("REPLACE_THIS", "remove separator(s) if any", commented), 
       remove_separators(4),
       gsub("REPLACE_THIS", "read embedded data fields to fill text", commented), 
-      ed_read_01 <- "var positive_test_result_01 = '${e://Field/positive_test_result_01}';",
-      ed_read_02 <- "var medical_condition_01 =  '${e://Field/medical_condition_01}';",
-      ed_read_03 <- "var sg_person_01 =  '${e://Field/sg_person_01}';",
+      ed_read_01 <- "var positive_test_result = '${e://Field/positive_test_result_0}';",
+      ed_read_02 <- "var medical_condition =  '${e://Field/medical_condition_0}';",
+      ed_read_03 <- "var sg_person =  '${e://Field/sg_person_0}';",
       gsub("REPLACE_THIS", "modify text entry fields", commented), 
       gsub("REPLACE_THIS", "arrange text entry 1 and 2. add text between them", commented), 
       "$('QR~QID' + qid_01_num).insert({after: $('QR~QID' + qid_02_num)});",
-      "'<span style=\"font-size:22px;\"> women receive a ' + positive_test_result_01 + ' that correctly indicates the presence of ' + medical_condition_01 + ', and </span>'" %>% 
+      "'<span style=\"font-size:22px;\"> women receive a ' + positive_test_result + ' that correctly indicates the presence of ' + medical_condition + ', and </span>'" %>% 
         paste0("$('QR~QID' + qid_02_num).insert({before: ", ., "});"),
       gsub("REPLACE_THIS", "arrange text entry 2 and 3. add text between them", commented), 
       "$('QR~QID' + qid_02_num).insert({after: $('QR~QID' + qid_03_num)});",
-      "'<span style=\"font-size:22px;\">  women receive a ' + positive_test_result_01 + ' that incorrectly indicates the presence of ' + medical_condition_01 +'. Therefore, given that the ' + positive_test_result_01 + ' indicates the signs of ' + medical_condition_01 + ', the probability that ' + sg_person_01 + ' actually has ' + medical_condition_01 + ' is </span>'" %>% 
+      "'<span style=\"font-size:22px;\">  women receive a ' + positive_test_result + ' that incorrectly indicates the presence of ' + medical_condition +'. Therefore, given that the ' + positive_test_result + ' indicates the signs of ' + medical_condition + ', the probability that ' + sg_person + ' actually has ' + medical_condition + ' is </span>'" %>% 
         paste0("$('QR~QID' + qid_03_num).insert({before: ", ., "});"),
       gsub("REPLACE_THIS", "arrange text entry 3 and 4. add text between them and at the end", commented), 
       "$('QR~QID' + qid_03_num).insert({after: $('QR~QID' + qid_04_num)});",
@@ -216,7 +216,7 @@ paste(
   gsub("REPLACE_THIS", "Convert selected choice index to text to pipe into follow-up item", commented),
   gi_create_ppv_response,
   paste0(gsub("REPLACE_THIS", "Check PPV response created", commented),
-         gsub("REPLACE_THIS", "'Captured answer is: ' + ppv_response_01", consolelog)),
+         gsub("REPLACE_THIS", "'Captured answer is: ' + ppv_response_0", consolelog)),
   assign_ppv_to_ED
   , sep = "\n") %>% 
   gsub("\n", "\n   ", .) %>% 
@@ -272,19 +272,25 @@ all_js_complete <-
   gsub("([a-z]{2}).*", "\\1", .) %>% 
   unique() %>% 
   # read js codes files
-  map_chr(~
-            grep(., dir(js_output_dir, ".txt"), value = TRUE) %>% 
-            rev()%>% 
-            file.path(js_output_dir, .) %>% 
-            map_chr(~readChar(.x, file.size(.x))) %>% 
-            paste0(., collapse = "\n\n")
+  map(~
+        grep(., dir(js_output_dir, ".txt"), value = TRUE) %>% 
+        rev() %>% 
+        file.path(js_output_dir, .) %>% 
+        map_chr(~readChar(.x, file.size(.x))) %>% 
+        paste0(., collapse = "\n\n") %>% 
+        paste0("**", .x, "**", .)
+      
   )
 
-# function to write codes as txt files
-f <- function(x, y) {
-  cat(x, file = file.path(js_comp_output_dir, paste0(y, "_js_complete.txt")))
-}
-# write codes as txt files
-walk2(.x = all_js_complete, 
-      .y = dir(js_output_dir, ".txt") %>% gsub("([a-z]{2}).*", "\\1", .) %>% unique(), 
-      .f = f)
+# add tril indicator to embedded data fields reading
+all_js_complete <- 
+  1:2 %>% 
+  map(~gsub("(_0)\\b", paste0("\\1", .x), all_js_complete) %>% gsub("(\\*\\*[a-z]{2})(\\*\\*.*)", paste0("\\1_0", .x, "\\2"), .)) %>% unlist()
+
+# export to txt file
+all_js_complete %>% 
+  walk(~cat(gsub("\\*\\*[a-z]{2}_0[12]\\*\\*(.*)", "\\1", .x), 
+           file = file.path(js_comp_output_dir, paste0(gsub("\\*\\*([a-z]{2}_0[12])\\*\\*.*", "\\1", .x), "_js_complete.txt"))))
+  
+
+

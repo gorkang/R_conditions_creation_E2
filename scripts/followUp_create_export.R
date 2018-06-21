@@ -2,7 +2,12 @@
 if (!require('pacman')) install.packages('pacman'); library('pacman')
 p_load(tidyverse, magrittr)
 
+# functions
 source("functions/remove_placeholders.R")
+source("functions/followup_question_builder.R")
+source("functions/choice_builder.R")
+source("functions/extract_between_placeholders.R")
+# resources
 source("scripts/html_qualtrics_codes.R")
 
 # Generic follow-up template
@@ -11,13 +16,9 @@ unified_fu <-
   readChar(., file.size(.)) 
 
 # Create follow-up questions
-source("functions/followup_question_builder.R")
-source("functions/choice_builder.R")
-source("functions/extract_between_placeholders.R")
-
 path2fu_raw_questions              <- "materials/Question/Follow_up/input/questions_raw/"
-path2fu_qualtrics_questions        <- "materials/qualtrics/input/followUp/questions/"
 
+# Read follow-up questions
 fu_questions <-
   dir(path2fu_raw_questions, ".txt") %>% 
   map(~followup_question_builder(file_path = path2fu_raw_questions, 

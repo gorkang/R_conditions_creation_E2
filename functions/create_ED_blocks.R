@@ -25,7 +25,7 @@ create_ED_blocks <- function() {
                                              medical_consequence  = "partial mastectomy"),
                                    
                                    pr = list(sg_test_result       = "test result" ,
-                                             sg_person            = "a woman's fetus",
+                                             sg_person            = "a woman\\\\'s fetus",
                                              medical_condition    = "trisomy 21",
                                              positive_test_result = "test result",
                                              medical_test         = "test result",

@@ -44,25 +44,11 @@ unified_fu_questions <-
 unified_fu_questions %<>% 
   gsub("(li>)<br>(<li)", "\\1\\2", .)
 
-# Create trial customized follow-up
-trials_no <- 2
-fu_trials <- as.list(rep(unified_fu_questions, trials_no))
-# Customize follow-up to trials (2 trials)
-for (a in seq(trials_no)) {
-  # a <- 1
-  fu_trials[[a]] <-
-    fu_trials[[a]] %>% 
-    gsub("([a-z])\\}", paste0("\\1_0", a, "}"), .) %>% 
-    paste0("**trial_0", a, "**", .)
-}
-
 # Output dir
 fu_output_dir <- 
   "materials/qualtrics/output/plain_text/followup/" %T>% 
   dir.create(., showWarnings = FALSE, recursive = TRUE) 
+# export complete followup (item + questions)
+unified_fu_questions %>% 
+  cat(., file = "materials/qualtrics/output/plain_text/followup/fu_unified.txt")
 
-# Export each trial follow-up
-fu_trials %>% 
-  walk(~cat(gsub("\\*\\*.*\\*\\*", "", .x), sep = "", 
-            file = paste0(fu_output_dir, "fu_", gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x), ".txt"))
-  )

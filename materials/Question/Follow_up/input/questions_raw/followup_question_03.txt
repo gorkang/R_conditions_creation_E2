@@ -6,7 +6,7 @@ How informative the screening test is (0-100)
 [second_choice]
 The need to confirm the diagnosis (0-100)
 [third_choice]
-How serious medical_condition is (0-100)
+How serious the medical condition (${e://Field/medical_condition_0}) is (0-100)
 [fourth_choice]
 The magnitude of the risk of procedure-related complications of the follow-up test (0-100)
 [fifth_choice]

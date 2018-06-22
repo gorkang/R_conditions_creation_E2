@@ -1,6 +1,7 @@
 [context_start]
 Suppose the following statistics are known about women at age age_variable who participate in a routine mammogram screening, an X-ray of the breast tissue that detects tumors.
 [context_mid]
+
 Imagine a group of prevalence_02_variable women that go through a massive screening:
 [context_end]
 

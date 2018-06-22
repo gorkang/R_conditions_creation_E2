@@ -20,7 +20,7 @@ textual_formats <-
 
 # read text files into lists
 textual_formats %>% 
-  walk(~read_txt_items_to_list(presentation_format = .x, name =  paste0(.x, "_items")))
+  walk(~textItem2list(presentation_format = .x, name =  paste0(.x, "_items")))
 
 # Check: problem contexts, ppv probability ----------------------------------------------
 
@@ -39,7 +39,8 @@ problem_probs <-
 
 # All contexts must have a column on problem_context_info.csv indicating information
 ## that will be used to fill some fields2fill
-context_info <- read_csv("materials/Problem_context/problem_context_info.csv", col_types = cols())
+context_info <- 
+  read_csv("materials/Problem_context/problem_context_info.csv", col_types = cols())
 
 # check if problem contexts from presentation format folder are present on problem_context_info.csv
 check <- 
@@ -76,12 +77,36 @@ rm(list = problems_names)
 
 ## Create items ----------------------------------------------------------------
 
-path2fields <- "materials/Numbers/fields2fill.csv"
+path2fields <- 
+  "materials/Numbers/fields2fill.csv"
 
 ### Create textual items (combine items with numbers)
 numbers2problems(problems, numbers_item, path2fields)
 rm(problems, path2fields)
 # problems_numbered
+
+### Export items as text
+# dir
+dir.create("materials/qualtrics/output/plain_text/items/", showWarnings = FALSE, recursive = TRUE)
+# export
+unlist(problems_numbered, 
+       recursive = TRUE, use.names = FALSE) %>% 
+  walk(~
+         cat(.x, 
+             sep = "", 
+             file = paste0("materials/qualtrics/output/plain_text/items/", 
+                           gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x,
+                                ".txt")))
+  )
+
+# Export prevalences as text
+dir.create("materials/qualtrics/output/plain_text/prevalences/", showWarnings = FALSE, recursive = TRUE)
+
+unlist(problems_numbered, 
+       recursive = TRUE, use.names = FALSE) %>% 
+  gsub("(\\*\\*.*\\*\\*).*\\[first_piece\\]\\n{1,2}(.*)\\n{1,2}\\[second_piece\\].*", "\\1\\2", .) %>% 
+  walk(~cat(.x, sep = "", file = paste0("materials/qualtrics/output/plain_text/prevalences/", gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x))))
+
 
 ### Add question to textual items #########################
 
@@ -94,18 +119,28 @@ question_files <-
   dir(questions_dir, pattern = ".txt")
 
 # paths to each response file
-question_files_path <- paste0(questions_dir, question_files)
+question_files_path <- 
+  paste0(questions_dir, question_files)
 
 # list with responses as char strings
 questions <- 
-  lapply(question_files_path, 
-         function(x) readChar(con = x, nchars = file.info(x)$size)) 
+  question_files_path %>% 
+  map(~readChar(con = .x, nchars = file.info(.x)$size))
 
 # assing name to each response type
 questions <- 
   map2(gsub("(.*)\\.txt", "**\\1**", question_files), questions, `paste0`)
 
 rm(questions_dir, question_files, question_files_path)
+
+# Export questions to text
+# dir
+dir.create("materials/qualtrics/output/plain_text/ppv_question/", showWarnings = FALSE, recursive = TRUE)
+# export
+questions %>% 
+  walk(~cat(.x, sep = "", 
+            file = paste0("materials/qualtrics/output/plain_text/ppv_question/", 
+                          gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x))))
 
 # paste questions into problems  #########################
 for (i in seq(length(problems_numbered))) {
@@ -137,10 +172,10 @@ for (i in seq(length(problems_numbered))) {
   
 }
 
-
 ## Convert item list to flat list ----------------------------------------------------------------
+problems_numbered_ordered <- 
+  unlist(problems_numbered, recursive = TRUE, use.names = FALSE)
 
-problems_numbered_ordered <- unlist(problems_numbered, recursive = TRUE, use.names = FALSE)
 
 rm(problems_numbered)
 ## Response types ----------------------------------------------------------------
@@ -277,14 +312,51 @@ context_files <- dir(context_dir, pattern = ".txt") %>% grep("txt_", ., value = 
 context_files_path <- paste0(context_dir, context_files)
 
 # list with responses as char strings
-contexts <- lapply(context_files_path, 
-                   function(x) readChar(con = x, nchars = file.info(x)$size)) 
+contexts <- 
+  context_files_path %>% 
+  map(~readChar(con = .x, nchars = file.info(.x)$size)) 
 
 # assing name to each response type
 names(contexts) <- gsub(".txt", "", context_files)
 
 rm(context_dir,context_files,context_files_path)
 
+# Export problems introductions
+contexts_qualtrics <- 
+  map2(.x = paste0("**", gsub("txt_", "", names(contexts)), "**"),
+       .y = contexts,
+       .f = `paste0`)
+
+tmp_prevalence <- 
+  filter(numbers_item, format == "nfab") %>% 
+  select(prob, prev_02, age)
+
+for (z in seq(contexts_qualtrics)) {
+  # z <- 1
+  
+  tmp_context <- 
+    as.list(rep(contexts_qualtrics[z], nrow(tmp_prevalence)))
+  
+  for (a in 1:nrow(tmp_prevalence)) {
+    # a <- 1
+    tmp_context[a] <- 
+      tmp_context[a] %>% 
+      gsub("prevalence_02_variable", tmp_prevalence[a, "prev_02"], .) %>% 
+      gsub("(\\*\\*[a-z]{2}_context)(\\*\\*.*)", paste0("\\1_ppv", tmp_prevalence[[a, "prob"]], "\\2"), .) %>% 
+      gsub("age_variable", tmp_prevalence[a, "age"], .)
+      
+    
+  }
+    contexts_qualtrics[z] <- list(tmp_context)
+}
+
+
+dir.create("materials/qualtrics/output/plain_text/prob_intro/", showWarnings = FALSE, recursive = TRUE)
+contexts_qualtrics %>% 
+  unlist() %>% 
+  walk(~cat(.x, sep = "", 
+            file = paste0("materials/qualtrics/output/plain_text/prob_intro/", # path
+                          gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x)))) # name
 
 
 # Paste problem contexts at the beginning of each problem, 

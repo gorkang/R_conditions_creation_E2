@@ -17,7 +17,8 @@ html_codes <- list(
   choices_font_size =
     paste0('<span style="font-size:', choice_size, 'px;">CHOICES_TEXT_TO_FORMAT</span>'),
   list_start = "<li>",
-  list_end = "</li>"
+  list_end = "</li>",
+  insert_img = '<img height="834" src="LINK2IMG" style="width&#58; 1200px; height&#58; 834px;" width="1200" />'
 )    
 
 # Qualtrics codes *************************
@@ -30,9 +31,12 @@ qualtrics_codes <- list(
   question_singlechoice_vertical = "[[Question:MC:SingleAnswer:Vertical]]",
   question_singlechoice_horizontal = "[[Question:MC:SingleAnswer:Horizontal]]",
   question_dropdown = "[[Question:MC:DropDown]]",
-  question_textentry = "[[Question:TE]]",
+  question_textentry = "[[Question:TE:SingleLine]]",
+  question_form = "[[Question:TE:Form]]",
   # Answers
   question_choices = "[[Choices]]",
   # Only text
-  question_only_text = "[[Question:Text]]"
+  question_only_text = "[[Question:Text]]",
+  # Others
+  embedded_data = "[[ED:field:value]]"
 )

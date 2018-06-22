@@ -1,0 +1,15 @@
+[followUp_start]
+Remember that:
+<li>${e://Field/prevalence}</li>
+<li>In your response to the previous problem you said that, ${e://Field/ppv_response_0} of those with a positive ${e://Field/positive_test_result_0} actually have the medical condition (${e://Field/medical_condition_0}).</li>
+
+[followUp_first_piece]
+Imagine a woman you care about is participating in a routine screening as the one you saw before to detect a medical condition (${e://Field/medical_condition}), and receives a positive ${e://Field/medical_test}.
+
+
+[followUp_second_piece]
+The doctor offers her a follow-up test ${e://Field/doctor_offers}, necessary to confirm the diagnosis. During the procedure, a needle is inserted to sample ${e://Field/fluid_test}.
+
+[followUp_third_piece]
+${e://Field/test_name} has a ${e://Field/fu_risk_num}% procedure-related risk of complications (for example, infections) that can result in a ${e://Field/medical_consequence}.
+[followUp_end]

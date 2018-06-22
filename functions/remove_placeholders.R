@@ -26,10 +26,9 @@ remove_placeholders <- function(items, item_followup = "item") {
   # create regex to detect all placeholders
   placeholders_regex <-
     # paste(paste0("\\n{0,1}\\[",placeholders, "\\]\\n{0,1}"), collapse = "|")
-    paste(paste0("\\[",placeholders, "\\]\\n{0,1}"), collapse = "|")
+    paste(paste0("\\n?\\[",placeholders, "\\]"), collapse = "|")
   
   # remove placeholders
-  gsub(placeholders_regex, "", items)
-  
-  
+  gsub(placeholders_regex, "", items) 
+
 }

@@ -206,7 +206,7 @@ for (i in seq(length(nppi_items))){
     
     # problem context of current template 
     current_context <-
-      substr(names(nppi_items[i]), 6, 7)
+      substr(names(nppi_items[i]), 1, 2)
     
     # ppv graph of current template
     current_graph <- 
@@ -380,5 +380,5 @@ for (cC in seq(problem_contexts)) {
   responses_pic$sg[cC] <- temp_sg
 }
 
-rm(response_type_files,response_type_files_path,response_types_dir, numbers_fact, numbers_item)    
+rm(response_type_files,response_type_files_path,response_types_dir, numbers_item)    
 

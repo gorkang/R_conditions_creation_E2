@@ -1,6 +1,7 @@
 [context_start]
 Suppose the following statistics are known about women at age age_variable who participate in a routine prenatal screening test to detect Trisomy 21, a blood test that detects the presence of an extra chromosome 21.
 [context_mid]
+
 Imagine a group of prevalence_02_variable women that go through a massive screening:
 [context_end]
 

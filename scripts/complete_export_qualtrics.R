@@ -179,7 +179,7 @@ f <- function(x) {
 
 # dir to output screening blocks 
 screening_block_output_dir <- 
-  "materials/qualtrics/output/plain_text/screening_blocks/" %T>% 
+  "materials/qualtrics/output/plain_text/screening_blocks/partial/" %T>% 
   dir.create(., FALSE, TRUE)
 
 # customize items
@@ -189,6 +189,10 @@ map(1:2, ~f(.x)) %>%
 
 
 # Join blocks -------------------------------------------------------------
+
+complete_screening_block_output_dir <- 
+  "materials/qualtrics/output/plain_text/screening_blocks/complete/" %T>% 
+  dir.create(., FALSE, TRUE)
 
 screening_block_output_dir %>% 
   dir(., ".txt") %>% 

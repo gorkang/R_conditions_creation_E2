@@ -2,7 +2,7 @@
 # response_string <- response_text
 # x <- choices[2]
 # extract_choice_text(x)
-  
+
 choice_builder <- 
   function(response_string) {
     

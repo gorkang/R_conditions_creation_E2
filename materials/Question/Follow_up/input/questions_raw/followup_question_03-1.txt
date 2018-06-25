@@ -1,0 +1,7 @@
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:fu_Q03-1_0]]
+[question_start]
+Which factors influenced your recommendation?
+[choices_start]
+How informative the screening test is (0-100%)
+[choices_end]

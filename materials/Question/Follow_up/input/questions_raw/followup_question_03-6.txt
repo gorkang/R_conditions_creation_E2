@@ -1,0 +1,7 @@
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:fu_Q03-6_0]]
+[question_start]
+ 
+[choices_start]
+Other (0-100%):
+[choices_end]

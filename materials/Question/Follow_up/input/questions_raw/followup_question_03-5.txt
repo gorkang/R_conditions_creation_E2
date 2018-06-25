@@ -1,0 +1,8 @@
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:fu_Q03-5_0]]
+ 
+[question_start]
+ 
+[choices_start]
+How serious the complications of the follow-up test are (0-100%)
+[choices_end]

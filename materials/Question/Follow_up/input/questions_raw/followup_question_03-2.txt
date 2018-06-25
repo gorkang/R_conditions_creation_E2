@@ -1,0 +1,7 @@
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:fu_Q03-2_0]]
+[question_start]
+ 
+[choices_start]
+The need to confirm the diagnosis (0-100%)
+[choices_end]

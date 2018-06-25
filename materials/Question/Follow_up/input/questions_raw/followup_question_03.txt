@@ -1,16 +1,17 @@
 [[Question:MC:SingleAnswer:Vertical]]
+[[ID:fu_Q03_0]]
 [question_start]
 Which factors influenced your recommendation?
 [choices_start]
-How informative the screening test is (0-100)
+How informative the screening test is (0-100%)
 [second_choice]
-The need to confirm the diagnosis (0-100)
+The need to confirm the diagnosis (0-100%)
 [third_choice]
-How serious the medical condition (${e://Field/medical_condition_0}) is (0-100)
+How serious the medical condition (${e://Field/medical_condition_0}) is (0-100%)
 [fourth_choice]
-The magnitude of the risk of procedure-related complications of the follow-up test (0-100)
+The magnitude of the risk of procedure-related complications of the follow-up test (0-100%)
 [fifth_choice]
-How serious the complications of the follow-up test are (0-100)
+How serious the complications of the follow-up test are (0-100%)
 [sixth_choice]
-Other (0-100):
+Other (0-100%):
 [choices_end]

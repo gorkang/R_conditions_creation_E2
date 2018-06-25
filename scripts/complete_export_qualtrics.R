@@ -60,13 +60,21 @@ ED_screening_ppv_question <-
   gsub("\\n", "", .) %>% 
   gsub("QUESTION_TEXT_TO_FORMAT", ., html_codes$question_font_size) 
 
+questioIDme <- function(question_id) {
+  if (nchar(question_id) > 15) {
+    message(paste0("Wrong questionIDme call: IDs cannot be longer than 15 characteres. You have ", nchar(question_id)))
+  } else if (nchar(question_id <= 15)) {
+  question_id %>% gsub("question_id", .,qualtrics_codes$question_id)
+  }
+}
 # Assemble item (ppv question is a question by itself to be able to hide it on pfab & sg condition)
 screening_item <-
-  paste(qualtrics_codes$advanced_format,
-        qualtrics_codes$question_only_text,
+  paste(qualtrics_codes$question_only_text,
+        questioIDme("ppv_I_0"),
         paste(ED_screening_intro, 
               ED_screening_item, sep = "<br><br>"),
         qualtrics_codes$question_only_text,
+        questioIDme("ppv_Q_txt_0"),
         ED_screening_ppv_question, sep = "\n")
 
 # Response types ####
@@ -77,6 +85,7 @@ screening_item <-
 # Global intuitive (single choice)
 resp_type_01 <- 
   paste(qualtrics_codes$question_singlechoice_horizontal,
+        questioIDme("ppv_Q_gi_0"),
         " ",
         qualtrics_codes$question_choices,
         paste('<span style="font-size: 16px;">Very few<br>(0-20%)</span>',
@@ -84,27 +93,34 @@ resp_type_01 <-
               '<span style="font-size: 16px;">Half<br>(41-60%)</span>',
               '<span style="font-size: 16px;">Quite<br>(61-80%)</span>',
               '<span style="font-size: 16px;">Many<br>(81-100%)</span>', sep = "\n"), sep = "\n")
-# Sistemic global (__%)
+# Global sistematic (__%)
 resp_type_02 <-
   paste(qualtrics_codes$question_textentry,
+        questioIDme("ppv_Q_gs_0"),
         " ",
         sep = "\n")
 # sequential guided (__ will have out of __. __ will ...)
 resp_type_03 <- 
   paste(qualtrics_codes$question_textentry,
+        questioIDme("ppv_Q_sg01_0"),
         " ",
         qualtrics_codes$question_textentry,
+        questioIDme("ppv_Q_sg02_0"),
         " ",
         qualtrics_codes$question_textentry,
+        questioIDme("ppv_Q_sg03_0"),
         " ",
         qualtrics_codes$question_textentry,
+        questioIDme("ppv_Q_sg04_0"),
         " ",
         sep = "\n")
 # sequential simple (__ out of __)
 resp_type_04 <- 
   paste(qualtrics_codes$question_textentry,
+        questioIDme("ppv_Q_ss01_0"),
         " ",
         qualtrics_codes$question_textentry,
+        questioIDme("ppv_Q_ss02_0"),
         " ",
         sep = "\n")
 
@@ -112,12 +128,14 @@ resp_type_04 <-
 
 will_screening <-
   paste(qualtrics_codes$question_only_text,
+        questioIDme("wilScre_I_0"),
         gsub("QUESTION_TEXT_TO_FORMAT", 
              "Imagine a woman you care about is offered to participate a in routine screening test to detect ${e://Field/medical_condition_0} as the one you saw before.", 
              html_codes$question_font_size), sep = "\n")
 
 will_screening_01 <- 
   paste(qualtrics_codes$question_singlechoice_vertical,
+        questioIDme("wilScre_Q01_0"),
         gsub("QUESTION_TEXT_TO_FORMAT", 
              "Should she take the screening test?", 
              html_codes$question_font_size),
@@ -126,10 +144,14 @@ will_screening_01 <-
         "No" %>% gsub("CHOICES_TEXT_TO_FORMAT", ., html_codes$choices_font_size), sep = "\n")
 
 will_screening_02 <-
-  paste(qualtrics_codes$question_only_text,
+  paste(qualtrics_codes$question_singlechoice_vertical,
+        questioIDme("wilScre_Q02_0"),
         gsub("QUESTION_TEXT_TO_FORMAT", 
              "How strongly would you recommend her to take the screening test (0-100%)", 
-             html_codes$question_font_size), sep = "\n")
+             html_codes$question_font_size), 
+        qualtrics_codes$question_choices,
+        "DELETE_THIS",
+        sep = "\n")
 
 # Assemble item with response types
 screening_item_questions <-
@@ -163,8 +185,8 @@ followup_items <-
 complete_item <- 
   paste(screening_item_questions, 
         qualtrics_codes$pagebreak,
-        followup_items, sep = "\n\n")
-complete_item %>% cat
+        followup_items, sep = "\n")
+
 # Output dir
 screening_output_dir <- 
   "materials/qualtrics/output/plain_text/screening_items/" %T>% 
@@ -173,13 +195,13 @@ screening_output_dir <-
 # Customize item to trial
 # func to customize
 f <- function(x) {
-  gsub("([0-9])\\}", paste0("\\1", x, "}"), complete_item) %>% 
+  gsub("(_[0-9])\\b(\\}?\\]?)", paste0("\\1", x, "\\2"), complete_item) %>% 
     paste0("**trial_0", x, "**", .)
 }
 
 # dir to output screening blocks 
 screening_block_output_dir <- 
-  "materials/qualtrics/output/plain_text/screening_blocks/" %T>% 
+  "materials/qualtrics/output/plain_text/screening_blocks/partial/" %T>% 
   dir.create(., FALSE, TRUE)
 
 # customize items
@@ -190,11 +212,17 @@ map(1:2, ~f(.x)) %>%
 
 # Join blocks -------------------------------------------------------------
 
+complete_screening_block_output_dir <- 
+  "materials/qualtrics/output/plain_text/screening_blocks/complete/" %T>% 
+  dir.create(., FALSE, TRUE)
+
 screening_block_output_dir %>% 
   dir(., ".txt") %>% 
   map_chr(~readChar(paste0(screening_block_output_dir, .x), file.size(paste0(screening_block_output_dir, .x)))) %>% 
-  paste(., collapse = "\n\n") %>% cat()
-
+  paste(., collapse = paste0("\n", gsub("block_name", "ppv_sceening_block02", qualtrics_codes$block_start), "\n")) %>% 
+  paste(gsub("block_name", "ppv_sceening_block01", qualtrics_codes$block_start), ., sep = "\n") %>% 
+  paste(qualtrics_codes$advanced_format, ., sep = "\n") %>% 
+  cat(., file = file.path(complete_screening_block_output_dir, "screenings_blocks.txt"))
 
 # JS codes to give format to response type questions ----------------------
 source("scripts/create_js.R")

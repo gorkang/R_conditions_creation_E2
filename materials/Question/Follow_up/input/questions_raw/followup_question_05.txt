@@ -1,4 +1,5 @@
 [[Question:MC:SingleAnswer:Vertical]]
+[[ID:fu_Q05_0]]
 [question_start]
 Remember the biopsy has a ${e://Field/fu_risk_num_0} procedure-related risk of complications:
 [choices_start]

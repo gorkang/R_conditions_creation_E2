@@ -195,7 +195,7 @@ screening_output_dir <-
 # Customize item to trial
 # func to customize
 f <- function(x) {
-  gsub("([0-9])\\}", paste0("\\1", x, "}"), complete_item) %>% 
+  gsub("(_[0-9])\\b(\\}?\\]?)", paste0("\\1", x, "\\2"), complete_item) %>% 
     paste0("**trial_0", x, "**", .)
 }
 

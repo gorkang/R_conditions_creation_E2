@@ -219,8 +219,10 @@ complete_screening_block_output_dir <-
 screening_block_output_dir %>% 
   dir(., ".txt") %>% 
   map_chr(~readChar(paste0(screening_block_output_dir, .x), file.size(paste0(screening_block_output_dir, .x)))) %>% 
-  paste(., collapse = paste0("\n", qualtrics_codes$pagebreak,"\n")) %>% paste(qualtrics_codes$advanced_format, ., sep = "\n") %>% cat(., file = file.path(complete_screening_block_output_dir, "screenings_blocks.txt"))
-
+  paste(., collapse = paste0("\n", gsub("block_name", "ppv_sceening_block02", qualtrics_codes$block_start), "\n")) %>% 
+  paste(gsub("block_name", "ppv_sceening_block01", qualtrics_codes$block_start), ., sep = "\n") %>% 
+  paste(qualtrics_codes$advanced_format, ., sep = "\n") %>% 
+  cat(., file = file.path(complete_screening_block_output_dir, "screenings_blocks.txt"))
 
 # JS codes to give format to response type questions ----------------------
 source("scripts/create_js.R")

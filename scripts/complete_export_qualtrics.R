@@ -125,10 +125,13 @@ will_screening_01 <-
         "No" %>% gsub("CHOICES_TEXT_TO_FORMAT", ., html_codes$choices_font_size), sep = "\n")
 
 will_screening_02 <-
-  paste(qualtrics_codes$question_only_text,
+  paste(qualtrics_codes$question_singlechoice_vertical,
         gsub("QUESTION_TEXT_TO_FORMAT", 
              "How strongly would you recommend her to take the screening test (0-100%)", 
-             html_codes$question_font_size), sep = "\n")
+             html_codes$question_font_size), 
+        qualtrics_codes$question_choices,
+        "DELETE_THIS",
+        sep = "\n")
 
 # Assemble item with response types
 screening_item_questions <-

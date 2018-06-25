@@ -35,8 +35,7 @@ unified_fu_questions <-
   gsub("\\n\\b", "", .) %>%
   gsub("\\n", "<br>", .) %>% 
   gsub("QUESTION_TEXT_TO_FORMAT", ., html_codes$question_font_size) %>%  # add html code to follow-up text
-  paste(qualtrics_codes$advanced_format,                                 # paste qualtrics tags with follow-up text and follow-up questions
-        qualtrics_codes$question_only_text, 
+  paste(qualtrics_codes$question_only_text,         # paste qualtrics tags with follow-up text and follow-up questions
         ., 
         paste(unlist(fu_questions), collapse = "\n"), sep = "\n")
 

@@ -186,7 +186,7 @@ complete_item <-
   paste(screening_item_questions, 
         qualtrics_codes$pagebreak,
         followup_items, sep = "\n")
-complete_item %>% cat
+
 # Output dir
 screening_output_dir <- 
   "materials/qualtrics/output/plain_text/screening_items/" %T>% 

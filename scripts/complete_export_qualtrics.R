@@ -108,13 +108,40 @@ resp_type_04 <-
         " ",
         sep = "\n")
 
+# Willingness to undergo screening test (according to issue #61 on github)
+
+will_screening <-
+  paste(qualtrics_codes$question_only_text,
+        gsub("QUESTION_TEXT_TO_FORMAT", 
+             "Imagine a woman you care about is offered to participate a in routine screening test to detect ${e://Field/medical_condition_0} as the one you saw before.", 
+             html_codes$question_font_size), sep = "\n")
+
+will_screening_01 <- 
+  paste(qualtrics_codes$question_singlechoice_vertical,
+        gsub("QUESTION_TEXT_TO_FORMAT", 
+             "Should she take the screening test?", 
+             html_codes$question_font_size),
+        qualtrics_codes$question_choices,
+        "Yes" %>% gsub("CHOICES_TEXT_TO_FORMAT", ., html_codes$choices_font_size),
+        "No" %>% gsub("CHOICES_TEXT_TO_FORMAT", ., html_codes$choices_font_size), sep = "\n")
+
+will_screening_02 <-
+  paste(qualtrics_codes$question_only_text,
+        gsub("QUESTION_TEXT_TO_FORMAT", 
+             "How strongly would you recommend her to take the screening test (0-100%)", 
+             html_codes$question_font_size), sep = "\n")
+
 # Assemble item with response types
-screening_item_questions <- 
+screening_item_questions <-
   paste(  screening_item,
           resp_type_01,
           resp_type_02,
           resp_type_03,
           resp_type_04,
+          qualtrics_codes$pagebreak,
+          will_screening,
+          will_screening_01,
+          will_screening_02,
           sep = "\n")
 
 # Create follow-up --------------------------------------------------------
@@ -134,8 +161,10 @@ followup_items <-
 
 # Append screening item with follow-up
 complete_item <- 
-  paste(screening_item_questions, followup_items, sep = "\n")
-
+  paste(screening_item_questions, 
+        qualtrics_codes$pagebreak,
+        followup_items, sep = "\n")
+complete_item %>% cat
 # Output dir
 screening_output_dir <- 
   "materials/qualtrics/output/plain_text/screening_items/" %T>% 

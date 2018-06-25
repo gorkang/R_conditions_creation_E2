@@ -62,8 +62,7 @@ ED_screening_ppv_question <-
 
 # Assemble item (ppv question is a question by itself to be able to hide it on pfab & sg condition)
 screening_item <-
-  paste(qualtrics_codes$advanced_format,
-        qualtrics_codes$question_only_text,
+  paste(qualtrics_codes$question_only_text,
         paste(ED_screening_intro, 
               ED_screening_item, sep = "<br><br>"),
         qualtrics_codes$question_only_text,
@@ -197,7 +196,7 @@ complete_screening_block_output_dir <-
 screening_block_output_dir %>% 
   dir(., ".txt") %>% 
   map_chr(~readChar(paste0(screening_block_output_dir, .x), file.size(paste0(screening_block_output_dir, .x)))) %>% 
-  paste(., collapse = "\n\n") %>% cat()
+  paste(., collapse = "\n\n") %>% paste(qualtrics_codes$advanced_format, ., sep = "\n") %>% cat(., file = file.path(complete_screening_block_output_dir, "screenings_blocks.txt"))
 
 
 # JS codes to give format to response type questions ----------------------

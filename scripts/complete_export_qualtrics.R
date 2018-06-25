@@ -70,9 +70,11 @@ questioIDme <- function(question_id) {
 # Assemble item (ppv question is a question by itself to be able to hide it on pfab & sg condition)
 screening_item <-
   paste(qualtrics_codes$question_only_text,
+        questioIDme("ppv_I_0"),
         paste(ED_screening_intro, 
               ED_screening_item, sep = "<br><br>"),
         qualtrics_codes$question_only_text,
+        questioIDme("ppv_Q_txt_0"),
         ED_screening_ppv_question, sep = "\n")
 
 # Response types ####
@@ -83,6 +85,7 @@ screening_item <-
 # Global intuitive (single choice)
 resp_type_01 <- 
   paste(qualtrics_codes$question_singlechoice_horizontal,
+        questioIDme("ppv_Q_gi_0"),
         " ",
         qualtrics_codes$question_choices,
         paste('<span style="font-size: 16px;">Very few<br>(0-20%)</span>',
@@ -93,24 +96,31 @@ resp_type_01 <-
 # Global sistematic (__%)
 resp_type_02 <-
   paste(qualtrics_codes$question_textentry,
+        questioIDme("ppv_Q_gs_0"),
         " ",
         sep = "\n")
 # sequential guided (__ will have out of __. __ will ...)
 resp_type_03 <- 
   paste(qualtrics_codes$question_textentry,
+        questioIDme("ppv_Q_sg01_0"),
         " ",
         qualtrics_codes$question_textentry,
+        questioIDme("ppv_Q_sg02_0"),
         " ",
         qualtrics_codes$question_textentry,
+        questioIDme("ppv_Q_sg03_0"),
         " ",
         qualtrics_codes$question_textentry,
+        questioIDme("ppv_Q_sg04_0"),
         " ",
         sep = "\n")
 # sequential simple (__ out of __)
 resp_type_04 <- 
   paste(qualtrics_codes$question_textentry,
+        questioIDme("ppv_Q_ss01_0"),
         " ",
         qualtrics_codes$question_textentry,
+        questioIDme("ppv_Q_ss02_0"),
         " ",
         sep = "\n")
 
@@ -118,12 +128,14 @@ resp_type_04 <-
 
 will_screening <-
   paste(qualtrics_codes$question_only_text,
+        questioIDme("wilScre_I_0"),
         gsub("QUESTION_TEXT_TO_FORMAT", 
              "Imagine a woman you care about is offered to participate a in routine screening test to detect ${e://Field/medical_condition_0} as the one you saw before.", 
              html_codes$question_font_size), sep = "\n")
 
 will_screening_01 <- 
   paste(qualtrics_codes$question_singlechoice_vertical,
+        questioIDme("wilScre_Q01_0"),
         gsub("QUESTION_TEXT_TO_FORMAT", 
              "Should she take the screening test?", 
              html_codes$question_font_size),
@@ -133,6 +145,7 @@ will_screening_01 <-
 
 will_screening_02 <-
   paste(qualtrics_codes$question_singlechoice_vertical,
+        questioIDme("wilScre_Q02_0"),
         gsub("QUESTION_TEXT_TO_FORMAT", 
              "How strongly would you recommend her to take the screening test (0-100%)", 
              html_codes$question_font_size), 

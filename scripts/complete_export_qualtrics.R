@@ -163,7 +163,7 @@ followup_items <-
 complete_item <- 
   paste(screening_item_questions, 
         qualtrics_codes$pagebreak,
-        followup_items, sep = "\n")
+        followup_items, sep = "\n\n")
 complete_item %>% cat
 # Output dir
 screening_output_dir <- 
@@ -173,8 +173,8 @@ screening_output_dir <-
 # Customize item to trial
 # func to customize
 f <- function(x) {
-gsub("([0-9])\\}", paste0("\\1", x, "}"), complete_item) %>% 
-  paste0("**trial_0", x, "**", .)
+  gsub("([0-9])\\}", paste0("\\1", x, "}"), complete_item) %>% 
+    paste0("**trial_0", x, "**", .)
 }
 
 # dir to output screening blocks 
@@ -185,7 +185,16 @@ screening_block_output_dir <-
 # customize items
 map(1:2, ~f(.x)) %>% 
   walk(~cat(gsub("\\*\\*.*\\*\\*", "", .x), sep = "",
-           file = paste0(screening_block_output_dir, "screening_block_", gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x), ".txt")))
+            file = paste0(screening_block_output_dir, "screening_block_", gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x), ".txt")))
+
+
+# Join blocks -------------------------------------------------------------
+
+screening_block_output_dir %>% 
+  dir(., ".txt") %>% 
+  map_chr(~readChar(paste0(screening_block_output_dir, .x), file.size(paste0(screening_block_output_dir, .x)))) %>% 
+  paste(., collapse = "\n\n") %>% cat()
+
 
 # JS codes to give format to response type questions ----------------------
 source("scripts/create_js.R")

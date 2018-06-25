@@ -5,7 +5,7 @@
 # font size
 choice_size <- 16
 question_size <- 22
-
+  
 # HTML codes ******************************
 html_codes <- list(
   # font

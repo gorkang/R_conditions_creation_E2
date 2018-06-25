@@ -208,7 +208,7 @@ screening_block_output_dir <-
 map(1:2, ~f(.x)) %>% 
   walk(~cat(gsub("\\*\\*.*\\*\\*", "", .x), sep = "",
             file = paste0(screening_block_output_dir, "screening_block_", gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x), ".txt")))
-
+  
 
 # Join blocks -------------------------------------------------------------
 

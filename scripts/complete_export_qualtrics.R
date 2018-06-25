@@ -60,6 +60,13 @@ ED_screening_ppv_question <-
   gsub("\\n", "", .) %>% 
   gsub("QUESTION_TEXT_TO_FORMAT", ., html_codes$question_font_size) 
 
+questioIDme <- function(question_id) {
+  if (nchar(question_id) > 15) {
+    message(paste0("Wrong questionIDme call: IDs cannot be longer than 15 characteres. You have ", nchar(question_id)))
+  } else if (nchar(question_id <= 15)) {
+  question_id %>% gsub("question_id", .,qualtrics_codes$question_id)
+  }
+}
 # Assemble item (ppv question is a question by itself to be able to hide it on pfab & sg condition)
 screening_item <-
   paste(qualtrics_codes$question_only_text,

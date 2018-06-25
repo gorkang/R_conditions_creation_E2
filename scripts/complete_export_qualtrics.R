@@ -90,7 +90,7 @@ resp_type_01 <-
               '<span style="font-size: 16px;">Half<br>(41-60%)</span>',
               '<span style="font-size: 16px;">Quite<br>(61-80%)</span>',
               '<span style="font-size: 16px;">Many<br>(81-100%)</span>', sep = "\n"), sep = "\n")
-# Sistemic global (__%)
+# Global sistematic (__%)
 resp_type_02 <-
   paste(qualtrics_codes$question_textentry,
         " ",

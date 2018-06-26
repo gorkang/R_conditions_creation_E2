@@ -1,7 +1,0 @@
-[[Question:MC:SingleAnswer:Vertical]]
-[[ID:fu_Q03-3_0]]
-[question_start]
- 
-[choices_start]
-How serious the medical condition (${e://Field/medical_condition_0}) is (0-100%)
-[choices_end]

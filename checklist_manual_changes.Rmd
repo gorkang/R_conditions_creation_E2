@@ -46,6 +46,28 @@ tibble(check = "",
                       extra = (""))) %>% 
   kableME(.)
 ```
+
+
+### Display logic
+
+_Block 01_
+
+```{r, table04, echo=FALSE}
+tibble(check = "",
+       qIDs = c("ppv_Q_gi_01", "ppv_Q_gs_01", "ppv_Q_sg01_01", "ppv_Q_sg02_01", "ppv_Q_sg03_01", "ppv_Q_sg04_01", "ppv_Q_ss01_01", "ppv_Q_ss02_01", "fu_Q05_01 (1st slider)", "fu_Q05_01 (2nd slider)"),
+       extra = c("_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gi__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gs__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Question_ > _fu_Q01_01_ > __No__ > _Is Selected_", "_Question_ > _fu_Q01_01_ > __Yes__ > _Is Selected_")) %>% 
+  kableME(.)
+```
+
+_Block 02_
+
+```{r, table05, echo=FALSE}
+tibble(check = "",
+       qIDs = c("ppv_Q_gi_02", "ppv_Q_gs_02", "ppv_Q_sg01_02", "ppv_Q_sg02_02", "ppv_Q_sg03_02", "ppv_Q_sg04_02", "ppv_Q_ss01_02", "ppv_Q_ss02_02", "fu_Q05_02 (1st slider)", "fu_Q05_02 (2nd slider)"),
+       extra = c("_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gi__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gs__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Question_ > _fu_Q01_02_ > __No__ > _Is Selected_", "_Question_ > _fu_Q01_02_ > __Yes__ > _Is Selected_")) %>% 
+  kableME(.)
+```
+
 ### Text entry size  
 
 Reduce text entry size to minimum by draging the rightmost side all the way to the left.

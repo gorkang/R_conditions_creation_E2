@@ -46,6 +46,28 @@ tibble(check = "",
                       extra = (""))) %>% 
   kableME(.)
 ```
+### Text entry size  
+
+Reduce text entry size to minimum by draging the rightmost side all the way to the left.
+
+_Block 01_
+
+```{r, table06, echo=FALSE}
+tibble(check = "",
+       qIDs = c("ppv_Q_gs_01", "ppv_Q_sg01_01", "ppv_Q_sg02_01", "ppv_Q_sg03_01", "ppv_Q_sg04_01", "ppv_Q_ss01_01", "ppv_Q_ss02_01" ),
+       extra = c("")) %>% 
+  kableME(.)
+```
+
+_Block 02_
+
+```{r, table07, echo=FALSE}
+tibble(check = "",
+       qIDs = c("ppv_Q_gs_02", "ppv_Q_sg01_02", "ppv_Q_sg02_02", "ppv_Q_sg03_02", "ppv_Q_sg04_02", "ppv_Q_ss01_02", "ppv_Q_ss02_02" ),
+       extra = c("")) %>% 
+  kableME(.)
+```
+
 ### Add JavaScript
 
 Copy JS code from txt files and add them to the correspondent questions. Select All within the txt file and paste it over all the dafault content of the Add JavaScript pop-up window.

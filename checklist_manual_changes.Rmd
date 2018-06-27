@@ -13,6 +13,15 @@ some_table %>%
   kable() %>% kable_styling(., "striped")
 }
 ```
+
+
+# Qualtrics manual changes  
+
+This is a checklist with all necessary manual changes to be done once the Qualtrics Survey is fully imported.
+
+
+## Screening blocks (PPV item + Follow-up)
+
 ### Sliders
 
 Change question type to Slider

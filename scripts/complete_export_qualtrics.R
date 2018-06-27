@@ -147,7 +147,7 @@ will_screening_02 <-
   paste(qualtrics_codes$question_singlechoice_vertical,
         questioIDme("wilScre_Q02_0"),
         gsub("QUESTION_TEXT_TO_FORMAT", 
-             "How strongly would you recommend her to take the screening test (0-100%)", 
+             "How strongly would you recommend her to take the screening test?<br>0: Not strongly at all - 100: Very strongly", 
              html_codes$question_font_size), 
         qualtrics_codes$question_choices,
         "DELETE_THIS",

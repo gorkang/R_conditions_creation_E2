@@ -18,7 +18,7 @@ create_ED_blocks <- function() {
                                              sg_person            = "a woman",
                                              medical_condition    = "breast cancer",
                                              positive_test_result = "mammogram",
-                                             medical_test         = "mammogram",
+                                             # medical_test         = "mammogram",
                                              doctor_offers        = "that consist of a biopsy",
                                              fluid_test           = "the breast cyst",
                                              test_name            = "The biopsy",
@@ -28,7 +28,7 @@ create_ED_blocks <- function() {
                                              sg_person            = "a woman\\\\'s fetus",
                                              medical_condition    = "trisomy 21",
                                              positive_test_result = "test result",
-                                             medical_test         = "test result",
+                                             # medical_test         = "test result",
                                              doctor_offers        = "called amniocentesis",
                                              fluid_test           = "the amniotic sac",
                                              test_name            = "Amniocentesis",
@@ -49,8 +49,6 @@ create_ED_blocks <- function() {
            # TODO: REMOVE ppv_question = NULL,
            prob_context_01 = NULL,            # Problem context item 01
            prob_context_02 = NULL,            # Problem context item 02
-           med_cond_01 = NULL,                # Medical condition item 01
-           med_cond_02 = NULL,                # Medical condition item 02
            ppv_prob_text_01 = NULL,           # PPV probability as text item 01
            ppv_prob_text_02 = NULL,           # PPV probability as text item 02
            ppv_prob_num_01 = NULL,            # PPV probability as num item 01
@@ -132,19 +130,6 @@ create_ED_blocks <- function() {
       qualtrics_codes$embedded_data %>% 
       gsub("field", "prob_context_02", .) %>% 
       gsub("value", current_condition$prob_context_02, .)
-    
-    # Medical condition -------------------------------------------------------
-    
-    # Medical condition 01
-    embedded_data$med_cond_01 <- 
-      qualtrics_codes$embedded_data %>% 
-      gsub("field", "med_cond_01", .) %>% 
-      gsub("value", current_condition$med_cond_01, .)
-    # Medical condition 02
-    embedded_data$med_cond_02 <- 
-      qualtrics_codes$embedded_data %>% 
-      gsub("field", "med_cond_02", .) %>% 
-      gsub("value", current_condition$med_cond_02, .)
     
     # PPV ---------------------------------------------------------------------
     

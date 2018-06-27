@@ -24,7 +24,7 @@ This is a checklist with all necessary manual changes to be done once the Qualtr
 
 ### Sliders
 
-Change question type to Slider
+Change question type to Slider. On each question select the green button on the right upper corner and select Slider.
 
 ```{r, table01, echo=FALSE}
 tibble(check = "", 
@@ -35,7 +35,7 @@ tibble(check = "",
 
 ### Force response & Answer validation  
 
-Check the box "Force Response" for each of the following questions. In some cases an extra "Validation Type" has to be included.
+On each question, check the box "Force Response" (on the right contextual banner). In some cases an extra "Validation Type" has to be included. To do so, select one of the options below _Validation Options_.
 
 _Block 01_
 
@@ -70,6 +70,8 @@ tibble(check = "",
 
 ### Display logic
 
+On each question, by right-clicking (or by clicking on the cog on the left side of the question), select _Add Display Logic..._. A pop-up window will open.
+
 _Block 01_
 
 ```{r, table04, echo=FALSE}
@@ -90,7 +92,7 @@ tibble(check = "",
 
 ### Text entry size  
 
-Reduce text entry size to minimum by draging the rightmost side all the way to the left.
+Reduce text entry size to minimum by dragging the rightmost side all the way to the left.
 
 _Block 01_
 
@@ -112,7 +114,7 @@ tibble(check = "",
 
 ### Add JavaScript
 
-Copy JS code from txt files and add them to the correspondent questions. Select All within the txt file and paste it over all the dafault content of the Add JavaScript pop-up window.
+On each question, by right-clicking (or by clicking on the cog on the left side of the question), select _Add JavaScript_. A pop-up window will open. Copy the JS code from the text files (_plain_text/js_codes/complete_) and paste them to the correspondent questions. Remember to select all when copying and when pasting over the JS template.
 
 _Block 01_
 

@@ -1,3 +1,4 @@
+<!-- render("checklist_manual_changes.Rmd") -->
 
 
 - [ ] This is a check list

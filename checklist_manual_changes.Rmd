@@ -3,7 +3,7 @@
 ```{r, packages, echo=FALSE}
 # Packages
 if (!require('pacman')) install.packages('pacman'); library('pacman')
-p_load(kableExtra)
+p_load(tidyverse, kableExtra)
 ```
 
 ```{r, kableME_func, echo=FALSE}

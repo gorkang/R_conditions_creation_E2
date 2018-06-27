@@ -13,3 +13,24 @@ some_table %>%
   kable() %>% kable_styling(., "striped")
 }
 ```
+### Add JavaScript
+
+Copy JS code from txt files and add them to the correspondent questions. Select All within the txt file and paste it over all the dafault content of the Add JavaScript pop-up window.
+
+_Block 01_
+
+```{r, table08, echo=FALSE}
+tibble(check = "",
+       qIDs = c("ppv_Q_gi_01", "ppv_Q_gs_01", "ppv_Q_sg01_01", "ppv_Q_ss01_01"),
+       extra = c("From file: __gi_01_js_complete.txt__", "From file: __gs_01_js_complete.txt__", "From file: __sg_01_js_complete.txt__", "From file: __ss_01_js_complete.txt__")) %>% 
+  kableME(.)
+```
+
+_Block 02_
+
+```{r, table09, echo=FALSE}
+tibble(check = "",
+       qIDs = c("ppv_Q_gi_02", "ppv_Q_gs_02", "ppv_Q_sg01_02", "ppv_Q_ss01_02"),
+       extra = c("From file: __gi_02_js_complete.txt__", "From file: __gs_02_js_complete.txt__", "From file: __sg_02_js_complete.txt__", "From file: __ss_02_js_complete.txt__")) %>% 
+  kableME(.)
+```

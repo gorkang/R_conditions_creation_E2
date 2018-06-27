@@ -1,6 +1,5 @@
 # This function takes strings and remove all strings defined on placeholders vector, and
 # outputs the new string
-#TODO: add to remove linebreaks next to placeholders
 
 remove_placeholders <- function(items, item_followup = "item") {
   

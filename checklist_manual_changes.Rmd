@@ -1,5 +1,10 @@
 <!-- render("checklist_manual_changes.Rmd") -->
 
+```{r, packages, echo=FALSE}
+# Packages
+if (!require('pacman')) install.packages('pacman'); library('pacman')
+p_load(kableExtra)
+```
 
 - [ ] This is a check list
 - [ ] Is this a check list?

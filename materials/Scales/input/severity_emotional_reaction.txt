@@ -1,0 +1,24 @@
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Please rate [[[breast cancer/Down's syndrome/mastectomy/abortion]]] in the following dimensions:</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Severe</span>
+<span style="font-size:C_FONT_SIZEpx;">Serious</span>
+<span style="font-size:C_FONT_SIZEpx;">Unpleasent</span>
+<span style="font-size:C_FONT_SIZEpx;">Horrible</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">To what extent you would feel the following if a woman you care about had [[[breast cancer/a child with Down's syndrome/a mastectomy/an abortion]]]:</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">afraid</span>
+<span style="font-size:C_FONT_SIZEpx;">worried</span>
+<span style="font-size:C_FONT_SIZEpx;">angry</span>
+<span style="font-size:C_FONT_SIZEpx;">hopeful</span>
+<span style="font-size:C_FONT_SIZEpx;">calm</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">To what extent you would recommend a woman you care about [[[with breast cancer/that is pregnant with a child with Down's syndrome]]] to go through [[[a mastectomy/an abortion]]].</span>
+[[Choices]]
+DELETE_THIS

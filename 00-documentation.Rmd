@@ -7,10 +7,7 @@ Description about the code and its particularities.
 
 The following scripts contain parts that require to call by name some presentation formats, problem contexts, or other elements. If a new element of any of this is added, a manual modification is needed in these scripts.
 
-- `numbers2problems.R`: Each presentation format (natural frequencies, probabilities, and positive framework are deal with using control flow that calls each format by name (nfab, pr, pf). If a new presentation format is added the function won't be able to fill it with numbers.
 - `textonly_item_prep.R`: "Special modifications" section. 01. Eliminates PPV question in positive framework (pfab) problems with sequential guided response type (sg). 02. Personalize sequential guided response type by medical condition. This last one is able to accommodate new problem contexts.
-- `items2qualtrics.R`: global intuitive response type is treated differently. When combining items elements there is a control flow that separates all items by global intuitive response type or all the other responses types.
-- `pair_items.R`: items are paired with other context items (e.g. cancer with trisomy). If a new problem context is added this would have to be modified. 
 
 ## Follow-up
 

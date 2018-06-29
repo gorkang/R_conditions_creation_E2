@@ -39,9 +39,11 @@ numbers2problems <- function(problems, numbers_item, path2fields) {
     item2number <- 
       problems_x[[i]]
     
-      # current item format
+      # current item format (textual formats is set at the beginning of textonly_item_prep.R)
       item_format <- 
-        substr(names(problems_x[i]), 4, nchar(names(problems_x[i])))
+        gsub(paste0(".*(", paste(textual_formats, collapse = "|"), ").*"),
+             "\\1", 
+             names(problems_x[i]))
       
       # filtered number table # ACCORDING TO FORMAT
       numbers_item_x_filt <- 

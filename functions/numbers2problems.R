@@ -50,7 +50,8 @@ numbers2problems <- function(problems, numbers_item, path2fields) {
         filter(numbers_item_x, format == item_format)
       
       # fields to replace of classic text items # ACCORDING TO FORMAT
-      field_to_replace <- fields2fill[[item_format]] %>% na.omit()
+      field_to_replace <- 
+        fields2fill[[item_format]][!is.na(fields2fill[[item_format]])] # very ugly way to remove NA
       
       # list with repeated canvas item
       item2number_list <- rep(list(item2number), nrow(numbers_item_x_filt))

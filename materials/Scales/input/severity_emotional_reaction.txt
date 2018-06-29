@@ -1,6 +1,6 @@
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">Please rate [[[breast cancer/Down's syndrome/mastectomy/abortion]]] in the following dimensions:</span>
+<span style="font-size:Q_FONT_SIZEpx;">Please rate [[[breast cancer/Down's syndrome/mastectomy/abortion]]] in the following dimensions:<br>0: Not at all - 100: Most certainly</span>
 [[Choices]]
 <span style="font-size:C_FONT_SIZEpx;">Severe</span>
 <span style="font-size:C_FONT_SIZEpx;">Serious</span>
@@ -9,7 +9,7 @@
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">To what extent you would feel the following if a woman you care about had [[[breast cancer/a child with Down's syndrome/a mastectomy/an abortion]]]:</span>
+<span style="font-size:Q_FONT_SIZEpx;">To what extent you would feel the following if a woman you care about had [[[breast cancer/a child with Down's syndrome/a mastectomy/an abortion]]]:<br>0: Not at all - 100: Most certainly</span>
 [[Choices]]
 <span style="font-size:C_FONT_SIZEpx;">afraid</span>
 <span style="font-size:C_FONT_SIZEpx;">worried</span>
@@ -19,6 +19,6 @@ __QSEP__
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">To what extent you would recommend a woman you care about [[[with breast cancer/that is pregnant with a child with Down's syndrome]]] to go through [[[a mastectomy/an abortion]]].</span>
+<span style="font-size:Q_FONT_SIZEpx;">To what extent you would recommend a woman you care about [[[with breast cancer/that is pregnant with a child with Down's syndrome]]] to go through [[[a mastectomy/an abortion]]].<br>0: Not at all - 100: Most certainly</span>
 [[Choices]]
 DELETE_THIS

@@ -1,0 +1,47 @@
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Participating in screening always has more advantages than disadvantages.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Yes</span>
+<span style="font-size:C_FONT_SIZEpx;">No</span>
+<span style="font-size:C_FONT_SIZEpx;">I don't know</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Participating in screening cannot hurt anyone.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Yes</span>
+<span style="font-size:C_FONT_SIZEpx;">No</span>
+<span style="font-size:C_FONT_SIZEpx;">I don't know</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">In my opinion, it is always better to get screened.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Yes</span>
+<span style="font-size:C_FONT_SIZEpx;">No</span>
+<span style="font-size:C_FONT_SIZEpx;">I don't know</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">If one has the opportunity, one should always participate in screening.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Yes</span>
+<span style="font-size:C_FONT_SIZEpx;">No</span>
+<span style="font-size:C_FONT_SIZEpx;">I don't know</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Foregoing screening is irresponsible.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Yes</span>
+<span style="font-size:C_FONT_SIZEpx;">No</span>
+<span style="font-size:C_FONT_SIZEpx;">I don't know</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Can screening be harmful?</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Yes</span>
+<span style="font-size:C_FONT_SIZEpx;">No</span>
+<span style="font-size:C_FONT_SIZEpx;">I don't know</span>

@@ -7,6 +7,11 @@ source("scripts/html_qualtrics_codes.R")
 # Severity and emotional reaction scale
 source("scripts/scale_severity.R")
 
+# A priori screening belief
+source("scripts/scale_apriori.R")
+
+
+
 
 # Scales dir
 scales_dir <- "materials/Scales/input/"

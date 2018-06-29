@@ -1,3 +1,11 @@
+# Possible contexts 
+possible_contexts <- 
+  textual_formats %>% 
+  map(~dir(paste0("materials/Presentation_format/", .x, "/input")) %>% 
+        gsub("([a-z]{2}).*", "\\1", .)) %>% 
+  unlist %>% 
+  unique()
+
 # Pictoric presentation formats -------------------------------------------
 
 # read csv with number
@@ -89,7 +97,10 @@ graph_output_folder <- "materials/Presentation_format/nppi/input/graphs/png/"
 dir.create(file.path(graph_output_folder), showWarnings = FALSE, recursive = TRUE)
 
 # PPV graph name
-graph_png_file_name <- paste0("nppi_ppv_", substr(problem_contexts, 5, 6), "_graph")
+graph_png_file_name <- 
+  paste0("nppi_ppv_", 
+         gsub(paste0(".*(", paste(possible_contexts, collapse = "|"), ").*"), "\\1", problem_contexts),
+         "_graph")
 
 # Path to folder to save graph
 png_file_pathname <-
@@ -107,7 +118,9 @@ for (cCntxt in seq(length(problem_contexts))) {
   # cCntxt <- 1
   
   # context of current problem context 
-  current_context <- substr(problem_contexts[[cCntxt]], 5, 6)
+  current_context <- 
+    gsub(paste0(".*(", paste(possible_contexts, collapse = "|"), ").*"), "\\1", problem_contexts[[cCntxt]])
+  
   # labels corresponding to current problem context
   current_axis_label <- pull(x_axis_label[, current_context])
   
@@ -121,18 +134,18 @@ for (cCntxt in seq(length(problem_contexts))) {
   print( # to send the plot to the viewer from within a for loop use print
     
     ggplot(age_prevalence, aes(x=age, y=PPV_100)) +      # plot canvas
-    scale_y_continuous(labels=function(x) paste0(x,"%"), # append % to y-axis value
-                       limits = c(0,100)) +              # set y-axis limits
-    geom_point(size = 5.5, color = "#009999", shape = 19) + # insert points with ppv value
-    geom_line(aes(x=age, y=PPV_100), color = "#009999", size = 2) +
-    theme_minimal() + # insert line bridging PPV-value points
-    xlab(paste0("Age of the ", current_axis_label)) + ylab(y_axis_label) + # set axis labels
-    theme(axis.text = element_text(size = 25),                             # axis-numerbs size
-          axis.title = element_text(size = 25)) +                          # axis-labels size
-    geom_text(aes(label =
-                    case_when(age %in% age_ppv_to_plot ~ paste0(round(PPV_100, 0), "%"), TRUE ~ paste0("")), # keep only ages previously set to be ploted
-                  hjust = 1, vjust = -1), size = 6) # (position) plot ppv-values above points set in "age_ppv_to_plot"
-    )
+      scale_y_continuous(labels=function(x) paste0(x,"%"), # append % to y-axis value
+                         limits = c(0,100)) +              # set y-axis limits
+      geom_point(size = 5.5, color = "#009999", shape = 19) + # insert points with ppv value
+      geom_line(aes(x=age, y=PPV_100), color = "#009999", size = 2) +
+      theme_minimal() + # insert line bridging PPV-value points
+      xlab(paste0("Age of the ", current_axis_label)) + ylab(y_axis_label) + # set axis labels
+      theme(axis.text = element_text(size = 25),                             # axis-numerbs size
+            axis.title = element_text(size = 25)) +                          # axis-labels size
+      geom_text(aes(label =
+                      case_when(age %in% age_ppv_to_plot ~ paste0(round(PPV_100, 0), "%"), TRUE ~ paste0("")), # keep only ages previously set to be ploted
+                    hjust = 1, vjust = -1), size = 6) # (position) plot ppv-values above points set in "age_ppv_to_plot"
+  )
   # Close canvas
   dev.off()
   # Write image as png
@@ -206,7 +219,7 @@ for (i in seq(length(nppi_items))){
     
     # problem context of current template 
     current_context <-
-      substr(names(nppi_items[i]), 1, 2)
+      gsub(paste0(".*(", paste(possible_contexts, collapse = "|"), ").*"), "\\1", names(nppi_items[i]))
     
     # ppv graph of current template
     current_graph <- 

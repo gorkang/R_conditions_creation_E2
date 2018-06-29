@@ -11,11 +11,11 @@ __QSEP__
 [[ID:replaceID]]
 <span style="font-size:Q_FONT_SIZEpx;">To what extent you would feel the following if a woman you care about had [[[breast cancer/a child with Down's syndrome/a mastectomy/an abortion]]]:<br>0: Not at all - 100: Most certainly</span>
 [[Choices]]
-<span style="font-size:C_FONT_SIZEpx;">afraid</span>
-<span style="font-size:C_FONT_SIZEpx;">worried</span>
-<span style="font-size:C_FONT_SIZEpx;">angry</span>
-<span style="font-size:C_FONT_SIZEpx;">hopeful</span>
-<span style="font-size:C_FONT_SIZEpx;">calm</span>
+<span style="font-size:C_FONT_SIZEpx;">Afraid</span>
+<span style="font-size:C_FONT_SIZEpx;">Worried</span>
+<span style="font-size:C_FONT_SIZEpx;">Angry</span>
+<span style="font-size:C_FONT_SIZEpx;">Hopeful</span>
+<span style="font-size:C_FONT_SIZEpx;">Calm</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]

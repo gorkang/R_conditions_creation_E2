@@ -26,6 +26,26 @@ This is a checklist with all necessary manual changes to be done once the Qualtr
 
 Change question type to Slider. On each question select the green button on the right upper corner and select Slider.
 
+_Severity of and Emotional reaction BREAST CANCER_
+
+```{r, echo=FALSE}
+tibble(check = "",
+       qIDs = c("sevEmo_brca_01", "sevEmo_brca_02", "sevEmo_brca_03", "sevEmo_brca_04", "sevEmo_brca_05"), 
+       extra = c("", "", "", "", "After change to Slider, __Replace__ 'DELETE_THIS' text with a space")) %>%
+  kableME(.)
+```
+
+_Severity of and Emotional reaction TRISOMY 21_
+
+```{r, echo=FALSE}
+tibble(check = "",
+       qIDs = c("sevEmo_tr21_01", "sevEmo_tr21_02", "sevEmo_tr21_03", "sevEmo_tr21_04", "sevEmo_tr21_05"), 
+       extra = c("", "", "", "", "After change to Slider, __Replace__ 'DELETE_THIS' text with a space")) %>%
+  kableME(.)
+```
+
+_Screening blocks_
+
 ```{r, table01, echo=FALSE}
 tibble(check = "", 
        qIDs = c("wilScre_Q02_01", "fu_Q02_01", "fu_Q03_01", "fu_Q05_01", "wilScre_Q02_02", "fu_Q02_02", "fu_Q03_02", "fu_Q05_02"),
@@ -36,6 +56,33 @@ tibble(check = "",
 ### Force response & Answer validation  
 
 On each question, check the box "Force Response" (on the right contextual banner). In some cases an extra "Validation Type" has to be included. To do so, select one of the options below _Validation Options_.
+
+_A priori screening belief_
+
+```{r, echo=FALSE}
+tibble(check = "",
+       qIDs = c("aprioriBel_01", "aprioriBel_02", "aprioriBel_03", "aprioriBel_04", "aprioriBel_05", "aprioriBel_06"), 
+       extra = "") %>%
+  kableME(.)
+```
+
+_Severity of and Emotional reaction BREAST CANCER_
+
+```{r, echo=FALSE}
+tibble(check = "",
+       qIDs = c("sevEmo_brca_01", "sevEmo_brca_02", "sevEmo_brca_03", "sevEmo_brca_04", "sevEmo_brca_05"), 
+       extra = "") %>%
+  kableME(.)
+```
+
+_Severity of and Emotional reaction TRISOMY 21_
+
+```{r, echo=FALSE}
+tibble(check = "",
+       qIDs = c("sevEmo_tr21_01", "sevEmo_tr21_02", "sevEmo_tr21_03", "sevEmo_tr21_04", "sevEmo_tr21_05"), 
+       extra = "") %>%
+  kableME(.)
+```
 
 _Block 01_
 

@@ -37,6 +37,33 @@ tibble(check = "",
 
 On each question, check the box "Force Response" (on the right contextual banner). In some cases an extra "Validation Type" has to be included. To do so, select one of the options below _Validation Options_.
 
+_A priori screening belief_
+
+```{r, echo=FALSE}
+tibble(check = "",
+       qIDs = c("aprioriBel_01", "aprioriBel_02", "aprioriBel_03", "aprioriBel_04", "aprioriBel_05", "aprioriBel_06"), 
+       extra = "") %>%
+  kableME(.)
+```
+
+_Severity of and Emotional reaction BREAST CANCER_
+
+```{r, echo=FALSE}
+tibble(check = "",
+       qIDs = c("sevEmo_brca_01", "sevEmo_brca_02", "sevEmo_brca_03", "sevEmo_brca_04", "sevEmo_brca_05"), 
+       extra = "") %>%
+  kableME(.)
+```
+
+_Severity of and Emotional reaction TRISOMY 21_
+
+```{r, echo=FALSE}
+tibble(check = "",
+       qIDs = c("sevEmo_tr21_01", "sevEmo_tr21_02", "sevEmo_tr21_03", "sevEmo_tr21_04", "sevEmo_tr21_05"), 
+       extra = "") %>%
+  kableME(.)
+```
+
 _Block 01_
 
 ```{r, table02, echo=FALSE}

@@ -1,5 +1,7 @@
-# This function takes a list of strings, a data frame with numbers 
-# (add this to arguments, now is defined within the function).
+# This function takes:
+# a list of strings, each element has to have a name that indicates a presentation format (e.g. nfab) present on fields2fill.csv (or in any other file with placeholders
+# a data frame with numbers, (e.g. number_bayes.xls)
+# a path to csv with fields to fill, each presentation format has to have a column indicating wich fields are to be filled.
 
 numbers2problems <- function(problems, numbers_item, path2fields) {
   
@@ -14,11 +16,11 @@ numbers2problems <- function(problems, numbers_item, path2fields) {
   # FILTER NUMBER SET *************************
   # filter numbers to keep format
   numbers_item_x <- 
-    numbers_item  # this to ARGUMENT
+    numbers_item
   
   # All fields to replace come from a csv file.
   fields2fill <- 
-    read_csv(path2fields, col_types = cols()) # this to ARGUMENT
+    read_csv(path2fields, col_types = cols())
   
   # MASTER LIST (this is going to global enviroment after 1. LOOP is finished)
   # # Create empty list with length of problems
@@ -37,16 +39,19 @@ numbers2problems <- function(problems, numbers_item, path2fields) {
     item2number <- 
       problems_x[[i]]
     
-      # current item format
+      # current item format (textual formats is set at the beginning of textonly_item_prep.R)
       item_format <- 
-        substr(names(problems_x[i]), 4, nchar(names(problems_x[i])))
+        gsub(paste0(".*(", paste(textual_formats, collapse = "|"), ").*"),
+             "\\1", 
+             names(problems_x[i]))
       
       # filtered number table # ACCORDING TO FORMAT
       numbers_item_x_filt <- 
         filter(numbers_item_x, format == item_format)
       
       # fields to replace of classic text items # ACCORDING TO FORMAT
-      field_to_replace <- fields2fill[[item_format]] %>% na.omit()
+      field_to_replace <- 
+        fields2fill[[item_format]][!is.na(fields2fill[[item_format]])] # very ugly way to remove NA
       
       # list with repeated canvas item
       item2number_list <- rep(list(item2number), nrow(numbers_item_x_filt))

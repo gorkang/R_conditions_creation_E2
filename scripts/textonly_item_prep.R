@@ -30,7 +30,7 @@ problem_contexts <-
   map(~dir(paste0(presentation_format_dir, .x, "/input")) %>% 
         gsub("([a-z]{2}).*", "\\1", .)) %>% 
   unlist %>% 
-  unique
+  unique()
 
 # get possible ppv probability
 problem_probs <-
@@ -50,9 +50,9 @@ check <-
 
 # Actual check
 if (all(check) == TRUE) {
-  message("Contexts number matches fillers numbers")
+  message("Contexts number matches fillers numbers.")
 } else if (all(check) == FALSE) {
-  stop("No problem context has fillers")
+  stop("No problem context has fillers.")
 } else if (any(check) == TRUE) {
   stop(paste0("The following context(s) do not have fillers: ", problem_contexts[which(!check)]))
 }
@@ -99,9 +99,12 @@ unlist(problems_numbered,
                                 ".txt")))
   )
 
-# Export prevalences as text
-dir.create("materials/qualtrics/output/plain_text/prevalences/", showWarnings = FALSE, recursive = TRUE)
+### Export prevalences as text
+# Output dir
+dir.create("materials/qualtrics/output/plain_text/prevalences/", 
+           showWarnings = FALSE, recursive = TRUE)
 
+# Export prevalences as text
 unlist(problems_numbered, 
        recursive = TRUE, use.names = FALSE) %>% 
   gsub("(\\*\\*.*\\*\\*).*\\[first_piece\\]\\n{1,2}(.*)\\n{1,2}\\[second_piece\\].*", "\\1\\2", .) %>% 
@@ -216,7 +219,9 @@ for (problem_loop in 1:length(problems_numbered_ordered_responses)) {
     
     # Add response bit to condition string
     problems_numbered_ordered_responses[[problem_loop]][[item_loop]] <- 
-      gsub("(\\*\\*.*[a-zA-Z])(*\\*\\*.*)", paste0("\\1_", responses_names[item_loop], "\\2"), problems_numbered_ordered_responses[[problem_loop]][[item_loop]])
+      gsub("(\\*\\*.*[a-zA-Z])(*\\*\\*.*)", 
+           paste0("\\1_", responses_names[item_loop], "\\2"), 
+           problems_numbered_ordered_responses[[problem_loop]][[item_loop]])
   }
   
   if (problem_loop == length(problems_numbered_ordered_responses)) {
@@ -352,6 +357,7 @@ for (z in seq(contexts_qualtrics)) {
 
 
 dir.create("materials/qualtrics/output/plain_text/prob_intro/", showWarnings = FALSE, recursive = TRUE)
+
 contexts_qualtrics %>% 
   unlist() %>% 
   walk(~cat(.x, sep = "", 
@@ -377,7 +383,9 @@ for (cB in seq(problems_numbered_ordered_responses)) {
     
     # get current problem context using current item
     current_context <- 
-      paste0(gsub(paste0(".*(", paste(problem_contexts, collapse = "|"), ").*"), "txt_\\1", current_item), "_context")
+      paste0(gsub(paste0(".*(", paste(problem_contexts, collapse = "|"), ").*"), 
+                  "txt_\\1", 
+                  current_item), "_context")
     
     # get problem prob (this erase everything that is not a "low" or "high" word)
     current_prob <-

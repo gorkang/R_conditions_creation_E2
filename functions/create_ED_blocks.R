@@ -14,26 +14,33 @@ create_ED_blocks <- function() {
   #        sg_test_result       = c( "mammogram", "test result")
   #   )
   
-  screening_blocks_ED_fill <- list(ca = list(sg_test_result       = "mammogram" ,
-                                             sg_person            = "a woman",
-                                             medical_condition    = "breast cancer",
-                                             positive_test_result = "mammogram",
-                                             # medical_test         = "mammogram",
-                                             doctor_offers        = "that consist of a biopsy",
-                                             fluid_test           = "the breast cyst",
-                                             test_name            = "The biopsy",
-                                             medical_consequence  = "partial mastectomy"),
-                                   
-                                   pr = list(sg_test_result       = "test result" ,
-                                             sg_person            = "a woman\\\\'s fetus",
-                                             medical_condition    = "trisomy 21",
-                                             positive_test_result = "test result",
-                                             # medical_test         = "test result",
-                                             doctor_offers        = "called amniocentesis",
-                                             fluid_test           = "the amniotic sac",
-                                             test_name            = "Amniocentesis",
-                                             medical_consequence  = "miscarriage")
-  ) 
+  # screening_blocks_ED_fill <- list(ca = list(sg_test_result       = "mammogram" ,
+  #                                            sg_person            = "a woman",
+  #                                            medical_condition    = "breast cancer",
+  #                                            positive_test_result = "mammogram",
+  #                                            # medical_test         = "mammogram",
+  #                                            doctor_offers        = "that consist of a biopsy",
+  #                                            fluid_test           = "the breast cyst",
+  #                                            test_name            = "The biopsy",
+  #                                            medical_consequence  = "partial mastectomy"),
+  #                                  
+  #                                  pr = list(sg_test_result       = "test result" ,
+  #                                            sg_person            = "a woman\\\\'s fetus",
+  #                                            medical_condition    = "trisomy 21",
+  #                                            positive_test_result = "test result",
+  #                                            # medical_test         = "test result",
+  #                                            doctor_offers        = "called amniocentesis",
+  #                                            fluid_test           = "the amniotic sac",
+  #                                            test_name            = "Amniocentesis",
+  #                                            medical_consequence  = "miscarriage")
+  # ) 
+  
+  fillers <- read_csv("materials/fillers.csv", col_types = cols())
+  
+  screening_blocks_ED_fill <- set_names(list(setNames(as.list(fillers$ca), fillers$field_name),
+                                             setNames(as.list(fillers$pr), fillers$field_name)),
+                                        c("ca", "pr"))
+  
   
   for (xxx in 1:nrow(conditions)) {
     # xxx <- 5

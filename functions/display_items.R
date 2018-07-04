@@ -1,0 +1,60 @@
+
+display_item <- function(args) {
+  
+  # Fillers (placeholders to be filled and fillers)
+  fillers <- read_csv("materials/fillers.csv", col_types = cols())
+  
+  set_names(list(setNames(as.list(fillers$ca), fillers$field_name),
+                 setNames(as.list(fillers$pr), fillers$field_name)),
+            c("ca", "pr"))
+  
+  # Path to txt files
+  # Problem introduction
+  prob_intros <- 
+    "materials/qualtrics/output/plain_text/prob_intro" %>% 
+    dir(., ".txt", full.names = TRUE)
+  # Items
+  items <- 
+    "materials/qualtrics/output/plain_text/items" %>% 
+    dir(., ".txt", full.names = TRUE)
+  # PPV questions
+  ppv_question <- 
+    "materials/qualtrics/output/plain_text/ppv_question" %>% 
+    dir(., ".txt", full.names = TRUE) %>% 
+    readChar(., file.size(.)) %>% remove_placeholders(.)
+  
+  # For debugging
+  # args <- c("pr", "fbpi", "high")
+  
+  # Fill ppv question with cancer or pregnant context fillers
+  if (args[1] == "ca") {
+    positive_test_result_0 = pull(fillers[fillers$field_name == "positive_test_result", "ca"])
+    medical_condition_0 =  pull(fillers[fillers$field_name == "medical_condition", "ca"])
+  } else if (args[1] == "pr") {
+    positive_test_result_0 = pull(fillers[fillers$field_name == "positive_test_result", "pr"])
+    medical_condition_0 =  pull(fillers[fillers$field_name == "medical_condition", "pr"])
+  }
+  
+  
+  # Current problem intro
+  curr_prob_intro <- paste(args[1], args[3], sep = "_context_ppv") %>% grep(., prob_intros, value = TRUE) %>% readChar(., file.size(.))
+  # Current problem ppv question
+  curr_ppv_quest <- ppv_question %>% gsub("\\$\\{e\\://Field/", "", .) %>% gsub("\\}", "", .) %>% 
+    gsub("positive_test_result_0", positive_test_result_0, .) %>% gsub("medical_condition_0", medical_condition_0, .)
+  
+  # Current item. If pictorial call the image
+  if (grepl("fbpi|nppi", args[2])) {
+    curr_item <- paste(args, collapse = ".*") %>% paste0("\\b", .) %>% 
+      grep(., dir(path = "materials/downloaded_img", ".png", full.names = TRUE), value = TRUE) %>% 
+      paste0("![](", . ,")")
+  } else if (!grepl("fbpi|nppi", args[2])) {
+    curr_item <- paste(args, collapse = ".*") %>% grep(., items, value = TRUE) %>% readChar(., file.size(.))
+  }
+  
+  
+ paste0("**", args[1], "_", args[2], "_ppv", args[3], "**\n")
+  # Display item
+  paste(curr_prob_intro, curr_item, curr_ppv_quest, sep = "\n") %>% remove_placeholders() %>% 
+    gsub("(\\*\\*.*?\\*\\*)", "", .) %>% paste0("**", args[1], "_", args[2], "_ppv", args[3], "**\n", .) %>% cat()
+  
+}

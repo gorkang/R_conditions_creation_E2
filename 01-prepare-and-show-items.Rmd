@@ -31,6 +31,11 @@ img_urls <-
 img_urls$condition %>%
   walk(~download.file(img_urls$url[img_urls$condition == .x], paste0("materials/downloaded_img/", .x, ".png")))
 ```
+
+```{r}
+# function to display items
+source("functions/display_items.R")
+```
 # Breast Cancer Items
 
 ## Low normative PPV

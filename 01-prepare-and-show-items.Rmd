@@ -20,9 +20,17 @@
   source("functions/print_cat_items.R")
   source("functions/remove_placeholders.R")
   source("functions/asterik_name_remover.R")
-  
+
 ```
-    
+
+```{r, down_img, echo=FALSE}
+# Download pictorial items images
+img_urls <-
+  read_csv("materials/img_url.csv", col_types = cols(), col_names = c("condition", "url"))
+
+img_urls$condition %>%
+  walk(~download.file(img_urls$url[img_urls$condition == .x], paste0("materials/downloaded_img/", .x, ".png")))
+```
 # Breast Cancer Items
 
 ## Low normative PPV

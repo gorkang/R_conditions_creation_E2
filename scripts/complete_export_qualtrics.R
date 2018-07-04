@@ -188,8 +188,11 @@ complete_item <-
 
 # Output dir
 screening_output_dir <- 
-  "materials/qualtrics/output/plain_text/screening_items/" %T>% 
+  "materials/qualtrics/output/plain_text/screening_template/" %T>% 
   dir.create(., showWarnings = FALSE, recursive = TRUE) 
+
+# Export screening item without trial
+complete_item %>% cat(., file = file.path(screening_output_dir, "item_template.txt"))
 
 # Customize item to trial
 # func to customize

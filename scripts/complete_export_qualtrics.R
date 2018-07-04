@@ -19,12 +19,11 @@ pic_links <-
            col_names = c("cond", "url")) %>%
   mutate(url = gsub("\\:", "&#58;", url))
 
-
 # create items
 walk2(.x = pic_links$cond, 
       .y = pic_links$url, 
       .f = function(x, y) {cat(gsub("LINK2IMG", y, html_codes$insert_img), 
-                               file = paste0("materials/qualtrics/output/plain_text/items/", x))})
+                               file = paste0("materials/qualtrics/output/plain_text/items/", x, ".txt"))})
 
 # Create Embedded data Blocks ---------------------------------------------
 

@@ -189,7 +189,7 @@ create_ED_blocks <- function() {
     # Item 01
     item_01 <-
       paste0(items_path, 
-             current_condition$item_file_name_01) %>% 
+             current_condition$item_file_name_01, ".txt") %>% 
       readChar(., file.size(.)) %>% 
       gsub("\\*\\*.*\\*\\*\\n{1,2}(.*)", "\\1", .) %>% 
       remove_placeholders() %>% 
@@ -206,14 +206,14 @@ create_ED_blocks <- function() {
     # Item 02
     item_02 <-
       paste0(items_path, 
-             current_condition$item_file_name_02) %>% 
+             current_condition$item_file_name_02, ".txt") %>% 
       readChar(., file.size(.)) %>% 
       gsub("\\*\\*.*\\*\\*\\n{1,2}(.*)", "\\1", .) %>% 
       remove_placeholders() %>% 
       gsub("(.*)\\n\\b", "\\1", .) %>%
       gsub("\\n", "<br>", .) %>% 
       gsub("^<br>", "", .)
-     
+    
     embedded_data$screening_item_02 <- 
       qualtrics_codes$embedded_data %>% 
       gsub("field", "screening_item_02", .) %>% 
@@ -227,7 +227,7 @@ create_ED_blocks <- function() {
     # Prevalence 01
     prevalence_01 <- 
       paste0(prevalences_path, 
-             current_condition$item_file_name_01) %>% 
+             current_condition$item_file_name_01, ".txt") %>% 
       readChar(., file.size(.)) %>% 
       gsub("\\*\\*.*\\*\\*(.*)", "\\1", .)
     
@@ -239,7 +239,7 @@ create_ED_blocks <- function() {
     # Prevalence 02
     prevalence_02 <- 
       paste0(prevalences_path, 
-             current_condition$item_file_name_02) %>% 
+             current_condition$item_file_name_02, ".txt") %>% 
       readChar(., file.size(.)) %>% 
       gsub("\\*\\*.*\\*\\*(.*)", "\\1", .)
     
@@ -256,7 +256,7 @@ create_ED_blocks <- function() {
     introduction_01 <-
       # create path
       paste0(introductions_path, 
-             paste0(current_condition$prob_context_01, "_context_ppv", current_condition$ppv_prob_01)) %>% 
+             paste0(current_condition$prob_context_01, "_context_ppv", current_condition$ppv_prob_01), ".txt") %>% 
       # read file
       readChar(., file.size(.)) %>% 
       # remove name
@@ -278,7 +278,7 @@ create_ED_blocks <- function() {
     introduction_02 <-
       # create path
       paste0(introductions_path, 
-             paste0(current_condition$prob_context_02, "_context_ppv", current_condition$ppv_prob_02)) %>% 
+             paste0(current_condition$prob_context_02, "_context_ppv", current_condition$ppv_prob_02), ".txt") %>% 
       # read file
       readChar(., file.size(.)) %>% 
       # remove name
@@ -290,7 +290,7 @@ create_ED_blocks <- function() {
       gsub(":", "&#58;", .) %>% 
       gsub("\\n", "<br>", .) %>% 
       gsub("^<br>", "", .)
-     
+    
     embedded_data$screening_item_02_intro <- 
       qualtrics_codes$embedded_data %>% 
       gsub("field", "screening_intro_02", .) %>% 

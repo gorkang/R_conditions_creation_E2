@@ -95,8 +95,8 @@ unlist(problems_numbered,
          cat(.x, 
              sep = "", 
              file = paste0("materials/qualtrics/output/plain_text/items/", 
-                           gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x,
-                                ".txt")))
+                           gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x),
+                                ".txt"))
   )
 
 ### Export prevalences as text
@@ -108,7 +108,7 @@ dir.create("materials/qualtrics/output/plain_text/prevalences/",
 unlist(problems_numbered, 
        recursive = TRUE, use.names = FALSE) %>% 
   gsub("(\\*\\*.*\\*\\*).*\\[first_piece\\]\\n{1,2}(.*)\\n{1,2}\\[second_piece\\].*", "\\1\\2", .) %>% 
-  walk(~cat(.x, sep = "", file = paste0("materials/qualtrics/output/plain_text/prevalences/", gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x))))
+  walk(~cat(.x, sep = "", file = paste0("materials/qualtrics/output/plain_text/prevalences/", gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x), ".txt")))
 
 
 ### Add question to textual items #########################
@@ -143,7 +143,7 @@ dir.create("materials/qualtrics/output/plain_text/ppv_question/", showWarnings =
 questions %>% 
   walk(~cat(.x, sep = "", 
             file = paste0("materials/qualtrics/output/plain_text/ppv_question/", 
-                          gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x))))
+                          gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x), ".txt")))
 
 # paste questions into problems  #########################
 for (i in seq(length(problems_numbered))) {
@@ -362,7 +362,7 @@ contexts_qualtrics %>%
   unlist() %>% 
   walk(~cat(.x, sep = "", 
             file = paste0("materials/qualtrics/output/plain_text/prob_intro/", # path
-                          gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x)))) # name
+                          gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x), ".txt"))) # name
 
 
 # Paste problem contexts at the beginning of each problem, 

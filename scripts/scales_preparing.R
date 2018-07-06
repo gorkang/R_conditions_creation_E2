@@ -32,3 +32,8 @@ clean_scale <- function(str) {
     gsub("DELETE_THIS", "", .) # remove DELETE_THIS
 }
 
+# Print Scales
+scales %>% 
+  map(~clean_scale(.x)) %>% 
+  paste(., collapse = "\n\n-------------------------\n\n") %>% cat()
+

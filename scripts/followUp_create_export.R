@@ -95,6 +95,10 @@ fu_risk <- readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>%
   
   # Double linebreaks because bookdown displaying is weird (one linebreak doesn't work, two linebreaks actually creates two linebreaks)
   gsub("\\n", "\n\n", .) %>% 
-  cat()
+  cat(., "  \n  \n ______________________  \n")
 
+# Print prevalences
+"materials/qualtrics/output/plain_text/prevalences/" %>% dir(., ".txt", full.names = TRUE) %>% 
+  map_chr(~readChar(.x, file.size(.x))) %>% 
+  gsub("([a-z]\\*{2})", "\\1: ", .) %>% cat("**PREVALENCES**:  \n", ., sep = "  \n")
 

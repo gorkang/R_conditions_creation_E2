@@ -6,9 +6,7 @@ p_load(tidyverse, magrittr)
 source("scripts/html_qualtrics_codes.R")
 source("functions/remove_placeholders.R")
 source("functions/create_ED_blocks.R")
-
-# Create pictorial prevalences --------------------------------------------
-source("scripts/create_pictorial_prevalences.R")
+source("functions/questionIDme.R")
 
 # Create pictorial items (links to imgs) ----------------------------------
 
@@ -19,12 +17,11 @@ pic_links <-
            col_names = c("cond", "url")) %>%
   mutate(url = gsub("\\:", "&#58;", url))
 
-
 # create items
 walk2(.x = pic_links$cond, 
       .y = pic_links$url, 
       .f = function(x, y) {cat(gsub("LINK2IMG", y, html_codes$insert_img), 
-                               file = paste0("materials/qualtrics/output/plain_text/items/", x))})
+                               file = paste0("materials/qualtrics/output/plain_text/items/", x, ".txt"))})
 
 # Create Embedded data Blocks ---------------------------------------------
 
@@ -60,13 +57,7 @@ ED_screening_ppv_question <-
   gsub("\\n", "", .) %>% 
   gsub("QUESTION_TEXT_TO_FORMAT", ., html_codes$question_font_size) 
 
-questioIDme <- function(question_id) {
-  if (nchar(question_id) > 15) {
-    message(paste0("Wrong questionIDme call: IDs cannot be longer than 15 characteres. You have ", nchar(question_id)))
-  } else if (nchar(question_id <= 15)) {
-  question_id %>% gsub("question_id", .,qualtrics_codes$question_id)
-  }
-}
+
 # Assemble item (ppv question is a question by itself to be able to hide it on pfab & sg condition)
 screening_item <-
   paste(qualtrics_codes$question_only_text,
@@ -166,9 +157,6 @@ screening_item_questions <-
           will_screening_02,
           sep = "\n")
 
-# Create follow-up --------------------------------------------------------
-source("scripts/followUp_create_export.R")
-
 # Create and export complete trial blocks (PPV + Follow-up) ---------------
 
 # follow-up
@@ -189,8 +177,11 @@ complete_item <-
 
 # Output dir
 screening_output_dir <- 
-  "materials/qualtrics/output/plain_text/screening_items/" %T>% 
+  "materials/qualtrics/output/plain_text/screening_template/" %T>% 
   dir.create(., showWarnings = FALSE, recursive = TRUE) 
+
+# Export screening item without trial
+complete_item %>% cat(., file = file.path(screening_output_dir, "item_template.txt"))
 
 # Customize item to trial
 # func to customize

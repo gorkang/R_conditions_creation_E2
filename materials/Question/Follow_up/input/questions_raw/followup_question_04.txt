@@ -3,5 +3,5 @@
 [question_start]
 Could you briefly explain why do you think she should/shouldn't take the follow up test?
 [choices_start]
-_______________
+ 
 [choices_end]

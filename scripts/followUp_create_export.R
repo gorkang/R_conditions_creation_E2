@@ -25,16 +25,15 @@ fu_questions <-
   map(~followup_question_builder(file_path = path2fu_raw_questions, 
                                  file_name = .x, 
                                  export = FALSE
-                                 
   ))
 
 # 
 unified_fu_questions <-
   unified_fu %>% 
   remove_placeholders(., item_followup = "followup") %>%                 # remove placeholders
-  gsub("^\\n", "", .) %>% 
-  gsub("\\n\\b", "", .) %>%
-  gsub("\\n", "<br>", .) %>% 
+  gsub("^\\n", "", .) %>%                                                # remove first linebreak
+  gsub("\\n\\b", "", .) %>%                                              # remove last linebreak
+  gsub("\\n", "<br>", .) %>%                                             # replace remaining linebreaks with html linebreaks
   gsub("QUESTION_TEXT_TO_FORMAT", ., html_codes$question_font_size) %>%  # add html code to follow-up text
   paste(qualtrics_codes$question_only_text,         # paste qualtrics tags with follow-up text and follow-up questions
         questioIDme("fu_I_0"),

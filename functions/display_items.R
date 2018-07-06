@@ -38,9 +38,12 @@ display_item <- function(args) {
   
   
   # Current problem intro
-  curr_prob_intro <- paste(args[1], args[3], sep = "_context_ppv") %>% grep(., prob_intros, value = TRUE) %>% readChar(., file.size(.))
+  curr_prob_intro <-
+    paste(args[1], args[3], sep = "_context_ppv") %>% grep(., prob_intros, value = TRUE) %>% readChar(., file.size(.)) %>% 
+    gsub("\\*\\*.*?\\*\\*", "", .)  
+  
   # Current problem ppv question
-  curr_ppv_quest <- ppv_question %>% gsub("\\$\\{e\\://Field/", "", .) %>% gsub("\\}", "", .) %>% 
+    curr_ppv_quest <- ppv_question %>% gsub("\\$\\{e\\://Field/", "", .) %>% gsub("\\}", "", .) %>% 
     gsub("positive_test_result_0", positive_test_result_0, .) %>% gsub("medical_condition_0", medical_condition_0, .)
   
   # Current item. If pictorial call the image

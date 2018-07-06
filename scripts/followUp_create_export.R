@@ -52,3 +52,9 @@ fu_output_dir <-
 unified_fu_questions %>% 
   cat(., file = "materials/qualtrics/output/plain_text/followup/fu_unified.txt")
 
+# To fill ED data fields
+fillers <- read_csv("materials/fillers.csv", col_types = "cccc") %>% 
+  mutate(ca_pr = paste(ca, pr, sep = "/"))
+
+fu_risk <- readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>% 
+  filter(format == "fu") %>% pull(fu_risk) %>% paste(., collapse = "/")

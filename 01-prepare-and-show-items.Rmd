@@ -1,25 +1,25 @@
 ```{r item_preparation, include=FALSE}
 
 # Item preparation
-  source("scripts/item_preparation.R")
+source("scripts/item_preparation.R")
 
 # Read images
 # Fact-box
-  # Directory
-  fact_box_dir <- "materials/Presentation_format/fbpi/output/"
-  # Fact-box img files
-  fact_box_imgs <- dir(fact_box_dir)
-  
+# Directory
+fact_box_dir <- "materials/Presentation_format/fbpi/output/"
+# Fact-box img files
+fact_box_imgs <- dir(fact_box_dir)
+
 # New paradigm
-  # Directory
-  new_paradigm_dir <- "materials/Presentation_format/nppi/output/"
-  # Fact-box img files
-  new_paradigm_imgs <- dir(new_paradigm_dir)
-  
-  # Function for displaying items
-  source("functions/print_cat_items.R")
-  source("functions/remove_placeholders.R")
-  source("functions/asterik_name_remover.R")
+# Directory
+new_paradigm_dir <- "materials/Presentation_format/nppi/output/"
+# Fact-box img files
+new_paradigm_imgs <- dir(new_paradigm_dir)
+
+# Function for displaying items
+source("functions/print_cat_items.R")
+source("functions/remove_placeholders.R")
+source("functions/asterik_name_remover.R")
 
 ```
 
@@ -36,6 +36,8 @@ img_urls$condition %>%
 # function to display items
 source("functions/display_items.R")
 ```
+
+
 # Breast Cancer Items
 
 ## Low normative PPV
@@ -286,8 +288,6 @@ source("scripts/followUp_create_export.R")
 
 ```{r scales, echo=FALSE, results='asis'}
 source("scripts/scales_preparing.R")
-
-invisible(lapply(scales_questions, lapply, cat))
 ```
 
 # Item export

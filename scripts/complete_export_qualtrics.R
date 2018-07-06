@@ -6,6 +6,7 @@ p_load(tidyverse, magrittr)
 source("scripts/html_qualtrics_codes.R")
 source("functions/remove_placeholders.R")
 source("functions/create_ED_blocks.R")
+source("functions/questionIDme.R")
 
 # Create pictorial prevalences --------------------------------------------
 source("scripts/create_pictorial_prevalences.R")

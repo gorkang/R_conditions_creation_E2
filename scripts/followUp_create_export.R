@@ -7,6 +7,7 @@ source("functions/remove_placeholders.R")
 source("functions/followup_question_builder.R")
 source("functions/choice_builder.R")
 source("functions/extract_between_placeholders.R")
+source("functions/questionIDme.R")
 # resources
 source("scripts/html_qualtrics_codes.R")
 

@@ -1,6 +1,9 @@
 followup_question_builder <- function(file_path, file_name, outputdir, export = TRUE) {
   
   # ARGUMENTS
+  # file_path <- "materials/Question/Follow_up/input/questions_raw/"
+  # file_name <- "followup_question_04.txt"
+  
   # path to question
   question_path <- 
     paste0(file_path, file_name)

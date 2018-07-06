@@ -49,7 +49,7 @@ The text within each follow-up item template must be parsed using the following 
 `[followUp_end]`  
 
 The placeholders should be used to separate unities as paragraphs. Right now it is possible to use up to three numbered placeholders between `[followUp_start]` and `[followUp_end]`.
-Additionally, html code tags can be use to give format to items exported to Qualtrics. Currently, the only treatement that manually-add html code tags receive is the removing of linebreks between html list codes (e.g. `<li>\n<li>`). 
+Additionally, html code tags can be use to give format to items within Qualtrics. Currently, there are html tags to add one list with two elements. Also, there is a manual modification to remove a linebreak between list elements (`<li>\n<li>`). 
 
 
 ###### Follow-up item template  

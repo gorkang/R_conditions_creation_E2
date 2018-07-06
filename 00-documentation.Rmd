@@ -143,13 +143,6 @@ No
 [choices_end]
 ```
 
-### Output
-
-This files contained in these folders are script-generated, no manual modification is needed. The folder /Follow_up/output/ contains two folders:  
-
-- items_raw: contains follow-up items filled with procedure-related risk information.  
-- item_w_prevalence: contains `items_raw` follow-up items filled with prevalence information.  
-  
 ## Others
 
 It is necessary to install ttf-mscorefonts-installer to be able to run the script.  

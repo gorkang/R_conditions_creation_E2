@@ -100,14 +100,25 @@ This folder contains the questions to be append at the end of follow-up items. E
 ...  
 `followup_question_n.txt`  
 
-At the beginning of each file it has to be indicated the kind of question using Qualtrics advanced text format tags.  
-`[[Question:MC:SingleAnswer:Vertical]]`   -> Multiple choice, single answer, choices laid vertically.  
-`[[Question:MC:SingleAnswer:Horizontal]]` -> Multiple choice, single answer, choices laid horizontally.  
-`[[Question:MC:DropDown]]`                -> Multiple choice, dropdown choices.  
-`[[Question:TE]]`                         -> Text entry   
-`[[Question:Text]]`                       -> Only descriptive text. This question allows to insert a text without choices.
+At the beginning of each file it has to be indicated the kind of question using Qualtrics advanced text format tags. For an extensive list of Qualtrics tags see https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/.
 
-It is not possible to create slider questions using Qualtrics advanced text format. To create a slider question with an unnamed slider, the best option is to create a descriptive text question (`[[Question:Text]]`) and manually convert it to slider on Qualtrics' website. For named sliders use the vertical single choice question (`[[Question:MC:SingleAnswer:Vertical]]`) and then convert it to slider. The choices text will be used as slider names.
+```{r echo=FALSE}
+tibble(
+  `Embedded data` = c("[[Question:MC:SingleAnswer:Vertical]]",
+                      "[[Question:MC:SingleAnswer:Horizontal]]",
+                      "[[Question:MC:DropDown]]",
+                      "[[Question:TE]]",
+                      "[[Question:Text]]"),
+  Description = c("Multiple choice, single answer, choices laid vertically.",
+                  "Multiple choice, single answer, choices laid horizontally.",
+                  "Multiple choice, drop-down choices.",
+                  "Text entry.",
+                  "Only descriptive text. This question allows to insert a text without choices.")) %>% 
+  kableME()
+```
+
+
+It is not possible to create slider questions using Qualtrics advanced text format. To create a slider question with an unnamed or named slider, the best option is to create a the vertical single choice question (`[[Question:MC:SingleAnswer:Vertical]]`) and then convert it to slider. The choices text will be used as slider names (if the choice text is an space the slider will be nameless).
 
 After the Qualtrics advanced text format the following placeholders must be used to parsed the question and choices text:  
 `[question_start]`  

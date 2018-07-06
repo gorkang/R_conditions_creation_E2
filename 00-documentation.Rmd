@@ -1,3 +1,4 @@
+source("functions/kableMe.R")
 
 # Documentation
 

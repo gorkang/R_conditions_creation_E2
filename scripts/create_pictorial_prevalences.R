@@ -84,5 +84,5 @@ pic_prevalences_str_filled <-
 
 pic_prevalences_str_filled %>% 
   walk(~cat(.x, sep = "", 
-           file = paste0("materials/qualtrics/output/plain_text/prevalences/", gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x))))
+           file = paste0("materials/qualtrics/output/plain_text/prevalences/", gsub("\\*\\*(.*)\\*\\*.*", "\\1", .x), ".txt")))
 

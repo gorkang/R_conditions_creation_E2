@@ -18,7 +18,7 @@ output_dir <-
   dir.create(., FALSE, TRUE)
 # Export
 apriori_scale %>% 
-  cat(qualtrics_codes$block_start %>% gsub("block_name", "A priori belief screening", .),
+  cat(qualtrics_codes$block_start %>% gsub("block_name", "a_priori_belief_screening", .),
     qualtrics_codes$advanced_format, ., sep = "\n", 
       file = file.path(output_dir, "scale_apriori_belief.txt"))
 

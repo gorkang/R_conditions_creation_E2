@@ -1,6 +1,9 @@
 followup_question_builder <- function(file_path, file_name, outputdir, export = TRUE) {
   
   # ARGUMENTS
+  # file_path <- "materials/Question/Follow_up/input/questions_raw/"
+  # file_name <- "followup_question_04.txt"
+  
   # path to question
   question_path <- 
     paste0(file_path, file_name)
@@ -18,7 +21,7 @@ followup_question_builder <- function(file_path, file_name, outputdir, export = 
     # ACTUAL FUNCTION
     cat(
       # QUESTION TYPE ********************
-      gsub("(\\[\\[.*\\]\\]).*", "\\1", question_text),
+      gsub("(\\[\\[Question\\:.*\\]\\]).*", "\\1", question_text),
       
       # QUESTION ********************
       gsub("QUESTION_TEXT_TO_FORMAT", 
@@ -38,7 +41,10 @@ followup_question_builder <- function(file_path, file_name, outputdir, export = 
   } else if (export == FALSE) {
     paste(
       # QUESTION TYPE ********************
-      gsub("(\\[\\[.*\\]\\]).*", "\\1", question_text),
+      gsub(".*(\\[{2}Question.*?\\]{2}).*", "\\1", question_text),
+      
+      # QUESITON ID **********************
+      gsub(".*(\\[{2}ID\\:.*?\\]{2}).*", "\\1", question_text),
       
       # QUESTION ********************
       gsub("QUESTION_TEXT_TO_FORMAT", 

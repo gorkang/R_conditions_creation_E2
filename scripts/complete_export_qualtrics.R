@@ -160,9 +160,6 @@ screening_item_questions <-
           will_screening_02,
           sep = "\n")
 
-# Create follow-up --------------------------------------------------------
-source("scripts/followUp_create_export.R")
-
 # Create and export complete trial blocks (PPV + Follow-up) ---------------
 
 # follow-up

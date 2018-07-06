@@ -52,13 +52,16 @@ display_item <- function(args) {
       gsub("\\*\\*.*?\\*\\*", "", .)  
   }
   
-  # Current item. If pictorial call the image
+  # Current item. If item is pictorial, add image call
   if (grepl("fbpi|nppi", args[2])) {
-    curr_item <- paste(args, collapse = ".*") %>% paste0("\\b", .) %>% 
+    curr_item <- paste(args[1:3], collapse = ".*") %>% paste0("\\b", .) %>% 
       grep(., dir(path = "materials/downloaded_img", ".png", full.names = TRUE), value = TRUE) %>% 
       paste0("![](", . ,")")
   } else if (!grepl("fbpi|nppi", args[2])) {
-    curr_item <- paste(args, collapse = ".*") %>% grep(., items, value = TRUE) %>% readChar(., file.size(.))
+    curr_item <-
+      paste(args[1:3], collapse = ".*") %>% grep(., items, value = TRUE) %>% readChar(., file.size(.)) %>% 
+      gsub("(\\*\\*.*?\\*\\*\\n\\n)", "", .) %>% remove_placeholders() %>% gsub("\\b\\n(.*)\\n\\b", "\\1", .) %>% 
+      gsub("\\n", "\n\n", .)
   }
   
   

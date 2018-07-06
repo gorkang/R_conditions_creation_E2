@@ -32,7 +32,7 @@ img_urls$condition %>%
   walk(~download.file(img_urls$url[img_urls$condition == .x], paste0("materials/downloaded_img/", .x, ".png")))
 ```
 
-```{r}
+```{r include=FALSE}
 # function to display items
 source("functions/display_items.R")
 ```

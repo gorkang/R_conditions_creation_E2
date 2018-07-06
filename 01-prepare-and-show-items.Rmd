@@ -43,315 +43,111 @@ source("functions/display_items.R")
 ### NF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, ca_nfab_low}
-print_cat_items(problems_numbered_ordered_responses, "ca_nfab_ppvlow", "item")
+display_item(c("ca", "nfab", "low", "gi"))
+display_item(c("ca", "nfab", "low", "gs"))
+display_item(c("ca", "nfab", "low", "sg"))
+display_item(c("ca", "nfab", "low", "ss"))
 ```
 
 ### PR ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, ca_prab_low}
-print_cat_items(problems_numbered_ordered_responses,"ca_prab_ppvlow", "item")
+display_item(c("ca", "prab", "low", "gi"))
+display_item(c("ca", "prab", "low", "gs"))
+display_item(c("ca", "prab", "low", "sg"))
+display_item(c("ca", "prab", "low", "ss"))
 ```
 
 ### PR RELATIVE
 
 ```{r, results='asis', echo=FALSE, ca_prre_low}
-print_cat_items(problems_numbered_ordered_responses,"ca_prre_ppvlow", "item")
+display_item(c("ca", "prre", "low", "gi"))
+display_item(c("ca", "prre", "low", "gs"))
+display_item(c("ca", "prre", "low", "sg"))
+display_item(c("ca", "prre", "low", "ss"))
 ```
 
 ### PF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, ca_pfab_low}
-print_cat_items(problems_numbered_ordered_responses,"ca_pfab_ppvlow", "item")
+display_item(c("ca", "pfab", "low", "gi"))
+display_item(c("ca", "pfab", "low", "gs"))
+display_item(c("ca", "pfab", "low", "sg"))
+display_item(c("ca", "pfab", "low", "ss"))
 ```
 
 ### FB PICTORIAL
 
-**ca_fbpi_low_gi**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(fbpi_context, "low", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-# TODO: add a print/cat (default), print, cat option?
-fb_ca_low <- readPNG(paste0(fact_box_dir, grep(".*ca_.*_low.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_ca_low)
-# Question
-print_cat_items(questions, "ca", "item", "print") %>% 
-  asterik_name_remover() %>% cat()
-# Response type
-cat(remove_placeholders(responses_pic[["gi"]], "item"))
-# Sep
-cat("\n****************************\n")
+```{r, results='asis', echo=FALSE, ca_fbpi_low}
+display_item(c("ca", "fbpi", "low", "gi"))
+display_item(c("ca", "fbpi", "low", "gs"))
+display_item(c("ca", "fbpi", "low", "sg"))
+display_item(c("ca", "fbpi", "low", "ss"))
 ```
-
-
-  
-**ca_fbpi_low_gs**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(fbpi_context, "low", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-fb_ca_low <- readPNG(paste0(fact_box_dir, grep(".*ca_.*_low.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_ca_low)
-# Question
-print_cat_items(questions, "ca", "item", "print") %>% 
-  asterik_name_remover() %>% cat()
-# Response type
-cat(remove_placeholders(responses_pic[["gs"]], "item"))
-# Sep
-cat("\n****************************\n")
-```
-  
-**ca_fbpi_low_sg**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(fbpi_context, "low", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-fb_ca_low <- readPNG(paste0(fact_box_dir, grep(".*ca_.*_low.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_ca_low)
-# Question
-print_cat_items(questions, "ca", "item", "print") %>% 
-  asterik_name_remover() %>% cat()
-# Response
-cat(cat(remove_placeholders(responses_pic$sg[[grep("cancer", responses_pic$sg)]], "item")))
-# Sep
-cat("\n****************************\n")
-```
-  
-**ca_fbpi_low_ss**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(fbpi_context, "low", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-fb_ca_low <- readPNG(paste0(fact_box_dir, grep(".*ca_.*_low.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_ca_low)
-# Question
-print_cat_items(questions, "ca", "item", "print") %>% 
-  asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses_pic[["ss"]], "item"))
-```
-
 
 ### NP PICTORIAL
 
-**ca_nppi_low_gi**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(nppi_context, "ca_low", "item", "print") %>% 
-  asterik_name_remover() %>% cat()
-# Image
-np_ca_low <- readPNG(paste0(new_paradigm_dir, grep(".*ca_.*_low.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_ca_low)
-# Question
-print_cat_items(questions, "ca", "item", "print") %>% 
-  asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses[[1]], "item"))
-# Sep
-cat("\n****************************\n")
+```{r, results='asis', echo=FALSE, ca_nppi_low}
+display_item(c("ca", "nppi", "low", "gi"))
+display_item(c("ca", "nppi", "low", "gs"))
+display_item(c("ca", "nppi", "low", "sg"))
+display_item(c("ca", "nppi", "low", "ss"))
 ```
-  
-**ca_nppi_low_gs**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(nppi_context, "ca_low", "item", "print") %>% 
-  asterik_name_remover() %>% cat()
-# Image
-np_ca_low <- readPNG(paste0(new_paradigm_dir, grep(".*ca_.*_low.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_ca_low)
-# Question
-print_cat_items(questions, "ca", "item", "print") %>% 
-  asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses[[2]], "item"))
-# Sep
-cat("\n****************************\n")
-```
-  
-**ca_nppi_low_sg**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(nppi_context, "ca_low", "item", "print") %>% 
-  asterik_name_remover() %>% cat()
-# Image
-np_ca_low <- readPNG(paste0(new_paradigm_dir, grep(".*ca_.*_low.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_ca_low)
-# Question
-print_cat_items(questions, "ca", "item", "print") %>% 
-  asterik_name_remover() %>% cat()
-# Response
-cat(cat(remove_placeholders(responses_pic$sg[[grep("cancer", responses_pic$sg)]], "item")))
-# Sep
-cat("\n****************************\n")
-```
-  
-**ca_nppi_low_ss**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(nppi_context, "ca_low", "item", "print") %>% 
-  asterik_name_remover() %>% cat()
-# Image
-np_ca_low <- readPNG(paste0(new_paradigm_dir, grep(".*ca_.*_low.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_ca_low)
-# Question
-print_cat_items(questions, "ca", "item", "print") %>% 
-  asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses[[4]], "item"))
-```
-
 
 ## High normative PPV
 
 ### NF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, ca_nfab_high}
-print_cat_items(problems_numbered_ordered_responses,"ca_nfab_ppvhigh", "item")
+display_item(c("ca", "nfab", "high", "gi"))
+display_item(c("ca", "nfab", "high", "gs"))
+display_item(c("ca", "nfab", "high", "sg"))
+display_item(c("ca", "nfab", "high", "ss"))
 ```
 
 ### PR ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, ca_prab_high}
-print_cat_items(problems_numbered_ordered_responses,"ca_prab_ppvhigh", "item")
+display_item(c("ca", "prab", "high", "gi"))
+display_item(c("ca", "prab", "high", "gs"))
+display_item(c("ca", "prab", "high", "sg"))
+display_item(c("ca", "prab", "high", "ss"))
 ```
 
 ### PR RELATIVE
 
 ```{r, results='asis', echo=FALSE, ca_prre_high}
-print_cat_items(problems_numbered_ordered_responses,"ca_prre_ppvhigh", "item")
+display_item(c("ca", "prre", "high", "gi"))
+display_item(c("ca", "prre", "high", "gs"))
+display_item(c("ca", "prre", "high", "sg"))
+display_item(c("ca", "prre", "high", "ss"))
 ```
 
 ### PF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, ca_pfab_high}
-print_cat_items(problems_numbered_ordered_responses,"ca_pfab_ppvhigh", "item")
-
+display_item(c("ca", "pfab", "high", "gi"))
+display_item(c("ca", "pfab", "high", "gs"))
+display_item(c("ca", "pfab", "high", "sg"))
+display_item(c("ca", "pfab", "high", "ss"))
 ```
 
 ### FB PICTORIAL
 
-**ca_fbpi_high_gi**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(fbpi_context, "high", "item", "print") %>% 
-  asterik_name_remover() %>% cat()
-# Image
-fb_ca_high <- readPNG(paste0(fact_box_dir, grep(".*ca_.*_high.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_ca_high)
-# Question
-print_cat_items(questions, "ca", "item", "print") %>% 
-  asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses[[1]], "item"))
-# Sep
-cat("\n****************************\n")
-```
-  
-**ca_fbpi_high_gs**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(fbpi_context, "high", "item", "print") %>% 
-  asterik_name_remover() %>% cat()
-# Image
-fb_ca_high <- readPNG(paste0(fact_box_dir, grep(".*ca_.*_high.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_ca_high)
-# Question
-print_cat_items(questions, "ca", "item", "print") %>% 
-  asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses[[2]], "item"))
-# Sep
-cat("\n****************************\n")
-```
-  
-**ca_fbpi_high_sg**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(fbpi_context, "high", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-fb_ca_high <- readPNG(paste0(fact_box_dir, grep(".*ca_.*_high.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_ca_high)
-# Question
-print_cat_items(questions, "ca", "item", "print") %>% asterik_name_remover() %>% cat()
-# Response
-cat(cat(remove_placeholders(responses_pic$sg[[grep("cancer", responses_pic$sg)]], "item")))
-# Sep
-cat("\n****************************\n")
-```
-  
-**ca_fbpi_high_ss**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(fbpi_context, "high", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-fb_ca_high <- readPNG(paste0(fact_box_dir, grep(".*ca_.*_high.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_ca_high)
-# Question
-print_cat_items(questions, "ca", "item", "print") %>% asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses[[4]], "item"))
-# Sep
-cat("\n****************************\n")
+```{r, results='asis', echo=FALSE, ca_fbpi_high}
+display_item(c("ca", "fbpi", "high", "gi"))
+display_item(c("ca", "fbpi", "high", "gs"))
+display_item(c("ca", "fbpi", "high", "sg"))
+display_item(c("ca", "fbpi", "high", "ss"))
 ```
 
 ### NP PICTORIAL
 
-**ca_nppi_high_gi**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(nppi_context, "ca_high", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_.*_high.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_ca_high)
-# Question
-print_cat_items(questions, "ca", "item", "print") %>% asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses[[1]], "item"))
-# Sep
-cat("\n****************************\n")
-```
-  
-**ca_nppi_high_gs**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(nppi_context, "ca_high", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_.*_high.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_ca_high)
-# Question
-print_cat_items(questions, "ca", "item", "print") %>% asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses[[2]], "item"))
-# Sep
-cat("\n****************************\n")
-```
-  
-**ca_nppi_high_sg**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(nppi_context, "ca_high", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_.*_high.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_ca_high)
-# Question
-print_cat_items(questions, "ca", "item", "print") %>% asterik_name_remover() %>% cat()
-# Response
-cat(cat(remove_placeholders(responses_pic$sg[[grep("cancer", responses_pic$sg)]], "item")))
-# Sep
-cat("\n****************************\n")
-```
-  
-**ca_nppi_high_ss**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(nppi_context, "ca_high", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_.*_high.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_ca_high)
-# Question
-print_cat_items(questions, "ca", "item", "print") %>% asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses[[4]], "item"))
+```{r, results='asis', echo=FALSE, ca_nppi_high}
+display_item(c("ca", "nppi", "high", "gi"))
+display_item(c("ca", "nppi", "high", "gs"))
+display_item(c("ca", "nppi", "high", "sg"))
+display_item(c("ca", "nppi", "high", "ss"))
 ```
 
 # Trisomy 21 Items
@@ -361,292 +157,111 @@ cat(remove_placeholders(responses[[4]], "item"))
 ### NF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, pr_nfab_low}
-print_cat_items(problems_numbered_ordered_responses,"pr_nfab_ppvlow", "item")
+display_item(c("pr", "nfab", "low", "gi"))
+display_item(c("pr", "nfab", "low", "gs"))
+display_item(c("pr", "nfab", "low", "sg"))
+display_item(c("pr", "nfab", "low", "ss"))
 ```
 
 ### PR ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, pr_prab_low}
-print_cat_items(problems_numbered_ordered_responses,"pr_prab_ppvlow", "item")
+display_item(c("pr", "prab", "low", "gi"))
+display_item(c("pr", "prab", "low", "gs"))
+display_item(c("pr", "prab", "low", "sg"))
+display_item(c("pr", "prab", "low", "ss"))
 ```
 
 ### PR RELATIVE
 
 ```{r, results='asis', echo=FALSE, pr_prre_low}
-print_cat_items(problems_numbered_ordered_responses,"pr_prre_ppvlow", "item")
+display_item(c("pr", "prre", "low", "gi"))
+display_item(c("pr", "prre", "low", "gs"))
+display_item(c("pr", "prre", "low", "sg"))
+display_item(c("pr", "prre", "low", "ss"))
 ```
 
 ### PF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, pr_pfab_low}
-print_cat_items(problems_numbered_ordered_responses,"pr_pfab_ppvlow", "item")
+display_item(c("pr", "pfab", "low", "gi"))
+display_item(c("pr", "pfab", "low", "gs"))
+display_item(c("pr", "pfab", "low", "sg"))
+display_item(c("pr", "pfab", "low", "ss"))
 ```
 
 ### FB PICTORIAL
 
-**pr_fbpi_low_gi**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(fbpi_context, "low", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-fb_pr_low <- readPNG(paste0(fact_box_dir, grep(".*pr_.*_low.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_pr_low)
-# Question
-print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses[[1]], "item"))
-# Sep
-cat("\n****************************\n")
-```
-  
-**pr_fbpi_low_gs**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(fbpi_context, "low", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-fb_pr_low <- readPNG(paste0(fact_box_dir, grep(".*pr_.*_low.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_pr_low)
-# Question
-print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses[[2]], "item"))
-# Sep
-cat("\n****************************\n")
-```
-  
-**pr_fbpi_low_sg**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(fbpi_context, "low", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-fb_pr_low <- readPNG(paste0(fact_box_dir, grep(".*pr_.*_low.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_pr_low)
-# Question
-print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses_pic$sg[[grep("trisomy", responses_pic$sg)]], "item"))
-# Sep
-cat("\n****************************\n")
-```
-  
-**pr_fbpi_low_ss**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(fbpi_context, "low", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-fb_pr_low <- readPNG(paste0(fact_box_dir, grep(".*pr_.*_low.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_pr_low)
-# Question
-print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses[[4]], "item"))
+```{r, results='asis', echo=FALSE, pr_fbpi_low}
+display_item(c("pr", "fbpi", "low", "gi"))
+display_item(c("pr", "fbpi", "low", "gs"))
+display_item(c("pr", "fbpi", "low", "sg"))
+display_item(c("pr", "fbpi", "low", "ss"))
 ```
 
 ### NP PICTORIAL
 
-**pr_nppi_low_gi**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(nppi_context, "pr_low", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_.*_low.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_pr_low)
-# Question
-print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses[[1]], "item"))
-# Sep
-cat("\n****************************\n")
+```{r, results='asis', echo=FALSE, pr_nppi_low}
+display_item(c("pr", "nppi", "low", "gi"))
+display_item(c("pr", "nppi", "low", "gs"))
+display_item(c("pr", "nppi", "low", "sg"))
+display_item(c("pr", "nppi", "low", "ss"))
 ```
-  
-**pr_nppi_low_gs**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(nppi_context, "pr_low", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_.*_low.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_pr_low)
-# Question
-print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses[[2]], "item"))
-# Sep
-cat("\n****************************\n")
-```
-  
-**pr_nppi_low_sg**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(nppi_context, "pr_low", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_.*_low.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_pr_low)
-# Question
-print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses_pic$sg[[grep("trisomy", responses_pic$sg)]], "item"))
-# Sep
-cat("\n****************************\n")
-```
-  
-**pr_nppi_low_ss**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(nppi_context, "pr_low", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_.*_low.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_pr_low)
-# Question
-print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses[[4]], "item"))
-```
-
 
 ## High normative PPV
 
 ### NF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, pr_nfab_high}
-print_cat_items(problems_numbered_ordered_responses,"pr_nfab_ppvhigh", "item")
+display_item(c("pr", "nfab", "high", "gi"))
+display_item(c("pr", "nfab", "high", "gs"))
+display_item(c("pr", "nfab", "high", "sg"))
+display_item(c("pr", "nfab", "high", "ss"))
 ```
 
 ### PR ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, pr_prab_high}
-print_cat_items(problems_numbered_ordered_responses,"pr_prab_ppvhigh", "item")
+display_item(c("pr", "prab", "high", "gi"))
+display_item(c("pr", "prab", "high", "gs"))
+display_item(c("pr", "prab", "high", "sg"))
+display_item(c("pr", "prab", "high", "ss"))
 ```
 
 ### PR RELATIVE
 
 ```{r, results='asis', echo=FALSE, pr_prre_high}
-print_cat_items(problems_numbered_ordered_responses,"pr_prre_ppvhigh", "item")
+display_item(c("pr", "prre", "high", "gi"))
+display_item(c("pr", "prre", "high", "gs"))
+display_item(c("pr", "prre", "high", "sg"))
+display_item(c("pr", "prre", "high", "ss"))
 ```
 
 ### PF ABSOLUTE
 
 ```{r, results='asis', echo=FALSE, pr_pfab_high}
-print_cat_items(problems_numbered_ordered_responses,"pr_pfab_ppvhigh", "item")
+display_item(c("pr", "pfab", "high", "gi"))
+display_item(c("pr", "pfab", "high", "gs"))
+display_item(c("pr", "pfab", "high", "sg"))
+display_item(c("pr", "pfab", "high", "ss"))
 ```
 
 ### FB PICTORIAL
 
-**pr_fbpi_high_gi**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(fbpi_context, "high", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-fb_pr_high <- readPNG(paste0(fact_box_dir, grep(".*pr_.*_high.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_pr_high)
-# Question
-print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses[[1]], "item"))
-# Sep
-cat("\n****************************\n")
-```
-  
-**pr_fbpi_high_gs**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(fbpi_context, "high", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-fb_pr_high <- readPNG(paste0(fact_box_dir, grep(".*pr_.*_high.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_pr_high)
-# Question
-print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses[[2]], "item"))
-# Sep
-cat("\n****************************\n")
-```
-
-**pr_fbpi_high_sg**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(fbpi_context, "high", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-fb_pr_high <- readPNG(paste0(fact_box_dir, grep(".*pr_.*_high.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_pr_high)
-# Question
-print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses_pic$sg[[grep("trisomy", responses_pic$sg)]], "item"))
-# Sep
-cat("\n****************************\n")
-```
-  
-**pr_fbpi_high_ss**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(fbpi_context, "high", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-fb_pr_high <- readPNG(paste0(fact_box_dir, grep(".*pr_.*_high.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_pr_high)
-# Question
-print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses[[4]], "item"))
+```{r, results='asis', echo=FALSE, pr_fbpi_high}
+display_item(c("pr", "fbpi", "high", "gi"))
+display_item(c("pr", "fbpi", "high", "gs"))
+display_item(c("pr", "fbpi", "high", "sg"))
+display_item(c("pr", "fbpi", "high", "ss"))
 ```
 
 ### NP PICTORIAL
 
-**pr_nppi_high_gi**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(nppi_context, "pr_high", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_.*_high.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_pr_high)
-# Question
-print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses[[1]], "item"))
-# Sep
-cat("\n****************************\n")
-```
-  
-**pr_nppi_high_gs**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(nppi_context, "pr_high", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_.*_high.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_pr_high)
-# Question
-print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses[[2]], "item"))
-# Sep
-cat("\n****************************\n")
-```
-  
-**pr_nppi_high_sg**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(nppi_context, "pr_high", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_.*_high.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_pr_high)
-# Question
-print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses_pic$sg[[grep("trisomy", responses_pic$sg)]], "item"))
-# Sep
-cat("\n****************************\n")
-```
-  
-**pr_nppi_high_ss**  
-```{r, echo=FALSE, results='asis'}
-# Context
-print_cat_items(nppi_context, "pr_high", "item", "print") %>% asterik_name_remover() %>% cat()
-# Image
-np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_.*_high.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_pr_high)
-# Question
-print_cat_items(questions, "pr", "item", "print") %>% asterik_name_remover() %>% cat()
-# Response
-cat(remove_placeholders(responses[[4]], "item"))
+```{r, results='asis', echo=FALSE, pr_nppi_high}
+display_item(c("pr", "nppi", "high", "gi"))
+display_item(c("pr", "nppi", "high", "gs"))
+display_item(c("pr", "nppi", "high", "sg"))
+display_item(c("pr", "nppi", "high", "ss"))
 ```
 
 # Comprehension questions

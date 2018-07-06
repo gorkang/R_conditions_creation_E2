@@ -270,17 +270,13 @@ display_item(c("pr", "nppi", "high", "ss"))
 
 ```{r comprehension, echo=FALSE, results='asis'}
 source("scripts/comprehension_preparing.R")
-
-invisible(lapply(comprehension_questions, lapply, cat))
 ```
 
 
 # Follow-up questions
 
 ```{r follow-up, echo=FALSE, results='asis'}
-# Create follow-up --------------------------------------------------------
 source("scripts/followUp_create_export.R")
-
 ```
 
 

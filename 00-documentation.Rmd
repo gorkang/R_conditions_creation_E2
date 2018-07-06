@@ -22,20 +22,16 @@ The following scripts contain parts that require to call by name some presentati
 
 The folder `/Follow_up/input/` contains three folders:  
 
-- `items`: contains follow-up items templates as text files, without questions.  
-- `pictorial_prevalences`: contains pictorial items prevalences templates  
-- `questions_raw`: contains follow-up questions  
+- **items**: contains an unified follow-up item template (irrespective of problem context), without questions.  
+- **pictorial_prevalences**: contains pictorial items prevalence templates. These prevalence are created with `scripts/create_pictorial_prevalences.R` (called within `followUp_create_export.R`).  
+- **questions_raw**: contains follow-up questions  
 
-The content of `items` will be filled with information about the risk of the follow-up test and about the prevalence of the possible medical conditions. These filled items will be paired with the content of `questions_raw` to form the final follow-up items (follow-up text and questions).
-  
+The content of `unified_fu.txt` (follow-up template) and of **questions_raw** (follow-up questions) are combined and then Qualtrics tags are added. Placeholders are dealt with within Qualtrics using Embedded data fields.
+
 #### items
 
-This folder contains follow-up items templates files. Files must be named as following:  
-`[context]_fu.txt`  
-The context name should be no longer than 2 letters. For example:  
-`ca_fu.txt`  
-`pr_fu.txt`  
-  
+This folder contains one item template that is used for both problem contexts. Each customizable part is an embedded data field call (see `materials/fillers.csv` for actual fillers):  
+
 The text within each follow-up item template must be parsed using the following placeholders:  
 `[followUp_start]`  
 `[followUp_first_piece]`  

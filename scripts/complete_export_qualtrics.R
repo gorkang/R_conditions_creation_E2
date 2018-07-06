@@ -8,9 +8,6 @@ source("functions/remove_placeholders.R")
 source("functions/create_ED_blocks.R")
 source("functions/questionIDme.R")
 
-# Create pictorial prevalences --------------------------------------------
-source("scripts/create_pictorial_prevalences.R")
-
 # Create pictorial items (links to imgs) ----------------------------------
 
 # read urls

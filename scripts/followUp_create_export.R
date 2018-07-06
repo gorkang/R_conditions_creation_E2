@@ -54,6 +54,14 @@ unified_fu_questions %>%
 
 # PRINT FOLLOWUP --------------------------------------------------------------
 
+# PREVALENCES #################################
+# Create pictorial prevalences
+source("scripts/create_pictorial_prevalences.R")
+###############################################
+
+
+
+
 # To fill ED data fields
 fillers <- read_csv("materials/fillers.csv", col_types = "cccc") %>% 
   mutate(ca_pr = paste(ca, pr, sep = "/"))

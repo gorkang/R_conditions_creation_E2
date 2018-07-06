@@ -279,7 +279,6 @@ source("scripts/comprehension_preparing.R")
 source("scripts/followUp_create_export.R")
 ```
 
-
 # Scales
 
 ```{r scales, echo=FALSE, results='asis'}

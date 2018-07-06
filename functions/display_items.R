@@ -63,9 +63,21 @@ display_item <- function(args) {
       gsub("(\\*\\*.*?\\*\\*\\n\\n)", "", .) %>% remove_placeholders() %>% gsub("\\b\\n(.*)\\n\\b", "\\1", .) %>% 
       gsub("\\n", "\n\n", .)
   }
+  # Define response types
+  resp_types <- c(paste(c("Very few     Few      Half     Quite     Many",  "(0-20%)   (21-40%)  (41-60%)  (61-80%)   (81-100%)"), collapse = "\n\n\n\n"),
+                  "___%",
+                  paste(c("____ women receive a positive test_result that correctly indicates the presence of medical_condition,",
+                          "and ____ women receive a positive test_result that incorrectly indicates the presence of medical_condition.",
+                          "Therefore, given that the test_result indicates the signs of medical_condition, the probability that person_01 actually has medical_condition is ____ out of ____"),
+                        collapse = "\n"),
+                  "____ in every ____")
   
+  # Define response types names
+  resp_type_nms <- c("gi", "gs", "sg", "ss")
   
- paste0("**", args[1], "_", args[2], "_ppv", args[3], "**\n")
+  # Response type
+  resp_types <- set_names(as.list(resp_types), resp_type_nms)
+  
   # Display item
   paste(curr_prob_intro, curr_item, curr_ppv_quest, sep = "\n") %>% remove_placeholders() %>% 
     gsub("(\\*\\*.*?\\*\\*)", "", .) %>% paste0("**", args[1], "_", args[2], "_ppv", args[3], "**\n", .) %>% cat()

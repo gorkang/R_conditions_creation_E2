@@ -32,6 +32,15 @@ The content of `unified_fu.txt` (follow-up template) and of **questions_raw** (f
 
 This folder contains one item template that is used for both problem contexts. Each customizable part is an embedded data field call (see `materials/fillers.csv` for actual fillers):  
 
+- `${e://Field/prevalence_0}`           
+- `${e://Field/ppv_response_0}`         
+- `${e://Field/medical_condition_0}`    
+- `${e://Field/positive_test_result_0}` 
+- `${e://Field/doctor_offers_0}`        
+- `${e://Field/fluid_test_0}`           
+- `${e://Field/test_name_0}`  
+- `${e://Field/fu_risk_num_0}`  
+- `${e://Field/medical_consequence_0}`  
 The text within each follow-up item template must be parsed using the following placeholders:  
 `[followUp_start]`  
 `[followUp_first_piece]`  

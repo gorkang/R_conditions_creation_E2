@@ -23,8 +23,9 @@ display_item <- function(args) {
     dir(., ".txt", full.names = TRUE) %>% 
     readChar(., file.size(.)) %>% remove_placeholders(.)
   
-  # For debugging
-  # args <- c("pr", "fbpi", "high")
+  # For debugging ########################
+  # args <- c("pr", "nfab", "high", "ss")
+  ########################################
   
   # Fill ppv question with cancer or pregnant context fillers
   if (args[1] == "ca") {

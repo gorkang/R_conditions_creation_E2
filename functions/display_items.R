@@ -4,6 +4,7 @@ display_item <- function(args) {
   # Fillers (placeholders to be filled and fillers)
   fillers <- read_csv("materials/fillers.csv", col_types = cols())
   
+  # Create list with placeholders names and fillers
   set_names(list(setNames(as.list(fillers$ca), fillers$field_name),
                  setNames(as.list(fillers$pr), fillers$field_name)),
             c("ca", "pr"))
@@ -64,13 +65,13 @@ display_item <- function(args) {
       gsub("\\n", "\n\n", .)
   }
   # Define response types
-  resp_types <- c(paste(c("Very few     Few      Half     Quite     Many",  "(0-20%)   (21-40%)  (41-60%)  (61-80%)   (81-100%)"), collapse = "\n\n\n\n"),
-                  "___%",
+  resp_types <- c(paste(c("Very few     Few      Half     Quite     Many",  "(0-20%)   (21-40%)  (41-60%)  (61-80%)   (81-100%)"), collapse = "\n\n\n\n"), # gi
+                  "___%", # gs
                   paste(c("____ women receive a positive test_result that correctly indicates the presence of medical_condition,",
                           "and ____ women receive a positive test_result that incorrectly indicates the presence of medical_condition.",
-                          "Therefore, given that the test_result indicates the signs of medical_condition, the probability that person_01 actually has medical_condition is ____ out of ____"),
-                        collapse = "\n"),
-                  "____ in every ____")
+                          "Therefore, given that the test_result indicates the signs of medical_condition, the probability that person_01 actually has medical_condition is ____ out of ____"), 
+                        collapse = "\n"), # sg
+                  "____ in every ____") #ss
   
   # Define response types names
   resp_type_nms <- c("gi", "gs", "sg", "ss")

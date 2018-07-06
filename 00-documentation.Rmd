@@ -52,7 +52,7 @@ The placeholders should be used to separate unities as paragraphs. Right now it 
 Additionally, html code tags can be use to give format to items exported to Qualtrics. Currently, the only treatement that manually-add html code tags receive is the removing of linebreks between html list codes (e.g. `<li>\n<li>`). 
 
 
-###### Follow-up item template example  
+###### Follow-up item template  
 
 ```
 [followUp_start]
@@ -73,7 +73,7 @@ The biopsy has a risk_percentage procedure-related risk of complications (for ex
 
 #### pictorial_prevalences
 
-This folder contains unique prevalences of pictorial items as text files. Files must be named as follow:  
+This folder contains unique prevalence of pictorial items as text files. Files must be named as follow:  
 `[context]_[pictorial presentation format]_followup_context.text`  
 The context should be no longer than 2 letters, and presentation format no longer than 4 letters. For example:  
 `ca_fbpi_followup_context.txt`  
@@ -82,7 +82,7 @@ The context should be no longer than 2 letters, and presentation format no longe
 The text within each text file must start with a name, indicating context and presentation format between asterisk (two at each side):  
 `**ca_fbpi**`
 
-Following the name, the actual prevalence text must be in the same line and can contain simple text and/or column names of number_bayes.xls to be replace with numbers.
+Following the name, the actual prevalence text must be in the same line and can contain simple text and/or column names of `number_bayes.xls` to be replace with numbers.
 
 ##### pictorial_prevalence example
 
@@ -146,7 +146,7 @@ No
 ## Others
 
 It is necessary to install ttf-mscorefonts-installer to be able to run the script.  
-On Ubunut:  
+On Ubuntu:  
 ```
 sudo apt install ttf-mscorefonts-installer
 ```

@@ -1,4 +1,10 @@
+```{r include=FALSE}
+# Packages
+if (!require('pacman')) install.packages('pacman'); library('pacman')
+p_load(tidyverse, kableExtra)
+
 source("functions/kableMe.R")
+```
 
 # Documentation
 

@@ -10,6 +10,9 @@ source("scripts/scale_severity.R")
 # A priori screening belief
 source("scripts/scale_apriori.R")
 
+# Numeracy
+source("scripts/scale_numeracy.R")
+
 # READ SCALE
 scales <- 
   c("materials/qualtrics/output/plain_text/scales/apriori_belief", 

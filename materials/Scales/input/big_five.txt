@@ -1,0 +1,444 @@
+[[Question:Text]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">I am someone who...</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Is talkative.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Tends to find fault with others.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Does a thorough job.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Is depressed, blue.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Is original, comes up with new ideas.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Is reserved.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Is helpful and unselfish with others.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Can be somewhat careless.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Is relaxed, handles stress well  .</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Is curious about many different things.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Is full of energy.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Starts quarrels with others.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Is a reliable worker.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Can be tense.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Is ingenious, a deep thinker.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Generates a lot of enthusiasm.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Has a forgiving nature.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Tends to be disorganized.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Worries a lot.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Has an active imagination.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Tends to be quiet.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Is generally trusting.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Tends to be lazy.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Is emotionally stable, not easily upset.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Is inventive.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Has an assertive personality.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Can be cold and aloof.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Perseveres until the task is finished.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Can be moody.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Values artistic, aesthetic experiences.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Is sometimes shy, inhibited.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Is considerate and kind to almost everyone.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Does things efficiently.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Remains calm in tense situations.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Prefers work that is routine.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Is outgoing, sociable.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Is sometimes rude to others.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Makes plans and follows through with them.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Gets nervous easily.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Likes to reflect, play with ideas.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Has few artistic interests.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Likes to cooperate with others.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Is easily distracted.</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">Is sophisticated in art, music, or literature.
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>
+

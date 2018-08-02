@@ -16,8 +16,11 @@ source("functions/UBER_IMPORT2QUALTRICS.R")
 rD = RSelenium::rsDriver(browser = "chrome")
 remDr <- rD[["client"]]
 
-# Survey link
-survey_link <- "https://eu.qualtrics.com/ControlPanel/?ClientAction=ChangePage&Section=EditSection&SubSection=Blocks&SurveyID=SV_cOr1TTOUoa1Uc9T"
+# Survey link (why did the url change?)
+survey_link <- "https://qsharingeu.eu.qualtrics.com/ControlPanel/?ClientAction=ChangePage&Section=EditSection&SubSection=Blocks&SurveyID=SV_eKICbArg9lFKL9b"
+# survey_link <- "https://qsharingeu.eu.qualtrics.com/ControlPanel/?ClientAction=EditSurvey&Section=SV_eKICbArg9lFKL9b&SubSection=&SubSubSection=&PageActionOptions=&TransactionID=4&Repeatable=0"
+# survey_link <- "https://eu.qualtrics.com/ControlPanel/?ClientAction=ChangePage&Section=EditSection&SubSection=Blocks&SurveyID=SV_cOr1TTOUoa1Uc9T"
+
 # Qualtrics password
 pass   <- .rs.askForPassword("Please enter Qualtrics password")
 

@@ -40,3 +40,34 @@ Q_counter <- 0
 
 # UPLOAD!
 UBER_IMPORT2QUALTRICS(full_path)
+
+# Remove dummy blocks created when importing ED blocks -------------------
+for (i in seq(selectors)) {
+  # i <- 2
+  
+  # Get "Block Options" button elements (they change after deleting a block, so it has to be done on every iteration)
+  elements <- remDr$findElements("class name", "block-options-button")
+  
+  # If the buttons are not loaded yet the list will be of lenght 0. Try again untill is not 0.
+  while(length(elements) == 0) {
+    elements <- remDr$findElements("class name", "block-options-button")
+  } 
+  
+  message(paste0("Deleting block no. ", length(elements)))
+  
+  # Always delete the first element (they change on every interation)
+  webElem <- elements[[1]]
+  webElem$clickElement()
+  
+  # Select "Delete Block..."
+  webElem <- remDr$findElement(using = 'css selector', value = "#QMenu > div > div > ul > li:nth-child(17) > a")
+  webElem$clickElement()
+  
+  # Confirm. Select "Delete"
+  webElem <- remDr$findElement(using = 'css selector', value = "#ConfirmDeleteButton > span:nth-child(2)")
+  webElem$clickElement()
+  
+  Sys.sleep(2) # give it time
+  
+}
+

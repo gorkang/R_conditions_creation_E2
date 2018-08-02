@@ -9,8 +9,8 @@ apriori_scale <-
   str_split(., "\n__QSEP__\n") %>% # Separate questions
   unlist() %>% as.list() %>% # Flatten questions list
   str_replace_all(., "replaceID", paste0("aprioriBel_0", seq(length(.)))) %>% # Add question IDs
-  gsub("Q_FONT_SIZE", "22", .) %>% # Change Questions Font size
-  gsub("C_FONT_SIZE", "16", .) # Change Choices Font size
+  gsub("Q_FONT_SIZE", question_size, .) %>% # Change Questions Font size
+  gsub("C_FONT_SIZE", choice_size, .) # Change Choices Font size
 
 # Output dir
 output_dir <- 

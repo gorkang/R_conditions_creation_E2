@@ -8,7 +8,7 @@ scale_template <-
 
 # Indicate questions and choices size
 scale_template <- 
-  scale_template %>% gsub("Q_FONT_SIZE", "22", .) %>% gsub("C_FONT_SIZE", "16", .)
+  scale_template %>% gsub("Q_FONT_SIZE", question_size, .) %>% gsub("C_FONT_SIZE", choice_size, .)
 
 # separate questions (using preset separator)
 scale_sep <-

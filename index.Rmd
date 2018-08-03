@@ -52,7 +52,7 @@ Independent Variables
     + nfab: Natural Frequency absolute
     + prab: Probability absolute
     + prre: Probability relative
-    + pfab: Positive framework
+    + pfab: Positive framework absolute
     + fbpi: Factbox pictorial
     + nppi: New-paradigm pictorial
 * Normative PPV:

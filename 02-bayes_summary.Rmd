@@ -1,7 +1,7 @@
 # Bayes Summary
 
 ```{r, results='asis', echo=FALSE}
-cat("![](docs/bayesian_reasoning_flowchart.png)")
+cat("![](bayesian_reasoning_flowchart.png)")
 ```
 
 ## A priori belief

@@ -19,31 +19,10 @@ source("scripts/scale_numeracy.R")
 # Big five
 source("scripts/scale_big_five.R")
 
-# READ SCALE
-scales <- 
-  c("materials/qualtrics/output/plain_text/scales/apriori_belief", 
-    "materials/qualtrics/output/plain_text/scales/severity_emotion/partial",
-    "materials/qualtrics/output/plain_text/scales/numeracy/") %>% 
-  map(~dir(.x, ".txt", full.names = TRUE)) %>% unlist() %>% map(~readChar(.x, file.size(.x))) %>% 
-  set_names(., 
-            gsub(".*Block\\:([a-z_0-9]*).*", "\\1", .)) # Capture name of each scale
+# PRINT SCALES (BOOK)
+# this vector with paths set the scales to be printed
+scales2print <- c("materials/qualtrics/output/plain_text/scales/apriori_belief", 
+                  "materials/qualtrics/output/plain_text/scales/severity_emotion/partial",
+                  "materials/qualtrics/output/plain_text/scales/numeracy/") 
 
-# Function to remove rubish from scales (placeholders, qualtrics tagas, etc.)
-clean_scale <- function(str) {
-  str %>% 
-    gsub("\\[{2}Block\\:([a-z_0-9]*)\\]{2}", "**Scale: \\1**", .) %>% # scale name
-    gsub("\\[{2}AdvancedFormat\\]{2}\\n", "", .) %>%                  # remove advanceformat tag
-    gsub("\\[{2}ID\\:([a-zA-Z_0-9]*)\\]{2}", "**\\1**", .) %>%        # question ID
-    gsub('<span style="font-size\\:[0-9]{2}px;">', "\\1 ", .) %>%     # remove html tag
-    gsub('</span>', "", .) %>%  # remove html tag
-    gsub("\\[{2}Question.*?\\]{2}\\n", "", .) %>% # remove Question qualtrics format 
-    gsub("\\[{2}Choices\\]{2}\\n", "", .) %>%  # remove choices qualtrics format 
-    gsub("\\n", "\n\n", .) %>% # double linebreaks because bookdown is weird
-    gsub("DELETE_THIS", "", .) # remove DELETE_THIS
-}
-
-# Print Scales
-scales %>% 
-  map(~clean_scale(.x)) %>% 
-  paste(., collapse = "\n\n-------------------------\n\n") %>% cat()
-
+source("scripts/print_scales.R")

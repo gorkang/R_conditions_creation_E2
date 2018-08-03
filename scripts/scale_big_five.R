@@ -12,7 +12,7 @@ ins_wrapper <- '[[Question:Text]]\n[[ID:replaceID]]\n<span style="font-size:Q_FO
 # items
 item_wrapper <- '[[Question:MC:SingleAnswer:Horizontal]]\n[[ID:replaceID]]\n<span style="font-size:Q_FONT_SIZEpx;">ITEM</span>\n[[Choices]]\n<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>\n<span style="font-size:C_FONT_SIZEpx;">Disagree a little</span>\n<span style="font-size:C_FONT_SIZEpx;">Neither agree<br>nor disagree</span>\n<span style="font-size:C_FONT_SIZEpx;">Agree a little</span>\n<span style="font-size:C_FONT_SIZEpx;">Agree strongly</span>'
 # see what's going on.
-item_wrapper %>% cat()
+# item_wrapper %>% cat()
 
 # read items
 big5_items <- 

@@ -16,6 +16,9 @@ source("scripts/scale_apriori.R")
 # Numeracy
 source("scripts/scale_numeracy.R")
 
+# Big five
+source("scripts/scale_big_five.R")
+
 # READ SCALE
 scales <- 
   c("materials/qualtrics/output/plain_text/scales/apriori_belief", 

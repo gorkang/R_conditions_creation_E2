@@ -1,0 +1,14 @@
+[[Question:Text]]
+[[ID:wilScre_I_0]]
+<span style="font-size:22px;">Imagine a woman you care about is offered to participate a in routine screening test to detect ${e://Field/medical_condition_0} as the one you saw before.</span>
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:wilScre_Q01_0]]
+<span style="font-size:22px;">Should she take the screening test?</span>
+[[Choices]]
+<span style="font-size:16px;">Yes</span>
+<span style="font-size:16px;">No</span>
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:wilScre_Q02_0]]
+<span style="font-size:22px;">How strongly would you recommend her to take the screening test?<br>0: Not strongly at all - 100: Very strongly</span>
+[[Choices]]
+DELETE_THIS

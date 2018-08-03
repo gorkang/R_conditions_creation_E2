@@ -117,32 +117,36 @@ resp_type_04 <-
 
 # Willingness to undergo screening test (according to issue #61 on github)
 
-will_screening <-
-  paste(qualtrics_codes$question_only_text,
-        questioIDme("wilScre_I_0"),
-        gsub("QUESTION_TEXT_TO_FORMAT", 
-             "Imagine a woman you care about is offered to participate a in routine screening test to detect ${e://Field/medical_condition_0} as the one you saw before.", 
-             html_codes$question_font_size), sep = "\n")
+will_screening <- 
+  "materials/Question/willing_screen/willing_screen.txt" %>% 
+  readChar(., file.size(.))
 
-will_screening_01 <- 
-  paste(qualtrics_codes$question_singlechoice_vertical,
-        questioIDme("wilScre_Q01_0"),
-        gsub("QUESTION_TEXT_TO_FORMAT", 
-             "Should she take the screening test?", 
-             html_codes$question_font_size),
-        qualtrics_codes$question_choices,
-        "Yes" %>% gsub("CHOICES_TEXT_TO_FORMAT", ., html_codes$choices_font_size),
-        "No" %>% gsub("CHOICES_TEXT_TO_FORMAT", ., html_codes$choices_font_size), sep = "\n")
-
-will_screening_02 <-
-  paste(qualtrics_codes$question_singlechoice_vertical,
-        questioIDme("wilScre_Q02_0"),
-        gsub("QUESTION_TEXT_TO_FORMAT", 
-             "How strongly would you recommend her to take the screening test?<br>0: Not strongly at all - 100: Very strongly", 
-             html_codes$question_font_size), 
-        qualtrics_codes$question_choices,
-        "DELETE_THIS",
-        sep = "\n")
+# will_screening <-
+#   paste(qualtrics_codes$question_only_text,
+#         questioIDme("wilScre_I_0"),
+#         gsub("QUESTION_TEXT_TO_FORMAT", 
+#              "Imagine a woman you care about is offered to participate a in routine screening test to detect ${e://Field/medical_condition_0} as the one you saw before.", 
+#              html_codes$question_font_size), sep = "\n")
+# 
+# will_screening_01 <- 
+#   paste(qualtrics_codes$question_singlechoice_vertical,
+#         questioIDme("wilScre_Q01_0"),
+#         gsub("QUESTION_TEXT_TO_FORMAT", 
+#              "Should she take the screening test?", 
+#              html_codes$question_font_size),
+#         qualtrics_codes$question_choices,
+#         "Yes" %>% gsub("CHOICES_TEXT_TO_FORMAT", ., html_codes$choices_font_size),
+#         "No" %>% gsub("CHOICES_TEXT_TO_FORMAT", ., html_codes$choices_font_size), sep = "\n")
+# 
+# will_screening_02 <-
+#   paste(qualtrics_codes$question_singlechoice_vertical,
+#         questioIDme("wilScre_Q02_0"),
+#         gsub("QUESTION_TEXT_TO_FORMAT", 
+#              "How strongly would you recommend her to take the screening test?<br>0: Not strongly at all - 100: Very strongly", 
+#              html_codes$question_font_size), 
+#         qualtrics_codes$question_choices,
+#         "DELETE_THIS",
+#         sep = "\n")
 
 # Assemble item with response types
 screening_item_questions <-
@@ -153,8 +157,8 @@ screening_item_questions <-
           resp_type_04,
           qualtrics_codes$pagebreak,
           will_screening,
-          will_screening_01,
-          will_screening_02,
+          # will_screening_01,
+          # will_screening_02,
           sep = "\n")
 
 # Create and export complete trial blocks (PPV + Follow-up) ---------------

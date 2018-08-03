@@ -28,8 +28,14 @@ source("functions/asterik_name_remover.R")
 img_urls <-
   read_csv("materials/img_url.csv", col_types = cols(), col_names = c("condition", "url"))
 
+# Dir to download imgs
+down_imgs_dir <- 
+  "materials/downloaded_img/" %T>% 
+  dir.create(., FALSE, TRUE)
+
+# Download imgs
 img_urls$condition %>%
-  walk(~download.file(img_urls$url[img_urls$condition == .x], paste0("materials/downloaded_img/", .x, ".png")))
+  walk(~download.file(img_urls$url[img_urls$condition == .x], paste0(down_imgs_dir, .x, ".png")))
 ```
 
 ```{r include=FALSE}

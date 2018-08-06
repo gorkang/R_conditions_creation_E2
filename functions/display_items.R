@@ -56,7 +56,7 @@ display_item <- function(args) {
   # Current item. If item is pictorial, add image call
   if (grepl("fbpi|nppi", args[2])) {
     curr_item <- paste(args[1:3], collapse = ".*") %>% paste0("\\b", .) %>% 
-      grep(., dir(path = "materials/downloaded_img", ".png", full.names = TRUE), value = TRUE) %>% 
+      grep(., dir(path = paste0("materials/Presentation_format/", args[2], "/output"), ".png", full.names = TRUE), value = TRUE) %>% 
       paste0("![](", . ,")")
   } else if (!grepl("fbpi|nppi", args[2])) {
     curr_item <-

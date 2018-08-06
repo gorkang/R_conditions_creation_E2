@@ -12,13 +12,11 @@ source("functions/questionIDme.R")
 
 # read urls
 pic_links <-
-  read_csv("materials/img_url.csv", 
-           col_types = "cc", 
-           col_names = c("cond", "url")) %>%
+  read_csv("materials/img_url.csv", col_types = "cc") %>%
   mutate(url = gsub("\\:", "&#58;", url))
 
 # create items
-walk2(.x = pic_links$cond, 
+walk2(.x = pic_links$condition, 
       .y = pic_links$url, 
       .f = function(x, y) {cat(gsub("LINK2IMG", y, html_codes$insert_img), 
                                file = paste0("materials/qualtrics/output/plain_text/items/", x, ".txt"))})

@@ -75,7 +75,7 @@ numbers2problems <- function(problems, numbers_item, path2fields) {
           
           item2number_list[[x]] <-
             gsub(field_to_replace[j], # to be replaced
-                 paste0(numbers_item_x[x,][[field_to_replace[j]]]), #replacement
+                 paste0(numbers_item_x_filt[x,][[field_to_replace[j]]]), #replacement
                  item2number_list[[x]]) # current problem (LOOP 1)
           
         } # END: 01.1.1 Loop through fields to replace

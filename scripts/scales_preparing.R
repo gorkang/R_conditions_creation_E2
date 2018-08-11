@@ -22,11 +22,15 @@ source("scripts/scale_big_five.R")
 # Big five
 source("scripts/scale_crt_7.R")
 
+# General decision-making style
+source("scripts/scale_gdms.R")
+
 # PRINT SCALES (BOOK)
 # this vector with paths set the scales to be printed
 scales2print <- c("materials/qualtrics/output/plain_text/scales/apriori_belief", 
                   "materials/qualtrics/output/plain_text/scales/severity_emotion/partial",
                   "materials/qualtrics/output/plain_text/scales/numeracy/",
-                  "materials/qualtrics/output/plain_text/scales/crt_7/") 
+                  "materials/qualtrics/output/plain_text/scales/crt_7/",
+                  "materials/qualtrics/output/plain_text/scales/gdms/") 
 
 source("scripts/print_scales.R")

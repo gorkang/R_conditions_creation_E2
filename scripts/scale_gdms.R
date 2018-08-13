@@ -14,7 +14,7 @@ item_wrapper <-
   '[[Question:MC:SingleAnswer:Horizontal]]\n[[ID:replaceID]]\n<span style="font-size:Q_FONT_SIZEpx;">ITEM</span>'
 # Choices
 choices <- 
-  '[[Choices]]\n<span style="font-size:C_FONT_SIZEpx;">Strongly disagree</span>\n<span style="font-size:C_FONT_SIZEpx;">Somewhat disagree</span>\n<span style="font-size:C_FONT_SIZEpx;">Neither disagree<br>nor disagree</span>\n<span style="font-size:C_FONT_SIZEpx;">Somewhat agree</span>\n<span style="font-size:C_FONT_SIZEpx;">Strongly agree</span>'
+  '[[Choices]]\n<span style="font-size:C_FONT_SIZEpx;">1<br>strongly disagree</span>\n<span style="font-size:C_FONT_SIZEpx;">2<br> </span>\n<span style="font-size:C_FONT_SIZEpx;">3<br> </span>\n<span style="font-size:C_FONT_SIZEpx;">4<br> </span>\n<span style="font-size:C_FONT_SIZEpx;">5<br>strongly agree</span>'
 
 # see what's going on.
 # item_wrapper %>% cat()

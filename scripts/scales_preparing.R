@@ -29,7 +29,10 @@ source("scripts/scale_gdms.R")
 source("scripts/scale_sns.R")
 
 # risk propensity scale ##################
-source("scripts/scale_risk_propensity.R.R")
+source("scripts/scale_risk_propensity.R")
+
+# probabilistic reasoning scale ##################
+source("scripts/scale_probabilistic_reasoning.R")
 
 # PRINT SCALES (BOOK)
 # this vector with paths set the scales to be printed

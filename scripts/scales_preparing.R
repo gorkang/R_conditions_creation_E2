@@ -37,6 +37,9 @@ source("scripts/scale_probabilistic_reasoning.R")
 # beck anxiety inventory ##################
 source("scripts/scale_beck_anxiety.R")
 
+# risk avoidance scale ##################
+source("scripts/scale_risk_avoidance.R")
+
 # PRINT SCALES (BOOK)
 # this vector with paths set the scales to be printed
 scales2print <- c("materials/qualtrics/output/plain_text/scales/apriori_belief", 

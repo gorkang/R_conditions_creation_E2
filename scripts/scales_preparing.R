@@ -5,7 +5,7 @@ p_load(tidyverse, magrittr, mgsub)
 source("scripts/html_qualtrics_codes.R")
 
 question_size = "22"
-choice_size = "16"
+choice_size = "15"
 
 # Severity and emotional reaction scale ##########
 source("scripts/scale_severity.R")

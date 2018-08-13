@@ -19,13 +19,13 @@ source("scripts/scale_numeracy.R")
 # Big five #######################################
 source("scripts/scale_big_five.R")
 
-# Big five #######################################
+# crt-7 (single choice) #######################################
 source("scripts/scale_crt_7.R")
 
 # General decision-making style ##################
 source("scripts/scale_gdms.R")
 
-# General decision-making style ##################
+# subjective numeracy scale ##################
 source("scripts/scale_sns.R")
 
 # risk propensity scale ##################

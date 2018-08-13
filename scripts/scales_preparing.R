@@ -7,22 +7,22 @@ source("scripts/html_qualtrics_codes.R")
 question_size = "22"
 choice_size = "16"
 
-# Severity and emotional reaction scale
+# Severity and emotional reaction scale ##########
 source("scripts/scale_severity.R")
 
-# A priori screening belief
+# A priori screening belief ######################
 source("scripts/scale_apriori.R")
 
-# Numeracy
+# Numeracy #######################################
 source("scripts/scale_numeracy.R")
 
-# Big five
+# Big five #######################################
 source("scripts/scale_big_five.R")
 
-# Big five
+# Big five #######################################
 source("scripts/scale_crt_7.R")
 
-# General decision-making style
+# General decision-making style ##################
 source("scripts/scale_gdms.R")
 
 # General decision-making style ##################

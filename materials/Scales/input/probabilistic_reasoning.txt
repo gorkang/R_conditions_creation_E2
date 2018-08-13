@@ -1,6 +1,6 @@
 [[Question:Text]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">INSTRUCTIOOOOOOOOONS</span>
+<span style="font-size:Q_FONT_SIZEpx;">Please answer the following questions.</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
@@ -108,7 +108,7 @@ __QSEP__
 <span style="font-size:C_FONT_SIZEpx;">200 out of 1000</span>
 __QSEP__
 [[Question:Text]]
-[[ID:replaceID_table]]
+[[ID:prs_table]]
 <span style="font-size:Q_FONT_SIZEpx;">In a medical center a group of people were interviewed with the following results:</span><br><br>
 <table border="1" cellpadding="1" cellspacing="1" style="width:700px;">
  <thead>

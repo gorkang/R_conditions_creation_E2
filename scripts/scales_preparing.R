@@ -43,6 +43,9 @@ source("scripts/scale_risk_avoidance.R")
 # short mathematics anxiety rating scale ##################
 source("scripts/scale_mathematics_anxiety.R")
 
+# need for cognition ##################
+source("scripts/scale_need_for_cognition.R")
+
 # PRINT SCALES (BOOK)
 # this vector with paths set the scales to be printed
 scales2print <- c("materials/qualtrics/output/plain_text/scales/apriori_belief", 

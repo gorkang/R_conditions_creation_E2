@@ -4,15 +4,15 @@
 __QSEP__
 [[Question:TE:SingleLine]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">Imagine that we roll a fair, six-sided die 1,000 times. Out of 1,000 rolls, how many times do you think the die would come up even (2, 4, or 6)?</span>
+<span style="font-size:Q_FONT_SIZEpx;">Imagine that we rolled a fair, six-sided die 1,000 times. Out of 1,000 rolls, how many times do you think the die would come up even (2, 4, or 6)?</span>
 __QSEP__
 [[Question:TE:SingleLine]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">In the BIG BUCKS LOTTERY, the chances of winning a $10.00 prize are 1%. What is your best guess about how many people would win a $10.00 prize if 1,000 people each buy a single ticket from BIG BUCKS?</span>
+<span style="font-size:Q_FONT_SIZEpx;">In the BIG BUCKS LOTTERY, the chances of winning a $10.00 prize is 1%. What is your best guess about how many people would win a $10.00 prize if 1,000 people each buy a single ticket to BIG BUCKS?</span>
 __QSEP__
 [[Question:TE:SingleLine]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">In the ACME PUBLISHING SWEEPSTAKES, the chance of winning a car is 1 in 1,000. What percent of tickets of ACME PUBLISHING SWEEPSTAKES win a car?</span>
+<span style="font-size:Q_FONT_SIZEpx;">In the ACME PUBLISHING SWEEPSTAKES, the chance of winning a car is 1 in 1,000. What percent of tickets to ACME PUBLISHING SWEEPSTAKES win a car?</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
@@ -32,11 +32,11 @@ __QSEP__
 __QSEP__
 [[Question:TE:SingleLine]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">If Person A’s risk of getting a disease is 1% in ten years, and Person B’s risk is double that of A’s, what is B’s risk?</span>
+<span style="font-size:Q_FONT_SIZEpx;">If Person A’s risk of getting a disease is 1% in ten years, and person B’s risk is double that of A’s, what is B’s risk?</span>
 __QSEP__
 [[Question:TE:SingleLine]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">If Person A’s chance of getting a disease is 1 in 100 in ten years, and Person B’s risk is double that of A, what is B’s risk?</span>
+<span style="font-size:Q_FONT_SIZEpx;">If Person A’s chance of getting a disease is 1 in 100 in ten years, and person B’s risk is double that of A’s, what is B’s risk?</span>
 __QSEP__
 [[Question:TE:SingleLine]]
 [[ID:replaceID]]

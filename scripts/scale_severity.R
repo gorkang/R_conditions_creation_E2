@@ -101,7 +101,7 @@ severity_emo_trisomy21_scale %>%
 # read separated scales and export them as two blocks in one file
 # output dir
 scales_folder_complete <- 
-  "materials/qualtrics/output/plain_text/scales/severity_emotion/complete" %T>% 
+  "materials/qualtrics/output/plain_text/scales/severity_emotion/" %T>% 
   dir.create(., FALSE, TRUE)
 
 # read files

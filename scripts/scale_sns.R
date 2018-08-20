@@ -20,7 +20,7 @@ subjective_numeracy_scale <-
 
 # Output dir
 output_dir <- 
-  "materials/qualtrics/output/plain_text/scales/subjective_numeracy" %T>% 
+  paste0("materials/qualtrics/output/plain_text/scales/", long_name) %T>% 
   dir.create(., FALSE, TRUE)
 
 # Export

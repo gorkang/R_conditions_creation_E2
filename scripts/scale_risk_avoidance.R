@@ -15,9 +15,9 @@ item_wrapper <-
 [[ID:replaceID]]
 <span style='font-size:Q_FONT_SIZEpx;'>ITEM</span>
 [[Choices]]
-<span style='font-size:C_FONT_SIZEpx;'>1<br></span>
-<span style='font-size:C_FONT_SIZEpx;'>2<br></span>
-<span style='font-size:C_FONT_SIZEpx;'>3<br></span>"
+<span style='font-size:C_FONT_SIZEpx;'>1<br>Yes</span>
+<span style='font-size:C_FONT_SIZEpx;'>2<br>Cannot decide</span>
+<span style='font-size:C_FONT_SIZEpx;'>3<br>No</span>"
 # see what's going on.
 # item_wrapper %>% cat()
 
@@ -37,7 +37,7 @@ items <- str_replace_all(item_wrapper, "ITEM", ras_items[-1])
 
 # Output dir
 output_dir <- 
-  "materials/qualtrics/output/plain_text/scales/risk_avoidance_scale" %T>% 
+  paste0("materials/qualtrics/output/plain_text/scales/", long_name) %T>%
   dir.create(., FALSE, TRUE)
 
 # build and export scale

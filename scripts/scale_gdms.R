@@ -8,13 +8,23 @@ short_name <- "gdms"
 
 # qualtrics tags template to wrapp around
 # Instructions
-ins_wrapper <- '[[Question:Text]]\n[[ID:replaceID]]\n<span style="font-size:Q_FONT_SIZEpx;">ITEM</span>'
+ins_wrapper <- 
+'[[Question:Text]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">ITEM</span>'
 # Items
 item_wrapper <- 
-  '[[Question:MC:SingleAnswer:Horizontal]]\n[[ID:replaceID]]\n<span style="font-size:Q_FONT_SIZEpx;">ITEM</span>'
+'[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">ITEM</span>'
 # Choices
 choices <- 
-  '[[Choices]]\n<span style="font-size:C_FONT_SIZEpx;">1<br>strongly disagree</span>\n<span style="font-size:C_FONT_SIZEpx;">2<br> </span>\n<span style="font-size:C_FONT_SIZEpx;">3<br> </span>\n<span style="font-size:C_FONT_SIZEpx;">4<br> </span>\n<span style="font-size:C_FONT_SIZEpx;">5<br>strongly agree</span>'
+'[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">1<br>strongly disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">2<br> </span>
+<span style="font-size:C_FONT_SIZEpx;">3<br> </span>
+<span style="font-size:C_FONT_SIZEpx;">4<br> </span>
+<span style="font-size:C_FONT_SIZEpx;">5<br>strongly agree</span>'
 
 # see what's going on.
 # item_wrapper %>% cat()
@@ -36,7 +46,7 @@ items <- str_replace_all(item_wrapper, "ITEM", gdsm_items[-1]) %>% paste0(., "\n
 
 # Output dir
 output_dir <- 
-  "materials/qualtrics/output/plain_text/scales/gdms" %T>% 
+  paste0("materials/qualtrics/output/plain_text/scales/", long_name) %T>% 
   dir.create(., FALSE, TRUE)
 
 # build and export scale
@@ -49,4 +59,4 @@ c(ins, items) %>%
   cat(qualtrics_codes$advanced_format, 
       gsub("block_name", long_name, qualtrics_codes$block_start), ., 
       sep = "\n", 
-      file = file.path(output_dir, paste0(short_name, ".txt")))
+      file = file.path(output_dir, paste0(long_name, ".txt")))

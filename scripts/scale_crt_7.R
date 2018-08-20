@@ -3,7 +3,7 @@ if (!require('pacman')) install.packages('pacman'); library('pacman')
 p_load(tidyverse, magrittr)
 
 # names for item ID
-long_name <- "crt_7"
+long_name <- "cognitive_reflection_test_7_mc"
 short_name <- "crt7"
 
 # Template reading and handling
@@ -20,7 +20,7 @@ crt_7_scale <-
 
 # Output dir
 output_dir <- 
-  "materials/qualtrics/output/plain_text/scales/crt_7" %T>% 
+  paste0("materials/qualtrics/output/plain_text/scales/", long_name) %T>% 
   dir.create(., FALSE, TRUE)
 
 # add pagrebreaks between questions
@@ -33,4 +33,4 @@ crt_7_scale_sep %>%
   cat(qualtrics_codes$advanced_format, 
       gsub("block_name", long_name, qualtrics_codes$block_start),
       ., 
-      sep = "\n", file = file.path(output_dir, "crt_7.txt"))
+      sep = "\n", file = file.path(output_dir, paste0(long_name, "crt_7.txt")))

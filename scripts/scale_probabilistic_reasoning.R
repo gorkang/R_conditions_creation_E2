@@ -20,7 +20,7 @@ probabilistic_reasoning_items <-
 
 # Output dir
 output_dir <- 
-  "materials/qualtrics/output/plain_text/scales/probabilistic_reasoning_scale" %T>% 
+  paste0("materials/qualtrics/output/plain_text/scales/", long_name) %T>% 
   dir.create(., FALSE, TRUE)
 
 # Export

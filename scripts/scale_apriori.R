@@ -2,24 +2,56 @@
 if (!require('pacman')) install.packages('pacman'); library('pacman')
 p_load(tidyverse, magrittr)
 
-# Template reading and handling
-apriori_scale <- 
+# names
+long_name <- "a_priori_screening_beliefs"
+short_name <- "apsb"
+
+# qualtrics tags template to wrapp around
+# instructions
+ins_wrapper <- '[[Question:Text]]\n[[ID:replaceID]]\n<span style="font-size:Q_FONT_SIZEpx;">ITEM</span>'
+# items
+item_wrapper <- 
+  "[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style='font-size:Q_FONT_SIZEpx;'>ITEM</span>
+[[Choices]]
+<span style='font-size:C_FONT_SIZEpx;'>1<br>strongly disagree</span>
+<span style='font-size:C_FONT_SIZEpx;'>2<br></span>
+<span style='font-size:C_FONT_SIZEpx;'>3<br></span>
+<span style='font-size:C_FONT_SIZEpx;'>4<br></span>
+<span style='font-size:C_FONT_SIZEpx;'>5<br></span>
+<span style='font-size:C_FONT_SIZEpx;'>6<br></span>
+<span style='font-size:C_FONT_SIZEpx;'>7<br>strongly agree</span>"
+# see what's going on.
+# item_wrapper %>% cat()
+
+# read items
+ras_items <- 
   "materials/Scales/input/a_priori_screening_beliefs.txt" %>% 
-  readChar(., file.size(.)) %>% # Read text file
-  str_split(., "\n__QSEP__\n") %>% # Separate questions
-  unlist() %>% as.list() %>% # Flatten questions list
-  str_replace_all(., "replaceID", paste0("aprioriBel_0", seq(length(.)))) %>% # Add question IDs
-  gsub("Q_FONT_SIZE", question_size, .) %>% # Change Questions Font size
-  gsub("C_FONT_SIZE", choice_size, .) # Change Choices Font size
+  readChar(., file.size(.)) %>% 
+  gsub("\\n$", "", .) %>% 
+  str_split(., "\\n") %>% 
+  unlist()
+
+# Wrapping
+# instructions
+ins <- gsub("ITEM", ras_items[1], ins_wrapper)
+# items
+items <- str_replace_all(item_wrapper, "ITEM", ras_items[-1])
+
 
 # Output dir
 output_dir <- 
-  "materials/qualtrics/output/plain_text/scales/apriori_belief" %T>% 
+  paste0("materials/qualtrics/output/plain_text/scales/", long_name) %T>% 
   dir.create(., FALSE, TRUE)
-# Export
-apriori_scale %>% 
-  cat(qualtrics_codes$advanced_format, 
-      qualtrics_codes$block_start %>% gsub("block_name", "a_priori_belief_screening", .), 
-      ., sep = "\n", 
-      file = file.path(output_dir, "scale_apriori_belief.txt"))
 
+# build and export scale
+c(ins, items) %>% 
+  gsub("Q_FONT_SIZE", question_size, .) %>% # Change Questions Font size
+  gsub("C_FONT_SIZE", choice_size, .) %>%  # Change Choices Font size
+  str_replace_all(string = ., 
+                  pattern = "replaceID", 
+                  replacement = c(paste0(short_name, "_ins"), paste0(short_name, "_", sprintf("%02d", seq(length(.)-1))))) %>% 
+  cat(qualtrics_codes$advanced_format, 
+      gsub("block_name", long_name, qualtrics_codes$block_start), ., 
+      sep = "\n", file = file.path(output_dir, paste0(long_name ,".txt")))

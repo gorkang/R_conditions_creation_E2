@@ -38,7 +38,7 @@ items <- str_replace_all(item_wrapper, "ITEM", bai_items[-1])
 
 # Output dir
 output_dir <- 
-  "materials/qualtrics/output/plain_text/scales/beck_anxiety_inventory" %T>% 
+  paste0("materials/qualtrics/output/plain_text/scales/", long_name) %T>% 
   dir.create(., FALSE, TRUE)
 
 # build and export scale

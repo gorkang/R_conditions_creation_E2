@@ -10,7 +10,16 @@ short_name <- "big5"
 # instructions
 ins_wrapper <- '[[Question:Text]]\n[[ID:replaceID]]\n<span style="font-size:Q_FONT_SIZEpx;">ITEM</span>'
 # items
-item_wrapper <- '[[Question:MC:SingleAnswer:Horizontal]]\n[[ID:replaceID]]\n<span style="font-size:Q_FONT_SIZEpx;">ITEM</span>\n[[Choices]]\n<span style="font-size:C_FONT_SIZEpx;">1<br>Disagree Strongly</span>\n<span style="font-size:C_FONT_SIZEpx;">2<br>Disagree a little</span>\n<span style="font-size:C_FONT_SIZEpx;">3<br>Neither agree<br>nor disagree</span>\n<span style="font-size:C_FONT_SIZEpx;">4<br>Agree a little</span>\n<span style="font-size:C_FONT_SIZEpx;">5<br>Agree strongly</span>'
+item_wrapper <- 
+  '[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">ITEM</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">1<br>Disagree Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">2<br>Disagree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">3<br>Neither agree<br>nor disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">4<br>Agree a little</span>
+<span style="font-size:C_FONT_SIZEpx;">5<br>Agree strongly</span>'
 # see what's going on.
 # item_wrapper %>% cat()
 

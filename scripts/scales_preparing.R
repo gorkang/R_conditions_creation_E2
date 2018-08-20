@@ -2,48 +2,50 @@
 if (!require('pacman')) install.packages('pacman'); library('pacman')
 p_load(tidyverse, magrittr, mgsub)
 
+# Qualtrics and html resources
 source("scripts/html_qualtrics_codes.R")
 
+# Font sizes
 question_size = "22"
 choice_size = "15"
 
-# Severity and emotional reaction scale ##########
+# Severity and emotional reaction scale #######################
 source("scripts/scale_severity.R")
 
-# A priori screening belief ######################
+# A priori screening beliefs ##################################
 source("scripts/scale_apriori.R")
 
-# Numeracy #######################################
+# Numeracy ####################################################
 source("scripts/scale_numeracy.R")
 
-# Big five #######################################
+# Big five ####################################################
 source("scripts/scale_big_five.R")
 
-# crt-7 (single choice) #######################################
+# Cognitive reflection test (7-items, multiple choice) ########
 source("scripts/scale_crt_7.R")
 
-# General decision-making style ##################
+# General decision-making style ###############################
 source("scripts/scale_gdms.R")
 
-# subjective numeracy scale ##################
+# subjective numeracy scale ###################################
 source("scripts/scale_sns.R")
 
-# risk propensity scale ##################
+# risk propensity scale #######################################
 source("scripts/scale_risk_propensity.R")
 
-# probabilistic reasoning scale ##################
+# probabilistic reasoning scale ###############################
 source("scripts/scale_probabilistic_reasoning.R")
 
-# beck anxiety inventory ##################
+# beck anxiety inventory ######################################
 source("scripts/scale_beck_anxiety.R")
 
-# risk avoidance scale ##################
+# risk avoidance scale ########################################
 source("scripts/scale_risk_avoidance.R")
 
-# short mathematics anxiety rating scale ##################
+# short mathematics anxiety rating scale ######################
 source("scripts/scale_mathematics_anxiety.R")
 
-# need for cognition ##################
+# need for cognition ##########################################
 source("scripts/scale_need_for_cognition.R")
 
 # PRINT SCALES (BOOK)

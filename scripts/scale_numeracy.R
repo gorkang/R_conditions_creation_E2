@@ -11,7 +11,9 @@ numeracy_scale <-
   readChar(., file.size(.)) %>% # Read text file
   str_split(., "\n__QSEP__\n") %>% # Separate questions
   unlist() %>% as.list() %>% # Flatten questions list
-  str_replace_all(., "replaceID", paste0("num_0", seq(length(.)))) %>% # Add question IDs
+  str_replace_all(string = ., 
+                  pattern = "replaceID", 
+                  replacement = c(paste0(short_name, "_ins"), paste0(short_name, "_", sprintf("%02d", seq(length(.)-1))))) %>% 
   gsub("Q_FONT_SIZE", question_size, .) %>% # Change Questions Font size
   gsub("C_FONT_SIZE", choice_size, .) # Change Choices Font size
 

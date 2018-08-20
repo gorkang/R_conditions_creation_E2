@@ -1,0 +1,8 @@
+Dear participant,
+Thanks for your interest in our study!
+In order to participate, you must be at least 18 years old and be a fluent English speaker.
+During your participation in this study, you will encounter no greater risks of discomfort than those incurred in routine daily activities.
+Questions or concern about this study or the use of your data, or interest in the final result of the study, may be directed to Dr. Gorka Navarrete (gorka.navarrete@uai.cl).
+__SEP__
+As an informed participant, by accepting the following I acknowledge:
+<li>My participation is voluntary and I may cease to take part in this study at any time, without penalty.</li><li>All my questions about the experiment have been satisfactorily answered.</li><li>The data collected will only be used to promote scientific knowledge and the researcher will use the data I provide for no purpose other than research.</li><li>The data I provide is confidential.

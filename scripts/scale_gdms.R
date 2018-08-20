@@ -46,7 +46,7 @@ items <- str_replace_all(item_wrapper, "ITEM", gdsm_items[-1]) %>% paste0(., "\n
 
 # Output dir
 output_dir <- 
-  "materials/qualtrics/output/plain_text/scales/gdms" %T>% 
+  paste0("materials/qualtrics/output/plain_text/scales/", long_name) %T>% 
   dir.create(., FALSE, TRUE)
 
 # build and export scale
@@ -59,4 +59,4 @@ c(ins, items) %>%
   cat(qualtrics_codes$advanced_format, 
       gsub("block_name", long_name, qualtrics_codes$block_start), ., 
       sep = "\n", 
-      file = file.path(output_dir, paste0(short_name, ".txt")))
+      file = file.path(output_dir, paste0(long_name, ".txt")))

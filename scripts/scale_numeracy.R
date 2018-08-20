@@ -2,6 +2,9 @@
 if (!require('pacman')) install.packages('pacman'); library('pacman')
 p_load(tidyverse, magrittr)
 
+long_name <- "numeracy"
+short_name <- "num"
+
 # Template reading and handling
 numeracy_scale <-
   "materials/Scales/input/numeracy.txt" %>% 
@@ -14,12 +17,12 @@ numeracy_scale <-
 
 # Output dir
 output_dir <- 
-  "materials/qualtrics/output/plain_text/scales/numeracy" %T>% 
+  paste0("materials/qualtrics/output/plain_text/scales/", long_name) %T>% 
   dir.create(., FALSE, TRUE)
 
 # Export
 numeracy_scale %>%
-  cat(qualtrics_codes$advanced_format, qualtrics_codes$block_start %>% gsub("block_name", "numeracy", .),
+  cat(qualtrics_codes$advanced_format, qualtrics_codes$block_start %>% gsub("block_name", long_name, .),
       ., sep = "\n", 
-      file = file.path(output_dir, "numeracy.txt"))
+      file = file.path(output_dir, paste0(long_name, ".txt")))
 

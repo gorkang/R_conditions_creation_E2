@@ -62,7 +62,7 @@ last_item <- gsub("ITEM", rps_items[8], last_item_wrapper)
 
 # Output dir
 output_dir <- 
-  "materials/qualtrics/output/plain_text/scales/risk_propensity" %T>% 
+  paste0("materials/qualtrics/output/plain_text/scales/", long_name) %T>% 
   dir.create(., FALSE, TRUE)
 
 # build and export scale

@@ -1,6 +1,6 @@
 [[Question:Text]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">Please answer the following questions the best you can.</span>
+<span style="font-size:Q_FONT_SIZEpx;">Please, answer the following questions the best you can.</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Horizontal]]
 [[ID:replaceID]]

@@ -11,10 +11,20 @@ probabilistic_reasoning_items <-
   "materials/Scales/input/probabilistic_reasoning.txt" %>% 
   readChar(., file.size(.)) %>% # Read text file
   str_split(., "\n__QSEP__\n") %>% # Separate questions
-  unlist() %>% as.list() %>% # Flatten questions list
-  str_replace_all(string = ., 
-                  pattern = "replaceID", 
-                  replacement = c(paste0(short_name, "_ins"), paste0(short_name, "_", sprintf("%02d", seq(length(.)-1))))) %>% # Add question IDs
+  unlist() %>% as.list() # Flatten questions list
+
+# RENAME INSTRUCTIONS ID
+probabilistic_reasoning_items[[1]] <- 
+  probabilistic_reasoning_items[[1]] %>% gsub("replaceID", paste0(short_name, "_ins"), .)
+# RENAME ITEMS ID
+probabilistic_reasoning_items[str_detect(probabilistic_reasoning_items, "replaceID")] <- 
+  probabilistic_reasoning_items[str_detect(probabilistic_reasoning_items, "replaceID")] %>% 
+  str_replace(string = ., 
+              pattern = "replaceID", 
+              replacement = paste0(short_name, "_", sprintf("%02d", seq(sum(str_count(string = ., pattern = "replaceID"))))))
+# ADD FONT SIZE
+probabilistic_reasoning_items <- 
+  probabilistic_reasoning_items %>% 
   gsub("Q_FONT_SIZE", question_size, .) %>% # Change Questions Font size
   gsub("C_FONT_SIZE", choice_size, .) # Change Choices Font size
 

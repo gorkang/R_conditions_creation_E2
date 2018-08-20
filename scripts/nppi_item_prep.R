@@ -148,7 +148,7 @@ for (cCntxt in seq(length(problem_contexts))) {
             axis.title = element_text(size = 25)) +                          # axis-labels size
       geom_text(aes(label =
                       case_when(age %in% age_ppv_to_plot ~ paste0(round(PPV_100, 0), "%"), TRUE ~ paste0("")), # keep only ages previously set to be ploted
-                    hjust = 1, vjust = -1), size = 6) # (position) plot ppv-values above points set in "age_ppv_to_plot"
+                    hjust = .4, vjust = 2.5), size = 6) # (position) plot ppv-values above points set in "age_ppv_to_plot"
   )
   # Close canvas
   dev.off()

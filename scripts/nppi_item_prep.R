@@ -76,7 +76,7 @@ problem_contexts <-
 # Graph parameters
 # Ages to plot: this points will have a number with a percentage above
 age_ppv_to_plot <-  
-  c(20, 25, 30, 35, 40)
+  c(20, 30, 40, 50, 60)
 # axis labels: indicating age of mother/women
 x_axis_label <- 
   read_csv("materials/Problem_context/problem_context_info.csv", col_types = cols()) %>% 

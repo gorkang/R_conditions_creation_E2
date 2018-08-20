@@ -58,6 +58,10 @@ rm(height,width,input_dir,newparadigm_dir,newparadigm_files,newparadigm_template
 # Read csv with prevalences by age
 age_prevalence <- 
   readxl::read_xls("materials/Numbers/numbers_bayes.xls", sheet = 2)
+# keep tens
+age_prevalence <- 
+  age_prevalence %>% 
+  filter(grepl("[1-9]0", age))
 
 # Test parameters (Two different tests)
 numbers_nppi <-

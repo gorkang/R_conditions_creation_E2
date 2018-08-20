@@ -58,6 +58,10 @@ rm(height,width,input_dir,newparadigm_dir,newparadigm_files,newparadigm_template
 # Read csv with prevalences by age
 age_prevalence <- 
   readxl::read_xls("materials/Numbers/numbers_bayes.xls", sheet = 2)
+# keep tens
+age_prevalence <- 
+  age_prevalence %>% 
+  filter(grepl("[1-9]0", age))
 
 # Test parameters (Two different tests)
 numbers_nppi <-
@@ -72,7 +76,7 @@ problem_contexts <-
 # Graph parameters
 # Ages to plot: this points will have a number with a percentage above
 age_ppv_to_plot <-  
-  c(20, 25, 30, 35, 40)
+  c(20, 30, 40, 50, 60)
 # axis labels: indicating age of mother/women
 x_axis_label <- 
   read_csv("materials/Problem_context/problem_context_info.csv", col_types = cols()) %>% 
@@ -144,7 +148,7 @@ for (cCntxt in seq(length(problem_contexts))) {
             axis.title = element_text(size = 25)) +                          # axis-labels size
       geom_text(aes(label =
                       case_when(age %in% age_ppv_to_plot ~ paste0(round(PPV_100, 0), "%"), TRUE ~ paste0("")), # keep only ages previously set to be ploted
-                    hjust = 1, vjust = -1), size = 6) # (position) plot ppv-values above points set in "age_ppv_to_plot"
+                    hjust = .4, vjust = 2.5), size = 6) # (position) plot ppv-values above points set in "age_ppv_to_plot"
   )
   # Close canvas
   dev.off()

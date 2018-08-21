@@ -49,7 +49,7 @@ source("scripts/scale_mathematics_anxiety.R")
 source("scripts/scale_need_for_cognition.R")
 
 
-# need for cognition ##########################################
+# Sociodemographic scale (not a real scale) ###################
 source("scripts/scale_sociodemographic.R")
 
 

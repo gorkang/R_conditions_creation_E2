@@ -29,7 +29,7 @@ consent <-
               replacement = consent)
 
 # add question format and id
-consent <-
+consent_out <-
   paste(qualtrics_codes$question_only_text,
         qualtrics_codes$question_id,
         consent, sep = "\n") %>% 
@@ -43,10 +43,26 @@ output_dir <-
   dir.create(., FALSE, TRUE)
 
 # export to text file
-consent %>% 
+consent_out %>% 
   paste(., collapse = paste0("\n", qualtrics_codes$pagebreak, "\n")) %>%
   paste(qualtrics_codes$advanced_format,
         gsub("block_name", long_name, qualtrics_codes$block_start),
         .,
         sep = "\n") %>% 
   cat(., file = file.path(output_dir, paste0(long_name, ".txt")))
+
+
+# Print consent -----------------------------------------------------------
+source("functions/remove_placeholders.R")
+
+consent %>% 
+  gsub("<span.*?>", "", .) %>% 
+  gsub("</span*?>", "", .) %>% 
+  gsub("<br>", "  \n", .) %>% 
+  paste(., collapse = "  \n  \n") %>% 
+  cat()
+  
+  
+  
+  
+  

@@ -48,6 +48,11 @@ source("scripts/scale_mathematics_anxiety.R")
 # need for cognition ##########################################
 source("scripts/scale_need_for_cognition.R")
 
+
+# need for cognition ##########################################
+source("scripts/scale_sociodemographic.R")
+
+
 # PRINT SCALES (BOOK)
 # this vector with paths set the scales to be printed
 scales2print <- c("materials/qualtrics/output/plain_text/scales/apriori_belief", 

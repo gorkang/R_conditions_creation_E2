@@ -298,3 +298,9 @@ source("scripts/consent_form.R")
 ```{r, results='asis', echo=FALSE}
 source("scripts/comments.R")
 ```
+
+# Previous experience
+
+```{r, results='asis', echo=FALSE}
+source("scripts/previous_experience.R")
+```

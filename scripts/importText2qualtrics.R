@@ -40,7 +40,12 @@ Q_counter <- 0
 # UPLOAD!
 UBER_IMPORT2QUALTRICS(full_path)
 
+
 # Remove dummy blocks created when importing ED blocks -------------------
+
+# get blocks selectors 
+selectors <- remDr$findElements("css selector", '.StandardBlock')
+
 for (i in seq(selectors)) {
   # i <- 2
   

@@ -36,8 +36,8 @@ item_wrapper <-
 # item_wrapper %>% cat()
 
 # read items
-big5_items <- 
-  "materials/Scales/input/big_five.txt" %>% 
+tolerance_ambiguity <- 
+  "materials/Scales/input/tolerance_ambiguity.txt" %>% 
   readChar(., file.size(.)) %>% 
   gsub("\\n$", "", .) %>% 
   str_split(., "\\n") %>% 
@@ -45,9 +45,9 @@ big5_items <-
 
 # Wrapping
 # instructions
-ins <- gsub("ITEM", big5_items[1], ins_wrapper)
+ins <- gsub("ITEM", tolerance_ambiguity[1], ins_wrapper)
 # items
-items <- str_replace_all(item_wrapper, "ITEM", big5_items[-1])
+items <- str_replace_all(item_wrapper, "ITEM", tolerance_ambiguity[-1])
 
 # Output dir
 output_dir <- 

@@ -54,6 +54,8 @@ create_ED_blocks <- function() {
            press_format = NULL,               # Presentation format
            resp_type = NULL,
            # TODO: REMOVE ppv_question = NULL,
+           woman_age_01 = NULL,               # Woman age item 01
+           woman_age_02 = NULL,               # Woman age item 02
            prob_context_01 = NULL,            # Problem context item 01
            prob_context_02 = NULL,            # Problem context item 02
            ppv_prob_text_01 = NULL,           # PPV probability as text item 01
@@ -99,6 +101,22 @@ create_ED_blocks <- function() {
       }
     }
     # ######################################################################################################
+    
+    #  Woman's age
+    # get age
+    woman_age_01 <- ppv_num %>% filter(prob == current_condition$ppv_prob_01) %>% select(age) %>% pull()
+    # fill ED field
+    embedded_data$woman_age_01 <- 
+      qualtrics_codes$embedded_data %>% 
+      gsub("field", "woman_age_01", .) %>% 
+      gsub("value", woman_age_01, .)
+    # get age
+    woman_age_02 <- ppv_num %>% filter(prob == current_condition$ppv_prob_02) %>% select(age) %>% pull()
+    # fill ED field
+    embedded_data$woman_age_02 <- 
+      qualtrics_codes$embedded_data %>% 
+      gsub("field", "woman_age_02", .) %>% 
+      gsub("value", woman_age_02, .)
     
     # Follow up risk as text
     fu_risk_text_01 <- tolower(gsub("risk", "", current_condition$followUp_01))

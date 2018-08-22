@@ -75,3 +75,20 @@ for (i in seq(selectors)) {
   
 }
 
+# Import scales --------------------------------------------------
+
+file_paths <- 
+  "materials/qualtrics/output/plain_text/scales" %>% 
+  dir(., full.names = TRUE) %>% 
+  map(~dir(.x, pattern = ".txt", full.names = TRUE)) %>% 
+  unlist()
+
+# full absolute paths
+file_paths <- file.path(getwd(), file_paths)
+
+# Iteration counter
+Q_counter <- 0
+
+# UPLOAD!
+UBER_IMPORT2QUALTRICS(file_paths)
+

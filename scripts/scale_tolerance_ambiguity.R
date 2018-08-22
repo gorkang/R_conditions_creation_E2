@@ -13,8 +13,8 @@ p_load(tidyverse, magrittr)
 # ITEMS ARE RANDOMLY PRESENTED
 
 # names for item ID
-long_name <- "big_five_inventory"
-short_name <- "big5"
+long_name <- "tolerance_ambiguity"
+short_name <- "ta"
 
 # qualtrics tags template to wrapp around
 # instructions

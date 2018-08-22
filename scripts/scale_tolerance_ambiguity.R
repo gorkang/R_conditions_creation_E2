@@ -2,37 +2,15 @@
 if (!require('pacman')) install.packages('pacman'); library('pacman')
 p_load(tidyverse, magrittr)
 
-
-
-# Both in the pretest and in all succeeding administrations of the scale,
-# respcmdents were allowed to check off one of six response categones for
-# each Item strongly, moderately, or slightly agree, and strongly, moderately,
-# or slightiy disagree On positively worded items, 
-# strong agreement was scored 7, 
-# moderate agreement 6, 
-# slight agreement 5, 
-# slight disagreement 3,
-# moderate disagreement 2, 
-# strong disagreement 1. 
-# 
-# Scoring of negative Items was in the reverse direction 
-# All omissions were scored 4 
-# Both in  pretest and subsequent administrations of the ambiguity scale, the items were randomly distributed 
-
-
-
-# 
-
-
-
-
-
-
-
-
-
-
-
+# Apparently, only tags without numbers are used in the first article without middle point. Also, omissions were
+# scored as 4.
+# # strong agreement was scored (7)
+# # moderate agreement          (6)
+# # slight agreement            (5)
+# # slight disagreement         (3)
+# # moderate disagreement       (2)
+# # strong disagreement         (1)
+# ITEMS ARE RANDOMLY PRESENTED
 
 # names for item ID
 long_name <- "big_five_inventory"

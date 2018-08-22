@@ -48,6 +48,8 @@ source("scripts/scale_mathematics_anxiety.R")
 # need for cognition ##########################################
 source("scripts/scale_need_for_cognition.R")
 
+# multiple stimulus types ambiguity tolerance scale - II ######
+source("scripts/scale_multi_stim_ambiguity_tolerance.R")
 
 # Sociodemographic scale (not a real scale) ###################
 source("scripts/scale_sociodemographic.R")

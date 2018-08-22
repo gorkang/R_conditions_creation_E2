@@ -16,10 +16,11 @@ p_load(tidyverse, magrittr)
 long_name <- "tolerance_ambiguity"
 short_name <- "ta"
 
-# qualtrics tags template to wrapp around
-# instructions
-ins_wrapper <- '[[Question:Text]]\n[[ID:replaceID]]\n<span style="font-size:Q_FONT_SIZEpx;">ITEM</span>'
-# items
+# Qualtrics tags template to wrapp around
+# Instructions
+ins_wrapper <- 
+  '[[Question:Text]]\n[[ID:replaceID]]\n<span style="font-size:Q_FONT_SIZEpx;">ITEM</span>'
+# Items
 item_wrapper <- 
   '[[Question:MC:SingleAnswer:Horizontal]]
 [[ID:replaceID]]

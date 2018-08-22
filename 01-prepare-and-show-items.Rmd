@@ -293,3 +293,8 @@ source("scripts/complete_export_qualtrics.R")
 source("scripts/consent_form.R")
 ```
 
+# Comments
+
+```{r, results='asis', echo=FALSE}
+source("scripts/comments.R")
+```

@@ -8,6 +8,7 @@ p_load(tidyverse, kableExtra)
 
 ```{r, kableME_func, echo=FALSE}
 source("functions/kableMe.R")
+scale_names <- read_csv("materials/Scales/scale_names.csv", col_types = "ccci")
 ```
 
 
@@ -27,7 +28,7 @@ _Severity of and Emotional reaction BREAST CANCER_
 ```{r, echo=FALSE}
 tibble(check = "",
        qIDs = c("sevEmo_brca_01", "sevEmo_brca_02", "sevEmo_brca_03", "sevEmo_brca_04", "sevEmo_brca_05"), 
-       extra = c("", "", "", "", "After change to Slider, __Replace__ 'DELETE_THIS' text with a space")) %>%
+       extra = c("", "", "", "", "")) %>%
   kableME(.)
 ```
 
@@ -36,7 +37,7 @@ _Severity of and Emotional reaction TRISOMY 21_
 ```{r, echo=FALSE}
 tibble(check = "",
        qIDs = c("sevEmo_tr21_01", "sevEmo_tr21_02", "sevEmo_tr21_03", "sevEmo_tr21_04", "sevEmo_tr21_05"), 
-       extra = c("", "", "", "", "After change to Slider, __Replace__ 'DELETE_THIS' text with a space")) %>%
+       extra = c("", "", "", "", "")) %>%
   kableME(.)
 ```
 
@@ -45,7 +46,7 @@ _Screening blocks_
 ```{r, table01, echo=FALSE}
 tibble(check = "", 
        qIDs = c("wilScre_Q02_01", "fu_Q02_01", "fu_Q03_01", "fu_Q05_01", "wilScre_Q02_02", "fu_Q02_02", "fu_Q03_02", "fu_Q05_02"),
-       extra = c("After change to Slider, __Replace__ 'DELETE_THIS' text with a space", "After change to Slider, __Replace__ 'DELETE_THIS' text with a space", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "", "After change to Slider, __Replace__'DELETE_THIS' text with a space", "After change to Slider, __Replace__ 'DELETE_THIS' text with a space", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "")) %>% 
+       extra = c("", "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "", "", "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "")) %>% 
   kableME(.)
 ```
 
@@ -53,11 +54,137 @@ tibble(check = "",
 
 On each question, check the box "Force Response" (on the right contextual banner). In some cases an extra "Validation Type" has to be included. To do so, select one of the options below _Validation Options_.
 
+
+_Abbreviated mathemathics anxiety rating scale_
+
+```{r, echo=FALSE}
+this <- filter(scale_names, long_name == "abbreviated_math_anxiety_rating_scale")
+
+tibble(check = "",
+       qIDs = paste0(this$short_name, "_", sprintf("%02d", seq(this$no_items))), 
+       extra = "") %>%
+  kableME(.)
+```
+
 _A priori screening belief_
 
 ```{r, echo=FALSE}
+this <- filter(scale_names, long_name == "a_priori_screening_belief")
+
 tibble(check = "",
-       qIDs = c("aprioriBel_01", "aprioriBel_02", "aprioriBel_03", "aprioriBel_04", "aprioriBel_05", "aprioriBel_06"), 
+       qIDs = paste0(this$short_name, "_", sprintf("%02d", seq(this$no_items))), 
+       extra = "") %>%
+  kableME(.)
+```
+
+_Beck Anxiety Inventory_
+
+```{r, echo=FALSE}
+this <- filter(scale_names, long_name == "beck_anxiety_inventory")
+
+tibble(check = "",
+       qIDs = paste0(this$short_name, "_", sprintf("%02d", seq(this$no_items))), 
+       extra = "") %>%
+  kableME(.)
+```
+
+_Big Five Inventory_
+
+```{r, echo=FALSE}
+this <- filter(scale_names, long_name == "big_five_inventory")
+
+tibble(check = "",
+       qIDs = paste0(this$short_name, "_", sprintf("%02d", seq(this$no_items))), 
+       extra = "") %>%
+  kableME(.)
+```
+
+_Cognitive Reflection Test 7-items_
+
+```{r, echo=FALSE}
+this <- filter(scale_names, long_name == "cognitive_reflection_test_7")
+
+tibble(check = "",
+       qIDs = paste0(this$short_name, "_", sprintf("%02d", seq(this$no_items))), 
+       extra = "") %>%
+  kableME(.)
+```
+
+_General Decision Making Style_
+
+```{r, echo=FALSE}
+this <- filter(scale_names, long_name == "general_decision_making_style")
+
+tibble(check = "",
+       qIDs = paste0(this$short_name, "_", sprintf("%02d", seq(this$no_items))), 
+       extra = "") %>%
+  kableME(.)
+```
+
+_Lipkus Numeracy Scale_
+
+```{r, echo=FALSE}
+this <- filter(scale_names, long_name == "lipkus_numeracy_scale")
+
+tibble(check = "",
+       qIDs = paste0(this$short_name, "_", sprintf("%02d", seq(this$no_items))), 
+       extra = c(rep("Content Validation -> Number", 2), "Content Validation -> Number -> min:0;max:100", rep("", 2), 
+                 "Content Validation -> Number -> min:0;max:100", "Content Validation -> Number", rep("Content Validation -> Number", 2), "Content Validation -> Number -> min:0;max:100",
+                 rep("Content Validation -> Number", 1))) %>%
+  kableME(.)
+```
+
+_Multiple Stimulus Types Ambiguity Tolerance Scale II_
+
+```{r, echo=FALSE}
+this <- filter(scale_names, long_name == "multiple_stim_types_ambiguity_tolerance_scale")
+
+tibble(check = "",
+       qIDs = paste0(this$short_name, "_", sprintf("%02d", seq(this$no_items))), 
+       extra = "") %>%
+  kableME(.)
+```
+
+_Need for Cognition_
+
+```{r, echo=FALSE}
+this <- filter(scale_names, long_name == "need_for_cognition")
+
+tibble(check = "",
+       qIDs = paste0(this$short_name, "_", sprintf("%02d", seq(this$no_items))), 
+       extra = "") %>%
+  kableME(.)
+```
+
+_Probabilistic Reasoning Scale_
+
+```{r, echo=FALSE}
+this <- filter(scale_names, long_name == "probabilistic_reasoning_scale")
+
+tibble(check = "",
+       qIDs = paste0(this$short_name, "_", sprintf("%02d", seq(this$no_items))), 
+       extra = "") %>%
+  kableME(.)
+```
+
+_Risk Avoidance Scale_
+
+```{r, echo=FALSE}
+this <- filter(scale_names, long_name == "risk_avoidance_scale")
+
+tibble(check = "",
+       qIDs = paste0(this$short_name, "_", sprintf("%02d", seq(this$no_items))), 
+       extra = "") %>%
+  kableME(.)
+```
+
+_Risk Propensity Scale_
+
+```{r, echo=FALSE}
+this <- filter(scale_names, long_name == "risk_propensity_scale")
+
+tibble(check = "",
+       qIDs = paste0(this$short_name, "_", sprintf("%02d", seq(this$no_items))), 
        extra = "") %>%
   kableME(.)
 ```
@@ -76,6 +203,40 @@ _Severity of and Emotional reaction TRISOMY 21_
 ```{r, echo=FALSE}
 tibble(check = "",
        qIDs = c("sevEmo_tr21_01", "sevEmo_tr21_02", "sevEmo_tr21_03", "sevEmo_tr21_04", "sevEmo_tr21_05"), 
+       extra = "") %>%
+  kableME(.)
+```
+
+
+_Sociodemographic Scale_
+
+```{r, echo=FALSE}
+this <- filter(scale_names, long_name == "sociodemographic_scale")
+
+tibble(check = "",
+       qIDs = paste0(this$short_name, "_", c("gen", "age", "edu", "lan", "nat")), 
+       extra = "") %>%
+  kableME(.)
+```
+
+_Subjective Numeracy Scale_
+
+```{r, echo=FALSE}
+this <- filter(scale_names, long_name == "subjective_numeracy_scale")
+
+tibble(check = "",
+       qIDs = paste0(this$short_name, "_", sprintf("%02d", seq(this$no_items))), 
+       extra = "") %>%
+  kableME(.)
+```
+
+_Tolerance of Ambiguity_
+
+```{r, echo=FALSE}
+this <- filter(scale_names, long_name == "tolerance_of_ambiguity")
+
+tibble(check = "",
+       qIDs = paste0(this$short_name, "_", sprintf("%02d", seq(this$no_items))), 
        extra = "") %>%
   kableME(.)
 ```

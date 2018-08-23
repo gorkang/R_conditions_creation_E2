@@ -2,9 +2,13 @@
 if (!require('pacman')) install.packages('pacman'); library('pacman')
 p_load(tidyverse, magrittr)
 
-# names for item ID
-long_name <- "risk_propensity_scale"
-short_name <- "rps"
+# get this scale info
+this_scale <- 
+  scale_names %>% filter(long_name == "risk_propensity_scale")
+
+# Names
+long_name <- this_scale$long_name
+short_name <- this_scale$short_name
 
 # qualtrics tags template to wrapp around
 # instructions
@@ -46,7 +50,7 @@ last_item_wrapper <-
 
 # read items
 rps_items <- 
-  "materials/Scales/input/risk_propensity_scale.txt" %>% 
+  paste0("materials/Scales/input/", long_name,".txt") %>%
   readChar(., file.size(.)) %>% 
   gsub("\\n$", "", .) %>% 
   str_split(., "\\n") %>% 

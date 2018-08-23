@@ -1,29 +1,26 @@
-UBER_IMPORT2QUALTRICS <- function(full_path) {
+UBER_IMPORT2QUALTRICS <- function(file_paths) {
   
-  # Pre-map
-  total_files    <- full_path %>% dir(., ".txt") %>% length()
-  files_fullpath <- full_path %>% dir(., ".txt") %>% paste0(full_path, .)
   # Track of files uploading
   .GlobalEnv$track_table <- 
-    tibble(file = full_path %>% dir(., ".txt")) %>% 
+    tibble(file = file_paths) %>% 
     mutate(tools = 0,
            import = 0, 
            import_survey = 0,
            upload = 0,
            done = 0)
   
-  for (a in seq(files_fullpath)) {
+  for (a in seq(file_paths)) {
     # a <- 1
     
     
     # absolute path to file
-    file_absolute_path <- files_fullpath[a]
+    file_absolute_path <- file_paths[a]
     
     # Update counter
     .GlobalEnv$Q_counter <- Q_counter+1
     # Current file to upload
     message(paste0("**************************************\n",
-                   "File number: ", Q_counter, " out of ", total_files, "\n",
+                   "File number: ", Q_counter, " out of ", length(file_paths), "\n",
                    "File name: ", gsub(".*/(.*\\.txt)", "\\1", file_absolute_path), "\n",
                    "**************************************"))
     
@@ -111,6 +108,7 @@ UBER_IMPORT2QUALTRICS <- function(full_path) {
         tryCatch(expr = {
           # TRY
           upload_btn <- remDr$findElement(using = 'xpath', value = '//*[@id="fileField"]')
+          
           upload_btn$sendKeysToElement(list(file_absolute_path))
           
           webElem <- remDr$findElement(using = 'xpath', value = '//*[@id="importButton"]/span[2]')

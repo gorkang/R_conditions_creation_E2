@@ -15,6 +15,10 @@ followup_question_builder <- function(file_path, file_name, outputdir, export = 
     choice_builder(response_string = question_text) %>% 
     unlist
   
+  # make DELETE_THIS invisible
+  current_choices <- 
+    gsub(".*(DELETE_THIS).*", '<span style="font-size:0px;">DELETE_THIS</span>', current_choices)
+  
   if (export == TRUE) {
     dir.create(outputdir, showWarnings = FALSE, recursive = TRUE)
     

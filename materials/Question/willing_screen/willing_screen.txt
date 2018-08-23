@@ -11,4 +11,4 @@
 [[ID:wilScre_Q02_0]]
 <span style="font-size:22px;">How strongly would you recommend her to take the screening test?<br>0: Not strongly at all - 100: Very strongly</span>
 [[Choices]]
-DELETE_THIS
+<span style="font-size:0px;">DELETE_THIS</span>

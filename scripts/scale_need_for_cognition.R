@@ -2,9 +2,13 @@
 if (!require('pacman')) install.packages('pacman'); library('pacman')
 p_load(tidyverse, magrittr)
 
-# names for item ID
-long_name <- "need_for_cognition"
-short_name <- "nfc"
+# get this scale info
+this_scale <- 
+  scale_names %>% filter(long_name == "need_for_cognition")
+
+# Names
+long_name <- this_scale$long_name
+short_name <- this_scale$short_name
 
 # qualtrics tags template to wrapp around
 # instructions
@@ -29,7 +33,7 @@ item_wrapper <-
 
 # read items
 smars_items <- 
-  "materials/Scales/input/need_for_cognition.txt" %>% 
+  paste0("materials/Scales/input/", long_name,".txt") %>%
   readChar(., file.size(.)) %>% 
   gsub("\\n$", "", .) %>% 
   str_split(., "\\n") %>% 

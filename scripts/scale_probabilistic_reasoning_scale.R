@@ -2,13 +2,17 @@
 if (!require('pacman')) install.packages('pacman'); library('pacman')
 p_load(tidyverse, magrittr)
 
-# names for item ID
-long_name <- "probabilistic_reasoning_scale"
-short_name <- "prs"
+# get this scale info
+this_scale <- 
+  scale_names %>% filter(long_name == "probabilistic_reasoning_scale")
+
+# Names
+long_name <- this_scale$long_name
+short_name <- this_scale$short_name
 
 # Template reading and handling
 probabilistic_reasoning_items <-
-  "materials/Scales/input/probabilistic_reasoning.txt" %>% 
+  paste0("materials/Scales/input/", long_name,".txt") %>%
   readChar(., file.size(.)) %>% # Read text file
   str_split(., "\n__QSEP__\n") %>% # Separate questions
   unlist() %>% as.list() # Flatten questions list

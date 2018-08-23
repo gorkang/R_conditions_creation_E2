@@ -12,9 +12,13 @@ p_load(tidyverse, magrittr)
 # # strong disagreement         (1)
 # ITEMS ARE RANDOMLY PRESENTED
 
-# names for item ID
-long_name <- "tolerance_ambiguity"
-short_name <- "ta"
+# get this scale info
+this_scale <- 
+  scale_names %>% filter(long_name == "tolerance_of_ambiguity")
+
+# Names
+long_name <- this_scale$long_name
+short_name <- this_scale$short_name
 
 # Qualtrics tags template to wrapp around
 # Instructions
@@ -37,7 +41,7 @@ item_wrapper <-
 
 # read items
 tolerance_ambiguity <- 
-  "materials/Scales/input/tolerance_ambiguity.txt" %>% 
+  paste0("materials/Scales/input/", long_name,".txt") %>%
   readChar(., file.size(.)) %>% 
   gsub("\\n$", "", .) %>% 
   str_split(., "\\n") %>% 

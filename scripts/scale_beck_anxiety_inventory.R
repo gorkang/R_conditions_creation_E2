@@ -2,9 +2,13 @@
 if (!require('pacman')) install.packages('pacman'); library('pacman')
 p_load(tidyverse, magrittr)
 
-# names
-long_name <- "a_priori_screening_beliefs"
-short_name <- "apsb"
+# get this scale info
+this_scale <- 
+  scale_names %>% filter(long_name == "beck_anxiety_inventory")
+
+# Names
+long_name <- this_scale$long_name
+short_name <- this_scale$short_name
 
 # qualtrics tags template to wrapp around
 # instructions
@@ -15,19 +19,16 @@ item_wrapper <-
 [[ID:replaceID]]
 <span style='font-size:Q_FONT_SIZEpx;'>ITEM</span>
 [[Choices]]
-<span style='font-size:C_FONT_SIZEpx;'>1<br>strongly disagree</span>
+<span style='font-size:C_FONT_SIZEpx;'>0<br>Not at all</span>
 <span style='font-size:C_FONT_SIZEpx;'>2<br></span>
 <span style='font-size:C_FONT_SIZEpx;'>3<br></span>
-<span style='font-size:C_FONT_SIZEpx;'>4<br></span>
-<span style='font-size:C_FONT_SIZEpx;'>5<br></span>
-<span style='font-size:C_FONT_SIZEpx;'>6<br></span>
-<span style='font-size:C_FONT_SIZEpx;'>7<br>strongly agree</span>"
+<span style='font-size:C_FONT_SIZEpx;'>4<br>Severely - it bothered me a lot</span>"
 # see what's going on.
 # item_wrapper %>% cat()
 
 # read items
-ras_items <- 
-  "materials/Scales/input/a_priori_screening_beliefs.txt" %>% 
+bai_items <- 
+  paste0("materials/Scales/input/", long_name,".txt") %>% 
   readChar(., file.size(.)) %>% 
   gsub("\\n$", "", .) %>% 
   str_split(., "\\n") %>% 
@@ -35,10 +36,9 @@ ras_items <-
 
 # Wrapping
 # instructions
-ins <- gsub("ITEM", ras_items[1], ins_wrapper)
+ins <- gsub("ITEM", bai_items[1], ins_wrapper)
 # items
-items <- str_replace_all(item_wrapper, "ITEM", ras_items[-1])
-
+items <- str_replace_all(item_wrapper, "ITEM", bai_items[-1])
 
 # Output dir
 output_dir <- 

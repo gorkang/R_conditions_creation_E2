@@ -9,53 +9,42 @@ source("scripts/html_qualtrics_codes.R")
 question_size = "22"
 choice_size = "15"
 
-# Severity and emotional reaction scale #######################
-source("scripts/scale_severity.R")
+# Scales names
+scale_names <- 
+  read_csv("materials/Scales/scales_names.csv", col_types = "ccci")
 
-# A priori screening beliefs ##################################
-source("scripts/scale_apriori.R")
-
-# Numeracy ####################################################
-source("scripts/scale_numeracy.R")
-
-# Big five ####################################################
-source("scripts/scale_big_five.R")
-
-# Cognitive reflection test (7-items, multiple choice) ########
-source("scripts/scale_crt_7.R")
-
-# General decision-making style ###############################
-source("scripts/scale_gdms.R")
-
-# subjective numeracy scale ###################################
-source("scripts/scale_sns.R")
-
-# risk propensity scale #######################################
-source("scripts/scale_risk_propensity.R")
-
-# probabilistic reasoning scale ###############################
-source("scripts/scale_probabilistic_reasoning.R")
-
-# beck anxiety inventory ######################################
-source("scripts/scale_beck_anxiety.R")
-
-# risk avoidance scale ########################################
-source("scripts/scale_risk_avoidance.R")
-
-# short mathematics anxiety rating scale ######################
-source("scripts/scale_mathematics_anxiety.R")
-
-# need for cognition ##########################################
+# a_priori_screening_belief ##################################
+source("scripts/scale_a_priori_screening_belief.R")
+# beck_anxiety_inventory #####################################
+source("scripts/scale_beck_anxiety_inventory.R")
+# big_five_inventory #########################################
+source("scripts/scale_big_five_inventory.R")
+# cognitive_reflection_test_7 ################################
+source("scripts/scale_cognitive_reflection_test_7.R")
+# general_decision_making_style ##############################
+source("scripts/scale_general_decision_making_style.R")
+# abbreviated_math_anxiety_rating_scale ######################
+source("scripts/scale_abbreviated_math_anxiety_rating_scale.R")
+# multiple_stim_types_ambiguity_tolerance_scale ##############
+source("scripts/scale_multiple_stim_types_ambiguity_tolerance_scale.R")
+# need_for_cognition #########################################
 source("scripts/scale_need_for_cognition.R")
-
-# multiple stimulus types ambiguity tolerance scale - II ######
-source("scripts/scale_multi_stim_ambiguity_tolerance.R")
-
-# Tolerance ambiguity scale ###################################
-source("scripts/scale_tolerance_ambiguity.R")
-
-# Sociodemographic scale (not a real scale) ###################
-source("scripts/scale_sociodemographic.R")
+# lipkus_numeracy_scale ######################################
+source("scripts/scale_lipkus_numeracy_scale.R")
+# probabilistic_reasoning_scale ##############################
+source("scripts/scale_probabilistic_reasoning_scale.R")
+# risk_avoidance_scale #######################################
+source("scripts/scale_risk_avoidance_scale.R")
+# risk_propensity_scale ######################################
+source("scripts/scale_risk_propensity_scale.R")
+# severity_emotional_reaction ################################
+source("scripts/scale_severity_emotional_reaction.R")
+# sociodemographic_scale #####################################
+source("scripts/scale_sociodemographic_scale.R")
+# subjective_numeracy_scale ##################################
+source("scripts/scale_subjective_numeracy_scale.R")
+# tolerance_of_ambiguity #####################################
+source("scripts/scale_tolerance_of_ambiguity.R")
 
 
 # PRINT SCALES (BOOK)

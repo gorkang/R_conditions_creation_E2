@@ -2,9 +2,13 @@
 if (!require('pacman')) install.packages('pacman'); library('pacman')
 p_load(tidyverse, magrittr)
 
-# names for item ID
-long_name <- "multi_stim_tolerance_ambiguity"
-short_name <- "mstat"
+# get this scale info
+this_scale <- 
+  scale_names %>% filter(long_name == "multiple_stim_types_ambiguity_tolerance_scale")
+
+# Names
+long_name <- this_scale$long_name
+short_name <- this_scale$short_name
 
 # Qualtrics tags template to wrapp around
 # Instructions
@@ -28,7 +32,7 @@ item_wrapper <-
 
 # read items
 mst_ambiguity_tolerance <- 
-  "materials/Scales/input/multiple_stimulus_ambiguity_tolerance.txt" %>% 
+  paste0("materials/Scales/input/", long_name,".txt") %>%
   readChar(., file.size(.)) %>% 
   gsub("\\n$", "", .) %>% 
   str_split(., "\\n") %>% 

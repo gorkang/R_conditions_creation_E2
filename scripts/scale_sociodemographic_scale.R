@@ -2,13 +2,17 @@
 if (!require('pacman')) install.packages('pacman'); library('pacman')
 p_load(tidyverse, magrittr)
 
-# Nombre
-long_name <- "sociodemographics"
-short_name <- "dem"
+# get this scale info
+this_scale <- 
+  scale_names %>% filter(long_name == "sociodemographic_scale")
+
+# Names
+long_name <- this_scale$long_name
+short_name <- this_scale$short_name
 
 # Read scale
 sociodemo <- 
-  "materials/Scales/input/sociodemographics.txt" %>% 
+  paste0("materials/Scales/input/", long_name,".txt") %>%
   readChar(., file.size(.)) %>% # Read text file
   str_split(., "\n__QSEP__\n") %>% # Separate questions
   unlist()

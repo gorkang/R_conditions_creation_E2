@@ -2,9 +2,13 @@
 if (!require('pacman')) install.packages('pacman'); library('pacman')
 p_load(tidyverse, magrittr)
 
-# names for item ID
-long_name <- "general_decision_making_style_scale"
-short_name <- "gdms"
+# get this scale info
+this_scale <- 
+  scale_names %>% filter(long_name == "general_decision_making_style")
+
+# Names
+long_name <- this_scale$long_name
+short_name <- this_scale$short_name
 
 # qualtrics tags template to wrapp around
 # Instructions
@@ -32,7 +36,7 @@ choices <-
 
 # read items
 gdsm_items <- 
-  "materials/Scales/input/gdms.txt" %>% 
+  paste0("materials/Scales/input/", long_name,".txt") %>%
   readChar(., file.size(.)) %>% 
   gsub("\\n$", "", .) %>% 
   str_split(., "\\n") %>% 

@@ -134,6 +134,8 @@ screening_item_questions <-
           resp_type_04,
           qualtrics_codes$pagebreak,
           will_screening,
+          qualtrics_codes$pagebreak,
+          comprehension,
           sep = "\n")
 
 # Create and export complete trial blocks (PPV + Follow-up) ---------------

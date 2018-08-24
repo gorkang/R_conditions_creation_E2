@@ -1,9 +1,0 @@
-Please answer the following questions about the test to detect [[Breast cancer/Down's Syndrome]]
-How informative is the screening test?
-How trustworthy is a positive result in a [[Breast cancer/Down's Syndrome]] screening?
-How useful is [[Breast cancer/Down's Syndrome]] screening?
-How much risk there in [[Breast cancer/Down's Syndrome]] screening?
-How reliable is the test?
-How likely is a correct positive result?
-How likely is a false positive result?
-If a woman receives a positive test result, how probable is that she actually has [[breast cancer/is pregnant with a fetus with Down's Syndrome]]?

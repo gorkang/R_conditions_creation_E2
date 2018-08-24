@@ -262,13 +262,6 @@ display_item(c("pr", "nppi", "high", "sg"))
 display_item(c("pr", "nppi", "high", "ss"))
 ```
 
-# Comprehension questions
-
-```{r comprehension, echo=FALSE, results='asis'}
-source("scripts/comprehension_preparing.R")
-```
-
-
 # Follow-up questions
 
 ```{r follow-up, echo=FALSE, results='asis'}

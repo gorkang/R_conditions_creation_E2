@@ -8,3 +8,5 @@ fluid_test,the breast cyst,the amniotic sac,followup
 test_name,The biopsy,Amniocentesis,followup
 medical_consequence,partial mastectomy,miscarriage,followup
 medical_test,mammogram,prenatal test,
+comp_01,breast cancer,Down’s syndrome,
+comp_02,breast cancer,is pregnant with a fetus with Down's syndrome,

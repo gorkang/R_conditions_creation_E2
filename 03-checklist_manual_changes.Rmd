@@ -16,12 +16,127 @@ scale_names <- read_csv("materials/Scales/scale_names.csv", col_types = "ccci")
 
 This is a checklist with all necessary manual changes to be done once the Qualtrics Survey is fully imported.
 
-
 ## Screening blocks (PPV item + Follow-up)
 
 ### Sliders
 
 Change question type to Slider. On each question select the green button on the right upper corner and select Slider.
+
+_Screening blocks_
+
+```{r, table01, echo=FALSE}
+tibble(check = "", 
+       qIDs = c("will_Q02_01", paste0("com_Q", sprintf("%02d", 1:8),"_01"), 
+                "fu_Q02_01", "fu_Q03_01", "fu_Q05_01", "will_Q02_02", paste0("com_Q", sprintf("%02d", 1:8),"_02"), 
+                "fu_Q02_02", "fu_Q03_02", "fu_Q05_02"),
+       extra = c("", rep("", 8), "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "", "", rep("", 8), "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "")) %>% 
+  kableME(.)
+```
+
+### Force response & Answer validation  
+
+On each question, check the box "Force Response" (on the right contextual banner). In some cases an extra "Validation Type" has to be included. To do so, select one of the options below _Validation Options_.
+
+_Block 01_
+
+```{r, table02, echo=FALSE}
+tibble(check = "",
+       qIDs = c("ppv_gi_01", "ppv_gs_01", "ppv_sg01_01", "ppv_sg02_01", "ppv_sg03_01", "ppv_sg04_01", "ppv_ss01_01", "ppv_ss02_01"), 
+       extra = c("", "__Validation type__: Content Validation, Number (min: 0, max: 100)", "__Validation type__: Content Validation, Number", "__Validation type__: Content Validation, Number", "__Validation type__: Content Validation, Number", "__Validation type__: Content Validation, Number", "__Validation type__: Content Validation, Number", "__Validation type__: Content Validation, Number")) %>% 
+  bind_rows(., tibble(check = "",
+                      qIDs = c("will_Q01_01", "will_Q02_01"), 
+                      extra = (""))) %>% 
+  bind_rows(., tibble(check = "",
+                      qIDs = c("fu_Q01_01", "fu_Q02_01", "fu_Q03_01", "fu_Q04_01", "fu_Q05_01"), 
+                      extra = (""))) %>%
+  kableME(.)
+```
+
+_Block 02_
+
+```{r, table03, echo=FALSE}
+tibble(check = "",
+       qIDs = c("ppv_gi_02", "ppv_gs_02", "ppv_sg01_02", "ppv_sg02_02", "ppv_sg03_02", "ppv_sg04_02", "ppv_ss01_02", "ppv_ss02_02"), 
+       extra = c("", "__Validation type__: Content Validation, Number (min: 0, max: 100)", "__Validation type__: Content Validation, Number", "__Validation type__: Content Validation, Number", "__Validation type__: Content Validation, Number", "__Validation type__: Content Validation, Number", "__Validation type__: Content Validation, Number", "__Validation type__: Content Validation, Number")) %>% 
+  bind_rows(., tibble(check = "",
+                      qIDs = c("will_Q01_02", "will_Q02_02"), 
+                      extra = (""))) %>% 
+  bind_rows(., tibble(check = "",
+                      qIDs = c("fu_Q01_02", "fu_Q02_02", "fu_Q03_02", "fu_Q04_02", "fu_Q05_02"), 
+                      extra = (""))) %>% 
+  kableME(.)
+```
+
+
+### Display logic
+
+On each question, by right-clicking (or by clicking on the cog on the left side of the question), select _Add Display Logic..._. A pop-up window will open.
+
+_Block 01_
+
+```{r, table04, echo=FALSE}
+tibble(check = "",
+       qIDs = c("ppv_gi_01", "ppv_gs_01", "ppv_sg01_01", "ppv_sg02_01", "ppv_sg03_01", "ppv_sg04_01", "ppv_ss01_01", "ppv_ss02_01", "fu_Q05_01 (1st slider)", "fu_Q05_01 (2nd slider)"),
+       extra = c("_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gi__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gs__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Question_ > _fu_Q01_01_ > __No__ > _Is Selected_", "_Question_ > _fu_Q01_01_ > __Yes__ > _Is Selected_")) %>% 
+  kableME(.)
+```
+
+_Block 02_
+
+```{r, table05, echo=FALSE}
+tibble(check = "",
+       qIDs = c("ppv_gi_02", "ppv_gs_02", "ppv_sg01_02", "ppv_sg02_02", "ppv_sg03_02", "ppv_sg04_02", "ppv_ss01_02", "ppv_ss02_02", "fu_Q05_02 (1st slider)", "fu_Q05_02 (2nd slider)"),
+       extra = c("_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gi__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gs__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Question_ > _fu_Q01_02_ > __No__ > _Is Selected_", "_Question_ > _fu_Q01_02_ > __Yes__ > _Is Selected_")) %>% 
+  kableME(.)
+```
+
+### Text entry size  
+
+Reduce text entry size to minimum by dragging the rightmost side all the way to the left.
+
+_Block 01_
+
+```{r, table06, echo=FALSE}
+tibble(check = "",
+       qIDs = c("ppv_gs_01", "ppv_sg01_01", "ppv_sg02_01", "ppv_sg03_01", "ppv_sg04_01", "ppv_ss01_01", "ppv_ss02_01" ),
+       extra = c("")) %>% 
+  kableME(.)
+```
+
+_Block 02_
+
+```{r, table07, echo=FALSE}
+tibble(check = "",
+       qIDs = c("ppv_gs_02", "ppv_sg01_02", "ppv_sg02_02", "ppv_sg03_02", "ppv_sg04_02", "ppv_ss01_02", "ppv_ss02_02" ),
+       extra = c("")) %>% 
+  kableME(.)
+```
+
+### Add JavaScript
+
+On each question, by right-clicking (or by clicking on the cog on the left side of the question), select _Add JavaScript_. A pop-up window will open. Copy the JS code from the text files (_plain_text/js_codes/complete_) and paste them to the correspondent questions. Remember to select all when copying and when pasting over the JS template.
+
+_Block 01_
+
+```{r, table08, echo=FALSE}
+tibble(check = "",
+       qIDs = c("ppv_gi_01", "ppv_gs_01", "ppv_sg01_01", "ppv_ss01_01"),
+       extra = c("From file: __gi_01_js_complete.txt__", "From file: __gs_01_js_complete.txt__", "From file: __sg_01_js_complete.txt__", "From file: __ss_01_js_complete.txt__")) %>% 
+  kableME(.)
+```
+
+_Block 02_
+
+```{r, table09, echo=FALSE}
+tibble(check = "",
+       qIDs = c("ppv_gi_02", "ppv_gs_02", "ppv_sg01_02", "ppv_ss01_02"),
+       extra = c("From file: __gi_02_js_complete.txt__", "From file: __gs_02_js_complete.txt__", "From file: __sg_02_js_complete.txt__", "From file: __ss_02_js_complete.txt__")) %>% 
+  kableME(.)
+```
+
+## Scales
+
+### Sliders
 
 _Severity of and Emotional reaction BREAST CANCER_
 
@@ -41,21 +156,7 @@ tibble(check = "",
   kableME(.)
 ```
 
-_Screening blocks_
-
-```{r, table01, echo=FALSE}
-tibble(check = "", 
-       qIDs = c("will_Q02_01", paste0("com_Q", sprintf("%02d", 1:8),"_01"), 
-                "fu_Q02_01", "fu_Q03_01", "fu_Q05_01", "will_Q02_02", paste0("com_Q", sprintf("%02d", 1:8),"_02"), 
-                "fu_Q02_02", "fu_Q03_02", "fu_Q05_02"),
-       extra = c("", rep("", 8), "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "", "", rep("", 8), "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "")) %>% 
-  kableME(.)
-```
-
 ### Force response & Answer validation  
-
-On each question, check the box "Force Response" (on the right contextual banner). In some cases an extra "Validation Type" has to be included. To do so, select one of the options below _Validation Options_.
-
 
 _Abbreviated mathemathics anxiety rating scale_
 
@@ -240,102 +341,5 @@ this <- filter(scale_names, long_name == "tolerance_of_ambiguity")
 tibble(check = "",
        qIDs = paste0(this$short_name, "_", sprintf("%02d", seq(this$no_items))), 
        extra = "") %>%
-  kableME(.)
-```
-
-_Block 01_
-
-```{r, table02, echo=FALSE}
-tibble(check = "",
-       qIDs = c("ppv_gi_01", "ppv_gs_01", "ppv_sg01_01", "ppv_sg02_01", "ppv_sg03_01", "ppv_sg04_01", "ppv_ss01_01", "ppv_ss02_01"), 
-       extra = c("", "__Validation type__: Content Validation, Number (min: 0, max: 100)", "__Validation type__: Content Validation, Number", "__Validation type__: Content Validation, Number", "__Validation type__: Content Validation, Number", "__Validation type__: Content Validation, Number", "__Validation type__: Content Validation, Number", "__Validation type__: Content Validation, Number")) %>% 
-  bind_rows(., tibble(check = "",
-                      qIDs = c("will_Q01_01", "will_Q02_01"), 
-                      extra = (""))) %>% 
-  bind_rows(., tibble(check = "",
-                      qIDs = c("fu_Q01_01", "fu_Q02_01", "fu_Q03_01", "fu_Q04_01", "fu_Q05_01"), 
-                      extra = (""))) %>%
-  kableME(.)
-```
-
-_Block 02_
-
-```{r, table03, echo=FALSE}
-tibble(check = "",
-       qIDs = c("ppv_gi_02", "ppv_gs_02", "ppv_sg01_02", "ppv_sg02_02", "ppv_sg03_02", "ppv_sg04_02", "ppv_ss01_02", "ppv_ss02_02"), 
-       extra = c("", "__Validation type__: Content Validation, Number (min: 0, max: 100)", "__Validation type__: Content Validation, Number", "__Validation type__: Content Validation, Number", "__Validation type__: Content Validation, Number", "__Validation type__: Content Validation, Number", "__Validation type__: Content Validation, Number", "__Validation type__: Content Validation, Number")) %>% 
-  bind_rows(., tibble(check = "",
-                      qIDs = c("will_Q01_02", "will_Q02_02"), 
-                      extra = (""))) %>% 
-  bind_rows(., tibble(check = "",
-                      qIDs = c("fu_Q01_02", "fu_Q02_02", "fu_Q03_02", "fu_Q04_02", "fu_Q05_02"), 
-                      extra = (""))) %>% 
-  kableME(.)
-```
-
-
-### Display logic
-
-On each question, by right-clicking (or by clicking on the cog on the left side of the question), select _Add Display Logic..._. A pop-up window will open.
-
-_Block 01_
-
-```{r, table04, echo=FALSE}
-tibble(check = "",
-       qIDs = c("ppv_gi_01", "ppv_gs_01", "ppv_sg01_01", "ppv_sg02_01", "ppv_sg03_01", "ppv_sg04_01", "ppv_ss01_01", "ppv_ss02_01", "fu_Q05_01 (1st slider)", "fu_Q05_01 (2nd slider)"),
-       extra = c("_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gi__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gs__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Question_ > _fu_Q01_01_ > __No__ > _Is Selected_", "_Question_ > _fu_Q01_01_ > __Yes__ > _Is Selected_")) %>% 
-  kableME(.)
-```
-
-_Block 02_
-
-```{r, table05, echo=FALSE}
-tibble(check = "",
-       qIDs = c("ppv_gi_02", "ppv_gs_02", "ppv_sg01_02", "ppv_sg02_02", "ppv_sg03_02", "ppv_sg04_02", "ppv_ss01_02", "ppv_ss02_02", "fu_Q05_02 (1st slider)", "fu_Q05_02 (2nd slider)"),
-       extra = c("_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gi__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gs__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Question_ > _fu_Q01_02_ > __No__ > _Is Selected_", "_Question_ > _fu_Q01_02_ > __Yes__ > _Is Selected_")) %>% 
-  kableME(.)
-```
-
-### Text entry size  
-
-Reduce text entry size to minimum by dragging the rightmost side all the way to the left.
-
-_Block 01_
-
-```{r, table06, echo=FALSE}
-tibble(check = "",
-       qIDs = c("ppv_gs_01", "ppv_sg01_01", "ppv_sg02_01", "ppv_sg03_01", "ppv_sg04_01", "ppv_ss01_01", "ppv_ss02_01" ),
-       extra = c("")) %>% 
-  kableME(.)
-```
-
-_Block 02_
-
-```{r, table07, echo=FALSE}
-tibble(check = "",
-       qIDs = c("ppv_gs_02", "ppv_sg01_02", "ppv_sg02_02", "ppv_sg03_02", "ppv_sg04_02", "ppv_ss01_02", "ppv_ss02_02" ),
-       extra = c("")) %>% 
-  kableME(.)
-```
-
-### Add JavaScript
-
-On each question, by right-clicking (or by clicking on the cog on the left side of the question), select _Add JavaScript_. A pop-up window will open. Copy the JS code from the text files (_plain_text/js_codes/complete_) and paste them to the correspondent questions. Remember to select all when copying and when pasting over the JS template.
-
-_Block 01_
-
-```{r, table08, echo=FALSE}
-tibble(check = "",
-       qIDs = c("ppv_gi_01", "ppv_gs_01", "ppv_sg01_01", "ppv_ss01_01"),
-       extra = c("From file: __gi_01_js_complete.txt__", "From file: __gs_01_js_complete.txt__", "From file: __sg_01_js_complete.txt__", "From file: __ss_01_js_complete.txt__")) %>% 
-  kableME(.)
-```
-
-_Block 02_
-
-```{r, table09, echo=FALSE}
-tibble(check = "",
-       qIDs = c("ppv_gi_02", "ppv_gs_02", "ppv_sg01_02", "ppv_ss01_02"),
-       extra = c("From file: __gi_02_js_complete.txt__", "From file: __gs_02_js_complete.txt__", "From file: __sg_02_js_complete.txt__", "From file: __ss_02_js_complete.txt__")) %>% 
   kableME(.)
 ```

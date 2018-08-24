@@ -76,13 +76,54 @@ for (i in seq(selectors)) {
   
 }
 
+
+
+# Consent form ------------------------------------------------------------
+
+file_paths <- 
+  paste0(getwd(), "/materials/qualtrics/output/plain_text/consent_form/consent_form.txt")
+
+# Iteration counter
+Q_counter <- 0
+
+# UPLOAD!
+UBER_IMPORT2QUALTRICS(file_paths)
+
+
+# Comprehension -----------------------------------------------------------
+
+file_paths <- 
+  paste0(getwd(), "/materials/qualtrics/output/plain_text/scales/sociodemographic_scale/sociodemographic_scale.txt")
+
+# Iteration counter
+Q_counter <- 0
+
+# UPLOAD!
+UBER_IMPORT2QUALTRICS(file_paths)
+
+# Screening block -----------------------------------------------------------
+
+file_paths <- 
+  paste0(getwd(), "/materials/qualtrics/output/plain_text/screening_blocks/complete/screenings_blocks.txt")
+
+# Iteration counter
+Q_counter <- 0
+
+# UPLOAD!
+UBER_IMPORT2QUALTRICS(file_paths)
+
+
 # Import scales --------------------------------------------------
 
 file_paths <- 
-  "materials/qualtrics/output/plain_text/scales" %>% 
+  "/materials/qualtrics/output/plain_text/scales" %>% 
   dir(., full.names = TRUE) %>% 
   map(~dir(.x, pattern = ".txt", full.names = TRUE)) %>% 
   unlist()
+
+# remove sociodemographic scale
+file_paths <- 
+  file_paths[!str_detect(file_paths, "sociodemo")]
 
 # full absolute paths
 file_paths <- file.path(getwd(), file_paths)
@@ -93,3 +134,13 @@ Q_counter <- 0
 # UPLOAD!
 UBER_IMPORT2QUALTRICS(file_paths)
 
+# Comments -----------------------------------------------------------
+
+file_paths <- 
+  paste0(getwd(), "/materials/qualtrics/output/plain_text/comments/comments.txt")
+
+# Iteration counter
+Q_counter <- 0
+
+# UPLOAD!
+UBER_IMPORT2QUALTRICS(file_paths)

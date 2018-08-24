@@ -34,12 +34,14 @@ get2survey(survey_link)
 full_path <- 
   "/home/niki/midgard/fondecyt/gorka/2017 - Gorka - Fondecyt/Experimentos/Experimento 1/R_condition_creation_GITHUB/R_conditions_creation/materials/qualtrics/output/plain_text/embedded_data_blocks"
 
+file_paths <- 
+  full_path %>% dir(., ".txt", full.names = TRUE)
 
 # Iteration counter
 Q_counter <- 0
 
 # UPLOAD!
-UBER_IMPORT2QUALTRICS(full_path)
+UBER_IMPORT2QUALTRICS(file_paths)
 
 
 # Remove dummy blocks created when importing ED blocks -------------------

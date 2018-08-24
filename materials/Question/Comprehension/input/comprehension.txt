@@ -1,0 +1,9 @@
+Please answer the following questions about the test to detect ${e://Field/comp_01_0}
+How informative is the screening test?
+How trustworthy is a positive result in a ${e://Field/comp_01_0} screening?
+How useful is ${e://Field/comp_01_0} screening?
+How much risk there in ${e://Field/comp_01_0} screening?
+How reliable is the test?
+How likely is a correct positive result?
+How likely is a false positive result?
+If a woman receives a positive test result, how probable is that she actually has ${e://Field/comp_02_0}?

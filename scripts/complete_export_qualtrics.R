@@ -145,6 +145,12 @@ will_screening <-
 #         qualtrics_codes$question_choices,
 #         "DELETE_THIS",
 #         sep = "\n")
+# Comprehension
+source("scripts/comprehension.R")
+
+comprehension <- 
+  "materials/qualtrics/output/plain_text/comprehension/comprehension.txt" %>% 
+  readChar(., file.size(.))
 
 # Assemble item with response types
 screening_item_questions <-

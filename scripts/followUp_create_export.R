@@ -46,7 +46,7 @@ unified_fu_questions <-
   paste(qualtrics_codes$question_only_text,         # paste qualtrics tags with follow-up text and follow-up questions
         questioIDme("fu_ins_0"),
         ., 
-        paste(unlist(fu_questions), collapse = "\n"), sep = "\n")
+        fu_questions, sep = "\n")
 
 # remove linebreak between list elements
 unified_fu_questions %<>% 

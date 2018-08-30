@@ -15,14 +15,17 @@ fu_risk <- readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>%
   
   # Remove and replace
   gsub("<br>" ,"\n", .) %>%          # replace html linebreak with generic linebreak (R linebreak?)
-  gsub("</li><li>" ,"\n ", .) %>%    # replace between list elements with linebreaks
-  gsub("<li>" ,"\n", .) %>%          # replace list beginning with linebreaks
-  gsub("</li>" ,"\n\n", .) %>%       # replace list end with slinebreaks
-  gsub('<span style="font-size\\:[0-9]{2}px;">', " ", .) %>% # remove html font size formating
-  gsub('</span>', "", .) %>% # remove html format end
-  gsub("\\[{2}Choices\\]{2}\\n", "", .) %>% # remove choices placeholder
-  gsub("\\[{2}PageBreak\\]{2}\\n", "", .) %>% # remove pagebreak placeholder 
-  gsub("\\[{2}Question.*?\\]{2}\\n", "", .) %>% # remove question placeholder
+  gsub("\n<ul>" ,"  \n", .) %>%       # replace list html tag
+  gsub("<.?ul>" ,"", .) %>%       # replace list html tag
+  gsub("<li>" ,"", .) %>%   # replace between list elements with linebreaks
+  gsub("</li>" ,"  \n", .) %>%    # replace between list elements with linebreaks
+  
+  gsub('<span style="font-size\\:[0-9]{1,2}px;">', "", .) %>%  # remove html font size formating
+  gsub('</span>', "", .) %>%                # remove html format end
+  gsub("\\[{2}.*?\\]{2}\\n", "", .) %>% # remove choices placeholder
+  # gsub("\\[{2}Choices\\]{2}\\n", "", .) %>% # remove choices placeholder
+  # gsub("\\[{2}PageBreak\\]{2}\\n", "", .) %>% # remove pagebreak placeholder 
+  # gsub("\\[{2}Question.*?\\]{2}\\n", "", .) %>% # remove question placeholder
   gsub("DELETE_THIS", "", .) %>% # remove DELETE_THIS placeholder
   
   # Fill ED data fields

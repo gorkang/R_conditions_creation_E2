@@ -13,18 +13,18 @@ __QSEP__
 [[Choices]]
 <span style="font-size:C_FONT_SIZEpx;">I have minimal or no experience with Down's syndrome.</span>
 <span style="font-size:C_FONT_SIZEpx;">Someone I know has Down's syndrome.</span>
-<span style="font-size:C_FONT_SIZEpx;">Someone I know has a child Down's syndrome.</span>
+<span style="font-size:C_FONT_SIZEpx;">Someone I know has a child with Down's syndrome.</span>
 <span style="font-size:C_FONT_SIZEpx;">Someone very close to me has Down's syndrome.</span>
-<span style="font-size:C_FONT_SIZEpx;">Someone very close to me has a child Down's syndrome.</span>
+<span style="font-size:C_FONT_SIZEpx;">Someone very close to me has a child with Down's syndrome.</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
 <span style="font-size:Q_FONT_SIZEpx;">What is your previous experience with mammograms?</span>
 [[Choices]]
 <span style="font-size:C_FONT_SIZEpx;">I have minimal or no experience with mammograms.</span>
-<span style="font-size:C_FONT_SIZEpx;">Someone I know has undergone a mammography.</span>
-<span style="font-size:C_FONT_SIZEpx;">Someone very close to me has undergone a mammography.</span>
-<span style="font-size:C_FONT_SIZEpx;">I personally have undergone a mammography.</span>
+<span style="font-size:C_FONT_SIZEpx;">Someone I know has undergone a mammogram.</span>
+<span style="font-size:C_FONT_SIZEpx;">Someone very close to me has undergone a mammogram.</span>
+<span style="font-size:C_FONT_SIZEpx;">I personally have undergone a mammogram.</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]

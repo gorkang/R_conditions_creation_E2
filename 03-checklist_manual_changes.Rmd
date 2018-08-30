@@ -381,6 +381,21 @@ tibble(check = "",
   kableME(.)
 ```
 
+### Text entry size  
+
+Reduce text entry size to minimum by dragging the rightmost side all the way to the left.
+
+_Lipkus Numeracy Scale_
+
+```{r, echo=FALSE}
+this <- filter(scale_names, long_name == "lipkus_numeracy_scale")
+
+tibble(check = "",
+       qIDs = paste0(this$short_name, "_", sprintf("%02d", seq(this$no_items)[!seq(this$no_items) %in% c(3,4,5)])), 
+       extra = c("")) %>% 
+  kableME(.)
+```
+
 
 ## Others
 

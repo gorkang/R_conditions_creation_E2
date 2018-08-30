@@ -151,10 +151,38 @@ followup_items <-
   map(~readChar(paste0(followup_path, .x), file.size(paste0(followup_path, .x))))
 
 # Append screening item with follow-up
-complete_item <- 
+complete_item <-
   paste(screening_item_questions, 
         qualtrics_codes$pagebreak,
         followup_items, sep = "\n")
+
+
+# Add severity/emotion scales ---------------------------------------------
+
+# Read questions and add font size html format
+severity_emo_scale <-
+  "materials/Question/severity_emotion/severity_emotional_reaction.txt" %>% 
+  readChar(., file.size(.)) %>% gsub("Q_FONT_SIZE", 22, .) %>% 
+  gsub("C_FONT_SIZE", 16, .) %>% 
+  gsub("\n$", "", .)
+
+# Put question ids
+severity_emo_scale <-
+  severity_emo_scale %>% 
+  str_split(., "\n__QSEP__\n") %>% unlist() %>% 
+  str_replace(string = ., 
+              pattern = "replaceID", 
+              replacement = c(pattern1 = paste0("sevEmo_", sprintf("%02d", 1:5), "_0"))) %>% 
+    paste(., collapse = "\n")
+
+# Bind screening with severity emotion scale
+complete_item <-
+  paste(complete_item, 
+        gsub("block_name", "severity_emotion_scale_0", qualtrics_codes$block_start),
+        severity_emo_scale, 
+        sep = "\n")
+
+# Export ------------------------------------------------------------------
 
 # Output dir
 screening_output_dir <- 

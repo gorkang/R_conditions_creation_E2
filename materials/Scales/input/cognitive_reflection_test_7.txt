@@ -8,6 +8,8 @@ __QSEP__
 [[Choices]]
 <span style="font-size:C_FONT_SIZEpx;">5 cents</span>
 <span style="font-size:C_FONT_SIZEpx;">10 cents</span>
+<span style="font-size:C_FONT_SIZEpx;">9 cents</span>
+<span style="font-size:C_FONT_SIZEpx;">1 cent</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
@@ -15,6 +17,8 @@ __QSEP__
 [[Choices]]
 <span style="font-size:C_FONT_SIZEpx;">5 minutes</span>
 <span style="font-size:C_FONT_SIZEpx;">100 minutes</span>
+<span style="font-size:C_FONT_SIZEpx;">20 minutes</span>
+<span style="font-size:C_FONT_SIZEpx;">500 minutes</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
@@ -22,6 +26,8 @@ __QSEP__
 [[Choices]]
 <span style="font-size:C_FONT_SIZEpx;">47 days</span>
 <span style="font-size:C_FONT_SIZEpx;">24 days</span>
+<span style="font-size:C_FONT_SIZEpx;">12 days</span>
+<span style="font-size:C_FONT_SIZEpx;">36 days</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
@@ -29,6 +35,8 @@ __QSEP__
 [[Choices]]
 <span style="font-size:C_FONT_SIZEpx;">4 days</span>
 <span style="font-size:C_FONT_SIZEpx;">9 days</span>
+<span style="font-size:C_FONT_SIZEpx;">12 days</span>
+<span style="font-size:C_FONT_SIZEpx;">3 days</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
@@ -36,6 +44,8 @@ __QSEP__
 [[Choices]]
 <span style="font-size:C_FONT_SIZEpx;">29 students</span>
 <span style="font-size:C_FONT_SIZEpx;">30 students</span>
+<span style="font-size:C_FONT_SIZEpx;">1 students</span>
+<span style="font-size:C_FONT_SIZEpx;">15 students</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
@@ -43,10 +53,14 @@ __QSEP__
 [[Choices]]
 <span style="font-size:C_FONT_SIZEpx;">20 dollars</span>
 <span style="font-size:C_FONT_SIZEpx;">10 dollars</span>
+<span style="font-size:C_FONT_SIZEpx;">0 dollars</span>
+<span style="font-size:C_FONT_SIZEpx;">30 dollars</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
 <span style="font-size:Q_FONT_SIZEpx;">Simon decided to invest $8,000 in the stock market one day early in 2008. Six months after he invested, on July 17, the stocks he had purchased were down 50%. Fortunately for Simon, from July 17 to October 17, the stocks he had purchased went up 75%. At this point, Simon:</span>
 [[Choices]]
-<span style="font-size:C_FONT_SIZEpx;">has lost money</span>
-<span style="font-size:C_FONT_SIZEpx;">is ahead of where he began</span>
+<span style="font-size:C_FONT_SIZEpx;">has lost money.</span>
+<span style="font-size:C_FONT_SIZEpx;">is ahead of where he began.</span>
+<span style="font-size:C_FONT_SIZEpx;">has broken even in the stock market.</span>
+<span style="font-size:C_FONT_SIZEpx;">it cannot be determined.</span>

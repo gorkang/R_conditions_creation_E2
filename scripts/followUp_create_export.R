@@ -25,7 +25,17 @@ fu_questions <-
   map(~followup_question_builder(file_path = path2fu_raw_questions, 
                                  file_name = .x, 
                                  export = FALSE
-  ))
+  )) %>% unlist()
+# Collapse followup questions (Add pagebreaks)
+fu_questions <- 
+  paste(fu_questions[1], 
+        qualtrics_codes$pagebreak, 
+        paste(fu_questions[2:3], collapse = "\n"), 
+        qualtrics_codes$pagebreak,
+        paste(fu_questions[4:5], collapse = "\n"), 
+        qualtrics_codes$pagebreak,
+        paste(fu_questions[6:7], collapse = "\n"), 
+        sep = "\n")
 
 # 
 unified_fu_questions <-

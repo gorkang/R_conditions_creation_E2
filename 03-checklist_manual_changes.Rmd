@@ -380,3 +380,26 @@ tibble(check = "",
        extra = "") %>%
   kableME(.)
 ```
+
+
+## Others
+
+### Force response & Answer validation
+
+_Previous Experience_
+
+```{r, echo=FALSE}
+tibble(check = "",
+       qIDs = paste0("prevExp", "_", sprintf("%02d", seq(4))), 
+       extra = c("")) %>% 
+  kableME(.)
+```
+
+_Survey Effort_
+
+```{r, echo=FALSE}
+tibble(check = "",
+       qIDs = paste0("eff", "_", sprintf("%02d", seq(2))), 
+       extra = c("")) %>% 
+  kableME(.)
+```

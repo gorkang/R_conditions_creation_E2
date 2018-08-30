@@ -40,7 +40,7 @@ fu_questions <-
 # 
 unified_fu_questions <-
   unified_fu %>% 
-  gsub("\\n\\b", "", .) %>%                                              # remove last linebreak
+  gsub("\\n$", "", .) %>%                                              # remove last linebreak
   gsub("\\n", "<br>", .) %>%                                             # replace remaining linebreaks with html linebreaks
   gsub("QUESTION_TEXT_TO_FORMAT", ., html_codes$question_font_size) %>%  # add html code to follow-up text
   paste(qualtrics_codes$question_only_text,         # paste qualtrics tags with follow-up text and follow-up questions

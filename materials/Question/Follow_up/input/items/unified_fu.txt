@@ -1,6 +1,6 @@
 Remember that:
-<li>${e://Field/prevalence_0}</li>
-<li>In your response to the previous problem you said that, ${e://Field/ppv_response_0} of those with a positive ${e://Field/positive_test_result_0} actually have the medical condition (${e://Field/medical_condition_0}).</li>
+<ul><li>${e://Field/prevalence_0}</li>
+<li>In your response to the previous problem you said that, ${e://Field/ppv_response_0} of those with a positive ${e://Field/positive_test_result_0} actually have the medical condition (${e://Field/medical_condition_0}).</li></ul>
 
 Imagine a woman you care about is participating in a routine screening as the one you saw before to detect a medical condition (${e://Field/medical_condition_0}), and receives a positive ${e://Field/positive_test_result_0}.
 

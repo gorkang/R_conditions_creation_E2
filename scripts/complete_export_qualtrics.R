@@ -40,6 +40,19 @@ create_ED_blocks()
 
 # Create and export trial canvas ------------------------------------------
 
+# Instructions
+gen_instructions <- 
+  "materials/ppv_instructions/input/ppv_instructions.txt" %>% 
+  readChar(., file.size(.)) %>% 
+  gsub("\n$", "", .) %>% 
+  gsub("QUESTION_TEXT_TO_FORMAT", ., html_codes$question_font_size)
+
+gen_instructions <- 
+  gen_instructions %>% 
+  paste(qualtrics_codes$question_only_text, 
+        gsub("question_id", "gen_ins_0", qualtrics_codes$question_id), 
+        ., sep = "\n")
+
 # INTRO TO ITEM
 ED_screening_intro        <- 
   "${e://Field/screening_intro_0}" %>% 
@@ -127,16 +140,19 @@ comprehension <-
 
 # Assemble item with response types
 screening_item_questions <-
-  paste(  screening_item,
-          resp_type_01,
-          resp_type_02,
-          resp_type_03,
-          resp_type_04,
-          qualtrics_codes$pagebreak,
-          will_screening,
-          qualtrics_codes$pagebreak,
-          comprehension,
-          sep = "\n")
+  paste(gsub("block_name", "ppv_screening_0", qualtrics_codes$block_start),
+        gen_instructions,
+        qualtrics_codes$pagebreak,
+        screening_item,
+        resp_type_01,
+        resp_type_02,
+        resp_type_03,
+        resp_type_04,
+        gsub("block_name", "willing_to_screen_0", qualtrics_codes$block_start),
+        will_screening,
+        gsub("block_name", "comprehension_0", qualtrics_codes$block_start),
+        comprehension,
+        sep = "\n")
 
 # Create and export complete trial blocks (PPV + Follow-up) ---------------
 
@@ -151,10 +167,38 @@ followup_items <-
   map(~readChar(paste0(followup_path, .x), file.size(paste0(followup_path, .x))))
 
 # Append screening item with follow-up
-complete_item <- 
+complete_item <-
   paste(screening_item_questions, 
-        qualtrics_codes$pagebreak,
+        gsub("block_name", "follow_up_0", qualtrics_codes$block_start),
         followup_items, sep = "\n")
+
+
+# Add severity/emotion scales ---------------------------------------------
+
+# Read questions and add font size html format
+severity_emo_scale <-
+  "materials/Question/severity_emotion/severity_emotional_reaction.txt" %>% 
+  readChar(., file.size(.)) %>% gsub("Q_FONT_SIZE", 22, .) %>% 
+  gsub("C_FONT_SIZE", 16, .) %>% 
+  gsub("\n$", "", .)
+
+# Put question ids
+severity_emo_scale <-
+  severity_emo_scale %>% 
+  str_split(., "\n__QSEP__\n") %>% unlist() %>% 
+  str_replace(string = ., 
+              pattern = "replaceID", 
+              replacement = c(pattern1 = paste0("sevEmo_", sprintf("%02d", 1:5), "_0"))) %>% 
+    paste(., collapse = "\n")
+
+# Bind screening with severity emotion scale
+complete_item <-
+  paste(complete_item, 
+        gsub("block_name", "severity_emotion_scale_0", qualtrics_codes$block_start),
+        severity_emo_scale, 
+        sep = "\n")
+
+# Export ------------------------------------------------------------------
 
 # Output dir
 screening_output_dir <- 
@@ -191,8 +235,6 @@ complete_screening_block_output_dir <-
 screening_block_output_dir %>% 
   dir(., ".txt") %>% 
   map_chr(~readChar(paste0(screening_block_output_dir, .x), file.size(paste0(screening_block_output_dir, .x)))) %>% 
-  paste(., collapse = paste0("\n", gsub("block_name", "ppv_sceening_block02", qualtrics_codes$block_start), "\n")) %>% 
-  paste(gsub("block_name", "ppv_sceening_block01", qualtrics_codes$block_start), ., sep = "\n") %>% 
   paste(qualtrics_codes$advanced_format, ., sep = "\n") %>% 
   cat(., file = file.path(complete_screening_block_output_dir, "screenings_blocks.txt"))
 

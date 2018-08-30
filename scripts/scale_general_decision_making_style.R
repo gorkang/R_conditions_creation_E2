@@ -24,11 +24,11 @@ item_wrapper <-
 # Choices
 choices <- 
 '[[Choices]]
-<span style="font-size:C_FONT_SIZEpx;">1<br>strongly disagree</span>
+<span style="font-size:C_FONT_SIZEpx;">1<br>strongly<br>disagree</span>
 <span style="font-size:C_FONT_SIZEpx;">2<br> </span>
 <span style="font-size:C_FONT_SIZEpx;">3<br> </span>
 <span style="font-size:C_FONT_SIZEpx;">4<br> </span>
-<span style="font-size:C_FONT_SIZEpx;">5<br>strongly agree</span>'
+<span style="font-size:C_FONT_SIZEpx;">5<br>strongly<br>agree</span>'
 
 # see what's going on.
 # item_wrapper %>% cat()

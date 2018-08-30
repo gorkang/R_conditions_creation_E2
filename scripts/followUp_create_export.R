@@ -25,18 +25,28 @@ fu_questions <-
   map(~followup_question_builder(file_path = path2fu_raw_questions, 
                                  file_name = .x, 
                                  export = FALSE
-  ))
+  )) %>% unlist()
+# Collapse followup questions (Add pagebreaks)
+fu_questions <- 
+  paste(fu_questions[1], 
+        qualtrics_codes$pagebreak, 
+        paste(fu_questions[2:3], collapse = "\n"), 
+        qualtrics_codes$pagebreak,
+        paste(fu_questions[4:5], collapse = "\n"), 
+        qualtrics_codes$pagebreak,
+        paste(fu_questions[6:7], collapse = "\n"), 
+        sep = "\n")
 
 # 
 unified_fu_questions <-
   unified_fu %>% 
-  gsub("\\n\\b", "", .) %>%                                              # remove last linebreak
+  gsub("\\n$", "", .) %>%                                              # remove last linebreak
   gsub("\\n", "<br>", .) %>%                                             # replace remaining linebreaks with html linebreaks
   gsub("QUESTION_TEXT_TO_FORMAT", ., html_codes$question_font_size) %>%  # add html code to follow-up text
   paste(qualtrics_codes$question_only_text,         # paste qualtrics tags with follow-up text and follow-up questions
         questioIDme("fu_ins_0"),
         ., 
-        paste(unlist(fu_questions), collapse = "\n"), sep = "\n")
+        fu_questions, sep = "\n")
 
 # remove linebreak between list elements
 unified_fu_questions %<>% 

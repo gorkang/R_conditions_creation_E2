@@ -55,6 +55,15 @@ for (i in seq(1+length(elements)/2, length(elements))) {
 
 Sys.sleep(3) # give it time
 
+# Refresh for sanity -----------------------------------------------------
+remDr$refresh()
+
+# Get to folder (no permanent name to folder?)
+webElem <- remDr$findElement(using = 'css selector', value = "#Folder_17 .folder-name")
+webElem$clickElement()
+
+Sys.sleep(3) # give it time
+
 # Upload new images -------------------------------------------------------
 
 # Get to folder (no permanent name to folder?)

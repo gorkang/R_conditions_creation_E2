@@ -1,0 +1,1 @@
+Now you will be presented with information about a medical condition and a test to detect it. After that, you will have to answer some questions about the said information.

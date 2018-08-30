@@ -1,17 +1,7 @@
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:fu_Q03_0]]
 [question_start]
-Which factors influenced your recommendation?<br>0: Not at all - 100: A great deal
+How strongly would you recommend her NOT to take the follow-up test?<br>0: Not strongly at all - 100: Very strongly
 [choices_start]
-How informative the screening test is
-[second_choice]
-The need to confirm the diagnosis
-[third_choice]
-How serious the medical condition (${e://Field/medical_condition_0}) is
-[fourth_choice]
-The magnitude of the risk of procedure-related complications of the follow-up test
-[fifth_choice]
-How serious the complications of the follow-up test are
-[sixth_choice]
-Other:
+DELETE_THIS
 [choices_end]

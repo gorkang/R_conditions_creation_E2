@@ -103,7 +103,7 @@ __QSEP__
 <span style="font-size:C_FONT_SIZEpx;">Upper Secondary Education</span>
 <span style="font-size:C_FONT_SIZEpx;">Post-Secondary Non-Tertiary Education</span>
 <span style="font-size:C_FONT_SIZEpx;">Short-Cycle Tertiary Education</span>
-<span style="font-size:C_FONT_SIZEpx;">Bacherlor's or Equivalent level</span>
+<span style="font-size:C_FONT_SIZEpx;">Bachelor's or Equivalent level</span>
 <span style="font-size:C_FONT_SIZEpx;">Master's or Equivalent level</span>
 <span style="font-size:C_FONT_SIZEpx;">Doctoral or Equivalent level</span>
 <span style="font-size:C_FONT_SIZEpx;">Not elsewhere classified</span>

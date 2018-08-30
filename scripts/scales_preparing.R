@@ -37,15 +37,12 @@ source("scripts/scale_probabilistic_reasoning_scale.R")
 source("scripts/scale_risk_avoidance_scale.R")
 # risk_propensity_scale ######################################
 source("scripts/scale_risk_propensity_scale.R")
-# severity_emotional_reaction ################################
-source("scripts/scale_severity_emotional_reaction.R")
 # sociodemographic_scale #####################################
 source("scripts/scale_sociodemographic_scale.R")
 # subjective_numeracy_scale ##################################
 source("scripts/scale_subjective_numeracy_scale.R")
 # tolerance_of_ambiguity #####################################
 source("scripts/scale_tolerance_of_ambiguity.R")
-
 
 # PRINT SCALES (BOOK)
 # this vector with paths set the scales to be printed

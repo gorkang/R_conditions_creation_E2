@@ -280,10 +280,28 @@ source("scripts/scales_preparing.R")
 source("scripts/complete_export_qualtrics.R")
 ```
 
+# Pilot warning
+
+```{r, results='asis', echo=FALSE}
+source("scripts/pilot_warning.R")
+```
+
 # Consent form
 
 ```{r, results='asis', echo=FALSE}
 source("scripts/consent_form.R")
+```
+
+# Scales instructions
+
+```{r, results='asis', echo=FALSE}
+source("scripts/scales_instructions.R")
+```
+
+# Survey effort
+
+```{r, results='asis', echo=FALSE}
+source("scripts/comments.R")
 ```
 
 # Comments

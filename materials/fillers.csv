@@ -10,3 +10,8 @@ medical_consequence,partial mastectomy,miscarriage,followup
 medical_test,mammogram,prenatal test,
 comp_01,breast cancer,Down’s syndrome,
 comp_02,has breast cancer,is pregnant with a fetus with Down's syndrome,
+sevEmo_01,breast cancer,Down’s syndrome,
+sevEmo_02,mastectomy,abortion,
+sevEmo_03,breast cancer,a child with Down’s syndrome,
+sevEmo_04,a mastectomy,an abortion,
+sevEmo_05,has breast cancer,is pregnant with a fetus with Down's syndrome,

@@ -237,8 +237,8 @@ this <- filter(scale_names, long_name == "lipkus_numeracy_scale")
 
 tibble(check = "",
        qIDs = paste0(this$short_name, "_", sprintf("%02d", seq(this$no_items))), 
-       extra = c(rep("Content Validation -> Number", 2), "Content Validation -> Number -> min:0;max:100", rep("", 2), 
-                 "Content Validation -> Number -> min:0;max:100", "Content Validation -> Number", rep("Content Validation -> Number", 2), "Content Validation -> Number -> min:0;max:100",
+       extra = c(rep("Content Validation -> Number", 2), "Content Validation -> Number", rep("", 2), 
+                 "Content Validation -> Number", "", rep("Content Validation -> Number", 2), "Content Validation -> Number",
                  rep("Content Validation -> Number", 1))) %>%
   kableME(.)
 ```

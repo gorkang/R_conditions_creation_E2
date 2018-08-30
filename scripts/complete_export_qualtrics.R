@@ -148,9 +148,9 @@ screening_item_questions <-
         resp_type_02,
         resp_type_03,
         resp_type_04,
-          qualtrics_codes$pagebreak,
+        gsub("block_name", "willing_to_screen_0", qualtrics_codes$block_start),
         will_screening,
-          qualtrics_codes$pagebreak,
+        gsub("block_name", "comprehension_0", qualtrics_codes$block_start),
         comprehension,
         sep = "\n")
 
@@ -169,7 +169,7 @@ followup_items <-
 # Append screening item with follow-up
 complete_item <-
   paste(screening_item_questions, 
-        qualtrics_codes$pagebreak,
+        gsub("block_name", "follow_up_0", qualtrics_codes$block_start),
         followup_items, sep = "\n")
 
 
@@ -235,8 +235,6 @@ complete_screening_block_output_dir <-
 screening_block_output_dir %>% 
   dir(., ".txt") %>% 
   map_chr(~readChar(paste0(screening_block_output_dir, .x), file.size(paste0(screening_block_output_dir, .x)))) %>% 
-  paste(., collapse = paste0("\n", gsub("block_name", "ppv_sceening_block02", qualtrics_codes$block_start), "\n")) %>% 
-  paste(gsub("block_name", "ppv_sceening_block01", qualtrics_codes$block_start), ., sep = "\n") %>% 
   paste(qualtrics_codes$advanced_format, ., sep = "\n") %>% 
   cat(., file = file.path(complete_screening_block_output_dir, "screenings_blocks.txt"))
 

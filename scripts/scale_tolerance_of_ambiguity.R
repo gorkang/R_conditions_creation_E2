@@ -30,12 +30,12 @@ item_wrapper <-
 [[ID:replaceID]]
 <span style="font-size:Q_FONT_SIZEpx;">ITEM</span>
 [[Choices]]
-<span style="font-size:C_FONT_SIZEpx;">Disagree Strongly</span>
-<span style="font-size:C_FONT_SIZEpx;">Disagree Moderately</span>
-<span style="font-size:C_FONT_SIZEpx;">Disagree Slightly</span>
-<span style="font-size:C_FONT_SIZEpx;">Agree Slightly</span>
-<span style="font-size:C_FONT_SIZEpx;">Agree Moderately</span>
-<span style="font-size:C_FONT_SIZEpx;">Agree Strongly</span>'
+<span style="font-size:C_FONT_SIZEpx;">Disagree<br>Strongly</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree<br>Moderately</span>
+<span style="font-size:C_FONT_SIZEpx;">Disagree<br>Slightly</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree<br>Slightly</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree<br>Moderately</span>
+<span style="font-size:C_FONT_SIZEpx;">Agree<br>Strongly</span>'
 # see what's going on.
 # item_wrapper %>% cat()
 

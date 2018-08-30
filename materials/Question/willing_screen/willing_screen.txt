@@ -7,8 +7,14 @@
 [[Choices]]
 <span style="font-size:16px;">Yes</span>
 <span style="font-size:16px;">No</span>
+[[PageBreak]]
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:will_Q02_0]]
 <span style="font-size:22px;">How strongly would you recommend her to take the screening test?<br>0: Not strongly at all - 100: Very strongly</span>
+[[Choices]]
+<span style="font-size:0px;">DELETE_THIS</span>
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:will_Q03_0]]
+<span style="font-size:22px;">How strongly would you recommend her NOT to take the screening test?<br>0: Not strongly at all - 100: Very strongly</span>
 [[Choices]]
 <span style="font-size:0px;">DELETE_THIS</span>

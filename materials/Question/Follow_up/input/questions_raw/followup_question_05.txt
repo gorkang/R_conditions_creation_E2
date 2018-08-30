@@ -1,10 +1,7 @@
-[[PageBreak]]
-[[Question:MC:SingleAnswer:Vertical]]
+[[Question:TE]]
 [[ID:fu_Q05_0]]
 [question_start]
-Remember the biopsy has a ${e://Field/fu_risk_num_0} procedure-related risk of complications:
+Could you briefly explain why do you think she should/shouldn't take the follow up test?
 [choices_start]
-How small this risk should be for you to recommend it (0-100%)
-[second_choice]
-How big this risk should be for you NOT to recommend it (0-100%)
+ 
 [choices_end]

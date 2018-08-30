@@ -40,6 +40,19 @@ create_ED_blocks()
 
 # Create and export trial canvas ------------------------------------------
 
+# Instructions
+gen_instructions <- 
+  "materials/ppv_instructions/input/ppv_instructions.txt" %>% 
+  readChar(., file.size(.)) %>% 
+  gsub("\n$", "", .) %>% 
+  gsub("QUESTION_TEXT_TO_FORMAT", ., html_codes$question_font_size)
+
+gen_instructions <- 
+  gen_instructions %>% 
+  paste(qualtrics_codes$question_only_text, 
+        gsub("question_id", "gen_ins_0", qualtrics_codes$question_id), 
+        ., sep = "\n")
+
 # INTRO TO ITEM
 ED_screening_intro        <- 
   "${e://Field/screening_intro_0}" %>% 
@@ -127,16 +140,19 @@ comprehension <-
 
 # Assemble item with response types
 screening_item_questions <-
-  paste(  screening_item,
-          resp_type_01,
-          resp_type_02,
-          resp_type_03,
-          resp_type_04,
+  paste(gsub("block_name", "ppv_screening_0", qualtrics_codes$block_start),
+        gen_instructions,
+        qualtrics_codes$pagebreak,
+        screening_item,
+        resp_type_01,
+        resp_type_02,
+        resp_type_03,
+        resp_type_04,
           qualtrics_codes$pagebreak,
-          will_screening,
+        will_screening,
           qualtrics_codes$pagebreak,
-          comprehension,
-          sep = "\n")
+        comprehension,
+        sep = "\n")
 
 # Create and export complete trial blocks (PPV + Follow-up) ---------------
 

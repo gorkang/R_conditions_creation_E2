@@ -31,16 +31,10 @@ Independent Variables
     + Fact-box (pictorial)
 
 * Response type
-    + [global-sistemática]    x %  
-    + [global-intuitiva] muy baja, baja, intermedia, alta, muy alta
-    + [secuencial-simple]   x   de cada   y  
-    + [secuencial-guiada]  y   tendrán mamografía + y cáncer.   y   tendrán mamografía + y no cáncer. Por lo tanto,   x   de cada   y   tendrán cáncer
-
-* Riesgo de la prueba diagnóstica
-    + Probabilidad de problemas (Aborto/Infeccion que deriva en necesidad de mastectomia)
-        + Alta (10%)
-        + Baja (1%)
-    + NO vamos a manipular el tipo de problemas (Grave (consecuencias negativas irreversibles), Leve (cierto riesgo de consecuencias negativas reversibles / negligibles))
+    + [global-sistemática]  x %  
+    + [global-intuitiva] muy baja (0-20%), baja ](21-40%), intermedia (41-60%), alta (61-80%), muy alta (81-100%)
+    + [secuencial-simple] x out of y  
+    + [secuencial-guiada] y tendrán mamografía + y cáncer. y tendrán mamografía + y no cáncer. Por lo tanto, x de cada y tendrán cáncer
 
 
 ## Dictionary

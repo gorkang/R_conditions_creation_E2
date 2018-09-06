@@ -12,13 +12,29 @@ github-repo: rstudio/bookdown-demo
 description: "Conditions creation"
 ---
 
-
 ```{r}
 # Clean enviroment
 rm(list = ls(all=TRUE))
 ```
 
-# Experiment design 
+# FDCYT 2017 - Experiment 1
+
+## Design
+
+```{r, results='asis', echo=FALSE}
+design <- "materials/experiment_design/input/experiment_design.txt"
+design <- readChar(design, file.size(design))
+cat(design)
+```
+
+## Outline
+
+```{r, echo=FALSE, results='asis'}
+# source("exp_outline_chart.R") RUN MANUALLY (go to script and execute everything)
+cat("![](materials/experiment_design/output/outline.png)")
+```
+
+## Variables
 
 Independent Variables
 

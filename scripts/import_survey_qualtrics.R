@@ -134,6 +134,17 @@ while (.GlobalEnv$safe_counter != length(ed_blocks)) {
   }
 }
 
+# Experiment description  ------------------------------------------------------------
+
+file_paths <- 
+  file.path(getwd(), "materials/qualtrics/output/plain_text/exp_design/experiment_design.txt")
+
+# Iteration counter
+Q_counter <- 0
+
+# UPLOAD!
+UBER_IMPORT2QUALTRICS_miro(file_paths)
+
 # Pilot warning ------------------------------------------------------------
 
 file_paths <- 

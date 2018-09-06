@@ -12,36 +12,51 @@ github-repo: rstudio/bookdown-demo
 description: "Conditions creation"
 ---
 
-
 ```{r}
 # Clean enviroment
 rm(list = ls(all=TRUE))
 ```
 
-# Experiment design 
+# FDCYT 2017 - Experiment 1
+
+## Design
+
+```{r, results='asis', echo=FALSE}
+design <- "materials/experiment_design/input/experiment_design.txt"
+design <- readChar(design, file.size(design))
+cat(design)
+```
+
+## Outline
+
+```{r, echo=FALSE, results='asis'}
+# source("scripts/exp_outline_chart.R") RUN MANUALLY (go to script and execute everything)
+cat("![](materials/experiment_design/output/outline.png)")
+```
+
+## Variables
 
 Independent Variables
 
-* Presentation format:
-    + Natural frequencies (absolutes)
-    + Probabilities (absolutes)
-    + Probabilities (relatives)
-    + New paradigma
-    + Fact-box
-    + Positive Framework
+* Presentation format (between subjects):
+    + Natural frequencies (absolute)
+    + Probabilities (absolute)
+    + Probabilities (relative)
+    + Positive Framework (absolute)
+    + New paradigm (pictorial)
+    + Fact-box (pictorial)
 
 * Response type
-    + [global-sistemática]    x %  
-    + [global-intuitiva] muy baja, baja, intermedia, alta, muy alta
-    + [secuencial-simple]   x   de cada   y  
-    + [secuencial-guiada]  y   tendrán mamografía + y cáncer.   y   tendrán mamografía + y no cáncer. Por lo tanto,   x   de cada   y   tendrán cáncer
+    + [global-sistemática]  x %  
+    + [global-intuitiva] muy baja (0-20%), baja ](21-40%), intermedia (41-60%), alta (61-80%), muy alta (81-100%)
+    + [secuencial-simple] x out of y  
+    + [secuencial-guiada] y tendrán mamografía + y cáncer. y tendrán mamografía + y no cáncer. Por lo tanto, x de cada y tendrán cáncer
 
-* Riesgo de la prueba diagnóstica
-    + Probabilidad de problemas (Aborto/Infeccion que deriva en necesidad de mastectomia)
-        + Alta (10%)
-        + Baja (1%)
-    + NO vamos a manipular el tipo de problemas (Grave (consecuencias negativas irreversibles), Leve (cierto riesgo de consecuencias negativas reversibles / negligibles))
-
+* Follow-up procedure-related risk
+    + Probability of having a procedure-related problem (abortion/mastectomy)
+        + high (10%)
+        + low (1%)
+    + We're not manipulating what kind of problems resulted from the follow-up test (e.g. severe (irreversible negative consequences), unimportant (some reversible negative consequences))
 
 ## Dictionary
 
@@ -65,6 +80,24 @@ Independent Variables
     + ss: sequential simple
     
     
+## Scales
+
+* A priori screening belief
+* Beck anxiety inventory
+* Big five inventory
+* Cognitive reflection test 7-items multiple choice
+* General decision making style
+* Abbreviated mathematics anxiety rating scale
+* Multiple stimulus types ambiguity tolerance scale II
+* Need for cognition
+* Lipkus numeracy scale
+* Probabilistic reasoning scale
+* Risk avoidance scale
+* Risk_propensity_scale
+* Severity and emotional reaction
+* Sociodemographic scale
+* Subjective numeracy scale
+* Tolerance of ambiguity
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages

@@ -8,6 +8,32 @@ source("functions/remove_placeholders.R")
 source("functions/create_ED_blocks.R")
 source("functions/questionIDme.R")
 
+# Create experiment design block -------------------------------------
+
+# Read text
+exp_design <- 
+  "materials/experiment_design/input/experiment_design.txt" %>% 
+  readChar(., file.size(.)) %>% 
+  gsub("\n$", "", .)
+# Add html font size tag 
+exp_design <- 
+  gsub("QUESTION_TEXT_TO_FORMAT", exp_design, html_codes$question_font_size)
+
+# output dir
+output_dir <- 
+"materials/qualtrics/output/plain_text/exp_design" %T>% 
+  dir.create(., FALSE, TRUE)
+
+# add qualtrics tags
+paste(qualtrics_codes$advanced_format,
+      gsub("block_name", "experiment_design", qualtrics_codes$block_start), 
+      qualtrics_codes$question_only_text,
+      gsub("question_id", "exp_design", qualtrics_codes$question_id), 
+      exp_design, sep = "\n") %>% 
+  # export to text file
+  cat(., file = file.path(output_dir, "experiment_design.txt"))
+
+
 # Create pictorial items (links to imgs) ----------------------------------
 
 # read urls

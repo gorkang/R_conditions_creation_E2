@@ -36,6 +36,11 @@ Independent Variables
     + [secuencial-simple] x out of y  
     + [secuencial-guiada] y tendrán mamografía + y cáncer. y tendrán mamografía + y no cáncer. Por lo tanto, x de cada y tendrán cáncer
 
+* Follow-up procedure-related risk
+    + Probability of having a procedure-related problem (abortion/mastectomy)
+        + high (10%)
+        + low (1%)
+    + We're not manipulating what kind of problems resulted from the follow-up test (e.g. severe (irreversible negative consequences), unimportant (some reversible negative consequences))
 
 ## Dictionary
 

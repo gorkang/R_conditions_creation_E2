@@ -30,7 +30,7 @@ cat(design)
 ## Outline
 
 ```{r, echo=FALSE, results='asis'}
-# source("exp_outline_chart.R") RUN MANUALLY (go to script and execute everything)
+# source("scripts/exp_outline_chart.R") RUN MANUALLY (go to script and execute everything)
 cat("![](materials/experiment_design/output/outline.png)")
 ```
 

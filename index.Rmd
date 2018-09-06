@@ -65,6 +65,24 @@ Independent Variables
     + ss: sequential simple
     
     
+## Scales
+
+* A priori screening belief
+* Beck anxiety inventory
+* Big five inventory
+* Cognitive reflection test 7-items multiple choice
+* General decision making style
+* Abbreviated mathematics anxiety rating scale
+* Multiple stimulus types ambiguity tolerance scale II
+* Need for cognition
+* Lipkus numeracy scale
+* Probabilistic reasoning scale
+* Risk avoidance scale
+* Risk_propensity_scale
+* Severity and emotional reaction
+* Sociodemographic scale
+* Subjective numeracy scale
+* Tolerance of ambiguity
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages

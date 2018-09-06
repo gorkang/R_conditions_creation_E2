@@ -22,13 +22,13 @@ rm(list = ls(all=TRUE))
 
 Independent Variables
 
-* Presentation format:
-    + Natural frequencies (absolutes)
-    + Probabilities (absolutes)
-    + Probabilities (relatives)
-    + New paradigma
-    + Fact-box
-    + Positive Framework
+* Presentation format (between subjects):
+    + Natural frequencies (absolute)
+    + Probabilities (absolute)
+    + Probabilities (relative)
+    + Positive Framework (absolute)
+    + New paradigm (pictorial)
+    + Fact-box (pictorial)
 
 * Response type
     + [global-sistemática]    x %  

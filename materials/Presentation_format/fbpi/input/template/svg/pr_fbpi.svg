@@ -14,8 +14,8 @@
    viewBox="0 0 743.05068 516.35601"
    id="svg2"
    version="1.1"
-   inkscape:version="0.91 r13725"
-   sodipodi:docname="fbpi_pr.svg">
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="pr_fbpi.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -26,7 +26,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="359.71882"
+     inkscape:cx="239.71882"
      inkscape:cy="226.49052"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -36,10 +36,10 @@
      fit-margin-right="3"
      fit-margin-bottom="3"
      inkscape:snap-text-baseline="false"
-     inkscape:window-width="1301"
-     inkscape:window-height="744"
-     inkscape:window-x="65"
-     inkscape:window-y="24"
+     inkscape:window-width="2560"
+     inkscape:window-height="1385"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata7">
@@ -319,7 +319,7 @@
            x="6.0609155"
            y="4.1972017" /></flowRegion><flowPara
          id="flowPara3353-2"
-         style="font-weight:bold;font-size:18.75px;line-height:1.25">by prenatal screening test</flowPara></flowRoot>    <flowRoot
+         style="font-weight:bold;font-size:18.75px;line-height:1.25">by prenatal screening</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3347-3-9"
        style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -331,7 +331,7 @@
            x="6.0609155"
            y="4.1972017" /></flowRegion><flowPara
          id="flowPara3353-2-7"
-         style="font-weight:normal;font-size:15px;line-height:1.25">Numbers for women aged 40 years or older* who did or did not participate in prenatal screening tests during 10 years.</flowPara></flowRoot>    <flowRoot
+         style="font-weight:normal;font-size:15px;line-height:1.25">Numbers for women aged 40 years or older* who did or did not participate in prenatal screening during their pregnancy.</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3347-3-9-0"
        style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -343,7 +343,9 @@
            x="6.0609155"
            y="4.1972017" /></flowRegion><flowPara
          style="font-weight:bold;font-size:13.125px;line-height:1.25"
-         id="flowPara3479">Prenatal screening tests reduced the number of fetuses who died from amniocentesis complications. However, it had no effect on overall fetuses deaths. Among all women taking part in screening, some women's fetuses were overdiagnosed with other trisomies and undergo unnecessary follow up tests.</flowPara></flowRoot>    <flowRoot
+         id="flowPara3479">Prenatal screening reduced the number of fetuses who were born with Trisomy 21 (Down syndrome). However, it had no effect on overall number of trisomies. Among all women taking part in screening, some women's healthy fetuses were overdiagnosed with nonexistent trisomies, and went through unnecessary follow-up tests or had a procedure-related abortion.</flowPara><flowPara
+         style="font-weight:bold;font-size:13.125px;line-height:1.25"
+         id="flowPara4648" /></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3347-3-9-0-1"
        style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -367,7 +369,7 @@
            x="6.0609155"
            y="4.1972017" /></flowRegion><flowPara
          style="font-weight:bold;font-size:13.75px;line-height:1.25;text-align:center;text-anchor:middle"
-         id="flowPara3479-2-5"></flowPara><flowPara
+         id="flowPara3479-2-5"> </flowPara><flowPara
          style="font-weight:bold;font-size:13.75px;line-height:1.25;text-align:center;text-anchor:middle"
          id="flowPara3462">without screening</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
@@ -381,7 +383,7 @@
            x="6.0609155"
            y="4.1972017" /></flowRegion><flowPara
          style="font-weight:bold;font-size:13.75px;line-height:1.25;text-align:center;text-anchor:middle"
-         id="flowPara3479-2-5-8"></flowPara><flowPara
+         id="flowPara3479-2-5-8"> </flowPara><flowPara
          style="font-weight:bold;font-size:13.75px;line-height:1.25;text-align:center;text-anchor:middle"
          id="flowPara3464">with screening</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
@@ -395,7 +397,7 @@
            x="6.0609155"
            y="4.1972017" /></flowRegion><flowPara
          style="font-weight:normal;font-size:12.5px;line-height:1.25"
-         id="flowPara3479-2-6">How many women's fetuses with Down syndrom were detected?</flowPara></flowRoot>    <flowRoot
+         id="flowPara3479-2-6">How many women's fetuses with Trisomy 21 were born?</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3347-3-9-0-1-9-1"
        style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -407,7 +409,7 @@
            x="6.0609155"
            y="4.1972017" /></flowRegion><flowPara
          style="font-weight:normal;font-size:12.5px;line-height:1.25"
-         id="flowPara3479-2-6-7">How many women's fetuses with any Trisomy were detected?</flowPara></flowRoot>    <flowRoot
+         id="flowPara3479-2-6-7">How many women's fetuses with any Trisomy were born?</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3347-3-9-0-1-8"
        style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -443,7 +445,7 @@
            x="6.0609155"
            y="4.1972017" /></flowRegion><flowPara
          style="font-weight:normal;font-size:12.5px;line-height:1.25"
-         id="flowPara3479-2-6-7-0">How many women's fetuses without trisomy 21 had a procedure related abortion?</flowPara></flowRoot>    <flowRoot
+         id="flowPara3479-2-6-7-0">How many women's fetuses without Trisomy 21 had a procedure-related abortion?</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3347-3-9-0-1-8-6"
        style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"

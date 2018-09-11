@@ -1,6 +1,6 @@
 [[Question:Text]]
 [[ID:will_ins_0]]
-<span style="font-size:22px;">Imagine a ${e://Field/woman_age_0} years old woman you care about is offered to participate in the routine ${e://Field/medical_test_0} screening to detect ${e://Field/medical_condition_0} you just saw.</span>
+<span style="font-size:22px;">Imagine a ${e://Field/woman_age_0} year old woman you care about is offered to participate in the routine ${e://Field/medical_test_0} screening to detect ${e://Field/medical_condition_0} you just saw.</span>
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:will_Q01_0]]
 <span style="font-size:22px;">Should she take the screening test?</span>

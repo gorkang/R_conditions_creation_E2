@@ -51,6 +51,10 @@ fu_risk <- readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>%
   gsub("\\$\\{e\\://Field/fluid_test_0\\}",           fillers$ca_pr[fillers$field_name == "fluid_test"], .) %>% 
   gsub("\\$\\{e\\://Field/test_name_0\\}",            fillers$ca_pr[fillers$field_name == "test_name"], .) %>% 
   
+  gsub("\\$\\{e\\://Field/prevalence_0\\}",           random_prevalence, .) %>%  # Prevalence
+  gsub("\\$\\{e\\://Field/ppv_response_0\\}",         random_answer, .) %>%  # Example answer
+  
+  
   # Double linebreaks because bookdown displaying is weird (one linebreak doesn't work, two linebreaks actually creates two linebreaks)
   gsub("\\n", "\n\n", .) %>% 
   cat(., "  \n  \n ______________________  \n")

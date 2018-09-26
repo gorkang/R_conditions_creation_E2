@@ -26,6 +26,11 @@ display_item(c("ca", "nppi", "low", "gs"))
 ## Willing to screen  
 
 ```{r, results='asis', echo=FALSE}
+# fillers
+woman_age <- numbers_nppi$age %>% paste(., collapse = "/")
+medical_test <- filter(fillers, field_name == "medical_test") %>% select("ca", "pr") %>% paste(., collapse = "/")
+medical_condition <- filter(fillers, field_name == "medical_condition") %>% select("ca", "pr") %>% paste(., collapse = "/")
+
 will_screening <- 
   "materials/Question/willing_screen/willing_screen.txt" %>% 
   readChar(., file.size(.))

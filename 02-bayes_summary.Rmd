@@ -43,6 +43,13 @@ will_screening %>%
     gsub("\\[{2}Choices\\]{2}\\n", "", .) %>%  # remove choices qualtrics format 
     gsub("\\n", "\n\n", .) %>% # double linebreaks because bookdown is weird
     gsub("DELETE_THIS", "", .) %>%  # remove DELETE_THIS
+    
+  
+  # Fillers
+  gsub("\\$.*?woman_age_0\\}", woman_age, .) %>% 
+  gsub("\\$.*?medical_test_0\\}", medical_test, .) %>% 
+  gsub("\\$.*?medical_condition_0\\}", medical_condition, .) %>% 
+  
 cat()
 ```
 

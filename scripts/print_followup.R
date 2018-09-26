@@ -3,6 +3,12 @@
 source("scripts/create_pictorial_prevalences.R")
 ###############################################
 
+# Read prevalences
+prevalences <- 
+  "materials/qualtrics/output/plain_text/prevalences" %>% 
+  dir(., ".txt", full.names = TRUE) %>% 
+  map_chr(~readChar(.x, file.size(.x)))
+
 # To fill ED data fields
 fillers <- read_csv("materials/fillers.csv", col_types = "cccc") %>% 
   mutate(ca_pr = paste(ca, pr, sep = "/"))
@@ -42,7 +48,5 @@ fu_risk <- readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>%
   cat(., "  \n  \n ______________________  \n")
 
 # Print prevalences
-"materials/qualtrics/output/plain_text/prevalences/" %>% dir(., ".txt", full.names = TRUE) %>% 
-  map_chr(~readChar(.x, file.size(.x))) %>% 
   gsub("([a-z]\\*{2})", "\\1: ", .) %>% cat("**PREVALENCES**:  \n", ., sep = "  \n")
 

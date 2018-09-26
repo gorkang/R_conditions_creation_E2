@@ -60,5 +60,6 @@ fu_risk <- readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>%
   cat(., "  \n  \n ______________________  \n")
 
 # Print prevalences
+prevalences %>% 
   gsub("([a-z]\\*{2})", "\\1: ", .) %>% cat("**PREVALENCES**:  \n", ., sep = "  \n")
 

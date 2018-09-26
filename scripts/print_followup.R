@@ -11,6 +11,12 @@ prevalences <-
 
 # example of possible answers to put on follow up display (Probably a good idea to check is this answers make any sense)
 example_answer <- c("20", "11%")
+# get a prevalence randomly
+random_prevalence <- prevalences[round(runif(1, 1, length(prevalences)))] %>% gsub("\\*{2}.*?\\*{2}", "", .)
+# get example answer according to selected prevalence (check if probability format or natural frequencies)
+random_answer <- case_when(!grepl("_pr[a-z]{2}_", random_prevalence) ~ example_answer[1],
+                           grepl("_pr[a-z]{2}_", random_prevalence) ~ example_answer[2])
+
 # To fill ED data fields
 fillers <- read_csv("materials/fillers.csv", col_types = "cccc") %>% 
   mutate(ca_pr = paste(ca, pr, sep = "/"))

@@ -62,9 +62,8 @@ comp_02 <- filter(fillers, field_name == "comp_02") %>% select("ca", "pr") %>% p
   gsub("\\$.*?comp_01_0\\}", comp_01, .) %>% 
   gsub("\\$.*?comp_02_0\\}", comp_02, .) %>% 
   
+  # print
   cat()
-
-
 ```
 
 ## Follow-up

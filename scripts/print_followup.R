@@ -9,6 +9,8 @@ prevalences <-
   dir(., ".txt", full.names = TRUE) %>% 
   map_chr(~readChar(.x, file.size(.x)))
 
+# example of possible answers to put on follow up display (Probably a good idea to check is this answers make any sense)
+example_answer <- c("20", "11%")
 # To fill ED data fields
 fillers <- read_csv("materials/fillers.csv", col_types = "cccc") %>% 
   mutate(ca_pr = paste(ca, pr, sep = "/"))

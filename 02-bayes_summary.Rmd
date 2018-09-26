@@ -59,6 +59,8 @@ comp_02 <- filter(fillers, field_name == "comp_02") %>% select("ca", "pr") %>% p
   gsub("\n", "  \n", .) %>% # add two empty spaces to format linebreaks in markdown
   
   # Fill placeholders
+  gsub("\\$.*?comp_01_0\\}", comp_01, .) %>% 
+  gsub("\\$.*?comp_02_0\\}", comp_02, .) %>% 
   
   cat()
 

@@ -13,22 +13,22 @@ short_name <- this_scale$short_name
 # qualtrics tags template to wrapp around
 # Instructions
 ins_wrapper <- 
-'[[Question:Text]]
+"[[Question:Text]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">ITEM</span>'
+<span style='font-size:Q_FONT_SIZEpx;'>ITEM</span>"
 # Items
 item_wrapper <- 
-'[[Question:MC:SingleAnswer:Horizontal]]
+"[[Question:MC:SingleAnswer:Horizontal]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">ITEM</span>'
+<span style='font-size:Q_FONT_SIZEpx;'>ITEM</span>"
 # Choices
 choices <- 
-'[[Choices]]
-<span style="font-size:C_FONT_SIZEpx;">1<br>strongly<br>disagree</span>
-<span style="font-size:C_FONT_SIZEpx;">2<br> </span>
-<span style="font-size:C_FONT_SIZEpx;">3<br> </span>
-<span style="font-size:C_FONT_SIZEpx;">4<br> </span>
-<span style="font-size:C_FONT_SIZEpx;">5<br>strongly<br>agree</span>'
+"[[Choices]]
+<span style='font-size:C_FONT_SIZEpx;'>1<br>strongly<br>disagree</span>
+<span style='font-size:C_FONT_SIZEpx;'>2<br> </span>
+<span style='font-size:C_FONT_SIZEpx;'>3<br> </span>
+<span style='font-size:C_FONT_SIZEpx;'>4<br> </span>
+<span style='font-size:C_FONT_SIZEpx;'>5<br>strongly<br>agree</span>"
 
 # see what's going on.
 # item_wrapper %>% cat()

@@ -1,66 +1,66 @@
 [[Question:Text]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">You will see several items that vary in difficulty. Answer them the best you can.</span>
+<span style='font-size:Q_FONT_SIZEpx;'>You will see several items that vary in difficulty. Answer them the best you can.</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost?</span>
+<span style='font-size:Q_FONT_SIZEpx;'>A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost?</span>
 [[Choices]]
-<span style="font-size:C_FONT_SIZEpx;">5 cents</span>
-<span style="font-size:C_FONT_SIZEpx;">10 cents</span>
-<span style="font-size:C_FONT_SIZEpx;">9 cents</span>
-<span style="font-size:C_FONT_SIZEpx;">1 cent</span>
+<span style='font-size:C_FONT_SIZEpx;'>5 cents</span>
+<span style='font-size:C_FONT_SIZEpx;'>10 cents</span>
+<span style='font-size:C_FONT_SIZEpx;'>9 cents</span>
+<span style='font-size:C_FONT_SIZEpx;'>1 cent</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">If it takes 5 machines 5 minutes to make 5 widgets, how long would it take 100 machines to make 100 widgets?</span>
+<span style='font-size:Q_FONT_SIZEpx;'>If it takes 5 machines 5 minutes to make 5 widgets, how long would it take 100 machines to make 100 widgets?</span>
 [[Choices]]
-<span style="font-size:C_FONT_SIZEpx;">5 minutes</span>
-<span style="font-size:C_FONT_SIZEpx;">100 minutes</span>
-<span style="font-size:C_FONT_SIZEpx;">20 minutes</span>
-<span style="font-size:C_FONT_SIZEpx;">500 minutes</span>
+<span style='font-size:C_FONT_SIZEpx;'>5 minutes</span>
+<span style='font-size:C_FONT_SIZEpx;'>100 minutes</span>
+<span style='font-size:C_FONT_SIZEpx;'>20 minutes</span>
+<span style='font-size:C_FONT_SIZEpx;'>500 minutes</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">In a lake, there is a patch of lily pads. Every day, the patch doubles in size. If it takes 48 days for the patch to cover the entire lake, how long would it take for the patch to cover half of the lake?</span>
+<span style='font-size:Q_FONT_SIZEpx;'>In a lake, there is a patch of lily pads. Every day, the patch doubles in size. If it takes 48 days for the patch to cover the entire lake, how long would it take for the patch to cover half of the lake?</span>
 [[Choices]]
-<span style="font-size:C_FONT_SIZEpx;">47 days</span>
-<span style="font-size:C_FONT_SIZEpx;">24 days</span>
-<span style="font-size:C_FONT_SIZEpx;">12 days</span>
-<span style="font-size:C_FONT_SIZEpx;">36 days</span>
+<span style='font-size:C_FONT_SIZEpx;'>47 days</span>
+<span style='font-size:C_FONT_SIZEpx;'>24 days</span>
+<span style='font-size:C_FONT_SIZEpx;'>12 days</span>
+<span style='font-size:C_FONT_SIZEpx;'>36 days</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">If John can drink one barrel of water in 6 days, and Mary can drink one barrel of water in 12 days, how long would it take them to drink one barrel of water together?</span>
+<span style='font-size:Q_FONT_SIZEpx;'>If John can drink one barrel of water in 6 days, and Mary can drink one barrel of water in 12 days, how long would it take them to drink one barrel of water together?</span>
 [[Choices]]
-<span style="font-size:C_FONT_SIZEpx;">4 days</span>
-<span style="font-size:C_FONT_SIZEpx;">9 days</span>
-<span style="font-size:C_FONT_SIZEpx;">12 days</span>
-<span style="font-size:C_FONT_SIZEpx;">3 days</span>
+<span style='font-size:C_FONT_SIZEpx;'>4 days</span>
+<span style='font-size:C_FONT_SIZEpx;'>9 days</span>
+<span style='font-size:C_FONT_SIZEpx;'>12 days</span>
+<span style='font-size:C_FONT_SIZEpx;'>3 days</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">Jerry received both the 15th highest and the 15th lowest mark in the class. How many students are in the class?</span>
+<span style='font-size:Q_FONT_SIZEpx;'>Jerry received both the 15th highest and the 15th lowest mark in the class. How many students are in the class?</span>
 [[Choices]]
-<span style="font-size:C_FONT_SIZEpx;">29 students</span>
-<span style="font-size:C_FONT_SIZEpx;">30 students</span>
-<span style="font-size:C_FONT_SIZEpx;">1 students</span>
-<span style="font-size:C_FONT_SIZEpx;">15 students</span>
+<span style='font-size:C_FONT_SIZEpx;'>29 students</span>
+<span style='font-size:C_FONT_SIZEpx;'>30 students</span>
+<span style='font-size:C_FONT_SIZEpx;'>1 students</span>
+<span style='font-size:C_FONT_SIZEpx;'>15 students</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">A man buys a pig for $60, sells it for $70, buys it back for $80, and sells it finally for $90. How much has he made?</span>
+<span style='font-size:Q_FONT_SIZEpx;'>A man buys a pig for $60, sells it for $70, buys it back for $80, and sells it finally for $90. How much has he made?</span>
 [[Choices]]
-<span style="font-size:C_FONT_SIZEpx;">20 dollars</span>
-<span style="font-size:C_FONT_SIZEpx;">10 dollars</span>
-<span style="font-size:C_FONT_SIZEpx;">0 dollars</span>
-<span style="font-size:C_FONT_SIZEpx;">30 dollars</span>
+<span style='font-size:C_FONT_SIZEpx;'>20 dollars</span>
+<span style='font-size:C_FONT_SIZEpx;'>10 dollars</span>
+<span style='font-size:C_FONT_SIZEpx;'>0 dollars</span>
+<span style='font-size:C_FONT_SIZEpx;'>30 dollars</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">Simon decided to invest $8,000 in the stock market one day early in 2008.  Six months after he invested, on July 17, the stocks he had purchased were down 50%. Fortunately for Simon, from July 17 to October 17, the stocks he had purchased went up 75%. At this point, Simon:</span>
+<span style='font-size:Q_FONT_SIZEpx;'>Simon decided to invest $8,000 in the stock market one day early in 2008.  Six months after he invested, on July 17, the stocks he had purchased were down 50%. Fortunately for Simon, from July 17 to October 17, the stocks he had purchased went up 75%. At this point, Simon:</span>
 [[Choices]]
-<span style="font-size:C_FONT_SIZEpx;">has lost money.</span>
-<span style="font-size:C_FONT_SIZEpx;">is ahead of where he began.</span>
-<span style="font-size:C_FONT_SIZEpx;">has broken even in the stock market.</span>
-<span style="font-size:C_FONT_SIZEpx;">it cannot be determined.</span>
+<span style='font-size:C_FONT_SIZEpx;'>has lost money.</span>
+<span style='font-size:C_FONT_SIZEpx;'>is ahead of where he began.</span>
+<span style='font-size:C_FONT_SIZEpx;'>has broken even in the stock market.</span>
+<span style='font-size:C_FONT_SIZEpx;'>it cannot be determined.</span>

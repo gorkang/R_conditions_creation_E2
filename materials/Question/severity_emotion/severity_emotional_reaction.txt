@@ -1,43 +1,43 @@
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">Please rate ${e://Field/sevEmo_01_0} in the following dimensions:<br>0: Not at all - 100: Most certainly</span>
+<span style='font-size:Q_FONT_SIZEpx;'>Please rate ${e://Field/sevEmo_01_0} in the following dimensions:<br>0: Not at all - 100: Most certainly</span>
 [[Choices]]
-<span style="font-size:C_FONT_SIZEpx;">Severe</span>
-<span style="font-size:C_FONT_SIZEpx;">Serious</span>
-<span style="font-size:C_FONT_SIZEpx;">Unpleasant</span>
-<span style="font-size:C_FONT_SIZEpx;">Horrible</span>
+<span style='font-size:C_FONT_SIZEpx;'>Severe</span>
+<span style='font-size:C_FONT_SIZEpx;'>Serious</span>
+<span style='font-size:C_FONT_SIZEpx;'>Unpleasant</span>
+<span style='font-size:C_FONT_SIZEpx;'>Horrible</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">Please rate ${e://Field/sevEmo_02_0} in the following dimensions:<br>0: Not at all - 100: Most certainly</span>
+<span style='font-size:Q_FONT_SIZEpx;'>Please rate ${e://Field/sevEmo_02_0} in the following dimensions:<br>0: Not at all - 100: Most certainly</span>
 [[Choices]]
-<span style="font-size:C_FONT_SIZEpx;">Severe</span>
-<span style="font-size:C_FONT_SIZEpx;">Serious</span>
-<span style="font-size:C_FONT_SIZEpx;">Unpleasant</span>
-<span style="font-size:C_FONT_SIZEpx;">Horrible</span>
+<span style='font-size:C_FONT_SIZEpx;'>Severe</span>
+<span style='font-size:C_FONT_SIZEpx;'>Serious</span>
+<span style='font-size:C_FONT_SIZEpx;'>Unpleasant</span>
+<span style='font-size:C_FONT_SIZEpx;'>Horrible</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">To what extent would you feel the following if a woman you care about had ${e://Field/sevEmo_03_0}?<br>0: Not at all - 100: Most certainly</span>
+<span style='font-size:Q_FONT_SIZEpx;'>To what extent would you feel the following if a woman you care about had ${e://Field/sevEmo_03_0}?<br>0: Not at all - 100: Most certainly</span>
 [[Choices]]
-<span style="font-size:C_FONT_SIZEpx;">Afraid</span>
-<span style="font-size:C_FONT_SIZEpx;">Worried</span>
-<span style="font-size:C_FONT_SIZEpx;">Angry</span>
-<span style="font-size:C_FONT_SIZEpx;">Hopeful</span>
-<span style="font-size:C_FONT_SIZEpx;">Calm</span>
+<span style='font-size:C_FONT_SIZEpx;'>Afraid</span>
+<span style='font-size:C_FONT_SIZEpx;'>Worried</span>
+<span style='font-size:C_FONT_SIZEpx;'>Angry</span>
+<span style='font-size:C_FONT_SIZEpx;'>Hopeful</span>
+<span style='font-size:C_FONT_SIZEpx;'>Calm</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">To what extent would you feel the following if a woman you care about had ${e://Field/sevEmo_04_0}?<br>0: Not at all - 100: Most certainly</span>
+<span style='font-size:Q_FONT_SIZEpx;'>To what extent would you feel the following if a woman you care about had ${e://Field/sevEmo_04_0}?<br>0: Not at all - 100: Most certainly</span>
 [[Choices]]
-<span style="font-size:C_FONT_SIZEpx;">Afraid</span>
-<span style="font-size:C_FONT_SIZEpx;">Worried</span>
-<span style="font-size:C_FONT_SIZEpx;">Angry</span>
-<span style="font-size:C_FONT_SIZEpx;">Hopeful</span>
-<span style="font-size:C_FONT_SIZEpx;">Calm</span>
+<span style='font-size:C_FONT_SIZEpx;'>Afraid</span>
+<span style='font-size:C_FONT_SIZEpx;'>Worried</span>
+<span style='font-size:C_FONT_SIZEpx;'>Angry</span>
+<span style='font-size:C_FONT_SIZEpx;'>Hopeful</span>
+<span style='font-size:C_FONT_SIZEpx;'>Calm</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">To what extent would you recommend ${e://Field/sevEmo_04_0} to a woman you care about that ${e://Field/sevEmo_05_0}?<br>0: Not at all - 100: Most certainly</span>
+<span style='font-size:Q_FONT_SIZEpx;'>To what extent would you recommend ${e://Field/sevEmo_04_0} to a woman you care about that ${e://Field/sevEmo_05_0}?<br>0: Not at all - 100: Most certainly</span>
 [[Choices]]
-<span style="font-size:0px;">this_is_not_here</span>
+<span style='font-size:0px;'>this_is_not_here</span>

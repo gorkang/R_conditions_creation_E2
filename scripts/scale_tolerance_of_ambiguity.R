@@ -23,19 +23,19 @@ short_name <- this_scale$short_name
 # Qualtrics tags template to wrapp around
 # Instructions
 ins_wrapper <- 
-  '[[Question:Text]]\n[[ID:replaceID]]\n<span style="font-size:Q_FONT_SIZEpx;">ITEM</span>'
+  "[[Question:Text]]\n[[ID:replaceID]]\n<span style='font-size:Q_FONT_SIZEpx;'>ITEM</span>"
 # Items
 item_wrapper <- 
-  '[[Question:MC:SingleAnswer:Horizontal]]
+  "[[Question:MC:SingleAnswer:Horizontal]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">ITEM</span>
+<span style='font-size:Q_FONT_SIZEpx;'>ITEM</span>
 [[Choices]]
-<span style="font-size:C_FONT_SIZEpx;">Disagree<br>Strongly</span>
-<span style="font-size:C_FONT_SIZEpx;">Disagree<br>Moderately</span>
-<span style="font-size:C_FONT_SIZEpx;">Disagree<br>Slightly</span>
-<span style="font-size:C_FONT_SIZEpx;">Agree<br>Slightly</span>
-<span style="font-size:C_FONT_SIZEpx;">Agree<br>Moderately</span>
-<span style="font-size:C_FONT_SIZEpx;">Agree<br>Strongly</span>'
+<span style='font-size:C_FONT_SIZEpx;'>Disagree<br>Strongly</span>
+<span style='font-size:C_FONT_SIZEpx;'>Disagree<br>Moderately</span>
+<span style='font-size:C_FONT_SIZEpx;'>Disagree<br>Slightly</span>
+<span style='font-size:C_FONT_SIZEpx;'>Agree<br>Slightly</span>
+<span style='font-size:C_FONT_SIZEpx;'>Agree<br>Moderately</span>
+<span style='font-size:C_FONT_SIZEpx;'>Agree<br>Strongly</span>"
 # see what's going on.
 # item_wrapper %>% cat()
 

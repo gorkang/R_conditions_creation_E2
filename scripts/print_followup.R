@@ -3,6 +3,20 @@
 source("scripts/create_pictorial_prevalences.R")
 ###############################################
 
+# Read prevalences
+prevalences <- 
+  "materials/qualtrics/output/plain_text/prevalences" %>% 
+  dir(., ".txt", full.names = TRUE) %>% 
+  map_chr(~readChar(.x, file.size(.x)))
+
+# example of possible answers to put on follow up display (Probably a good idea to check is this answers make any sense)
+example_answer <- c("20", "11%")
+# get a prevalence randomly
+random_prevalence <- prevalences[round(runif(1, 1, length(prevalences)))] %>% gsub("\\*{2}.*?\\*{2}", "", .)
+# get example answer according to selected prevalence (check if probability format or natural frequencies)
+random_answer <- case_when(!grepl("_pr[a-z]{2}_", random_prevalence) ~ example_answer[1],
+                           grepl("_pr[a-z]{2}_", random_prevalence) ~ example_answer[2])
+
 # To fill ED data fields
 fillers <- read_csv("materials/fillers.csv", col_types = "cccc") %>% 
   mutate(ca_pr = paste(ca, pr, sep = "/"))
@@ -37,12 +51,15 @@ fu_risk <- readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>%
   gsub("\\$\\{e\\://Field/fluid_test_0\\}",           fillers$ca_pr[fillers$field_name == "fluid_test"], .) %>% 
   gsub("\\$\\{e\\://Field/test_name_0\\}",            fillers$ca_pr[fillers$field_name == "test_name"], .) %>% 
   
+  gsub("\\$\\{e\\://Field/prevalence_0\\}",           random_prevalence, .) %>%  # Prevalence
+  gsub("\\$\\{e\\://Field/ppv_response_0\\}",         random_answer, .) %>%  # Example answer
+  
+  
   # Double linebreaks because bookdown displaying is weird (one linebreak doesn't work, two linebreaks actually creates two linebreaks)
   gsub("\\n", "\n\n", .) %>% 
   cat(., "  \n  \n ______________________  \n")
 
 # Print prevalences
-"materials/qualtrics/output/plain_text/prevalences/" %>% dir(., ".txt", full.names = TRUE) %>% 
-  map_chr(~readChar(.x, file.size(.x))) %>% 
+prevalences %>% 
   gsub("([a-z]\\*{2})", "\\1: ", .) %>% cat("**PREVALENCES**:  \n", ., sep = "  \n")
 

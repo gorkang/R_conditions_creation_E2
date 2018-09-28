@@ -86,9 +86,6 @@ source("scripts/print_followup.R")
 ## Breast cancer/Trisomy 21 Severity-emotion Scale
 ```{r, results='asis', echo=FALSE}
 # PRINT SCALES (BOOK)
-# this vector with paths set the scales to be printed
-scales2print <- c("materials/qualtrics/output/plain_text/scales/severity_emotion/partial") 
 
-source("scripts/print_scales.R")
 ```
 

@@ -8,7 +8,7 @@ cat("![](bayesian_reasoning_flowchart.png)")
 ```{r, results='asis', echo=FALSE}
 # PRINT SCALES (BOOK)
 # this vector with paths set the scales to be printed
-scales2print <- c("materials/qualtrics/output/plain_text/scales/apriori_belief/") 
+scales2print <- c("materials/qualtrics/output/plain_text/scales/a_priori_screening_belief") 
 
 source("scripts/print_scales.R")
 ```

@@ -87,5 +87,19 @@ source("scripts/print_followup.R")
 ```{r, results='asis', echo=FALSE}
 # PRINT SCALES (BOOK)
 
+# FILLERS
+# Keep severity emotion scale fillers
+fillers_sevEmo <-
+  fillers %>% 
+  filter(grepl("sevEmo", field_name)) %>% 
+  mutate(ca_pr = paste(ca, pr, sep = "/")) %>% 
+  select(field_name, ca_pr)
+# create objects with fillers
+for (i in seq(nrow(fillers_sevEmo))) {
+  assign(x = pull(fillers_sevEmo[i, "field_name"]), 
+         value = pull(fillers_sevEmo[i, "ca_pr"]), 
+         envir = .GlobalEnv)
+}
+
 ```
 

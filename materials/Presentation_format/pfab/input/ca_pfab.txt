@@ -1,5 +1,5 @@
 [first_piece]
-Women with breast cancer who undergo the test have all_positive chances out of prev_02 of having a positive result.
+Women with breast cancer who undergo the test have all_positive chances out of prev_02 of having a positive mammogram.
 [second_piece]
 In hit_rate_01 of these all_positive chances, the test result is correctly positive.
 [third_piece]

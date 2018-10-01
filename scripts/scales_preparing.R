@@ -47,6 +47,12 @@ source("scripts/scale_tolerance_of_ambiguity.R")
 # PRINT SCALES (BOOK)
 # this vector with paths set the scales to be printed
 
+# Instructions
+"materials/scales_instructions/scales_instructions.txt" %>% 
+  readChar(., file.size(.)) %>% 
+  cat("**Instructions**  \n", ., "  \n", sep = "")
+
+# Scales
 scales2print <- 
   "materials/qualtrics/output/plain_text/scales/" %>% dir(., full.names = TRUE)
 

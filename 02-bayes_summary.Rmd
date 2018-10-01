@@ -14,6 +14,15 @@ source("scripts/print_scales.R")
 ```
 
 ## Screening item
+
+```{r, results='asis', echo=FALSE}
+"materials/ppv_instructions/input/ppv_instructions.txt" %>% 
+  readChar(., file.size(.)) %>% 
+  cat("**Instructions**  \n", ., sep = "")
+
+```
+
+
 ```{r, results='asis', echo=FALSE}
 display_item(c("pr", "fbpi", "high", "sg"))
 display_item(c("pr", "nfab", "high", "ss"))

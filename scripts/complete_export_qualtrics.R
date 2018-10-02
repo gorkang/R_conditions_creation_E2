@@ -90,7 +90,7 @@ ED_screening_item         <-
 # PPV QUESTION
 ED_screening_ppv_question <-
   "materials/Question/Calculation/input/unified_question.txt" %>% 
-  readChar(., file.size(.)) %>% remove_placeholders(.) %>% 
+  readChar(., file.size(.)) %>%
   gsub("\\n", "", .) %>% 
   gsub("QUESTION_TEXT_TO_FORMAT", ., html_codes$question_font_size) 
 

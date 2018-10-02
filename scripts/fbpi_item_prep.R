@@ -252,10 +252,11 @@ names(responses_pic) <- gsub(".txt", "", response_type_files)
 ## sequential guided question fillers
 textual_formats <- 
   dir("materials/Presentation_format/") %>% grep("[a-z]{2}pi", ., invert = TRUE, value = TRUE)
+
 ## Get possible problem context
 problem_contexts <-
   textual_formats %>% 
-  map(~dir(paste0(presentation_format_dir, .x, "/input")) %>% 
+  map(~dir(paste0("materials/Presentation_format/", .x, "/input")) %>% 
         gsub("([a-z]{2}).*", "\\1", .)) %>% 
   unlist %>% 
   unique

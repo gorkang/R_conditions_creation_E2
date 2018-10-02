@@ -14,7 +14,7 @@
    viewBox="0 0 743.05068 516.35601"
    id="svg2"
    version="1.1"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:version="0.92.3 (unknown)"
    sodipodi:docname="pr_fbpi.svg">
   <defs
      id="defs4" />
@@ -26,8 +26,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="224.72458"
-     inkscape:cy="256.13077"
+     inkscape:cx="412.11506"
+     inkscape:cy="170.91052"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -36,10 +36,10 @@
      fit-margin-right="3"
      fit-margin-bottom="3"
      inkscape:snap-text-baseline="false"
-     inkscape:window-width="2560"
-     inkscape:window-height="1412"
-     inkscape:window-x="2560"
-     inkscape:window-y="0"
+     inkscape:window-width="1366"
+     inkscape:window-height="744"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata7">
@@ -321,20 +321,6 @@
          id="flowPara3353-2"
          style="font-weight:bold;font-size:18.75px;line-height:1.25">by prenatal screening</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
-       id="flowRoot3347-3-9"
-       style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="matrix(0.9845457,0,0,1,2.2427442,322.38898)"><flowRegion
-         id="flowRegion3349-5-1"><rect
-           id="rect3351-6-2"
-           width="723.45807"
-           height="40.406101"
-           x="6.0609155"
-           y="4.1972017" /></flowRegion><flowPara
-         id="flowPara3353-2-7"
-         style="font-weight:normal;font-size:15px;line-height:1.25">Numbers for women aged <flowSpan
-   style="fill:#ff0000"
-   id="flowSpan952">XXXXXX</flowSpan> years old who did or did not participate in prenatal screening during their pregnancy.</flowPara></flowRoot>    <flowRoot
-       xml:space="preserve"
        id="flowRoot3347-3-9-0"
        style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        transform="translate(2.1428572,366.38898)"><flowRegion
@@ -351,7 +337,7 @@
        xml:space="preserve"
        id="flowRoot3347-3-9-0-1"
        style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="translate(2.1428572,555.22827)"><flowRegion
+       transform="translate(2.1428572,551.47852)"><flowRegion
          id="flowRegion3349-5-1-6-8"><rect
            id="rect3351-6-2-2-7"
            width="64.850044"
@@ -363,7 +349,7 @@
        xml:space="preserve"
        id="flowRoot3347-3-9-0-1-2"
        style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="translate(454.14286,446.92469)"><flowRegion
+       transform="translate(454.14286,441.29944)"><flowRegion
          id="flowRegion3349-5-1-6-8-3"><rect
            id="rect3351-6-2-2-7-7"
            width="104.85004"
@@ -377,7 +363,7 @@
        xml:space="preserve"
        id="flowRoot3347-3-9-0-1-2-9"
        style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="translate(601.59634,446.97124)"><flowRegion
+       transform="translate(601.59634,441.29944)"><flowRegion
          id="flowRegion3349-5-1-6-8-3-2"><rect
            id="rect3351-6-2-2-7-7-2"
            width="104.85004"
@@ -391,7 +377,7 @@
        xml:space="preserve"
        id="flowRoot3347-3-9-0-1-9"
        style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="translate(15.428571,587.22827)"><flowRegion
+       transform="translate(15.434506,580.75502)"><flowRegion
          id="flowRegion3349-5-1-6-8-7"><rect
            id="rect3351-6-2-2-7-3"
            width="447.63431"
@@ -415,7 +401,7 @@
        xml:space="preserve"
        id="flowRoot3347-3-9-0-1-8"
        style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="translate(2.1428572,645.22827)"><flowRegion
+       transform="translate(2.1428572,632.10352)"><flowRegion
          id="flowRegion3349-5-1-6-8-4"><rect
            id="rect3351-6-2-2-7-5"
            width="64.850044"
@@ -427,7 +413,7 @@
        xml:space="preserve"
        id="flowRoot3347-3-9-0-1-9-3"
        style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="translate(15.428571,667.22827)"><flowRegion
+       transform="translate(16.245317,657.85314)"><flowRegion
          id="flowRegion3349-5-1-6-8-7-6"><rect
            id="rect3351-6-2-2-7-3-1"
            width="441.27859"
@@ -485,7 +471,7 @@
          style="font-weight:normal;font-size:11.875px;line-height:1.25"
          id="flowPara3479-2-0-5-5-7">Last update: March 2014</flowPara></flowRoot>    <g
        id="g4746"
-       transform="translate(-18.816713,-497.16198)">
+       transform="translate(-20.691338,-497.16198)">
       <circle
          r="6.1321545"
          cy="778.43359"
@@ -571,7 +557,7 @@
        xml:space="preserve"
        id="flowRoot3347-3-9-0-1-9-3-3"
        style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="translate(613.55357,669.10327)"><flowRegion
+       transform="translate(611.67903,658.3566)"><flowRegion
          id="flowRegion3349-5-1-6-8-7-6-5"><rect
            id="rect3351-6-2-2-7-3-1-6"
            width="42.707169"
@@ -583,7 +569,7 @@
        xml:space="preserve"
        id="flowRoot3347-3-9-0-1-9-1-3"
        style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="translate(15.623,519.60717)"><flowRegion
+       transform="translate(15.354203,515.66408)"><flowRegion
          id="flowRegion3349-5-1-6-8-7-9-6"><rect
            id="rect3351-6-2-2-7-3-4-7"
            width="452.70718"
@@ -591,5 +577,19 @@
            x="6.0609155"
            y="4.1972017" /></flowRegion><flowPara
          style="font-weight:normal;font-size:12.5px;line-height:1.25"
-         id="flowPara3479-2-6-7-5">How many women's fetuses had Trisomy 21?</flowPara></flowRoot>  </g>
+         id="flowPara3479-2-6-7-5">How many women's fetuses had Trisomy 21?</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3347-3-9-3"
+       style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(2.1361855,322.38902)"><flowRegion
+         id="flowRegion3349-5-1-67"><rect
+           id="rect3351-6-2-5"
+           width="681.33405"
+           height="37.058056"
+           x="6.0609155"
+           y="4.1972017" /></flowRegion><flowPara
+         style="font-weight:normal;font-size:15px;line-height:1.25"
+         id="flowPara286">Numbers for women aged     years who did or did not participate in prenatal screening</flowPara><flowPara
+         style="font-weight:normal;font-size:15px;line-height:1.25"
+         id="flowPara324">during their pregnancy.</flowPara></flowRoot>  </g>
 </svg>

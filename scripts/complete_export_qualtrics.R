@@ -55,7 +55,7 @@ followUp_num <-
   filter(format == "fu") %>% select(format, prob, fu_risk)
 ppv_num <- 
   readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>% 
-  filter(format == "nfab") %>% select(prob, PPV, age)
+  filter(format == "nfab") %>% select(prob, PPV, age, prev_02)
 
 # Conditions
 conditions <- 

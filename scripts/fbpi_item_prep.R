@@ -62,7 +62,7 @@ img_height <- magick::image_info(fbpi_items[[1]])$height
 # position of each piece using percentages
 first_col_x  <- 0.6916667 # first column x axis pos. (percetages pos.)
 second_col_x <- 0.8916667 # second column x axis pos. (percetages pos.)
-first_row_y  <- 0.505 # first row y axis pos. (percetages pos.)
+first_row_y  <- 0.504 # first row y axis pos. (percetages pos.)
 second_row_y <- 0.628 # second row y axis pos. (percetages pos.)
 third_row_y  <- 0.779   # ...
 # fourth_row_y <- 0.7680348 # ...

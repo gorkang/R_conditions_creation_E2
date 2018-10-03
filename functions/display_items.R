@@ -92,6 +92,12 @@ display_item <- function(args) {
   # Response type
   resp_types <- set_names(as.list(resp_types), resp_type_nms)
   
+  # fill sequential guided question with problem context fillers
+  resp_types$sg <- 
+    resp_types$sg %>% gsub("medical_condition", medical_condition_0, .) %>% 
+    gsub("test_result", positive_test_result_0, .) %>% 
+    gsub("person_01", sg_person_0, .)
+  
   # Display item
   paste(curr_prob_intro, curr_item, curr_ppv_quest, resp_types[[args[4]]], sep = "  \n") %>% remove_placeholders() %>% 
     paste0("**", args[1], "_", args[2], "_ppv", args[3], "**\n", .) %>% paste0(., "\n\n-------------------------\n\n") %>% 

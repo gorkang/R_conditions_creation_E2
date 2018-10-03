@@ -41,14 +41,9 @@ display_item <- function(args) {
     ppv_question %>% gsub("\\n___QSEP___\\n", "  \n", .)
   
   # Fill ppv question with cancer or pregnant context fillers
-  if (args[1] == "ca") {
-    positive_test_result_0 = pull(fillers[fillers$field_name == "positive_test_result", "ca"])
-    medical_condition_0 =  pull(fillers[fillers$field_name == "medical_condition", "ca"])
-  } else if (args[1] == "pr") {
-    positive_test_result_0 = pull(fillers[fillers$field_name == "positive_test_result", "pr"])
-    medical_condition_0 =  pull(fillers[fillers$field_name == "medical_condition", "pr"])
-  }
-  
+  medical_condition_0 <- filter(fillers, field_name == "medical_condition") %>% select(args[1]) %>% pull
+  positive_test_result_0 <- filter(fillers, field_name == "positive_test_result") %>% select(args[1]) %>% pull
+  sg_person_0 <- filter(fillers, field_name == "sg_person") %>% select(args[1]) %>% pull
   
   # Current problem intro
   curr_prob_intro <-

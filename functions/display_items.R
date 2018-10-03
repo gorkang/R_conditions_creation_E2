@@ -74,16 +74,16 @@ display_item <- function(args) {
   } else if (!grepl("fbpi|nppi", args[2])) {
     curr_item <-
       paste(args[1:3], collapse = ".*") %>% grep(., items, value = TRUE) %>% readChar(., file.size(.)) %>% 
-      gsub("(\\*\\*.*?\\*\\*\\n\\n)", "", .) %>% remove_placeholders() %>% gsub("\\b\\n(.*)\\n\\b", "\\1", .) %>% 
-      gsub("\\n", "\n\n", .)
+      gsub("(\\*\\*.*?\\*\\*\\n\\n)", "", .) %>% remove_placeholders() %>% gsub("\\b\\n(.*\\n\\b)", "\\1", .) %>% 
+      gsub("\\n", "  \n", .)
   }
   # Define response types
-  resp_types <- c(paste(c("Very few     Few      Half     Quite     Many",  "(0-20%)   (21-40%)  (41-60%)  (61-80%)   (81-100%)"), collapse = "\n\n\n\n"), # gi
+  resp_types <- c(paste(c("Very few     Few      Half     Quite     Many",  "(0-20%)   (21-40%)  (41-60%)  (61-80%)   (81-100%)"), collapse = "  \n"), # gi
                   "___%", # gs
                   paste(c("____ women receive a positive test_result that correctly indicates the presence of medical_condition,",
                           "and ____ women receive a positive test_result that incorrectly indicates the presence of medical_condition.",
                           "Therefore, given that the test_result indicates the signs of medical_condition, the probability that person_01 actually has medical_condition is ____ out of ____"), 
-                        collapse = "\n"), # sg
+                        collapse = "  \n"), # sg
                   "____ in every ____") #ss
   
   # Define response types names
@@ -93,7 +93,7 @@ display_item <- function(args) {
   resp_types <- set_names(as.list(resp_types), resp_type_nms)
   
   # Display item
-  paste(curr_prob_intro, curr_item, curr_ppv_quest, resp_types[[args[4]]], sep = "\n") %>% remove_placeholders() %>% 
+  paste(curr_prob_intro, curr_item, curr_ppv_quest, resp_types[[args[4]]], sep = "  \n") %>% remove_placeholders() %>% 
     paste0("**", args[1], "_", args[2], "_ppv", args[3], "**\n", .) %>% paste0(., "\n\n-------------------------\n\n") %>% 
     cat()
   

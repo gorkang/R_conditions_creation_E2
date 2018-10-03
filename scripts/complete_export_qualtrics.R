@@ -8,6 +8,32 @@ source("functions/remove_placeholders.R")
 source("functions/create_ED_blocks.R")
 source("functions/questionIDme.R")
 
+# Create experiment design block -------------------------------------
+
+# Read text
+exp_design <- 
+  "materials/experiment_design/input/experiment_design.txt" %>% 
+  readChar(., file.size(.)) %>% 
+  gsub("\n$", "", .)
+# Add html font size tag 
+exp_design <- 
+  gsub("QUESTION_TEXT_TO_FORMAT", exp_design, html_codes$question_font_size)
+
+# output dir
+output_dir <- 
+  "materials/qualtrics/output/plain_text/exp_design" %T>% 
+  dir.create(., FALSE, TRUE)
+
+# add qualtrics tags
+paste(qualtrics_codes$advanced_format,
+      gsub("block_name", "experiment_design", qualtrics_codes$block_start), 
+      qualtrics_codes$question_only_text,
+      gsub("question_id", "exp_design", qualtrics_codes$question_id), 
+      exp_design, sep = "\n") %>% 
+  # export to text file
+  cat(., file = file.path(output_dir, "experiment_design.txt"))
+
+
 # Create pictorial items (links to imgs) ----------------------------------
 
 # read urls
@@ -29,7 +55,7 @@ followUp_num <-
   filter(format == "fu") %>% select(format, prob, fu_risk)
 ppv_num <- 
   readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>% 
-  filter(format == "nfab") %>% select(prob, PPV, age)
+  filter(format == "nfab") %>% select(prob, PPV, age, prev_02)
 
 # Conditions
 conditions <- 
@@ -64,10 +90,16 @@ ED_screening_item         <-
 # PPV QUESTION
 ED_screening_ppv_question <-
   "materials/Question/Calculation/input/unified_question.txt" %>% 
-  readChar(., file.size(.)) %>% remove_placeholders(.) %>% 
+  readChar(., file.size(.)) %>%
   gsub("\\n", "", .) %>% 
-  gsub("QUESTION_TEXT_TO_FORMAT", ., html_codes$question_font_size) 
-
+  str_split(., "___QSEP___") %>% 
+  unlist() %>% 
+  str_replace(string = html_codes$question_font_size, pattern = "QUESTION_TEXT_TO_FORMAT", replacement = .) %>% 
+  paste(qualtrics_codes$question_only_text, qualtrics_codes$question_id, ., sep = "\n") %>%
+  str_replace_all(string = ., 
+                  pattern = "question_id", 
+                  replacement = paste0("ppv_q_", sprintf("%02d", 1:2), "_0")) %>% 
+  paste(., collapse = "\n")
 
 # Assemble item (ppv question is a question by itself to be able to hide it on pfab & sg condition)
 screening_item <-
@@ -75,8 +107,6 @@ screening_item <-
         questioIDme("ppv_ins_0"),
         paste(ED_screening_intro, 
               ED_screening_item, sep = "<br><br>"),
-        qualtrics_codes$question_only_text,
-        questioIDme("ppv_que_0"),
         ED_screening_ppv_question, sep = "\n")
 
 # Response types ####
@@ -189,7 +219,7 @@ severity_emo_scale <-
   str_replace(string = ., 
               pattern = "replaceID", 
               replacement = c(pattern1 = paste0("sevEmo_", sprintf("%02d", 1:5), "_0"))) %>% 
-    paste(., collapse = "\n")
+  paste(., collapse = "\n")
 
 # Bind screening with severity emotion scale
 complete_item <-

@@ -134,6 +134,17 @@ while (.GlobalEnv$safe_counter != length(ed_blocks)) {
   }
 }
 
+# Experiment description  ------------------------------------------------------------
+
+file_paths <- 
+  file.path(getwd(), "materials/qualtrics/output/plain_text/exp_design/experiment_design.txt")
+
+# Iteration counter
+Q_counter <- 0
+
+# UPLOAD!
+UBER_IMPORT2QUALTRICS_miro(file_paths)
+
 # Pilot warning ------------------------------------------------------------
 
 file_paths <- 
@@ -160,6 +171,17 @@ UBER_IMPORT2QUALTRICS_miro(file_paths)
 
 file_paths <- 
   file.path(getwd(), "/materials/qualtrics/output/plain_text/scales/sociodemographic_scale/sociodemographic_scale.txt")
+
+# Iteration counter
+Q_counter <- 0
+
+# UPLOAD!
+UBER_IMPORT2QUALTRICS_miro(file_paths)
+
+# A priori screening belief -----------------------------------------------------------
+
+file_paths <- 
+  file.path(getwd(), "materials/qualtrics/output/plain_text/scales/a_priori_screening_belief/a_priori_screening_belief.txt")
 
 # Iteration counter
 Q_counter <- 0
@@ -200,6 +222,9 @@ file_paths <-
 # remove sociodemographic scale
 file_paths <- 
   file_paths[!str_detect(file_paths, "sociodemo")]
+# remove a priori screening belief scale
+file_paths <- 
+  file_paths[!str_detect(file_paths, "a_priori_screening_belief")]
 
 # full absolute paths
 file_paths <- file.path(getwd(), file_paths)

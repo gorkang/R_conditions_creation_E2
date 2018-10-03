@@ -1,1 +1,1 @@
-Now you will be presented with information about a medical condition and a test to detect it. After that, you will have to answer some questions about the said information.
+Now you will be presented with information about a medical condition and a test to detect it. Please, read it carefully. In the following screens, you will have to answer some questions about this information.

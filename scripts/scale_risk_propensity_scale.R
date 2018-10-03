@@ -13,40 +13,40 @@ short_name <- this_scale$short_name
 # qualtrics tags template to wrapp around
 # instructions
 ins_wrapper <- 
-  '[[Question:Text]]\n[[ID:replaceID]]\n<span style="font-size:Q_FONT_SIZEpx;">ITEM</span>'
+  "[[Question:Text]]\n[[ID:replaceID]]\n<span style='font-size:Q_FONT_SIZEpx;'>ITEM</span>"
 # items
 item_wrapper <- 
-  '[[Question:MC:SingleAnswer:Horizontal]]
+  "[[Question:MC:SingleAnswer:Horizontal]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">ITEM</span>
+<span style='font-size:Q_FONT_SIZEpx;'>ITEM</span>
 [[Choices]]
-<span style="font-size:C_FONT_SIZEpx;">1<br>totally disagree</span>
-<span style="font-size:C_FONT_SIZEpx;">2<br></span>
-<span style="font-size:C_FONT_SIZEpx;">3<br></span>
-<span style="font-size:C_FONT_SIZEpx;">4<br></span>
-<span style="font-size:C_FONT_SIZEpx;">5<br></span>
-<span style="font-size:C_FONT_SIZEpx;">6<br></span>
-<span style="font-size:C_FONT_SIZEpx;">7<br></span>
-<span style="font-size:C_FONT_SIZEpx;">8<br></span>
-<span style="font-size:C_FONT_SIZEpx;">9<br>totally agree<br></span>'
+<span style='font-size:C_FONT_SIZEpx;'>1<br>totally disagree</span>
+<span style='font-size:C_FONT_SIZEpx;'>2<br></span>
+<span style='font-size:C_FONT_SIZEpx;'>3<br></span>
+<span style='font-size:C_FONT_SIZEpx;'>4<br></span>
+<span style='font-size:C_FONT_SIZEpx;'>5<br></span>
+<span style='font-size:C_FONT_SIZEpx;'>6<br></span>
+<span style='font-size:C_FONT_SIZEpx;'>7<br></span>
+<span style='font-size:C_FONT_SIZEpx;'>8<br></span>
+<span style='font-size:C_FONT_SIZEpx;'>9<br>totally agree<br></span>"
 # see what's going on.
 # item_wrapper %>% cat()
 
 # last item
 last_item_wrapper <- 
-  '[[Question:MC:SingleAnswer:Horizontal]]
+  "[[Question:MC:SingleAnswer:Horizontal]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">ITEM</span>
+<span style='font-size:Q_FONT_SIZEpx;'>ITEM</span>
 [[Choices]]
-<span style="font-size:C_FONT_SIZEpx;">1<br>risk avoider</span>
-<span style="font-size:C_FONT_SIZEpx;">2<br></span>
-<span style="font-size:C_FONT_SIZEpx;">3<br></span>
-<span style="font-size:C_FONT_SIZEpx;">4<br></span>
-<span style="font-size:C_FONT_SIZEpx;">5<br></span>
-<span style="font-size:C_FONT_SIZEpx;">6<br></span>
-<span style="font-size:C_FONT_SIZEpx;">7<br></span>
-<span style="font-size:C_FONT_SIZEpx;">8<br></span>
-<span style="font-size:C_FONT_SIZEpx;">9<br>risk seeker<br></span>'
+<span style='font-size:C_FONT_SIZEpx;'>1<br>risk avoider</span>
+<span style='font-size:C_FONT_SIZEpx;'>2<br></span>
+<span style='font-size:C_FONT_SIZEpx;'>3<br></span>
+<span style='font-size:C_FONT_SIZEpx;'>4<br></span>
+<span style='font-size:C_FONT_SIZEpx;'>5<br></span>
+<span style='font-size:C_FONT_SIZEpx;'>6<br></span>
+<span style='font-size:C_FONT_SIZEpx;'>7<br></span>
+<span style='font-size:C_FONT_SIZEpx;'>8<br></span>
+<span style='font-size:C_FONT_SIZEpx;'>9<br>risk seeker<br></span>"
 
 # read items
 rps_items <- 

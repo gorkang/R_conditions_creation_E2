@@ -1,3 +1,6 @@
+# For debugging ########################
+# args <- c("pr", "nfab", "high", "sg")
+########################################
 
 display_item <- function(args) {
   
@@ -34,9 +37,6 @@ display_item <- function(args) {
         gsub("prevalence_class_0", prev_02_question, .) %>% 
         gsub("woman_age_0", age_question, .)
   
-  # For debugging ########################
-  # args <- c("pr", "nfab", "high", "ss")
-  ########################################
   
   # Fill ppv question with cancer or pregnant context fillers
   if (args[1] == "ca") {

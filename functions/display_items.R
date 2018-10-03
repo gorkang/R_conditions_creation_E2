@@ -51,13 +51,19 @@ display_item <- function(args) {
     gsub("\\*\\*.*?\\*\\*", "", .)  
   
   # Current problem ppv question
-  ## If presentation format is positive framework and the response type is sequential guided, leave the ppv question empty
+  ## If presentation format is positive framework and the response type is sequential guided, keep first part of ppv question
   if ((args[2] == "pfab" & args[4] == "sg")) {
-    curr_ppv_quest <- ""
+    curr_ppv_quest <-
+      ppv_question %>% gsub("(\\*{2}.*)  \\nOf those.*", "\\1\n", .) %>% 
+      gsub("\\$\\{e\\://Field/", "", .) %>% gsub("\\}", "", .) %>% # remove embedded data tags
+      gsub("\\*\\*.*?\\*\\*", "", .)
   } else if (!(args[2] == "pfab" & args[4] == "sg")) {
-    curr_ppv_quest <- ppv_question %>% gsub("\\$\\{e\\://Field/", "", .) %>% gsub("\\}", "", .) %>% 
-      gsub("positive_test_result_0", positive_test_result_0, .) %>% gsub("medical_condition_0", medical_condition_0, .) %>% 
-      gsub("\\*\\*.*?\\*\\*", "", .)  
+    curr_ppv_quest <- 
+      ppv_question %>% 
+      gsub("\\$\\{e\\://Field/", "", .) %>% gsub("\\}", "", .) %>% # remove embedded data tags
+      gsub("positive_test_result_0", positive_test_result_0, .) %>% 
+      gsub("medical_condition_0", medical_condition_0, .) %>% 
+      gsub("\\*\\*.*?\\*\\*", "", .)
   }
   
   # Current item. If item is pictorial, add image call

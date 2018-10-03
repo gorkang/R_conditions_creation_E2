@@ -26,16 +26,16 @@ display_item <- function(args) {
     "materials/qualtrics/output/plain_text/ppv_question" %>% 
     dir(., ".txt", full.names = TRUE) %>% 
     readChar(., file.size(.)) %>% remove_placeholders(.)
-      ## fillers to replace age and prevalence reference class on ppv question
-      age_question <- 
-        filter(numbers_nppi, prob == args[3]) %>% pull(age)
-      prev_02_question <- 
-        filter(numbers_nppi, prob == args[3]) %>% pull(prev_02)
-      ## replace age and prevalence reference class
-      ppv_question <- 
-        ppv_question %>% 
-        gsub("prevalence_class_0", prev_02_question, .) %>% 
-        gsub("woman_age_0", age_question, .)
+  ## fillers to replace age and prevalence reference class on ppv question
+  age_question <- 
+    filter(numbers_nppi, prob == args[3]) %>% pull(age)
+  prev_02_question <- 
+    filter(numbers_nppi, prob == args[3]) %>% pull(prev_02)
+  ## replace age and prevalence reference class
+  ppv_question <-
+    ppv_question %>% 
+    gsub("prevalence_class_0", prev_02_question, .) %>% 
+    gsub("woman_age_0", age_question, .)
   
   ppv_question <- 
     ppv_question %>% gsub("\\n___QSEP___\\n", "  \n", .)

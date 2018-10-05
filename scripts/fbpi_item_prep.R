@@ -142,7 +142,7 @@ for (fact_box_loop in seq(length(fbpi_items))) {
         
         fbpi_img_to_fill <-
           magick::image_annotate(fbpi_img_to_fill, paste0(format(num_looped[[1, num_pos[numbers_pos_loop]]], big.mark=",",scientific=FALSE), " women"), 
-                                 size = 21.5, color = "black", boxcolor = "", # ROW 1
+                                 size = 22, color = "black", boxcolor = "", # ROW 1
                                  # , strokecolor = "black",
                                  font = "Arial Black",
                                  degrees = 0, location = pieces_pos[numbers_pos_loop])
@@ -152,7 +152,7 @@ for (fact_box_loop in seq(length(fbpi_items))) {
         
         fbpi_img_to_fill <-
           magick::image_annotate(fbpi_img_to_fill, as.character(num_looped[[1, num_pos[numbers_pos_loop]]]), 
-                                 size = 21, color = "black", boxcolor = "", # ROW 1
+                                 size = 25, color = "black", boxcolor = "", # ROW 1
                                  degrees = 0, location = pieces_pos[numbers_pos_loop])
       }
     }

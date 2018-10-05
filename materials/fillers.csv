@@ -6,7 +6,7 @@ positive_test_result,mammogram,test result,"ppv, followup, js_code"
 doctor_offers,that consist of a biopsy,called amniocentesis,followup
 fluid_test,the breast cyst,the amniotic sac,followup
 test_name,The biopsy,Amniocentesis,followup
-medical_consequence,partial mastectomy,miscarriage,followup
+medical_consequence,partial mastectomy (removal of part of a breast),miscarriage,followup
 medical_test,mammogram,prenatal test,
 comp_01,breast cancer,Down’s syndrome,
 comp_02,has breast cancer,is pregnant with a fetus with Down's syndrome,

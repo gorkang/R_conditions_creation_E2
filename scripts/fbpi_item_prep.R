@@ -60,18 +60,18 @@ img_width <- magick::image_info(fbpi_items[[1]])$width
 img_height <- magick::image_info(fbpi_items[[1]])$height
 
 # position of each piece using percentages
-first_col_x  <- 0.6916667 # first column x axis pos. (percetages pos.)
+first_col_x  <- 0.691666 # first column x axis pos. (percetages pos.)
 second_col_x <- 0.8916667 # second column x axis pos. (percetages pos.)
-first_row_y  <- 0.504 # first row y axis pos. (percetages pos.)
-second_row_y <- 0.628 # second row y axis pos. (percetages pos.)
-third_row_y  <- 0.779   # ...
+first_row_y  <- 0.498 # first row y axis pos. (percetages pos.)
+second_row_y <- 0.623 # second row y axis pos. (percetages pos.)
+third_row_y  <- 0.774  # ...
 # fourth_row_y <- 0.7680348 # ...
-age_pos_x <- 0.283
-age_pos_y <- 0.132
+age_pos_x <- 0.282
+age_pos_y <- 0.128
 
-first_prev_x  <- .628    # first prevalence (from left to right) x axis position
-second_prev_x <- .828    # second prevalence (from left to right) x axis position
-both_prev_y   <- .350717 # both prevalences y axis position.
+first_prev_x  <- .627    # first prevalence (from left to right) x axis position
+second_prev_x <- .827    # second prevalence (from left to right) x axis position
+both_prev_y   <- .351    # both prevalences y axis position.
 
 # convert percentage position to absolute positions relative to the img dimensions
 first_col_pos  <- first_col_x*img_width   # first column x axis pos. (absolute pos.)

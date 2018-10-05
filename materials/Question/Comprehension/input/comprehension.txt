@@ -1,4 +1,4 @@
-Please answer the following questions about the test to detect ${e://Field/comp_01_0}.
+Please answer the following questions about the screening test to detect ${e://Field/comp_01_0} you just saw.
 How informative is the screening test? (0-100%)
 How trustworthy is a positive result in a ${e://Field/comp_01_0} screening? (0-100%)
 How useful is ${e://Field/comp_01_0} screening? (0-100%)

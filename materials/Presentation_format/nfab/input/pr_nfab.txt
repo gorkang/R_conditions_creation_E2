@@ -1,7 +1,7 @@
 [first_piece]
-prev_01 in every prev_02 are pregnant with a fetus with Down's Syndrome at the time of the screening.
+prev_01 in every prev_02 are pregnant with a fetus with Down syndrome at the time of the screening.
 [second_piece]
-hit_rate_01 in every hit_rate_02 of those pregnant with a fetus with Down's Syndrome will receive a positive test result.
+hit_rate_01 in every hit_rate_02 of those pregnant with a fetus with Down syndrome will receive a positive test result.
 [third_piece]
-false_positive_01 in every false_positive_02 of the remaining cases not pregnant with a fetus with Down's Syndrome will still receive a positive test result.
+false_positive_01 in every false_positive_02 of the remaining cases not pregnant with a fetus with Down syndrome will still receive a positive test result.
 [item_end]

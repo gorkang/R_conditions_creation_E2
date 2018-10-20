@@ -60,18 +60,18 @@ img_width <- magick::image_info(fbpi_items[[1]])$width
 img_height <- magick::image_info(fbpi_items[[1]])$height
 
 # position of each piece using percentages
-first_col_x  <- 0.6916667 # first column x axis pos. (percetages pos.)
+first_col_x  <- 0.691666 # first column x axis pos. (percetages pos.)
 second_col_x <- 0.8916667 # second column x axis pos. (percetages pos.)
-first_row_y  <- 0.504 # first row y axis pos. (percetages pos.)
-second_row_y <- 0.628 # second row y axis pos. (percetages pos.)
-third_row_y  <- 0.779   # ...
+first_row_y  <- 0.498 # first row y axis pos. (percetages pos.)
+second_row_y <- 0.623 # second row y axis pos. (percetages pos.)
+third_row_y  <- 0.774  # ...
 # fourth_row_y <- 0.7680348 # ...
-age_pos_x <- 0.283
-age_pos_y <- 0.132
+age_pos_x <- 0.282
+age_pos_y <- 0.128
 
-first_prev_x  <- .628    # first prevalence (from left to right) x axis position
-second_prev_x <- .828    # second prevalence (from left to right) x axis position
-both_prev_y   <- .350717 # both prevalences y axis position.
+first_prev_x  <- .627    # first prevalence (from left to right) x axis position
+second_prev_x <- .827    # second prevalence (from left to right) x axis position
+both_prev_y   <- .351    # both prevalences y axis position.
 
 # convert percentage position to absolute positions relative to the img dimensions
 first_col_pos  <- first_col_x*img_width   # first column x axis pos. (absolute pos.)
@@ -142,7 +142,7 @@ for (fact_box_loop in seq(length(fbpi_items))) {
         
         fbpi_img_to_fill <-
           magick::image_annotate(fbpi_img_to_fill, paste0(format(num_looped[[1, num_pos[numbers_pos_loop]]], big.mark=",",scientific=FALSE), " women"), 
-                                 size = 21.5, color = "black", boxcolor = "", # ROW 1
+                                 size = 22, color = "black", boxcolor = "", # ROW 1
                                  # , strokecolor = "black",
                                  font = "Arial Black",
                                  degrees = 0, location = pieces_pos[numbers_pos_loop])
@@ -152,7 +152,7 @@ for (fact_box_loop in seq(length(fbpi_items))) {
         
         fbpi_img_to_fill <-
           magick::image_annotate(fbpi_img_to_fill, as.character(num_looped[[1, num_pos[numbers_pos_loop]]]), 
-                                 size = 21, color = "black", boxcolor = "", # ROW 1
+                                 size = 25, color = "black", boxcolor = "", # ROW 1
                                  degrees = 0, location = pieces_pos[numbers_pos_loop])
       }
     }

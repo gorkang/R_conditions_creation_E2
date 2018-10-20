@@ -1,6 +1,6 @@
 code_name,ca,pr
 short_name,cancer,pregnant
-medical_condition,breast cancer,trisomy 21
+medical_condition,breast cancer,Down syndrome
 test_result,test result,mammogram
 person_01,woman,woman’s fetus
 person_02,woman,mother

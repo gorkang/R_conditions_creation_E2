@@ -91,7 +91,8 @@ addOn_default_js <-
   "Qualtrics.SurveyEngine.addOnload(function()\n{\n	/*Place your JavaScript here to run when the page loads*/\n\n});\n\nQualtrics.SurveyEngine.addOnReady(function()\n{\n	/*Place your JavaScript here to run when the page is fully displayed*/\n\n});\n\nQualtrics.SurveyEngine.addOnUnload(function()\n{\n	/*Place your JavaScript here to run when the page is unloaded*/\n\n});\n"
 addOn_ready_default_js <- 
   "Qualtrics.SurveyEngine.addOnload(function()\n{\n	/*Place your JavaScript here to run when the page loads*/\n\n});\n\nQualtrics.SurveyEngine.addOnReady(function()\n{\n	/*Place your JavaScript here to run when the page is fully displayed*/\n\nREPLACE_THIS\n\n});\n\nQualtrics.SurveyEngine.addOnUnload(function()\n{\n	/*Place your JavaScript here to run when the page is unloaded*/\n\n});\n"
-
+addOn_unload_default_js <- 
+  "Qualtrics.SurveyEngine.addOnload(function()\n{\n	/*Place your JavaScript here to run when the page loads*/\n\n});\n\nQualtrics.SurveyEngine.addOnReady(function()\n{\n	/*Place your JavaScript here to run when the page is fully displayed*/\n\n});\n\nQualtrics.SurveyEngine.addOnUnload(function()\n{\n	/*Place your JavaScript here to run when the page is unloaded*/\nREPLACE_THIS\n\n});\n"
 
 # Give format according to response type ----------------------------------
 

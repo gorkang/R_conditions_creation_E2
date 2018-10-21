@@ -1,7 +1,7 @@
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:fu_Q04_0]]
 [question_start]
-Which factors influenced your recommendation?<br>0: Not at all - 100: A great deal
+Which factors influenced your previous response (How strongly you think she should ${e://Field/should_she_0} take the screening test?).<br>0: Not at all - 100: A great deal
 [choices_start]
 How informative the screening test is
 [second_choice]

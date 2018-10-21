@@ -12,11 +12,11 @@ Imagine a ${e://Field/woman_age_0} years old woman you care about is offered to 
 [[PageBreak]]
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:will_Q02_0]]
-<span style="font-size:22px;">How strongly would you recommend her to take the screening test?<br>0: Not strongly at all - 100: Very strongly</span>
+<span style="font-size:22px;">How strongly you think she should take the screening test?<br>0: Not strongly at all - 100: Very strongly</span>
 [[Choices]]
 <span style="font-size:0px;">DELETE_THIS</span>
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:will_Q03_0]]
-<span style="font-size:22px;">How strongly would you recommend her NOT to take the screening test?<br>0: Not strongly at all - 100: Very strongly</span>
+<span style="font-size:22px;">How strongly you think she should NOT take the screening test?<br>0: Not strongly at all - 100: Very strongly</span>
 [[Choices]]
 <span style="font-size:0px;">DELETE_THIS</span>

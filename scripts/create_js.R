@@ -336,15 +336,16 @@ all_js_complete <-
       
   )
 
-# add tril indicator to embedded data fields reading
+# add trial indicator to embedded data fields reading
 all_js_complete <- 
   1:2 %>% 
-  map(~gsub("(_0)\\b", paste0("\\1", .x), all_js_complete) %>% gsub("(\\*\\*[a-z]{2})(\\*\\*.*)", paste0("\\1_0", .x, "\\2"), .)) %>% unlist()
+  map(~gsub("(_0)\\b", paste0("\\1", .x), all_js_complete) %>% 
+        gsub("(\\*\\*[a-z]{2})(\\*\\*.*)", paste0("\\1_0", .x, "\\2"), .)) %>% unlist()
 
 # export to txt file
 all_js_complete %>% 
   walk(~cat(gsub("\\*\\*[a-z]{2}_0[12]\\*\\*(.*)", "\\1", .x), 
-           file = file.path(js_comp_output_dir, paste0(gsub("\\*\\*([a-z]{2}_0[12])\\*\\*.*", "\\1", .x), "_js_complete.txt"))))
-  
+            file = file.path(js_comp_output_dir, paste0(gsub("\\*\\*([a-z]{2}_0[12])\\*\\*.*", "\\1", .x), "_js_complete.txt"))))
+
 
 

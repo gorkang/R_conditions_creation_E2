@@ -271,6 +271,49 @@ paste(gsub("REPLACE_THIS", "GS RESPONSE TYPE", commented),
   gsub("REPLACE_THIS", ., page_submit) %>%
   cat(., file = file.path(js_output_dir, "gs_capture_ppv.txt"))
 
+
+# WILLING TO SCREEN - How strongly would you recommend her (NOT) to take the screening test? -----
+
+# This JS code captures the response (should she take the test?) and creates 
+# and embedded data field with either an empty space or a "NOT" to put in the following question
+
+# If statement to create text to put on ED field
+cap_ans_will <- 
+  "   if (selectedChoice_0 == 1) {
+     var should_she_0 = '';
+   } else if (selectedChoice_0 == 2) {
+     var should_she_0 = 'NOT';
+   }"
+
+# Create JS code 
+should_she <- 
+  paste(
+  gsub("REPLACE_THIS", "Should she take the screening test?", commented),
+  gsub("REPLACE_THIS", "Get selected choice index (1 = Yes, 2 = No)", commented),
+  "var selectedChoice_0 = this.getSelectedChoices()",
+  gsub("REPLACE_THIS", "Create ED field according to response of \"should she take the screening test?\"", commented),
+  cap_ans_will,
+  gsub("REPLACE_THIS", "Check response captured", commented),
+  gsub("REPLACE_THIS", "'Should she take the test?: ' + should_she_0", consolelog),
+  gsub("REPLACE_THIS", "If ED exists, assign value to it. If does not exists, create it with indicated value", commented),
+  "Qualtrics.SurveyEngine.setEmbeddedData('should_she_0', should_she_0)",
+  gsub("REPLACE_THIS", "'Embedded data is: ' + Qualtrics.SurveyEngine.gettEmbeddedData('should_she_0')", consolelog), 
+  sep = "\n") %>% 
+  gsub("REPLACE_THIS", ., page_submit) %>% 
+  paste(addOn_default_js, .) 
+
+# Add trial number to vars
+should_she <- 
+  1:2 %>% 
+  map(~gsub("(_0)\\b", paste0("\\1", .x), should_she) %>% 
+        gsub("(\\*\\*[a-z]{2})(\\*\\*.*)", paste0("\\1_0", .x, "\\2"), .)) %>% 
+  unlist()
+
+# Export to text, one per block
+should_she %>% paste0(paste0("**will_should_she_0", 1:2, "**"), .) %>% 
+  walk(~cat(gsub("\\*{2}will_should_she_0[12]\\*{2}(.*)", "\\1", .x), 
+            file = file.path(js_comp_output_dir, paste0(gsub("\\*\\*(will_should_she_0[12])\\*\\*.*", "\\1", .x), "_js_complete.txt"))))
+  
 # Append JS codes ---------------------------------------------------------
 
 js_comp_output_dir <- 

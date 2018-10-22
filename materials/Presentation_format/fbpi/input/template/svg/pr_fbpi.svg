@@ -14,7 +14,7 @@
    viewBox="0 0 743.05068 516.35601"
    id="svg2"
    version="1.1"
-   inkscape:version="0.92.3 (unknown)"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
    sodipodi:docname="pr_fbpi.svg">
   <defs
      id="defs4" />
@@ -26,8 +26,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="412.11506"
-     inkscape:cy="170.91052"
+     inkscape:cx="292.11506"
+     inkscape:cy="228.05338"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -36,10 +36,10 @@
      fit-margin-right="3"
      fit-margin-bottom="3"
      inkscape:snap-text-baseline="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="744"
-     inkscape:window-x="0"
-     inkscape:window-y="24"
+     inkscape:window-width="2560"
+     inkscape:window-height="1412"
+     inkscape:window-x="2560"
+     inkscape:window-y="0"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata7">
@@ -591,5 +591,27 @@
          style="font-weight:normal;font-size:15px;line-height:1.25"
          id="flowPara286">Numbers for women aged     years who did or did not participate in prenatal screening</flowPara><flowPara
          style="font-weight:normal;font-size:15px;line-height:1.25"
-         id="flowPara324">during their pregnancy.</flowPara></flowRoot>  </g>
+         id="flowPara324">during their pregnancy.</flowPara></flowRoot>    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:37.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="467.69229"
+       y="612.92432"
+       id="text952"><tspan
+         sodipodi:role="line"
+         id="tspan950"
+         x="467.69229"
+         y="612.92432"
+         style="font-size:10px;stroke-width:0.9375px">accidental finding</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:37.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="617.26996"
+       y="612.92432"
+       id="text952-3"><tspan
+         sodipodi:role="line"
+         id="tspan950-6"
+         x="617.26996"
+         y="612.92432"
+         style="font-size:10px;stroke-width:0.9375px">positive test result</tspan></text>
+  </g>
 </svg>

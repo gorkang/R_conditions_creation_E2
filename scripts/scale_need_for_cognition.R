@@ -19,15 +19,15 @@ item_wrapper <-
 [[ID:replaceID]]
 <span style='font-size:Q_FONT_SIZEpx;'>ITEM</span>
 [[Choices]]
-<span style='font-size:C_FONT_SIZEpx;'>1<br>very<br>strong<br>agreement</span>
+<span style='font-size:C_FONT_SIZEpx;'>1<br>very<br>strong<br>disagreement</span>
 <span style='font-size:C_FONT_SIZEpx;'>2<br></span>
-<span style='font-size:C_FONT_SIZEpx;'>3<br>moderate<br>agreement</span>
+<span style='font-size:C_FONT_SIZEpx;'>3<br>moderate<br>disagreement</span>
 <span style='font-size:C_FONT_SIZEpx;'>4<br></span>
-<span style='font-size:C_FONT_SIZEpx;'>5<br>neither<br>agreement<br>nor<br>disagreement</span>
+<span style='font-size:C_FONT_SIZEpx;'>5<br>neither<br>disagreement<br>nor<br>agreement</span>
 <span style='font-size:C_FONT_SIZEpx;'>6<br></span>
-<span style='font-size:C_FONT_SIZEpx;'>7<br>moderate<br>disagreement</span>
+<span style='font-size:C_FONT_SIZEpx;'>7<br>moderate<br>agreement</span>
 <span style='font-size:C_FONT_SIZEpx;'>8<br></span>
-<span style='font-size:C_FONT_SIZEpx;'>9<br>very<br>strong<br>disagreement</span>"
+<span style='font-size:C_FONT_SIZEpx;'>9<br>very<br>strong<br>agreement</span>"
 # see what's going on.
 # item_wrapper %>% cat()
 

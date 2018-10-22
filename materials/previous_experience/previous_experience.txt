@@ -9,13 +9,13 @@
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style="font-size:Q_FONT_SIZEpx;">What is your previous experience with Down's syndrome?</span>
+<span style="font-size:Q_FONT_SIZEpx;">What is your previous experience with Down syndrome?</span>
 [[Choices]]
-<span style="font-size:C_FONT_SIZEpx;">I have minimal or no experience with Down's syndrome.</span>
-<span style="font-size:C_FONT_SIZEpx;">Someone I know has Down's syndrome.</span>
-<span style="font-size:C_FONT_SIZEpx;">Someone I know has a child with Down's syndrome.</span>
-<span style="font-size:C_FONT_SIZEpx;">Someone very close to me has Down's syndrome.</span>
-<span style="font-size:C_FONT_SIZEpx;">Someone very close to me has a child with Down's syndrome.</span>
+<span style="font-size:C_FONT_SIZEpx;">I have minimal or no experience with Down syndrome.</span>
+<span style="font-size:C_FONT_SIZEpx;">Someone I know has Down syndrome.</span>
+<span style="font-size:C_FONT_SIZEpx;">Someone I know has a child with Down syndrome.</span>
+<span style="font-size:C_FONT_SIZEpx;">Someone very close to me has Down syndrome.</span>
+<span style="font-size:C_FONT_SIZEpx;">Someone very close to me has a child with Down syndrome.</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]

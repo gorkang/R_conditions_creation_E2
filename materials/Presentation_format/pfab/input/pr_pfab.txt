@@ -1,5 +1,5 @@
 [first_piece]
-Women pregnant with a fetus with Trisomy 21 who undergo the test has all_positive chances out of prev_02 of having a positive test result.
+Women pregnant with a fetus with Down syndrome who undergo the test has all_positive chances out of prev_02 of having a positive test result.
 [second_piece]
 In hit_rate_01 of these all_positive chances, the test result is correctly positive.
 [third_piece]

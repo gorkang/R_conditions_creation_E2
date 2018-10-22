@@ -309,16 +309,18 @@ should_she <-
         gsub("(\\*\\*[a-z]{2})(\\*\\*.*)", paste0("\\1_0", .x, "\\2"), .)) %>% 
   unlist()
 
+# ######################
+js_comp_output_dir <- 
+  "materials/qualtrics/output/plain_text/js_codes/complete" %T>% 
+  dir.create(., FALSE, TRUE)
+# ######################
+
 # Export to text, one per block
 should_she %>% paste0(paste0("**will_should_she_0", 1:2, "**"), .) %>% 
   walk(~cat(gsub("\\*{2}will_should_she_0[12]\\*{2}(.*)", "\\1", .x), 
             file = file.path(js_comp_output_dir, paste0(gsub("\\*\\*(will_should_she_0[12])\\*\\*.*", "\\1", .x), "_js_complete.txt"))))
   
 # Append JS codes ---------------------------------------------------------
-
-js_comp_output_dir <- 
-  "materials/qualtrics/output/plain_text/js_codes/complete" %T>% 
-  dir.create(., FALSE, TRUE)
 
 # paste js codes
 all_js_complete <- 

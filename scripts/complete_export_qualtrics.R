@@ -183,6 +183,7 @@ comprehension <-
 # Assemble item with response types
 screening_item_questions <-
   paste(gsub("block_name", "ppv_screening_0", qualtrics_codes$block_start),
+        med_cond_block_title,
         gen_instructions,
         qualtrics_codes$pagebreak,
         screening_item,
@@ -253,7 +254,8 @@ complete_item %>% cat(., file = file.path(screening_output_dir, "item_template.t
 # Customize item to trial
 # func to customize
 f <- function(x) {
-  gsub("(_[0-9])\\b(\\}?\\]?)", paste0("\\1", x, "\\2"), complete_item) %>% 
+  gsub("(_[0-9])\\b(\\}?\\]?)", paste0("\\1", x, "\\2"), complete_item) %>%
+    gsub("BLOCK_NUMBER_0", "", .) %>%
     paste0("**trial_0", x, "**", .)
 }
 

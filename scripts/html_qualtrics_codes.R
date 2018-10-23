@@ -11,6 +11,10 @@ html_codes <- list(
   # font
   linebreak = "<br>",
   italic = "<i>ITALIZE_THIS</i>",
+  bold = "<strong>STRONGME</strong>",
+  # font size TITLES
+  title_font_size =
+    paste0('<span style="font-size:40px;">QUESTION_TEXT_TO_FORMAT</span>'),
   # font size templates
   question_font_size =
     paste0('<span style="font-size:', question_size, 'px;">QUESTION_TEXT_TO_FORMAT</span>'),

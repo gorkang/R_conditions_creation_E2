@@ -56,3 +56,31 @@ scale_instructions %>%
   gsub("<br>", "  \n", .) %>% 
   paste(., collapse = "  \n  \n") %>% 
   cat()
+
+# Personality/Cognitive block titles ###########################
+# titles
+pers_title <- 
+  "Personality scales" %>% 
+  gsub("QUESTION_TEXT_TO_FORMAT", . , html_codes$title_font_size) %>% 
+  gsub("STRONGME", ., html_codes$bold)
+cog_title <- 
+  "Cognitive scales" %>% 
+  gsub("QUESTION_TEXT_TO_FORMAT", . , html_codes$title_font_size) %>% 
+  gsub("STRONGME", ., html_codes$bold)
+
+# assemble pers title block
+paste(qualtrics_codes$advanced_format,
+      gsub("block_name", "pers_title", qualtrics_codes$block_start),
+      qualtrics_codes$question_only_text,
+      questioIDme("pers_title"),
+      pers_title, sep = "\n") %>% 
+  cat(., file = file.path(output_dir, "pers_title.txt"))
+
+# assemble cog title block
+paste(qualtrics_codes$advanced_format,
+      gsub("block_name", "cog_title", qualtrics_codes$block_start),
+      qualtrics_codes$question_only_text,
+      questioIDme("cog_title"),
+      cog_title, sep = "\n") %>% 
+  cat(., file = file.path(output_dir, "cog_title.txt"))
+

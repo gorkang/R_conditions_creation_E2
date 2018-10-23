@@ -46,7 +46,7 @@ scale_instructions %>%
   cat(., file = file.path(output_dir, paste0(long_name, ".txt")))
 
 
-# Print consent -----------------------------------------------------------
+# Print scale instructions -----------------------------------------------------------
 source("functions/remove_placeholders.R")
 
 scale_instructions %>% 

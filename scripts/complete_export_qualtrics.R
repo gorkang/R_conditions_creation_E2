@@ -66,6 +66,18 @@ create_ED_blocks()
 
 # Create and export trial canvas ------------------------------------------
 
+# Medical condition block title
+med_cond_block_title <-
+  "Medical condition BLOCK_NUMBER_0/2" %>% 
+  gsub("QUESTION_TEXT_TO_FORMAT", . , html_codes$title_font_size) %>% 
+  gsub("STRONGME", ., html_codes$bold)
+
+med_cond_block_title <- 
+  paste(qualtrics_codes$question_only_text,
+        questioIDme("ppv_title_0"),
+        med_cond_block_title,
+        qualtrics_codes$pagebreak, sep = "\n")
+
 # Instructions
 gen_instructions <- 
   "materials/ppv_instructions/input/ppv_instructions.txt" %>% 

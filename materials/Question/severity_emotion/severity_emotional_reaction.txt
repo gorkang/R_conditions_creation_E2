@@ -28,7 +28,7 @@ __QSEP__
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style='font-size:Q_FONT_SIZEpx;'>To what extent would you feel the following if a woman you care about had ${e://Field/sevEmo_04_0}?<br>0: Not at all - 100: Most certainly</span>
+<span style='font-size:Q_FONT_SIZEpx;'>To what extent would you feel the following if a woman you care decided to have ${e://Field/sevEmo_04_0}?<br>0: Not at all - 100: Most certainly</span>
 [[Choices]]
 <span style='font-size:C_FONT_SIZEpx;'>Afraid</span>
 <span style='font-size:C_FONT_SIZEpx;'>Worried</span>

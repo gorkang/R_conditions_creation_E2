@@ -171,7 +171,8 @@ resp_type_04 <-
 # Willingness to undergo screening test (according to issue #61 on github)
 will_screening <- 
   "materials/Question/willing_screen/willing_screen.txt" %>% 
-  readChar(., file.size(.))
+  readChar(., file.size(.)) %>% 
+  gsub("\n$", "", .)
 
 # Comprehension
 source("scripts/comprehension.R")
@@ -287,6 +288,7 @@ complete_screening_block_output_dir <-
 screening_block_output_dir %>% 
   dir(., ".txt") %>% 
   map_chr(~readChar(paste0(screening_block_output_dir, .x), file.size(paste0(screening_block_output_dir, .x)))) %>% 
+  paste(., collapse = "\n") %>% 
   paste(qualtrics_codes$advanced_format, ., sep = "\n") %>% 
   cat(., file = file.path(complete_screening_block_output_dir, "screenings_blocks.txt"))
 

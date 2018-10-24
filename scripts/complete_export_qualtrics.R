@@ -171,7 +171,8 @@ resp_type_04 <-
 # Willingness to undergo screening test (according to issue #61 on github)
 will_screening <- 
   "materials/Question/willing_screen/willing_screen.txt" %>% 
-  readChar(., file.size(.))
+  readChar(., file.size(.)) %>% 
+  gsub("\n$", "", .)
 
 # Comprehension
 source("scripts/comprehension.R")

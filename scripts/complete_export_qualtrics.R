@@ -288,6 +288,7 @@ complete_screening_block_output_dir <-
 screening_block_output_dir %>% 
   dir(., ".txt") %>% 
   map_chr(~readChar(paste0(screening_block_output_dir, .x), file.size(paste0(screening_block_output_dir, .x)))) %>% 
+  paste(., collapse = "\n") %>% 
   paste(qualtrics_codes$advanced_format, ., sep = "\n") %>% 
   cat(., file = file.path(complete_screening_block_output_dir, "screenings_blocks.txt"))
 

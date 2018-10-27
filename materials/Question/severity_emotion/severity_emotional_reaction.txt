@@ -28,7 +28,7 @@ __QSEP__
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style='font-size:Q_FONT_SIZEpx;'>To what extent would you feel the following if a woman you care decided to have ${e://Field/sevEmo_04_0}?<br>0: Not at all - 100: Most certainly</span>
+<span style='font-size:Q_FONT_SIZEpx;'>To what extent would you feel the following if a woman you care about decided to have ${e://Field/sevEmo_04_0} after knowing she has a higher risk of having ${e://Field/sevEmo_03_0}?<br>0: Not at all - 100: Most certainly</span>
 [[Choices]]
 <span style='font-size:C_FONT_SIZEpx;'>Afraid</span>
 <span style='font-size:C_FONT_SIZEpx;'>Worried</span>
@@ -38,7 +38,7 @@ __QSEP__
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style='font-size:Q_FONT_SIZEpx;'>To what extent you would feel the following if a woman you care about had a procedure-related ${e://Field/sevEmo_06_0}?<br>0: Not at all - 100: Most certainly</span>
+<span style='font-size:Q_FONT_SIZEpx;'>To what extent you would feel the following if a woman you care about had a ${e://Field/sevEmo_05_0} as a result of procedure-related complications during the ${e://Field/sevEmo_06_0}?<br>0: Not at all - 100: Most certainly</span>
 [[Choices]]
 <span style='font-size:C_FONT_SIZEpx;'>Afraid</span>
 <span style='font-size:C_FONT_SIZEpx;'>Worried</span>
@@ -48,6 +48,6 @@ __QSEP__
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style='font-size:Q_FONT_SIZEpx;'>To what extent would you recommend ${e://Field/sevEmo_04_0} to a woman you care about that ${e://Field/sevEmo_05_0}?<br>0: Not at all - 100: Most certainly</span>
+<span style='font-size:Q_FONT_SIZEpx;'>To what extent would you recommend ${e://Field/sevEmo_04_0} to a woman you care about that ${e://Field/sevEmo_07_0}?<br>0: Not at all - 100: Most certainly</span>
 [[Choices]]
 <span style='font-size:0px;'>this_is_not_here</span>

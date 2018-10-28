@@ -135,7 +135,10 @@ _Block 01_
 ```{r, table08, echo=FALSE}
 tibble(check = "",
        qIDs = c("ppv_gi_01", "ppv_gs_01", "ppv_sg01_01", "ppv_ss01_01"),
-       extra = c("From file: __gi_01_js_complete.txt__", "From file: __gs_01_js_complete.txt__", "From file: __sg_01_js_complete.txt__", "From file: __ss_01_js_complete.txt__")) %>% 
+       extra = c("From file: __gi_01_js_complete.txt__", "From file: __gs_01_js_complete.txt__", "From file: __sg_01_js_complete.txt__", "From file: __ss_01_js_complete.txt__")) %>%
+  bind_rows(., tibble(check = "",
+                      qIDs = c("will_Q01_01", "fu_Q01_01"), 
+                      extra = c("From file: __will_should_she_01_js_complete.txt__", "From file: __fu_should_she_01_js_complete.txt__"))) %>% 
   kableME(.)
 ```
 
@@ -145,6 +148,9 @@ _Block 02_
 tibble(check = "",
        qIDs = c("ppv_gi_02", "ppv_gs_02", "ppv_sg01_02", "ppv_ss01_02"),
        extra = c("From file: __gi_02_js_complete.txt__", "From file: __gs_02_js_complete.txt__", "From file: __sg_02_js_complete.txt__", "From file: __ss_02_js_complete.txt__")) %>% 
+  bind_rows(., tibble(check = "",
+                      qIDs = c("will_Q01_02", "fu_Q01_02"), 
+                      extra = c("From file: __will_should_she_02_js_complete.txt__", "From file: __fu_should_she_02_js_complete.txt__"))) %>% 
   kableME(.)
 ```
 

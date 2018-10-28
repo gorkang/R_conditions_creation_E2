@@ -95,30 +95,12 @@ tibble(check = "",
   kableME(.)
 ```
 
-_Willing to screen 01_
-
-```{r, echo=FALSE}
-tibble(check = "",
-       qIDs = paste0("will_Q", sprintf("%02d", 2:3), "_01"),
-       extra = c("_Question_ > will_Q01_01 > Yes > Is selected", "_Question_ > will_Q01_01 > No > Is selected")) %>% 
-  kableME(.)
-```
-
 _Block 02_
 
 ```{r, table05, echo=FALSE}
 tibble(check = "",
        qIDs = c("ppv_q_02_02", "ppv_gi_02", "ppv_gs_02", "ppv_sg01_02", "ppv_sg02_02", "ppv_sg03_02", "ppv_sg04_02", "ppv_ss01_02", "ppv_ss02_02", "fu_Q05_02", "fu_Q06_02"),
        extra = c("_Embedded Data_ > _press_format_ > _Is Not Equal to_ > __pfab__ & _Embedded Data_ > _resp_type_ > _Is Not Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gi__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gs__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Question_ > _fu_Q01_02_ > __No__ > _Is Selected_", "_Question_ > _fu_Q01_02_ > __Yes__ > _Is Selected_")) %>% 
-  kableME(.)
-```
-
-_Willing to screen 02_
-
-```{r, echo=FALSE}
-tibble(check = "",
-       qIDs = paste0("will_Q", sprintf("%02d", 2:3), "_02"),
-       extra = c("_Question_ > will_Q01_02 > Yes > Is selected", "_Question_ > will_Q01_02 > No > Is selected")) %>% 
   kableME(.)
 ```
 

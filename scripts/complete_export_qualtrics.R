@@ -66,6 +66,18 @@ create_ED_blocks()
 
 # Create and export trial canvas ------------------------------------------
 
+# Medical condition block title
+med_cond_block_title <-
+  "Medical condition BLOCK_NUMBER_0/2" %>% 
+  gsub("QUESTION_TEXT_TO_FORMAT", . , html_codes$title_font_size) %>% 
+  gsub("STRONGME", ., html_codes$bold)
+
+med_cond_block_title <- 
+  paste(qualtrics_codes$question_only_text,
+        questioIDme("ppv_title_0"),
+        med_cond_block_title,
+        qualtrics_codes$pagebreak, sep = "\n")
+
 # Instructions
 gen_instructions <- 
   "materials/ppv_instructions/input/ppv_instructions.txt" %>% 
@@ -159,7 +171,8 @@ resp_type_04 <-
 # Willingness to undergo screening test (according to issue #61 on github)
 will_screening <- 
   "materials/Question/willing_screen/willing_screen.txt" %>% 
-  readChar(., file.size(.))
+  readChar(., file.size(.)) %>% 
+  gsub("\n$", "", .)
 
 # Comprehension
 source("scripts/comprehension.R")
@@ -171,6 +184,7 @@ comprehension <-
 # Assemble item with response types
 screening_item_questions <-
   paste(gsub("block_name", "ppv_screening_0", qualtrics_codes$block_start),
+        med_cond_block_title,
         gen_instructions,
         qualtrics_codes$pagebreak,
         screening_item,
@@ -218,14 +232,22 @@ severity_emo_scale <-
   str_split(., "\n__QSEP__\n") %>% unlist() %>% 
   str_replace(string = ., 
               pattern = "replaceID", 
-              replacement = c(pattern1 = paste0("sevEmo_", sprintf("%02d", 1:5), "_0"))) %>% 
+              replacement = c(pattern1 = paste0("sevEmo_", sprintf("%02d", 1:6), "_0"))) %>% 
   paste(., collapse = "\n")
+
+# # Add extra question for trisomy 21 (display logic has to be set on qualtrics to display this question only when the context is trisomy)
+# severity_emo_scale_extra <-
+#   "materials/Question/severity_emotion/extra_trisomy.txt" %>% 
+#   readChar(., file.size(.)) %>% gsub("Q_FONT_SIZE", 22, .) %>% 
+#   gsub("C_FONT_SIZE", 16, .) %>% 
+#   gsub("\n$", "", .) %>% gsub("replaceID", "sevEmo_06_0", .)
 
 # Bind screening with severity emotion scale
 complete_item <-
   paste(complete_item, 
         gsub("block_name", "severity_emotion_scale_0", qualtrics_codes$block_start),
-        severity_emo_scale, 
+        severity_emo_scale,
+        # severity_emo_scale_extra, # extra question (only for trisomy)
         sep = "\n")
 
 # Export ------------------------------------------------------------------
@@ -241,7 +263,8 @@ complete_item %>% cat(., file = file.path(screening_output_dir, "item_template.t
 # Customize item to trial
 # func to customize
 f <- function(x) {
-  gsub("(_[0-9])\\b(\\}?\\]?)", paste0("\\1", x, "\\2"), complete_item) %>% 
+  gsub("(_[0-9])\\b(\\}?\\]?)", paste0("\\1", x, "\\2"), complete_item) %>%
+    gsub("BLOCK_NUMBER_0", "", .) %>%
     paste0("**trial_0", x, "**", .)
 }
 
@@ -265,6 +288,7 @@ complete_screening_block_output_dir <-
 screening_block_output_dir %>% 
   dir(., ".txt") %>% 
   map_chr(~readChar(paste0(screening_block_output_dir, .x), file.size(paste0(screening_block_output_dir, .x)))) %>% 
+  paste(., collapse = "\n") %>% 
   paste(qualtrics_codes$advanced_format, ., sep = "\n") %>% 
   cat(., file = file.path(complete_screening_block_output_dir, "screenings_blocks.txt"))
 

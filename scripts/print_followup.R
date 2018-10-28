@@ -54,6 +54,8 @@ fu_risk <- readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>%
   gsub("\\$\\{e\\://Field/prevalence_0\\}",           random_prevalence, .) %>%  # Prevalence
   gsub("\\$\\{e\\://Field/ppv_response_0\\}",         random_answer, .) %>%  # Example answer
   
+  gsub("\\$\\{e\\://Field/shoShe_fu_0\\}",         "[[NOT]]", .) %>%  # Should she take the followup test?
+  
   
   # Double linebreaks because bookdown displaying is weird (one linebreak doesn't work, two linebreaks actually creates two linebreaks)
   gsub("\\n", "\n\n", .) %>% 

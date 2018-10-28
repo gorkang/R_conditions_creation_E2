@@ -148,6 +148,8 @@ cleaned_sevEmo %>%
   gsub("\\$\\{e\\://Field/sevEmo_03_0}", sevEmo_03, .) %>% 
   gsub("\\$\\{e\\://Field/sevEmo_04_0}", sevEmo_04, .) %>% 
   gsub("\\$\\{e\\://Field/sevEmo_05_0}", sevEmo_05, .) %>% 
+  gsub("\\$\\{e\\://Field/sevEmo_06_0}", sevEmo_06, .) %>% 
+  gsub("\\$\\{e\\://Field/sevEmo_07_0}", sevEmo_07, .) %>% 
   
   # Print
   cat(., sep = "  \n")

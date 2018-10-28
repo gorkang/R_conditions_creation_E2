@@ -8,7 +8,7 @@ p_load(tidyverse, kableExtra)
 
 ```{r, kableME_func, echo=FALSE}
 source("functions/kableMe.R")
-scale_names <- read_csv("materials/Scales/scale_names.csv", col_types = "ccci")
+scale_names <- read_csv("materials/Scales/scale_names.csv", col_types = "cccic")
 ```
 
 
@@ -27,9 +27,9 @@ _Screening blocks_
 ```{r, table01, echo=FALSE}
 tibble(check = "", 
        qIDs = c("will_Q02_01", paste0("com_Q", sprintf("%02d", 1:8),"_01"), 
-                "fu_Q02_01", "fu_Q03_01", "fu_Q05_01", "will_Q02_02", paste0("com_Q", sprintf("%02d", 1:8),"_02"), 
-                "fu_Q02_02", "fu_Q03_02", "fu_Q05_02"),
-       extra = c("", rep("", 8), "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "", "", rep("", 8), "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "")) %>% 
+                "fu_Q02_01", "fu_Q03_01", "fu_Q04_01", "fu_Q06_01", "fu_Q07_01", paste0("sevEmo_0", 1:6, "_01"), "will_Q02_02", paste0("com_Q", sprintf("%02d", 1:8),"_02"), 
+                "fu_Q02_02", "fu_Q03_02", "fu_Q04_02", "fu_Q06_02", "fu_Q07_02", paste0("sevEmo_0", 1:6, "_01")),
+       extra = c("", rep("", 8), "", "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "", "Change max value to 10, and decimals to 1", rep("", 6), "", rep("", 8), "", "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "", "Change max value to 10, and decimals to 1", rep("", 6))) %>% 
   kableME(.)
 ```
 
@@ -52,7 +52,12 @@ tibble(check = "",
   bind_rows(., tibble(check = "",
                       qIDs = c("fu_Q01_01", "fu_Q02_01", "fu_Q03_01", "fu_Q04_01", "fu_Q05_01"), 
                       extra = (""))) %>%
+  bind_rows(., tibble(check = "",
+                      qIDs = c(paste0("sevEmo_0", 1:6, "_01")), 
+                      extra = (""))) %>%
   kableME(.)
+
+
 ```
 
 _Block 02_
@@ -70,6 +75,9 @@ tibble(check = "",
   bind_rows(., tibble(check = "",
                       qIDs = c("fu_Q01_02", "fu_Q02_02", "fu_Q03_02", "fu_Q04_02", "fu_Q05_02"), 
                       extra = (""))) %>% 
+  bind_rows(., tibble(check = "",
+                      qIDs = c(paste0("sevEmo_0", 1:6, "_02")), 
+                      extra = (""))) %>%
   kableME(.)
 ```
 
@@ -82,7 +90,7 @@ _Block 01_
 
 ```{r, table04, echo=FALSE}
 tibble(check = "",
-       qIDs = c("ppv_que_01", "ppv_gi_01", "ppv_gs_01", "ppv_sg01_01", "ppv_sg02_01", "ppv_sg03_01", "ppv_sg04_01", "ppv_ss01_01", "ppv_ss02_01", "fu_Q05_01", "fu_Q06_01"),
+       qIDs = c("ppv_q_02_01", "ppv_gi_01", "ppv_gs_01", "ppv_sg01_01", "ppv_sg02_01", "ppv_sg03_01", "ppv_sg04_01", "ppv_ss01_01", "ppv_ss02_01", "fu_Q06_01", "fu_Q07_01"),
        extra = c("_Embedded Data_ > _press_format_ > _Is Not Equal to_ > __pfab__ & _Embedded Data_ > _resp_type_ > _Is Not Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gi__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gs__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Question_ > _fu_Q01_01_ > __No__ > _Is Selected_", "_Question_ > _fu_Q01_01_ > __Yes__ > _Is Selected_")) %>% 
   kableME(.)
 ```
@@ -109,7 +117,7 @@ _Block 02_
 
 ```{r, table05, echo=FALSE}
 tibble(check = "",
-       qIDs = c("ppv_que_02", "ppv_gi_02", "ppv_gs_02", "ppv_sg01_02", "ppv_sg02_02", "ppv_sg03_02", "ppv_sg04_02", "ppv_ss01_02", "ppv_ss02_02", "fu_Q05_02", "fu_Q06_02"),
+       qIDs = c("ppv_q_02_02", "ppv_gi_02", "ppv_gs_02", "ppv_sg01_02", "ppv_sg02_02", "ppv_sg03_02", "ppv_sg04_02", "ppv_ss01_02", "ppv_ss02_02", "fu_Q06_02", "fu_Q07_02"),
        extra = c("_Embedded Data_ > _press_format_ > _Is Not Equal to_ > __pfab__ & _Embedded Data_ > _resp_type_ > _Is Not Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gi__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gs__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Question_ > _fu_Q01_02_ > __No__ > _Is Selected_", "_Question_ > _fu_Q01_02_ > __Yes__ > _Is Selected_")) %>% 
   kableME(.)
 ```
@@ -177,26 +185,6 @@ tibble(check = "",
 ```
 
 ## Scales
-
-### Sliders
-
-_Severity of and Emotional reaction BREAST CANCER_
-
-```{r, echo=FALSE}
-tibble(check = "",
-       qIDs = c("sevEmo_brca_01", "sevEmo_brca_02", "sevEmo_brca_03", "sevEmo_brca_04", "sevEmo_brca_05"), 
-       extra = c("", "", "", "", "")) %>%
-  kableME(.)
-```
-
-_Severity of and Emotional reaction TRISOMY 21_
-
-```{r, echo=FALSE}
-tibble(check = "",
-       qIDs = c("sevEmo_tr21_01", "sevEmo_tr21_02", "sevEmo_tr21_03", "sevEmo_tr21_04", "sevEmo_tr21_05"), 
-       extra = c("", "", "", "", "")) %>%
-  kableME(.)
-```
 
 ### Force response & Answer validation  
 
@@ -333,25 +321,6 @@ tibble(check = "",
        extra = "") %>%
   kableME(.)
 ```
-
-_Severity of and Emotional reaction BREAST CANCER_
-
-```{r, echo=FALSE}
-tibble(check = "",
-       qIDs = c("sevEmo_brca_01", "sevEmo_brca_02", "sevEmo_brca_03", "sevEmo_brca_04", "sevEmo_brca_05"), 
-       extra = "") %>%
-  kableME(.)
-```
-
-_Severity of and Emotional reaction TRISOMY 21_
-
-```{r, echo=FALSE}
-tibble(check = "",
-       qIDs = c("sevEmo_tr21_01", "sevEmo_tr21_02", "sevEmo_tr21_03", "sevEmo_tr21_04", "sevEmo_tr21_05"), 
-       extra = "") %>%
-  kableME(.)
-```
-
 
 _Sociodemographic Scale_
 

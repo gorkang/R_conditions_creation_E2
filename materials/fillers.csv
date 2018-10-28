@@ -1,17 +1,19 @@
 field_name,ca,pr,uses
 sg_test_result,mammogram,test result,NA
 sg_person,a woman,a woman\\'s fetus,js_code
-medical_condition,breast cancer,Down’s syndrome,"ppv, followup, js_code"
+medical_condition,breast cancer,Down syndrome,"ppv, followup, js_code"
 positive_test_result,mammogram,test result,"ppv, followup, js_code"
 doctor_offers,that consist of a biopsy,called amniocentesis,followup
 fluid_test,the breast cyst,the amniotic sac,followup
 test_name,The biopsy,Amniocentesis,followup
-medical_consequence,partial mastectomy,miscarriage,followup
+medical_consequence,partial mastectomy (removal of part of a breast),miscarriage,followup
 medical_test,mammogram,prenatal test,
-comp_01,breast cancer,Down’s syndrome,
-comp_02,has breast cancer,is pregnant with a fetus with Down's syndrome,
-sevEmo_01,breast cancer,Down’s syndrome,
+comp_01,breast cancer,Down syndrome,
+comp_02,has breast cancer,is pregnant with a fetus with Down syndrome,
+sevEmo_01,breast cancer,Down syndrome,
 sevEmo_02,mastectomy,abortion,
-sevEmo_03,breast cancer,a child with Down’s syndrome,
-sevEmo_04,a mastectomy,an abortion,
-sevEmo_05,has breast cancer,is pregnant with a fetus with Down's syndrome,
+sevEmo_03,breast cancer,a child with Down syndrome,
+sevEmo_04,a preemptive mastectomy,an abortion,
+sevEmo_05,mastectomy,miscarriage,
+sevEmo_06,breast biopsy,amniocentesis,
+sevEmo_07,had breast cancer,is pregnant with a fetus with Down syndrome,

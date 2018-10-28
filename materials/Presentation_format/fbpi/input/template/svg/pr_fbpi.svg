@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="412.11506"
-     inkscape:cy="170.91052"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="342.04506"
+     inkscape:cy="307.19007"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -302,12 +302,12 @@
        transform="translate(2.1428571,260.38898)"><flowRegion
          id="flowRegion3349"><rect
            id="rect3351"
-           width="420.22342"
+           width="465.68027"
            height="33.335037"
            x="6.0609155"
            y="4.1972017" /></flowRegion><flowPara
          id="flowPara3353"
-         style="font-weight:bold;font-size:25px;line-height:1.25">Trisomy 21 Early Detection</flowPara></flowRoot>    <flowRoot
+         style="font-weight:bold;font-size:25px;line-height:1.25">Down syndrome Early Detection</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3347-3"
        style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -385,7 +385,7 @@
            x="6.0609155"
            y="4.1972017" /></flowRegion><flowPara
          style="font-weight:normal;font-size:12.5px;line-height:1.25"
-         id="flowPara3479-2-6">How many women received an early warning they had a fetus with Trisomy 21?</flowPara></flowRoot>    <flowRoot
+         id="flowPara3479-2-6">How many women received an early warning they had a fetus with Down syndrome?</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3347-3-9-0-1-9-1"
        style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -577,7 +577,7 @@
            x="6.0609155"
            y="4.1972017" /></flowRegion><flowPara
          style="font-weight:normal;font-size:12.5px;line-height:1.25"
-         id="flowPara3479-2-6-7-5">How many women's fetuses had Trisomy 21?</flowPara></flowRoot>    <flowRoot
+         id="flowPara3479-2-6-7-5">How many women's fetuses had Down syndrome?</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3347-3-9-3"
        style="font-style:normal;font-weight:normal;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -591,5 +591,27 @@
          style="font-weight:normal;font-size:15px;line-height:1.25"
          id="flowPara286">Numbers for women aged     years who did or did not participate in prenatal screening</flowPara><flowPara
          style="font-weight:normal;font-size:15px;line-height:1.25"
-         id="flowPara324">during their pregnancy.</flowPara></flowRoot>  </g>
+         id="flowPara324">during their pregnancy.</flowPara></flowRoot>    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:37.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="472.01004"
+       y="616.4328"
+       id="text952"><tspan
+         sodipodi:role="line"
+         id="tspan950"
+         x="472.01004"
+         y="616.4328"
+         style="font-size:10px;stroke-width:0.9375px">accidental finding</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:37.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="615.96307"
+       y="616.4328"
+       id="text952-3"><tspan
+         sodipodi:role="line"
+         id="tspan950-6"
+         x="615.96307"
+         y="616.4328"
+         style="font-size:10px;stroke-width:0.9375px">positive test result</tspan></text>
+  </g>
 </svg>

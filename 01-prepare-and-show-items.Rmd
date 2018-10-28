@@ -25,6 +25,7 @@ source("functions/asterik_name_remover.R")
 
 ```{r, down_img, echo=FALSE}
 # Update Qualtrics imgs
+# This script has to run manually (line by line) so it don't crush
 # source("scripts/upload_imgs_qualtrics.R")
 ```
 

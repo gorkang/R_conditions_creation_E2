@@ -3,6 +3,9 @@
 # binman::rm_platform("phantomjs")
 # wdman::selenium(retcommand = TRUE)
 
+# RUN SELENIUM USING DOCKER
+# http://ropensci.github.io/RSelenium/articles/docker.html
+
 # Packages -------------------------------------------------------------
 if (!require('pacman')) install.packages('pacman'); library('pacman')
 p_load(RSelenium, tidyverse)
@@ -15,18 +18,33 @@ source("functions/remove_surveyflow_elements.R")
 source("functions/go_gorka_04.R")
 source("functions/UBER_IMPORT2QUALTRICS_miro.R")
 
-# # To remove blocks
+# Close any docker session running (run in terminal)
+# docker stop $(docker ps -q)
+# docker ps
+# sudo docker pull selenium/standalone-firefox-debug:2.53.0
+# sudo docker run -d -p 4445:4444 -p 5901:5900 selenium/standalone-firefox-debug:2.53.0
+# sudo docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.ID}}'
+# ALSO MAKE SURE YOU HAVE VINAGER (VNC CLIENT)
+# sudo apt-get update
+# sudo apt-get install vinagre
+
+
+# To remove blocks
 # remove_blocks_qualtrics(start_on = 1, survey_type = "miro")
 # remDr$refresh()
-# # To remove survey flow elements
+# To remove survey flow elements
 # remove_surveyflow_elements(start_on = 3)
 # remDr$refresh()
 
 # Selenium ----------------------------------------------------------------
 
 # Create browser instance (this will pop-up a window)
-rD = RSelenium::rsDriver(browser = "chrome")
-remDr <- rD[["client"]]
+remDr <- remoteDriver(port = 4445L)
+remDr$open(silent = TRUE)
+
+# rD = RSelenium::rsDriver(remoteServerAddr = "172.17.0.2", port = 4445L)
+# rD = RSelenium::rsDriver(browser = "chrome")
+# remDr <- rD[["client"]]
 
 # Get to GORKA 4 --------------------------------------------------
 # URL to login website

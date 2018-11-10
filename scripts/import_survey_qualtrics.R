@@ -28,7 +28,6 @@ source("functions/UBER_IMPORT2QUALTRICS_miro.R")
 # sudo apt-get update
 # sudo apt-get install vinagre
 
-
 # To remove blocks
 # remove_blocks_qualtrics(start_on = 1, survey_type = "miro")
 # remDr$refresh()

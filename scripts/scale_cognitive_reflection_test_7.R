@@ -38,4 +38,4 @@ crt_7_scale_sep %>%
   cat(qualtrics_codes$advanced_format, 
       gsub("block_name", long_name, qualtrics_codes$block_start),
       ., 
-      sep = "\n", file = file.path(output_dir, paste0(long_name, "crt_7.txt")))
+      sep = "\n", file = file.path(output_dir, paste0(long_name, ".txt")))

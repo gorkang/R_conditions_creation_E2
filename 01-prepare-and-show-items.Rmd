@@ -302,7 +302,7 @@ source("scripts/scales_instructions.R")
 # Survey effort
 
 ```{r, results='asis', echo=FALSE}
-source("scripts/comments.R")
+source("scripts/survey_effort.R")
 ```
 
 # Comments

@@ -1,3 +1,5 @@
+# COG SCALES RANDOMIZER N20
+# PER SCALES RANDOMIZER N27
 
 # Packages -------------------------------------------------------------
 if (!require('pacman')) install.packages('pacman'); library('pacman')
@@ -67,15 +69,12 @@ Q_counter <- 0
 # UPLOAD!
 UBER_IMPORT2QUALTRICS_miro(file_paths)
 
-# # To remove blocks (use start_on = 1, or start_on = 2)
-remove_blocks_qualtrics(start_on = 35, survey_type = "miro")
-remDr$refresh()
-
 # Move ED blocks ---------------------------------------------------------
 # Get to Survey Flow
 webElem <- remDr$findElement("css selector", "#surveyflow")
 webElem$clickElement()
 
+# Get blocks
 ed_blocks <- remDr$findElements("class name", "Move")
 
 # If survey flow is not loaded (blocks is empty) check for elemenst again, until is not empty.

@@ -1,15 +1,7 @@
-# If selenium is not working try with the following lines, and (maybe) installing Java.
-# sudo apt install phantomjs
-# binman::rm_platform("phantomjs")
-# wdman::selenium(retcommand = TRUE)
-
-# RUN SELENIUM USING DOCKER
-# http://ropensci.github.io/RSelenium/articles/docker.html
 
 # Packages -------------------------------------------------------------
 if (!require('pacman')) install.packages('pacman'); library('pacman')
 p_load(RSelenium, tidyverse)
-
 
 # Resources ---------------------------------------------------------------
 source("functions/get2survey.R")
@@ -18,15 +10,19 @@ source("functions/remove_surveyflow_elements.R")
 source("functions/go_gorka_04.R")
 source("functions/UBER_IMPORT2QUALTRICS_miro.R")
 
-# Close any docker session running (run in terminal)
-# docker stop $(docker ps -q)
-# docker ps
-# sudo docker pull selenium/standalone-firefox-debug:2.53.0
-# sudo docker run -d -p 4445:4444 -p 5901:5900 selenium/standalone-firefox-debug:2.53.0
-# sudo docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.ID}}'
-# ALSO MAKE SURE YOU HAVE VINAGER (VNC CLIENT)
-# sudo apt-get update
-# sudo apt-get install vinagre
+# Start docker session ----------------------------------------------------
+
+# Check docker containers
+system('docker ps -q') 
+# Kill all containers
+system('docker stop $(docker ps -q)') # MATALOS todos
+# Get chrome image (to use VNC use debug)
+system('docker pull selenium/standalone-chrome-debug') 
+# Run docker session. Map home directory to download docker container
+system('docker run -d -v /home:/home/seluser/Downloads -P selenium/standalone-chrome-debug')
+# Get important data about ports
+system('docker ps')
+
 # This is the path to materials folder within docker container
 selenium_path <- "/home/seluser/Downloads/nicolas/asgard/fondecyt/gorka/2017 - Gorka - Fondecyt/Experimentos/Experimento 1/R_condition_creation_GITHUB/R_conditions_creation"
 
@@ -39,13 +35,9 @@ selenium_path <- "/home/seluser/Downloads/nicolas/asgard/fondecyt/gorka/2017 - G
 
 # Selenium ----------------------------------------------------------------
 
-# Create browser instance (this will pop-up a window)
-remDr <- remoteDriver(port = 4445L)
-remDr$open(silent = TRUE)
-
-# rD = RSelenium::rsDriver(remoteServerAddr = "172.17.0.2", port = 4445L)
-# rD = RSelenium::rsDriver(browser = "chrome")
-# remDr <- rD[["client"]]
+# Create browser instance. This should be reflected in the VNC session
+remDr <- remoteDriver(remoteServerAddr = "localhost", port = 32769, browserName = "chrome")
+remDr$open()
 
 # Get to GORKA 4 --------------------------------------------------
 # URL to login website
@@ -59,7 +51,6 @@ get2survey(survey_link)
 
 # Gorka_04
 go_gorka_04()
-
 
 # Import Embedded data blocks --------------------------------------------------
 

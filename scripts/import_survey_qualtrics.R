@@ -222,19 +222,66 @@ Q_counter <- 0
 # UPLOAD!
 UBER_IMPORT2QUALTRICS_miro(file_paths)
 
-# Import scales --------------------------------------------------
+# Cognitive scales INSTRUCTIONS --------------------------------------------------
 
 file_paths <- 
   file.path(selenium_path, "/materials/qualtrics/output/plain_text/scales_instructions/cog_title.txt")
+
+# Iteration counter
+Q_counter <- 0
+
+# UPLOAD!
+UBER_IMPORT2QUALTRICS_miro(file_paths)
+
+# Import COGNITIVE scales --------------------------------------------------
+
+# Cognitive scales 
+cog_scales <- 
+  read_csv("materials/Scales/scale_names.csv") %>% 
+  filter(per_cog == "cog") %>% select(long_name) %>% 
+    pull() %>% paste0("materials/qualtrics/output/plain_text/scales/", .)
+
+cog_scales_path <- 
+  cog_scales %>% 
   map(~dir(.x, pattern = ".txt", full.names = TRUE)) %>% 
   unlist()
 
-# remove sociodemographic scale
-file_paths <- 
-  file_paths[!str_detect(file_paths, "sociodemo")]
-# remove a priori screening belief scale
+file_paths <- cog_scales_path
+
+# full absolute paths
+file_paths <- file.path(selenium_path, file_paths)
+
+# Iteration counter
+Q_counter <- 0
+
+# UPLOAD!
+UBER_IMPORT2QUALTRICS_miro(file_paths)
+
+
+# Personality scales INSTRUCTIONS --------------------------------------------------
+
 file_paths <- 
   file.path(selenium_path, "/materials/qualtrics/output/plain_text/scales_instructions/pers_title.txt")
+
+# Iteration counter
+Q_counter <- 0
+
+# UPLOAD!
+UBER_IMPORT2QUALTRICS_miro(file_paths)
+
+# Personality scales -------------------------------------------------------------- 
+
+per_scales <- 
+  read_csv("materials/Scales/scale_names.csv") %>% 
+  filter(per_cog == "per") %>% select(long_name) %>% 
+  pull() %>% paste0("materials/qualtrics/output/plain_text/scales/", .)
+
+per_scales_path <- 
+  per_scales %>% 
+  map(~dir(.x, pattern = ".txt", full.names = TRUE)) %>% 
+  unlist()
+
+file_paths <- per_scales_path
 
 # full absolute paths
 file_paths <- file.path(selenium_path, file_paths)

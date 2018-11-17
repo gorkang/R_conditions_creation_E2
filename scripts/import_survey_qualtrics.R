@@ -27,6 +27,8 @@ source("functions/UBER_IMPORT2QUALTRICS_miro.R")
 # ALSO MAKE SURE YOU HAVE VINAGER (VNC CLIENT)
 # sudo apt-get update
 # sudo apt-get install vinagre
+# This is the path to materials folder within docker container
+selenium_path <- "/home/seluser/Downloads/nicolas/asgard/fondecyt/gorka/2017 - Gorka - Fondecyt/Experimentos/Experimento 1/R_condition_creation_GITHUB/R_conditions_creation"
 
 # To remove blocks
 # remove_blocks_qualtrics(start_on = 1, survey_type = "miro")
@@ -95,7 +97,7 @@ while (length(ed_blocks) == 0) {
 ed_blocks <- ed_blocks[-1]
 
 # Set counter to 0. This keeps track of the last block moved.
-.GlobalEnv$safe_counter <- 170
+.GlobalEnv$safe_counter <- 0
 
 while (.GlobalEnv$safe_counter != length(ed_blocks)) {
   
@@ -154,7 +156,7 @@ while (.GlobalEnv$safe_counter != length(ed_blocks)) {
 # Experiment description  ------------------------------------------------------------
 
 file_paths <- 
-  file.path(getwd(), "materials/qualtrics/output/plain_text/exp_design/experiment_design.txt")
+  file.path(selenium_path, "materials/qualtrics/output/plain_text/exp_design/experiment_design.txt")
 
 # Iteration counter
 Q_counter <- 0
@@ -162,10 +164,11 @@ Q_counter <- 0
 # UPLOAD!
 UBER_IMPORT2QUALTRICS_miro(file_paths)
 
+
 # Pilot warning ------------------------------------------------------------
 
 file_paths <- 
-  file.path(getwd(), "materials/qualtrics/output/plain_text/pilot_warning/pilot_warning.txt")
+  file.path(selenium_path, "materials/qualtrics/output/plain_text/pilot_warning/pilot_warning.txt")
 
 # Iteration counter
 Q_counter <- 0
@@ -176,7 +179,7 @@ UBER_IMPORT2QUALTRICS_miro(file_paths)
 # Consent form ------------------------------------------------------------
 
 file_paths <- 
-  paste0(getwd(), "/materials/qualtrics/output/plain_text/consent_form/consent_form.txt")
+  paste0(selenium_path, "/materials/qualtrics/output/plain_text/consent_form/consent_form.txt")
 
 # Iteration counter
 Q_counter <- 0
@@ -187,7 +190,7 @@ UBER_IMPORT2QUALTRICS_miro(file_paths)
 # Sociodemographics -----------------------------------------------------------
 
 file_paths <- 
-  file.path(getwd(), "/materials/qualtrics/output/plain_text/scales/sociodemographic_scale/sociodemographic_scale.txt")
+  file.path(selenium_path, "/materials/qualtrics/output/plain_text/scales/sociodemographic_scale/sociodemographic_scale.txt")
 
 # Iteration counter
 Q_counter <- 0
@@ -198,7 +201,7 @@ UBER_IMPORT2QUALTRICS_miro(file_paths)
 # A priori screening belief -----------------------------------------------------------
 
 file_paths <- 
-  file.path(getwd(), "materials/qualtrics/output/plain_text/scales/a_priori_screening_belief/a_priori_screening_belief.txt")
+  file.path(selenium_path, "materials/qualtrics/output/plain_text/scales/a_priori_screening_belief/a_priori_screening_belief.txt")
 
 # Iteration counter
 Q_counter <- 0
@@ -209,7 +212,7 @@ UBER_IMPORT2QUALTRICS_miro(file_paths)
 # Screening block -----------------------------------------------------------
 
 file_paths <- 
-  file.path(getwd(), "/materials/qualtrics/output/plain_text/screening_blocks/complete/screenings_blocks.txt")
+  file.path(selenium_path, "/materials/qualtrics/output/plain_text/screening_blocks/complete/screenings_blocks.txt")
 
 # Iteration counter
 Q_counter <- 0
@@ -220,7 +223,7 @@ UBER_IMPORT2QUALTRICS_miro(file_paths)
 # Scales instructions -----------------------------------------------------------
 
 file_paths <- 
-  file.path(getwd(), "/materials/qualtrics/output/plain_text/scales_instructions/scales_instructions.txt")
+  file.path(selenium_path, "/materials/qualtrics/output/plain_text/scales_instructions/scales_instructions.txt")
 
 # Iteration counter
 Q_counter <- 0
@@ -231,8 +234,7 @@ UBER_IMPORT2QUALTRICS_miro(file_paths)
 # Import scales --------------------------------------------------
 
 file_paths <- 
-  "materials/qualtrics/output/plain_text/scales" %>% 
-  dir(., full.names = TRUE) %>% 
+  file.path(selenium_path, "/materials/qualtrics/output/plain_text/scales_instructions/cog_title.txt")
   map(~dir(.x, pattern = ".txt", full.names = TRUE)) %>% 
   unlist()
 
@@ -241,10 +243,10 @@ file_paths <-
   file_paths[!str_detect(file_paths, "sociodemo")]
 # remove a priori screening belief scale
 file_paths <- 
-  file_paths[!str_detect(file_paths, "a_priori_screening_belief")]
+  file.path(selenium_path, "/materials/qualtrics/output/plain_text/scales_instructions/pers_title.txt")
 
 # full absolute paths
-file_paths <- file.path(getwd(), file_paths)
+file_paths <- file.path(selenium_path, file_paths)
 
 # Iteration counter
 Q_counter <- 0
@@ -255,7 +257,7 @@ UBER_IMPORT2QUALTRICS_miro(file_paths)
 # Previous experience -----------------------------------------------------------
 
 file_paths <- 
-  file.path(getwd(), "materials/qualtrics/output/plain_text/previous_experience/previous_experience.txt")
+  file.path(selenium_path, "materials/qualtrics/output/plain_text/previous_experience/previous_experience.txt")
 
 # Iteration counter
 Q_counter <- 0
@@ -267,7 +269,7 @@ UBER_IMPORT2QUALTRICS_miro(file_paths)
 # Comments -----------------------------------------------------------
 
 file_paths <- 
-  file.path(getwd(), "materials/qualtrics/output/plain_text/comments/comments.txt")
+  file.path(selenium_path, "materials/qualtrics/output/plain_text/comments/comments.txt")
 
 # Iteration counter
 Q_counter <- 0
@@ -278,7 +280,7 @@ UBER_IMPORT2QUALTRICS_miro(file_paths)
 # survey effort -----------------------------------------------------------
 
 file_paths <- 
-  file.path(getwd(), "materials/qualtrics/output/plain_text/survey_effort/survey_effort.txt")
+  file.path(selenium_path, "materials/qualtrics/output/plain_text/survey_effort/survey_effort.txt")
 
 # Iteration counter
 Q_counter <- 0

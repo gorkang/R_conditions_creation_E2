@@ -116,8 +116,10 @@ while (.GlobalEnv$safe_counter != length(ed_blocks)) {
     }
     
     # Identify block to move and randomizer "Add a new element here" element
-    webElem1 <- blocks[[i+34]] # Block to move
-    webElem2 <- remDr$findElement("css selector", "#Flow > div:nth-child(1) > div > div > div:nth-child(39) > div > div.FlowElement.DragScroll > div > div.ViewContainer.Type_SpecialChildElement > div > div.ElementView > div > div.DragScroll > div > div > a > span.add-element-label")
+    webElem1 <- blocks[[i+3]] # Block to move
+    # webElem2 <- remDr$findElement("css selector", "#Flow > div:nth-child(1) > div > div > div.FlowElement.DragScroll.Selected > div > div.FlowElement.DragScroll > div > div.ViewContainer.Type_SpecialChildElement > div > div.ElementView > div > div.DragScroll > div > div > a > span.add-element-label")
+    webElem2 <- remDr$findElement("css selector", "#Flow > div:nth-child(1) > div > div > div:nth-child(5) > div > div.FlowElement.DragScroll > div > div.ViewContainer.Type_SpecialChildElement > div > div.ElementView > div > div.DragScroll > div > div > a > span.add-element-label")
+    
     
     # Move block to randomizer
     remDr$mouseMoveToLocation(webElement = webElem1)

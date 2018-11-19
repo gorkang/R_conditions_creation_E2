@@ -61,7 +61,7 @@ full_path <-
   "materials/qualtrics/output/plain_text/embedded_data_blocks"
 
 file_paths <- 
-  full_path %>% dir(., ".txt", full.names = TRUE) %>% file.path(getwd(), .)
+  full_path %>% dir(., ".txt") %>% file.path(selenium_path, full_path, .)
 
 # Iteration counter
 Q_counter <- 0

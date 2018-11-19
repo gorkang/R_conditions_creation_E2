@@ -199,6 +199,17 @@ Q_counter <- 0
 # UPLOAD!
 UBER_IMPORT2QUALTRICS_miro(file_paths)
 
+# Severity emotional reaction scale -----------------------------------------------------------
+
+file_paths <- 
+  file.path(selenium_path, "materials/qualtrics/output/plain_text/scales/severity_emotion_scale/severity_emotion_scale.txt")
+
+# Iteration counter
+Q_counter <- 0
+
+# UPLOAD!
+UBER_IMPORT2QUALTRICS_miro(file_paths)
+
 # Screening block -----------------------------------------------------------
 
 file_paths <- 

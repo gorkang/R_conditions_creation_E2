@@ -73,7 +73,9 @@ create_ED_blocks <- function() {
            screening_item_01 = NULL,          # Screening item 01
            screening_item_02_intro = NULL,    # Screening item introduction item 02
            prevalence_02 = NULL,              # Screening item prevalence item 02  
-           screening_item_02 = NULL          # Screening item 02
+           screening_item_02 = NULL,          # Screening item 02 
+           dumb_question = paste(qualtrics_codes$question_only_text, "DELETE THIS", sep = "\n") 
+           
            
       )
     # ######################################################################################################

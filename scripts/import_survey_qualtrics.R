@@ -61,7 +61,7 @@ full_path <-
   "materials/qualtrics/output/plain_text/embedded_data_blocks"
 
 file_paths <- 
-  full_path %>% dir(., ".txt", full.names = TRUE) %>% file.path(getwd(), .)
+  full_path %>% dir(., ".txt") %>% file.path(selenium_path, full_path, .)
 
 # Iteration counter
 Q_counter <- 0
@@ -116,8 +116,10 @@ while (.GlobalEnv$safe_counter != length(ed_blocks)) {
     }
     
     # Identify block to move and randomizer "Add a new element here" element
-    webElem1 <- blocks[[i+34]] # Block to move
-    webElem2 <- remDr$findElement("css selector", "#Flow > div:nth-child(1) > div > div > div:nth-child(39) > div > div.FlowElement.DragScroll > div > div.ViewContainer.Type_SpecialChildElement > div > div.ElementView > div > div.DragScroll > div > div > a > span.add-element-label")
+    webElem1 <- blocks[[i+3]] # Block to move
+    # webElem2 <- remDr$findElement("css selector", "#Flow > div:nth-child(1) > div > div > div.FlowElement.DragScroll.Selected > div > div.FlowElement.DragScroll > div > div.ViewContainer.Type_SpecialChildElement > div > div.ElementView > div > div.DragScroll > div > div > a > span.add-element-label")
+    webElem2 <- remDr$findElement("css selector", "#Flow > div:nth-child(1) > div > div > div:nth-child(5) > div > div.FlowElement.DragScroll > div > div.ViewContainer.Type_SpecialChildElement > div > div.ElementView > div > div.DragScroll > div > div > a > span.add-element-label")
+    
     
     # Move block to randomizer
     remDr$mouseMoveToLocation(webElement = webElem1)
@@ -192,6 +194,17 @@ UBER_IMPORT2QUALTRICS_miro(file_paths)
 
 file_paths <- 
   file.path(selenium_path, "materials/qualtrics/output/plain_text/scales/a_priori_screening_belief/a_priori_screening_belief.txt")
+
+# Iteration counter
+Q_counter <- 0
+
+# UPLOAD!
+UBER_IMPORT2QUALTRICS_miro(file_paths)
+
+# Severity emotional reaction scale -----------------------------------------------------------
+
+file_paths <- 
+  file.path(selenium_path, "materials/qualtrics/output/plain_text/scales/severity_emotion_scale/severity_emotion_scale.txt")
 
 # Iteration counter
 Q_counter <- 0

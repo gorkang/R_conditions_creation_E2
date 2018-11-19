@@ -25,10 +25,11 @@ remove_blocks_qualtrics <- function(start_on = 1, survey_type = "gorka") {
     # Always delete the first element (they change on every interation)
     repeat {
     webElem <- elements[[start_on]]
-    webElem$clickElement()
     done <- 1
     if (done == 1) break
     }
+    # Click on first element
+    webElem$clickElement()
     
     Sys.sleep(.5) # give it time
     

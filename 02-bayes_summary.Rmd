@@ -4,7 +4,6 @@
 cat("![](bayesian_reasoning_flowchart.png)")
 ```
 
-## A priori belief
 ```{r, results='asis', echo=FALSE}
 # PRINT SCALES (BOOK)
 # this vector with paths set the scales to be printed

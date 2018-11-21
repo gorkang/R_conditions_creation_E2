@@ -1,0 +1,91 @@
+[[Question:Text]]
+[[ID:replaceID]]
+<span style='font-size:Q_FONT_SIZEpx;'>Please, answer the following questions the best you can.</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style='font-size:Q_FONT_SIZEpx;'>How good are you at working with fractions?</span>
+[[Choices]]
+<span style='font-size:C_FONT_SIZEpx;'>1<br>not at all good</span>
+<span style='font-size:C_FONT_SIZEpx;'>2</span>
+<span style='font-size:C_FONT_SIZEpx;'>3</span>
+<span style='font-size:C_FONT_SIZEpx;'>4</span>
+<span style='font-size:C_FONT_SIZEpx;'>5</span>
+<span style='font-size:C_FONT_SIZEpx;'>6<br>extremely good</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style='font-size:Q_FONT_SIZEpx;'>How good are you at working with percentages?</span>
+[[Choices]]
+<span style='font-size:C_FONT_SIZEpx;'>1<br>not at all good</span>
+<span style='font-size:C_FONT_SIZEpx;'>2</span>
+<span style='font-size:C_FONT_SIZEpx;'>3</span>
+<span style='font-size:C_FONT_SIZEpx;'>4</span>
+<span style='font-size:C_FONT_SIZEpx;'>5</span>
+<span style='font-size:C_FONT_SIZEpx;'>6<br>extremely good</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style='font-size:Q_FONT_SIZEpx;'>How good are you at calculating a 15% tip?</span>
+[[Choices]]
+<span style='font-size:C_FONT_SIZEpx;'>1<br>not at all good</span>
+<span style='font-size:C_FONT_SIZEpx;'>2</span>
+<span style='font-size:C_FONT_SIZEpx;'>3</span>
+<span style='font-size:C_FONT_SIZEpx;'>4</span>
+<span style='font-size:C_FONT_SIZEpx;'>5</span>
+<span style='font-size:C_FONT_SIZEpx;'>6<br>extremely good</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style='font-size:Q_FONT_SIZEpx;'>How good are you at figuring out how much a shirt will cost if it is 25% off?</span>
+[[Choices]]
+<span style='font-size:C_FONT_SIZEpx;'>1<br>not at all good</span>
+<span style='font-size:C_FONT_SIZEpx;'>2</span>
+<span style='font-size:C_FONT_SIZEpx;'>3</span>
+<span style='font-size:C_FONT_SIZEpx;'>4</span>
+<span style='font-size:C_FONT_SIZEpx;'>5</span>
+<span style='font-size:C_FONT_SIZEpx;'>6<br>extremely good</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style='font-size:Q_FONT_SIZEpx;'>When reading the newspaper, how helpful do you find tables and graphs that are parts of a story?</span>
+[[Choices]]
+<span style='font-size:C_FONT_SIZEpx;'>1<br>not at all</span>
+<span style='font-size:C_FONT_SIZEpx;'>2</span>
+<span style='font-size:C_FONT_SIZEpx;'>3</span>
+<span style='font-size:C_FONT_SIZEpx;'>4</span>
+<span style='font-size:C_FONT_SIZEpx;'>5</span>
+<span style='font-size:C_FONT_SIZEpx;'>6<br>extremely</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style='font-size:Q_FONT_SIZEpx;'>When people tell you the chance of something happening, do you prefer that they use words ('it rarely happens') or numbers ('there’s a 1% chance')?</span>
+[[Choices]]
+<span style='font-size:C_FONT_SIZEpx;'>1<br>always prefer words</span>
+<span style='font-size:C_FONT_SIZEpx;'>2</span>
+<span style='font-size:C_FONT_SIZEpx;'>3</span>
+<span style='font-size:C_FONT_SIZEpx;'>4</span>
+<span style='font-size:C_FONT_SIZEpx;'>5</span>
+<span style='font-size:C_FONT_SIZEpx;'>6<br>always prefer numbers</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style='font-size:Q_FONT_SIZEpx;'>When you hear a weather forecast, do you prefer predictions using percentages (e.g., "there will be a 20% chance of rain today") or predictions using only words (e.g., "there is a small chance of rain today")?</span>
+[[Choices]]
+<span style='font-size:C_FONT_SIZEpx;'>1<br>always prefer percentages</span>
+<span style='font-size:C_FONT_SIZEpx;'>2</span>
+<span style='font-size:C_FONT_SIZEpx;'>3</span>
+<span style='font-size:C_FONT_SIZEpx;'>4</span>
+<span style='font-size:C_FONT_SIZEpx;'>5</span>
+<span style='font-size:C_FONT_SIZEpx;'>6<br>always prefer words</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:replaceID]]
+<span style='font-size:Q_FONT_SIZEpx;'>How often do you find numerical information to be useful?</span>
+[[Choices]]
+<span style='font-size:C_FONT_SIZEpx;'>1<br>never</span>
+<span style='font-size:C_FONT_SIZEpx;'>2</span>
+<span style='font-size:C_FONT_SIZEpx;'>3</span>
+<span style='font-size:C_FONT_SIZEpx;'>4</span>
+<span style='font-size:C_FONT_SIZEpx;'>5</span>
+<span style='font-size:C_FONT_SIZEpx;'>6<br>very often</span>

@@ -1,0 +1,157 @@
+```{r include=FALSE}
+# Packages
+if (!require('pacman')) install.packages('pacman'); library('pacman')
+p_load(tidyverse, kableExtra)
+
+source("functions/kableMe.R")
+```
+
+# Documentation
+
+Description about the code and its particularities.
+
+## Non-dinamic code
+
+The following scripts contain parts that require to call by name some presentation formats, problem contexts, or other elements. If a new element of any of this is added, a manual modification is needed in these scripts.
+
+- `textonly_item_prep.R`: "Special modifications" section. 01. Eliminates PPV question in positive framework (pfab) problems with sequential guided response type (sg). 02. Personalize sequential guided response type by medical condition. This last one is able to accommodate new problem contexts.
+
+## Follow-up
+
+### Inputs
+
+The folder `/Follow_up/input/` contains three folders:  
+
+- **items**: contains an unified follow-up item template (irrespective of problem context), without questions.  
+- **pictorial_prevalences**: contains pictorial items prevalence templates. These prevalence are created with `scripts/create_pictorial_prevalences.R` (called within `followUp_create_export.R`).  
+- **questions_raw**: contains follow-up questions  
+
+The content of `unified_fu.txt` (follow-up template) and of **questions_raw** (follow-up questions) are combined and then Qualtrics tags are added. Placeholders are dealt with within Qualtrics using Embedded data fields.
+
+#### items
+
+This folder contains one item template that is used for both problem contexts. Each customizable part is an embedded data field call (see `materials/fillers.csv` for actual fillers):  
+
+- `${e://Field/prevalence_0}`           
+- `${e://Field/ppv_response_0}`         
+- `${e://Field/medical_condition_0}`    
+- `${e://Field/positive_test_result_0}` 
+- `${e://Field/doctor_offers_0}`        
+- `${e://Field/fluid_test_0}`           
+- `${e://Field/test_name_0}`  
+- `${e://Field/fu_risk_num_0}`  
+- `${e://Field/medical_consequence_0}`  
+The text within each follow-up item template must be parsed using the following placeholders:  
+`[followUp_start]`  
+`[followUp_first_piece]`  
+`[followUp_second_piece]`  
+`[followUp_third_piece]`  
+`[followUp_end]`  
+
+The placeholders should be used to separate unities as paragraphs. Right now it is possible to use up to three numbered placeholders between `[followUp_start]` and `[followUp_end]`.
+Additionally, html code tags can be use to give format to items within Qualtrics. Currently, there are html tags to add one list with two elements. Also, there is a manual modification to remove a linebreak between list elements (`<li>\n<li>`). 
+
+
+###### Follow-up item template  
+
+```
+[followUp_start]
+Remember that:
+<li>${e://Field/prevalence_0}</li>
+<li>In your response to the previous problem you said that, ${e://Field/ppv_response_0} of those with a positive ${e://Field/positive_test_result_0} actually have the medical condition (${e://Field/medical_condition_0}).</li>
+
+[followUp_first_piece]
+Imagine a woman you care about is participating in a routine screening as the one you saw before to detect a medical condition (${e://Field/medical_condition_0}), and receives a positive ${e://Field/positive_test_result_0}.
+
+
+[followUp_second_piece]
+The doctor offers her a follow-up test ${e://Field/doctor_offers_0}, necessary to confirm the diagnosis. During the procedure, a needle is inserted to sample ${e://Field/fluid_test_0}.
+
+[followUp_third_piece]
+${e://Field/test_name_0} has a ${e://Field/fu_risk_num_0}% procedure-related risk of complications (for example, infections) that can result in a ${e://Field/medical_consequence_0}.
+[followUp_end]
+```
+
+#### pictorial_prevalences
+
+This folder contains unique prevalence of pictorial items as text files. Files must be named as follow:  
+`[context]_[pictorial presentation format]_followup_context.text`  
+The context should be no longer than 2 letters, and presentation format no longer than 4 letters. For example:  
+`ca_fbpi_followup_context.txt`  
+`pr_nppi_followup_context.txt`  
+
+The text within each text file must start with a name, indicating context and presentation format between asterisk (two at each side):  
+`**ca_fbpi**`
+
+Following the name, the actual prevalence text must be in the same line and can contain simple text and/or column names of `number_bayes.xls` to be replace with numbers.
+
+##### pictorial_prevalence example
+
+```
+**ca_fbpi**die_all_with out of prev_02 women with screening and die_all_without out of prev_02 women without screening die from all types of cancer.
+```
+
+#### questions_raw
+
+This folder contains the questions to be append at the end of follow-up items. Each question must be a text file. The files must be named using correlative numbers, the correlative number order will be the order used to display questions after the follow-up item. For example:  
+`followup_question_01.txt`  
+`followup_question_02.txt`  
+`followup_question_03.txt`  
+`followup_question_04.txt`  
+...  
+`followup_question_n.txt`  
+
+At the beginning of each file it has to be indicated the kind of question using Qualtrics advanced text format tags. For an extensive list of Qualtrics tags see https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/.
+
+```{r echo=FALSE}
+tibble(
+  `Embedded data` = c("[[Question:MC:SingleAnswer:Vertical]]",
+                      "[[Question:MC:SingleAnswer:Horizontal]]",
+                      "[[Question:MC:DropDown]]",
+                      "[[Question:TE]]",
+                      "[[Question:Text]]"),
+  Description = c("Multiple choice, single answer, choices laid vertically.",
+                  "Multiple choice, single answer, choices laid horizontally.",
+                  "Multiple choice, drop-down choices.",
+                  "Text entry.",
+                  "Only descriptive text. This question allows to insert a text without choices.")) %>% 
+  kableME()
+```
+
+
+It is not possible to create slider questions using Qualtrics advanced text format. To create a slider question with an unnamed or named slider, the best option is to create a the vertical single choice question (`[[Question:MC:SingleAnswer:Vertical]]`) and then convert it to slider. The choices text will be used as slider names (if the choice text is an space the slider will be nameless).
+
+After the Qualtrics advanced text format the following placeholders must be used to parsed the question and choices text:  
+`[question_start]`  
+`[choices_start]`  
+`[second_choice]`  
+`[third_choice]`  
+...  
+`[choices_end]`  
+
+Right now the script allows up to ten choices, therefore, the last placeholder before `[choices_end]` must be `[tenth_choice]`.
+
+##### questions_raw example
+
+```
+[[Question:MC:SingleAnswer:Vertical]]
+[question_start]
+Should she take the follow-up test?
+[choices_start]
+Yes
+[second_choice]
+No
+[choices_end]
+```
+
+## Others
+
+It is necessary to install ttf-mscorefonts-installer to be able to run the script.  
+On Ubuntu:  
+```
+sudo apt install ttf-mscorefonts-installer
+```
+  
+
+
+

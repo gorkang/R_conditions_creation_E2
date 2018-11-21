@@ -1,0 +1,26 @@
+Please indicate the level of your anxiety in the following situations. Please select one option on each sentence. 
+Studying for a math test. 
+Taking math section of the college entrance exam. 
+Taking an exam (quiz) in a math course. 
+Taking an exam (final) in a math course. 
+Picking up math textbook to begin working on a homework assignment.
+Being given homework assignments of many difficult problems that are due the next class meeting.
+Thinking about an upcoming math test 1 week before.
+Thinking about an upcoming math test 1 day before.
+Thinking about an upcoming math test 1 hour before.
+Realizing you have to take a certain number of math classes to fulfill requirements.
+Picking up math textbook to begin a difficult reading assignment.
+Receiving your final math grade in the mail.
+Opening a math or stat book and seeing a page full of problems.
+Getting ready to study for a math test.
+Being given a “pop” quiz in a math class. 
+Reading a cash register receipt after your purchase.
+Being given a set of numerical problems involving addition to solve on paper.
+Being given a set of subtraction problems to solve.
+Being given a set of multiplication problems to solve.
+Being given a set of division problems to solve.
+Buying a math textbook.
+Watching a teacher work on an algebraic equation on the blackboard.
+Signing up for a math course.
+Listening to another student explain a math formula.
+Walking into a math class.

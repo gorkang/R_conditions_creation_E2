@@ -1,0 +1,37 @@
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">What is your previous experience with breast cancer?</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">I have minimal or no experience with breast cancer.</span>
+<span style="font-size:C_FONT_SIZEpx;">Someone I know has/had breast cancer.</span>
+<span style="font-size:C_FONT_SIZEpx;">Someone very close to me has/had breast cancer.</span>
+<span style="font-size:C_FONT_SIZEpx;">I personally have/had breast cancer.</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">What is your previous experience with Down syndrome?</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">I have minimal or no experience with Down syndrome.</span>
+<span style="font-size:C_FONT_SIZEpx;">Someone I know has Down syndrome.</span>
+<span style="font-size:C_FONT_SIZEpx;">Someone I know has a child with Down syndrome.</span>
+<span style="font-size:C_FONT_SIZEpx;">Someone very close to me has Down syndrome.</span>
+<span style="font-size:C_FONT_SIZEpx;">Someone very close to me has a child with Down syndrome.</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">What is your previous experience with mammograms?</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">I have minimal or no experience with mammograms.</span>
+<span style="font-size:C_FONT_SIZEpx;">Someone I know has undergone a mammogram.</span>
+<span style="font-size:C_FONT_SIZEpx;">Someone very close to me has undergone a mammogram.</span>
+<span style="font-size:C_FONT_SIZEpx;">I personally have undergone a mammogram.</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:replaceID]]
+<span style="font-size:Q_FONT_SIZEpx;">What is your previous experience with prenatal screenings?</span>
+[[Choices]]
+<span style="font-size:C_FONT_SIZEpx;">I have minimal or no experience with prenatal screenings.</span>
+<span style="font-size:C_FONT_SIZEpx;">Someone I know has undergone a prenatal screening.</span>
+<span style="font-size:C_FONT_SIZEpx;">Someone very close to me has undergone a prenatal screening.</span>
+<span style="font-size:C_FONT_SIZEpx;">I personally have undergone a prenatal screening.</span>
+

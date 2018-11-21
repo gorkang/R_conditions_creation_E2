@@ -1,628 +1,318 @@
 ```{r item_preparation, include=FALSE}
-# Item preparation
-  source("scripts/item_preparation.R")
 
+# Item preparation
+source("scripts/item_preparation.R")
 
 # Read images
-
 # Fact-box
-  # Directory
-  fact_box_dir <- "materials/Presentation_format/fbpi/output/"
-  # Fact-box img files
-  fact_box_imgs <- dir(fact_box_dir)
-  
+# Directory
+fact_box_dir <- "materials/Presentation_format/fbpi/output/"
+# Fact-box img files
+fact_box_imgs <- dir(fact_box_dir)
+
 # New paradigm
-  # Directory
-  new_paradigm_dir <- "materials/Presentation_format/nppi/output/"
-  # Fact-box img files
-  new_paradigm_imgs <- dir(new_paradigm_dir)
+# Directory
+new_paradigm_dir <- "materials/Presentation_format/nppi/output/"
+# Fact-box img files
+new_paradigm_imgs <- dir(new_paradigm_dir)
+
+# Function for displaying items
+source("functions/print_cat_items.R")
+source("functions/remove_placeholders.R")
+source("functions/asterik_name_remover.R")
+
 ```
-    
+
+```{r, down_img, echo=FALSE}
+# Update Qualtrics imgs
+# This script has to run manually (line by line) so it don't crush
+# source("scripts/upload_imgs_qualtrics.R")
+```
+
+```{r include=FALSE}
+# function to display items
+source("functions/display_items.R")
+```
+
+
 # Breast Cancer Items
 
 ## Low normative PPV
 
 ### NF ABSOLUTE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("ca", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, ca_nfab_low}
-invisible(lapply(problems_numbered_ordered_responses[grep("ca_nfab_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+display_item(c("ca", "nfab", "low", "gi"))
+display_item(c("ca", "nfab", "low", "gs"))
+display_item(c("ca", "nfab", "low", "sg"))
+display_item(c("ca", "nfab", "low", "ss"))
 ```
 
 ### PR ABSOLUTE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("ca", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, ca_prab_low}
-invisible(lapply(problems_numbered_ordered_responses[grep("ca_prab_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+display_item(c("ca", "prab", "low", "gi"))
+display_item(c("ca", "prab", "low", "gs"))
+display_item(c("ca", "prab", "low", "sg"))
+display_item(c("ca", "prab", "low", "ss"))
 ```
 
 ### PR RELATIVE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("ca", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, ca_prre_low}
-invisible(lapply(problems_numbered_ordered_responses[grep("ca_prre_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+display_item(c("ca", "prre", "low", "gi"))
+display_item(c("ca", "prre", "low", "gs"))
+display_item(c("ca", "prre", "low", "sg"))
+display_item(c("ca", "prre", "low", "ss"))
 ```
 
 ### PF ABSOLUTE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("ca", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, ca_pfab_low}
-invisible(lapply(problems_numbered_ordered_responses[grep("ca_pfab_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+display_item(c("ca", "pfab", "low", "gi"))
+display_item(c("ca", "pfab", "low", "gs"))
+display_item(c("ca", "pfab", "low", "sg"))
+display_item(c("ca", "pfab", "low", "ss"))
 ```
 
 ### FB PICTORIAL
 
-
-**ca_fbpi_low_gi**  
-```{r, echo=FALSE, results='asis'}
-fb_ca_low <- readPNG(paste0(fact_box_dir, grep(".*ca_low.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_ca_low)
+```{r, results='asis', echo=FALSE, ca_fbpi_low}
+display_item(c("ca", "fbpi", "low", "gi"))
+display_item(c("ca", "fbpi", "low", "gs"))
+display_item(c("ca", "fbpi", "low", "sg"))
+display_item(c("ca", "fbpi", "low", "ss"))
 ```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["ca_question"]])
-cat(responses[[1]])
-```
-  
-_******************************************_  
-**ca_fbpi_low_gs**  
-```{r, echo=FALSE}
-fb_ca_low <- readPNG(paste0(fact_box_dir, grep(".*ca_low.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_ca_low)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["ca_question"]])
-cat(responses[[2]])
-```
-  
-_******************************************_  
-**ca_fbpi_low_sg**  
-```{r, echo=FALSE}
-fb_ca_low <- readPNG(paste0(fact_box_dir, grep(".*ca_low.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_ca_low)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["ca_question"]])
-cat(responses[[3]])
-```
-  
-_******************************************_  
-**ca_fbpi_low_ss**  
-```{r, echo=FALSE}
-fb_ca_low <- readPNG(paste0(fact_box_dir, grep(".*ca_low.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_ca_low)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["ca_question"]])
-cat(responses[[4]])
-```
-
 
 ### NP PICTORIAL
 
-
-**ca_nppi_low_gi**  
-```{r, echo=FALSE, results='asis'}
-np_ca_low <- readPNG(paste0(new_paradigm_dir, grep(".*ca_low.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_ca_low)
+```{r, results='asis', echo=FALSE, ca_nppi_low}
+display_item(c("ca", "nppi", "low", "gi"))
+display_item(c("ca", "nppi", "low", "gs"))
+display_item(c("ca", "nppi", "low", "sg"))
+display_item(c("ca", "nppi", "low", "ss"))
 ```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["ca_question"]])
-cat(responses[[1]])
-```
-  
-_******************************************_  
-**ca_nppi_low_gs**  
-```{r, echo=FALSE}
-np_ca_low <- readPNG(paste0(new_paradigm_dir, grep(".*ca_low.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_ca_low)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["ca_question"]])
-cat(responses[[2]])
-```
-  
-_******************************************_  
-**ca_nppi_low_sg**  
-```{r, echo=FALSE}
-np_ca_low <- readPNG(paste0(new_paradigm_dir, grep(".*ca_low.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_ca_low)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["ca_question"]])
-cat(responses[[3]])
-```
-  
-_******************************************_  
-**ca_nppi_low_ss**  
-```{r, echo=FALSE}
-np_ca_low <- readPNG(paste0(new_paradigm_dir, grep(".*ca_low.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_ca_low)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["ca_question"]])
-cat(responses[[4]])
-```
-
 
 ## High normative PPV
 
 ### NF ABSOLUTE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("ca", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, ca_nfab_high}
-invisible(lapply(problems_numbered_ordered_responses[grep("ca_nfab_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+display_item(c("ca", "nfab", "high", "gi"))
+display_item(c("ca", "nfab", "high", "gs"))
+display_item(c("ca", "nfab", "high", "sg"))
+display_item(c("ca", "nfab", "high", "ss"))
 ```
 
 ### PR ABSOLUTE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("ca", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, ca_prab_high}
-invisible(lapply(problems_numbered_ordered_responses[grep("ca_prab_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+display_item(c("ca", "prab", "high", "gi"))
+display_item(c("ca", "prab", "high", "gs"))
+display_item(c("ca", "prab", "high", "sg"))
+display_item(c("ca", "prab", "high", "ss"))
 ```
 
 ### PR RELATIVE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("ca", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, ca_prre_high}
-invisible(lapply(problems_numbered_ordered_responses[grep("ca_prre_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+display_item(c("ca", "prre", "high", "gi"))
+display_item(c("ca", "prre", "high", "gs"))
+display_item(c("ca", "prre", "high", "sg"))
+display_item(c("ca", "prre", "high", "ss"))
 ```
 
 ### PF ABSOLUTE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("ca", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, ca_pfab_high}
-invisible(lapply(problems_numbered_ordered_responses[grep("ca_pfab_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
-
+display_item(c("ca", "pfab", "high", "gi"))
+display_item(c("ca", "pfab", "high", "gs"))
+display_item(c("ca", "pfab", "high", "sg"))
+display_item(c("ca", "pfab", "high", "ss"))
 ```
 
 ### FB PICTORIAL
 
-
-**ca_fbpi_high_gi**  
-```{r, echo=FALSE, results='asis'}
-fb_ca_high <- readPNG(paste0(fact_box_dir, grep(".*ca_high.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_ca_high)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["ca_question"]])
-cat(responses[[1]])
-```
-  
-_******************************************_  
-**ca_fbpi_high_gs**  
-```{r, echo=FALSE}
-fb_ca_high <- readPNG(paste0(fact_box_dir, grep(".*ca_high.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_ca_high)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["ca_question"]])
-cat(responses[[2]])
-```
-  
-_******************************************_  
-**ca_fbpi_high_sg**  
-```{r, echo=FALSE}
-fb_ca_high <- readPNG(paste0(fact_box_dir, grep(".*ca_high.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_ca_high)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["ca_question"]])
-cat(responses[[3]])
-```
-  
-_******************************************_  
-**ca_fbpi_high_ss**  
-```{r, echo=FALSE}
-fb_ca_high <- readPNG(paste0(fact_box_dir, grep(".*ca_high.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_ca_high)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["ca_question"]])
-cat(responses[[4]])
+```{r, results='asis', echo=FALSE, ca_fbpi_high}
+display_item(c("ca", "fbpi", "high", "gi"))
+display_item(c("ca", "fbpi", "high", "gs"))
+display_item(c("ca", "fbpi", "high", "sg"))
+display_item(c("ca", "fbpi", "high", "ss"))
 ```
 
 ### NP PICTORIAL
 
-
-**ca_nppi_high_gi**  
-```{r, echo=FALSE, results='asis'}
-np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_high.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_ca_high)
+```{r, results='asis', echo=FALSE, ca_nppi_high}
+display_item(c("ca", "nppi", "high", "gi"))
+display_item(c("ca", "nppi", "high", "gs"))
+display_item(c("ca", "nppi", "high", "sg"))
+display_item(c("ca", "nppi", "high", "ss"))
 ```
 
-```{r, echo=FALSE, results='asis'}
-cat(questions[["ca_question"]])
-cat(responses[[1]])
-```
-  
-_******************************************_  
-**ca_nppi_high_gs**  
-```{r, echo=FALSE}
-np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_high.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_ca_high)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["ca_question"]])
-cat(responses[[2]])
-```
-  
-_******************************************_  
-**ca_nppi_high_sg**  
-```{r, echo=FALSE}
-np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_high.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_ca_high)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["ca_question"]])
-cat(responses[[3]])
-```
-  
-_******************************************_  
-**ca_nppi_high_ss**  
-```{r, echo=FALSE}
-np_ca_high <- readPNG(paste0(new_paradigm_dir, grep(".*ca_high.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_ca_high)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["ca_question"]])
-cat(responses[[4]])
-```
-
-
-***********************
 # Trisomy 21 Items
 
 ## Low normative PPV
 
 ### NF ABSOLUTE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("pr", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, pr_nfab_low}
-invisible(lapply(problems_numbered_ordered_responses[grep("pr_nfab_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+display_item(c("pr", "nfab", "low", "gi"))
+display_item(c("pr", "nfab", "low", "gs"))
+display_item(c("pr", "nfab", "low", "sg"))
+display_item(c("pr", "nfab", "low", "ss"))
 ```
 
 ### PR ABSOLUTE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("pr", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, pr_prab_low}
-invisible(lapply(problems_numbered_ordered_responses[grep("pr_prab_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+display_item(c("pr", "prab", "low", "gi"))
+display_item(c("pr", "prab", "low", "gs"))
+display_item(c("pr", "prab", "low", "sg"))
+display_item(c("pr", "prab", "low", "ss"))
 ```
 
 ### PR RELATIVE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("pr", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, pr_prre_low}
-invisible(lapply(problems_numbered_ordered_responses[grep("pr_prre_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+display_item(c("pr", "prre", "low", "gi"))
+display_item(c("pr", "prre", "low", "gs"))
+display_item(c("pr", "prre", "low", "sg"))
+display_item(c("pr", "prre", "low", "ss"))
 ```
 
 ### PF ABSOLUTE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("pr", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, pr_pfab_low}
-invisible(lapply(problems_numbered_ordered_responses[grep("pr_pfab_low", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+display_item(c("pr", "pfab", "low", "gi"))
+display_item(c("pr", "pfab", "low", "gs"))
+display_item(c("pr", "pfab", "low", "sg"))
+display_item(c("pr", "pfab", "low", "ss"))
 ```
 
 ### FB PICTORIAL
 
-
-**pr_fbpi_low_gi**  
-```{r, echo=FALSE, results='asis'}
-fb_pr_low <- readPNG(paste0(fact_box_dir, grep(".*pr_low.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_pr_low)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["pr_question"]])
-cat(responses[[1]])
-```
-  
-_******************************************_  
-**pr_fbpi_low_gs**  
-```{r, echo=FALSE}
-fb_pr_low <- readPNG(paste0(fact_box_dir, grep(".*pr_low.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_pr_low)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["pr_question"]])
-cat(responses[[2]])
-```
-  
-_******************************************_  
-**pr_fbpi_low_sg**  
-```{r, echo=FALSE}
-fb_pr_low <- readPNG(paste0(fact_box_dir, grep(".*pr_low.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_pr_low)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["pr_question"]])
-cat(responses[[3]])
-```
-  
-_******************************************_  
-**pr_fbpi_low_ss**  
-```{r, echo=FALSE}
-fb_pr_low <- readPNG(paste0(fact_box_dir, grep(".*pr_low.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_pr_low)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["pr_question"]])
-cat(responses[[4]])
+```{r, results='asis', echo=FALSE, pr_fbpi_low}
+display_item(c("pr", "fbpi", "low", "gi"))
+display_item(c("pr", "fbpi", "low", "gs"))
+display_item(c("pr", "fbpi", "low", "sg"))
+display_item(c("pr", "fbpi", "low", "ss"))
 ```
 
 ### NP PICTORIAL
 
-
-**pr_nppi_low_gi**  
-```{r, echo=FALSE, results='asis'}
-np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_low.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_pr_low)
+```{r, results='asis', echo=FALSE, pr_nppi_low}
+display_item(c("pr", "nppi", "low", "gi"))
+display_item(c("pr", "nppi", "low", "gs"))
+display_item(c("pr", "nppi", "low", "sg"))
+display_item(c("pr", "nppi", "low", "ss"))
 ```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["pr_question"]])
-cat(responses[[1]])
-```
-  
-_******************************************_  
-**pr_nppi_low_gs**  
-```{r, echo=FALSE}
-np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_low.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_pr_low)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["pr_question"]])
-cat(responses[[2]])
-```
-  
-_******************************************_  
-**pr_nppi_low_sg**  
-```{r, echo=FALSE}
-np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_low.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_pr_low)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["pr_question"]])
-cat(responses[[3]])
-```
-  
-_******************************************_  
-**pr_nppi_low_ss**  
-```{r, echo=FALSE}
-np_pr_low <- readPNG(paste0(new_paradigm_dir, grep(".*pr_low.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_pr_low)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["pr_question"]])
-cat(responses[[4]])
-```
-
 
 ## High normative PPV
 
 ### NF ABSOLUTE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("pr", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, pr_nfab_high}
-invisible(lapply(problems_numbered_ordered_responses[grep("pr_nfab_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+display_item(c("pr", "nfab", "high", "gi"))
+display_item(c("pr", "nfab", "high", "gs"))
+display_item(c("pr", "nfab", "high", "sg"))
+display_item(c("pr", "nfab", "high", "ss"))
 ```
 
 ### PR ABSOLUTE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("pr", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, pr_prab_high}
-invisible(lapply(problems_numbered_ordered_responses[grep("pr_prab_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+display_item(c("pr", "prab", "high", "gi"))
+display_item(c("pr", "prab", "high", "gs"))
+display_item(c("pr", "prab", "high", "sg"))
+display_item(c("pr", "prab", "high", "ss"))
 ```
 
 ### PR RELATIVE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("pr", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, pr_prre_high}
-invisible(lapply(problems_numbered_ordered_responses[grep("pr_prre_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+display_item(c("pr", "prre", "high", "gi"))
+display_item(c("pr", "prre", "high", "gs"))
+display_item(c("pr", "prre", "high", "sg"))
+display_item(c("pr", "prre", "high", "ss"))
 ```
 
 ### PF ABSOLUTE
 
-```{r, results='asis', echo=FALSE}
-cat(contexts[[grep("pr", names(contexts))]])
-```
-
 ```{r, results='asis', echo=FALSE, pr_pfab_high}
-invisible(lapply(problems_numbered_ordered_responses[grep("pr_pfab_high", problems_numbered_ordered_responses)], function(x) cat(x, sep = "\n****************************\n")))
+display_item(c("pr", "pfab", "high", "gi"))
+display_item(c("pr", "pfab", "high", "gs"))
+display_item(c("pr", "pfab", "high", "sg"))
+display_item(c("pr", "pfab", "high", "ss"))
 ```
 
 ### FB PICTORIAL
 
-**pr_fbpi_high_gi**  
-```{r, echo=FALSE, results='asis'}
-fb_pr_high <- readPNG(paste0(fact_box_dir, grep(".*pr_high.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_pr_high)
+```{r, results='asis', echo=FALSE, pr_fbpi_high}
+display_item(c("pr", "fbpi", "high", "gi"))
+display_item(c("pr", "fbpi", "high", "gs"))
+display_item(c("pr", "fbpi", "high", "sg"))
+display_item(c("pr", "fbpi", "high", "ss"))
 ```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["pr_question"]])
-cat(responses[[1]])
-```
-  
-_******************************************_  
-**pr_fbpi_high_gs**  
-```{r, echo=FALSE}
-fb_pr_high <- readPNG(paste0(fact_box_dir, grep(".*pr_high.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_pr_high)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["pr_question"]])
-cat(responses[[2]])
-```
-  
-_******************************************_  
-**pr_fbpi_high_sg**  
-```{r, echo=FALSE}
-fb_pr_high <- readPNG(paste0(fact_box_dir, grep(".*pr_high.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_pr_high)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["pr_question"]])
-cat(responses[[3]])
-```
-  
-_******************************************_  
-**pr_fbpi_high_ss**  
-```{r, echo=FALSE}
-fb_pr_high <- readPNG(paste0(fact_box_dir, grep(".*pr_high.*", fact_box_imgs, value = TRUE)))
-grid.raster(fb_pr_high)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["pr_question"]])
-cat(responses[[4]])
-```
-
 
 ### NP PICTORIAL
 
-**pr_nppi_high_gi**  
-```{r, echo=FALSE, results='asis'}
-np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_high.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_pr_high)
+```{r, results='asis', echo=FALSE, pr_nppi_high}
+display_item(c("pr", "nppi", "high", "gi"))
+display_item(c("pr", "nppi", "high", "gs"))
+display_item(c("pr", "nppi", "high", "sg"))
+display_item(c("pr", "nppi", "high", "ss"))
 ```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["pr_question"]])
-cat(responses[[1]])
-```
-  
-_******************************************_  
-**pr_nppi_high_gs**  
-```{r, echo=FALSE}
-np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_high.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_pr_high)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["pr_question"]])
-cat(responses[[2]])
-```
-  
-_******************************************_  
-**pr_nppi_high_sg**  
-```{r, echo=FALSE}
-np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_high.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_pr_high)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["pr_question"]])
-cat(responses[[3]])
-```
-  
-_******************************************_  
-**pr_nppi_high_ss**  
-```{r, echo=FALSE}
-np_pr_high <- readPNG(paste0(new_paradigm_dir, grep(".*pr_high.*", new_paradigm_imgs, value = TRUE)))
-grid.raster(np_pr_high)
-```
-
-```{r, echo=FALSE, results='asis'}
-cat(questions[["pr_question"]])
-cat(responses[[4]])
-```
-
-
-
-
-# Comprehension questions
-
-```{r comprehension, echo=FALSE, results='asis'}
-source("scripts/comprehension_preparing.R")
-
-invisible(lapply(comprehension_questions, lapply, cat))
-```
-
-
-
 
 # Follow-up questions
 
 ```{r follow-up, echo=FALSE, results='asis'}
-source("scripts/follow_up_preparing.R")
-
-invisible(lapply(fu_questions, lapply, cat))
+source("scripts/followUp_create_export.R")
 ```
-
 
 # Scales
 
 ```{r scales, echo=FALSE, results='asis'}
 source("scripts/scales_preparing.R")
-
-invisible(lapply(scales_questions, lapply, cat))
 ```
 
+# Item export
+
+```{r}
+source("scripts/complete_export_qualtrics.R")
+```
+
+# Pilot warning
+
+```{r, results='asis', echo=FALSE}
+source("scripts/pilot_warning.R")
+```
+
+# Consent form
+
+```{r, results='asis', echo=FALSE}
+source("scripts/consent_form.R")
+```
+
+# Scales instructions
+
+```{r, results='asis', echo=FALSE}
+source("scripts/scales_instructions.R")
+```
+
+# Survey effort
+
+```{r, results='asis', echo=FALSE}
+source("scripts/survey_effort.R")
+```
+
+# Comments
+
+```{r, results='asis', echo=FALSE}
+source("scripts/comments.R")
+```
+
+# Previous experience
+
+```{r, results='asis', echo=FALSE}
+source("scripts/previous_experience.R")
+```

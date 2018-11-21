@@ -1,0 +1,9 @@
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:fu_Q01_0]]
+[question_start]
+Should she take the follow-up test?
+[choices_start]
+Yes
+[second_choice]
+No
+[choices_end]

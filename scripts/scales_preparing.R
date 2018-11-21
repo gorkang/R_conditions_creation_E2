@@ -1,35 +1,61 @@
-# Scales dir
-scales_dir <- "materials/Scales/input/"
+# Packages
+if (!require('pacman')) install.packages('pacman'); library('pacman')
+p_load(tidyverse, magrittr, mgsub)
 
-# Files
-scales_files <- dir(scales_dir, pattern = ".txt")
+# Qualtrics and html resources
+source("scripts/html_qualtrics_codes.R")
 
-# Path to files
-scales_path <- paste0(scales_dir, scales_files)
+# Font sizes
+question_size = "22"
+choice_size = "15"
 
-# Read scaless into a list
-scales_items <-
-  lapply(scales_path, 
-                function(x) readChar(con = x, nchars = file.info(x)$size)) 
+# Scales names
+scale_names <- 
+  read_csv("materials/Scales/scale_names.csv", col_types = "cccic")
 
-# assing name to each scales
-names(scales_items) <- gsub(".txt", "", scales_files)  
+# a_priori_screening_belief ##################################
+source("scripts/scale_a_priori_screening_belief.R")
+# beck_anxiety_inventory #####################################
+source("scripts/scale_beck_anxiety_inventory.R")
+# big_five_inventory #########################################
+source("scripts/scale_big_five_inventory.R")
+# cognitive_reflection_test_7 ################################
+source("scripts/scale_cognitive_reflection_test_7.R")
+# general_decision_making_style ##############################
+source("scripts/scale_general_decision_making_style.R")
+# abbreviated_math_anxiety_rating_scale ######################
+source("scripts/scale_abbreviated_math_anxiety_rating_scale.R")
+# multiple_stim_types_ambiguity_tolerance_scale ##############
+source("scripts/scale_multiple_stim_types_ambiguity_tolerance_scale.R")
+# need_for_cognition #########################################
+source("scripts/scale_need_for_cognition.R")
+# lipkus_numeracy_scale ######################################
+source("scripts/scale_lipkus_numeracy_scale.R")
+# probabilistic_reasoning_scale ##############################
+source("scripts/scale_probabilistic_reasoning_scale.R")
+# risk_avoidance_scale #######################################
+source("scripts/scale_risk_avoidance_scale.R")
+# risk_propensity_scale ######################################
+source("scripts/scale_risk_propensity_scale.R")
+# severity_emotional_reaction_scale ##########################
+source("scripts/scale_severity_emotional_reaction.R")
+# sociodemographic_scale #####################################
+source("scripts/scale_sociodemographic_scale.R")
+# subjective_numeracy_scale ##################################
+source("scripts/scale_subjective_numeracy_scale.R")
+# tolerance_of_ambiguity #####################################
+source("scripts/scale_tolerance_of_ambiguity.R")
 
-# # get scales numbers
-# numbers_scales <- filter(numbers_item, format == "scales")
- 
-# scales items
-scales_questions <- list(NULL)
-# 
-# # put risk percentage into scales text
-for (i in seq(length(scales_items))) { # Scales items LOOP
- # i=1
-   
- # get scales item (ca/pr)
-  scales_questions[[i]] =
-          # gsub("risk_percentage",
-          #      paste0(numbers_scales[[j, "prev_01"]], "%"),
-               paste0("***", names(scales_items[i]),
-                      "***\n\n", scales_items[i], "\n\n")
+# PRINT SCALES (BOOK)
+# this vector with paths set the scales to be printed
 
-}
+# Instructions
+"materials/scales_instructions/scales_instructions.txt" %>% 
+  readChar(., file.size(.)) %>% 
+  cat("**Instructions**  \n", ., "  \n", sep = "")
+
+# Scales
+scales2print <- 
+  "materials/qualtrics/output/plain_text/scales/" %>% dir(., full.names = TRUE)
+
+source("scripts/print_scales.R")

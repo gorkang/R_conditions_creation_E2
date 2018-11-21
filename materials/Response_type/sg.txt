@@ -1,3 +1,5 @@
-____ people receive a positive test result that correctly indicates the presence of the anomaly, 
-and ____ people that receive a positive test result that incorrectly indicates the presence of the anomaly. 
-Therefore, given that the test indicates the signs of an anomaly, the probability that a woman actually has an anomaly is ____ out of ____.
+[response_start]
+____ women receive a positive test_result that correctly indicates the presence of medical_condition,
+and ____ women receive a positive test_result that incorrectly indicates the presence of medical_condition.
+Therefore, given that the test_result indicates the signs of medical_condition, the probability that person_01 actually has medical_condition is ____ out of ____
+[response_end]

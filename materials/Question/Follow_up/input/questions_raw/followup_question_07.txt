@@ -1,8 +1,0 @@
-[[PageBreak]]
-[[Question:MC:SingleAnswer:Vertical]]
-[[ID:fu_Q07_0]]
-[question_start]
-Remember the follow-up test has a ${e://Field/fu_risk_num_0}% procedure-related risk of complications:
-[choices_start]
-How big should this risk be for you NOT to recommend it? (0-100%)
-[choices_end]

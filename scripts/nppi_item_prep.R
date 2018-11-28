@@ -21,8 +21,8 @@ newparadigm_template_dir <- "materials/Presentation_format/nppi/input/template/s
 newparadigm_templates <- dir(newparadigm_template_dir, pattern = ".svg")
 
 # svg to png parameters (to feed svg2png)
-template_width <- 690 # pixels
-template_height <- 1169 # pixels
+template_width <- 689 # pixels
+template_height <- template_width*1.38897 # pixels
 
 # input/output dir
 input_dir <- newparadigm_template_dir

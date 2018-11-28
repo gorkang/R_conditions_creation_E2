@@ -64,10 +64,10 @@ first_col_x  <- 0.691666 # first column x axis pos. (percetages pos.)
 second_col_x <- 0.8916667 # second column x axis pos. (percetages pos.)
 first_row_y  <- 0.498 # first row y axis pos. (percetages pos.)
 second_row_y <- 0.623 # second row y axis pos. (percetages pos.)
-third_row_y  <- 0.774  # ...
+third_row_y  <- 0.775  # ...
 # fourth_row_y <- 0.7680348 # ...
 age_pos_x <- 0.282
-age_pos_y <- 0.128
+age_pos_y <- 0.127
 
 first_prev_x  <- .627    # first prevalence (from left to right) x axis position
 second_prev_x <- .827    # second prevalence (from left to right) x axis position

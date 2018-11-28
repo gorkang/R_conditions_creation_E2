@@ -41,6 +41,7 @@ display_item <- function(args) {
     ppv_question %>% gsub("\\n___QSEP___\\n", "  \n", .)
   
   # Fill ppv question with cancer or pregnant context fillers
+  medical_condition_ppv_0 <- filter(fillers, field_name == "medical_condition_ppv") %>% select(args[1]) %>% pull
   medical_condition_0 <- filter(fillers, field_name == "medical_condition") %>% select(args[1]) %>% pull
   positive_test_result_0 <- filter(fillers, field_name == "positive_test_result") %>% select(args[1]) %>% pull
   sg_person_0 <- filter(fillers, field_name == "sg_person") %>% select(args[1]) %>% pull
@@ -62,7 +63,7 @@ display_item <- function(args) {
       ppv_question %>% 
       gsub("\\$\\{e\\://Field/", "", .) %>% gsub("\\}", "", .) %>% # remove embedded data tags
       gsub("positive_test_result_0", positive_test_result_0, .) %>% 
-      gsub("medical_condition_0", medical_condition_0, .) %>% 
+      gsub("medical_condition_ppv_0", medical_condition_ppv_0, .) %>% 
       gsub("\\*\\*.*?\\*\\*", "", .)
   }
   

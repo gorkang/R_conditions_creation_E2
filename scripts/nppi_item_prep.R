@@ -21,8 +21,8 @@ newparadigm_template_dir <- "materials/Presentation_format/nppi/input/template/s
 newparadigm_templates <- dir(newparadigm_template_dir, pattern = ".svg")
 
 # svg to png parameters (to feed svg2png)
-template_width <- 690 # pixels
-template_height <- 1169 # pixels
+template_width <- 689 # pixels
+template_height <- template_width*1.38897 # pixels
 
 # input/output dir
 input_dir <- newparadigm_template_dir
@@ -183,8 +183,8 @@ prev_ca_x   <- 0.05852174 # cancer prevalence sentence position (relative to bro
 # On the pregnant condition the prevalence is splitted in two senteces. Therefore, there are two x axis positions
 prev_pr_x_1 <- 0.13352174 # pregnant prevalence sentence (01) position (relative to brochure size). 
 prev_pr_x_2 <- 0.05852174 # pregnant prevalence sentence (02) position (relative to brochure size).
-prev_y_1    <- 0.2562926 # both prevalence sentences (01) posiion on y axis (relative to brochure size).
-prev_y_2    <- 0.2792926 # if any, both prevalence sentences (02) posiion on y axis (relative to brochure size).
+prev_y_1    <- .317 # both prevalence sentences (01) posiion on y axis (relative to brochure size).
+prev_y_2    <- prev_y_1+.025 # if any, both prevalence sentences (02) posiion on y axis (relative to brochure size).
 
 # absolute
 prev_xca_pos  <- prev_ca_x*img_width # cancer prevalence sentence position (absolute position).
@@ -197,7 +197,7 @@ prev_y2_pos   <- prev_y_2*img_height # if any, both prevalence sentences (02) po
 # Graph position in template
 # relateive
 graph_x <- 0.02898551
-graph_y <- 0.5731394
+graph_y <- 0.59
 # absolute
 graph_x_pos <- graph_x*img_width
 graph_y_pos <- graph_y*img_height

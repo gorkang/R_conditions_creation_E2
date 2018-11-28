@@ -10,8 +10,8 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="389mm"
-   height="667mm"
-   viewBox="0 0 1378.3465 2363.3858"
+   height="540mm"
+   viewBox="0 0 1378.3465 1913.3865"
    id="svg2"
    version="1.1"
    inkscape:version="0.92.3 (unknown)"
@@ -29,8 +29,8 @@
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="0.27058638"
-     inkscape:cx="417.88567"
-     inkscape:cy="1414.5306"
+     inkscape:cx="656.23699"
+     inkscape:cy="1220.5644"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -40,7 +40,8 @@
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
-     inkscape:snap-others="false" />
+     inkscape:snap-others="false"
+     fit-margin-bottom="0" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -49,7 +50,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -57,16 +58,16 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,1311.0238)">
+     transform="translate(0,861.02371)">
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="155.52574"
-       y="880.93323"
+       y="955.93323"
        id="text3731"><tspan
          sodipodi:role="line"
          x="155.52574"
-         y="880.93323"
+         y="955.93323"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35.00000381px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
          id="tspan849">Reliability of a positive test result dependending on the women's age.</tspan></text>
     <rect
@@ -75,27 +76,28 @@
        width="1380.0421"
        height="163.7196"
        x="1.1922927e-07"
-       y="-1311.2679" />
+       y="-861.26788" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:0.91000001;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="80.088127"
-       y="-1172.825"
+       y="-722.82501"
        id="text3735-3-2-6"><tspan
          sodipodi:role="line"
          x="80.088127"
-         y="-1172.825"
+         y="-722.82501"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:56.25000381px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1"
          id="tspan3809-3-0">Breast cancer screening</tspan><tspan
          sodipodi:role="line"
          x="80.088127"
-         y="-1102.5125"
+         y="-652.51251"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:56.25000381px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
          id="tspan3897-6"> </tspan></text>
     <flowRoot
        xml:space="preserve"
        id="flowRoot4788"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0.01%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"><flowRegion
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0.01%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(0,318.75001)"><flowRegion
          id="flowRegion4790"><rect
            id="rect4792"
            width="1272"
@@ -108,7 +110,7 @@
        xml:space="preserve"
        id="flowRoot4796"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0.01%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:0.91000001;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="translate(24.774771,-1311.0239)"
+       transform="translate(24.774771,-861.0239)"
        inkscape:export-filename="/home/niki/Midgard/Experimentos Gorka/2017 - Gorka - Fondecyt/Experimentos/Experimento 1/R_conditions_creation/materials/Presentation format/New-paradigm/brochure/png/flowRoot4796.png"
        inkscape:export-xdpi="45"
        inkscape:export-ydpi="45"><flowRegion
@@ -171,7 +173,7 @@
        xml:space="preserve"
        id="flowRoot5026"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0.01%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="translate(-15.55635,-1237.4848)"><flowRegion
+       transform="translate(-15.55635,-1237.4851)"><flowRegion
          id="flowRegion5028"><rect
            id="rect5030"
            width="972.97894"
@@ -184,12 +186,12 @@
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="790.875"
-       y="-1094.8268"
+       y="-644.82678"
        id="text3366"><tspan
          sodipodi:role="line"
          id="tspan3368"
          x="790.875"
-         y="-1094.8268"
+         y="-644.82678"
          style="font-size:40px;line-height:1.25"> </tspan></text>
   </g>
 </svg>

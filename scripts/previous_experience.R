@@ -51,6 +51,6 @@ previous_experience %>%
   gsub(">W", ">__W", .) %>%
   gsub("<span.*?>", "", .) %>% 
   gsub("</span>", "", .) %>% 
-  gsub("<br>", "  \n", .) %>% 
+  gsub("\n", "  \n", .) %>% 
   paste(., collapse = "  \n  \n") %>% 
   cat()

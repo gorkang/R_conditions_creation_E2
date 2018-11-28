@@ -107,10 +107,12 @@ UBER_IMPORT2QUALTRICS_miro <- function(file_paths) {
       .GlobalEnv$status <- 
         tryCatch(expr = {
           # TRY
+          # upload_btn <- remDr$findElement(using = 'css selector', value = "#fileField")
           upload_btn <- remDr$findElement(using = 'xpath', value = '//*[@id="fileField"]')
           
           upload_btn$sendKeysToElement(list(file_absolute_path))
           
+          # webElem <- remDr$findElement(using = 'css selector', value = "#Q_Window_QW_35429289 > div > div.Q_WindowFooterContainer > div > div.RightButtons > a.btn.negative > span:nth-child(2)")
           webElem <- remDr$findElement(using = 'xpath', value = '//*[@id="importButton"]/span[2]')
           webElem$clickElement()
           

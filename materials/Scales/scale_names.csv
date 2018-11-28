@@ -1,5 +1,5 @@
 scale,short_name,long_name,no_items,per_cog
-a priori screening belief,apsb,a_priori_screening_belief,6,per
+a priori screening belief,apsb,a_priori_screening_belief,6,
 beck anxiety inventory,bai,beck_anxiety_inventory,21,per
 big five inventory,big5,big_five_inventory,44,per
 cognitive reflection test 7-items multiple choice,crt7,cognitive_reflection_test_7,7,cog
@@ -11,7 +11,7 @@ Lipkus numeracy scale,num,lipkus_numeracy_scale,11,cog
 probabilistic reasoning scale,prs,probabilistic_reasoning_scale,16,cog
 risk avoidance scale,ras,risk_avoidance_scale,24,per
 risk_propensity_scale,rps,risk_propensity_scale,7,per
-severity and emotional reaction,ser,severity_emotional_reaction,5,per
+severity and emotional reaction,ser,severity_emotional_reaction,5,
 sociodemographic scale,dem,sociodemographic_scale,5,soc
 subjective numeracy scale,sns,subjective_numeracy_scale,8,cog
 tolerance of ambiguity,toa,tolerance_of_ambiguity,15,per

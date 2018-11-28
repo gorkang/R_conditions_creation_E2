@@ -217,39 +217,6 @@ complete_item <-
         followup_items, sep = "\n")
 
 
-# Add severity/emotion scales ---------------------------------------------
-
-# Read questions and add font size html format
-severity_emo_scale <-
-  "materials/Question/severity_emotion/severity_emotional_reaction.txt" %>% 
-  readChar(., file.size(.)) %>% gsub("Q_FONT_SIZE", 22, .) %>% 
-  gsub("C_FONT_SIZE", 16, .) %>% 
-  gsub("\n$", "", .)
-
-# Put question ids
-severity_emo_scale <-
-  severity_emo_scale %>% 
-  str_split(., "\n__QSEP__\n") %>% unlist() %>% 
-  str_replace(string = ., 
-              pattern = "replaceID", 
-              replacement = c(pattern1 = paste0("sevEmo_", sprintf("%02d", 1:5), "_0"))) %>% 
-  paste(., collapse = "\n")
-
-# Add extra question for trisomy 21 (display logic has to be set on qualtrics to display this question only when the context is trisomy)
-severity_emo_scale_extra <-
-  "materials/Question/severity_emotion/extra_trisomy.txt" %>% 
-  readChar(., file.size(.)) %>% gsub("Q_FONT_SIZE", 22, .) %>% 
-  gsub("C_FONT_SIZE", 16, .) %>% 
-  gsub("\n$", "", .) %>% gsub("replaceID", "sevEmo_06_0", .)
-
-# Bind screening with severity emotion scale
-complete_item <-
-  paste(complete_item, 
-        gsub("block_name", "severity_emotion_scale_0", qualtrics_codes$block_start),
-        severity_emo_scale,
-        severity_emo_scale_extra, # extra question (only for trisomy)
-        sep = "\n")
-
 # Export ------------------------------------------------------------------
 
 # Output dir

@@ -46,10 +46,10 @@ remove_blocks_qualtrics <- function(start_on = 1, survey_type = "gorka") {
     # Select "Delete Block..."
     repeat {
     webElem <- remDr$findElement(using = 'css selector', value = paste0("#QMenu > div > div > ul > li:nth-child(", child, ") > a"))
-    webElem$clickElement()
     done <- 1
     if (done == 1) break
     }
+    webElem$clickElement()
     
     Sys.sleep(.5) # give it time
     

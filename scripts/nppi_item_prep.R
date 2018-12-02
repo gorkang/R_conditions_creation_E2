@@ -128,6 +128,26 @@ for (cCntxt in seq(length(problem_contexts))) {
   # labels corresponding to current problem context
   current_axis_label <- pull(x_axis_label[, current_context])
   
+  # Filter ages (if cancer 20-60, if pregnant 20-50)
+  if (current_context == "pr") {
+    # labels over points o histogrm
+    curr_age_ppv_to_plot <- 
+      age_ppv_to_plot %>% grep("[2-5]0", ., value = TRUE)
+    # x scale limits
+    age_prevalence_plot <-
+      age_prevalence %>%
+      filter(age < 60)
+  } else if (current_context == "ca") {
+    # labels over points o histogrm
+    curr_age_ppv_to_plot <- 
+      age_ppv_to_plot
+    # x scale limits
+    age_prevalence_plot <-
+      age_prevalence
+  }
+  
+  
+  
   # Begin graph creation
   
   ## Create canvas to save image

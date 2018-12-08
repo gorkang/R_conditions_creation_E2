@@ -6,7 +6,7 @@
 <span style='font-size:Q_FONT_SIZEpx;'><ul><li>Risk information (information about how risky the intervention is to you)</li><li>Benefit information (information about how you would benefit from the intervention)</li><li>Numerical information (information about how common de disease is, accuracy rate and false positives of the test)</li><li>The doctor’s opinion on whether you should undergo the intervention</li></ul></span>
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:shde_01]]
-<span style='font-size:Q_FONT_SIZEpx;'>Which of the above four types of information is most important to you when you are asked to consider undergoing an invasive medical intervention? [present alternatives in RANDOM ORDER]</span>
+<span style='font-size:Q_FONT_SIZEpx;'>Which of the above four types of information is most important to you when you are asked to consider undergoing an invasive medical intervention?</span>
 [[Choices]]
 <span style='font-size:C_FONT_SIZEpx;'>Risk information</span>
 <span style='font-size:C_FONT_SIZEpx;'>Benefit information</span>
@@ -14,7 +14,7 @@
 <span style='font-size:C_FONT_SIZEpx;'>The doctor’s opinion on whether the procedure should be done in your case</span>
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:shdc_02]]
-<span style='font-size:Q_FONT_SIZEpx;'>When you make decisions in medicine related to invasive medical procedures, who do you prefer to make the decision: [present alternatives in RANDOM ORDER]</span>
+<span style='font-size:Q_FONT_SIZEpx;'>When you make decisions in medicine related to invasive medical procedures, who do you prefer to make the decision:</span>
 [[Choices]]
 <span style='font-size:C_FONT_SIZEpx;'>I prefer to make the decision myself</span>
 <span style='font-size:C_FONT_SIZEpx;'>I prefer to have the doctor make the decision for me</span>

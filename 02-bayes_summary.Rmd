@@ -4,13 +4,55 @@
 cat("![](bayesian_reasoning_flowchart.png)")
 ```
 
-## A priori belief
 ```{r, results='asis', echo=FALSE}
 # PRINT SCALES (BOOK)
 # this vector with paths set the scales to be printed
 scales2print <- c("materials/qualtrics/output/plain_text/scales/a_priori_screening_belief") 
 
 source("scripts/print_scales.R")
+```
+
+```{r, results='asis', echo=FALSE}
+# PRINT SCALES (BOOK)
+
+# FILLERS
+# Keep severity emotion scale fillers
+fillers_sevEmo <-
+  fillers %>% 
+  filter(grepl("sevEmo", field_name)) %>% 
+  mutate(ca_pr = paste(ca, pr, sep = "/")) %>% 
+  select(field_name, ca_pr)
+# create objects with fillers
+for (i in seq(nrow(fillers_sevEmo))) {
+  assign(x = pull(fillers_sevEmo[i, "field_name"]), 
+         value = pull(fillers_sevEmo[i, "ca_pr"]), 
+         envir = .GlobalEnv)
+}
+
+cleaned_sevEmo <- 
+  "materials/qualtrics/output/plain_text/scales/severity_emotion_scale/severity_emotion_scale.txt" %>% 
+  readChar(., file.size(.)) %>% 
+  
+  # CLEAN
+  gsub("\\[{2}AdvancedFormat\\]{2}\\n", "", .) %>%                  # remove advanceformat tag
+  gsub("\\[{2}Block\\:([a-z_0-9]*)\\]{2}", "## \\1", .) %>% # scale name
+  gsub("\\[{2}Question.*?\\]{2}\\n", "", .) %>% # remove Question qualtrics format 
+  gsub("\\[{2}ID\\:([a-zA-Z_0-9]*)\\]{2}", "\n**\\1**", .) %>%        # question ID
+  gsub("\\[{2}Choices\\]{2}\\n", "  \n", .) %>%  # remove choices qualtrics format 
+  gsub("\\[{2}PageBreak\\]{2}\\n", "  \n", .) %>%  # remove page break qualtrics format 
+  gsub("<span style='font-size\\:[QC]_FONT_SIZEpx;'>", "", .) %>%     # remove html tag
+  gsub("<span style='font-size\\:0px;'>this_is_not_here", "", .) %>%     # remove html tag
+  gsub("<span style='font-size\\:16px;'>", "", .) %>%     # remove html tag
+  gsub("<span style='font-size\\:22px;'>", "", .) %>%     # remove html tag
+  gsub("</span>", "", .) %>%  # remove html tag
+  gsub("<br>", " ", .) %>%  # remove html linebreak
+  gsub("\\n", "  \n", .) %>% # double linebreaks because bookdown is weird
+  gsub("DELETE_THIS", "", .)  # remove DELETE_THIS
+  
+  cleaned_sevEmo %>%
+  # Print
+  cat(., sep = "  \n")
+
 ```
 
 ## Screening item
@@ -91,68 +133,3 @@ comp_02 <- filter(fillers, field_name == "comp_02") %>% select("ca", "pr") %>% p
 ```{r, results='asis', echo=FALSE}
 source("scripts/print_followup.R")
 ```
-
-## Breast cancer/Trisomy 21 Severity-emotion Scale
-```{r, results='asis', echo=FALSE}
-# PRINT SCALES (BOOK)
-
-# FILLERS
-# Keep severity emotion scale fillers
-fillers_sevEmo <-
-  fillers %>% 
-  filter(grepl("sevEmo", field_name)) %>% 
-  mutate(ca_pr = paste(ca, pr, sep = "/")) %>% 
-  select(field_name, ca_pr)
-# create objects with fillers
-for (i in seq(nrow(fillers_sevEmo))) {
-  assign(x = pull(fillers_sevEmo[i, "field_name"]), 
-         value = pull(fillers_sevEmo[i, "ca_pr"]), 
-         envir = .GlobalEnv)
-}
-
-cleaned_sevEmo <- 
-  "materials/Question/severity_emotion/severity_emotional_reaction.txt" %>% 
-  readChar(., file.size(.)) %>% 
-  
-  # CLEAN
-  gsub("\\[{2}AdvancedFormat\\]{2}\\n", "", .) %>%                  # remove advanceformat tag
-  gsub("\\[{2}Block\\:([a-z_0-9]*)\\]{2}", "## \\1", .) %>% # scale name
-  gsub("\\[{2}Question.*?\\]{2}\\n", "", .) %>% # remove Question qualtrics format 
-  gsub("\\[{2}ID\\:([a-zA-Z_0-9]*)\\]{2}", "\n**\\1**", .) %>%        # question ID
-  gsub("\\[{2}Choices\\]{2}\\n", "  \n", .) %>%  # remove choices qualtrics format 
-  gsub("\\[{2}PageBreak\\]{2}\\n", "  \n", .) %>%  # remove page break qualtrics format 
-  gsub("<span style='font-size\\:[QC]_FONT_SIZEpx;'>", "", .) %>%     # remove html tag
-  gsub("<span style='font-size\\:0px;'>this_is_not_here", "", .) %>%     # remove html tag
-  gsub("</span>", "", .) %>%  # remove html tag
-  gsub("<br>", " ", .) %>%  # remove html linebreak
-  gsub("\\n", "  \n", .) %>% # double linebreaks because bookdown is weird
-  gsub("DELETE_THIS", "", .) %>%  # remove DELETE_THIS
-  
-  # separate questions in list items to numerate them
-  str_split(., "  \n__QSEP__  \n") %>% 
-  unlist
-
-# numerate items
-cleaned_sevEmo %>% 
-  gsub("    \\n", "", .) %>% 
-  str_replace_all(string = ., 
-                  pattern = "replaceID", 
-                  replacement = 
-                    paste0("sevEmo_",
-                           sprintf("%02d", 
-                                   1:str_count(paste(., collapse = "\n"), pattern = "replaceID")))) %>% 
-  
-  # fill placeholders
-  gsub("\\$\\{e\\://Field/sevEmo_01_0}", sevEmo_01, .) %>% 
-  gsub("\\$\\{e\\://Field/sevEmo_02_0}", sevEmo_02, .) %>%
-  gsub("\\$\\{e\\://Field/sevEmo_03_0}", sevEmo_03, .) %>% 
-  gsub("\\$\\{e\\://Field/sevEmo_04_0}", sevEmo_04, .) %>% 
-  gsub("\\$\\{e\\://Field/sevEmo_05_0}", sevEmo_05, .) %>% 
-  gsub("\\$\\{e\\://Field/sevEmo_06_0}", sevEmo_06, .) %>% 
-  gsub("\\$\\{e\\://Field/sevEmo_07_0}", sevEmo_07, .) %>% 
-  
-  # Print
-  cat(., sep = "  \n")
-
-```
-

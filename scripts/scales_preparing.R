@@ -37,6 +37,10 @@ source("scripts/scale_probabilistic_reasoning_scale.R")
 source("scripts/scale_risk_avoidance_scale.R")
 # risk_propensity_scale ######################################
 source("scripts/scale_risk_propensity_scale.R")
+# shared_decision_making #####################################
+source("scripts/scale_shared_decision_making.R")
+# severity_emotional_reaction_scale ##########################
+source("scripts/scale_severity_emotional_reaction.R")
 # sociodemographic_scale #####################################
 source("scripts/scale_sociodemographic_scale.R")
 # subjective_numeracy_scale ##################################

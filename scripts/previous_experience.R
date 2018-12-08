@@ -46,11 +46,11 @@ previous_experience %>%
 source("functions/remove_placeholders.R")
 
 previous_experience %>% 
-  gsub("\\[{2}.*?\\]{2}", "", .) %>%
+  gsub("\\[{2}.*?\\]{2}\n", "", .) %>%
   gsub("\\?", "?__", .) %>% 
   gsub(">W", ">__W", .) %>%
   gsub("<span.*?>", "", .) %>% 
-  gsub("</span*?>", "", .) %>% 
-  gsub("<br>", "  \n", .) %>% 
+  gsub("</span>", "", .) %>% 
+  gsub("\n", "  \n", .) %>% 
   paste(., collapse = "  \n  \n") %>% 
   cat()

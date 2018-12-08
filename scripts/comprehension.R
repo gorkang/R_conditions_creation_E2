@@ -27,6 +27,19 @@ comprehension <-
   str_split(., "\\n") %>% 
   unlist()
 
+# Create 3 empty text entry questions for "__ out of __" and "__%"
+question_type_extra <-
+  paste(qualtrics_codes$question_textentry, 
+        questioIDme("com_Q08_01_0"), 
+        " ", 
+        qualtrics_codes$question_textentry, 
+        questioIDme("com_Q08_02_0"), 
+        " ", 
+        qualtrics_codes$question_textentry, 
+        questioIDme("com_Q08_03_0"), 
+        " ", 
+        sep = "\n")
+
 # Wrapping -----------------------------------------------------------
 
 # instructions
@@ -40,6 +53,11 @@ comprehension <-
   gsub("Q_FONT_SIZE", 22, .) %>% # Change Questions Font size
   gsub("C_FONT_SIZE", 16, .)       # Change choice Font size
 
+# manual modification to question 8
+comprehension[9] <- 
+  comprehension[9] %>% gsub("MC.*?tal", "Text", .) %>% 
+  gsub("\n\\[{2}Choi.*span>", "", .)
+
 # Export ---------------------------------------------------------------
 
 # Output dir
@@ -50,4 +68,5 @@ output_dir <-
 # print text file
 comprehension %>% 
   paste(., collapse = "\n") %>%
+  paste(., question_type_extra, sep = "\n") %>% 
   cat(., file = file.path(output_dir, "comprehension.txt"))

@@ -8,7 +8,7 @@ doctor_offers,(biopsy of the breast),(amniocentesis),followup
 fluid_test,the breast cyst,the amniotic sac (were the fetus develops),followup
 test_name,The biopsy,Amniocentesis,followup
 medical_consequence,partial mastectomy (removal of part of a breast),miscarriage,followup
-medical_test,mammogram,prenatal test,
+medical_test,mammogram,prenatal screening test,
 comp_01,breast cancer,Down syndrome,
 comp_02,has breast cancer,is pregnant with a fetus with Down syndrome,
 sevEmo_01,breast cancer,Down syndrome,
@@ -18,3 +18,4 @@ sevEmo_04,a preemptive mastectomy (complete removal of a breast),an abortion,
 sevEmo_05,mastectomy (complete removal of a breast),miscarriage,
 sevEmo_06,biopsy (a diagnostic test to determine whether a breast mass is cancerous where a thin needle is inserted into the breast to remove tissue samples from the breast mass),amniocentesis (a diagnostic test to determine whether a child has down syndrome where a thin needle is inserted into the uterus through the abdomen to get a sample of amniotic fluid),
 sevEmo_07,has breast cancer,is pregnant with a fetus with Down syndrome,
+followup_bad,mastectomy because of the Biopsy,miscarriage because of the amniocentesis,

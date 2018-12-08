@@ -12,20 +12,20 @@ short_name <- this_scale$short_name
 
 # Qualtrics tags template to wrapp around
 # instructions
-ins_wrapper <- '[[Question:Text]]\n[[ID:replaceID]]\n<span style="font-size:Q_FONT_SIZEpx;">ITEM</span>'
+ins_wrapper <- "[[Question:Text]]\n[[ID:replaceID]]\n<span style='font-size:Q_FONT_SIZEpx;'>ITEM</span>"
 # items
 item_wrapper <- 
   "[[Question:MC:SingleAnswer:Horizontal]]
 [[ID:replaceID]]
 <span style='font-size:Q_FONT_SIZEpx;'>ITEM</span>
 [[Choices]]
-<span style='font-size:C_FONT_SIZEpx;'>1<br>strongly disagree</span>
+<span style='font-size:C_FONT_SIZEpx;'>1<br>strongly<br>disagree</span>
 <span style='font-size:C_FONT_SIZEpx;'>2<br></span>
 <span style='font-size:C_FONT_SIZEpx;'>3<br></span>
 <span style='font-size:C_FONT_SIZEpx;'>4<br></span>
 <span style='font-size:C_FONT_SIZEpx;'>5<br></span>
 <span style='font-size:C_FONT_SIZEpx;'>6<br></span>
-<span style='font-size:C_FONT_SIZEpx;'>7<br>strongly agree</span>"
+<span style='font-size:C_FONT_SIZEpx;'>7<br>strongly<br>agree</span>"
 # see what's going on.
 # item_wrapper %>% cat()
 

@@ -54,6 +54,8 @@ create_ED_blocks <- function() {
            press_format = NULL,               # Presentation format
            resp_type = NULL,
            # TODO: REMOVE ppv_question = NULL,
+           prevalence_class_01 = NULL,        # Prevalence second number, 1 out of (2000). item 01
+           prevalence_class_02 = NULL,        # Prevalence second number, 1 out of (2000). item 02
            woman_age_01 = NULL,               # Woman age item 01
            woman_age_02 = NULL,               # Woman age item 02
            prob_context_01 = NULL,            # Problem context item 01
@@ -71,8 +73,10 @@ create_ED_blocks <- function() {
            screening_item_01 = NULL,          # Screening item 01
            screening_item_02_intro = NULL,    # Screening item introduction item 02
            prevalence_02 = NULL,              # Screening item prevalence item 02  
-           screening_item_02 = NULL,          # Screening item 02
-           dumb_question = paste(qualtrics_codes$question_only_text, "DELETE THIS", sep = "\n")
+           screening_item_02 = NULL,          # Screening item 02 
+           dumb_question = paste(qualtrics_codes$question_only_text, "DELETE THIS", sep = "\n") 
+           
+           
       )
     # ######################################################################################################
     
@@ -129,6 +133,22 @@ create_ED_blocks <- function() {
     # PPV as number (actual correct response)
     ppv_prob_num_01 <- ppv_num %>% filter(prob == current_condition$ppv_prob_01) %>% select(PPV) %>% pull()
     ppv_prob_num_02 <- ppv_num %>% filter(prob == current_condition$ppv_prob_02) %>% select(PPV) %>% pull()
+    
+    # Prevalence class (prevalence second number e.g. 1 out (2000))
+    # PPV as number (actual correct response)
+    embedded_data$prevalence_class_01 <- 
+      ppv_num %>% 
+      filter(prob == current_condition$ppv_prob_01) %>% 
+      select(prev_02) %>% pull() %>% 
+      gsub("value", ., qualtrics_codes$embedded_data) %>% 
+      gsub("field", "prevalence_class_01", .)
+    
+    embedded_data$prevalence_class_02 <- 
+      ppv_num %>% 
+      filter(prob == current_condition$ppv_prob_02) %>% 
+      select(prev_02) %>% pull() %>% 
+      gsub("value", ., qualtrics_codes$embedded_data) %>% 
+      gsub("field", "prevalence_class_02", .)
     
     # Presentation format -----------------------------------------------------
     embedded_data$press_format <- 

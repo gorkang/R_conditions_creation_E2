@@ -8,6 +8,32 @@ source("functions/remove_placeholders.R")
 source("functions/create_ED_blocks.R")
 source("functions/questionIDme.R")
 
+# Create experiment design block -------------------------------------
+
+# Read text
+exp_design <- 
+  "materials/experiment_design/input/experiment_design.txt" %>% 
+  readChar(., file.size(.)) %>% 
+  gsub("\n$", "", .)
+# Add html font size tag 
+exp_design <- 
+  gsub("QUESTION_TEXT_TO_FORMAT", exp_design, html_codes$question_font_size)
+
+# output dir
+output_dir <- 
+  "materials/qualtrics/output/plain_text/exp_design" %T>% 
+  dir.create(., FALSE, TRUE)
+
+# add qualtrics tags
+paste(qualtrics_codes$advanced_format,
+      gsub("block_name", "experiment_design", qualtrics_codes$block_start), 
+      qualtrics_codes$question_only_text,
+      gsub("question_id", "exp_design", qualtrics_codes$question_id), 
+      exp_design, sep = "\n") %>% 
+  # export to text file
+  cat(., file = file.path(output_dir, "experiment_design.txt"))
+
+
 # Create pictorial items (links to imgs) ----------------------------------
 
 # read urls
@@ -29,7 +55,7 @@ followUp_num <-
   filter(format == "fu") %>% select(format, prob, fu_risk)
 ppv_num <- 
   readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>% 
-  filter(format == "nfab") %>% select(prob, PPV, age)
+  filter(format == "nfab") %>% select(prob, PPV, age, prev_02)
 
 # Conditions
 conditions <- 
@@ -39,6 +65,31 @@ conditions <-
 create_ED_blocks()
 
 # Create and export trial canvas ------------------------------------------
+
+# Medical condition block title
+med_cond_block_title <-
+  "Medical condition BLOCK_NUMBER_0/2" %>% 
+  gsub("QUESTION_TEXT_TO_FORMAT", . , html_codes$title_font_size) %>% 
+  gsub("STRONGME", ., html_codes$bold)
+
+med_cond_block_title <- 
+  paste(qualtrics_codes$question_only_text,
+        questioIDme("ppv_title_0"),
+        med_cond_block_title,
+        qualtrics_codes$pagebreak, sep = "\n")
+
+# Instructions
+gen_instructions <- 
+  "materials/ppv_instructions/input/ppv_instructions.txt" %>% 
+  readChar(., file.size(.)) %>% 
+  gsub("\n$", "", .) %>% 
+  gsub("QUESTION_TEXT_TO_FORMAT", ., html_codes$question_font_size)
+
+gen_instructions <- 
+  gen_instructions %>% 
+  paste(qualtrics_codes$question_only_text, 
+        gsub("question_id", "gen_ins_0", qualtrics_codes$question_id), 
+        ., sep = "\n")
 
 # INTRO TO ITEM
 ED_screening_intro        <- 
@@ -51,10 +102,16 @@ ED_screening_item         <-
 # PPV QUESTION
 ED_screening_ppv_question <-
   "materials/Question/Calculation/input/unified_question.txt" %>% 
-  readChar(., file.size(.)) %>% remove_placeholders(.) %>% 
+  readChar(., file.size(.)) %>%
   gsub("\\n", "", .) %>% 
-  gsub("QUESTION_TEXT_TO_FORMAT", ., html_codes$question_font_size) 
-
+  str_split(., "___QSEP___") %>% 
+  unlist() %>% 
+  str_replace(string = html_codes$question_font_size, pattern = "QUESTION_TEXT_TO_FORMAT", replacement = .) %>% 
+  paste(qualtrics_codes$question_only_text, qualtrics_codes$question_id, ., sep = "\n") %>%
+  str_replace_all(string = ., 
+                  pattern = "question_id", 
+                  replacement = paste0("ppv_q_", sprintf("%02d", 1:2), "_0")) %>% 
+  paste(., collapse = "\n")
 
 # Assemble item (ppv question is a question by itself to be able to hide it on pfab & sg condition)
 screening_item <-
@@ -62,8 +119,6 @@ screening_item <-
         questioIDme("ppv_ins_0"),
         paste(ED_screening_intro, 
               ED_screening_item, sep = "<br><br>"),
-        qualtrics_codes$question_only_text,
-        questioIDme("ppv_que_0"),
         ED_screening_ppv_question, sep = "\n")
 
 # Response types ####
@@ -116,7 +171,8 @@ resp_type_04 <-
 # Willingness to undergo screening test (according to issue #61 on github)
 will_screening <- 
   "materials/Question/willing_screen/willing_screen.txt" %>% 
-  readChar(., file.size(.))
+  readChar(., file.size(.)) %>% 
+  gsub("\n$", "", .)
 
 # Comprehension
 source("scripts/comprehension.R")
@@ -127,16 +183,20 @@ comprehension <-
 
 # Assemble item with response types
 screening_item_questions <-
-  paste(  screening_item,
-          resp_type_01,
-          resp_type_02,
-          resp_type_03,
-          resp_type_04,
-          qualtrics_codes$pagebreak,
-          will_screening,
-          qualtrics_codes$pagebreak,
-          comprehension,
-          sep = "\n")
+  paste(gsub("block_name", "ppv_screening_0", qualtrics_codes$block_start),
+        med_cond_block_title,
+        gen_instructions,
+        qualtrics_codes$pagebreak,
+        screening_item,
+        resp_type_01,
+        resp_type_02,
+        resp_type_03,
+        resp_type_04,
+        gsub("block_name", "willing_to_screen_0", qualtrics_codes$block_start),
+        will_screening,
+        gsub("block_name", "comprehension_0", qualtrics_codes$block_start),
+        comprehension,
+        sep = "\n")
 
 # Create and export complete trial blocks (PPV + Follow-up) ---------------
 
@@ -151,10 +211,13 @@ followup_items <-
   map(~readChar(paste0(followup_path, .x), file.size(paste0(followup_path, .x))))
 
 # Append screening item with follow-up
-complete_item <- 
+complete_item <-
   paste(screening_item_questions, 
-        qualtrics_codes$pagebreak,
+        gsub("block_name", "follow_up_0", qualtrics_codes$block_start),
         followup_items, sep = "\n")
+
+
+# Export ------------------------------------------------------------------
 
 # Output dir
 screening_output_dir <- 
@@ -167,7 +230,8 @@ complete_item %>% cat(., file = file.path(screening_output_dir, "item_template.t
 # Customize item to trial
 # func to customize
 f <- function(x) {
-  gsub("(_[0-9])\\b(\\}?\\]?)", paste0("\\1", x, "\\2"), complete_item) %>% 
+  gsub("(_[0-9])\\b(\\}?\\]?)", paste0("\\1", x, "\\2"), complete_item) %>%
+    gsub("BLOCK_NUMBER_0", "", .) %>%
     paste0("**trial_0", x, "**", .)
 }
 
@@ -191,8 +255,7 @@ complete_screening_block_output_dir <-
 screening_block_output_dir %>% 
   dir(., ".txt") %>% 
   map_chr(~readChar(paste0(screening_block_output_dir, .x), file.size(paste0(screening_block_output_dir, .x)))) %>% 
-  paste(., collapse = paste0("\n", gsub("block_name", "ppv_sceening_block02", qualtrics_codes$block_start), "\n")) %>% 
-  paste(gsub("block_name", "ppv_sceening_block01", qualtrics_codes$block_start), ., sep = "\n") %>% 
+  paste(., collapse = "\n") %>% 
   paste(qualtrics_codes$advanced_format, ., sep = "\n") %>% 
   cat(., file = file.path(complete_screening_block_output_dir, "screenings_blocks.txt"))
 

@@ -4,16 +4,67 @@
 cat("![](bayesian_reasoning_flowchart.png)")
 ```
 
-## A priori belief
 ```{r, results='asis', echo=FALSE}
 # PRINT SCALES (BOOK)
 # this vector with paths set the scales to be printed
-scales2print <- c("materials/qualtrics/output/plain_text/scales/apriori_belief/") 
+scales2print <- c("materials/qualtrics/output/plain_text/scales/a_priori_screening_belief") 
 
 source("scripts/print_scales.R")
 ```
 
+```{r, results='asis', echo=FALSE}
+# PRINT SCALES (BOOK)
+
+# FILLERS
+# Keep severity emotion scale fillers
+fillers_sevEmo <-
+  fillers %>% 
+  filter(grepl("sevEmo", field_name)) %>% 
+  mutate(ca_pr = paste(ca, pr, sep = "/")) %>% 
+  select(field_name, ca_pr)
+# create objects with fillers
+for (i in seq(nrow(fillers_sevEmo))) {
+  assign(x = pull(fillers_sevEmo[i, "field_name"]), 
+         value = pull(fillers_sevEmo[i, "ca_pr"]), 
+         envir = .GlobalEnv)
+}
+
+cleaned_sevEmo <- 
+  "materials/qualtrics/output/plain_text/scales/severity_emotion_scale/severity_emotion_scale.txt" %>% 
+  readChar(., file.size(.)) %>% 
+  
+  # CLEAN
+  gsub("\\[{2}AdvancedFormat\\]{2}\\n", "", .) %>%                  # remove advanceformat tag
+  gsub("\\[{2}Block\\:([a-z_0-9]*)\\]{2}", "## \\1", .) %>% # scale name
+  gsub("\\[{2}Question.*?\\]{2}\\n", "", .) %>% # remove Question qualtrics format 
+  gsub("\\[{2}ID\\:([a-zA-Z_0-9]*)\\]{2}", "\n**\\1**", .) %>%        # question ID
+  gsub("\\[{2}Choices\\]{2}\\n", "  \n", .) %>%  # remove choices qualtrics format 
+  gsub("\\[{2}PageBreak\\]{2}\\n", "  \n", .) %>%  # remove page break qualtrics format 
+  gsub("<span style='font-size\\:[QC]_FONT_SIZEpx;'>", "", .) %>%     # remove html tag
+  gsub("<span style='font-size\\:0px;'>this_is_not_here", "", .) %>%     # remove html tag
+  gsub("<span style='font-size\\:16px;'>", "", .) %>%     # remove html tag
+  gsub("<span style='font-size\\:22px;'>", "", .) %>%     # remove html tag
+  gsub("</span>", "", .) %>%  # remove html tag
+  gsub("<br>", " ", .) %>%  # remove html linebreak
+  gsub("\\n", "  \n", .) %>% # double linebreaks because bookdown is weird
+  gsub("DELETE_THIS", "", .)  # remove DELETE_THIS
+  
+  cleaned_sevEmo %>%
+  # Print
+  cat(., sep = "  \n")
+
+```
+
 ## Screening item
+
+```{r, results='asis', echo=FALSE}
+"materials/ppv_instructions/input/ppv_instructions.txt" %>% 
+  readChar(., file.size(.)) %>% 
+  cat("**Instructions**  \n", ., sep = "")
+
+```
+
+
 ```{r, results='asis', echo=FALSE}
 display_item(c("pr", "fbpi", "high", "sg"))
 display_item(c("pr", "nfab", "high", "ss"))
@@ -26,33 +77,59 @@ display_item(c("ca", "nppi", "low", "gs"))
 ## Willing to screen  
 
 ```{r, results='asis', echo=FALSE}
+# fillers
+woman_age <- numbers_nppi$age %>% paste(., collapse = "/")
+medical_test <- filter(fillers, field_name == "medical_test") %>% select("ca", "pr") %>% paste(., collapse = "/")
+medical_condition <- filter(fillers, field_name == "medical_condition") %>% select("ca", "pr") %>% paste(., collapse = "/")
+
 will_screening <- 
   "materials/Question/willing_screen/willing_screen.txt" %>% 
   readChar(., file.size(.))
 
 will_screening %>% 
-    gsub("\\[{2}ID\\:([a-zA-Z_0-9]*)\\]{2}", "**\\1**", .) %>%        # question ID
-    gsub('<span style="font-size\\:[0-9]{2}px;">', "", .) %>%     # remove html tag
-    gsub('</span>', "", .) %>%  # remove html tag
-    gsub("\\[{2}Question.*?\\]{2}\\n", "", .) %>% # remove Question qualtrics format 
-    gsub("\\[{2}Choices\\]{2}\\n", "", .) %>%  # remove choices qualtrics format 
-    gsub("\\n", "\n\n", .) %>% # double linebreaks because bookdown is weird
-    gsub("DELETE_THIS", "", .) %>%  # remove DELETE_THIS
-cat()
+  gsub("\\[{2}ID\\:([a-zA-Z_0-9]*)\\]{2}", "**\\1**", .) %>%        # question ID
+  gsub('<span style="font-size\\:[0-9]{2}px;">', "", .) %>%     # remove html tag
+  gsub('</span>', "", .) %>%  # remove html tag
+  gsub("\\[{2}Question.*?\\]{2}\\n", "", .) %>% # remove Question qualtrics format 
+  gsub("\\[{2}Choices\\]{2}\\n", "", .) %>%  # remove choices qualtrics format 
+  gsub("\\n", "\n\n", .) %>% # double linebreaks because bookdown is weird
+  gsub("DELETE_THIS", "", .) %>%  # remove DELETE_THIS
+  
+  
+  # Fillers
+  gsub("\\$.*?woman_age_0\\}", woman_age, .) %>% 
+  gsub("\\$.*?medical_test_0\\}", medical_test, .) %>% 
+  gsub("\\$.*?medical_condition_0\\}", medical_condition, .) %>% 
+  
+  cat()
 ```
 
 ## Comprehension
+
+```{r, results='asis', echo=FALSE}
+# fillers
+comp_01 <- filter(fillers, field_name == "comp_01") %>% select("ca", "pr") %>% paste(., collapse = "/")
+comp_02 <- filter(fillers, field_name == "comp_02") %>% select("ca", "pr") %>% paste(., collapse = "/")
+
+"materials/qualtrics/output/plain_text/comprehension/comprehension.txt" %>% 
+  readChar(., file.size(.)) %>% 
+  # Clean
+  gsub("\\[{2}Question.*?\\]{2}", "", .) %>% # remove question qualtrics tag
+  gsub("\\[{2}ID\\:(.*?)\\]{2}", "**\\1**", .) %>%  # remove question id qualtrics tag
+  gsub("<.*?>", "", .) %>% # remove html font size tag
+  gsub("\\[{2}Choices\\]{2}", "", .) %>% # remove choices qualtrics tag
+  gsub("\n{0,1}delete_this\n{0,1}", "", .) %>%  # remove delete_this text for empty sliders
+  gsub("\n", "  \n", .) %>% # add two empty spaces to format linebreaks in markdown
+  
+  # Fill placeholders
+  gsub("\\$.*?comp_01_0\\}", comp_01, .) %>% 
+  gsub("\\$.*?comp_02_0\\}", comp_02, .) %>% 
+  
+  # print
+  cat()
+```
+
 ## Follow-up
 ```{r, results='asis', echo=FALSE}
 source("scripts/print_followup.R")
 ```
-
-## Breast cancer/Trisomy 21 Severity-emotion Scale
-```{r, results='asis', echo=FALSE}
-# PRINT SCALES (BOOK)
-# this vector with paths set the scales to be printed
-scales2print <- c("materials/qualtrics/output/plain_text/scales/severity_emotion/partial") 
-
-source("scripts/print_scales.R")
-```
-

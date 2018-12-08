@@ -11,6 +11,10 @@ html_codes <- list(
   # font
   linebreak = "<br>",
   italic = "<i>ITALIZE_THIS</i>",
+  bold = "<strong>STRONGME</strong>",
+  # font size TITLES
+  title_font_size =
+    paste0('<span style="font-size:40px;">QUESTION_TEXT_TO_FORMAT</span>'),
   # font size templates
   question_font_size =
     paste0('<span style="font-size:', question_size, 'px;">QUESTION_TEXT_TO_FORMAT</span>'),
@@ -18,7 +22,7 @@ html_codes <- list(
     paste0('<span style="font-size:', choice_size, 'px;">CHOICES_TEXT_TO_FORMAT</span>'),
   list_start = "<li>",
   list_end = "</li>",
-  insert_img = '<img height="834" src="LINK2IMG" style="width&#58; 1200px; height&#58; 834px;" width="1200" />'
+  insert_img = '<img src="LINK2IMG" style="width&#58; 100%; height&#58; 100%;"/>'
 )    
 
 # Qualtrics codes *************************

@@ -14,3 +14,4 @@ materials/qualtrics/output/*.txt
 materials/qualtrics/output/
 materials/qualtrics/input/followUp/
 *.html
+.httr-oauth

@@ -12,7 +12,7 @@ short_name <- this_scale$short_name
 
 # qualtrics tags template to wrapp around
 # instructions
-ins_wrapper <- '[[Question:Text]]\n[[ID:replaceID]]\n<span style="font-size:Q_FONT_SIZEpx;">ITEM</span>'
+ins_wrapper <- "[[Question:Text]]\n[[ID:replaceID]]\n<span style='font-size:Q_FONT_SIZEpx;'>ITEM</span>"
 # items
 item_wrapper <- 
   "[[Question:MC:SingleAnswer:Horizontal]]

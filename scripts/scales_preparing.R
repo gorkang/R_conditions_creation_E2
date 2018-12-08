@@ -11,7 +11,7 @@ choice_size = "15"
 
 # Scales names
 scale_names <- 
-  read_csv("materials/Scales/scale_names.csv", col_types = "ccci")
+  read_csv("materials/Scales/scale_names.csv", col_types = "cccic")
 
 # a_priori_screening_belief ##################################
 source("scripts/scale_a_priori_screening_belief.R")
@@ -37,7 +37,9 @@ source("scripts/scale_probabilistic_reasoning_scale.R")
 source("scripts/scale_risk_avoidance_scale.R")
 # risk_propensity_scale ######################################
 source("scripts/scale_risk_propensity_scale.R")
-# severity_emotional_reaction ################################
+# shared_decision_making #####################################
+source("scripts/scale_shared_decision_making.R")
+# severity_emotional_reaction_scale ##########################
 source("scripts/scale_severity_emotional_reaction.R")
 # sociodemographic_scale #####################################
 source("scripts/scale_sociodemographic_scale.R")
@@ -46,14 +48,16 @@ source("scripts/scale_subjective_numeracy_scale.R")
 # tolerance_of_ambiguity #####################################
 source("scripts/scale_tolerance_of_ambiguity.R")
 
-
 # PRINT SCALES (BOOK)
 # this vector with paths set the scales to be printed
-scales2print <- c("materials/qualtrics/output/plain_text/scales/apriori_belief", 
-                  "materials/qualtrics/output/plain_text/scales/severity_emotion/partial",
-                  "materials/qualtrics/output/plain_text/scales/numeracy/",
-                  "materials/qualtrics/output/plain_text/scales/crt_7/",
-                  "materials/qualtrics/output/plain_text/scales/gdms/",
-                  "materials/qualtrics/output/plain_text/scales/subjective_numeracy//") 
+
+# Instructions
+"materials/scales_instructions/scales_instructions.txt" %>% 
+  readChar(., file.size(.)) %>% 
+  cat("**Instructions**  \n", ., "  \n", sep = "")
+
+# Scales
+scales2print <- 
+  "materials/qualtrics/output/plain_text/scales/" %>% dir(., full.names = TRUE)
 
 source("scripts/print_scales.R")

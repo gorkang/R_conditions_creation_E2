@@ -12,11 +12,34 @@ p_load(RSelenium, tidyverse, naptime)
 source("functions/get2survey.R")
 source("functions/UBER_IMPORT2QUALTRICS.R")
 
-# Get to survey -------------------------------------------------------------------
+# Start docker session ----------------------------------------------------
 
-# Create browser instance
-rD = RSelenium::rsDriver(browser = "chrome")
-remDr <- rD[["client"]]
+# Check docker containers
+system('docker ps -q') 
+# Kill all containers
+system('docker stop $(docker ps -q)') # MATALOS todos
+# Get chrome image (to use VNC use debug)
+system('docker pull selenium/standalone-chrome-debug') 
+# Run docker session. Map home directory to download docker container
+system('docker run -d -v /home:/home/seluser/Downloads -P selenium/standalone-chrome-debug')
+# Get important data about ports
+system('docker ps')
+
+# This is the path to materials folder within docker container
+selenium_path <- "/home/seluser/Downloads/nicolas/asgard/fondecyt/gorka/2017 - Gorka - Fondecyt/Experimentos/Experimento 1/R_condition_creation_GITHUB/R_conditions_creation"
+
+# To remove blocks
+# remove_blocks_qualtrics(start_on = 1, survey_type = "miro")
+# remDr$refresh()
+# To remove survey flow elements
+# remove_surveyflow_elements(start_on = 3)
+# remDr$refresh()
+
+# Selenium ----------------------------------------------------------------
+
+# Create browser instance. This should be reflected in the VNC session
+remDr <- remoteDriver(remoteServerAddr = "localhost", port = 32769, browserName = "chrome")
+remDr$open()
 
 # Survey link (why did the url change?)
 survey_link <- "https://qsharingeu.eu.qualtrics.com/ControlPanel/?ClientAction=ChangePage&Section=GraphicsSection"
@@ -55,6 +78,15 @@ for (i in seq(1+length(elements)/2, length(elements))) {
 
 Sys.sleep(3) # give it time
 
+# Refresh for sanity -----------------------------------------------------
+remDr$refresh()
+
+# Get to folder (no permanent name to folder?)
+webElem <- remDr$findElement(using = 'css selector', value = "#Folder_17 .folder-name")
+webElem$clickElement()
+
+Sys.sleep(3) # give it time
+
 # Upload new images -------------------------------------------------------
 
 # Get to folder (no permanent name to folder?)
@@ -62,7 +94,7 @@ webElem <- remDr$findElement(using = 'css selector', value = "#Folder_17 .folder
 webElem$clickElement()
 
 # img to upload
-file <- file.path(getwd(), 
+file <- file.path(selenium_path, 
                   c(dir("materials/Presentation_format/fbpi/output", full.names = TRUE), 
                     dir("materials/Presentation_format/nppi/output", full.names = TRUE)))
 

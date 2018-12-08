@@ -87,9 +87,12 @@ gs_create_ppv_response <-
 # Qualtrics JS templates
 addOn_ready <- 
   "Qualtrics.SurveyEngine.addOnReady(function()\n{\n\nREPLACE_THIS\n\n});"
+addOn_default_js <- 
+  "Qualtrics.SurveyEngine.addOnload(function()\n{\n	/*Place your JavaScript here to run when the page loads*/\n\n});\n\nQualtrics.SurveyEngine.addOnReady(function()\n{\n	/*Place your JavaScript here to run when the page is fully displayed*/\n\n});\n\nQualtrics.SurveyEngine.addOnUnload(function()\n{\n	/*Place your JavaScript here to run when the page is unloaded*/\n\n});\n"
 addOn_ready_default_js <- 
   "Qualtrics.SurveyEngine.addOnload(function()\n{\n	/*Place your JavaScript here to run when the page loads*/\n\n});\n\nQualtrics.SurveyEngine.addOnReady(function()\n{\n	/*Place your JavaScript here to run when the page is fully displayed*/\n\nREPLACE_THIS\n\n});\n\nQualtrics.SurveyEngine.addOnUnload(function()\n{\n	/*Place your JavaScript here to run when the page is unloaded*/\n\n});\n"
-
+addOn_unload_default_js <- 
+  "Qualtrics.SurveyEngine.addOnload(function()\n{\n	/*Place your JavaScript here to run when the page loads*/\n\n});\n\nQualtrics.SurveyEngine.addOnReady(function()\n{\n	/*Place your JavaScript here to run when the page is fully displayed*/\n\n});\n\nQualtrics.SurveyEngine.addOnUnload(function()\n{\n	/*Place your JavaScript here to run when the page is unloaded*/\nREPLACE_THIS\n\n});\n"
 
 # Give format according to response type ----------------------------------
 
@@ -268,11 +271,100 @@ paste(gsub("REPLACE_THIS", "GS RESPONSE TYPE", commented),
   gsub("REPLACE_THIS", ., page_submit) %>%
   cat(., file = file.path(js_output_dir, "gs_capture_ppv.txt"))
 
-# Append JS codes ---------------------------------------------------------
 
+# WILLING TO SCREEN - How strongly would you recommend her (NOT) to take the screening test? -----
+
+# ######################
 js_comp_output_dir <- 
   "materials/qualtrics/output/plain_text/js_codes/complete" %T>% 
   dir.create(., FALSE, TRUE)
+# ######################
+
+# This JS code captures the response (should she take the test?) and creates 
+# and embedded data field with either an empty space or a "NOT" to put in the following question
+
+# If statement to create text to put on ED field
+cap_ans_will <- 
+  "   if (selectedChoice_0 == 1) {
+     var should_she_0 = '';
+   } else if (selectedChoice_0 == 2) {
+     var should_she_0 = 'NOT';
+   }"
+
+# Create JS code 
+should_she <- 
+  paste(
+  gsub("REPLACE_THIS", "Should she take the screening test?", commented),
+  gsub("REPLACE_THIS", "Get selected choice index (1 = Yes, 2 = No)", commented),
+  "var selectedChoice_0 = this.getSelectedChoices()",
+  gsub("REPLACE_THIS", "Create ED field according to response of \"should she take the screening test?\"", commented),
+  cap_ans_will,
+  gsub("REPLACE_THIS", "Check response captured", commented),
+  gsub("REPLACE_THIS", "'Should she take the test?: ' + should_she_0", consolelog),
+  gsub("REPLACE_THIS", "If ED exists, assign value to it. If does not exists, create it with indicated value", commented),
+  "Qualtrics.SurveyEngine.setEmbeddedData('should_she_0', should_she_0)",
+  gsub("REPLACE_THIS", "'Embedded data is: ' + Qualtrics.SurveyEngine.gettEmbeddedData('should_she_0')", consolelog), 
+  sep = "\n") %>% 
+  gsub("REPLACE_THIS", ., page_submit) %>% 
+  paste(addOn_default_js, .) 
+
+# Add trial number to vars
+should_she <- 
+  1:2 %>% 
+  map(~gsub("(_0)\\b", paste0("\\1", .x), should_she) %>% 
+        gsub("(\\*\\*[a-z]{2})(\\*\\*.*)", paste0("\\1_0", .x, "\\2"), .)) %>% 
+  unlist()
+
+
+# Export to text, one per block
+should_she %>% paste0(paste0("**will_should_she_0", 1:2, "**"), .) %>% 
+  walk(~cat(gsub("\\*{2}will_should_she_0[12]\\*{2}(.*)", "\\1", .x), 
+            file = file.path(js_comp_output_dir, paste0(gsub("\\*\\*(will_should_she_0[12])\\*\\*.*", "\\1", .x), "_js_complete.txt"))))
+  
+# Follow-Up - How strongly would you recommend her (NOT) to take the follow-up? -----
+
+# This JS code captures the response (should she take the follow-up?) and creates 
+# and embedded data field with either an empty space or a "NOT" to put in the following question
+
+# If statement to create text to put on ED field
+cap_ans_will <- 
+  "   if (selectedChoice_0 == 1) {
+var shoShe_fu_0 = '';
+} else if (selectedChoice_0 == 2) {
+var shoShe_fu_0 = 'NOT';
+}"
+
+# Create JS code 
+shoShe_fu <-
+  paste(
+    gsub("REPLACE_THIS", "Should she take the follow-up?", commented),
+    gsub("REPLACE_THIS", "Get selected choice index (1 = Yes, 2 = No)", commented),
+    "var selectedChoice_0 = this.getSelectedChoices()",
+    gsub("REPLACE_THIS", "Create ED field according to response of \"should she take the follow-up?\"", commented),
+    cap_ans_will,
+    gsub("REPLACE_THIS", "Check response captured", commented),
+    gsub("REPLACE_THIS", "'Should she take the follow-up?: ' + shoShe_fu_0", consolelog),
+    gsub("REPLACE_THIS", "If ED exists, assign value to it. If does not exists, create it with indicated value", commented),
+    "Qualtrics.SurveyEngine.setEmbeddedData('shoShe_fu_0', shoShe_fu_0)",
+    gsub("REPLACE_THIS", "'Embedded data is: ' + Qualtrics.SurveyEngine.gettEmbeddedData('shoShe_fu_0')", consolelog), 
+    sep = "\n") %>% 
+  gsub("REPLACE_THIS", ., page_submit) %>% 
+  paste(addOn_default_js, .)
+
+# Add trial number to vars
+shoShe_fu <- 
+  1:2 %>% 
+  map(~gsub("(_0)\\b", paste0("\\1", .x), shoShe_fu) %>% 
+        gsub("(\\*\\*[a-z]{2})(\\*\\*.*)", paste0("\\1_0", .x, "\\2"), .)) %>% 
+  unlist()
+
+# Export to text, one per block
+shoShe_fu %>% paste0(paste0("**fu_should_she_0", 1:2, "**"), .) %>% 
+  walk(~cat(gsub("\\*{2}fu_should_she_0[12]\\*{2}(.*)", "\\1", .x), 
+            file = file.path(js_comp_output_dir, paste0(gsub("\\*\\*(fu_should_she_0[12])\\*\\*.*", "\\1", .x), "_js_complete.txt"))))
+
+
+# Append JS codes ---------------------------------------------------------
 
 # paste js codes
 all_js_complete <- 
@@ -290,15 +382,16 @@ all_js_complete <-
       
   )
 
-# add tril indicator to embedded data fields reading
+# add trial indicator to embedded data fields reading
 all_js_complete <- 
   1:2 %>% 
-  map(~gsub("(_0)\\b", paste0("\\1", .x), all_js_complete) %>% gsub("(\\*\\*[a-z]{2})(\\*\\*.*)", paste0("\\1_0", .x, "\\2"), .)) %>% unlist()
+  map(~gsub("(_0)\\b", paste0("\\1", .x), all_js_complete) %>% 
+        gsub("(\\*\\*[a-z]{2})(\\*\\*.*)", paste0("\\1_0", .x, "\\2"), .)) %>% unlist()
 
 # export to txt file
 all_js_complete %>% 
   walk(~cat(gsub("\\*\\*[a-z]{2}_0[12]\\*\\*(.*)", "\\1", .x), 
-           file = file.path(js_comp_output_dir, paste0(gsub("\\*\\*([a-z]{2}_0[12])\\*\\*.*", "\\1", .x), "_js_complete.txt"))))
-  
+            file = file.path(js_comp_output_dir, paste0(gsub("\\*\\*([a-z]{2}_0[12])\\*\\*.*", "\\1", .x), "_js_complete.txt"))))
+
 
 

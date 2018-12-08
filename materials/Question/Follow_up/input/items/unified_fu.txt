@@ -1,9 +1,9 @@
 Remember that:
-<li>${e://Field/prevalence_0}</li>
-<li>In your response to the previous problem you said that, ${e://Field/ppv_response_0} of those with a positive ${e://Field/positive_test_result_0} actually have the medical condition (${e://Field/medical_condition_0}).</li>
+<ul><li>${e://Field/prevalence_0}</li>
+<li>In your response to the previous problem, you said that ${e://Field/ppv_response_0} of those with a positive ${e://Field/positive_test_result_0} actually have the medical condition (${e://Field/medical_condition_0}).</li></ul>
 
-Imagine a woman you care about is participating in a routine screening as the one you saw before to detect a medical condition (${e://Field/medical_condition_0}), and receives a positive ${e://Field/positive_test_result_0}.
+Imagine a woman you care about participated in a routine screening to detect a medical condition (${e://Field/medical_condition_0}) as the one you saw before, and receives a positive ${e://Field/positive_test_result_0}.
 
-The doctor offers her a follow-up test ${e://Field/doctor_offers_0}, necessary to confirm the diagnosis. During the procedure, a needle is inserted to sample ${e://Field/fluid_test_0}.
+The doctor offers her a follow-up test ${e://Field/doctor_offers_0}, necessary to confirm the diagnosis. During the procedure, a needle is inserted to take a sample of ${e://Field/fluid_test_0}.
 
-${e://Field/test_name_0} has a ${e://Field/fu_risk_num_0}% procedure-related risk of complications (for example, infections) that can result in a ${e://Field/medical_consequence_0}.
+${e://Field/test_name_0} has a ${e://Field/fu_risk_num_0}% procedure-related risk of complications (for example infections) that can result in a ${e://Field/medical_consequence_0}.

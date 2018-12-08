@@ -340,6 +340,18 @@ tibble(check = "",
   kableME(.)
 ```
 
+### Randomization
+
+```{r, echo=FALSE}
+this <- filter(scale_names, long_name == "shared_decision_making")
+
+tibble(check = "",
+       qIDs = paste0(this$short_name, "_", sprintf("%02d", seq(this$no_items)[!seq(this$no_items) %in% c(3,4,5)])), 
+       extra = c("Randomize choices")) %>% 
+  kableME(.)
+
+```
+
 
 ## Others
 

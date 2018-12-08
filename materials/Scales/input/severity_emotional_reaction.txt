@@ -48,7 +48,7 @@ __QSEP__
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style='font-size:Q_FONT_SIZEpx;'>To what extent would you recommend sevEmo_04 to a woman you care about that sevEmo_07?<br>0: Not at all - 100: Most certainly</span>
+<span style='font-size:Q_FONT_SIZEpx;'>Imagine a woman you care about that sevEmo_07. How strongly you think she should have a sevEmo_04?<br>0: Not strongly at all - 100: Very strongly</span>
 [[Choices]]
 <span style='font-size:0px;'>this_is_not_here</span>
 __QSEP__

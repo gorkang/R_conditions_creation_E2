@@ -53,6 +53,11 @@ comprehension <-
   gsub("Q_FONT_SIZE", 22, .) %>% # Change Questions Font size
   gsub("C_FONT_SIZE", 16, .)       # Change choice Font size
 
+# manual modification to question 8
+comprehension[9] <- 
+  comprehension[9] %>% gsub("MC.*?tal", "Text", .) %>% 
+  gsub("\n\\[{2}Choi.*span>", "", .)
+
 # Export ---------------------------------------------------------------
 
 # Output dir

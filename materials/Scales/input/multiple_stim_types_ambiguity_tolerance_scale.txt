@@ -1,4 +1,4 @@
-Please rate to what extent you agree or disagree with the following statements.
+<strong>Please rate to what extent you agree or disagree with the following statements.</strong>
 I don’t tolerate ambiguous situations well.
 I find it difficult to respond when faced with an unexpected event.
 I don’t think new situations are any more threatening than familiar situations.

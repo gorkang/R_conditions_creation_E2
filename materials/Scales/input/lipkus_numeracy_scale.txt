@@ -1,6 +1,6 @@
 [[Question:Text]]
 [[ID:replaceID]]
-<span style='font-size:Q_FONT_SIZEpx;'>Try to answer the following questions about probabilities.</span>
+<span style='font-size:Q_FONT_SIZEpx;'><strong>Try to answer the following questions about probabilities.</strong></span>
 __QSEP__
 [[Question:TE:SingleLine]]
 [[ID:replaceID]]

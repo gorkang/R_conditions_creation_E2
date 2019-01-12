@@ -1,14 +1,23 @@
-Please rate to what extent you agree or disagree with the following statements.
+<strong>Please rate to what extent you agree or disagree with the following statements.</strong>
 I don’t tolerate ambiguous situations well.
+I find it difficult to respond when faced with an unexpected event.
+I don’t think new situations are any more threatening than familiar situations.
+I’m drawn to situations which can be interpreted in more than one way.
 I would rather avoid solving a problem that must be viewed from several different perspectives.
-I try to avoid situations that are ambiguous.
+I try to avoid situations which are ambiguous. 
+I am good at managing unpredictable situations.
 I prefer familiar situations to new ones.
-Problems that cannot be considered from just one point of view are a little threatening.
-I avoid situations that are too complicated for me to easily understand.
+Problems which cannot be considered from just one point of view area little threatening.
+I avoid situations which are too complicated for me to easily understand.
 I am tolerant of ambiguous situations.
-I enjoy tackling problems that are complex enough to be ambiguous.
-I try to avoid problems that don’t seem to have only one “best” solution.
+I enjoy tackling problems which are complex enough to be ambiguous.
+I try to avoid problems which don’t seem to have only one "best" solution.
+I often find myself looking for something new, rather than trying to hold things constant in mylife.
 I generally prefer novelty over familiarity.
 I dislike ambiguous situations.
+Some problems are so complex that just trying to understand them is fun.
+I have little trouble coping with unexpected events.
+I pursue problem situations which are so complex some people call them "mind boggling".
 I find it hard to make a choice when the outcome is uncertain.
+I enjoy an occasional surprise.
 I prefer a situation in which there is some ambiguity.

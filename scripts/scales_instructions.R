@@ -5,82 +5,48 @@ p_load(tidyverse, magrittr)
 # qualtrics and html resources
 source("scripts/html_qualtrics_codes.R")
 
-# names
-long_name <- "scales_instructions"
-short_name <- "scale_ins"
+# dir to ins
+ins_dir <- 'materials/scales_instructions'
 
-# read file
-scale_instructions <- 
-  "materials/scales_instructions/scales_instructions.txt" %>% 
-  readChar(., file.size(.)) %>% 
-  gsub("\n$", "", .)
+# ins files 
+ins_files <- 
+  ins_dir %>% 
+  dir(.)
 
-# add font size html format
-scale_instructions <- 
-  html_codes$question_font_size %>% 
-  str_replace(string = ., 
-              pattern = "QUESTION_TEXT_TO_FORMAT", 
-              replacement = scale_instructions)
+# ins text
+ins <-
+  file.path(ins_dir, ins_files) %>% 
+  map(., ~readChar(.x, file.size(.x))) %>% 
+    gsub('\n$', '', .) %>% gsub('\n', '<br>', .)
 
-# add question format and id
-scale_instructions <-
-  paste(qualtrics_codes$question_only_text,
-        qualtrics_codes$question_id,
-        scale_instructions, sep = "\n") %>% 
-  str_replace_all(string = ., 
-                  pattern = "question_id", 
-                  replacement = paste0(short_name, "_", sprintf("%02d", 1)))
-
-# ourput dir
-output_dir <- 
-  "materials/qualtrics/output/plain_text/scales_instructions" %T>% 
-  dir.create(., FALSE, TRUE)
-
-# export to text file
-scale_instructions %>% 
-  paste(., collapse = paste0("\n", qualtrics_codes$pagebreak, "\n")) %>%
+# Add qualtrics question type and question id tags 
+ins_formatted <- 
   paste(qualtrics_codes$advanced_format,
-        gsub("block_name", long_name, qualtrics_codes$block_start),
-        .,
-        sep = "\n") %>% 
-  cat(., file = file.path(output_dir, paste0(long_name, ".txt")))
+        qualtrics_codes$block_start,
+        qualtrics_codes$question_only_text,
+        qualtrics_codes$question_id,
+        ins,
+        sep = '\n') %>% 
+  str_replace_all(string = ., pattern = 'question_id', replacement = gsub('.txt', '', ins_files)) %>% 
+  str_replace_all(string = ., pattern = 'block_name', replacement = gsub('.txt', '', ins_files))
+
+# Export scale titles and instructions to text files
+ins_formatted %>% 
+  walk(., ~cat(.x, 
+               file = file.path('materials/qualtrics/output/plain_text/scales_instructions', 
+                                # Get file name from question id
+                                paste0(gsub('.*ID\\:(.*)\\]{2}.*', '\\1', .x), '.txt'))))
 
 
 # Print scale instructions -----------------------------------------------------------
 source("functions/remove_placeholders.R")
 
-scale_instructions %>% 
+ins_formatted %>% 
+  gsub("<.*?g>", "", .) %>% 
   gsub("\\[{2}.*?\\]{2}\n", "", .) %>% 
   gsub("<span.*?>", "", .) %>% 
   gsub("</span*?>", "", .) %>% 
   gsub("<br>", "  \n", .) %>% 
   paste(., collapse = "  \n  \n") %>% 
   cat()
-
-# Personality/Cognitive block titles ###########################
-# titles
-pers_title <- 
-  "Personality scales" %>% 
-  gsub("QUESTION_TEXT_TO_FORMAT", . , html_codes$title_font_size) %>% 
-  gsub("STRONGME", ., html_codes$bold)
-cog_title <- 
-  "Cognitive scales" %>% 
-  gsub("QUESTION_TEXT_TO_FORMAT", . , html_codes$title_font_size) %>% 
-  gsub("STRONGME", ., html_codes$bold)
-
-# assemble pers title block
-paste(qualtrics_codes$advanced_format,
-      gsub("block_name", "pers_title", qualtrics_codes$block_start),
-      qualtrics_codes$question_only_text,
-      questioIDme("pers_title"),
-      pers_title, sep = "\n") %>% 
-  cat(., file = file.path(output_dir, "pers_title.txt"))
-
-# assemble cog title block
-paste(qualtrics_codes$advanced_format,
-      gsub("block_name", "cog_title", qualtrics_codes$block_start),
-      qualtrics_codes$question_only_text,
-      questioIDme("cog_title"),
-      cog_title, sep = "\n") %>% 
-  cat(., file = file.path(output_dir, "cog_title.txt"))
 

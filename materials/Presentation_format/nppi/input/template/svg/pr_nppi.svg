@@ -14,7 +14,7 @@
    viewBox="0 0 1378.3465 1913.3861"
    id="svg2"
    version="1.1"
-   inkscape:version="0.92.3 (unknown)"
+   inkscape:version="0.91 r13725"
    sodipodi:docname="pr_nppi.svg"
    inkscape:export-filename="/home/niki/Midgard/Experimentos Gorka/2017 - Gorka - Fondecyt/Experimentos/Experimento 1/R_conditions_creation/materials/Presentation format/New-paradigm/brochure/png/short_brochure_blank.png"
    inkscape:export-xdpi="45.709999"
@@ -35,8 +35,8 @@
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:snap-text-baseline="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="744"
+     inkscape:window-width="1920"
+     inkscape:window-height="1056"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -49,7 +49,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -128,28 +128,18 @@
    id="flowSpan95">1</flowSpan></flowPara><flowPara
          id="flowPara4968"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:41.25000381px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">Down syndrome is due to an extra chromosome 21 and is the most common trisomy at the time of birth.</flowPara><flowPara
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:41.25000381px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
-         id="flowPara3760" /><flowPara
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:41.25000381px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
-         id="flowPara3762" /><flowPara
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:41.25000381px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
-         id="flowPara3750" /><flowPara
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:41.25000381px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
-         id="flowPara74"> </flowPara><flowPara
+         id="flowPara74" /><flowPara
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:41.25000381px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
          id="flowPara76">Genetic test</flowPara><flowPara
          id="flowPara4978"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:41.25000381px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">When you're pregnant your blood contains fragments of your fetus' DNA. The prenatal Test is a test that analyzes this DNA in a sample of your blood to determine the risk of Down syndrome.</flowPara><flowPara
-         id="flowPara4984"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:41.25000381px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"> </flowPara><flowPara
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:41.25000381px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
-         id="flowPara3371"> </flowPara><flowPara
+         id="flowPara58"> </flowPara><flowPara
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:41.25000381px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
-         id="flowPara58"> </flowPara><flowPara
+         id="flowPara116" /><flowPara
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:41.25000381px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
-         id="flowPara116">A positive result does not necessarily mean that Down syndrome is present.</flowPara><flowPara
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:41.25000381px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
-         id="flowPara3766" /><flowPara
+         id="flowPara3388">A positive result does not necessarily mean that Down syndrome is present.</flowPara><flowPara
          id="flowPara4990"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:41.25000381px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">In the graph below you can see the probability that a positive result actually means the presence of Down syndrome. This probability is derived from risk factors associated with the mother's age.</flowPara></flowRoot>    <text
        xml:space="preserve"

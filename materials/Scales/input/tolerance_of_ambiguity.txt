@@ -1,4 +1,4 @@
-Please rate to what extent you agree or disagree with the following statements.
+<strong>Please rate to what extent you agree or disagree with the following statements.</strong>
 An expert who doesn't come up with a definite answer probably doesn't know too much.
 There is really no such thing as a problem that can't be solved.
 A good job is one where what is to be done and how it is to be done are always clear.

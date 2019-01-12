@@ -1,4 +1,4 @@
-Please indicate the level of your anxiety in the following situations. Please select one option on each sentence. 
+<strong>Please indicate the level of your anxiety in the following situations. Please select one option on each sentence.</strong>
 Studying for a math test. 
 Taking math section of the college entrance exam. 
 Taking an exam (quiz) in a math course. 

@@ -223,21 +223,10 @@ Q_counter <- 0
 # UPLOAD!
 UBER_IMPORT2QUALTRICS_miro(file_paths)
 
-# Scales instructions -----------------------------------------------------------
-
-file_paths <- 
-  file.path(selenium_path, "/materials/qualtrics/output/plain_text/scales_instructions/scales_instructions.txt")
-
-# Iteration counter
-Q_counter <- 0
-
-# UPLOAD!
-UBER_IMPORT2QUALTRICS_miro(file_paths)
-
 # Cognitive scales INSTRUCTIONS --------------------------------------------------
 
 file_paths <- 
-  file.path(selenium_path, "/materials/qualtrics/output/plain_text/scales_instructions/cog_title.txt")
+  file.path(selenium_path, "/materials/qualtrics/output/plain_text/scales_instructions/cog_scales_ins.txt")
 
 # Iteration counter
 Q_counter <- 0
@@ -273,7 +262,7 @@ UBER_IMPORT2QUALTRICS_miro(file_paths)
 # Personality scales INSTRUCTIONS --------------------------------------------------
 
 file_paths <- 
-  file.path(selenium_path, "/materials/qualtrics/output/plain_text/scales_instructions/pers_title.txt")
+  file.path(selenium_path, "/materials/qualtrics/output/plain_text/scales_instructions/per_scales_ins.txt")
 
 # Iteration counter
 Q_counter <- 0

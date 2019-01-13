@@ -30,11 +30,13 @@ fu_questions <-
 fu_questions <- 
   paste(fu_questions[1], 
         qualtrics_codes$pagebreak, 
-        paste(fu_questions[2:3], collapse = "\n"), 
+        paste(fu_questions[2], collapse = "\n"), 
+        qualtrics_codes$pagebreak,
+        paste(fu_questions[3], collapse = "\n"), 
         qualtrics_codes$pagebreak,
         paste(fu_questions[4:5], collapse = "\n"), 
         qualtrics_codes$pagebreak,
-        paste(fu_questions[6:7], collapse = "\n"), 
+        paste(fu_questions[6], collapse = "\n"), 
         sep = "\n")
 
 # 

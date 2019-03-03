@@ -1,4 +1,4 @@
-Please indicate the extent to which you agree or disagree with the following statement by selecting the option you prefer. Please do not think too long before answering; usually your first inclination is also the best one.
+<strong>Please indicate the extent to which you agree or disagree with the following statement by selecting the option you prefer. Please do not think too long before answering; usually your first inclination is also the best one.</strong>
 Safety first
 I do not take risks with my health.
 I prefer to avoid risks.

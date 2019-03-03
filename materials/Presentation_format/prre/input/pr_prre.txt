@@ -1,7 +1,7 @@
 [first_piece]
-prev_01% are pregnant with a fetus with Trisomy 21 at the time of the screening.
+prev_01% are pregnant with a fetus with Down syndrome at the time of the screening.
 [second_piece]
-hit_rate_01% of those pregnant with a fetus with Trisomy 21 will receive a positive test result.
+hit_rate_01% of those pregnant with a fetus with Down syndrome will receive a positive test result.
 [third_piece]
-false_positive_01% of the remaining cases not pregnant with a fetus with Trisomy 21 will still receive a positive test result.
+false_positive_01% of the remaining cases not pregnant with a fetus with Down syndrome will still receive a positive test result.
 [item_end]

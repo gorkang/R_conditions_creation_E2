@@ -314,5 +314,5 @@ source("scripts/comments.R")
 # Previous experience
 
 ```{r, results='asis', echo=FALSE}
-source("scripts/previous_experience.R")
+# this is now on scales preparation
 ```

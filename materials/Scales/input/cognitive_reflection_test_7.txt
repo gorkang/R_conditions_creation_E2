@@ -1,6 +1,6 @@
 [[Question:Text]]
 [[ID:replaceID]]
-<span style='font-size:Q_FONT_SIZEpx;'>You will see several items that vary in difficulty. Answer them the best you can.</span>
+<span style='font-size:Q_FONT_SIZEpx;'><strong>You will see several items that vary in difficulty. Answer them the best you can.</strong></span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]

@@ -28,8 +28,11 @@ output_dir <-
   dir.create(., FALSE, TRUE)
 
 # Export
+
 numeracy_scale %>%
-  cat(qualtrics_codes$advanced_format, qualtrics_codes$block_start %>% gsub("block_name", long_name, .),
+  paste(., collapse = paste0('\n', qualtrics_codes$pagebreak, '\n')) %>% 
+  cat(qualtrics_codes$advanced_format, 
+      qualtrics_codes$block_start %>% gsub("block_name", long_name, .),
       ., sep = "\n", 
       file = file.path(output_dir, paste0(long_name, ".txt")))
 

@@ -20,9 +20,9 @@ item_wrapper <-
 <span style='font-size:Q_FONT_SIZEpx;'>ITEM</span>
 [[Choices]]
 <span style='font-size:C_FONT_SIZEpx;'>0<br>Not at all</span>
+<span style='font-size:C_FONT_SIZEpx;'>1<br></span>
 <span style='font-size:C_FONT_SIZEpx;'>2<br></span>
-<span style='font-size:C_FONT_SIZEpx;'>3<br></span>
-<span style='font-size:C_FONT_SIZEpx;'>4<br>Severely - it bothered me a lot</span>"
+<span style='font-size:C_FONT_SIZEpx;'>3<br>Severely - it bothered me a lot</span>"
 # see what's going on.
 # item_wrapper %>% cat()
 

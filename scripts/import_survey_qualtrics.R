@@ -26,7 +26,7 @@ system('docker run -d -v /home:/home/seluser/Downloads -P selenium/standalone-ch
 system('docker ps')
 
 # This is the path to materials folder within docker container
-selenium_path <- "/home/seluser/Downloads/nicolas/asgard/fondecyt/gorka/2017 - Gorka - Fondecyt/Experimentos/Experimento 1/R_condition_creation_GITHUB/R_conditions_creation"
+selenium_path <- "/home/seluser/Downloads/nic/nostromo/fondecyt/gorka/2017 - Gorka - Fondecyt/Experimentos/Experimento 1/R_condition_creation_GITHUB/R_conditions_creation"
 
 # To remove blocks
 # remove_blocks_qualtrics(start_on = 1, survey_type = "miro")
@@ -223,21 +223,10 @@ Q_counter <- 0
 # UPLOAD!
 UBER_IMPORT2QUALTRICS_miro(file_paths)
 
-# Scales instructions -----------------------------------------------------------
-
-file_paths <- 
-  file.path(selenium_path, "/materials/qualtrics/output/plain_text/scales_instructions/scales_instructions.txt")
-
-# Iteration counter
-Q_counter <- 0
-
-# UPLOAD!
-UBER_IMPORT2QUALTRICS_miro(file_paths)
-
 # Cognitive scales INSTRUCTIONS --------------------------------------------------
 
 file_paths <- 
-  file.path(selenium_path, "/materials/qualtrics/output/plain_text/scales_instructions/cog_title.txt")
+  file.path(selenium_path, "/materials/qualtrics/output/plain_text/scales_instructions/cog_scales_ins.txt")
 
 # Iteration counter
 Q_counter <- 0
@@ -273,7 +262,7 @@ UBER_IMPORT2QUALTRICS_miro(file_paths)
 # Personality scales INSTRUCTIONS --------------------------------------------------
 
 file_paths <- 
-  file.path(selenium_path, "/materials/qualtrics/output/plain_text/scales_instructions/pers_title.txt")
+  file.path(selenium_path, "/materials/qualtrics/output/plain_text/scales_instructions/per_scales_ins.txt")
 
 # Iteration counter
 Q_counter <- 0

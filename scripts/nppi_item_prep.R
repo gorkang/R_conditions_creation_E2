@@ -83,7 +83,7 @@ x_axis_label <-
   filter(code_name == "person_02")
 # y axis label
 y_axis_label <-
-  "Test reliability"
+  "Positive result reliability"
 
 # These are results of 650/690, 390/1169
 graph_widht_percentage <- .94202

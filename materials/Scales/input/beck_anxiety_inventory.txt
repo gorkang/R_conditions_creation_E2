@@ -1,4 +1,4 @@
-Please, rate how much have you been bothered by each of the following symptoms over the past week.
+<strong>Please, rate how much have you been bothered by each of the following symptoms over the past week.</strong>
 Numbness or tingling
 Feeling hot
 Wobbliness in legs

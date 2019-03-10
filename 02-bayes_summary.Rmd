@@ -97,7 +97,7 @@ will_screening %>%
   
   
   # Fillers
-  gsub("\\$.*?woman_age_0\\}", woman_age, .) %>% 
+  gsub("\\$\\{e\\://Field/woman_age_0\\}", woman_age, .) %>% 
   gsub("\\$.*?medical_test_0\\}", medical_test, .) %>% 
   gsub("\\$.*?medical_condition_0\\}", medical_condition, .) %>% 
   
@@ -110,6 +110,8 @@ will_screening %>%
 # fillers
 comp_01 <- filter(fillers, field_name == "comp_01") %>% select("ca", "pr") %>% paste(., collapse = "/")
 comp_02 <- filter(fillers, field_name == "comp_02") %>% select("ca", "pr") %>% paste(., collapse = "/")
+comp_04 <- filter(fillers, field_name == "comp_04") %>% select("ca", "pr") %>% paste(., collapse = "/")
+woman_age <- numbers_nppi$age %>% paste(., collapse = "/")
 
 "materials/qualtrics/output/plain_text/comprehension/comprehension.txt" %>% 
   readChar(., file.size(.)) %>% 
@@ -122,8 +124,12 @@ comp_02 <- filter(fillers, field_name == "comp_02") %>% select("ca", "pr") %>% p
   gsub("\n", "  \n", .) %>% # add two empty spaces to format linebreaks in markdown
   
   # Fill placeholders
-  gsub("\\$.*?comp_01_0\\}", comp_01, .) %>% 
-  gsub("\\$.*?comp_02_0\\}", comp_02, .) %>% 
+  gsub("\\$\\{e\\://Field/woman_age_0\\}", woman_age, .) %>% 
+  gsub("\\$\\{e\\://Field/comp_01_0\\}", comp_01, .) %>% 
+  gsub("\\$\\{e\\://Field/comp_02_0\\}", comp_02, .) %>% 
+  gsub("\\$\\{e\\://Field/comp_04_0\\}", comp_04, .) %>% 
+  
+  
   
   # print
   cat()

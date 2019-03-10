@@ -20,3 +20,4 @@ sevEmo_06,biopsy (a diagnostic test to determine whether a breast mass is cancer
 sevEmo_07,has breast cancer,is pregnant with a fetus with Down syndrome,
 followup_bad,mastectomy because of the Biopsy,miscarriage because of the amniocentesis,
 comp_03,have breast cancer,are pregnant with a fetus with Down syndrome,
+comp_04,women would you expect to have breast cancer,pregnant women carry fetuses with Down syndrome,

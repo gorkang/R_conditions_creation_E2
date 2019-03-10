@@ -358,6 +358,19 @@ tibble(check = "",
 
 ```
 
+### Sliders
+
+```{r, echo=FALSE}
+this <- filter(scale_names, long_name == "shared_decision_making")
+
+tibble(check = "",
+       qIDs = paste0(this$short_name, "_01"), 
+       extra = c("Change __Max. value__ to 4. Change __Grid lines__ to 5. Select __'Snap to Grid'__")) %>% 
+  kableME(.)
+
+```
+
+
 
 ## Others
 

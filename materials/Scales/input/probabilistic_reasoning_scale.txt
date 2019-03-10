@@ -107,8 +107,8 @@ __QSEP__
 <span style='font-size:C_FONT_SIZEpx;'>500 out of 1000</span>
 <span style='font-size:C_FONT_SIZEpx;'>200 out of 1000</span>
 __QSEP__
-[[Question:Text]]
-[[ID:prs_table]]
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:replaceID]]
 <span style='font-size:Q_FONT_SIZEpx;'>In a medical center a group of people were interviewed with the following results:</span><br><br>
 <table border='1' cellpadding='1' cellspacing='1' style='width:700px;'>
  <thead>
@@ -140,10 +140,7 @@ __QSEP__
   </tr>
  </tbody>
 </table>
-<br><br><span style='font-size:Q_FONT_SIZEpx;'>Suppose we select a person from this group at random. Based on the table:</span>
-__QSEP__
-[[Question:MC:SingleAnswer:Vertical]]
-[[ID:replaceID]]
+<br><br><span style='font-size:Q_FONT_SIZEpx;'>Suppose we select a person from this group at random. Based on the table:</span><br><br>
 <span style='font-size:Q_FONT_SIZEpx;'>What is the probability that the person had a heart attack?</span>
 [[Choices]]
 <span style='font-size:C_FONT_SIZEpx;'>104 out of 780</span>
@@ -152,6 +149,38 @@ __QSEP__
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
+<span style='font-size:Q_FONT_SIZEpx;'>In a medical center a group of people were interviewed with the following results:</span><br><br>
+<table border='1' cellpadding='1' cellspacing='1' style='width:700px;'>
+ <thead>
+  <tr>
+   <th scope='col'>&nbsp;</th>
+   <th scope='col'>55 years-old or younger</th>
+   <th scope='col'>Over 55</th>
+   <th scope='col'>&nbsp;Total</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td>Previous heart attack</td>
+   <td style='text-align: center;'>29</td>
+   <td style='text-align: center;'>75</td>
+   <td style='text-align: center;'>104</td>
+  </tr>
+  <tr>
+   <td>No previous heart attack</td>
+   <td style='text-align: center;'>401</td>
+   <td style='text-align: center;'>275</td>
+   <td style='text-align: center;'>676</td>
+  </tr>
+  <tr>
+   <td>Total</td>
+   <td style='text-align: center;'>430</td>
+   <td style='text-align: center;'>350</td>
+   <td style='text-align: center;'>780</td>
+  </tr>
+ </tbody>
+</table>
+<br><br><span style='font-size:Q_FONT_SIZEpx;'>Suppose we select a person from this group at random. Based on the table:</span><br><br>
 <span style='font-size:Q_FONT_SIZEpx;'>What is the probability that the person had a heart attack and, at the same time is older than 55?</span>
 [[Choices]]
 <span style='font-size:C_FONT_SIZEpx;'>104 out of 305</span>
@@ -160,6 +189,38 @@ __QSEP__
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
+<span style='font-size:Q_FONT_SIZEpx;'>In a medical center a group of people were interviewed with the following results:</span><br><br>
+<table border='1' cellpadding='1' cellspacing='1' style='width:700px;'>
+ <thead>
+  <tr>
+   <th scope='col'>&nbsp;</th>
+   <th scope='col'>55 years-old or younger</th>
+   <th scope='col'>Over 55</th>
+   <th scope='col'>&nbsp;Total</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td>Previous heart attack</td>
+   <td style='text-align: center;'>29</td>
+   <td style='text-align: center;'>75</td>
+   <td style='text-align: center;'>104</td>
+  </tr>
+  <tr>
+   <td>No previous heart attack</td>
+   <td style='text-align: center;'>401</td>
+   <td style='text-align: center;'>275</td>
+   <td style='text-align: center;'>676</td>
+  </tr>
+  <tr>
+   <td>Total</td>
+   <td style='text-align: center;'>430</td>
+   <td style='text-align: center;'>350</td>
+   <td style='text-align: center;'>780</td>
+  </tr>
+ </tbody>
+</table>
+<br><br><span style='font-size:Q_FONT_SIZEpx;'>Suppose we select a person from this group at random. Based on the table:</span><br><br>
 <span style='font-size:Q_FONT_SIZEpx;'>When the person had a heart attack, what is the probability that they are over 55?</span>
 [[Choices]]
 <span style='font-size:C_FONT_SIZEpx;'>75 out of 780</span>

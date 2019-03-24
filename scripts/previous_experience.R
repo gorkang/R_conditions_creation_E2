@@ -32,7 +32,7 @@ previous_experience <-
 
 # ourput dir
 output_dir <- 
-  paste0("materials/qualtrics/output/plain_text/", long_name) %T>% 
+  paste0("materials/qualtrics/output/plain_text/scales/", long_name) %T>% 
   dir.create(., FALSE, TRUE)
 
 # export to text file

@@ -39,6 +39,7 @@ output_dir <-
 
 # Export
 probabilistic_reasoning_items %>%
+  paste(., collapse = paste0('\n', qualtrics_codes$pagebreak, '\n')) %>% 
   cat(qualtrics_codes$advanced_format, 
       gsub("block_name", long_name, qualtrics_codes$block_start),
       ., 

@@ -1,6 +1,6 @@
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style='font-size:Q_FONT_SIZEpx;'>Please rate sevEmo_01 in the following dimensions:<br>0: Not at all - 100: Most certainly</span>
+<span style='font-size:Q_FONT_SIZEpx;'>Please rate sevEmo_01 in the following dimensions:<br><span style="font-size:14px;">0:Not at all - 100: Most certainly</span></span>
 [[Choices]]
 <span style='font-size:C_FONT_SIZEpx;'>Severe</span>
 <span style='font-size:C_FONT_SIZEpx;'>Serious</span>
@@ -9,7 +9,7 @@
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style='font-size:Q_FONT_SIZEpx;'>Please rate sevEmo_02 in the following dimensions:<br>0: Not at all - 100: Most certainly</span>
+<span style='font-size:Q_FONT_SIZEpx;'>Please rate sevEmo_02 in the following dimensions:<br><span style="font-size:14px;">0:Not at all - 100: Most certainly</span></span>
 [[Choices]]
 <span style='font-size:C_FONT_SIZEpx;'>Severe</span>
 <span style='font-size:C_FONT_SIZEpx;'>Serious</span>
@@ -18,7 +18,7 @@ __QSEP__
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style='font-size:Q_FONT_SIZEpx;'>To what extent would you feel the following if a woman you care about had sevEmo_03?<br>0: Not at all - 100: Most certainly</span>
+<span style='font-size:Q_FONT_SIZEpx;'>To what extent would you feel the following if a woman you care about had sevEmo_03?<br><span style="font-size:14px;">0:Not at all - 100: Most certainly</span></span>
 [[Choices]]
 <span style='font-size:C_FONT_SIZEpx;'>Afraid</span>
 <span style='font-size:C_FONT_SIZEpx;'>Worried</span>
@@ -28,7 +28,7 @@ __QSEP__
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style='font-size:Q_FONT_SIZEpx;'>To what extent would you feel the following if a woman you care about decided to have sevEmo_04 after knowing she has a higher risk of having sevEmo_03?<br>0: Not at all - 100: Most certainly</span>
+<span style='font-size:Q_FONT_SIZEpx;'>To what extent would you feel the following if a woman you care about decided to have sevEmo_04 after knowing she has a higher risk of having sevEmo_03?<br><span style="font-size:14px;">0:Not at all - 100: Most certainly</span></span>
 [[Choices]]
 <span style='font-size:C_FONT_SIZEpx;'>Afraid</span>
 <span style='font-size:C_FONT_SIZEpx;'>Worried</span>
@@ -38,7 +38,7 @@ __QSEP__
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style='font-size:Q_FONT_SIZEpx;'>To what extent you would feel the following if a woman you care about had a sevEmo_05 as a result of procedure-related complications during the sevEmo_06?<br>0: Not at all - 100: Most certainly</span>
+<span style='font-size:Q_FONT_SIZEpx;'>To what extent you would feel the following if a woman you care about had a sevEmo_05 as a result of procedure-related complications during the sevEmo_06?<br><span style="font-size:14px;">0:Not at all - 100: Most certainly</span></span>
 [[Choices]]
 <span style='font-size:C_FONT_SIZEpx;'>Afraid</span>
 <span style='font-size:C_FONT_SIZEpx;'>Worried</span>
@@ -48,18 +48,18 @@ __QSEP__
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style='font-size:Q_FONT_SIZEpx;'>Imagine a woman you care about that sevEmo_07. How strongly you think she should have a sevEmo_04?<br>0: Not strongly at all - 100: Very strongly</span>
+<span style='font-size:Q_FONT_SIZEpx;'>Imagine a woman you care about that sevEmo_07. How strongly you think she should have a sevEmo_04?<br><span style="font-size:14px;">0:Not strongly at all - 100: Very strongly</span></span>
 [[Choices]]
 <span style='font-size:0px;'>this_is_not_here</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style='font-size:Q_FONT_SIZEpx;'>Please rate your trust in medical screenings:<br>0: No trust at all - 100: Total trust</span>
+<span style='font-size:Q_FONT_SIZEpx;'>Please rate your trust in medical screenings:<br><span style="font-size:14px;">0:No trust at all - 100: Total trust</span></span>
 [[Choices]]
 <span style='font-size:0px;'>this_is_not_here</span>
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:replaceID]]
-<span style='font-size:Q_FONT_SIZEpx;'>Please rate your experienced discomfort with medical procedures:<br>0: No discomfort at all - 100: Extremely discomfortable</span>
+<span style='font-size:Q_FONT_SIZEpx;'>Please rate your experienced discomfort with medical procedures:<br><span style="font-size:14px;">0:No discomfort at all - 100: Extremely discomfortable</span></span>
 [[Choices]]
 <span style='font-size:0px;'>this_is_not_here</span>

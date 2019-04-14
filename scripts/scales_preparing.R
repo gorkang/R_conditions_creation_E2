@@ -47,14 +47,11 @@ source("scripts/scale_sociodemographic_scale.R")
 source("scripts/scale_subjective_numeracy_scale.R")
 # tolerance_of_ambiguity #####################################
 source("scripts/scale_tolerance_of_ambiguity.R")
+# previous_experience
+source("scripts/previous_experience.R")
 
 # PRINT SCALES (BOOK)
 # this vector with paths set the scales to be printed
-
-# Instructions
-"materials/scales_instructions/scales_instructions.txt" %>% 
-  readChar(., file.size(.)) %>% 
-  cat("**Instructions**  \n", ., "  \n", sep = "")
 
 # Scales
 scales2print <- 

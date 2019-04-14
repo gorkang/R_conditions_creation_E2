@@ -113,6 +113,17 @@ comp_02 <- filter(fillers, field_name == "comp_02") %>% select("ca", "pr") %>% p
 comp_04 <- filter(fillers, field_name == "comp_04") %>% select("ca", "pr") %>% paste(., collapse = "/")
 woman_age <- numbers_nppi$age %>% paste(., collapse = "/")
 
+# Problem introduction
+problem_intro <-
+  "materials/qualtrics/output/plain_text/prob_intro/ca_context_ppvhigh.txt" %>% 
+  readChar(., file.size(.)) %>% remove_placeholders() %>% 
+  gsub('\\*{2}.*?\\*{2}\\n', '', .) %>% gsub('\\n\\n', '  \n  \n', .)
+
+item_example <-
+  "materials/qualtrics/output/plain_text/items/ca_nfab_ppvhigh.txt" %>% 
+  readChar(., file.size(.)) %>% remove_placeholders() %>% 
+  gsub('\\*{2}.*?\\*{2}\\n{2}', '', .) %>% gsub('\\n', '  \n', .)
+
 "materials/qualtrics/output/plain_text/comprehension/comprehension.txt" %>% 
   readChar(., file.size(.)) %>% 
   # Clean
@@ -124,15 +135,17 @@ woman_age <- numbers_nppi$age %>% paste(., collapse = "/")
   gsub("\n", "  \n", .) %>% # add two empty spaces to format linebreaks in markdown
   
   # Fill placeholders
+  gsub('\\$\\{e\\://Field/screening_intro_0\\}\\$\\{e\\://Field/screening_item_0\\}', '', .) %>%
+  
   gsub("\\$\\{e\\://Field/woman_age_0\\}", woman_age, .) %>% 
   gsub("\\$\\{e\\://Field/comp_01_0\\}", comp_01, .) %>% 
   gsub("\\$\\{e\\://Field/comp_02_0\\}", comp_02, .) %>% 
   gsub("\\$\\{e\\://Field/comp_04_0\\}", comp_04, .) %>% 
-  
-  
-  
+
   # print
-  cat()
+  cat(problem_intro, item_example, ., sep = '')
+
+
 ```
 
 ## Follow-up

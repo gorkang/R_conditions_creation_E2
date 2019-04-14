@@ -298,6 +298,18 @@ tibble(check = "",
   kableME(.)
 ```
 
+_Shared Decision Making_
+
+```{r, echo=FALSE}
+this <- filter(scale_names, long_name == "shared_decision_making")
+
+tibble(check = "",
+       qIDs = paste0(this$short_name, "_0", c('1', '2')), 
+       extra = c("[For each alternative] Custom validation -> Is greater than or equal to 1 & Is less than or equal to 4", '')) %>% 
+  kableME(.)
+
+```
+
 _Sociodemographic Scale_
 
 ```{r, echo=FALSE}
@@ -357,20 +369,6 @@ tibble(check = "",
   kableME(.)
 
 ```
-
-### Sliders
-
-```{r, echo=FALSE}
-this <- filter(scale_names, long_name == "shared_decision_making")
-
-tibble(check = "",
-       qIDs = paste0(this$short_name, "_01"), 
-       extra = c("Change __Max. value__ to 4. Change __Grid lines__ to 5. Select __'Snap to Grid'__")) %>% 
-  kableME(.)
-
-```
-
-
 
 ## Others
 

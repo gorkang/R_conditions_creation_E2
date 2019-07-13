@@ -49,7 +49,10 @@ fu_risk <- readxl::read_xls("materials/Numbers/numbers_bayes.xls") %>%
   gsub("\\$\\{e\\://Field/positive_test_result_0\\}", fillers$ca_pr[fillers$field_name == "positive_test_result"], .) %>%
   gsub("\\$\\{e\\://Field/doctor_offers_0\\}",        fillers$ca_pr[fillers$field_name == "doctor_offers"], .) %>% 
   gsub("\\$\\{e\\://Field/fluid_test_0\\}",           fillers$ca_pr[fillers$field_name == "fluid_test"], .) %>% 
-  gsub("\\$\\{e\\://Field/test_name_0\\}",            fillers$ca_pr[fillers$field_name == "test_name"], .) %>% 
+  gsub("\\$\\{e\\://Field/test_name_0\\}",            fillers$ca_pr[fillers$field_name == "test_name"], .) %>%
+  gsub("\\$\\{e\\://Field/should_she_0\\}",            "[[NOT]]", .) %>%
+  gsub("\\$\\{e\\://Field/medical_test_0\\}",            fillers$ca_pr[fillers$field_name == "medical_test"], .) %>% 
+  gsub("\\$\\{e\\://Field/followup_bad_0\\}",            fillers$ca_pr[fillers$field_name == "followup_bad"], .) %>% 
   
   gsub("\\$\\{e\\://Field/prevalence_0\\}",           random_prevalence, .) %>%  # Prevalence
   gsub("\\$\\{e\\://Field/ppv_response_0\\}",         random_answer, .) %>%  # Example answer

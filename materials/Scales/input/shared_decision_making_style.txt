@@ -1,0 +1,21 @@
+[[Question:Text]]
+[[ID:shde_00]]
+<p align="justify"><span style='font-size:Q_FONT_SIZEpx;'>An ‘invasive medical procedure’ is an intervention that requires that a physician use a device either to inspect an organ visually to look for a medical condition or disease state or to measure the function of an organ or disease state. In addition, there may be a biopsy of a tissue or bodily organ to be sent for pathological analysis to determine whether there is a medical condition or disease state present in the patient.</span></span>
+
+<span style='font-size:Q_FONT_SIZEpx;'>When your physician discusses an invasive medical intervention with you to see if you would want to undertake the intervention, your physician can present you with four types of information:</span>
+<span style='font-size:Q_FONT_SIZEpx;'><ul><li>Risk information (information about how risky the intervention is to you)</li><li>Benefit information (information about how you would benefit from the intervention)</li><li>Numerical information (information about how common the disease is, accuracy rate and false positives of the test)</li><li>The doctor’s opinion on whether you should undergo the intervention</li></ul></span>
+[[Question:TE:Form]]
+[[ID:shde_01]]
+<span style='font-size:Q_FONT_SIZEpx;'>Which of the above four types of information is most important to you when you are asked to consider undergoing an invasive medical intervention?<br><br>– If all four types are important to you, please write a ‘1’ by each information type.<br>– If an item of information is not important to you, write a ‘0’.<br>– If some other combination of information is important to you, please order the information by placing a ‘1’, ‘2’, ‘3’, or '4' on how you rank the information in terms of their importance to you in your decision making:</span><br>
+[[Choices]]
+<span style='font-size:C_FONT_SIZEpx;'>Risk information</span>
+<span style='font-size:C_FONT_SIZEpx;'>Benefit information</span>
+<span style='font-size:C_FONT_SIZEpx;'>Numerical information</span>
+<span style='font-size:C_FONT_SIZEpx;'>The doctor’s opinion on whether the procedure should be done in your case</span>
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:shdc_02]]
+<span style='font-size:Q_FONT_SIZEpx;'>When you make decisions in medicine related to invasive medical procedures, who do you prefer to make the decision:</span>
+[[Choices]]
+<span style='font-size:C_FONT_SIZEpx;'>I prefer to make the decision myself</span>
+<span style='font-size:C_FONT_SIZEpx;'>I prefer to have the doctor make the decision for me</span>
+<span style='font-size:C_FONT_SIZEpx;'>I prefer to share the decision making with my doctor</span>

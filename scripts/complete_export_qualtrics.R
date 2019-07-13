@@ -72,12 +72,6 @@ med_cond_block_title <-
   gsub("QUESTION_TEXT_TO_FORMAT", . , html_codes$title_font_size) %>% 
   gsub("STRONGME", ., html_codes$bold)
 
-med_cond_block_title <- 
-  paste(qualtrics_codes$question_only_text,
-        questioIDme("ppv_title_0"),
-        med_cond_block_title,
-        qualtrics_codes$pagebreak, sep = "\n")
-
 # Instructions
 gen_instructions <- 
   "materials/ppv_instructions/input/ppv_instructions.txt" %>% 
@@ -85,11 +79,22 @@ gen_instructions <-
   gsub("\n$", "", .) %>% 
   gsub("QUESTION_TEXT_TO_FORMAT", ., html_codes$question_font_size)
 
-gen_instructions <- 
-  gen_instructions %>% 
-  paste(qualtrics_codes$question_only_text, 
-        gsub("question_id", "gen_ins_0", qualtrics_codes$question_id), 
-        ., sep = "\n")
+# Combine title with instructions
+med_cond_block_title <- paste(med_cond_block_title, gen_instructions, sep = '\n\n')
+
+# Add qualtrics tags
+med_cond_block_title <- 
+  paste(qualtrics_codes$question_only_text,
+        questioIDme("ppv_title_0"),
+        med_cond_block_title,
+        qualtrics_codes$pagebreak, sep = "\n")
+
+
+# gen_instructions <- 
+#   gen_instructions %>% 
+#   paste(qualtrics_codes$question_only_text, 
+#         gsub("question_id", "gen_ins_0", qualtrics_codes$question_id), 
+#         ., sep = "\n")
 
 # INTRO TO ITEM
 ED_screening_intro        <- 
@@ -185,8 +190,8 @@ comprehension <-
 screening_item_questions <-
   paste(gsub("block_name", "ppv_screening_0", qualtrics_codes$block_start),
         med_cond_block_title,
-        gen_instructions,
-        qualtrics_codes$pagebreak,
+        # gen_instructions,
+        # qualtrics_codes$pagebreak,
         screening_item,
         resp_type_01,
         resp_type_02,
@@ -216,39 +221,6 @@ complete_item <-
         gsub("block_name", "follow_up_0", qualtrics_codes$block_start),
         followup_items, sep = "\n")
 
-
-# Add severity/emotion scales ---------------------------------------------
-
-# Read questions and add font size html format
-severity_emo_scale <-
-  "materials/Question/severity_emotion/severity_emotional_reaction.txt" %>% 
-  readChar(., file.size(.)) %>% gsub("Q_FONT_SIZE", 22, .) %>% 
-  gsub("C_FONT_SIZE", 16, .) %>% 
-  gsub("\n$", "", .)
-
-# Put question ids
-severity_emo_scale <-
-  severity_emo_scale %>% 
-  str_split(., "\n__QSEP__\n") %>% unlist() %>% 
-  str_replace(string = ., 
-              pattern = "replaceID", 
-              replacement = c(pattern1 = paste0("sevEmo_", sprintf("%02d", 1:6), "_0"))) %>% 
-  paste(., collapse = "\n")
-
-# # Add extra question for trisomy 21 (display logic has to be set on qualtrics to display this question only when the context is trisomy)
-# severity_emo_scale_extra <-
-#   "materials/Question/severity_emotion/extra_trisomy.txt" %>% 
-#   readChar(., file.size(.)) %>% gsub("Q_FONT_SIZE", 22, .) %>% 
-#   gsub("C_FONT_SIZE", 16, .) %>% 
-#   gsub("\n$", "", .) %>% gsub("replaceID", "sevEmo_06_0", .)
-
-# Bind screening with severity emotion scale
-complete_item <-
-  paste(complete_item, 
-        gsub("block_name", "severity_emotion_scale_0", qualtrics_codes$block_start),
-        severity_emo_scale,
-        # severity_emo_scale_extra, # extra question (only for trisomy)
-        sep = "\n")
 
 # Export ------------------------------------------------------------------
 

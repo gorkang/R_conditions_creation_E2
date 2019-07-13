@@ -37,20 +37,21 @@ source("scripts/scale_probabilistic_reasoning_scale.R")
 source("scripts/scale_risk_avoidance_scale.R")
 # risk_propensity_scale ######################################
 source("scripts/scale_risk_propensity_scale.R")
+# shared_decision_making #####################################
+source("scripts/scale_shared_decision_making.R")
+# severity_emotional_reaction_scale ##########################
+source("scripts/scale_severity_emotional_reaction.R")
 # sociodemographic_scale #####################################
 source("scripts/scale_sociodemographic_scale.R")
 # subjective_numeracy_scale ##################################
 source("scripts/scale_subjective_numeracy_scale.R")
 # tolerance_of_ambiguity #####################################
 source("scripts/scale_tolerance_of_ambiguity.R")
+# previous_experience
+source("scripts/previous_experience.R")
 
 # PRINT SCALES (BOOK)
 # this vector with paths set the scales to be printed
-
-# Instructions
-"materials/scales_instructions/scales_instructions.txt" %>% 
-  readChar(., file.size(.)) %>% 
-  cat("**Instructions**  \n", ., "  \n", sep = "")
 
 # Scales
 scales2print <- 

@@ -27,9 +27,8 @@ _Screening blocks_
 ```{r, table01, echo=FALSE}
 tibble(check = "", 
        qIDs = c("will_Q02_01", paste0("com_Q", sprintf("%02d", 1:8),"_01"), 
-                "fu_Q02_01", "fu_Q03_01", "fu_Q05_01", "fu_Q06_01", paste0("sevEmo_0", 1:6, "_01"), "will_Q02_02", paste0("com_Q", sprintf("%02d", 1:8),"_02"), 
-                "fu_Q02_02", "fu_Q03_02", "fu_Q05_02", "fu_Q06_02", paste0("sevEmo_0", 1:6, "_01")),
-       extra = c("", rep("", 8), "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "Change max value to 10, and decimals to 1", '', rep("", 5), "", rep("", 8), "", "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "Change max value to 10, and decimals to 1", '', rep("", 6))) %>% 
+                "fu_Q02_01", "fu_Q03_01", "fu_Q05_01", "fu_Q06_01", "will_Q02_02", paste0("com_Q", sprintf("%02d", 1:8),"_02"), "fu_Q02_02", "fu_Q03_02", "fu_Q05_02", "fu_Q06_02"),
+       extra = c("", rep("", 8), "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "Change max value to 10, and decimals to 1", '', rep("", 8), "", "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "Change max value to 10, and decimals to 1", '')) %>% 
   kableME(.)
 ```
 
@@ -52,9 +51,7 @@ tibble(check = "",
   bind_rows(., tibble(check = "",
                       qIDs = c(paste0("fu_Q0", 1:6, "_01")), 
                       extra = (""))) %>%
-  bind_rows(., tibble(check = "",
-                      qIDs = c(paste0("sevEmo_0", 1:6, "_01")), 
-                      extra = (""))) %>%
+  
   kableME(.)
 
 
@@ -75,9 +72,6 @@ tibble(check = "",
   bind_rows(., tibble(check = "",
                       qIDs = c(paste0("fu_Q0", 1:6, "_01")), 
                       extra = (""))) %>% 
-  bind_rows(., tibble(check = "",
-                      qIDs = c(paste0("sevEmo_0", 1:6, "_02")), 
-                      extra = (""))) %>%
   kableME(.)
 ```
 
@@ -161,6 +155,19 @@ tibble(check = "",
 ```
 
 ## Scales
+
+### Sliders
+
+Change question type to Slider. On each question select the green button on the right upper corner and select Slider.
+
+_Severity emotion scale_
+
+```{r, echo=FALSE}
+tibble(check = "", 
+       qIDs = paste0('sevEmo_', sprintf('%02d', 1:16)),
+       extra = c(rep('', 4), rep('grid lines: 7, min: 1, max: 7', 5), rep('', 7))) %>% 
+  kableME(.)
+```
 
 ### Force response & Answer validation  
 
@@ -295,6 +302,15 @@ this <- filter(scale_names, long_name == "risk_propensity_scale")
 tibble(check = "",
        qIDs = paste0(this$short_name, "_", sprintf("%02d", seq(this$no_items))), 
        extra = "") %>%
+  kableME(.)
+```
+
+_Severity emotion scale_
+
+```{r, echo=FALSE}
+tibble(check = "", 
+       qIDs = paste0('sevEmo_', sprintf('%02d', 1:16)),
+       extra = c('')) %>% 
   kableME(.)
 ```
 

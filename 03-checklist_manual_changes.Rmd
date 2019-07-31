@@ -26,9 +26,9 @@ _Screening blocks_
 
 ```{r, table01, echo=FALSE}
 tibble(check = "", 
-       qIDs = c("will_Q02_01", paste0("com_Q", sprintf("%02d", 1:8),"_01"), 
-                "fu_Q02_01", "fu_Q03_01", "fu_Q05_01", "fu_Q06_01", "will_Q02_02", paste0("com_Q", sprintf("%02d", 1:8),"_02"), "fu_Q02_02", "fu_Q03_02", "fu_Q05_02", "fu_Q06_02"),
-       extra = c("", rep("", 8), "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "Change max value to 10, and decimals to 1", '', rep("", 8), "", "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "Change max value to 10, and decimals to 1", '')) %>% 
+       qIDs = c("will_Q02_01", "will_Q03_01", paste0("com_Q", sprintf("%02d", 1:8),"_01"), 
+                "fu_Q02_01", "fu_Q03_01", "fu_Q05_01", "fu_Q06_01", "will_Q02_02", 'will_Q03_02', paste0("com_Q", sprintf("%02d", 1:8),"_02"), "fu_Q02_02", "fu_Q03_02", "fu_Q05_02", "fu_Q06_02"),
+       extra = c('', "After change to Slider, __Select__ Allow Text Entry on 'Write down the main factor for you:' subitem", rep("", 8), "", "After change to Slider, __Select__ Allow Text Entry on 'Write down the main factor for you:' subitem", "Change max value to 10, and decimals to 1", '', "After change to Slider, __Select__ Allow Text Entry on 'Write down the main factor for you:' subitem", rep("", 8), "", "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "Change max value to 10, and decimals to 1", '')) %>% 
   kableME(.)
 ```
 

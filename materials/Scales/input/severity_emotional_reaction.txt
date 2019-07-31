@@ -1,0 +1,155 @@
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:question_id]]
+<span style="font-size:QUESTION_FONTSIZEpx;">Please rate your trust in medical screenings:</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: No trust at all - 100: Total trust)</span>
+[[Choices]]
+<span style="font-size:0px;">slider</span>
+[[PageBreak]]
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:question_id]]
+<span style="font-size:QUESTION_FONTSIZEpx;">Please rate your experienced discomfort undergoing medical tests or procedures that may be painful or unpleasant (mammograms, drawing blood, etc.):</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: No discomfort at all - 100: Extremely discomfortable)</span>
+[[Choices]]
+<span style="font-size:0px;">slider</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:question_id]]
+<span style="font-size:QUESTION_FONTSIZEpx;">Imagine a woman you care about that has breast cancer. How strongly you think she should have a preventive mastectomy (complete removal of a breast to reduce her future risk)?</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not strongly at all - 100: Very strongly)</span>
+[[Choices]]
+<span style="font-size:0px;">slider</span>
+[[PageBreak]]
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:question_id]]
+<span style="font-size:QUESTION_FONTSIZEpx;">Imagine a woman you care about that is pregnant with a fetus with Down syndrome. How strongly you think she should have an abortion?</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not strongly at all - 100: Very strongly)</span>
+[[Choices]]
+<span style="font-size:0px;">slider</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:question_id]]
+<span style="font-size:QUESTION_FONTSIZEpx;">To what extent would you feel the following if a woman you care about had breast cancer?</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(1: Not at all - 7: Extremely)</span>
+[[Choices]]
+<span style="font-size:CHOICES_FONTSIZEpx;">Assured</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Hopeful</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Relieved</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Anxious</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Afraid</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Worried</span>
+[[PageBreak]]
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:question_id]]
+<span style="font-size:QUESTION_FONTSIZEpx;">Imagine a woman you care about found out that she has a high risk of having breast cancer and decided to have a preventive mastectomy. To what extent would you feel the following?</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(1: Not at all - 7: Extremely)</span><br><br><span style="font-size:SUBTEXT_FONTSIZEpx;">A <b>preventive mastectomy</b> is the complete removal of a breast to reduce the risk of cancer.</span>
+[[Choices]]
+<span style="font-size:CHOICES_FONTSIZEpx;">Assured</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Hopeful</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Relieved</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Anxious</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Afraid</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Worried</span>
+[[PageBreak]]
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:question_id]]
+<span style="font-size:QUESTION_FONTSIZEpx;">Imagine a woman you care about had a mastectomy as a result of procedure-related complications during a biopsy. To what extent would you feel the following?</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(1: Not at all - 7: Extremely)</span><br><br><span style="font-size:SUBTEXT_FONTSIZEpx;">A <b>procedure-related mastectomy</b> is the removal of a breast because of complications during a medical procedure (for example, a biopsy).<br>A <b>biopsy</b> is a diagnostic test to determine whether a breast mass is cancerous. During a biopsy, a thin needle is inserted into the breast to remove tissue samples from the breast mass.</span>
+[[Choices]]
+<span style="font-size:CHOICES_FONTSIZEpx;">Assured</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Hopeful</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Relieved</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Anxious</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Afraid</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Worried</span>
+[[PageBreak]]
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:question_id]]
+<span style="font-size:QUESTION_FONTSIZEpx;">To what extent would you feel the following if a woman you care about is pregnant with a fetus with Down syndrome?</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(1: Not at all - 7: Extremely)</span>
+[[Choices]]
+<span style="font-size:CHOICES_FONTSIZEpx;">Assured</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Hopeful</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Relieved</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Anxious</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Afraid</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Worried</span>
+[[PageBreak]]
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:question_id]]
+<span style="font-size:QUESTION_FONTSIZEpx;">Imagine a woman you care about found out that she has a high risk of having a child with Down syndrome and decided to have an abortion. To what extent would you feel the following?</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(1: Not at all - 7: Extremely)</span><br>
+[[Choices]]
+<span style="font-size:CHOICES_FONTSIZEpx;">Assured</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Hopeful</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Relieved</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Anxious</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Afraid</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Worried</span>
+[[PageBreak]]
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:question_id]]
+<span style="font-size:QUESTION_FONTSIZEpx;">Imagine a woman you care about had a miscarriage as a result of procedure-related complications during an amniocentesis. To what extent would you feel the following?</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(1: Not at all - 7: Extremely)</span><br><br><span style="font-size:SUBTEXT_FONTSIZEpx;"> <b>Amniocentesis</b> is a diagnostic test to determine whether a child has Down syndrome where a thin needle is inserted into the uterus through the abdomen to get a sample of amniotic fluid.</span>
+[[Choices]]
+<span style="font-size:CHOICES_FONTSIZEpx;">Assured</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Hopeful</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Relieved</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Anxious</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Afraid</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Worried</span>
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:question_id]]
+<span style="font-size:QUESTION_FONTSIZEpx;">Please rate breast cancer in the following dimensions:</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not at all - 100: Most certainly)</span>
+[[Choices]]
+<span style="font-size:CHOICES_FONTSIZEpx;">Severe</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Serious</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Unpleasant</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Horrible</span>
+[[PageBreak]]
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:question_id]]
+<span style="font-size:QUESTION_FONTSIZEpx;">Please rate voluntary preventive mastectomy in the following dimensions:</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not at all - 100: Most certainly)</span><br><br><span style="font-size:SUBTEXT_FONTSIZEpx;">A <b>preventive mastectomy</b> is the complete removal of a breast to reduce the risk of cancer.</span>
+[[Choices]]
+<span style="font-size:CHOICES_FONTSIZEpx;">Severe</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Serious</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Unpleasant</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Horrible</span>
+[[PageBreak]]
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:question_id]]
+<span style="font-size:QUESTION_FONTSIZEpx;">Please rate procedure-related mastectomy (because of complications during a biopsy) in the following dimensions:</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not at all - 100: Most certainly)</span><br><br><span style="font-size:SUBTEXT_FONTSIZEpx;">A <b>procedure-related mastectomy</b> is the removal of a breast because of complications during a medical procedure (for example, a biopsy).</span><br><span style="font-size:SUBTEXT_FONTSIZEpx;">A <b>biopsy</b> is a diagnostic test to determine whether a breast mass is cancerous. During a biopsy, a thin needle is inserted into the breast to remove tissue samples from the breast mass.</span>
+[[Choices]]
+<span style="font-size:CHOICES_FONTSIZEpx;">Severe</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Serious</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Unpleasant</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Horrible</span>
+[[PageBreak]]
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:question_id]]
+<span style="font-size:QUESTION_FONTSIZEpx;">Please rate a pregnancy with a fetus with Down syndrome in the following dimensions:</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not at all - 100: Most certainly)</span>
+[[Choices]]
+<span style="font-size:CHOICES_FONTSIZEpx;">Severe</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Serious</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Unpleasant</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Horrible</span>
+[[PageBreak]]
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:question_id]]
+<span style="font-size:QUESTION_FONTSIZEpx;">Please rate voluntary abortion in the following dimensions:</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not at all - 100: Most certainly)</span>
+[[Choices]]
+<span style="font-size:CHOICES_FONTSIZEpx;">Severe</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Serious</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Unpleasant</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Horrible</span>
+[[PageBreak]]
+__QSEP__
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:question_id]]
+<span style="font-size:QUESTION_FONTSIZEpx;">Please rate procedure-related miscarriage (because of complications during amniocentesis) in the following dimensions:</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not at all - 100: Most certainly)</span><br><b><span style="font-size:SUBTEXT_FONTSIZEpx;">Amniocentesis</b> is a diagnostic test to determine whether a child has Down syndrome where a thin needle is inserted into the uterus through the abdomen to get a sample of amniotic fluid.</span>
+[[Choices]]
+<span style="font-size:CHOICES_FONTSIZEpx;">Severe</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Serious</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Unpleasant</span>
+<span style="font-size:CHOICES_FONTSIZEpx;">Horrible</span>

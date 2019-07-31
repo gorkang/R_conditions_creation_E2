@@ -8,7 +8,7 @@ p_load(tidyverse, kableExtra)
 
 ```{r, kableME_func, echo=FALSE}
 source("functions/kableMe.R")
-scale_names <- read_csv("materials/Scales/scale_names.csv", col_types = "ccci")
+scale_names <- read_csv("materials/Scales/scale_names.csv", col_types = "cccic")
 ```
 
 
@@ -27,9 +27,8 @@ _Screening blocks_
 ```{r, table01, echo=FALSE}
 tibble(check = "", 
        qIDs = c("will_Q02_01", paste0("com_Q", sprintf("%02d", 1:8),"_01"), 
-                "fu_Q02_01", "fu_Q03_01", "fu_Q04_01", "fu_Q06_01", "fu_Q07_01", "will_Q02_02", paste0("com_Q", sprintf("%02d", 1:8),"_02"), 
-                "fu_Q02_02", "fu_Q03_02", "fu_Q04_02", "fu_Q06_02", "fu_Q07_02" ),
-       extra = c("", rep("", 8), "", "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "", "Change max value to 10, and decimals to 1", "", rep("", 8), "", "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "", "Change max value to 10, and decimals to 1")) %>% 
+                "fu_Q02_01", "fu_Q03_01", "fu_Q05_01", "fu_Q06_01", "will_Q02_02", paste0("com_Q", sprintf("%02d", 1:8),"_02"), "fu_Q02_02", "fu_Q03_02", "fu_Q05_02", "fu_Q06_02"),
+       extra = c("", rep("", 8), "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "Change max value to 10, and decimals to 1", '', rep("", 8), "", "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "Change max value to 10, and decimals to 1", '')) %>% 
   kableME(.)
 ```
 
@@ -50,9 +49,12 @@ tibble(check = "",
                       qIDs = paste0("com_Q", sprintf("%02d", 1:8),"_01"), 
                       extra = (""))) %>% 
   bind_rows(., tibble(check = "",
-                      qIDs = c("fu_Q01_01", "fu_Q02_01", "fu_Q03_01", "fu_Q04_01", "fu_Q05_01"), 
+                      qIDs = c(paste0("fu_Q0", 1:6, "_01")), 
                       extra = (""))) %>%
+  
   kableME(.)
+
+
 ```
 
 _Block 02_
@@ -68,7 +70,7 @@ tibble(check = "",
                       qIDs = paste0("com_Q", sprintf("%02d", 1:8),"_02"), 
                       extra = (""))) %>% 
   bind_rows(., tibble(check = "",
-                      qIDs = c("fu_Q01_02", "fu_Q02_02", "fu_Q03_02", "fu_Q04_02", "fu_Q05_02"), 
+                      qIDs = c(paste0("fu_Q0", 1:6, "_01")), 
                       extra = (""))) %>% 
   kableME(.)
 ```
@@ -82,26 +84,8 @@ _Block 01_
 
 ```{r, table04, echo=FALSE}
 tibble(check = "",
-       qIDs = c("ppv_q_02_01", "ppv_gi_01", "ppv_gs_01", "ppv_sg01_01", "ppv_sg02_01", "ppv_sg03_01", "ppv_sg04_01", "ppv_ss01_01", "ppv_ss02_01", "fu_Q06_01", "fu_Q07_01"),
-       extra = c("_Embedded Data_ > _press_format_ > _Is Not Equal to_ > __pfab__ & _Embedded Data_ > _resp_type_ > _Is Not Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gi__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gs__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Question_ > _fu_Q01_01_ > __No__ > _Is Selected_", "_Question_ > _fu_Q01_01_ > __Yes__ > _Is Selected_")) %>% 
-  kableME(.)
-```
-
-_Willing to screen 01_
-
-```{r, echo=FALSE}
-tibble(check = "",
-       qIDs = paste0("will_Q", sprintf("%02d", 2:3), "_01"),
-       extra = c("_Question_ > will_Q01_01 > Yes > Is selected", "_Question_ > will_Q01_01 > No > Is selected")) %>% 
-  kableME(.)
-```
-
-_Follow-up 01_
-
-```{r, echo=FALSE}
-tibble(check = "",
-       qIDs = paste0("fu_Q", sprintf("%02d", 2:3), "_01"),
-       extra = c("_Question_ > fu_Q01_01 > Yes > Is selected", "_Question_ > fu_Q01_01 > No > Is selected")) %>% 
+       qIDs = c("ppv_q_02_01", "ppv_gi_01", "ppv_gs_01", "ppv_sg01_01", "ppv_sg02_01", "ppv_sg03_01", "ppv_sg04_01", "ppv_ss01_01", "ppv_ss02_01", "fu_Q05_01", "fu_Q06_01", "com_Q08_01_01", "com_Q08_02_01", "com_Q08_03_01"),
+       extra = c("_Embedded Data_ > _press_format_ > _Is Not Equal to_ > __pfab__ & _Embedded Data_ > _resp_type_ > _Is Not Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gi__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gs__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Question_ > _fu_Q01_01_ > __No__ > _Is Selected_", "_Question_ > _fu_Q01_01_ > __Yes__ > _Is Selected_", "_Embedded Data_ > _press_format_ > _Is NOT Equal to_ > __prab__ and __prre__" , "_Embedded Data_ > _press_format_ > _Is NOT Equal to_ > __prab__ and __prre__", "_Embedded Data_ > _press_format_ > _Is Equal to_ > __prab__ or __prre__")) %>% 
   kableME(.)
 ```
 
@@ -109,26 +93,8 @@ _Block 02_
 
 ```{r, table05, echo=FALSE}
 tibble(check = "",
-       qIDs = c("ppv_q_02_02", "ppv_gi_02", "ppv_gs_02", "ppv_sg01_02", "ppv_sg02_02", "ppv_sg03_02", "ppv_sg04_02", "ppv_ss01_02", "ppv_ss02_02", "fu_Q06_02", "fu_Q07_02"),
-       extra = c("_Embedded Data_ > _press_format_ > _Is Not Equal to_ > __pfab__ & _Embedded Data_ > _resp_type_ > _Is Not Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gi__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gs__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Question_ > _fu_Q01_02_ > __No__ > _Is Selected_", "_Question_ > _fu_Q01_02_ > __Yes__ > _Is Selected_")) %>% 
-  kableME(.)
-```
-
-_Willing to screen 02_
-
-```{r, echo=FALSE}
-tibble(check = "",
-       qIDs = paste0("will_Q", sprintf("%02d", 2:3), "_02"),
-       extra = c("_Question_ > will_Q01_02 > Yes > Is selected", "_Question_ > will_Q01_02 > No > Is selected")) %>% 
-  kableME(.)
-```
-
-_Follow-up 02_
-
-```{r, echo=FALSE}
-tibble(check = "",
-       qIDs = paste0("fu_Q", sprintf("%02d", 2:3), "_02"),
-       extra = c("_Question_ > fu_Q01_02 > Yes > Is selected", "_Question_ > fu_Q01_02 > No > Is selected")) %>% 
+       qIDs = c("ppv_q_02_02", "ppv_gi_02", "ppv_gs_02", "ppv_sg01_02", "ppv_sg02_02", "ppv_sg03_02", "ppv_sg04_02", "ppv_ss01_02", "ppv_ss02_02", "fu_Q05_02", "fu_Q06_02", "com_Q08_01_01", "com_Q08_02_01", "com_Q08_03_01"),
+       extra = c("_Embedded Data_ > _press_format_ > _Is Not Equal to_ > __pfab__ & _Embedded Data_ > _resp_type_ > _Is Not Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gi__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gs__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Question_ > _fu_Q01_02_ > __No__ > _Is Selected_", "_Question_ > _fu_Q01_02_ > __Yes__ > _Is Selected_", "_Embedded Data_ > _press_format_ > _Is NOT Equal to_ > __prab__ and __prre__" , "_Embedded Data_ > _press_format_ > _Is NOT Equal to_ > __prab__ and __prre__", "_Embedded Data_ > _press_format_ > _Is Equal to_ > __prab__ or __prre__")) %>% 
   kableME(.)
 ```
 
@@ -163,7 +129,13 @@ _Block 01_
 ```{r, table08, echo=FALSE}
 tibble(check = "",
        qIDs = c("ppv_gi_01", "ppv_gs_01", "ppv_sg01_01", "ppv_ss01_01"),
-       extra = c("From file: __gi_01_js_complete.txt__", "From file: __gs_01_js_complete.txt__", "From file: __sg_01_js_complete.txt__", "From file: __ss_01_js_complete.txt__")) %>% 
+       extra = c("From file: __gi_01_js_complete.txt__", "From file: __gs_01_js_complete.txt__", "From file: __sg_01_js_complete.txt__", "From file: __ss_01_js_complete.txt__")) %>%
+  bind_rows(., tibble(check = "",
+                      qIDs = c("will_Q01_01", "fu_Q01_01"), 
+                      extra = c("From file: __will_should_she_01_js_complete.txt__", "From file: __fu_should_she_01_js_complete.txt__"))) %>% 
+  bind_rows(., tibble(check = "",
+                      qIDs = c("com_Q08_01_01", "com_Q08_03_01"), 
+                      extra = c("From file: __ss_01_js_complete.txt__", "From file: __gs_01_js_complete.txt__"))) %>% 
   kableME(.)
 ```
 
@@ -173,6 +145,12 @@ _Block 02_
 tibble(check = "",
        qIDs = c("ppv_gi_02", "ppv_gs_02", "ppv_sg01_02", "ppv_ss01_02"),
        extra = c("From file: __gi_02_js_complete.txt__", "From file: __gs_02_js_complete.txt__", "From file: __sg_02_js_complete.txt__", "From file: __ss_02_js_complete.txt__")) %>% 
+  bind_rows(., tibble(check = "",
+                      qIDs = c("will_Q01_02", "fu_Q01_02"), 
+                      extra = c("From file: __will_should_she_02_js_complete.txt__", "From file: __fu_should_she_02_js_complete.txt__"))) %>% 
+  bind_rows(., tibble(check = "",
+                      qIDs = c("com_Q08_01_02", "com_Q08_03_02"), 
+                      extra = c("From file: __ss_01_js_complete.txt__", "From file: __gs_01_js_complete.txt__"))) %>% 
   kableME(.)
 ```
 
@@ -180,21 +158,14 @@ tibble(check = "",
 
 ### Sliders
 
-_Severity of and Emotional reaction BREAST CANCER_
+Change question type to Slider. On each question select the green button on the right upper corner and select Slider.
+
+_Severity emotion scale_
 
 ```{r, echo=FALSE}
-tibble(check = "",
-       qIDs = c("sevEmo_brca_01", "sevEmo_brca_02", "sevEmo_brca_03", "sevEmo_brca_04", "sevEmo_brca_05"), 
-       extra = c("", "", "", "", "")) %>%
-  kableME(.)
-```
-
-_Severity of and Emotional reaction TRISOMY 21_
-
-```{r, echo=FALSE}
-tibble(check = "",
-       qIDs = c("sevEmo_tr21_01", "sevEmo_tr21_02", "sevEmo_tr21_03", "sevEmo_tr21_04", "sevEmo_tr21_05"), 
-       extra = c("", "", "", "", "")) %>%
+tibble(check = "", 
+       qIDs = paste0('sevEmo_', sprintf('%02d', 1:16)),
+       extra = c(rep('', 4), rep('grid lines: 7, min: 1, max: 7', 5), rep('', 7))) %>% 
   kableME(.)
 ```
 
@@ -334,24 +305,26 @@ tibble(check = "",
   kableME(.)
 ```
 
-_Severity of and Emotional reaction BREAST CANCER_
+_Severity emotion scale_
 
 ```{r, echo=FALSE}
-tibble(check = "",
-       qIDs = c("sevEmo_brca_01", "sevEmo_brca_02", "sevEmo_brca_03", "sevEmo_brca_04", "sevEmo_brca_05"), 
-       extra = "") %>%
+tibble(check = "", 
+       qIDs = paste0('sevEmo_', sprintf('%02d', 1:16)),
+       extra = c('')) %>% 
   kableME(.)
 ```
 
-_Severity of and Emotional reaction TRISOMY 21_
+_Shared Decision Making_
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, results='asis'}
+this <- filter(scale_names, long_name == "shared_decision_making")
+
 tibble(check = "",
-       qIDs = c("sevEmo_tr21_01", "sevEmo_tr21_02", "sevEmo_tr21_03", "sevEmo_tr21_04", "sevEmo_tr21_05"), 
-       extra = "") %>%
+       qIDs = paste0(this$short_name, "_0", c('1', '2')), 
+       extra = c("[For each alternative] Custom validation -> Matches regex > \\^[1-4]$", '')) %>% 
   kableME(.)
-```
 
+```
 
 _Sociodemographic Scale_
 
@@ -398,6 +371,30 @@ this <- filter(scale_names, long_name == "lipkus_numeracy_scale")
 tibble(check = "",
        qIDs = paste0(this$short_name, "_", sprintf("%02d", seq(this$no_items)[!seq(this$no_items) %in% c(3,4,5)])), 
        extra = c("")) %>% 
+  kableME(.)
+```
+
+### Randomization
+
+#### Shared decision making
+
+```{r, echo=FALSE}
+this <- filter(scale_names, long_name == "shared_decision_making")
+
+tibble(check = "",
+       qIDs = paste0(this$short_name, "_", sprintf("%02d", seq(this$no_items)[!seq(this$no_items) %in% c(3,4,5)])), 
+       extra = c("Randomize choices")) %>%
+  kableME()
+  
+
+```
+
+#### Severity Emotion Scale
+
+```{r, echo=FALSE}
+tibble(check = "",
+                      qIDs = paste0('sevEmo_', sprintf('%02d', 1:16)), 
+                      extra = ("Advanced Randomization > Randomize Questions > Question per page: 1")) %>%
   kableME(.)
 ```
 

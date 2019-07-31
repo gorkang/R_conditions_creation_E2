@@ -21,8 +21,8 @@ newparadigm_template_dir <- "materials/Presentation_format/nppi/input/template/s
 newparadigm_templates <- dir(newparadigm_template_dir, pattern = ".svg")
 
 # svg to png parameters (to feed svg2png)
-template_width <- 690 # pixels
-template_height <- 1169 # pixels
+template_width <- 689 # pixels
+template_height <- template_width*1.38897 # pixels
 
 # input/output dir
 input_dir <- newparadigm_template_dir
@@ -83,7 +83,7 @@ x_axis_label <-
   filter(code_name == "person_02")
 # y axis label
 y_axis_label <-
-  "Test reliability"
+  "Positive result reliability"
 
 # These are results of 650/690, 390/1169
 graph_widht_percentage <- .94202
@@ -128,6 +128,26 @@ for (cCntxt in seq(length(problem_contexts))) {
   # labels corresponding to current problem context
   current_axis_label <- pull(x_axis_label[, current_context])
   
+  # Filter ages (if cancer 20-60, if pregnant 20-50)
+  if (current_context == "pr") {
+    # labels over points o histogrm
+    curr_age_ppv_to_plot <- 
+      age_ppv_to_plot %>% grep("[2-5]0", ., value = TRUE)
+    # x scale limits
+    age_prevalence_plot <-
+      age_prevalence %>%
+      filter(age < 60)
+  } else if (current_context == "ca") {
+    # labels over points o histogrm
+    curr_age_ppv_to_plot <- 
+      age_ppv_to_plot
+    # x scale limits
+    age_prevalence_plot <-
+      age_prevalence
+  }
+  
+  
+  
   # Begin graph creation
   
   ## Create canvas to save image
@@ -137,7 +157,7 @@ for (cCntxt in seq(length(problem_contexts))) {
   ## Plot graph
   print( # to send the plot to the viewer from within a for loop use print
     
-    ggplot(age_prevalence, aes(x=age, y=PPV_100)) +      # plot canvas
+    ggplot(age_prevalence_plot, aes(x=age, y=PPV_100)) +      # plot canvas
       scale_y_continuous(labels=function(x) paste0(x,"%"), # append % to y-axis value
                          limits = c(0,100)) +              # set y-axis limits
       geom_point(size = 5.5, color = "#009999", shape = 19) + # insert points with ppv value
@@ -147,7 +167,7 @@ for (cCntxt in seq(length(problem_contexts))) {
       theme(axis.text = element_text(size = 25),                             # axis-numerbs size
             axis.title = element_text(size = 25)) +                          # axis-labels size
       geom_text(aes(label =
-                      case_when(age %in% age_ppv_to_plot ~ paste0(round(PPV_100, 0), "%"), TRUE ~ paste0("")), # keep only ages previously set to be ploted
+                      case_when(age %in% curr_age_ppv_to_plot ~ paste0(round(PPV_100, 0), "%"), TRUE ~ paste0("")), # keep only ages previously set to be ploted
                     hjust = .4, vjust = 2.5), size = 6) # (position) plot ppv-values above points set in "age_ppv_to_plot"
   )
   # Close canvas
@@ -183,8 +203,8 @@ prev_ca_x   <- 0.05852174 # cancer prevalence sentence position (relative to bro
 # On the pregnant condition the prevalence is splitted in two senteces. Therefore, there are two x axis positions
 prev_pr_x_1 <- 0.13352174 # pregnant prevalence sentence (01) position (relative to brochure size). 
 prev_pr_x_2 <- 0.05852174 # pregnant prevalence sentence (02) position (relative to brochure size).
-prev_y_1    <- 0.2562926 # both prevalence sentences (01) posiion on y axis (relative to brochure size).
-prev_y_2    <- 0.2792926 # if any, both prevalence sentences (02) posiion on y axis (relative to brochure size).
+prev_y_1    <- .318 # both prevalence sentences (01) posiion on y axis (relative to brochure size).
+prev_y_2    <- prev_y_1+.027 # if any, both prevalence sentences (02) posiion on y axis (relative to brochure size).
 
 # absolute
 prev_xca_pos  <- prev_ca_x*img_width # cancer prevalence sentence position (absolute position).
@@ -197,7 +217,7 @@ prev_y2_pos   <- prev_y_2*img_height # if any, both prevalence sentences (02) po
 # Graph position in template
 # relateive
 graph_x <- 0.02898551
-graph_y <- 0.5731394
+graph_y <- 0.59
 # absolute
 graph_x_pos <- graph_x*img_width
 graph_y_pos <- graph_y*img_height

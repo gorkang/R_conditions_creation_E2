@@ -1,17 +1,7 @@
-[[Question:MC:SingleAnswer:Vertical]]
+[[Question:TE]]
 [[ID:fu_Q04_0]]
 [question_start]
-Which factors influenced your previous response (How strongly you think she should ${e://Field/should_she_0} take the screening test?).<br>0: Not at all - 100: A great deal
+Could you briefly explain why do you think she should ${e://Field/shoShe_fu_0} take the follow up test?
 [choices_start]
-How informative the screening test is
-[second_choice]
-The need to confirm the diagnosis
-[third_choice]
-How serious the medical condition (${e://Field/medical_condition_0}) is
-[fourth_choice]
-The magnitude of the risk of procedure-related complications of the follow-up test
-[fifth_choice]
-How serious the complications of the follow-up test are
-[sixth_choice]
-Other:
+ 
 [choices_end]

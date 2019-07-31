@@ -316,12 +316,12 @@ tibble(check = "",
 
 _Shared Decision Making_
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, results='asis'}
 this <- filter(scale_names, long_name == "shared_decision_making")
 
 tibble(check = "",
        qIDs = paste0(this$short_name, "_0", c('1', '2')), 
-       extra = c("[For each alternative] Custom validation -> Is greater than or equal to 1 & Is less than or equal to 4", '')) %>% 
+       extra = c("[For each alternative] Custom validation -> Matches regex > \\^[1-4]$", '')) %>% 
   kableME(.)
 
 ```

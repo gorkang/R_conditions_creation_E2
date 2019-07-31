@@ -31,6 +31,9 @@ ins_formatted <-
   str_replace_all(string = ., pattern = 'block_name', replacement = gsub('.txt', '', ins_files))
 
 # Export scale titles and instructions to text files
+# dir
+dir.create("materials/qualtrics/output/plain_text/scales_instructions/", showWarnings = FALSE, recursive = TRUE)
+# export
 ins_formatted %>% 
   walk(., ~cat(.x, 
                file = file.path('materials/qualtrics/output/plain_text/scales_instructions', 

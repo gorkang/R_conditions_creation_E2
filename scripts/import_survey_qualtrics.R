@@ -13,20 +13,28 @@ source("functions/go_gorka_04.R")
 source("functions/UBER_IMPORT2QUALTRICS_miro.R")
 
 # Start docker session ----------------------------------------------------
-
-# Check docker containers
-system('docker ps -q') 
-# Kill all containers
-system('docker stop $(docker ps -q)') # MATALOS todos
+# Container name
+container_name <- 'rqualtrics'
+# If container is running stop it
+if (!is_empty(system(sprintf('docker ps -q -f name=%s', container_name), intern = TRUE))) {
+  # Stop and remove container
+  system(sprintf('docker stop %s', container_name)) # MATALOS todos
+}
+# If container exists remove it
+if (length(system(sprintf('docker container ls -a -f name=%s', container_name), intern = TRUE)) > 1) {
+  system(sprintf('docker container rm %s', container_name))
+}
 # Get chrome image (to use VNC use debug)
 system('docker pull selenium/standalone-chrome-debug') 
 # Run docker session. Map home directory to download docker container
-system('docker run -d -v /home:/home/seluser/Downloads -P selenium/standalone-chrome-debug')
-# Get important data about ports
-system('docker ps')
+system('docker run -d --name rqualtrics -v /home:/home/seluser/Downloads -P selenium/standalone-chrome-debug')
+# Get port
+container_port <- system(sprintf('docker port %s', container_name), intern = TRUE)
+container_port <- container_port %>% gsub('.*([0-9]{5}).*', '\\1', .) %>% as.integer()
 
+system('docker ps -f name=rqualtrics')
 # This is the path to materials folder within docker container
-selenium_path <- "/home/seluser/Downloads/nic/nostromo/fondecyt/gorka/2017 - Gorka - Fondecyt/Experimentos/Experimento 1/R_condition_creation_GITHUB/R_conditions_creation"
+selenium_path <- "/home/selusxer/Downloads/nic/nostromo/fondecyt/gorka/2017 - Gorka - Fondecyt/Experimentos/Experimento 1/R_condition_creation_GITHUB/R_conditions_creation"
 
 # To remove blocks
 # remove_blocks_qualtrics(start_on = 1, survey_type = "miro")
@@ -35,10 +43,12 @@ selenium_path <- "/home/seluser/Downloads/nic/nostromo/fondecyt/gorka/2017 - Gor
 # remove_surveyflow_elements(start_on = 3)
 # remDr$refresh()
 
-# Selenium ----------------------------------------------------------------
+# Wait
+Sys.sleep(3)
 
+# Selenium ----------------------------------------------------------------
 # Create browser instance. This should be reflected in the VNC session
-remDr <- remoteDriver(remoteServerAddr = "localhost", port = 32769, browserName = "chrome")
+remDr <- remoteDriver(remoteServerAddr = "localhost", port = container_port[1], browserName = "chrome")
 remDr$open()
 
 # Get to GORKA 4 --------------------------------------------------
@@ -240,7 +250,7 @@ UBER_IMPORT2QUALTRICS_miro(file_paths)
 cog_scales <- 
   read_csv("materials/Scales/scale_names.csv") %>% 
   filter(per_cog == "cog") %>% select(long_name) %>% 
-    pull() %>% paste0("materials/qualtrics/output/plain_text/scales/", .)
+  pull() %>% paste0("materials/qualtrics/output/plain_text/scales/", .)
 
 cog_scales_path <- 
   cog_scales %>% 

@@ -376,15 +376,28 @@ tibble(check = "",
 
 ### Randomization
 
+#### Shared decision making
+
 ```{r, echo=FALSE}
 this <- filter(scale_names, long_name == "shared_decision_making")
 
 tibble(check = "",
        qIDs = paste0(this$short_name, "_", sprintf("%02d", seq(this$no_items)[!seq(this$no_items) %in% c(3,4,5)])), 
-       extra = c("Randomize choices")) %>% 
-  kableME(.)
+       extra = c("Randomize choices")) %>%
+  kableME()
+  
 
 ```
+
+#### Severity Emotion Scale
+
+```{r, echo=FALSE}
+tibble(check = "",
+                      qIDs = paste0('sevEmo_', sprintf('%02d', 1:16)), 
+                      extra = ("Advanced Randomization > Randomize Questions > Question per page: 1")) %>%
+  kableME(.)
+```
+
 
 ## Others
 

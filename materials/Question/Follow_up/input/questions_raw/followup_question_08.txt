@@ -1,8 +1,8 @@
 [[PageBreak]]
 [[Question:MC:SingleAnswer:Vertical]]
-[[ID:fu_Q06_0]]
+[[ID:fu_Q08_0]]
 [question_start]
 Remember the follow-up test has a 10% procedure-related risk of complications:
 [choices_start]
-How small should this risk be for you to recommend it? (0-10%)
+How big should this risk be for you NOT to recommend it? (10-100%)
 [choices_end]

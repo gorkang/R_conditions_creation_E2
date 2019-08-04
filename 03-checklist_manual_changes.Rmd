@@ -27,8 +27,25 @@ _Screening blocks_
 ```{r, table01, echo=FALSE}
 tibble(check = "", 
        qIDs = c("will_Q02_01", "will_Q03_01", paste0("com_Q", sprintf("%02d", 1:8),"_01"), 
-                "fu_Q02_01", "fu_Q03_01", "fu_Q05_01", "fu_Q06_01", "will_Q02_02", 'will_Q03_02', paste0("com_Q", sprintf("%02d", 1:8),"_02"), "fu_Q02_02", "fu_Q03_02", "fu_Q05_02", "fu_Q06_02"),
-       extra = c('', "After change to Slider, __Select__ Allow Text Entry on 'Write down the main factor for you:' subitem", rep("", 8), "", "After change to Slider, __Select__ Allow Text Entry on 'Write down the main factor for you:' subitem", "Change max value to 10, and decimals to 1", '', "After change to Slider, __Select__ Allow Text Entry on 'Write down the main factor for you:' subitem", rep("", 8), "", "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", "Change max value to 10, and decimals to 1", '')) %>% 
+                "fu_Q02_01", 
+                "fu_Q03_01", 
+                "fu_Q05_01", 
+                "fu_Q06_01",
+                "fu_Q07_01", 
+                "fu_Q08_01",
+                "will_Q02_02", 
+                'will_Q03_02', paste0("com_Q", sprintf("%02d", 1:8),"_02"), "fu_Q02_02", "fu_Q03_02", "fu_Q05_02", "fu_Q06_02", "fu_Q07_02", "fu_Q08_02"),
+       extra = c('', "After change to Slider, __Select__ Allow Text Entry on 'Write down the main factor for you:' subitem", rep("", 8), "", "After change to Slider, __Select__ Allow Text Entry on 'Write down the main factor for you:' subitem", 
+                 "Min value 0, Max value 1 Num. of dec. 1", 
+                 'Min value 0, Max value 10. Num. of dec. 1', 
+                 'Min value 1, Max value 100. Num. of dec. 1', 
+                 'Min value 10, Max value 100. Num. of dec. 1', 
+                 "After change to Slider, __Select__ Allow Text Entry on 'Write down the main factor for you:' subitem", rep("", 8), "", "", "After change to Slider, __Select__ Allow Text Entry on 'Other' subitem", 
+                 "Min value 0, Max value 1 Num. of dec. 1", 
+                 'Min value 0, Max value 10. Num. of dec. 1', 
+                 'Min value 1, Max value 100. Num. of dec. 1', 
+                 'Min value 10, Max value 100. Num. of dec. 1'
+                 )) %>% 
   kableME(.)
 ```
 
@@ -84,8 +101,31 @@ _Block 01_
 
 ```{r, table04, echo=FALSE}
 tibble(check = "",
-       qIDs = c("ppv_q_02_01", "ppv_gi_01", "ppv_gs_01", "ppv_sg01_01", "ppv_sg02_01", "ppv_sg03_01", "ppv_sg04_01", "ppv_ss01_01", "ppv_ss02_01", "fu_Q05_01", "fu_Q06_01", "com_Q08_01_01", "com_Q08_02_01", "com_Q08_03_01"),
-       extra = c("_Embedded Data_ > _press_format_ > _Is Not Equal to_ > __pfab__ & _Embedded Data_ > _resp_type_ > _Is Not Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gi__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gs__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Question_ > _fu_Q01_01_ > __No__ > _Is Selected_", "_Question_ > _fu_Q01_01_ > __Yes__ > _Is Selected_", "_Embedded Data_ > _press_format_ > _Is NOT Equal to_ > __prab__ and __prre__" , "_Embedded Data_ > _press_format_ > _Is NOT Equal to_ > __prab__ and __prre__", "_Embedded Data_ > _press_format_ > _Is Equal to_ > __prab__ or __prre__")) %>% 
+       qIDs = c("ppv_q_02_01", "ppv_gi_01", 
+                "ppv_gs_01", "ppv_sg01_01", 
+                "ppv_sg02_01", "ppv_sg03_01", "ppv_sg04_01", 
+                "ppv_ss01_01", "ppv_ss02_01", 
+                "fu_Q05_01", 
+                "fu_Q06_01", 
+                "fu_Q07_01", 
+                "fu_Q08_01", 
+                "com_Q08_01_01", "com_Q08_02_01", "com_Q08_03_01"),
+       extra = c("_Embedded Data_ > _press_format_ > _Is Not Equal to_ > __pfab__ & _Embedded Data_ > _resp_type_ > _Is Not Equal to_ > __sg__", 
+                 "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gi__",  
+                 "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gs__",  
+                 "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", 
+                 "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", 
+                 "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", 
+                 "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", 
+                 "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", 
+                 "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", 
+                 
+                 "_Question_ > _fu_Q01_01_ > __No__ > _Is Selected_ & _Embedded Data_ > _fu_risk_num_01_ > _Is Equal to_ > _1_", 
+                 "_Question_ > _fu_Q01_01_ > __No__ > _Is Selected_ & _Embedded Data_ > _fu_risk_num_01_ > _Is Equal to_ > _10_", 
+                 "_Question_ > _fu_Q01_01_ > __Yes__ > _Is Selected_ & _Embedded Data_ > _fu_risk_num_01_ > _Is Equal to_ > _1_", 
+                 "_Question_ > _fu_Q01_01_ > __Yes__ > _Is Selected_ & _Embedded Data_ > _fu_risk_num_01_ > _Is Equal to_ > _10_", 
+                 
+                 "_Embedded Data_ > _press_format_ > _Is NOT Equal to_ > __prab__ and __prre__" , "_Embedded Data_ > _press_format_ > _Is NOT Equal to_ > __prab__ and __prre__", "_Embedded Data_ > _press_format_ > _Is Equal to_ > __prab__ or __prre__")) %>% 
   kableME(.)
 ```
 
@@ -93,8 +133,9 @@ _Block 02_
 
 ```{r, table05, echo=FALSE}
 tibble(check = "",
-       qIDs = c("ppv_q_02_02", "ppv_gi_02", "ppv_gs_02", "ppv_sg01_02", "ppv_sg02_02", "ppv_sg03_02", "ppv_sg04_02", "ppv_ss01_02", "ppv_ss02_02", "fu_Q05_02", "fu_Q06_02", "com_Q08_01_01", "com_Q08_02_01", "com_Q08_03_01"),
-       extra = c("_Embedded Data_ > _press_format_ > _Is Not Equal to_ > __pfab__ & _Embedded Data_ > _resp_type_ > _Is Not Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gi__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gs__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Question_ > _fu_Q01_02_ > __No__ > _Is Selected_", "_Question_ > _fu_Q01_02_ > __Yes__ > _Is Selected_", "_Embedded Data_ > _press_format_ > _Is NOT Equal to_ > __prab__ and __prre__" , "_Embedded Data_ > _press_format_ > _Is NOT Equal to_ > __prab__ and __prre__", "_Embedded Data_ > _press_format_ > _Is Equal to_ > __prab__ or __prre__")) %>% 
+       qIDs = c("ppv_q_02_02", "ppv_gi_02", "ppv_gs_02", "ppv_sg01_02", "ppv_sg02_02", "ppv_sg03_02", "ppv_sg04_02", "ppv_ss01_02", "ppv_ss02_02", "fu_Q05_02", "fu_Q06_02", "fu_Q07_02", "fu_Q08_02", "com_Q08_01_01", "com_Q08_02_01", "com_Q08_03_01"),
+       extra = c("_Embedded Data_ > _press_format_ > _Is Not Equal to_ > __pfab__ & _Embedded Data_ > _resp_type_ > _Is Not Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gi__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __gs__",  "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __sg__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Embedded Data_ > _resp_type_ > _Is Equal to_ > __ss__", "_Question_ > _fu_Q01_02_ > __No__ > _Is Selected_ & _Embedded Data_ > _fu_risk_num_02_ > _Is Equal to_ > _1_", "_Question_ > _fu_Q01_02_ > __No__ > _Is Selected_ & _Embedded Data_ > _fu_risk_num_02_ > _Is Equal to_ > _10_", "_Question_ > _fu_Q01_02_ > __Yes__ > _Is Selected_ & _Embedded Data_ > _fu_risk_num_02_ > _Is Equal to_ > _1_", "_Question_ > _fu_Q01_02_ > __Yes__ > _Is Selected_ & _Embedded Data_ > _fu_risk_num_02_ > _Is Equal to_ > _10_", 
+                 "_Embedded Data_ > _press_format_ > _Is NOT Equal to_ > __prab__ and __prre__" , "_Embedded Data_ > _press_format_ > _Is NOT Equal to_ > __prab__ and __prre__", "_Embedded Data_ > _press_format_ > _Is Equal to_ > __prab__ or __prre__")) %>% 
   kableME(.)
 ```
 

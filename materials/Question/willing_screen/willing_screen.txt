@@ -2,7 +2,7 @@
 [[ID:will_ins_0]]
 <span style="font-size:22px;">Regarding the screening test you saw in the previous screen:
 
-Imagine a ${e://Field/woman_age_0} years old woman you care about is offered to participate in that routine ${e://Field/medical_test_0} to detect ${e://Field/medical_condition_0}.</span>
+Imagine a ${e://Field/woman_age_0} year old woman you care about is offered to participate in that routine ${e://Field/medical_test_0} to detect ${e://Field/medical_condition_0}.</span>
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:will_Q01_0]]
 <span style="font-size:22px;">Should she take the screening test?</span>

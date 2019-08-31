@@ -1,7 +1,7 @@
 [[Question:TE]]
 [[ID:fu_Q04_0]]
 [question_start]
-Could you briefly explain why do you think she should ${e://Field/shoShe_fu_0} take the follow up test?
+Could you briefly explain why you think she should ${e://Field/shoShe_fu_0} take the follow up test?
 [choices_start]
  
 [choices_end]

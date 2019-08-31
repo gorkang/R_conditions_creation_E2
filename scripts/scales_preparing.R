@@ -7,7 +7,7 @@ source("scripts/html_qualtrics_codes.R")
 
 # Font sizes
 question_size = "22"
-choice_size = "15"
+choice_size = "16"
 
 # Scales names
 scale_names <- 

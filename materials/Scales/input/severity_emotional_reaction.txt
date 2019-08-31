@@ -97,7 +97,7 @@ __QSEP__
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:question_id]]
-<span style="font-size:QUESTION_FONTSIZEpx;">Please rate breast cancer in the following dimensions:</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not at all - 100: Most certainly)</span>
+<span style="font-size:QUESTION_FONTSIZEpx;">Please rate breast cancer across the following dimensions:</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not at all - 100: Most certainly)</span>
 [[Choices]]
 <span style="font-size:CHOICES_FONTSIZEpx;">Severe</span>
 <span style="font-size:CHOICES_FONTSIZEpx;">Serious</span>
@@ -107,7 +107,7 @@ __QSEP__
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:question_id]]
-<span style="font-size:SUBTEXT_FONTSIZEpx;">A preventive mastectomy is the complete removal of a breast to reduce the risk of cancer.</span><br><br><span style="font-size:QUESTION_FONTSIZEpx;">Please rate voluntary preventive mastectomy in the following dimensions:</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not at all - 100: Most certainly)</span>
+<span style="font-size:SUBTEXT_FONTSIZEpx;">A preventive mastectomy is the complete removal of a breast to reduce the risk of cancer.</span><br><br><span style="font-size:QUESTION_FONTSIZEpx;">Please rate voluntary preventive mastectomy across the following dimensions:</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not at all - 100: Most certainly)</span>
 [[Choices]]
 <span style="font-size:CHOICES_FONTSIZEpx;">Severe</span>
 <span style="font-size:CHOICES_FONTSIZEpx;">Serious</span>
@@ -117,7 +117,7 @@ __QSEP__
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:question_id]]
-<span style="font-size:SUBTEXT_FONTSIZEpx;">A procedure-related mastectomy is the removal of a breast because of complications during a medical procedure (for example, a biopsy).</span><br><span style="font-size:SUBTEXT_FONTSIZEpx;">A biopsy is a diagnostic test to determine whether a breast mass is cancerous. During a biopsy, a thin needle is inserted into the breast to remove tissue samples from the breast mass.</span><br><br><span style="font-size:QUESTION_FONTSIZEpx;">Please rate procedure-related mastectomy (because of complications during a biopsy) in the following dimensions:</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not at all - 100: Most certainly)</span>
+<span style="font-size:SUBTEXT_FONTSIZEpx;">A procedure-related mastectomy is the removal of a breast because of complications during a medical procedure (for example, a biopsy).</span><br><span style="font-size:SUBTEXT_FONTSIZEpx;">A biopsy is a diagnostic test to determine whether a breast mass is cancerous. During a biopsy, a thin needle is inserted into the breast to remove tissue samples from the breast mass.</span><br><br><span style="font-size:QUESTION_FONTSIZEpx;">Please rate procedure-related mastectomy (because of complications during a biopsy) across the following dimensions:</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not at all - 100: Most certainly)</span>
 [[Choices]]
 <span style="font-size:CHOICES_FONTSIZEpx;">Severe</span>
 <span style="font-size:CHOICES_FONTSIZEpx;">Serious</span>
@@ -127,7 +127,7 @@ __QSEP__
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:question_id]]
-<span style="font-size:QUESTION_FONTSIZEpx;">Please rate a pregnancy with a fetus with Down syndrome in the following dimensions:</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not at all - 100: Most certainly)</span>
+<span style="font-size:QUESTION_FONTSIZEpx;">Please rate a pregnancy with a fetus with Down syndrome across the following dimensions:</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not at all - 100: Most certainly)</span>
 [[Choices]]
 <span style="font-size:CHOICES_FONTSIZEpx;">Severe</span>
 <span style="font-size:CHOICES_FONTSIZEpx;">Serious</span>
@@ -137,7 +137,7 @@ __QSEP__
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:question_id]]
-<span style="font-size:QUESTION_FONTSIZEpx;">Please rate voluntary abortion in the following dimensions:</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not at all - 100: Most certainly)</span>
+<span style="font-size:QUESTION_FONTSIZEpx;">Please rate voluntary abortion across the following dimensions:</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not at all - 100: Most certainly)</span>
 [[Choices]]
 <span style="font-size:CHOICES_FONTSIZEpx;">Severe</span>
 <span style="font-size:CHOICES_FONTSIZEpx;">Serious</span>
@@ -147,7 +147,7 @@ __QSEP__
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:question_id]]
-<span style="font-size:SUBTEXT_FONTSIZEpx;">Amniocentesis is a diagnostic test to determine whether a child has Down syndrome where a thin needle is inserted into the uterus through the abdomen to get a sample of amniotic fluid.</span><br><br><span style="font-size:QUESTION_FONTSIZEpx;">Please rate procedure-related miscarriage (because of complications during amniocentesis) in the following dimensions:</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not at all - 100: Most certainly)</span>
+<span style="font-size:SUBTEXT_FONTSIZEpx;">Amniocentesis is a diagnostic test to determine whether a child has Down syndrome where a thin needle is inserted into the uterus through the abdomen to get a sample of amniotic fluid.</span><br><br><span style="font-size:QUESTION_FONTSIZEpx;">Please rate procedure-related miscarriage (because of complications during amniocentesis) across the following dimensions:</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not at all - 100: Most certainly)</span>
 [[Choices]]
 <span style="font-size:CHOICES_FONTSIZEpx;">Severe</span>
 <span style="font-size:CHOICES_FONTSIZEpx;">Serious</span>

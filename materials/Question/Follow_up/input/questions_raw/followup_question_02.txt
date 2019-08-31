@@ -1,7 +1,7 @@
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:fu_Q02_0]]
 [question_start]
-How strongly you think she should ${e://Field/shoShe_fu_0} take the follow-up test?<br><span style="font-size:14px;">0: Not strongly at all - 100: Very strongly</span>
+How strongly do you think she should ${e://Field/shoShe_fu_0} take the follow-up test?<br><span style="font-size:14px;">0: Not strongly at all - 100: Very strongly</span>
 [choices_start]
 DELETE_THIS
 [choices_end]

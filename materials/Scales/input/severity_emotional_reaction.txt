@@ -13,14 +13,14 @@ __QSEP__
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:question_id]]
-<span style="font-size:QUESTION_FONTSIZEpx;">Imagine a woman you care about that has breast cancer. How strongly you think she should have a preventive mastectomy (complete removal of a breast to reduce her future risk)?</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not strongly at all - 100: Very strongly)</span>
+<span style="font-size:QUESTION_FONTSIZEpx;">Imagine a woman you care about that has breast cancer. How strongly do you think she should have a preventive mastectomy (complete removal of a breast to reduce her future risk)?</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not strongly at all - 100: Very strongly)</span>
 [[Choices]]
 <span style="font-size:0px;">slider</span>
 [[PageBreak]]
 __QSEP__
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:question_id]]
-<span style="font-size:QUESTION_FONTSIZEpx;">Imagine a woman you care about that is pregnant with a fetus with Down syndrome. How strongly you think she should have an abortion?</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not strongly at all - 100: Very strongly)</span>
+<span style="font-size:QUESTION_FONTSIZEpx;">Imagine a woman you care about that is pregnant with a fetus with Down syndrome. How strongly do you think she should have an abortion?</span> <span style="font-size:SCALEANCHORS_FONTSIZEpx;">(0: Not strongly at all - 100: Very strongly)</span>
 [[Choices]]
 <span style="font-size:0px;">slider</span>
 __QSEP__

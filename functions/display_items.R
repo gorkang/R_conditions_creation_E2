@@ -85,7 +85,7 @@ display_item <- function(args) {
                           "and ____ women receive a positive test_result that incorrectly indicates the presence of medical_condition.",
                           "Therefore, given that the test_result indicates the signs of medical_condition, the probability that person_01 actually has medical_condition is ____ out of ____"), 
                         collapse = "  \n"), # sg
-                  "____ in every ____") #ss
+                  "____ out of ____") #ss
   
   # Define response types names
   resp_type_nms <- c("gi", "gs", "sg", "ss")

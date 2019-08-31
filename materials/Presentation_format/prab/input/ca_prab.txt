@@ -1,7 +1,7 @@
 [first_piece]
 prev_01% have breast cancer at the time of the screening.
 [second_piece]
-hit_rate_01% have breast cancer and and will receive a positive mammogram.
+hit_rate_01% have breast cancer and will receive a positive mammogram.
 [third_piece]
 false_positive_01% do not have breast cancer and will still receive a positive mammogram.
 [item_end]

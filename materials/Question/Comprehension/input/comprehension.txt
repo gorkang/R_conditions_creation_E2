@@ -1,4 +1,4 @@
-${e://Field/screening_intro_0}<br><br>${e://Field/screening_item_0}<br><br>Please answer the following questions about the screening test to detect ${e://Field/comp_01_0} you just saw.
+${e://Field/screening_intro_0}<br><br>${e://Field/screening_item_0}<br><br><br>Answer the following questions about the test above: 
 What percentage of your monthly income would you pay for a test like this? (0-100%)
 How informative is the screening test? (0-100%)
 How reliable is the test? (0-100%)

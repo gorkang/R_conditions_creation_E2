@@ -1,3 +1,3 @@
 Imagine a group of ${e://Field/prevalence_class_0} women at age ${e://Field/woman_age_0} that go through a routine screening.
 ___QSEP___
-Of those with a positive ${e://Field/positive_test_result_0}, how many would you expect to actually have ${e://Field/medical_condition_ppv_0}?
+Of those with a positive ${e://Field/positive_test_result_0}, how many would you expect to actually ${e://Field/medical_condition_ppv_0}?

@@ -203,7 +203,7 @@ prev_ca_x   <- 0.05852174 # cancer prevalence sentence position (relative to bro
 # On the pregnant condition the prevalence is splitted in two senteces. Therefore, there are two x axis positions
 prev_pr_x_1 <- 0.13352174 # pregnant prevalence sentence (01) position (relative to brochure size). 
 prev_pr_x_2 <- 0.05852174 # pregnant prevalence sentence (02) position (relative to brochure size).
-prev_y_1    <- .318 # both prevalence sentences (01) posiion on y axis (relative to brochure size).
+prev_y_1    <- .344 # both prevalence sentences (01) posiion on y axis (relative to brochure size).
 prev_y_2    <- prev_y_1+.027 # if any, both prevalence sentences (02) posiion on y axis (relative to brochure size).
 
 # absolute

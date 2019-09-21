@@ -1,7 +1,7 @@
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:fu_Q03_0]]
 [question_start]
-Which factors influenced your previous response: <span style="font-size:20px;">"How strongly you think she should ${e://Field/should_she_0} take the follow-up test?"</span><br><span style="font-size:18px;">0: No influence at all - 100: Completely influenced</span>
+Which factors influenced your previous response: <span style="font-size:20px;">"How strongly do you think she should ${e://Field/should_she_0} take the follow-up test?"</span><br><span style="font-size:18px;">0: No influence at all - 100: Completely influenced</span>
 [choices_start]
 How informative the ${e://Field/medical_test_0} is
 [second_choice]

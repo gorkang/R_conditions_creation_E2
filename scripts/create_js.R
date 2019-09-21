@@ -272,7 +272,7 @@ paste(gsub("REPLACE_THIS", "GS RESPONSE TYPE", commented),
   cat(., file = file.path(js_output_dir, "gs_capture_ppv.txt"))
 
 
-# WILLING TO SCREEN - How strongly would you recommend her (NOT) to take the screening test? -----
+# Willingness to screen - How strongly would you recommend her (NOT) to take the screening test? -----
 
 # ######################
 js_comp_output_dir <- 

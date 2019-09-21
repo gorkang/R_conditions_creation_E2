@@ -5,12 +5,12 @@ medical_condition_ppv,have breast cancer,be pregnant with a fetus with Down synd
 medical_condition,breast cancer,Down syndrome,"ppv, followup, js_code"
 positive_test_result,mammogram,test result,"ppv, followup, js_code"
 doctor_offers,(biopsy of the breast),(amniocentesis),followup
-fluid_test,the breast cyst,the amniotic sac (were the fetus develops),followup
+fluid_test,the breast cyst,the amniotic sac (where the fetus develops),followup
 test_name,The biopsy,Amniocentesis,followup
 medical_consequence,partial mastectomy (removal of part of a breast),miscarriage,followup
 medical_test,mammogram,prenatal screening test,
 comp_01,breast cancer,Down syndrome,
-comp_02,has breast cancer,be pregnant with a fetus with Down syndrome,
+comp_02,has breast cancer,is pregnant with a fetus with Down syndrome,
 sevEmo_01,breast cancer,Down syndrome,
 sevEmo_02,mastectomy (complete removal of a breast),abortion,
 sevEmo_03,breast cancer,a child with Down syndrome,

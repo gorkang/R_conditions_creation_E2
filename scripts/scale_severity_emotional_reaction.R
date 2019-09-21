@@ -2,7 +2,7 @@
 # pattern <- "\\[\\[\\[.*?\\]\\]\\]" 
 
 subtext_fontsize <- 18
-scaleanchors_fontsize <- 14
+scaleanchors_fontsize <- 16
 
 # Export
 # create folder
@@ -39,7 +39,7 @@ all_items <-
 
 # Block titles
 block01_title <- 'Medical screenings and procedures'
-block02_title <- 'How the following medical procedures, issues, and conditions make you feel?'
+block02_title <- 'How do the following medical procedures, issues, and conditions make you feel?'
 block03_title <- 'Rate the following medical procedures, issues and conditions'
 
 # Format font size, block, question and ID

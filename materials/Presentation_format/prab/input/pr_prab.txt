@@ -3,5 +3,5 @@ prev_01% are pregnant with a fetus with Down syndrome at the time of the screeni
 [second_piece]
 hit_rate_01% are pregnant with a fetus with Down syndrome and will receive a positive test result.
 [third_piece]
-false_positive_01% aren't pregnant with a fetus with Down syndrome and will still receive a positive test result.
+false_positive_01% are pregnant with a fetus without Down syndrome and will still receive a positive test result.
 [item_end]

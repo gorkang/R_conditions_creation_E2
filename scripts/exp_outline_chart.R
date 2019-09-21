@@ -94,8 +94,8 @@ screen01_y <- .4
 # PPV item
 (ppv01 <- boxGrob("PPV item 01/2", 
                   x=rightside, y=screen01_y+.2, box_gp = gp, width = width))
-# Willing to screen
-(will01 <- boxGrob("Willing to screen 01/2", 
+# Willingness to screen
+(will01 <- boxGrob("Willingness to screen 01/2", 
                    x=rightside, y=screen01_y+.1, box_gp = gp, width = width))
 # Comprehension
 (comp01 <- boxGrob("Comprehension 01/2", 

@@ -1,9 +1,9 @@
-${e://Field/screening_intro_0}<br><br>${e://Field/screening_item_0}<br><br>Please answer the following questions about the screening test to detect ${e://Field/comp_01_0} you just saw.
+${e://Field/screening_intro_0}<br><br>${e://Field/screening_item_0}<br><br><br>Answer the following questions about the test above: 
 What percentage of your monthly income would you pay for a test like this? (0-100%)
 How informative is the screening test? (0-100%)
 How reliable is the test? (0-100%)
-How likely is to get a positive result when ${e://Field/comp_01_0} is present? (0-100%)
-How likely is to get a positive result when ${e://Field/comp_01_0} is NOT present? (0-100%)
+How likely is a positive result when ${e://Field/comp_01_0} is present? (0-100%)
+How likely is a positive result when ${e://Field/comp_01_0} is NOT present? (0-100%)
 How trustworthy is a positive result in a ${e://Field/comp_01_0} screening? (0-100%)
-If a ${e://Field/woman_age_0} years old woman receives a positive test result, how likely is that she actually ${e://Field/comp_02_0}? (0-100%)
-What percentage of ${e://Field/woman_age_0} years old ${e://Field/comp_04_0}? (0-100%)
+If a ${e://Field/woman_age_0} year old woman receives a positive test result, how likely is that she actually ${e://Field/comp_02_0}? (0-100%)
+What percentage of ${e://Field/woman_age_0} year old ${e://Field/comp_04_0}? (0-100%)

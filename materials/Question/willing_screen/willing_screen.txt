@@ -2,7 +2,7 @@
 [[ID:will_ins_0]]
 <span style="font-size:22px;">Regarding the screening test you saw in the previous screen:
 
-Imagine a ${e://Field/woman_age_0} years old woman you care about is offered to participate in that routine ${e://Field/medical_test_0} to detect ${e://Field/medical_condition_0}.</span>
+Imagine a ${e://Field/woman_age_0} year old woman you care about is offered to participate in that routine ${e://Field/medical_test_0} to detect ${e://Field/medical_condition_0}.</span>
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:will_Q01_0]]
 <span style="font-size:22px;">Should she take the screening test?</span>
@@ -12,13 +12,13 @@ Imagine a ${e://Field/woman_age_0} years old woman you care about is offered to 
 [[PageBreak]]
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:will_Q02_0]]
-<span style="font-size:22px;">How strongly you think she should ${e://Field/should_she_0} take the screening test?<br><span style="font-size:14px;">0: Not strongly at all - 100: Very strongly</span></span>
+<span style="font-size:22px;">How strongly do you think she should ${e://Field/should_she_0} take the screening test?<br><span style="font-size:14px;">0: Not strongly at all - 100: Very strongly</span></span>
 [[Choices]]
 <span style="font-size:0px;">DELETE_THIS</span>
 [[PageBreak]]
 [[Question:MC:SingleAnswer:Vertical]]
 [[ID:will_Q03_0]]
-<span style="font-size:22px;">Which factors influenced your previous response (How strongly you think she should ${e://Field/should_she_0} take the screening test?)?</span><br><span style="font-size:18px;"> 0: No influence at all - 100: Completely influenced</span>
+<span style="font-size:22px;">Which factors influenced your previous response (How strongly do you think she should ${e://Field/should_she_0} take the screening test?)?</span><br><span style="font-size:18px;"> 0: No influence at all - 100: Completely influenced</span>
 [[Choices]]
 <span style="font-size:16px;">How informative the ${e://Field/medical_test_0} is</span>
 <span style="font-size:16px;">How confident you are in the results of the ${e://Field/medical_test_0}</span>

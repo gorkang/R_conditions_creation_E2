@@ -44,7 +44,8 @@ question_type_extra <-
 
 # instructions
 comprehension <-
-  c(gsub("ITEM", comprehension[1], ins_wrapper),                   # instructions
+  c("Please, read the description of the test one last time.<br><br>",
+    gsub("ITEM", comprehension[1], ins_wrapper),                   # instructions
     str_replace_all(item_wrapper, "ITEM", comprehension[-1])) %>%  # items
   
   str_replace_all(string = ., pattern = "replaceID",  # put question IDs

@@ -74,7 +74,7 @@ display_item(c("ca", "pfab", "low", "sg"))
 display_item(c("ca", "nppi", "low", "gs"))
 ```
 
-## Willing to screen  
+## Willingness to screen  
 
 ```{r, results='asis', echo=FALSE}
 # fillers

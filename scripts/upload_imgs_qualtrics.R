@@ -6,11 +6,14 @@
 
 # Packages -------------------------------------------------------------
 if (!require('pacman')) install.packages('pacman'); library('pacman')
-p_load(RSelenium, tidyverse, naptime)
+p_load(RSelenium, tidyverse, clipr) #naptime
 
 # Re-sources --------------------------------------------------------------
 source("functions/get2survey.R")
-source("functions/UBER_IMPORT2QUALTRICS.R")
+source("functions/UBER_IMPORT2QUALTRICS_miro.R")
+source(here::here("R/qualtrics_start_docker.R"), local = TRUE)
+# qualtrics_start_docker()
+
 
 # Start docker session ----------------------------------------------------
 

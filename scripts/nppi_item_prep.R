@@ -1,10 +1,15 @@
 # Possible contexts 
-possible_contexts <- 
-  textual_formats %>% 
-  map(~dir(paste0("materials/Presentation_format/", .x, "/input")) %>% 
-        gsub("([a-z]{2}).*", "\\1", .)) %>% 
-  unlist %>% 
-  unique()
+# possible_contexts <- 
+#   textual_formats %>% 
+#   map(~dir(paste0("materials/Presentation_format/", .x, "/input")) %>% 
+#         gsub("([a-z]{2}).*", "\\1", .)) %>% 
+#   unlist %>% 
+#   unique()
+
+possible_contexts = 
+list.files("materials/Presentation_format/nppi/output") %>% 
+  gsub("([a-z]{2})_.*", "\\1", .) %>% unique()
+
 
 # Pictoric presentation formats -------------------------------------------
 
@@ -18,7 +23,7 @@ numbers_item <-
 newparadigm_template_dir <- "materials/Presentation_format/nppi/input/template/svg/"
 
 # factboxs templates files
-newparadigm_templates <- dir(newparadigm_template_dir, pattern = ".svg")
+newparadigm_templates <<- dir(newparadigm_template_dir, pattern = ".svg")
 
 # svg to png parameters (to feed svg2png)
 template_width <- 689 # pixels
@@ -417,5 +422,5 @@ for (cC in seq(problem_contexts)) {
   responses_pic$sg[cC] <- temp_sg
 }
 
-rm(response_type_files,response_type_files_path,response_types_dir, numbers_item)    
+rm(response_type_files, response_type_files_path, response_types_dir, numbers_item)    
 

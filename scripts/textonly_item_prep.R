@@ -1,4 +1,9 @@
 
+# Libraries ---------------------------------------------------------------
+
+library(tidyverse)
+
+
 ## Numbers sets ----------------------------------------------------------------
 
 # read csv with number
@@ -17,6 +22,11 @@ presentation_format_dir <- "materials/Presentation_format/"
 # grep everything without "pi"
 textual_formats <- 
   dir(presentation_format_dir) %>% grep("[a-z]{2}pi", ., invert = TRUE, value = TRUE)
+
+if (length(textual_formats) == 0) {
+  message("* NO textual items found")
+  Sys.sleep(5)
+} else {
 
 # read text files into lists
 textual_formats %>% 
@@ -431,3 +441,4 @@ rm(numbers_item, numbers_prevalence,contexts)
 problems_numbered_ordered_responses <-
   as.list(unlist(problems_numbered_ordered_responses, recursive = TRUE, use.names = FALSE))
 
+}

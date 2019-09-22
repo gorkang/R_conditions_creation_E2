@@ -249,17 +249,24 @@ responses_pic <- map(response_type_files_path, ~readChar(con = .x, nchars = file
 # assing name to each response type
 names(responses_pic) <- gsub(".txt", "", response_type_files)
 
-## sequential guided question fillers
-textual_formats <- 
-  dir("materials/Presentation_format/") %>% grep("[a-z]{2}pi", ., invert = TRUE, value = TRUE)
+# ## sequential guided question fillers
+# textual_formats <- 
+#   dir("materials/Presentation_format/") %>% grep("[a-z]{2}pi", ., invert = TRUE, value = TRUE)
+# 
+# ## Get possible problem context
+# problem_contexts <-
+#   textual_formats %>% 
+#   map(~dir(paste0("materials/Presentation_format/", .x, "/input")) %>% 
+#         gsub("([a-z]{2}).*", "\\1", .)) %>% 
+#   unlist %>% 
+#   unique
 
-## Get possible problem context
-problem_contexts <-
-  textual_formats %>% 
-  map(~dir(paste0("materials/Presentation_format/", .x, "/input")) %>% 
-        gsub("([a-z]{2}).*", "\\1", .)) %>% 
-  unlist %>% 
-  unique
+
+problem_contexts = 
+  list.files("materials/Presentation_format/fbpi/output") %>% 
+  gsub("([a-z]{2})_.*", "\\1", .) %>% unique()
+
+
 
 # fillers
 context_info <- 
@@ -290,5 +297,5 @@ for (cC in seq(problem_contexts)) {
   responses_pic$sg[cC] <- temp_sg
 }
 
-rm(response_type_files,response_type_files_path,response_types_dir, numbers_fact, numbers_item)    
+rm(response_type_files, response_type_files_path, response_types_dir, numbers_fact, numbers_item)    
 

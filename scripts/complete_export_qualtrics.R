@@ -58,11 +58,28 @@ ppv_num <-
   filter(format == "nfab") %>% select(prob, PPV, age, prev_02)
 
 # Conditions
-conditions <- 
+conditions_all <- 
   read_csv("materials/conditions.csv", col_types = cols())
+
+
+
+
+
+# Filtramos tabla de condiciones y nos quedamos solo con las que existen en 
+# las carpetas materials/Presentation_format y materials/Response_type
+
+  presentation_formats = list.files("materials/Presentation_format/")
+  response_types = list.files("materials/Response_type/", pattern = ".txt") %>% 
+    gsub(".txt", "", .)
+
+  conditions = conditions_all %>% 
+    filter(press_format %in% presentation_formats) %>% 
+    filter(resp_type %in% response_types)
+  
 
 # Create and export txt files
 create_ED_blocks()
+
 
 # Create and export trial canvas ------------------------------------------
 
